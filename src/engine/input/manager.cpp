@@ -22,7 +22,7 @@
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
 
-namespace Input {
+namespace pingus::input {
 
 Manager::Manager() :
   drivers(),
@@ -348,6 +348,6 @@ Manager::create_keyboard(const ReaderObject& reader, Control* parent)
   }
 }
 
-} // namespace Input
+} // namespace pingus::input
 
 /* EOF */

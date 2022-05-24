@@ -22,11 +22,11 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace WorldObjsData {
+namespace pingus::worldobjsData {
 class GroundpieceData;
 }
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 /** Groundpieces form the ground on which the pingus can walk, which
     they can dig and which they can detonate away */
@@ -55,7 +55,7 @@ private:
   Groundpiece& operator= (const Groundpiece&);
 };
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 #endif
 

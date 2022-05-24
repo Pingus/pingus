@@ -85,10 +85,10 @@ public:
   void draw (DrawingContext& gc) override;
 
   /** Update the GUI objects */
-  void update_input(const Input::Event& event) override;
+  void update_input(const input::Event& event) override;
 
   /** Return the gui_manager */
-  GUI::GUIManager* get_gui_manager() const { return gui_manager.get(); }
+  gui::GUIManager* get_gui_manager() const { return gui_manager.get(); }
 
   /** Return the viewport */
   Viewport* get_viewport() const { return viewport; }

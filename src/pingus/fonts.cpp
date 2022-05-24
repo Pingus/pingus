@@ -18,7 +18,7 @@
 
 #include "pingus/resource.hpp"
 
-namespace Fonts {
+namespace pingus::fonts {
 
 Font chalk_large;
 Font chalk_normal;
@@ -61,6 +61,6 @@ void deinit ()
   lcd = Font();
 }
 
-} // namespace Fonts
+} // namespace pingus::fonts
 
 /* EOF */

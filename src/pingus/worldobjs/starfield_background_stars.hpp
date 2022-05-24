@@ -20,7 +20,7 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 class StarfieldBackgroundStars
 {
@@ -58,7 +58,7 @@ private:
   StarfieldBackgroundStars& operator= (const StarfieldBackgroundStars&);
 };
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 #endif
 

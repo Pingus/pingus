@@ -23,7 +23,7 @@
 
 namespace pingus::editor {
 
-class Checkbox : public GUI::RectComponent
+class Checkbox : public gui::RectComponent
 {
 private:
   bool checked;

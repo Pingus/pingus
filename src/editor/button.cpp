@@ -50,7 +50,7 @@ Button::draw (DrawingContext& gc)
       GUIStyle::draw_raised_box(gc, rect, Color(237, 233, 227), 2);
   }
 
-  gc.print_center(Fonts::verdana11,
+  gc.print_center(pingus::fonts::verdana11,
                   Vector2i(rect.left() + rect.width()/2, rect.top() + rect.height()/2 - 6),
                   text);
 }

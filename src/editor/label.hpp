@@ -21,7 +21,7 @@
 
 namespace pingus::editor {
 
-class Label : public GUI::RectComponent
+class Label : public gui::RectComponent
 {
 private:
   std::string text;

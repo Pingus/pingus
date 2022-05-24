@@ -28,7 +28,7 @@
 #include "pingus/path_manager.hpp"
 #include "util/raise_exception.hpp"
 
-namespace Sound {
+namespace pingus::sound {
 
 PingusSoundReal::PingusSoundReal() :
   m_sound_manager(),
@@ -153,7 +153,7 @@ PingusSoundReal::apply_volume_changes() // NOLINT
   m_sound_manager->music().set_gain(m_music_volume * m_master_volume);
 }
 
-} // namespace Sound
+} // namespace pingus::sound
 
 /* EOF */
 

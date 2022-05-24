@@ -22,7 +22,7 @@
 
 #include "engine/sound/sound_impl.hpp"
 
-namespace Sound {
+namespace pingus::sound {
 
 /** A simple wrapper class around SDL_Mixer, it will init itself
     automatically if a sound is played. */
@@ -75,7 +75,7 @@ private:
   PingusSoundReal& operator= (const PingusSoundReal&);
 };
 
-} // namespace Sound
+} // namespace pingus::sound
 
 #endif
 

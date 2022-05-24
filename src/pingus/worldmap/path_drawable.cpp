@@ -18,7 +18,7 @@
 
 #include "engine/display/drawing_context.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 PathDrawable::PathDrawable (const Path& arg_path)
   : path(arg_path)
@@ -44,6 +44,6 @@ PathDrawable::update (float delta)
 {
 }
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 /* EOF */

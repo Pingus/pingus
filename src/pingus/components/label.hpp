@@ -19,7 +19,7 @@
 
 #include "engine/gui/rect_component.hpp"
 
-class Label : public GUI::RectComponent
+class Label : public pingus::gui::RectComponent
 {
 private:
   std::string label;

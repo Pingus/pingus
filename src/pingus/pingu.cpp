@@ -51,7 +51,7 @@
 #include "pingus/actions/waiter.hpp"
 #include "pingus/actions/walker.hpp"
 
-using namespace pingus::action;
+using namespace pingus::actions;
 
 // Init a pingu at the given position while falling
 Pingu::Pingu(unsigned int arg_id, const Vector2f& arg_pos, int owner) :
@@ -355,7 +355,7 @@ Pingu::draw(SceneContext& gc)
     // FIXME: in ticks, should probally be in seconds]
     snprintf(str, 16, "%d", action_time/3);
 
-    gc.color().print_center(Fonts::chalk_normal, Vector2i(static_cast<int>(pos_x), static_cast<int>(pos_y) - 48), str);
+    gc.color().print_center(pingus::fonts::chalk_normal, Vector2i(static_cast<int>(pos_x), static_cast<int>(pos_y) - 48), str);
   }
 }
 

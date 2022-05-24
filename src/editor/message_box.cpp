@@ -63,18 +63,18 @@ MessageBox::draw_background(DrawingContext& gc)
   // Window border and title
   GUIStyle::draw_raised_box(gc, Rect(0,0,rect.width(), rect.height()));
   gc.draw_fillrect(Rect(4,4,rect.width()-4, 30), Color(77,130,180));
-  gc.print_center(Fonts::pingus_small, Vector2i(rect.width()/2, 2),
+  gc.print_center(pingus::fonts::pingus_small, Vector2i(rect.width()/2, 2),
                   m_title);
 
   // main text
-  gc.print_center(Fonts::verdana11, Vector2i(rect.width()/2, 42),
+  gc.print_center(pingus::fonts::verdana11, Vector2i(rect.width()/2, 42),
                   m_text);
 }
 
 void
 MessageBox::update_layout()
 {
-  GUI::GroupComponent::update_layout();
+  gui::GroupComponent::update_layout();
 
   m_cancel_button->set_rect(Rect(geom::ipoint(rect.width() - 4 - 210, rect.height() - 4 - 30),
                                  Size(100, 30)));

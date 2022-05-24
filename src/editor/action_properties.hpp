@@ -30,7 +30,7 @@ class Inputbox;
 class EditorScreen;
 class EditorLevel;
 
-class ActionProperties : public GUI::GroupComponent
+class ActionProperties : public gui::GroupComponent
 {
 private:
   EditorScreen* editor;

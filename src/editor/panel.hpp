@@ -26,7 +26,7 @@ namespace pingus::editor {
 
 class EditorScreen;
 
-class Panel : public GUI::GroupComponent
+class Panel : public gui::GroupComponent
 {
 private:
   EditorScreen* editor;

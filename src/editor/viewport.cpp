@@ -252,7 +252,7 @@ Viewport::on_pointer_move(int x_, int y_)
 }
 
 void
-Viewport::on_key_pressed(const Input::KeyboardEvent& ev)
+Viewport::on_key_pressed(const input::KeyboardEvent& ev)
 {
   switch(ev.keysym.sym)
   {

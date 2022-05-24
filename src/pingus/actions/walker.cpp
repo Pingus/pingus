@@ -23,7 +23,7 @@
 #include "pingus/groundtype.hpp"
 #include "pingus/pingu.hpp"
 
-namespace pingus::action {
+namespace pingus::actions {
 
 Walker::Walker (Pingu* p) :
   PinguAction(p),
@@ -214,6 +214,6 @@ Walker::draw (SceneContext& gc)
   }
 }
 
-} // namespace pingus::action
+} // namespace pingus::actions
 
 /* EOF */

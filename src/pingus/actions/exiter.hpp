@@ -20,7 +20,7 @@
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 
-namespace pingus::action {
+namespace pingus::actions {
 
 class Exiter : public PinguAction
 {
@@ -41,7 +41,7 @@ private:
   Exiter& operator= (const Exiter&);
 };
 
-} // namespace pingus::action
+} // namespace pingus::actions
 
 #endif
 

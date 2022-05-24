@@ -18,7 +18,7 @@
 
 #include "engine/input/controller_description.hpp"
 
-namespace Input {
+namespace pingus::input {
 
 Controller* Controller::current_ = nullptr;
 
@@ -255,6 +255,6 @@ Controller::poll_events(std::vector<Event>& out_events)
   events.clear();
 }
 
-} // namespace Input
+} // namespace pingus::input
 
 /* EOF */

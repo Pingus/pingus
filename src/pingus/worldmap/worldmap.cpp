@@ -28,7 +28,7 @@
 #include "util/writer.hpp"
 #include "util/pathname.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 Worldmap* Worldmap::current_ = nullptr;
 
@@ -141,7 +141,7 @@ Worldmap::update(float delta)
 void
 Worldmap::on_startup()
 {
-  Sound::PingusSound::play_music(worldmap.get_music());
+  pingus::sound::PingusSound::play_music(worldmap.get_music());
   update_locked_nodes();
 }
 
@@ -205,7 +205,7 @@ Worldmap::on_primary_button_press(int x, int y)
       }
       else
       {
-        Sound::PingusSound::play_sound("chink");
+        pingus::sound::PingusSound::play_sound("chink");
       }
     }
   }
@@ -348,6 +348,6 @@ Worldmap::get_height() const
   return worldmap.get_height();
 }
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 /* EOF */

@@ -19,7 +19,7 @@
 #include "engine/display/scene_context.hpp"
 #include "pingus/res_descriptor.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 Hotspot::Hotspot(const ReaderMapping& reader) :
   sprite(),
@@ -60,6 +60,6 @@ Hotspot::z_index () const
   return m_z_index;
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

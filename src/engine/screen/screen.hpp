@@ -19,7 +19,7 @@
 
 #include "math/size.hpp"
 
-namespace Input {
+namespace pingus::input {
 struct Event;
 }
 
@@ -41,7 +41,7 @@ public:
   virtual void draw(DrawingContext& gc) =0;
 
   /** Pass a delta to the screen */
-  virtual void update_input (const Input::Event& event) =0;
+  virtual void update_input (const pingus::input::Event& event) =0;
   virtual void update (float delta) =0;
 
   /** Called once the screen gets activated and becomes the current

@@ -21,7 +21,7 @@
 
 #include "util/reader.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 class Dot;
 
@@ -37,7 +37,7 @@ private:
   DotFactory& operator=(const DotFactory&) = delete;
 };
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 #endif
 

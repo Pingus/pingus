@@ -20,7 +20,7 @@
 
 #include "pingus/worldmap/sprite_drawable.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 std::unique_ptr<Drawable>
 DrawableFactory::create(const ReaderObject& reader)
@@ -36,6 +36,6 @@ DrawableFactory::create(const ReaderObject& reader)
   }
 }
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 /* EOF */

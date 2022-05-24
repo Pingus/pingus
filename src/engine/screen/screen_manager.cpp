@@ -43,10 +43,10 @@ void read(std::istream& out, C& value)
   out.read(reinterpret_cast<char*>(&value), sizeof(value));
 }
 
-void write_events(std::ostream& out, const std::vector<Input::Event>& events)
+void write_events(std::ostream& out, const std::vector<pingus::input::Event>& events)
 {
   write(out, events.size());
-  for(std::vector<Input::Event>::const_iterator i = events.begin();
+  for(std::vector<pingus::input::Event>::const_iterator i = events.begin();
       i != events.end();
       ++i)
   {
@@ -54,13 +54,13 @@ void write_events(std::ostream& out, const std::vector<Input::Event>& events)
   }
 }
 
-void read_events(std::istream& out, std::vector<Input::Event>& events)
+void read_events(std::istream& out, std::vector<pingus::input::Event>& events)
 {
-  std::vector<Input::Event>::size_type len;
+  std::vector<pingus::input::Event>::size_type len;
   read(out, len);
-  for(std::vector<Input::Event>::size_type i = 0; i < len; ++i)
+  for(std::vector<pingus::input::Event>::size_type i = 0; i < len; ++i)
   {
-    Input::Event event;
+    pingus::input::Event event;
     read(out, event);
     events.push_back(event);
   }
@@ -70,8 +70,8 @@ void read_events(std::istream& out, std::vector<Input::Event>& events)
 
 ScreenManager* ScreenManager::instance_ = nullptr;
 
-ScreenManager::ScreenManager(Input::Manager& arg_input_manager,
-                             Input::ControllerPtr arg_input_controller) :
+ScreenManager::ScreenManager(pingus::input::Manager& arg_input_manager,
+                             pingus::input::ControllerPtr arg_input_controller) :
   input_manager(arg_input_manager),
   input_controller(std::move(arg_input_controller)),
   display_gc(new DrawingContext()),
@@ -101,13 +101,13 @@ ScreenManager::display()
 
   Uint32 last_ticks = SDL_GetTicks();
   float previous_frame_time;
-  std::vector<Input::Event> events;
+  std::vector<pingus::input::Event> events;
 
   while (!screens.empty())
   {
     events.clear();
 
-    // Get time and update Input::Events
+    // Get time and update pingus::input::Events
     if (playback_input)
     {
       // Get Time
@@ -164,9 +164,9 @@ ScreenManager::display()
 }
 
 void
-ScreenManager::update(float delta, const std::vector<Input::Event>& events)
+ScreenManager::update(float delta, const std::vector<pingus::input::Event>& events)
 {
-  Sound::PingusSound::update(delta);
+  pingus::sound::PingusSound::update(delta);
 
   ScreenPtr last_screen = get_current_screen();
 
@@ -174,9 +174,9 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
   if (!last_screen)
     return;
 
-  for(std::vector<Input::Event>::const_iterator i = events.begin(); i != events.end(); ++i)
+  for(std::vector<pingus::input::Event>::const_iterator i = events.begin(); i != events.end(); ++i)
   {
-    if (i->type == Input::POINTER_EVENT_TYPE && i->pointer.name == Input::STANDARD_POINTER)
+    if (i->type == pingus::input::POINTER_EVENT_TYPE && i->pointer.name == pingus::input::STANDARD_POINTER)
       mouse_pos = Vector2i(static_cast<int>(i->pointer.x),
                            static_cast<int>(i->pointer.y));
 
@@ -214,13 +214,13 @@ ScreenManager::update(float delta, const std::vector<Input::Event>& events)
     fps_counter->draw();
     if (globals::developer_mode)
     {
-      Fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 60,
+      pingus::fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 60,
                                  "Developer Mode", *Display::get_framebuffer());
     }
   }
   else if (globals::developer_mode)
   {
-    Fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 35,
+    pingus::fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 35,
                                "Developer Mode", *Display::get_framebuffer());
   }
 

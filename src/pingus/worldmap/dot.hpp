@@ -20,7 +20,7 @@
 #include "math/vector2f.hpp"
 #include "pingus/worldmap/drawable.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 /** A Dot is a node between all the pathes on the worldmap, there are
     LevelDots TubeDots and other availabe. */
@@ -50,7 +50,7 @@ private:
   Dot& operator= (const Dot&);
 };
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 #endif
 

@@ -29,7 +29,7 @@ class EditorScreen;
 class ObjectSelectorList;
 class ObjectSelectorSet;
 
-class ObjectSelector : public GUI::GroupComponent
+class ObjectSelector : public gui::GroupComponent
 {
 private:
   EditorScreen* editor;

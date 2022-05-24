@@ -32,13 +32,13 @@
 #include "util/pathname.hpp"
 
 class CreditsOkButton
-  : public GUI::SurfaceButton
+  : public pingus::gui::SurfaceButton
 {
 private:
   Credits* parent;
 public:
   CreditsOkButton(Credits* p)
-    : GUI::SurfaceButton(Display::get_width()/2  + 260,
+    : pingus::gui::SurfaceButton(Display::get_width()/2  + 260,
                          Display::get_height()/2 + 170,
                          "core/start/ok",
                          "core/start/ok_clicked",
@@ -50,12 +50,12 @@ public:
   void on_pointer_enter () override
   {
     SurfaceButton::on_pointer_enter();
-    Sound::PingusSound::play_sound("tick");
+    pingus::sound::PingusSound::play_sound("tick");
   }
 
   void on_click() override {
     parent->on_escape_press();
-    Sound::PingusSound::play_sound("yipee");
+    pingus::sound::PingusSound::play_sound("yipee");
   }
 
 private:
@@ -80,8 +80,8 @@ Credits::Credits(const Pathname& filename) :
   fast_scrolling = false;
   gui_manager->add(std::make_unique<CreditsOkButton>(this));
 
-  font       = Fonts::chalk_normal;
-  font_small = Fonts::chalk_large;
+  font       = pingus::fonts::chalk_normal;
+  font_small = pingus::fonts::chalk_large;
 
   // The credits vector holds the strings to display. The first
   // character of each string is a special character, which indicates

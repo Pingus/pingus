@@ -43,12 +43,12 @@ FPSCounter::draw()
 
   if (odd_frame)
   {
-    Fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 35, fps_string, *Display::get_framebuffer());
+    pingus::fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 35, fps_string, *Display::get_framebuffer());
     odd_frame = false;
   }
   else
   {
-    Fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 35, "+ " + fps_string + " +", *Display::get_framebuffer());
+    pingus::fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 35, "+ " + fps_string + " +", *Display::get_framebuffer());
     odd_frame = true;
   }
 }

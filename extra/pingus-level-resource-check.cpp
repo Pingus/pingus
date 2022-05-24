@@ -22,8 +22,8 @@ int main(int argc, char** argv)
 
   Display::create_window(NULL_FRAMEBUFFER, Size(640, 480), false, false);
 
-  Fonts::init();
-  Sound::PingusSound::init();
+  pingus::fonts::init();
+  pingus::sound::PingusSound::init();
 
   for(int i = 1; i < argc; ++i)
   {
@@ -39,8 +39,8 @@ int main(int argc, char** argv)
     }
   }
 
-  Sound::PingusSound::deinit();
-  Fonts::deinit();
+  pingus::sound::PingusSound::deinit();
+  pingus::fonts::deinit();
   Resource::deinit();
 
   return 0;

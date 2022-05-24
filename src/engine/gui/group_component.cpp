@@ -16,7 +16,7 @@
 
 #include "engine/gui/group_component.hpp"
 
-namespace GUI {
+namespace pingus::gui {
 
 GroupComponent::GroupComponent(const Rect& rect_, bool clip_) :
   RectComponent(rect_),
@@ -173,7 +173,7 @@ GroupComponent::on_secondary_button_release(int x, int y)
 }
 
 void
-GroupComponent::on_key_pressed(const Input::KeyboardEvent& ev)
+GroupComponent::on_key_pressed(const pingus::input::KeyboardEvent& ev)
 {
   if (grabbed_comp)
     grabbed_comp->on_key_pressed(ev);
@@ -184,7 +184,7 @@ GroupComponent::on_key_pressed(const Input::KeyboardEvent& ev)
 }
 
 void
-GroupComponent::on_text_input(const Input::TextInputEvent& ev)
+GroupComponent::on_text_input(const pingus::input::TextInputEvent& ev)
 {
   if (grabbed_comp)
     grabbed_comp->on_text_input(ev);
@@ -296,6 +296,6 @@ GroupComponent::ungrab(Component* comp)
   Component::ungrab();
 }
 
-} // namespace GUI
+} // namespace pingus::gui
 
 /* EOF */

@@ -21,7 +21,7 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/pingu_action.hpp"
 
-namespace pingus::action {
+namespace pingus::actions {
 
 class Digger : public PinguAction
 {
@@ -47,7 +47,7 @@ private:
   Digger& operator= (const Digger&);
 };
 
-} // namespace pingus::action
+} // namespace pingus::actions
 
 #endif
 

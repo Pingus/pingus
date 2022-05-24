@@ -23,7 +23,7 @@
 class DrawingContext;
 class GameDelta;
 
-namespace GUI {
+namespace pingus::gui {
 
 /** The GUIManager class holds a group of components and manages
     them. It dispatches the GameDelta to each individual
@@ -45,14 +45,14 @@ public:
   ~GUIManager () override;
 
   void update(float delta) override;
-  virtual void update(const Input::Event& event);
+  virtual void update(const pingus::input::Event& event);
 
 private:
   GUIManager (const GUIManager&);
   GUIManager& operator= (const GUIManager&);
 };
 
-} // namespace GUI
+} // namespace pingus::gui
 
 #endif
 

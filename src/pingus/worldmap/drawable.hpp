@@ -23,7 +23,7 @@
 
 class DrawingContext;
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 /** An drawable object on the worldmap, such has a background or a
     sprite, interface only */
@@ -69,7 +69,7 @@ private:
   Drawable& operator= (const Drawable&);
 };
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 #endif
 

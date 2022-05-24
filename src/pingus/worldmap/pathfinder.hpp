@@ -21,7 +21,7 @@
 
 #include "pingus/worldmap/graph.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 struct PathfinderResult
 {
@@ -178,7 +178,7 @@ private:
   Pathfinder operator= (const Pathfinder&);
 };
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 #endif
 

@@ -22,7 +22,7 @@
 #include "engine/input/controller_description.hpp"
 #include "engine/input/driver.hpp"
 
-namespace Input {
+namespace pingus::input {
 
 class Manager
 {
@@ -55,7 +55,7 @@ private:
   Driver* get_driver(const std::string& name);
 };
 
-} // namespace Input
+} // namespace pingus::input
 
 #endif
 

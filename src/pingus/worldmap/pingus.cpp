@@ -20,7 +20,7 @@
 #include "pingus/direction.hpp"
 #include "pingus/worldmap/dot.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 Pingus::Pingus (PathGraph* arg_path) :
   Drawable("pingus"),
@@ -258,6 +258,6 @@ Pingus::is_walking() const
   return current_node == NoNode;
 }
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 /* EOF */

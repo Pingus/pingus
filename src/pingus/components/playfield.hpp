@@ -31,7 +31,7 @@ class ButtonPanel;
 class View;
 
 /** This class encapsulates all the different Views */
-class Playfield : public GUI::RectComponent
+class Playfield : public pingus::gui::RectComponent
 {
 private:
   Server* server;
@@ -72,7 +72,7 @@ public:
   void on_secondary_button_press (int x, int y) override;
   void on_secondary_button_release (int x, int y) override;
   void on_pointer_move (int x, int y) override;
-  void on_key_pressed(const Input::KeyboardEvent& ev) override;
+  void on_key_pressed(const pingus::input::KeyboardEvent& ev) override;
 
   void enable_scroll_mode();
   void do_scrolling();

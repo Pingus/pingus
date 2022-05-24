@@ -32,7 +32,7 @@ Label::draw(DrawingContext& gc)
   if (globals::developer_mode)
     gc.draw_rect(rect, Color(0, 255, 255));
 
-  gc.print_left(Fonts::chalk_normal, Vector2i(rect.left(), rect.top()), label);
+  gc.print_left(pingus::fonts::chalk_normal, Vector2i(rect.left(), rect.top()), label);
 }
 
 /* EOF */

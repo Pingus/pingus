@@ -36,7 +36,7 @@
 
 static bool false_func() { return false; }
 
-class BButton : public GUI::SurfaceButton
+class BButton : public pingus::gui::SurfaceButton
 {
 private:
   Sprite highlight;

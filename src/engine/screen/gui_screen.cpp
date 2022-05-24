@@ -24,7 +24,7 @@
 
 GUIScreen::GUIScreen() :
   Screen(Display::get_size()),
-  gui_manager(new GUI::GUIManager())
+  gui_manager(new pingus::gui::GUIManager())
 {
 }
 
@@ -48,47 +48,47 @@ GUIScreen::update(float delta)
 }
 
 void
-GUIScreen::update_input(const Input::Event& event)
+GUIScreen::update_input(const pingus::input::Event& event)
 {
   // Dispatch the recieved input events
   gui_manager->update(event);
 
   switch (event.type)
   {
-    case Input::POINTER_EVENT_TYPE:
+    case pingus::input::POINTER_EVENT_TYPE:
     {
       // ignored cause this is handled in the gui_manager
     }
     break;
 
-    case Input::BUTTON_EVENT_TYPE:
+    case pingus::input::BUTTON_EVENT_TYPE:
     {
       process_button_event (event.button);
     }
     break;
 
-    case Input::AXIS_EVENT_TYPE:
+    case pingus::input::AXIS_EVENT_TYPE:
     {
-      if (event.axis.name == Input::ACTION_AXIS)
+      if (event.axis.name == pingus::input::ACTION_AXIS)
       {
         on_action_axis_move(event.axis.dir);
       }
     }
     break;
 
-    case Input::SCROLLER_EVENT_TYPE:
+    case pingus::input::SCROLLER_EVENT_TYPE:
     {
 
     }
     break;
 
-    case Input::KEYBOARD_EVENT_TYPE:
+    case pingus::input::KEYBOARD_EVENT_TYPE:
     {
 
     }
     break;
 
-    case Input::TEXT_INPUT_EVENT_TYPE:
+    case pingus::input::TEXT_INPUT_EVENT_TYPE:
     {
 
     }
@@ -101,37 +101,37 @@ GUIScreen::update_input(const Input::Event& event)
 }
 
 void
-GUIScreen::process_button_event (const Input::ButtonEvent& event)
+GUIScreen::process_button_event (const pingus::input::ButtonEvent& event)
 {
-  if (event.state == Input::BUTTON_PRESSED)
+  if (event.state == pingus::input::BUTTON_PRESSED)
   {
     switch (event.name)
     {
-      case Input::PRIMARY_BUTTON:
+      case pingus::input::PRIMARY_BUTTON:
         // ignoring, handled in the gui_manager
         break;
-      case Input::SECONDARY_BUTTON:
+      case pingus::input::SECONDARY_BUTTON:
         // ignoring, handled in the gui_manager
         break;
-      case Input::PAUSE_BUTTON:
+      case pingus::input::PAUSE_BUTTON:
         on_pause_press ();
         break;
-      case Input::SINGLE_STEP_BUTTON:
+      case pingus::input::SINGLE_STEP_BUTTON:
         on_single_step_press();
         break;
-      case Input::FAST_FORWARD_BUTTON:
+      case pingus::input::FAST_FORWARD_BUTTON:
         on_fast_forward_press ();
         break;
-      case Input::ARMAGEDDON_BUTTON:
+      case pingus::input::ARMAGEDDON_BUTTON:
         on_armageddon_press ();
         break;
-      case Input::ESCAPE_BUTTON:
+      case pingus::input::ESCAPE_BUTTON:
         on_escape_press ();
         break;
-      case Input::ACTION_UP_BUTTON:
+      case pingus::input::ACTION_UP_BUTTON:
         on_action_up_press();
         break;
-      case Input::ACTION_DOWN_BUTTON:
+      case pingus::input::ACTION_DOWN_BUTTON:
         on_action_down_press();
         break;
       default:
@@ -139,35 +139,35 @@ GUIScreen::process_button_event (const Input::ButtonEvent& event)
         break;
     }
   }
-  else if (event.state == Input::BUTTON_RELEASED)
+  else if (event.state == pingus::input::BUTTON_RELEASED)
   {
     switch (event.name)
     {
-      case Input::PRIMARY_BUTTON:
+      case pingus::input::PRIMARY_BUTTON:
         // ignoring, handled in the gui_manager
         break;
-      case Input::SECONDARY_BUTTON:
+      case pingus::input::SECONDARY_BUTTON:
         // ignoring, handled in the gui_manager
         break;
-      case Input::PAUSE_BUTTON:
+      case pingus::input::PAUSE_BUTTON:
         on_pause_release ();
         break;
-      case Input::SINGLE_STEP_BUTTON:
+      case pingus::input::SINGLE_STEP_BUTTON:
         on_single_step_release();
         break;
-      case Input::FAST_FORWARD_BUTTON:
+      case pingus::input::FAST_FORWARD_BUTTON:
         on_fast_forward_release ();
         break;
-      case Input::ARMAGEDDON_BUTTON:
+      case pingus::input::ARMAGEDDON_BUTTON:
         on_armageddon_release ();
         break;
-      case Input::ESCAPE_BUTTON:
+      case pingus::input::ESCAPE_BUTTON:
         on_escape_release ();
         break;
-      case Input::ACTION_UP_BUTTON:
+      case pingus::input::ACTION_UP_BUTTON:
         on_action_up_release();
         break;
-      case Input::ACTION_DOWN_BUTTON:
+      case pingus::input::ACTION_DOWN_BUTTON:
         on_action_down_release();
         break;
       default:

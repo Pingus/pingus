@@ -38,7 +38,7 @@ public:
 };
 
 /** The Combobox class gives you a drop-down list of items to choose from. */
-class Combobox : public GUI::RectComponent
+class Combobox : public gui::RectComponent
 {
 protected:
   Sprite sprite;

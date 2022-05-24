@@ -31,7 +31,7 @@ class Inputbox;
 class Label;
 class LevelObj;
 
-class ObjectProperties : public GUI::GroupComponent
+class ObjectProperties : public gui::GroupComponent
 {
 private:
   EditorScreen* editor;
@@ -129,8 +129,8 @@ public:
   void hide_all();
   void advance();
   void finalize();
-  void place(GUI::RectComponent* comp);
-  void place(GUI::RectComponent* comp1, GUI::RectComponent* comp2);
+  void place(gui::RectComponent* comp);
+  void place(gui::RectComponent* comp1, gui::RectComponent* comp2);
 
   void on_gptype_change(const ComboItem& item);
   void on_stretch_x_change(bool t);

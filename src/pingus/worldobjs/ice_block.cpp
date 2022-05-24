@@ -23,7 +23,7 @@
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 IceBlock::IceBlock(const ReaderMapping& reader) :
   pos(),
@@ -97,6 +97,6 @@ IceBlock::update()
   }
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

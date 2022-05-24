@@ -21,7 +21,7 @@
 
 #include "pingus/worldmap/drawable.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 class DrawableFactory
 {
@@ -34,7 +34,7 @@ private:
   DrawableFactory& operator= (const DrawableFactory&);
 };
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 #endif
 

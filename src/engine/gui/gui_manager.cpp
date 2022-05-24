@@ -21,9 +21,9 @@
 #include "engine/display/display.hpp"
 #include "pingus/globals.hpp"
 
-using namespace Input;
+using namespace pingus::input;
 
-namespace GUI {
+namespace pingus::gui {
 
 GUIManager::GUIManager ()
   : GroupComponent(Rect(0, 0, Display::get_width(), Display::get_height()), false),
@@ -48,43 +48,43 @@ GUIManager::update(float delta)
 }
 
 void
-GUIManager::update(const Input::Event& event)
+GUIManager::update(const pingus::input::Event& event)
 {
   switch (event.type)
   {
-    case Input::POINTER_EVENT_TYPE:
+    case pingus::input::POINTER_EVENT_TYPE:
       mouse_pos = Vector2i(int(event.pointer.x),
                            int(event.pointer.y));
       on_pointer_move(mouse_pos.x(), mouse_pos.y());
       break;
 
-    case Input::BUTTON_EVENT_TYPE:
+    case pingus::input::BUTTON_EVENT_TYPE:
       if (event.button.name == PRIMARY_BUTTON)
       {
-        if (event.button.state == Input::BUTTON_PRESSED)
+        if (event.button.state == pingus::input::BUTTON_PRESSED)
           on_primary_button_press(mouse_pos.x(), mouse_pos.y());
-        else if (event.button.state == Input::BUTTON_RELEASED)
+        else if (event.button.state == pingus::input::BUTTON_RELEASED)
           on_primary_button_release(mouse_pos.x(), mouse_pos.y());
       }
       else if (event.button.name == SECONDARY_BUTTON)
       {
-        if (event.button.state == Input::BUTTON_PRESSED)
+        if (event.button.state == pingus::input::BUTTON_PRESSED)
           on_secondary_button_press(mouse_pos.x(), mouse_pos.y());
-        else if (event.button.state == Input::BUTTON_RELEASED)
+        else if (event.button.state == pingus::input::BUTTON_RELEASED)
           on_secondary_button_release(mouse_pos.x(), mouse_pos.y());
       }
       break;
 
-    case Input::AXIS_EVENT_TYPE:
+    case pingus::input::AXIS_EVENT_TYPE:
       // AxisEvents can be ignored in the GUI, they are handled elsewhere
       log_debug("GUIManager: AxisEvent: {}", event.axis.dir);
       break;
 
-    case Input::TEXT_INPUT_EVENT_TYPE:
+    case pingus::input::TEXT_INPUT_EVENT_TYPE:
       on_text_input(event.text);
       break;
 
-    case Input::KEYBOARD_EVENT_TYPE:
+    case pingus::input::KEYBOARD_EVENT_TYPE:
       if (event.keyboard.state)
       {
         on_key_pressed(event.keyboard);
@@ -95,7 +95,7 @@ GUIManager::update(const Input::Event& event)
       }
       break;
 
-    case Input::SCROLLER_EVENT_TYPE:
+    case pingus::input::SCROLLER_EVENT_TYPE:
       on_scroller_move(event.scroll.x_delta, event.scroll.y_delta);
       break;
 
@@ -105,6 +105,6 @@ GUIManager::update(const Input::Event& event)
   }
 }
 
-} // namespace GUI
+} // namespace pingus::gui
 
 /* EOF */

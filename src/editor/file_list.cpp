@@ -124,7 +124,7 @@ FileList::draw(DrawingContext& gc)
         gc.draw_rect(Rect(x, y, x + hspace, y + vspace), Color(0, 0, 255));
     }
 
-    gc.print_left(Fonts::verdana11, Vector2i(x + 4, y + 3),
+    gc.print_left(pingus::fonts::verdana11, Vector2i(x + 4, y + 3),
                   ((i->type == System::DE_DIRECTORY) ? "[DIR]  " : "[FILE] ") + i->name);
 
     y += 20;

@@ -19,7 +19,7 @@
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 
-namespace pingus::action {
+namespace pingus::actions {
 
 Jumper::Jumper (Pingu* p) :
   PinguAction(p),
@@ -59,6 +59,6 @@ Jumper::update ()
   pingu->set_action (ActionName::FALLER);
 }
 
-} // namespace pingus::action
+} // namespace pingus::actions
 
 /* EOF */

@@ -25,7 +25,7 @@
 #include "pingus/world.hpp"
 #include "pingus/worldobjs/switch_door_door.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 SwitchDoorSwitch::SwitchDoorSwitch(const ReaderMapping& reader) :
   switch_pos(),
@@ -87,6 +87,6 @@ SwitchDoorSwitch::update ()
   }
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

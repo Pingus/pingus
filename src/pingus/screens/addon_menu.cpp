@@ -42,15 +42,15 @@ AddOnMenu::draw_background(DrawingContext& gc)
   // gc.draw_fillrect(Rect(100, 100, 400, 400), Color(255, 0, 0));
   gc.draw(background, Vector2i(gc.get_width()/2, gc.get_height()/2));
 
-  gc.print_center(Fonts::chalk_large, Vector2i(gc.get_width()/2, 90), "Add-On Menu");
+  gc.print_center(pingus::fonts::chalk_large, Vector2i(gc.get_width()/2, 90), "Add-On Menu");
 
-  gc.print_left(Fonts::chalk_normal, Vector2i(120, 145), "X-Mas Pingus Sprites");
-  gc.print_left(Fonts::chalk_small,  Vector2i(140, 170), "christmas look for penguins");
-  gc.print_left(Fonts::chalk_small,  Vector2i(140, 190), "Author: John Foo <foo@example.com>");
+  gc.print_left(pingus::fonts::chalk_normal, Vector2i(120, 145), "X-Mas Pingus Sprites");
+  gc.print_left(pingus::fonts::chalk_small,  Vector2i(140, 170), "christmas look for penguins");
+  gc.print_left(pingus::fonts::chalk_small,  Vector2i(140, 190), "Author: John Foo <foo@example.com>");
 
-  gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2, gc.get_height()/2 + 160), "Update Online [ ]");
+  gc.print_center(pingus::fonts::chalk_normal, Vector2i(gc.get_width()/2, gc.get_height()/2 + 160), "Update Online [ ]");
 
-  gc.print_center(Fonts::chalk_normal, Vector2i(gc.get_width()/2 + 245 + 30, gc.get_height()/2 + 150 - 20), _("Close"));
+  gc.print_center(pingus::fonts::chalk_normal, Vector2i(gc.get_width()/2 + 245 + 30, gc.get_height()/2 + 150 - 20), _("Close"));
   gc.draw(ok_button, Vector2i(gc.get_width()/2 + 245, gc.get_height()/2 + 150));
 
   gc.draw(ok_button, Vector2i(610, 145));

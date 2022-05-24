@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_GUI_COMBOBOX_LISTENER_HPP
 #define HEADER_PINGUS_ENGINE_GUI_COMBOBOX_LISTENER_HPP
 
-namespace GUI {
+namespace pingus::gui {
 
 class Combobox;
 

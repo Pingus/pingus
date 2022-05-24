@@ -105,9 +105,9 @@ Combobox::draw(DrawingContext &gc)
 
     if (current_item != -1)
     {
-      gc.print_left(Fonts::verdana11,
+      gc.print_left(pingus::fonts::verdana11,
                     Vector2i(rect.left() + 5,
-                             rect.top() + rect.height()/2 - Fonts::verdana11.get_height()/2),
+                             rect.top() + rect.height()/2 - pingus::fonts::verdana11.get_height()/2),
                     item_list[static_cast<size_t>(current_item)].label);
     }
   }
@@ -123,9 +123,9 @@ Combobox::draw(DrawingContext &gc)
                               Size(rect.width(), rect.height())),
                          Color(150,200,255), 95);
 
-      gc.print_left(Fonts::verdana11,
+      gc.print_left(pingus::fonts::verdana11,
                     Vector2i(list_rect.left() + 5,
-                             list_rect.top() + i * rect.height() + rect.height()/2 - Fonts::verdana11.get_height()/2),
+                             list_rect.top() + i * rect.height() + rect.height()/2 - pingus::fonts::verdana11.get_height()/2),
                     item_list[static_cast<size_t>(i)].label, 100);
     }
 

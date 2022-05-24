@@ -24,10 +24,10 @@
 #include "pingus/server_event.hpp"
 #include "util/pathname.hpp"
 
-namespace Input {
+namespace pingus::input {
 struct Event;
 struct ScrollEvent;
-} // namespace Input
+} // namespace pingus::input
 
 class Server;
 class XMLPDF;

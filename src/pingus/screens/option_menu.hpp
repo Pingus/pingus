@@ -36,15 +36,15 @@ class OptionMenu : public GUIScreen
 private:
   Sprite m_background;
   Sprite m_blackboard;
-  GUI::SurfaceButton* ok_button;
+  pingus::gui::SurfaceButton* ok_button;
   int x_pos;
   int y_pos;
 
   struct Option {
     Label*         label;
-    GUI::RectComponent* control;
+    pingus::gui::RectComponent* control;
 
-    Option(Label* label_, GUI::RectComponent* control_) :
+    Option(Label* label_, pingus::gui::RectComponent* control_) :
       label(label_), control(control_)
     {}
   };
@@ -79,7 +79,7 @@ public:
   void draw_background (DrawingContext& gc) override;
   void on_escape_press () override;
 
-  void add_item(const std::string& label, std::unique_ptr<GUI::RectComponent> control);
+  void add_item(const std::string& label, std::unique_ptr<pingus::gui::RectComponent> control);
 
   void resize(const Size&) override;
   void close_screen();

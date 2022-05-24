@@ -30,7 +30,7 @@ class EditorScreen;
 class ObjectSelector;
 class ObjectSelectorSet;
 
-class ObjectSelectorList : public GUI::RectComponent
+class ObjectSelectorList : public gui::RectComponent
 {
 public:
   struct Object {

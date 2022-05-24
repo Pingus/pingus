@@ -186,7 +186,7 @@ GameSession::update(float delta)
 }
 
 void
-GameSession::update_input(const Input::Event& event)
+GameSession::update_input(const pingus::input::Event& event)
 {
   GUIScreen::update_input(event);
 
@@ -194,21 +194,21 @@ GameSession::update_input(const Input::Event& event)
 
   switch (event.type)
   {
-    case Input::BUTTON_EVENT_TYPE:
+    case pingus::input::BUTTON_EVENT_TYPE:
     {
-      const Input::ButtonEvent& ev = event.button;
+      const pingus::input::ButtonEvent& ev = event.button;
 
-      if (ev.state == Input::BUTTON_PRESSED)
+      if (ev.state == pingus::input::BUTTON_PRESSED)
       {
-        if (ev.name >= Input::ACTION_1_BUTTON && ev.name <= Input::ACTION_10_BUTTON)
+        if (ev.name >= pingus::input::ACTION_1_BUTTON && ev.name <= pingus::input::ACTION_10_BUTTON)
         {
-          button_panel->set_button(ev.name - Input::ACTION_1_BUTTON);
+          button_panel->set_button(ev.name - pingus::input::ACTION_1_BUTTON);
         }
-        else if (ev.name == Input::ACTION_DOWN_BUTTON)
+        else if (ev.name == pingus::input::ACTION_DOWN_BUTTON)
         {
           button_panel->next_action();
         }
-        else if (ev.name == Input::ACTION_UP_BUTTON)
+        else if (ev.name == pingus::input::ACTION_UP_BUTTON)
         {
           button_panel->previous_action();
         }
@@ -216,23 +216,23 @@ GameSession::update_input(const Input::Event& event)
     }
     break;
 
-    case Input::POINTER_EVENT_TYPE:
+    case pingus::input::POINTER_EVENT_TYPE:
       // Ignore, is handled in GUIScreen
       break;
 
-    case Input::AXIS_EVENT_TYPE:
+    case pingus::input::AXIS_EVENT_TYPE:
       // ???
       process_axis_event (event.axis);
       break;
 
-    case Input::SCROLLER_EVENT_TYPE:
+    case pingus::input::SCROLLER_EVENT_TYPE:
       process_scroll_event(event.scroll);
       break;
 
-    case Input::KEYBOARD_EVENT_TYPE:
+    case pingus::input::KEYBOARD_EVENT_TYPE:
       break;
 
-    case Input::TEXT_INPUT_EVENT_TYPE:
+    case pingus::input::TEXT_INPUT_EVENT_TYPE:
       break;
 
     default:
@@ -243,14 +243,14 @@ GameSession::update_input(const Input::Event& event)
 }
 
 void
-GameSession::process_scroll_event (const Input::ScrollEvent& ev)
+GameSession::process_scroll_event (const pingus::input::ScrollEvent& ev)
 {
   playfield->scroll(static_cast<int>(-ev.x_delta),
                     static_cast<int>(-ev.y_delta));
 }
 
 void
-GameSession::process_axis_event (const Input::AxisEvent& event)
+GameSession::process_axis_event (const pingus::input::AxisEvent& event)
 {
   // log_info("GameSession::process_axis_event ()");
 }
@@ -317,11 +317,11 @@ GameSession::on_startup ()
   if (server->get_plf().get_music() == "none" ||
       server->get_plf().get_music().empty())
   {
-    Sound::PingusSound::stop_music();
+    pingus::sound::PingusSound::stop_music();
   }
   else
   {
-    Sound::PingusSound::play_music(server->get_plf().get_music());
+    pingus::sound::PingusSound::play_music(server->get_plf().get_music());
   }
 }
 

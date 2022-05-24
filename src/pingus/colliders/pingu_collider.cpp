@@ -19,7 +19,7 @@
 #include "math/vector2f.hpp"
 #include "pingus/groundtype.hpp"
 
-namespace Colliders {
+namespace pingus::colliders {
 
 PinguCollider::PinguCollider(const int height_arg) : height(height_arg)
 {
@@ -80,6 +80,6 @@ bool PinguCollider::operator() (const World* world, const Vector2f& current_pos,
   return collided;
 }
 
-} // namespace Colliders
+} // namespace pingus::colliders
 
 /* EOF */

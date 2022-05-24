@@ -25,7 +25,7 @@
 #include "engine/input/control.hpp"
 #include "engine/input/driver.hpp"
 
-namespace Input {
+namespace pingus::input {
 
 class SDLDriver : public Driver
 {
@@ -96,7 +96,7 @@ private:
   SDLDriver & operator=(const SDLDriver&);
 };
 
-} // namespace Input
+} // namespace pingus::input
 
 #endif
 

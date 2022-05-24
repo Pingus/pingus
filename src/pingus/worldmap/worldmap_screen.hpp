@@ -24,12 +24,12 @@
 #include "engine/gui/gui_manager.hpp"
 #include "engine/screen/gui_screen.hpp"
 
-namespace GUI {
+namespace pingus::gui {
 class SurfaceButton;
 }
 
 class SceneContext;
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 typedef int NodeId;
 class Worldmap;
@@ -47,8 +47,8 @@ private:
   std::unique_ptr<Worldmap> worldmap;
   std::unique_ptr<Worldmap> new_worldmap;
 
-  GUI::SurfaceButton* close_button;
-  GUI::SurfaceButton* credits_button;
+  pingus::gui::SurfaceButton* close_button;
+  pingus::gui::SurfaceButton* credits_button;
   WorldmapComponent* m_worldmap_component;
 
 public:
@@ -92,7 +92,7 @@ private:
   WorldmapScreen& operator= (const WorldmapScreen&);
 };
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 #endif
 

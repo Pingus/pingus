@@ -21,18 +21,18 @@
 
 #include "engine/screen/screen.hpp"
 
-namespace GUI {
+namespace pingus::gui {
 class GUIManager;
 }
 
-namespace Input {
+namespace pingus::input {
 struct ButtonEvent;
 }
 
 class GUIScreen : public Screen
 {
 protected:
-  std::unique_ptr<GUI::GUIManager> gui_manager;
+  std::unique_ptr<pingus::gui::GUIManager> gui_manager;
 
 public:
   GUIScreen ();
@@ -43,7 +43,7 @@ public:
   virtual void draw_background (DrawingContext&) {}
   void draw(DrawingContext& gc) override;
 
-  void update_input (const Input::Event& event) override;
+  void update_input (const pingus::input::Event& event) override;
   void update(float delta) override;
 
   virtual void on_pause_press () {}
@@ -67,7 +67,7 @@ public:
   void resize(const Size& size) override;
 
 private:
-  void process_button_event (const Input::ButtonEvent& event);
+  void process_button_event (const pingus::input::ButtonEvent& event);
 
   GUIScreen (const GUIScreen&);
   GUIScreen& operator= (const GUIScreen&);

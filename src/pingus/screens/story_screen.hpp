@@ -24,21 +24,21 @@
 
 class StoryScreenComponent;
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 class WorldmapStory;
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
-namespace GUI {
+namespace pingus::gui {
 class SurfaceButton;
 }
 
 class StoryScreen : public GUIScreen
 {
 private:
-  std::unique_ptr<WorldmapNS::WorldmapStory> story;
+  std::unique_ptr<pingus::worldmap::WorldmapStory> story;
   StoryScreenComponent* story_comp;
-  GUI::SurfaceButton* continue_button;
-  GUI::SurfaceButton* skip_button;
+  pingus::gui::SurfaceButton* continue_button;
+  pingus::gui::SurfaceButton* skip_button;
   bool m_credits;
 
 public:

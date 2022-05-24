@@ -21,7 +21,7 @@
 #include "pingus/worldmap/drawable.hpp"
 #include "pingus/worldmap/path_graph.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 /** This is the representation of the horde of Pingus which will walk
     on the worldmap */
@@ -120,7 +120,7 @@ private:
   Pingus& operator= (const Pingus&);
 };
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 #endif
 

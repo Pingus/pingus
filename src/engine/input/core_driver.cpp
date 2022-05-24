@@ -19,7 +19,7 @@
 #include "engine/display/display.hpp"
 #include "engine/input/manager.hpp"
 
-namespace Input {
+namespace pingus::input {
 
 class AxisPointer : public Pointer
 {
@@ -373,6 +373,6 @@ CoreDriver::create_keyboard(const ReaderObject& reader, Control* parent)
   return {};
 }
 
-} // namespace Input
+} // namespace pingus::input
 
 /* EOF */

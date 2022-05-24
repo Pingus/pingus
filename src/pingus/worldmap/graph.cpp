@@ -16,11 +16,11 @@
 
 #include "pingus/worldmap/graph.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 const NodeId NoNode = -1;
 const EdgeId NoEdge = -1;
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 /* EOF */

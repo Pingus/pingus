@@ -20,7 +20,7 @@
 
 #include "pingus/globals.hpp"
 
-namespace Sound {
+namespace pingus::sound {
 
 void
 PingusSoundDummy::real_play_sound(const std::string & filename, float /*volume*/, float /*panning*/)
@@ -39,7 +39,7 @@ PingusSoundDummy::real_stop_music()
 {
 }
 
-} // namespace Sound
+} // namespace pingus::sound
 
 /* EOF */
 

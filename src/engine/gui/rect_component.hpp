@@ -20,7 +20,7 @@
 #include "engine/gui/component.hpp"
 #include "math/rect.hpp"
 
-namespace GUI {
+namespace pingus::gui {
 
 class RectComponent : public Component
 {
@@ -48,7 +48,7 @@ public:
   Rect get_rect() const { return rect; }
 };
 
-} // namespace GUI
+} // namespace pingus::gui
 
 #endif
 

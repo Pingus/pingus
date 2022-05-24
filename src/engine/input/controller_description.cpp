@@ -20,7 +20,7 @@
 
 #include "util/raise_exception.hpp"
 
-namespace Input {
+namespace pingus::input {
 
 ControllerDescription::ControllerDescription() :
   str_to_event(),
@@ -161,6 +161,6 @@ ControllerDescription::get_keyboards() const
   return map2vector(id_to_event, KEYBOARD_EVENT_TYPE);
 }
 
-} // namespace Input
+} // namespace pingus::input
 
 /* EOF */

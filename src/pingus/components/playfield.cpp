@@ -164,7 +164,7 @@ Playfield::update(float delta)
 }
 
 void
-Playfield::on_key_pressed(const Input::KeyboardEvent& ev)
+Playfield::on_key_pressed(const pingus::input::KeyboardEvent& ev)
 {
   if (globals::developer_mode)
   {

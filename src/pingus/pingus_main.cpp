@@ -527,8 +527,8 @@ PingusMain::print_greeting_message()
 void
 PingusMain::start_game ()
 {
-  Input::Manager input_manager;
-  Input::ControllerPtr input_controller;
+  pingus::input::Manager input_manager;
+  pingus::input::ControllerPtr input_controller;
 
   if (!cmd_options.controller.is_set())
   {
@@ -573,7 +573,7 @@ PingusMain::start_game ()
     {
       Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
 
-      std::shared_ptr<WorldmapNS::WorldmapScreen> worldmap_screen = std::make_shared<WorldmapNS::WorldmapScreen>();
+      std::shared_ptr<pingus::worldmap::WorldmapScreen> worldmap_screen = std::make_shared<pingus::worldmap::WorldmapScreen>();
       worldmap_screen->load(filename);
       ScreenManager::instance()->push_screen(worldmap_screen);
     }
@@ -676,8 +676,8 @@ PingusMain::run(int argc, char** argv)
 
     // FIXME: turn these into RAII
     Resource::init();
-    Fonts::init();
-    Sound::PingusSound::init();
+    pingus::fonts::init();
+    pingus::sound::PingusSound::init();
 
     config_manager.apply(cmd_options);
 
@@ -697,8 +697,8 @@ PingusMain::run(int argc, char** argv)
     std::cout << _("Pingus: Unknown throw caught!") << std::endl;
   }
 
-  Sound::PingusSound::deinit();
-  Fonts::deinit();
+  pingus::sound::PingusSound::deinit();
+  pingus::fonts::deinit();
   WorldObjFactory::deinit();
   Resource::deinit();
 

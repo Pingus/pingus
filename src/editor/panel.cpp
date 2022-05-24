@@ -25,7 +25,7 @@
 
 namespace pingus::editor {
 
-class PanelSeparator : public GUI::Component
+class PanelSeparator : public gui::Component
 {
 private:
   Sprite sprite;
@@ -46,7 +46,7 @@ public:
   int get_width() const { return sprite.get_width(); }
 };
 
-class PanelButton : public GUI::Component
+class PanelButton : public gui::Component
 {
 private:
   EditorScreen* editor;
@@ -91,10 +91,10 @@ public:
     // draw tooltip
     if (mouse_over)
     {
-      int t_w = static_cast<int>(Fonts::verdana11.get_width(tooltip));
+      int t_w = static_cast<int>(pingus::fonts::verdana11.get_width(tooltip));
 
       Rect t_r(pos.x() + 17 - t_w/2 - 4, pos.y() + 38 - 2,
-               pos.x() + 17 + t_w/2 + 4, pos.y() + 38 + Fonts::verdana11.get_height() + 4);
+               pos.x() + 17 + t_w/2 + 4, pos.y() + 38 + pingus::fonts::verdana11.get_height() + 4);
 
       // if the tooltip goes over the screen borders, move it back to
       // fit on the screen
@@ -117,7 +117,7 @@ public:
 
       gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
       gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
-      gc.print_left(Fonts::verdana11, Vector2i(t_r.left() + 3, t_r.top() + 1), tooltip, 1000.0f);
+      gc.print_left(pingus::fonts::verdana11, Vector2i(t_r.left() + 3, t_r.top() + 1), tooltip, 1000.0f);
     }
   }
 

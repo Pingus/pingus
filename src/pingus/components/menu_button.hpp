@@ -26,7 +26,7 @@
 class PingusMenu;
 
 /** Framework for menu buttons */
-class MenuButton : public GUI::Component
+class MenuButton : public pingus::gui::Component
 {
 protected:
   PingusMenu* menu;

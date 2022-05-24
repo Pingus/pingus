@@ -38,7 +38,7 @@ class ContextMenu;
 /** This class is where the actual level graphics will display in the
     level editor.  Objects can be added, deleted, moved, modified, etc.
     inside of the Viewport */
-class Viewport : public GUI::RectComponent
+class Viewport : public gui::RectComponent
 {
 private:
   GraphicContextState state;
@@ -115,7 +115,7 @@ public:
 
   void on_secondary_button_click(int x, int y) override;
 
-  void on_key_pressed(const Input::KeyboardEvent& ev) override;
+  void on_key_pressed(const input::KeyboardEvent& ev) override;
 
   void delete_selected_objects();
   void duplicate_selected_objects();

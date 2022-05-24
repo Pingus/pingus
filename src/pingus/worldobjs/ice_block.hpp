@@ -21,11 +21,11 @@
 #include "pingus/collision_mask.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace WorldObjsData {
+namespace pingus::worldobjsData {
 class IceBlockData;
 }
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 class IceBlock : public WorldObj
 {
@@ -60,7 +60,7 @@ private:
   IceBlock& operator= (const IceBlock&);
 };
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 #endif
 

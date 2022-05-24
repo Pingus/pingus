@@ -20,7 +20,7 @@
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/global_event.hpp"
 
-namespace Input {
+namespace pingus::input {
 
 SDLDriver::SDLDriver() :
   scroller_bindings(),
@@ -351,6 +351,6 @@ SDLDriver::update(float delta)
   }
 }
 
-} // namespace Input
+} // namespace pingus::input
 
 /* EOF */

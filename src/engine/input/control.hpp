@@ -26,7 +26,7 @@
 #include "math/math.hpp"
 #include "math/vector2f.hpp"
 
-namespace Input {
+namespace pingus::input {
 
 class Control
 {
@@ -489,7 +489,7 @@ private:
   ControllerKeyboard & operator=(const ControllerKeyboard&);
 };
 
-} // namespace Input
+} // namespace pingus::input
 
 #endif
 

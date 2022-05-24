@@ -20,7 +20,7 @@
 #include "engine/sound/sound.hpp"
 #include "pingus/pingu.hpp"
 
-namespace pingus::action {
+namespace pingus::actions {
 
 Exiter::Exiter (Pingu* p) :
   PinguAction(p),
@@ -41,7 +41,7 @@ Exiter::update ()
   if (!sound_played)
   {
     sound_played = true;
-    Sound::PingusSound::play_sound("yipee");
+    pingus::sound::PingusSound::play_sound("yipee");
   }
 
   if (sprite[pingu->direction].is_finished())
@@ -59,6 +59,6 @@ Exiter::draw (SceneContext& gc)
   gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
-} // namespace pingus::action
+} // namespace pingus::actions
 
 /* EOF */

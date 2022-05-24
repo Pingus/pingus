@@ -24,7 +24,7 @@
 #include "pingus/world.hpp"
 #include "pingus/worldobjs/teleporter_target.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 Teleporter::Teleporter(const ReaderMapping& reader) :
   pos(),
@@ -87,6 +87,6 @@ Teleporter::update ()
   }
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

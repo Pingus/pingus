@@ -22,7 +22,7 @@
 
 #include <memory>
 
-namespace GUI {
+namespace pingus::gui {
 
 class GroupComponent : public RectComponent
 {
@@ -62,9 +62,9 @@ public:
   void on_primary_button_click(int x, int y) override {}
   void on_secondary_button_click(int x, int y) override {}
 
-  void on_key_pressed(const Input::KeyboardEvent& ev) override;
+  void on_key_pressed(const pingus::input::KeyboardEvent& ev) override;
 
-  void on_text_input(const Input::TextInputEvent& ev) override;
+  void on_text_input(const pingus::input::TextInputEvent& ev) override;
 
   void on_pointer_enter() override;
   void on_pointer_leave() override;
@@ -96,7 +96,7 @@ private:
   GroupComponent& operator=(const GroupComponent&);
 };
 
-} // namespace GUI
+} // namespace pingus::gui
 
 #endif
 

@@ -23,7 +23,7 @@
 
 namespace pingus::editor {
 
-class Inputbox : public GUI::RectComponent
+class Inputbox : public gui::RectComponent
 {
 private:
   std::string m_text;
@@ -37,8 +37,8 @@ public:
 
   void set_text(const std::string& text);
   std::string get_text() const { return m_text; }
-  void on_key_pressed(const Input::KeyboardEvent& ev) override;
-  void on_text_input(const Input::TextInputEvent& ev) override;
+  void on_key_pressed(const input::KeyboardEvent& ev) override;
+  void on_text_input(const input::TextInputEvent& ev) override;
 
   void update_layout() override {}
 

@@ -19,7 +19,7 @@
 #include "engine/input/core_driver.hpp"
 #include "engine/input/sdl_driver.hpp"
 
-namespace Input {
+namespace pingus::input {
 
 std::unique_ptr<Driver>
 DriverFactory::create(const std::string& name, Manager* manager)
@@ -38,6 +38,6 @@ DriverFactory::create(const std::string& name, Manager* manager)
   }
 }
 
-} // namespace Input
+} // namespace pingus::input
 
 /* EOF */

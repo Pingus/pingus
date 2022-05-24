@@ -19,7 +19,7 @@
 
 #include "engine/sound/sound_impl.hpp"
 
-namespace Sound {
+namespace pingus::sound {
 
 class PingusSoundDummy : public PingusSoundImpl
 {
@@ -56,7 +56,7 @@ private:
   PingusSoundDummy& operator= (const PingusSoundDummy&);
 };
 
-} // namespace Sound
+} // namespace pingus::sound
 
 #endif
 

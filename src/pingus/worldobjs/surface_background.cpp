@@ -21,7 +21,7 @@
 #include "pingus/resource.hpp"
 #include "pingus/world.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 SurfaceBackground::SurfaceBackground(const ReaderMapping& reader) :
   para_x(0.5),
@@ -191,6 +191,6 @@ SurfaceBackground::draw (SceneContext& gc)
   }
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

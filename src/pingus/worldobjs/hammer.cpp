@@ -21,7 +21,7 @@
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 Hammer::Hammer(const ReaderMapping& reader) :
   sprite("traps/hammer"),
@@ -83,6 +83,6 @@ Hammer::update()
   }
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

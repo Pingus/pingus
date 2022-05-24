@@ -21,7 +21,7 @@
 #include "pingus/globals.hpp"
 #include "pingus/world.hpp"
 
-namespace Particles {
+namespace pingus::particles {
 
 RainParticleHolder::RainParticle::RainParticle(int x, int y) :
   alive(true),
@@ -128,6 +128,6 @@ RainParticleHolder::draw (SceneContext& gc)
   }
 }
 
-} // namespace Particles
+} // namespace pingus::particles
 
 /* EOF */

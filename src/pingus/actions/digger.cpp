@@ -22,7 +22,7 @@
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace pingus::action {
+namespace pingus::actions {
 
 Digger::Digger(Pingu* p) :
   PinguAction(p),
@@ -67,7 +67,7 @@ Digger::have_something_to_dig()
   {
     if (rel_getpixel(0, -1) ==  Groundtype::GP_SOLID)
     {
-      Sound::PingusSound::play_sound("chink");
+      pingus::sound::PingusSound::play_sound("chink");
       return false;
     }
     else
@@ -103,6 +103,6 @@ Digger::draw(SceneContext& gc)
   gc.color().draw(sprite, pingu->get_pos());
 }
 
-} // namespace pingus::action
+} // namespace pingus::actions
 
 /* EOF */

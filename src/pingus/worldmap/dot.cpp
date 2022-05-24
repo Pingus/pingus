@@ -17,7 +17,7 @@
 #include "pingus/worldmap/dot.hpp"
 
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 Dot::Dot(const ReaderMapping& reader) :
   Drawable(),
@@ -31,6 +31,6 @@ Dot::Dot(const ReaderMapping& reader) :
   assert(!name.empty());
 }
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 /* EOF */

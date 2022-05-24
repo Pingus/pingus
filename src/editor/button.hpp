@@ -23,7 +23,7 @@
 
 namespace pingus::editor {
 
-class Button : public GUI::RectComponent
+class Button : public gui::RectComponent
 {
 private:
   std::string text;

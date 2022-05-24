@@ -18,7 +18,7 @@
 
 #include "engine/display/drawing_context.hpp"
 
-namespace GUI {
+namespace pingus::gui {
 
 SurfaceButton::SurfaceButton (int arg_x_pos, int arg_y_pos,
                               const std::string& arg_button_surface,
@@ -99,6 +99,6 @@ SurfaceButton::set_pos(int x, int y)
   y_pos = y;
 }
 
-} // namespace GUI
+} // namespace pingus::gui
 
 /* EOF */

@@ -18,7 +18,7 @@
 
 #include "engine/display/scene_context.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 SolidColorBackground::SolidColorBackground(const ReaderMapping& reader) :
   color()
@@ -37,6 +37,6 @@ SolidColorBackground::draw (SceneContext& gc)
   gc.color().fill_screen(color);
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

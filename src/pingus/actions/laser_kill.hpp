@@ -20,7 +20,7 @@
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 
-namespace pingus::action {
+namespace pingus::actions {
 
 /** This action is triggered by the LaserExit trap and causes the
     pingu to 'burn-away' */
@@ -45,7 +45,7 @@ private:
   LaserKill& operator= (const LaserKill&);
 };
 
-} // namespace pingus::action
+} // namespace pingus::actions
 
 #endif
 

@@ -37,21 +37,21 @@ SliderBox::draw(DrawingContext& gc)
 
   if (value == 0)
   {
-    gc.print_center(Fonts::chalk_normal, Vector2i(rect.left() + rect.width()/2, rect.top()), "off");
+    gc.print_center(pingus::fonts::chalk_normal, Vector2i(rect.left() + rect.width()/2, rect.top()), "off");
   }
   else
   {
     for(int i = 0; i < m_steps; ++i)
     {
       if (i < value)
-        gc.print_left(Fonts::chalk_normal, Vector2i(rect.left() + i*(rect.width()-12)/m_steps + 6, rect.top()), "|");
-      //gc.print_left(Fonts::chalk_normal, rect.left + i*(rect.width()-12)/20 + 6, rect.top, "l");
+        gc.print_left(pingus::fonts::chalk_normal, Vector2i(rect.left() + i*(rect.width()-12)/m_steps + 6, rect.top()), "|");
+      //gc.print_left(pingus::fonts::chalk_normal, rect.left + i*(rect.width()-12)/20 + 6, rect.top, "l");
     }
   }
 
-  gc.print_left(Fonts::chalk_normal, Vector2i(rect.left(), rect.top()),
+  gc.print_left(pingus::fonts::chalk_normal, Vector2i(rect.left(), rect.top()),
                 "[");
-  gc.print_right(Fonts::chalk_normal, Vector2i(rect.right(), rect.top()),
+  gc.print_right(pingus::fonts::chalk_normal, Vector2i(rect.right(), rect.top()),
                  "]");
 }
 

@@ -29,7 +29,7 @@ class Vector;
     pingus into bomber
 
     \sa Client */
-class ArmageddonButton : public GUI::RectComponent
+class ArmageddonButton : public pingus::gui::RectComponent
 {
 private:
   Server* server;
@@ -56,7 +56,7 @@ private:
     again to return to normal speed
 
     \sa Client */
-class ForwardButton : public GUI::RectComponent
+class ForwardButton : public pingus::gui::RectComponent
 {
 private:
   GameSession* session;
@@ -81,7 +81,7 @@ private:
     continue
 
     \sa Client */
-class PauseButton : public GUI::RectComponent
+class PauseButton : public pingus::gui::RectComponent
 {
 private:
   GameSession* session;

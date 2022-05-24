@@ -21,7 +21,7 @@
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 Spike::Spike (const ReaderMapping& reader) :
   surface("traps/spike"),
@@ -83,6 +83,6 @@ Spike::catch_pingu (Pingu* pingu)
   }
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

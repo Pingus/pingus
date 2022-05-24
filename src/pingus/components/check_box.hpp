@@ -22,7 +22,7 @@
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
 
-class CheckBox : public GUI::RectComponent
+class CheckBox : public pingus::gui::RectComponent
 {
 private:
   Sprite m_checkbox_marked;

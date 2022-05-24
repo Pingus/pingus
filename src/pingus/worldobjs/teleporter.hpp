@@ -20,7 +20,7 @@
 #include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 class TeleporterTarget;
 
@@ -51,7 +51,7 @@ private:
   Teleporter& operator= (const Teleporter&);
 };
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 #endif
 

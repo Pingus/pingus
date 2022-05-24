@@ -19,8 +19,8 @@ int main(int argc, char** argv)
 
   Display::create_window(OPENGL_FRAMEBUFFER, Size(800, 600), false, false);
 
-  Fonts::init();
-  Sound::PingusSound::init();
+  pingus::fonts::init();
+  pingus::sound::PingusSound::init();
 
   std::vector<Sprite> sprites;
   for(int i = 1; i < argc; ++i)

@@ -19,7 +19,7 @@
 
 #include <string>
 
-namespace Sound {
+namespace pingus::sound {
 
 class PingusSoundImpl
 {
@@ -54,6 +54,6 @@ public:
 
 }; // class PingusSoundImpl
 
-}  // namespace Sound
+}  // namespace pingus::sound
 
 #endif

@@ -43,7 +43,7 @@ public:
   std::string   page_name;
 };
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 class WorldmapStory
 {
@@ -61,7 +61,7 @@ private:
   std::vector<StoryPage> pages;
 };
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 #endif
 

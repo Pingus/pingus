@@ -31,7 +31,7 @@ TimeDisplay::TimeDisplay (GameSession* c) :
   server(c->get_server()),
   font()
 {
-  font = Fonts::pingus_small_fixnum;
+  font = pingus::fonts::pingus_small_fixnum;
 }
 
 void

@@ -23,7 +23,7 @@
 #include "pingus/worldmap/worldmap.hpp"
 #include "util/raise_exception.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 PathGraph::PathGraph(Worldmap* arg_worldmap, const ReaderMapping& reader) :
   worldmap(arg_worldmap),
@@ -273,6 +273,6 @@ PathGraph::init_cache()
     *i = nullptr;
 }
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 /* EOF */

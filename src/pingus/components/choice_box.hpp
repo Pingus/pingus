@@ -21,7 +21,7 @@
 
 #include "engine/gui/rect_component.hpp"
 
-class ChoiceBox : public GUI::RectComponent
+class ChoiceBox : public pingus::gui::RectComponent
 {
 private:
   int current_choice;

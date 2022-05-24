@@ -18,7 +18,7 @@
 
 #include "engine/display/scene_context.hpp"
 
-namespace Particles {
+namespace pingus::particles {
 
 SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x, float vel_y) :
   time(),
@@ -84,6 +84,6 @@ SmokeParticleHolder::draw (SceneContext& gc)
   }
 }
 
-} // namespace Particles
+} // namespace pingus::particles
 
 /* EOF */

@@ -25,7 +25,7 @@
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 Exit::Exit(const ReaderMapping& reader) :
   desc(),
@@ -110,6 +110,6 @@ Exit::z_index () const
   return m_z_index;
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

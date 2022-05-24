@@ -48,9 +48,9 @@ Inputbox::draw(DrawingContext& gc)
   gc.draw_fillrect(rect, bg_color);
   gc.draw_rect(rect, has_focus() ? Color(255,128,0) : Color(0,0,0));
 
-  gc.print_left(Fonts::verdana11,
+  gc.print_left(pingus::fonts::verdana11,
                 Vector2i(rect.left() + 5,
-                         rect.top() + rect.height()/2 - Fonts::verdana11.get_height()/2),
+                         rect.top() + rect.height()/2 - pingus::fonts::verdana11.get_height()/2),
                 m_text);
 }
 
@@ -61,7 +61,7 @@ Inputbox::set_text(const std::string& text)
 }
 
 void
-Inputbox::on_key_pressed(const Input::KeyboardEvent& ev)
+Inputbox::on_key_pressed(const input::KeyboardEvent& ev)
 {
   if (ev.keysym.sym == SDLK_BACKSPACE) // backspace
   {
@@ -91,7 +91,7 @@ Inputbox::on_key_pressed(const Input::KeyboardEvent& ev)
 }
 
 void
-Inputbox::on_text_input(const Input::TextInputEvent& ev)
+Inputbox::on_text_input(const input::TextInputEvent& ev)
 {
   m_text += ev.text;
   try {

@@ -18,7 +18,7 @@
 
 #include "engine/display/scene_context.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 TeleporterTarget::TeleporterTarget(const ReaderMapping& reader) :
   WorldObj(reader),
@@ -54,6 +54,6 @@ TeleporterTarget::teleporter_used()
   sprite.restart();
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

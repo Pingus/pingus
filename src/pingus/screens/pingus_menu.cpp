@@ -85,7 +85,7 @@ PingusMenu::PingusMenu() :
 
   help = _("..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::..");
 
-  Sound::PingusSound::play_music("pingus-1.it");
+  pingus::sound::PingusSound::play_music("pingus-1.it");
 }
 
 PingusMenu::~PingusMenu()
@@ -108,9 +108,9 @@ PingusMenu::do_quit()
 void
 PingusMenu::do_start(const std::string &filename)
 { // Start the story or worldmap mode
-  Sound::PingusSound::play_sound ("letsgo");
+  pingus::sound::PingusSound::play_sound ("letsgo");
 
-  std::shared_ptr<WorldmapNS::WorldmapScreen> worldmap_screen = std::make_shared<WorldmapNS::WorldmapScreen>();
+  std::shared_ptr<pingus::worldmap::WorldmapScreen> worldmap_screen = std::make_shared<pingus::worldmap::WorldmapScreen>();
   worldmap_screen->load(Pathname(filename, Pathname::DATA_PATH));
   ScreenManager::instance()->push_screen(worldmap_screen);
 
@@ -126,7 +126,7 @@ PingusMenu::do_start(const std::string &filename)
 
 void PingusMenu::do_edit()
 {       // Launch the level editor
-  Sound::PingusSound::stop_music();
+  pingus::sound::PingusSound::stop_music();
   ScreenManager::instance()->push_screen(std::make_shared<pingus::editor::EditorScreen>());
 }
 
@@ -144,7 +144,7 @@ PingusMenu::draw_background(DrawingContext& gc)
   gc.draw(logo, Vector2i((gc.get_width()/2) - (logo.get_width()/2),
                          gc.get_height()/2 - 280));
 
-  gc.print_left(Fonts::pingus_small, Vector2i(gc.get_width()/2 - 400 + 25, gc.get_height()-140),
+  gc.print_left(pingus::fonts::pingus_small, Vector2i(gc.get_width()/2 - 400 + 25, gc.get_height()-140),
                 "Pingus " PROJECT_VERSION " - Copyright (C) 1998-2011 Ingo Ruhnke <grumbel@gmail.com>\n"
                 "See the file AUTHORS for a complete list of contributors.\n"
                 "Pingus comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n"
@@ -156,16 +156,16 @@ PingusMenu::draw_background(DrawingContext& gc)
                         Display::get_height ()),
                    Color(0, 0, 0, 255));
 
-  gc.print_center(Fonts::pingus_small,
+  gc.print_center(pingus::fonts::pingus_small,
                   Vector2i(gc.get_width() / 2,
-                           gc.get_height() - Fonts::pingus_small.get_height() - 8),
+                           gc.get_height() - pingus::fonts::pingus_small.get_height() - 8),
                   help);
 
   if ((false)) // display hint
   {
-    gc.print_center(Fonts::pingus_small,
+    gc.print_center(pingus::fonts::pingus_small,
                     Vector2i(gc.get_width() / 2,
-                             gc.get_height() - Fonts::pingus_small.get_height()),
+                             gc.get_height() - pingus::fonts::pingus_small.get_height()),
                     hint);
   }
 }

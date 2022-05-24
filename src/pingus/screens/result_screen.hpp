@@ -20,17 +20,17 @@
 #include "engine/screen/gui_screen.hpp"
 #include "pingus/result.hpp"
 
-namespace GUI {
+namespace pingus::gui {
 class SurfaceButton;
-} // namespace GUI
+} // namespace pingus::gui
 
 class ResultScreen : public GUIScreen
 {
 private:
   Result result;
-  GUI::SurfaceButton*   ok_button;
-  GUI::SurfaceButton* abort_button;
-  GUI::SurfaceButton* retry_button;
+  pingus::gui::SurfaceButton*   ok_button;
+  pingus::gui::SurfaceButton* abort_button;
+  pingus::gui::SurfaceButton* retry_button;
 
 public:
   ResultScreen(const Result& result);

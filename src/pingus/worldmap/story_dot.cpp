@@ -27,7 +27,7 @@
 #include "util/reader.hpp"
 #include "util/pathname.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 StoryDot::StoryDot(const ReaderMapping& reader) :
   Dot(reader.get<ReaderMapping>("dot")),
@@ -53,7 +53,7 @@ StoryDot::draw_hover(DrawingContext& gc)
 {
   gc.draw (m_story_dot_highlight, pos);
 
-  gc.print_center(Fonts::pingus_small,
+  gc.print_center(pingus::fonts::pingus_small,
                   Vector2i(static_cast<int>(pos.x()),
                            static_cast<int>(pos.y()) - 44),
                   _(m_name),
@@ -79,6 +79,6 @@ StoryDot::on_click()
   }
 }
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 /* EOF */

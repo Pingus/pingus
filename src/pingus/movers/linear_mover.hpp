@@ -21,7 +21,7 @@
 
 class Collider;
 
-namespace Movers {
+namespace pingus::movers {
 
 class LinearMover : public Mover
 {
@@ -36,7 +36,7 @@ public:
   void update(glm::vec2 const& move, const Collider& collision_at) override;
 };
 
-} // namespace Movers
+} // namespace pingus::movers
 
 #endif
 

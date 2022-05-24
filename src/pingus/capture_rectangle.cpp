@@ -34,7 +34,7 @@ CaptureRectangle::CaptureRectangle(GameSession* session_) :
   bad("game/cursors/capbad"),
   arrow_left("game/cursors/arrow_left"),
   arrow_right("game/cursors/arrow_right"),
-  font(Fonts::courier_small)
+  font(pingus::fonts::courier_small)
 {
 }
 

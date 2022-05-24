@@ -21,7 +21,7 @@
 
 #include "engine/input/event.hpp"
 
-namespace Input {
+namespace pingus::input {
 
 struct InputEventDefinition
 {
@@ -62,7 +62,7 @@ public:
   std::vector<int> get_keyboards() const;
 };
 
-} // namespace Input
+} // namespace pingus::input
 
 #endif
 

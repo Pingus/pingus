@@ -21,9 +21,9 @@
 #include "engine/screen/gui_screen.hpp"
 #include "pingus/levelset.hpp"
 
-namespace GUI {
+namespace pingus::gui {
 class SurfaceButton;
-} // namespace GUI
+} // namespace pingus::gui
 
 class LevelSelector;
 class LevelsetSelector;
@@ -41,9 +41,9 @@ private:
   LevelSelector*    level_selector;
   LevelsetSelector* levelset_selector;
 
-  GUI::SurfaceButton* abort_button;
-  GUI::SurfaceButton* next_button;
-  GUI::SurfaceButton* prev_button;
+  pingus::gui::SurfaceButton* abort_button;
+  pingus::gui::SurfaceButton* next_button;
+  pingus::gui::SurfaceButton* prev_button;
 
 public:
   LevelMenu();

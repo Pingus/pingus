@@ -19,7 +19,7 @@
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 
-namespace pingus::action {
+namespace pingus::actions {
 
 Waiter::Waiter (Pingu* p) :
   PinguAction(p),
@@ -49,6 +49,6 @@ Waiter::draw (SceneContext& gc)
   gc.color().draw(sprite, pingu->get_pos ());
 }
 
-} // namespace pingus::action
+} // namespace pingus::actions
 
 /* EOF */

@@ -9,13 +9,13 @@ UITEST(PingusSound, play_sound, "[NAME]...")
   logmich::set_log_level(logmich::LogLevel::DEBUG);
 
   globals::sound_enabled = true;
-  Sound::PingusSound::init();
+  pingus::sound::PingusSound::init();
   for(auto const& arg : rest)
   {
     std::cout << "Playing " << arg << std::endl;
-    Sound::PingusSound::play_sound(arg);
+    pingus::sound::PingusSound::play_sound(arg);
   }
-  Sound::PingusSound::deinit();
+  pingus::sound::PingusSound::deinit();
 }
 
 /* EOF */

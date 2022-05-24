@@ -18,7 +18,7 @@
 
 #include "pingus/collider.hpp"
 
-namespace Movers {
+namespace pingus::movers {
 
 LinearMover::LinearMover(World const* world_arg, const Vector2f& pos_arg)
   : Mover(world_arg, pos_arg)
@@ -53,6 +53,6 @@ LinearMover::update(glm::vec2 const& move, const Collider& collision_check)
   }
 }
 
-} // namespace Movers
+} // namespace pingus::movers
 
 /* EOF */

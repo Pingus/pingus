@@ -21,7 +21,7 @@
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 Guillotine::Guillotine(const ReaderMapping& reader) :
   sprite_kill_right("traps/guillotinekill/right"),
@@ -99,6 +99,6 @@ Guillotine::catch_pingu (Pingu* pingu)
   }
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

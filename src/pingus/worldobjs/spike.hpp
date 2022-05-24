@@ -20,13 +20,13 @@
 #include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace WorldObjsData {
+namespace pingus::worldobjsData {
 class SpikeData;
-} // namespace WorldObjsData
+} // namespace pingus::worldobjsData
 
 class Pingu;
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 class Spike : public WorldObj
 {
@@ -55,7 +55,7 @@ private:
   Spike& operator= (const Spike&);
 };
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 #endif
 

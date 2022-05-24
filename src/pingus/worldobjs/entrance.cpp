@@ -24,7 +24,7 @@
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 Entrance::Entrance(const ReaderMapping& reader) :
   direction(MISC),
@@ -164,6 +164,6 @@ Entrance::draw_smallmap(SmallMap* smallmap)
   smallmap->draw_sprite(smallmap_symbol, pos);
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

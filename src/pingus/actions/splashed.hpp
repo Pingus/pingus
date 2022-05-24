@@ -20,7 +20,7 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/pingu_action.hpp"
 
-namespace pingus::action {
+namespace pingus::actions {
 
 class Splashed : public PinguAction
 {
@@ -45,7 +45,7 @@ private:
   Splashed& operator= (const Splashed&);
 };
 
-} // namespace pingus::action
+} // namespace pingus::actions
 
 #endif
 

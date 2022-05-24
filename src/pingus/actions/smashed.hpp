@@ -20,7 +20,7 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/pingu_action.hpp"
 
-namespace pingus::action {
+namespace pingus::actions {
 
 /** FIXME: this action doesn't have a purpose, its pretty much equal
     to the new splashed action */
@@ -45,7 +45,7 @@ private:
   Smashed& operator= (const Smashed&);
 };
 
-} // namespace pingus::actions
+} // namespace pingus::actionss
 
 #endif
 

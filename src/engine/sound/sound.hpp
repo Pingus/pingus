@@ -22,7 +22,7 @@
 
 #include "engine/sound/sound_impl.hpp"
 
-namespace Sound {
+namespace pingus::sound {
 
 class PingusSoundImpl;
 
@@ -63,7 +63,7 @@ private:
   PingusSound& operator= (const PingusSound&);
 };
 
-} // namespace Sound
+} // namespace pingus::sound
 
 #endif
 

@@ -27,7 +27,7 @@ class EditorScreen;
 class Inputbox;
 class Label;
 
-class FileDialog : public GUI::GroupComponent
+class FileDialog : public gui::GroupComponent
 {
 public:
   enum Mode { LOAD, SAVE };

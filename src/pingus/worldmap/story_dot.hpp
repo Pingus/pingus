@@ -24,7 +24,7 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/worldmap/dot.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 class StoryDot : public Dot
 {
@@ -54,7 +54,7 @@ private:
   StoryDot& operator=(const StoryDot&);
 };
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 #endif
 

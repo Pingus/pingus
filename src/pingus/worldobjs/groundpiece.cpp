@@ -18,7 +18,7 @@
 
 #include "pingus/world.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 Groundpiece::Groundpiece(const ReaderMapping& reader) :
   pos(),
@@ -47,6 +47,6 @@ Groundpiece::on_startup ()
     get_world()->put(mask, static_cast<int>(pos.x()), static_cast<int>(pos.y()), gptype);
 }
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 /* EOF */

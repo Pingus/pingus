@@ -25,7 +25,7 @@ namespace pingus::editor {
 
 class EditorScreen;
 
-class Minimap : public GUI::RectComponent
+class Minimap : public gui::RectComponent
 {
 private:
   EditorScreen* editor;

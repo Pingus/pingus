@@ -21,7 +21,7 @@
 
 #include "engine/gui/rect_component.hpp"
 
-class SliderBox : public GUI::RectComponent
+class SliderBox : public pingus::gui::RectComponent
 {
 private:
   int m_steps;

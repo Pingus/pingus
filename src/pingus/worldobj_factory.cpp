@@ -45,7 +45,7 @@
 #include "pingus/worldobjs/teleporter_target.hpp"
 #include "util/reader.hpp"
 
-using namespace WorldObjs;
+using namespace pingus::worldobjs;
 
 std::unique_ptr<WorldObjFactory> WorldObjFactory::instance_;
 

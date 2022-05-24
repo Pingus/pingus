@@ -23,7 +23,7 @@
 #include <SDL_keyboard.h>
 #include <SDL_events.h>
 
-namespace Input {
+namespace pingus::input {
 
 enum EventType { BUTTON_EVENT_TYPE,
                  POINTER_EVENT_TYPE,
@@ -190,7 +190,7 @@ inline Event makeTextInputEvent(const SDL_TextInputEvent& ev)
   return event;
 }
 
-} // namespace Input
+} // namespace pingus::input
 
 #endif
 

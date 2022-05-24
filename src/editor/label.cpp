@@ -35,8 +35,8 @@ Label::Label(const std::string& text_) :
 void
 Label::draw (DrawingContext& gc)
 {
-  gc.print_left(Fonts::verdana11,
-                Vector2i(rect.left(), rect.top() + rect.height()/2 - Fonts::verdana11.get_height()/2),
+  gc.print_left(pingus::fonts::verdana11,
+                Vector2i(rect.left(), rect.top() + rect.height()/2 - pingus::fonts::verdana11.get_height()/2),
                 text);
 }
 

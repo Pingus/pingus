@@ -20,7 +20,7 @@
 #include "pingus/worldmap/pingus.hpp"
 #include "pingus/worldmap/worldmap.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 SpriteDrawable::SpriteDrawable(const ReaderMapping& reader) :
   Drawable(reader),
@@ -74,6 +74,6 @@ SpriteDrawable::draw(DrawingContext& gc)
   }
 }
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 /* EOF */

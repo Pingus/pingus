@@ -25,7 +25,7 @@
 
 namespace pingus::editor {
 
-class FileList : public GUI::RectComponent
+class FileList : public gui::RectComponent
 {
 private:
   int hspace;

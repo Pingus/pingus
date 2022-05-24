@@ -26,7 +26,7 @@
 #include "pingus/savegame_manager.hpp"
 #include "pingus/screens/start_screen.hpp"
 
-namespace WorldmapNS {
+namespace pingus::worldmap {
 
 LevelDot::LevelDot(const ReaderMapping& reader) :
   Dot(reader.get<ReaderMapping>("dot")),
@@ -47,7 +47,7 @@ void
 LevelDot::draw(DrawingContext& gc)
 {
   Vector2i mpos
-    = gc.screen_to_world(Vector2i(Input::Controller::current()->get_pointer(Input::STANDARD_POINTER)->get_pos()));
+    = gc.screen_to_world(Vector2i(pingus::input::Controller::current()->get_pointer(pingus::input::STANDARD_POINTER)->get_pos()));
 
   float x = static_cast<float>(mpos.x()) - pos.x();
   float y = static_cast<float>(mpos.y()) - pos.y();
@@ -114,7 +114,7 @@ LevelDot::draw_hover(DrawingContext& gc)
 {
   if (accessible())
   {
-    gc.print_center(Fonts::pingus_small,
+    gc.print_center(pingus::fonts::pingus_small,
                     Vector2i(static_cast<int>(pos.x()),
                              static_cast<int>(pos.y()) - 44),
                     _(get_plf().get_levelname()),
@@ -122,7 +122,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   }
   else
   {
-    gc.print_center(Fonts::pingus_small,
+    gc.print_center(pingus::fonts::pingus_small,
                     Vector2i(static_cast<int>(pos.x()),
                              static_cast<int>(pos.y()) - 44),
                     _("???"),
@@ -131,7 +131,7 @@ LevelDot::draw_hover(DrawingContext& gc)
 
   if (globals::developer_mode)
   {
-    gc.print_center(Fonts::pingus_small,
+    gc.print_center(pingus::fonts::pingus_small,
                     Vector2i(static_cast<int>(pos.x()), static_cast<int>(pos.y()) - 70),
                     get_plf().get_resname(),
                     10000);
@@ -155,6 +155,6 @@ LevelDot::unlock()
   }
 }
 
-} // namespace WorldmapNS
+} // namespace pingus::worldmap
 
 /* EOF */

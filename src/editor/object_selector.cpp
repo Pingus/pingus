@@ -32,7 +32,7 @@
 
 namespace pingus::editor {
 
-class ObjectSelectorButton : public GUI::RectComponent
+class ObjectSelectorButton : public gui::RectComponent
 {
 private:
   ObjectSelectorList* object_list;
@@ -73,12 +73,12 @@ public:
 
     if (mouse_over)
     {
-      int t_w = static_cast<int>(Fonts::verdana11.get_width(tooltip));
+      int t_w = static_cast<int>(pingus::fonts::verdana11.get_width(tooltip));
       Rect t_r(rect.left() + 17 - t_w/2 - 4, rect.top() + 38 - 2,
-               rect.left() + 17 + t_w/2 + 4, rect.top() + 38 + Fonts::verdana11.get_height() + 4);
+               rect.left() + 17 + t_w/2 + 4, rect.top() + 38 + pingus::fonts::verdana11.get_height() + 4);
       gc.draw_fillrect(t_r, Color(255, 255, 200), 1000.0f);
       gc.draw_rect(t_r, Color(0,0,0), 1000.0f);
-      gc.print_center(Fonts::verdana11, Vector2i(rect.left() + 17, rect.top() + 38), tooltip, 1000.0f);
+      gc.print_center(pingus::fonts::verdana11, Vector2i(rect.left() + 17, rect.top() + 38), tooltip, 1000.0f);
     }
   }
 

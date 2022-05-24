@@ -21,7 +21,7 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace WorldObjs {
+namespace pingus::worldobjs {
 
 class Exit : public WorldObj
 {
@@ -56,7 +56,7 @@ private:
   Exit& operator= (const Exit&);
 };
 
-} // namespace WorldObjs
+} // namespace pingus::worldobjs
 
 #endif
 

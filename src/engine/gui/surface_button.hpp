@@ -20,7 +20,7 @@
 #include "engine/display/sprite.hpp"
 #include "engine/gui/component.hpp"
 
-namespace GUI {
+namespace pingus::gui {
 
 /** A simple surface button, which different surfaces for pressed,
     released and mouse over */
@@ -63,7 +63,7 @@ private:
   SurfaceButton& operator= (const SurfaceButton&);
 };
 
-} // namespace GUI
+} // namespace pingus::gui
 
 #endif
 
