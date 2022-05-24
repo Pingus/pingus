@@ -20,10 +20,6 @@
 #include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace pingus::worldobjsData {
-class HotspotData;
-}
-
 namespace pingus::worldobjs {
 
 class Hotspot : public WorldObj

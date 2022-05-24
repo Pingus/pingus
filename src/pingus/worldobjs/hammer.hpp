@@ -20,12 +20,6 @@
 #include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace pingus::worldobjsData {
-class HammerData;
-} // namespace pingus::worldobjsData
-
-class Pingu;
-
 namespace pingus::worldobjs {
 
 class Hammer : public WorldObj

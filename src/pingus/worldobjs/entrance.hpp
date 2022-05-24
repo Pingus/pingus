@@ -20,12 +20,6 @@
 #include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace pingus::worldobjsData {
-class EntranceData;
-}
-
-class Pingu;
-
 namespace pingus::worldobjs {
 
 /** A abstract representation of an entrance, the implementation

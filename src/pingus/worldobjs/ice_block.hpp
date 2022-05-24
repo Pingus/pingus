@@ -21,10 +21,6 @@
 #include "pingus/collision_mask.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace pingus::worldobjsData {
-class IceBlockData;
-}
-
 namespace pingus::worldobjs {
 
 class IceBlock : public WorldObj

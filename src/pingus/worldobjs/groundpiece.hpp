@@ -22,10 +22,6 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace pingus::worldobjsData {
-class GroundpieceData;
-}
-
 namespace pingus::worldobjs {
 
 /** Groundpieces form the ground on which the pingus can walk, which

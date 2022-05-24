@@ -21,10 +21,6 @@
 #include "pingus/res_descriptor.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace pingus::worldobjsData {
-class LiquidData;
-}
-
 namespace pingus::worldobjs {
 
 class Liquid : public WorldObj
