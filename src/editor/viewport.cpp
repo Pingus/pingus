@@ -25,7 +25,7 @@
 #include "editor/group_level_obj.hpp"
 #include "engine/display/display.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 static const int keyboard_movement_distance = 32;
 
@@ -812,6 +812,6 @@ Viewport::get_objects()
   return editor->get_level()->get_objects();
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

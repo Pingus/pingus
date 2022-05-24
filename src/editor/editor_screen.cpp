@@ -38,7 +38,7 @@
 #include "pingus/gettext.h"
 #include "pingus/screens/game_session.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 // Default constructor
 EditorScreen::EditorScreen() :
@@ -569,7 +569,7 @@ EditorScreen::resize(const Size& size_)
   update_layout();
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */
 

@@ -21,11 +21,11 @@
 
 #include "editor/level_obj_ptr.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 typedef std::set<LevelObjPtr> Selection;
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

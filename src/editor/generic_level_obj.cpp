@@ -23,7 +23,7 @@
 #include "pingus/resource.hpp"
 #include "util/raise_exception.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 // Default constructor
 GenericLevelObj::GenericLevelObj(const std::string& obj_name) :
@@ -531,6 +531,6 @@ GenericLevelObj::duplicate(const Vector2i& offset) const
   return obj;
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

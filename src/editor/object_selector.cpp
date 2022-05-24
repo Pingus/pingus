@@ -30,7 +30,7 @@
 #include "pingus/resource.hpp"
 #include "util/system.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 class ObjectSelectorButton : public GUI::RectComponent
 {
@@ -409,6 +409,6 @@ ObjectSelector::update_layout()
   object_list->set_rect(Rect(2, 2 + 60 + 2, rect.width() - 2, rect.height() - 2));
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

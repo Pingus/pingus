@@ -30,7 +30,7 @@
 #include "util/system.hpp"
 #include "util/writer.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 class LevelImpl
 {
@@ -508,6 +508,6 @@ EditorLevel::object_at(int x, int y)
   return LevelObjPtr();
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

@@ -26,7 +26,7 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 
-namespace Editor {
+namespace pingus::editor {
 
 FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
   GroupComponent(rect_),
@@ -256,6 +256,6 @@ FileDialog::update_button_state()
     down_button->disable();
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

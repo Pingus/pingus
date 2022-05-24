@@ -20,7 +20,7 @@
 #include "editor/selection.hpp"
 #include "engine/gui/group_component.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 class Button;
 class Checkbox;
@@ -173,7 +173,7 @@ private:
   ObjectProperties & operator=(const ObjectProperties&);
 };
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

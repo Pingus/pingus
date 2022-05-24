@@ -37,7 +37,7 @@
   Playable (unneeded)
 */
 
-namespace Editor {
+namespace pingus::editor {
 
 LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
   GroupComponent(rect_),
@@ -222,6 +222,6 @@ LevelProperties::update_layout()
   music->set_rect(Rect(geom::ipoint(110, y+110), Size(  w, 20)));
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

@@ -21,7 +21,7 @@
 
 #include <prio/fwd.hpp>
 
-namespace Editor {
+namespace pingus::editor {
 
 class LevelObjFactory
 {
@@ -34,7 +34,7 @@ private:
   LevelObjFactory& operator=(const LevelObjFactory&);
 };
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

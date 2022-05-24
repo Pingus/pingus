@@ -26,7 +26,7 @@
 #include "editor/gui_style.hpp"
 #include "editor/inputbox.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 /*
  *
@@ -130,6 +130,6 @@ ActionProperties::on_inputbox_change(const std::string& value, ActionName::Enum 
   level->set_action(ActionName::to_string(id), strut::from_string<int>(value));
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

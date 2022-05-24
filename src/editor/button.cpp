@@ -19,7 +19,7 @@
 #include "editor/gui_style.hpp"
 #include "pingus/fonts.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 Button::Button(const Rect& rect_, const std::string& text_) :
   RectComponent(rect_),
@@ -86,6 +86,6 @@ Button::on_primary_button_release (int x, int y)
     on_click();
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

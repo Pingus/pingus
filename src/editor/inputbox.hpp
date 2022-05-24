@@ -21,7 +21,7 @@
 
 #include "engine/gui/rect_component.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 class Inputbox : public GUI::RectComponent
 {
@@ -50,7 +50,7 @@ private:
   Inputbox& operator= (const Inputbox&);
 };
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

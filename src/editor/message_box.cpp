@@ -20,7 +20,7 @@
 #include "pingus/gettext.h"
 #include "pingus/fonts.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 MessageBox::MessageBox(const Rect& rect_) :
   GroupComponent(rect_),
@@ -95,6 +95,6 @@ MessageBox::on_cancel_button()
   hide();
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

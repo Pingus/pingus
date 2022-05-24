@@ -23,7 +23,7 @@
 
 class DrawingContext;
 
-namespace Editor {
+namespace pingus::editor {
 
 class LevelObj;
 class EditorScreen;
@@ -89,7 +89,7 @@ private:
   ObjectSelectorList& operator= (const ObjectSelectorList&);
 };
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

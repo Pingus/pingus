@@ -21,7 +21,7 @@
 #include "editor/gui_style.hpp"
 #include "pingus/fonts.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 FileList::FileList(const Rect& rect_) :
   RectComponent(rect_),
@@ -209,6 +209,6 @@ FileList::has_more_prev_pages() const
   return (page > 0);
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

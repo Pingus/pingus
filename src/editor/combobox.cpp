@@ -19,7 +19,7 @@
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 Combobox::Combobox(const Rect& rect_) :
   RectComponent(rect_),
@@ -174,6 +174,6 @@ Combobox::on_pointer_move(int x, int y)
   }
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

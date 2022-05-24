@@ -23,7 +23,7 @@
 
 #include "util/reader.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 class GroupLevelObj : public LevelObj
 {
@@ -240,7 +240,7 @@ private:
   GroupLevelObj& operator=(const GroupLevelObj&);
 };
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

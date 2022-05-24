@@ -20,7 +20,7 @@
 #include "editor/group_level_obj.hpp"
 #include "util/reader.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 LevelObjPtr
 LevelObjFactory::create(const ReaderObject& reader_object)
@@ -280,6 +280,6 @@ LevelObjFactory::create(const ReaderObject& reader_object)
   }
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

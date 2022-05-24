@@ -21,7 +21,7 @@
 
 #include "pingus/resource.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 struct Groundpiece : public ObjectSelectorList::Object
 {
@@ -410,7 +410,7 @@ public:
   }
 };
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

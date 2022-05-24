@@ -30,7 +30,7 @@
 
 class Pathname;
 
-namespace Editor {
+namespace pingus::editor {
 
 class EditorScreen;
 class LevelImpl;

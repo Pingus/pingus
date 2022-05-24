@@ -20,7 +20,7 @@
 #include "editor/file_list.hpp"
 #include "engine/gui/group_component.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 class Button;
 class EditorScreen;
@@ -80,7 +80,7 @@ private:
   FileDialog& operator= (const FileDialog&);
 };
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

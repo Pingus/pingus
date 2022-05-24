@@ -23,7 +23,7 @@
 #include "engine/gui/rect_component.hpp"
 #include "util/system.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 class FileList : public GUI::RectComponent
 {
@@ -70,7 +70,7 @@ private:
   FileList& operator= (const FileList&);
 };
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

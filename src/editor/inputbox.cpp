@@ -21,7 +21,7 @@
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 Inputbox::Inputbox() :
   m_text(),
@@ -103,6 +103,6 @@ Inputbox::on_text_input(const Input::TextInputEvent& ev)
   }
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

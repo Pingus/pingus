@@ -19,7 +19,7 @@
 
 #include "engine/gui/rect_component.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 class Label : public GUI::RectComponent
 {
@@ -38,7 +38,7 @@ public:
   void set_text(const std::string& text_) { text = text_; }
 };
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

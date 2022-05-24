@@ -16,7 +16,7 @@
 
 #include "editor/gui_style.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 void
 GUIStyle::draw_raised_box(DrawingContext& gc, const Rect& rect, const Color& color, int border)
@@ -41,6 +41,6 @@ GUIStyle::draw_lowered_box(DrawingContext& gc, const Rect& rect, const Color& co
                    color);
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

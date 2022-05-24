@@ -545,7 +545,7 @@ PingusMain::start_game ()
 
   if (cmd_options.editor.is_set() && cmd_options.editor.get())
   { // Editor
-    std::shared_ptr<Editor::EditorScreen> editor = std::make_shared<Editor::EditorScreen>();
+    std::shared_ptr<pingus::editor::EditorScreen> editor = std::make_shared<pingus::editor::EditorScreen>();
     // optionally load a map in the editor if it was given
     if (cmd_options.rest.is_set())
       editor->load(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH));

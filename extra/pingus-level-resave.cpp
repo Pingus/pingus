@@ -99,7 +99,7 @@ int main(int argc, char** argv)
       std::cout << "Processing: " << filename << " " << i << "/" << opts.files.size() << std::endl;
 
       std::cout << "Loading: " << filename << std::endl;
-      auto level = Editor::EditorLevel::from_level_file(Pathname(filename, Pathname::SYSTEM_PATH));
+      auto level = pingus::editor::EditorLevel::from_level_file(Pathname(filename, Pathname::SYSTEM_PATH));
 
       std::ostream* stream = nullptr;
       std::ofstream fout;

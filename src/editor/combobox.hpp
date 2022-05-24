@@ -23,7 +23,7 @@
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 /** A ComboItems holds a specific item in a Combobox (string, id, etc.) */
 class ComboItem
@@ -97,7 +97,7 @@ private:
 
 };
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

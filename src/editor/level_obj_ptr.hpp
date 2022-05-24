@@ -19,13 +19,13 @@
 
 #include <memory>
 
-namespace Editor {
+namespace pingus::editor {
 
 class LevelObj;
 
 typedef std::shared_ptr<LevelObj> LevelObjPtr;
 
-} // namespace Editor
+} // namespace pingus::editor
 
 #endif
 

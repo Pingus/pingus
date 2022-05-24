@@ -30,7 +30,7 @@
 #include "pingus/gettext.h"
 #include "pingus/groundtype.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
   GUI::GroupComponent(rect_, false),
@@ -801,6 +801,6 @@ ObjectProperties::update_layout()
   GroupComponent::update_layout();
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

@@ -16,7 +16,7 @@
 
 #include "editor/object_selector_set.hpp"
 
-namespace Editor {
+namespace pingus::editor {
 
 ObjectSelectorSet::ObjectSelectorSet(ObjectSelectorList* list_, int thumb_w, int thumb_h) :
   list(list_),
@@ -48,6 +48,6 @@ ObjectSelectorSet::get_height() const
   return (static_cast<int>(objects.size()) / get_width()) + ((static_cast<int>(objects.size()) % get_width() > 0) ? 1 : 0);
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */

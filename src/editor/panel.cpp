@@ -23,7 +23,7 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 
-namespace Editor {
+namespace pingus::editor {
 
 class PanelSeparator : public GUI::Component
 {
@@ -253,6 +253,6 @@ Panel::add_separator()
   pos += geom::ioffset(comp->get_width(), 0);
 }
 
-} // namespace Editor
+} // namespace pingus::editor
 
 /* EOF */
