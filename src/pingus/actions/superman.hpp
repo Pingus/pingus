@@ -20,7 +20,7 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/pingu_action.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 class Superman : public PinguAction
 {
@@ -42,7 +42,7 @@ private:
   Superman& operator= (const Superman&);
 };
 
-} // namespace Actions
+} // namespace pingus::action
 
 #endif
 

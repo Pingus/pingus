@@ -20,7 +20,7 @@
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 class Climber : public PinguAction
 {
@@ -48,7 +48,7 @@ private:
   Climber& operator= (const Climber&);
 };
 
-} // namespace Actions
+} // namespace pingus::action
 
 #endif
 

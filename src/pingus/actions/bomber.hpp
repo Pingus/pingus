@@ -21,7 +21,7 @@
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 /** An action with lets the Pingu explode. After the explosion the the
     Pingu leaves a hole inside the ground. */
@@ -53,7 +53,7 @@ private:
   Bomber& operator= (const Bomber&);
 };
 
-} // namespace Actions
+} // namespace pingus::action
 
 #endif
 

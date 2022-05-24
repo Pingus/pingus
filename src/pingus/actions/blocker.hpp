@@ -20,7 +20,7 @@
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 class Blocker : public PinguAction
 {
@@ -43,7 +43,7 @@ private:
   Blocker& operator= (const Blocker&);
 };
 
-} // namespace Actions
+} // namespace pingus::action
 
 #endif
 

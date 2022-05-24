@@ -21,7 +21,7 @@
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 class Miner : public PinguAction
 {
@@ -50,7 +50,7 @@ private:
   Miner& operator= (const Miner&);
 };
 
-} // namespace Actions
+} // namespace pingus::action
 
 #endif
 

@@ -26,7 +26,7 @@
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 Basher::Basher (Pingu* p) :
   PinguAction(p),
@@ -172,6 +172,6 @@ Basher::have_something_to_dig()
   }
 }
 
-} // namespace Actions
+} // namespace pingus::action
 
 /* EOF */

@@ -19,7 +19,7 @@
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 Boarder::Boarder (Pingu* p) :
   PinguAction(p),
@@ -88,6 +88,6 @@ Boarder::on_ground ()
   return pingu->rel_getpixel (0, -1) || pingu->rel_getpixel (0, -2);
 }
 
-} // namespace Actions
+} // namespace pingus::action
 
 /* EOF */

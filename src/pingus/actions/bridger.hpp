@@ -22,7 +22,7 @@
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 class Bridger : public PinguAction
 {
@@ -66,7 +66,7 @@ private:
   Bridger& operator= (const Bridger&);
 };
 
-} // namespace Actions
+} // namespace pingus::action
 
 #endif
 

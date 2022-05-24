@@ -20,7 +20,7 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/pingu_action.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 /** A Waiting action for the bridger, it gets activated when the
     bridger is out of bridges. It then waits two seconds (meanwhile doing a
@@ -44,7 +44,7 @@ private:
   Waiter& operator= (const Waiter&);
 };
 
-} // namespace Actions
+} // namespace pingus::action
 
 #endif
 

@@ -21,7 +21,7 @@
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 Blocker::Blocker(Pingu* p) :
   PinguAction(p),
@@ -95,6 +95,6 @@ Blocker::catch_pingu(Pingu* target)
   }
 }
 
-} // namespace Actions
+} // namespace pingus::action
 
 /* EOF */

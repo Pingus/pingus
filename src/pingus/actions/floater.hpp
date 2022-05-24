@@ -20,7 +20,7 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/pingu_action.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 class Floater : public PinguAction
 {
@@ -47,7 +47,7 @@ private:
   Floater& operator= (const Floater&);
 };
 
-} // namespace Actions
+} // namespace pingus::action
 
 #endif
 

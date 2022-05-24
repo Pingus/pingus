@@ -51,7 +51,7 @@
 #include "pingus/actions/waiter.hpp"
 #include "pingus/actions/walker.hpp"
 
-using namespace Actions;
+using namespace pingus::action;
 
 // Init a pingu at the given position while falling
 Pingu::Pingu(unsigned int arg_id, const Vector2f& arg_pos, int owner) :

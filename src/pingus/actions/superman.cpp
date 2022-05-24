@@ -19,7 +19,7 @@
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 
-namespace Actions {
+namespace pingus::action {
 
 Superman::Superman (Pingu* p)
   : PinguAction(p),
@@ -46,6 +46,6 @@ Superman::draw (SceneContext& gc)
   gc.color().draw(sprite, pingu->get_pos ());
 }
 
-} // namespace Actions
+} // namespace pingus::action
 
 /* EOF */
