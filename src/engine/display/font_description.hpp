@@ -24,6 +24,8 @@
 #include "math/rect.hpp"
 #include "util/pathname.hpp"
 
+namespace pingus {
+
 class GlyphDescription
 {
 public:
@@ -70,6 +72,8 @@ public:
 
   FontDescription(const Pathname& filename);
 };
+
+} // namespace pingus
 
 #endif
 

@@ -26,6 +26,8 @@
 #include "util/raise_exception.hpp"
 #include "util/system.hpp"
 
+namespace pingus {
+
 PingusLevel::PingusLevel() :
   impl(new PingusLevelImpl())
 {
@@ -189,5 +191,7 @@ PingusLevel::get_ambient_light() const
 {
   return impl->ambient_light;
 }
+
+} // namespace pingus
 
 /* EOF */

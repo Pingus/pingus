@@ -21,6 +21,8 @@
 
 #include "engine/display/framebuffer_surface.hpp"
 
+namespace pingus {
+
 class OpenGLFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {
 private:
@@ -43,6 +45,8 @@ private:
   OpenGLFramebufferSurfaceImpl(const OpenGLFramebufferSurfaceImpl&);
   OpenGLFramebufferSurfaceImpl& operator=(const OpenGLFramebufferSurfaceImpl&);
 };
+
+} // namespace pingus
 
 #endif
 

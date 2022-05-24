@@ -21,6 +21,8 @@
 #include <geom/io.hpp>
 #include <logmich/log.hpp>
 
+namespace pingus {
+
 class NullFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {
 private:
@@ -121,5 +123,7 @@ NullFramebuffer::get_size() const
 {
   return m_size;
 }
+
+} // namespace pingus
 
 /* EOF */

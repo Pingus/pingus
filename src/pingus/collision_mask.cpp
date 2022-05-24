@@ -20,6 +20,8 @@
 
 #include "pingus/resource.hpp"
 
+namespace pingus {
+
 CollisionMask::CollisionMask() :
   surface(),
   buffer(),
@@ -157,5 +159,7 @@ CollisionMask::get_data() const
 {
   return buffer.get();
 }
+
+} // namespace pingus
 
 /* EOF */

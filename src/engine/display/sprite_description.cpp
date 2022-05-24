@@ -18,6 +18,8 @@
 
 #include <logmich/log.hpp>
 
+namespace pingus {
+
 SpriteDescriptionPtr
 SpriteDescription::from_file(const Pathname& path)
 {
@@ -44,5 +46,7 @@ SpriteDescription::from_file(const Pathname& path)
 
   return desc;
 }
+
+} // namespace pingus
 
 /* EOF */

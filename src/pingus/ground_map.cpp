@@ -23,6 +23,8 @@
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
 
+namespace pingus {
+
 class MapTile
 {
 private:
@@ -324,5 +326,7 @@ GroundMap::get_tile(int x, int y)
 {
   return tiles[y * tile_width + x].get();
 }
+
+} // namespace pingus
 
 /* EOF */

@@ -23,13 +23,7 @@
 #include "engine/screen/gui_screen.hpp"
 #include "pingus/fonts.hpp"
 
-namespace pingus::gui {
-class GUIManager;
-} // namespace pingus::gui
-
-class GameDelta;
-class LayerManager;
-class MenuButton;
+namespace pingus {
 
 class PingusMenu : public GUIScreen
 {
@@ -76,6 +70,8 @@ private:
   PingusMenu (const PingusMenu&);
   PingusMenu& operator= (const PingusMenu&);
 };
+
+} // namespace pingus
 
 #endif
 

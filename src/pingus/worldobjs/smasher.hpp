@@ -19,12 +19,7 @@
 
 #include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
-
-namespace pingus::worldobjsData {
-class SmasherData;
-}
-
-class Pingu;
+#include "fwd.hpp"
 
 namespace pingus::worldobjs {
 

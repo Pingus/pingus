@@ -20,6 +20,8 @@
 #include "engine/gui/rect_component.hpp"
 #include "pingus/state_sprite.hpp"
 
+namespace pingus {
+
 class Server;
 class GameSession;
 class ActionHolder;
@@ -104,5 +106,7 @@ private:
 };
 
 #endif /* ACTIONBUTTON */
+
+} // namespace pingus
 
 /* EOF */

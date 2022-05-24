@@ -12,6 +12,8 @@
 #include "pingus/pingus_level.hpp"
 #include "pingus/globals.hpp"
 
+using namespace pingus;
+
 /** Load a level and create the World for each given level, this
     allows to track missing resources and other problems in level
     creation */

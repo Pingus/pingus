@@ -24,6 +24,8 @@
 #include "math/size.hpp"
 #include "util/pathname.hpp"
 
+namespace pingus {
+
 template<class T>
 class Value
 {
@@ -166,6 +168,8 @@ struct CommandLineOptions : public Options
   void merge(const Options& rhs) { Options::merge(rhs); }
   void merge(const CommandLineOptions& rhs);
 };
+
+} // namespace pingus
 
 #endif
 

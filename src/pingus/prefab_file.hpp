@@ -22,6 +22,8 @@
 #include "util/reader.hpp"
 #include "util/pathname.hpp"
 
+namespace pingus {
+
 class PrefabFile
 {
 public:
@@ -44,6 +46,8 @@ private:
   PrefabFile(const PrefabFile&) = delete;
   PrefabFile& operator=(const PrefabFile&) = delete;
 };
+
+} // namespace pingus
 
 #endif
 

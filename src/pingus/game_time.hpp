@@ -19,6 +19,8 @@
 
 #include <string>
 
+namespace pingus {
+
 /** The GameTime represents the time which passes in the Pingus World.
     Its behaviour is analogue to CL_System::get_time (), but with the
     difference that it only increases if the game runs, if the game is
@@ -31,6 +33,8 @@ public:
   static int seconds_to_ticks(int seconds);
   static int ticks_to_seconds(int ticks);
 };
+
+} // namespace pingus
 
 #endif
 

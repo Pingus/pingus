@@ -26,6 +26,8 @@
 #include "pingus/path_manager.hpp"
 #include "util/system.hpp"
 
+namespace pingus {
+
 Pathname Pathname::tmpfile(const std::string& prefix)
 {
   assert(false && "unimplemented");
@@ -301,5 +303,7 @@ Pathname::operator==(const Pathname& rhs) const
 {
   return type == rhs.type && pathname == rhs.pathname;
 }
+
+} // namespace pingus
 
 /* EOF */

@@ -18,6 +18,8 @@
 
 #include "util/system.hpp"
 
+using namespace pingus;
+
 TEST(SystemTest, normalize_path)
 {
   EXPECT_EQ("", System::normalize_path(""));

@@ -33,6 +33,8 @@
 #include "pingus/screens/start_screen.hpp"
 #include "util/system.hpp"
 
+namespace pingus {
+
 class LevelMenuAbortButton : public pingus::gui::SurfaceButton
 {
 private:
@@ -566,5 +568,7 @@ LevelMenu::resize(const Size& size_)
   abort_button->set_pos(size.width() /2 - 300,
                         size.height()/2 + 200);
 }
+
+} // namespace pingus
 
 /* EOF */

@@ -22,6 +22,8 @@
 #include <fmt/format.h>
 #include <sstream>
 
+namespace pingus {
+
 /// Resource descriptor, tells were to find a resource.
 class ResDescriptor
 {
@@ -42,8 +44,10 @@ public:
 /// Our own function to print out the ResDescriptor
 std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc);
 
+} // namespace pingus
+
 template<>
-struct fmt::formatter<ResDescriptor>
+struct fmt::formatter<pingus::ResDescriptor>
 {
   template<typename ParseContext>
   constexpr auto parse(ParseContext& ctx)
@@ -52,7 +56,7 @@ struct fmt::formatter<ResDescriptor>
   }
 
   template<typename FormatContext>
-  auto format(ResDescriptor const& v, FormatContext& ctx)
+  auto format(pingus::ResDescriptor const& v, FormatContext& ctx)
   {
     std::ostringstream os;
     os << v;

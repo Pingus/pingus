@@ -24,6 +24,8 @@
 #include "math/size.hpp"
 #include "util/pathname.hpp"
 
+namespace pingus {
+
 SDLSystem::SDLSystem()
 {
   if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) != 0)
@@ -46,5 +48,7 @@ SDLSystem::create_window(FramebufferType framebuffer_type, const Size& size, boo
 {
   Display::create_window(framebuffer_type, size, fullscreen, resizable);
 }
+
+} // namespace pingus
 
 /* EOF */

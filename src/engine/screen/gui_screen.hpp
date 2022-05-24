@@ -20,14 +20,9 @@
 #include <memory>
 
 #include "engine/screen/screen.hpp"
+#include "fwd.hpp"
 
-namespace pingus::gui {
-class GUIManager;
-}
-
-namespace pingus::input {
-struct ButtonEvent;
-}
+namespace pingus {
 
 class GUIScreen : public Screen
 {
@@ -72,6 +67,8 @@ private:
   GUIScreen (const GUIScreen&);
   GUIScreen& operator= (const GUIScreen&);
 };
+
+} // namespace pingus
 
 #endif
 

@@ -19,6 +19,8 @@
 
 #include "pingus/worldmap/path_graph.hpp"
 
+namespace pingus {
+
 class PingusWorldmapImpl;
 
 /** PingusWorldmap is responisble for loading .worldmap files, its
@@ -55,6 +57,8 @@ private:
 protected:
   std::shared_ptr<PingusWorldmapImpl> impl;
 };
+
+} // namespace pingus
 
 #endif
 

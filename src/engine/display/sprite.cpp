@@ -22,6 +22,8 @@
 #include "engine/display/sprite_impl.hpp"
 #include "pingus/resource.hpp"
 
+namespace pingus {
+
 Sprite::Sprite() :
   impl()
 {
@@ -194,5 +196,7 @@ Sprite::set_hotspot(Origin origin, int x, int y)
     impl->offset = (-geom::anchor_offset(impl->frame_size, origin)) - geom::ioffset(x, y);
   }
 }
+
+} // namespace pingus
 
 /* EOF */

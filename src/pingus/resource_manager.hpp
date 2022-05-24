@@ -23,6 +23,8 @@
 #include <string>
 #include <vector>
 
+namespace pingus {
+
 class Pathname;
 class SpriteDescription;
 
@@ -51,6 +53,8 @@ private:
   ResourceManager (const ResourceManager&);
   ResourceManager& operator= (const ResourceManager&);
 };
+
+} // namespace pingus
 
 #endif
 

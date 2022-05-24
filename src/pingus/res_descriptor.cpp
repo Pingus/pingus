@@ -18,6 +18,8 @@
 
 #include <ostream>
 
+namespace pingus {
+
 /*
   uri -> file:///home/ingo/.pingus/images/...
   uri -> resource://core/result/ok
@@ -56,5 +58,7 @@ std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)
   return s << "[" << desc.res_name << ", "
            << ResourceModifier::to_string(desc.modifier) << "]";
 }
+
+} // namespace pingus
 
 /* EOF */

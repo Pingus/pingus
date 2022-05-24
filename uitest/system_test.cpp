@@ -3,6 +3,8 @@
 
 #include "util/system.hpp"
 
+using namespace pingus;
+
 UITEST_S(System, realpath, "PATH", "")
 {
   std::cout << System::realpath(arg) << std::endl;

@@ -19,12 +19,7 @@
 
 #include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
-
-class Pingu;
-
-namespace pingus::worldobjsData {
-class FakeExitData;
-} // namespace pingus::worldobjsData
+#include "fwd.hpp"
 
 namespace pingus::worldobjs {
 

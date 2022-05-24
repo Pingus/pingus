@@ -21,6 +21,8 @@
 
 #include <string>
 
+namespace pingus {
+
 /** This will need some^H^H^H^H a lot of work */
 typedef enum {
   /** Pointer Events (pos contains the move-delta) */
@@ -47,6 +49,8 @@ class ArmageddonGameEvent : public GameEvent
 {
   // nothing
 };
+
+} // namespace pingus
 
 #endif
 

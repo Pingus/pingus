@@ -31,6 +31,8 @@
 #include "pingus/stat_manager.hpp"
 #include "util/pathname.hpp"
 
+namespace pingus {
+
 class CreditsOkButton
   : public pingus::gui::SurfaceButton
 {
@@ -230,5 +232,7 @@ Credits::on_escape_press ()
   }
   ScreenManager::instance ()->pop_screen ();
 }
+
+} // namespace pingus
 
 /* EOF */

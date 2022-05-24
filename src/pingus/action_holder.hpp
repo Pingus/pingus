@@ -22,6 +22,8 @@
 
 #include "pingus/action_name.hpp"
 
+namespace pingus {
+
 class PingusLevel;
 class PinguAction;
 
@@ -83,6 +85,8 @@ private:
   ActionHolder (const ActionHolder&);
   ActionHolder& operator= (const ActionHolder&);
 };
+
+} // namespace pingus
 
 #endif
 

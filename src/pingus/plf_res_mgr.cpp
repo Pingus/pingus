@@ -22,6 +22,8 @@
 #include "util/pathname.hpp"
 #include "util/system.hpp"
 
+namespace pingus {
+
 PLFResMgr::PLFMap PLFResMgr::plf_map;
 
 PingusLevel
@@ -96,5 +98,7 @@ PLFResMgr::load_plf(const std::string& res_name)
 {
   return load_plf_raw(res_name, Pathname("levels/" + res_name + ".pingus", Pathname::DATA_PATH));
 }
+
+} // namespace pingus
 
 /* EOF */

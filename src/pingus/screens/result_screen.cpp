@@ -28,6 +28,8 @@
 #include "pingus/gettext.h"
 #include "pingus/screens/game_session.hpp"
 
+namespace pingus {
+
 class ResultScreenComponent : public pingus::gui::Component
 {
 public:
@@ -336,5 +338,7 @@ ResultScreen::resize(const Size& size_)
   if (retry_button)
     retry_button->set_pos(size.width()/2 + 245, size.height()/2 + 150);
 }
+
+} // namespace pingus
 
 /* EOF */

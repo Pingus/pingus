@@ -20,12 +20,7 @@
 #include "engine/display/sprite.hpp"
 #include "math/vector2f.hpp"
 #include "pingus/worldobj.hpp"
-
-namespace pingus::worldobjsData {
-class LaserExitData;
-} // namespace pingus::worldobjsData
-
-class Pingu;
+#include "fwd.hpp"
 
 namespace pingus::worldobjs {
 

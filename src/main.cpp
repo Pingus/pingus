@@ -20,7 +20,7 @@
 
 int main(int argc, char** argv)
 {
-  PingusMain app;
+  pingus::PingusMain app;
   return app.run(argc, argv);
 }
 

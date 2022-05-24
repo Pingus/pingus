@@ -39,7 +39,11 @@
 
 #include <geom/size.hpp>
 
+namespace pingus {
+
 using Sizef = geom::fsize;
 using Size = geom::isize;
+
+} // namespace pingus
 
 #endif

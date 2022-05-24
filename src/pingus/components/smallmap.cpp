@@ -23,6 +23,8 @@
 #include "pingus/smallmap_image.hpp"
 #include "pingus/world.hpp"
 
+namespace pingus {
+
 SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_) :
   RectComponent(rect_),
   server(server_),
@@ -152,5 +154,7 @@ SmallMap::on_pointer_leave ()
 {
   has_focus = false;
 }
+
+} // namespace pingus
 
 /* EOF */

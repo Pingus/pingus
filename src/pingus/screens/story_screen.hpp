@@ -21,16 +21,9 @@
 
 #include "engine/screen/gui_screen.hpp"
 #include "pingus/worldmap/worldmap_story.hpp"
+#include "fwd.hpp"
 
-class StoryScreenComponent;
-
-namespace pingus::worldmap {
-class WorldmapStory;
-} // namespace pingus::worldmap
-
-namespace pingus::gui {
-class SurfaceButton;
-}
+namespace pingus {
 
 class StoryScreen : public GUIScreen
 {
@@ -55,6 +48,8 @@ private:
   StoryScreen (const StoryScreen&);
   StoryScreen& operator= (const StoryScreen&);
 };
+
+} // namespace pingus
 
 #endif
 

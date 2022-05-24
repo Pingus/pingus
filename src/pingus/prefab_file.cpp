@@ -22,6 +22,8 @@
 #include "util/raise_exception.hpp"
 #include "util/system.hpp"
 
+namespace pingus {
+
 PrefabFile
 PrefabFile::from_path(const Pathname& filename)
 {
@@ -61,5 +63,7 @@ PrefabFile::get_overrides() const
 {
   return m_overrides;
 }
+
+} // namespace pingus
 
 /* EOF */

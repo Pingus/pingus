@@ -22,21 +22,9 @@
 #include "engine/screen/gui_screen.hpp"
 #include "pingus/action_name.hpp"
 #include "pingus/pingus_level.hpp"
+#include "fwd.hpp"
 
-namespace pingus::input {
-struct ScrollEvent;
-struct AxisEvent;
-struct Event;
-}
-
-class ButtonPanel;
-class PingusCounter;
-class Playfield;
-class SmallMap;
-class ArmageddonButton;
-class ForwardButton;
-class PauseButton;
-class Server;
+namespace pingus {
 
 /** You can use this class to start up a game session, which consist
     of a single level. */
@@ -115,6 +103,8 @@ private:
   GameSession (const GameSession&);
   GameSession& operator= (const GameSession&);
 };
+
+} // namespace pingus
 
 #endif
 

@@ -25,6 +25,8 @@
 
 #include "pingus/res_descriptor.hpp"
 
+namespace pingus::worldmap {
+
 class StoryPage
 {
 public:
@@ -42,8 +44,6 @@ public:
   std::string   text;
   std::string   page_name;
 };
-
-namespace pingus::worldmap {
 
 class WorldmapStory
 {

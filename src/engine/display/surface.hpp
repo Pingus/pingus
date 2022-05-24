@@ -25,6 +25,8 @@
 #include "math/rect.hpp"
 #include "util/pathname.hpp"
 
+namespace pingus {
+
 class Pathname;
 class SurfaceImpl;
 
@@ -83,6 +85,8 @@ private:
 
   std::shared_ptr<SurfaceImpl> impl;
 };
+
+} // namespace pingus
 
 #endif
 

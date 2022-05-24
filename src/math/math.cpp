@@ -18,6 +18,8 @@
 
 #include <math.h>
 
+namespace pingus {
+
 namespace Math {
 
 float abs(float v)
@@ -95,5 +97,7 @@ float string2float(const std::string& str)
 }
 
 } // namespace Math
+
+} // namespace pingus
 
 /* EOF */

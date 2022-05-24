@@ -23,6 +23,8 @@
 #include "pingus/options.hpp"
 #include "tinygettext/language.hpp"
 
+namespace pingus {
+
 struct Options;
 
 class ConfigManager
@@ -97,6 +99,8 @@ private:
 };
 
 extern ConfigManager config_manager;
+
+} // namespace pingus
 
 #endif
 

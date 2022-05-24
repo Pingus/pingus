@@ -24,8 +24,7 @@
 #include "math/vector2f.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "util/writer.hpp"
-
-class DrawingContext;
+#include "fwd.hpp"
 
 namespace pingus::editor {
 

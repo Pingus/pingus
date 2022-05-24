@@ -23,6 +23,8 @@
 #include "math/origin.hpp"
 #include "engine/display/resource_modifier.hpp"
 
+namespace pingus {
+
 class Color;
 class Surface;
 class Pathname;
@@ -62,6 +64,8 @@ public:
 private:
   std::shared_ptr<SpriteImpl> impl;
 };
+
+} // namespace pingus
 
 #endif
 

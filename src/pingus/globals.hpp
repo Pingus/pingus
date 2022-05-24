@@ -22,6 +22,8 @@
 
 #include <string>
 
+namespace pingus {
+
 namespace globals {
 
 extern int         game_speed;                      ///< -t, --set-speed
@@ -46,6 +48,8 @@ extern std::string  global_email;                    ///< The email address of t
 extern std::string  default_language;                ///< The default language, which is used when the env var LANG is not set
 
 } // namespace globals
+
+} // namespace pingus
 
 #endif
 

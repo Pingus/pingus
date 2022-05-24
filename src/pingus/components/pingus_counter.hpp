@@ -21,6 +21,8 @@
 #include "engine/display/sprite.hpp"
 #include "engine/gui/component.hpp"
 
+namespace pingus {
+
 class DrawingContext;
 class World;
 class Server;
@@ -41,6 +43,8 @@ private:
   PingusCounter (const PingusCounter&);
   PingusCounter& operator= (const PingusCounter&);
 };
+
+} // namespace pingus
 
 #endif
 

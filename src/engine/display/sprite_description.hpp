@@ -25,6 +25,8 @@
 #include "util/reader.hpp"
 #include "util/pathname.hpp"
 
+namespace pingus {
+
 class SpriteDescription;
 
 typedef std::shared_ptr<SpriteDescription> SpriteDescriptionPtr;
@@ -61,6 +63,8 @@ public:
   {
   }
 };
+
+} // namespace pingus
 
 #endif
 

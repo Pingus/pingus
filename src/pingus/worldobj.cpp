@@ -16,6 +16,8 @@
 
 #include "pingus/worldobj.hpp"
 
+namespace pingus {
+
 World* WorldObj::world;
 
 void
@@ -63,5 +65,7 @@ WorldObj::is_solid_background() const
 {
   return false;
 }
+
+} // namespace pingus
 
 /* EOF */

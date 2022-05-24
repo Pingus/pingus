@@ -22,19 +22,12 @@
 
 #include "engine/display/graphic_context_state.hpp"
 #include "pingus/worldmap/pingus_worldmap.hpp"
-
-class Font;
-class DrawingContext;
+#include "fwd.hpp"
 
 namespace pingus::worldmap {
 
 typedef int EdgeId;
 typedef int NodeId;
-
-class WorldmapStory;
-class PathGraph;
-class Drawable;
-class Pingus;
 
 /** A class for loading, displaying and managing the worldmap. The
     worldmap is basically a multi-layered image and a path

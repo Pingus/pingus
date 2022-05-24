@@ -19,6 +19,8 @@
 
 #include <SDL.h>
 
+namespace pingus {
+
 class GlobalEvent
 {
 public:
@@ -34,6 +36,8 @@ private:
 };
 
 extern GlobalEvent global_event;
+
+} // namespace pingus
 
 #endif
 

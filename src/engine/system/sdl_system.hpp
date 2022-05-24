@@ -22,6 +22,8 @@
 
 #include "pingus/options.hpp"
 
+namespace pingus {
+
 class SDLSystem
 {
 private:
@@ -35,6 +37,8 @@ private:
   SDLSystem(const SDLSystem&);
   SDLSystem& operator=(const SDLSystem&);
 };
+
+} // namespace pingus
 
 #endif
 

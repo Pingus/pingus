@@ -21,6 +21,8 @@
 
 #include <string>
 
+namespace pingus {
+
 /** Simple class to get a screenshot and save it as pnm */
 class Screenshot
 {
@@ -39,6 +41,8 @@ private:
   Screenshot(const Screenshot&);
   Screenshot& operator=(const Screenshot&);
 };
+
+} // namespace pingus
 
 #endif
 

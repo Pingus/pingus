@@ -18,6 +18,8 @@
 
 #include <assert.h>
 
+namespace pingus {
+
 namespace ResourceModifier {
 
 ResourceModifier::Enum horizontal_flip (ResourceModifier::Enum modifier)
@@ -176,5 +178,7 @@ ResourceModifier::Enum from_string (const std::string& modifier)
 }
 
 } // namespace ResourceModifier
+
+} // namespace pingus
 
 /* EOF */

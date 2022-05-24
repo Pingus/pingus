@@ -20,6 +20,8 @@
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 
+namespace pingus {
+
 Label::Label(const std::string& label_, const Rect& rect_)
   : RectComponent(rect_),
     label(label_)
@@ -34,5 +36,7 @@ Label::draw(DrawingContext& gc)
 
   gc.print_left(pingus::fonts::chalk_normal, Vector2i(rect.left(), rect.top()), label);
 }
+
+} // namespace pingus
 
 /* EOF */

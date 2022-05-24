@@ -20,6 +20,8 @@
 #include <glm/glm.hpp>
 #include "math/vector2f.hpp"
 
+namespace pingus {
+
 class World;
 
 class Collider
@@ -40,6 +42,8 @@ protected:
       world */
   int getpixel(const World* world, const Vector2f& pos) const;
 };
+
+} // namespace pingus
 
 #endif
 

@@ -21,6 +21,8 @@
 #include "engine/gui/rect_component.hpp"
 #include "math/vector2f.hpp"
 
+namespace pingus {
+
 class Playfield;
 class Server;
 class SmallMapImage;
@@ -79,6 +81,8 @@ private:
   SmallMap (const SmallMap&);
   SmallMap& operator= (const SmallMap&);
 };
+
+} // namespace pingus
 
 #endif
 

@@ -27,8 +27,7 @@
 
 #include "math/size.hpp"
 #include "editor/level_obj.hpp"
-
-class Pathname;
+#include "fwd.hpp"
 
 namespace pingus::editor {
 

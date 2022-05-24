@@ -21,6 +21,8 @@
 
 #include "engine/display/drawing_context.hpp"
 
+namespace pingus {
+
 class SceneContextImpl;
 
 /** The SceneContext maintains all the different drawing layers to
@@ -97,6 +99,8 @@ private:
   SceneContextDrawingRequest(const SceneContextDrawingRequest&);
   SceneContextDrawingRequest& operator=(const SceneContextDrawingRequest&);
 };
+
+} // namespace pingus
 
 #endif
 

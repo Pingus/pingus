@@ -23,6 +23,8 @@
 #include <string>
 #include <vector>
 
+namespace pingus {
+
 class PingusLevelImpl
 {
 public:
@@ -67,6 +69,8 @@ public:
   std::string author;
   std::string music;
 };
+
+} // namespace pingus
 
 #endif
 

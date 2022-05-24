@@ -24,22 +24,9 @@
 #include "pingus/collision_mask.hpp"
 #include "pingus/groundtype.hpp"
 #include "math/vector2f.hpp"
+#include "fwd.hpp"
 
-class GroundMap;
-class PinguHolder;
-class PingusLevel;
-class CollisionMap;
-class Pingu;
-class WorldObj;
-class SmallMap;
-class SceneContext;
-
-namespace pingus::particles {
-class PinguParticleHolder;
-class RainParticleHolder;
-class SmokeParticleHolder;
-class SnowParticleHolder;
-}
+namespace pingus {
 
 /** The World holds all objects of the pingu enviroment.
 
@@ -161,6 +148,8 @@ private:
   World (const World&);
   World& operator= (const World&);
 };
+
+} // namespace pingus
 
 #endif
 

@@ -32,6 +32,8 @@
 #include "pingus/worldmap/worldmap_screen.hpp"
 #include "pingus/stat_manager.hpp"
 
+namespace pingus {
+
 PingusMenu::PingusMenu() :
   is_init(),
   hint(),
@@ -272,5 +274,7 @@ PingusMenu::resize(const Size& size_)
   quit_button->set_pos(size.width()/2,
                        size.height()/2 + 120);
 }
+
+} // namespace pingus
 
 /* EOF */

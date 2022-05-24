@@ -23,6 +23,8 @@
 #include "engine/input/controller.hpp"
 #include "engine/system/sdl_system.hpp"
 
+using namespace pingus;
+
 int main()
 {
   try

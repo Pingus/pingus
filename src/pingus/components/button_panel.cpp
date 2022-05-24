@@ -25,6 +25,8 @@
 #include "pingus/globals.hpp"
 #include "pingus/server.hpp"
 
+namespace pingus {
+
 ButtonPanel::ButtonPanel(Server* s, const Vector2i& pos) :
   RectComponent(Rect()),
   server(s),
@@ -185,5 +187,7 @@ ButtonPanel::set_pos(const Vector2i& pos)
   set_rect(Rect(geom::ipoint(pos.x(), pos.y() - (static_cast<int>(buttons.size()) * 38)/2),
                 Size(60, static_cast<int>(buttons.size()) * 38)));
 }
+
+} // namespace pingus
 
 /* EOF */

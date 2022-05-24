@@ -4,6 +4,8 @@
 #include "engine/sound/sound.hpp"
 #include "pingus/globals.hpp"
 
+using namespace pingus;
+
 UITEST(PingusSound, play_sound, "[NAME]...")
 {
   logmich::set_log_level(logmich::LogLevel::DEBUG);

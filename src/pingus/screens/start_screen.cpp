@@ -30,6 +30,8 @@
 #include "pingus/screens/game_session.hpp"
 #include "pingus/string_format.hpp"
 
+namespace pingus {
+
 class StartScreenComponent : public pingus::gui::Component
 {
 private:
@@ -253,5 +255,7 @@ StartScreen::resize(const Size& size_)
   abort_button->set_pos(size.width() /2 - 300, size.height()/2 + 200);
   ok_button   ->set_pos(size.width()/2 + 245, size.height()/2 + 150);
 }
+
+} // namespace pingus
 
 /* EOF */

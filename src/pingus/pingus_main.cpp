@@ -71,6 +71,8 @@ extern "C" {
 #include "pingus/stat_manager.hpp"
 #include "pingus/worldobj_factory.hpp"
 
+namespace pingus {
+
 PingusMain::PingusMain() :
   cmd_options()
 {
@@ -704,5 +706,7 @@ PingusMain::run(int argc, char** argv)
 
   return 0;
 }
+
+} // namespace pingus
 
 /* EOF */

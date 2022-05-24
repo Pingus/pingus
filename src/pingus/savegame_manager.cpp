@@ -25,6 +25,8 @@
 #include "util/writer.hpp"
 #include "util/system.hpp"
 
+namespace pingus {
+
 SavegameManager* SavegameManager::instance_ = nullptr;
 
 SavegameManager*
@@ -150,5 +152,7 @@ SavegameManager::flush()
 
   System::write_file(filename, out.str());
 }
+
+} // namespace pingus
 
 /* EOF */

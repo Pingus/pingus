@@ -23,6 +23,8 @@
 #include "pingus/resource.hpp"
 #include "util/reader.hpp"
 
+namespace pingus {
+
 class WorldObjRenderer
 {
 private:
@@ -60,6 +62,8 @@ private:
 
   void process_object_with_surface(const ReaderObject& reader);
 };
+
+} // namespace pingus
 
 #endif
 

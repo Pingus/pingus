@@ -27,6 +27,8 @@
 #include "tinygettext/dictionary_manager.hpp"
 #include "util/system.hpp"
 
+namespace pingus {
+
 ConfigManager config_manager;
 
 ConfigManager::ConfigManager() :
@@ -337,5 +339,7 @@ ConfigManager::apply(const Options& opts)
   if (opts.language.is_set())
     set_language(tinygettext::Language::from_env(opts.language.get()));
 }
+
+} // namespace pingus
 
 /* EOF */

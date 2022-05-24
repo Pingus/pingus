@@ -21,9 +21,9 @@
 #include <vector>
 
 #include "util/reader.hpp"
+#include "fwd.hpp"
 
-class WorldObj;
-class WorldObjAbstractFactory;
+namespace pingus {
 
 /** WorldObjFactory which can be used to create all kinds of
     WorldObj's by given its id */
@@ -54,6 +54,8 @@ private:
   WorldObjFactory (const WorldObjFactory&);
   WorldObjFactory& operator= (const WorldObjFactory&);
 };
+
+} // namespace pingus
 
 #endif
 

@@ -25,11 +25,9 @@
 #include "pingus/worldmap/path.hpp"
 #include "pingus/worldmap/pathfinder.hpp"
 #include "util/reader.hpp"
+#include "fwd.hpp"
 
 namespace pingus::worldmap {
-
-class Dot;
-class Worldmap;
 
 /** This class represents the walkable path on the Worldmap */
 class PathGraph

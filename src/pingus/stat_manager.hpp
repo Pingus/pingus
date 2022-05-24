@@ -20,6 +20,8 @@
 #include <map>
 #include <string>
 
+namespace pingus {
+
 class StatManager
 {
 private:
@@ -54,6 +56,8 @@ private:
   StatManager (const StatManager&);
   StatManager& operator= (const StatManager&);
 };
+
+} // namespace pingus
 
 #endif
 

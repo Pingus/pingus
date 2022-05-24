@@ -20,6 +20,8 @@
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 
+namespace pingus {
+
 SliderBox::SliderBox(const Rect& rect_, int steps)
   : RectComponent(rect_),
     m_steps(steps),
@@ -92,5 +94,7 @@ SliderBox::set_value(int v)
 {
   value = v * m_steps / 100; // FIXME: rounding errors
 }
+
+} // namespace pingus
 
 /* EOF */

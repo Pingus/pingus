@@ -27,6 +27,8 @@
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 
+namespace pingus {
+
 TimeDisplay::TimeDisplay (GameSession* c) :
   server(c->get_server()),
   font()
@@ -52,5 +54,7 @@ TimeDisplay::draw (DrawingContext& gc)
     gc.print_right(font, Vector2i(Display::get_width() - 30, 3), time_string, 150);
   }
 }
+
+} // namespace pingus
 
 /* EOF */

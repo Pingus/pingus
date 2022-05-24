@@ -5,6 +5,8 @@
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
 
+using namespace pingus;
+
 namespace {
 
 void

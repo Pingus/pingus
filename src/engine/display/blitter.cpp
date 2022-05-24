@@ -18,6 +18,8 @@
 
 #include "engine/display/blitter_impl.hpp"
 
+namespace pingus {
+
 SDL_Surface*
 Blitter::scale_surface(SDL_Surface* surface, int width, int height)
 {
@@ -288,5 +290,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
 
   return new_surface;
 }
+
+} // namespace pingus
 
 /* EOF */

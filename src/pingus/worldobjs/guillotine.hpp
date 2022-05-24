@@ -20,12 +20,7 @@
 #include "math/vector2f.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/worldobj.hpp"
-
-namespace pingus::worldobjsData {
-class GuillotineData;
-}
-
-class Pingu;
+#include "fwd.hpp"
 
 namespace pingus::worldobjs {
 

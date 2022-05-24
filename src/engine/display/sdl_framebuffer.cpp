@@ -23,6 +23,8 @@
 
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
 
+namespace pingus {
+
 namespace {
 
 SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
@@ -290,5 +292,7 @@ SDLFramebuffer::pop_cliprect()
   else
     SDL_RenderSetClipRect(m_renderer, &cliprect_stack.back());
 }
+
+} // namespace pingus
 
 /* EOF */

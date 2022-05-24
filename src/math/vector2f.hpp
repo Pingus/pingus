@@ -24,6 +24,8 @@
 #include "math/math.hpp"
 #include "vector2i.hpp"
 
+namespace pingus {
+
 using Vector2f = geom::fpoint;
 
 // FIXME: type only exist as workaround for old code
@@ -41,6 +43,8 @@ public:
   Vector2f pos;
   float z_index;
 };
+
+} // namespace pingus
 
 #endif
 

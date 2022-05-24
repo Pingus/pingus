@@ -19,10 +19,9 @@
 
 #include "math/vector2f.hpp"
 #include "pingus/action_name.hpp"
+#include "fwd.hpp"
 
-class ActionHolder;
-class SceneContext;
-class Pingu;
+namespace pingus {
 
 enum ActionType
 {
@@ -111,6 +110,8 @@ private:
   PinguAction& operator= (const PinguAction&);
 };
 
-#endif /* PINGU_ACTION_HH */
+} // namespace pingus
+
+#endif
 
 /* EOF */

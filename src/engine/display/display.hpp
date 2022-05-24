@@ -25,6 +25,8 @@
 #include "math/size.hpp"
 #include "pingus/options.hpp"
 
+namespace pingus {
+
 class Color;
 class Framebuffer;
 
@@ -58,6 +60,8 @@ private:
   Display (const Display&);
   Display& operator= (const Display&);
 };
+
+} // namespace pingus
 
 #endif
 

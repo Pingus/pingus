@@ -19,10 +19,9 @@
 
 #include "engine/screen/gui_screen.hpp"
 #include "pingus/result.hpp"
+#include "fwd.hpp"
 
-namespace pingus::gui {
-class SurfaceButton;
-} // namespace pingus::gui
+namespace pingus {
 
 class ResultScreen : public GUIScreen
 {
@@ -48,6 +47,8 @@ private:
   ResultScreen (const ResultScreen&);
   ResultScreen& operator= (const ResultScreen&);
 };
+
+} // namespace pingus
 
 #endif
 

@@ -19,6 +19,8 @@
 
 #include "engine/display/framebuffer.hpp"
 
+namespace pingus {
+
 class OpenGLFramebuffer : public Framebuffer
 {
 private:
@@ -56,6 +58,8 @@ private:
   OpenGLFramebuffer(const OpenGLFramebuffer&);
   OpenGLFramebuffer & operator=(const OpenGLFramebuffer&);
 };
+
+} // namespace pingus
 
 #endif
 

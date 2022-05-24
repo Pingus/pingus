@@ -34,6 +34,8 @@
 #include "pingus/worldobj_factory.hpp"
 #include "pingus/worldobjs/entrance.hpp"
 
+namespace pingus {
+
 World::World(const PingusLevel& plf) :
   ambient_light(Color(plf.get_ambient_light())),
   gfx_map(new GroundMap(plf.get_size().width(), plf.get_size().height())),
@@ -341,5 +343,7 @@ World::get_start_pos(int player_id) const
 
   return pos;
 }
+
+} // namespace pingus
 
 /* EOF */

@@ -27,6 +27,8 @@
 #include "util/writer.hpp"
 #include "util/system.hpp"
 
+namespace pingus {
+
 static std::string get_date_string ()
 {
   char buffer[32];
@@ -157,5 +159,7 @@ Server::send_finish_event()
   record(ServerEvent::make_finish_event(get_time()));
   goal_manager->set_abort_goal();
 }
+
+} // namespace pingus
 
 /* EOF */

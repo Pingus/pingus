@@ -47,6 +47,8 @@
 
 using namespace pingus::worldobjs;
 
+namespace pingus {
+
 std::unique_ptr<WorldObjFactory> WorldObjFactory::instance_;
 
 /** WorldObjAbstractFactory, interface for creating factories */
@@ -248,5 +250,7 @@ WorldObjFactory::register_factory(const std::string& id,
 {
   factories[id] = std::move(factory);
 }
+
+} // namespace pingus
 
 /* EOF */

@@ -19,6 +19,8 @@
 
 #include <string>
 
+namespace pingus {
+
 /** This class olds the definitions of the different types of ground
     available in pingus, it might also provide converter function from
     GPType to std::string and vice verse. */
@@ -40,6 +42,8 @@ public:
   static GPType      string_to_type (const std::string& arg_type);
   static std::string type_to_string (GPType arg_type);
 };
+
+} // namespace pingus
 
 #endif
 

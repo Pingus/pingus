@@ -23,6 +23,8 @@
 #include "pingus/globals.hpp"
 #include "pingus/worldobj.hpp"
 
+namespace pingus {
+
 class SceneContext;
 class CollisionMap;
 class GroundMap;
@@ -85,6 +87,8 @@ private:
   GroundMap (const GroundMap&);
   GroundMap& operator= (const GroundMap&);
 };
+
+} // namespace pingus
 
 #endif
 

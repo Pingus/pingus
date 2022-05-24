@@ -21,6 +21,8 @@
 
 #include "pingus/server_event.hpp"
 
+namespace pingus {
+
 class Pathname;
 
 class PingusDemo
@@ -42,6 +44,8 @@ private:
   PingusDemo (const PingusDemo&);
   PingusDemo& operator= (const PingusDemo&);
 };
+
+} // namespace pingus
 
 #endif
 

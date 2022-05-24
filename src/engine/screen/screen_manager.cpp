@@ -29,6 +29,8 @@
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 
+namespace pingus {
+
 namespace {
 
 template<class C>
@@ -351,5 +353,7 @@ ScreenManager::show_software_cursor(bool visible)
     SDL_ShowCursor(SDL_ENABLE);
   }
 }
+
+} // namespace pingus
 
 /* EOF */

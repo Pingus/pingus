@@ -19,6 +19,8 @@
 
 #include <SDL.h>
 
+namespace pingus {
+
 class Color
 {
 public:
@@ -59,6 +61,8 @@ public:
                  static_cast<uint8_t>(255 * a));
   }
 };
+
+} // namespace pingus
 
 #endif
 

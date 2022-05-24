@@ -28,6 +28,8 @@
 #include "pingus/globals.hpp"
 #include "pingus/screens/credits.hpp"
 
+namespace pingus {
+
 class StoryScreenComponent : public pingus::gui::Component
 {
 private:
@@ -40,9 +42,9 @@ private:
   bool page_displayed_completly;
 
   pingus::worldmap::WorldmapStory* story;
-  std::vector<StoryPage> pages;
+  std::vector<pingus::worldmap::StoryPage> pages;
   Sprite page_surface;
-  StoryPage  current_page;
+  pingus::worldmap::StoryPage  current_page;
   bool m_credits;
 
 public:
@@ -292,5 +294,7 @@ StoryScreen::resize(const Size& size_)
     skip_button->set_pos(size.width()  - 4,
                          size.height() - 26);
 }
+
+} // namespace pingus
 
 /* EOF */

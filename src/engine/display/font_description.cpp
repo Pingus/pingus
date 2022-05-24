@@ -23,6 +23,8 @@
 #include "util/reader.hpp"
 #include "util/raise_exception.hpp"
 
+namespace pingus {
+
 GlyphDescription::GlyphDescription() :
   image(0),
   unicode(0),
@@ -104,5 +106,7 @@ FontDescription::FontDescription(const Pathname& pathname_) :
     }
   }
 }
+
+} // namespace pingus
 
 /* EOF */

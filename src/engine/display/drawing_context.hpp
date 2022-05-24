@@ -24,6 +24,8 @@
 #include "math/color.hpp"
 #include "math/vector2f.hpp"
 
+namespace pingus {
+
 class Framebuffer;
 class Font;
 class Sprite;
@@ -114,6 +116,8 @@ private:
   DrawingContext (const DrawingContext&);
   DrawingContext& operator= (const DrawingContext&);
 };
+
+} // namespace pingus
 
 #endif
 

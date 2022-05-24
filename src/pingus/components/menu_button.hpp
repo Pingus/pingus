@@ -23,6 +23,8 @@
 #include "engine/display/sprite.hpp"
 #include "engine/gui/component.hpp"
 
+namespace pingus {
+
 class PingusMenu;
 
 /** Framework for menu buttons */
@@ -69,6 +71,8 @@ private:
   MenuButton (const MenuButton&);
   MenuButton& operator= (const MenuButton&);
 };
+
+} // namespace pingus
 
 #endif
 

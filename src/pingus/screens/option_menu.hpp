@@ -28,6 +28,8 @@
 #include "pingus/components/label.hpp"
 #include "tinygettext/language.hpp"
 
+namespace pingus {
+
 class CheckBox;
 class SliderBox;
 
@@ -106,6 +108,8 @@ private:
   OptionMenu (const OptionMenu&);
   OptionMenu& operator= (const OptionMenu&);
 };
+
+} // namespace pingus
 
 #endif
 

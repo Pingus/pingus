@@ -19,10 +19,12 @@
 
 #include <string>
 
+namespace pingus {
+
 class Font;
 
-class StringFormat {
-
+class StringFormat
+{
 public:
   /** Takes a string \a text and wraps it into multiple lines, each
       less then \a width long. Line wrappings happens TeX style, i.e.
@@ -30,6 +32,8 @@ public:
       joined to a single space. */
   static std::string break_line(const std::string& text, int width, const Font& font);
 };
+
+} // namespace pingus
 
 #endif
 

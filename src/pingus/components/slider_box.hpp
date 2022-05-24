@@ -21,6 +21,8 @@
 
 #include "engine/gui/rect_component.hpp"
 
+namespace pingus {
+
 class SliderBox : public pingus::gui::RectComponent
 {
 private:
@@ -45,6 +47,8 @@ private:
   SliderBox (const SliderBox&);
   SliderBox& operator= (const SliderBox&);
 };
+
+} // namespace pingus
 
 #endif
 

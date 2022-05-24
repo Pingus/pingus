@@ -29,6 +29,8 @@
 #include "engine/display/opengl/opengl_framebuffer.hpp"
 #include "engine/display/null_framebuffer.hpp"
 
+namespace pingus {
+
 std::unique_ptr<Framebuffer> Display::s_framebuffer;
 
 void
@@ -193,5 +195,7 @@ Display::get_fullscreen_video_modes()
 
   return video_modes;
 }
+
+} // namespace pingus
 
 /* EOF */

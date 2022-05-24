@@ -20,8 +20,7 @@
 #include <string>
 
 #include "util/reader.hpp"
-
-class DrawingContext;
+#include "fwd.hpp"
 
 namespace pingus::worldmap {
 

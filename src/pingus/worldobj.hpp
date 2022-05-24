@@ -23,6 +23,8 @@
 #include "math/vector2f.hpp"
 #include "util/reader.hpp"
 
+namespace pingus {
+
 class SceneContext;
 class SmallMap;
 class World;
@@ -90,6 +92,8 @@ public:
   /** Returns true if the object covers the whole screen */
   virtual bool is_solid_background() const;
 };
+
+} // namespace pingus
 
 #endif
 

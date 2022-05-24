@@ -21,6 +21,8 @@
 
 namespace prio {
 
+using namespace pingus;
+
 template<>
 void write_custom(prio::Writer& writer, std::string_view key, OutVector2fZ const& value)
 {

@@ -21,6 +21,8 @@
 #include "pingus/res_descriptor.hpp"
 #include "util/pathname.hpp"
 
+using namespace pingus;
+
 namespace prio {
 
 template<>

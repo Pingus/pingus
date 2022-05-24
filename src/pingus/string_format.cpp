@@ -22,6 +22,8 @@
 
 #include "engine/display/font.hpp"
 
+namespace pingus {
+
 std::string
 StringFormat::break_line(const std::string& text, int width, const Font& font)
 {
@@ -69,5 +71,7 @@ StringFormat::break_line(const std::string& text, int width, const Font& font)
 
   return out.str();
 }
+
+} // namespace pingus
 
 /* EOF */

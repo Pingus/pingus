@@ -20,6 +20,8 @@
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 
+namespace pingus {
+
 SmallMapImage::SmallMapImage(Server* s, int width, int height)
   : server(s),
     canvas(width, height),
@@ -145,5 +147,7 @@ SmallMapImage::update_surface()
   // optimizations, clone isn't really needed
   sur = Sprite(canvas.clone());
 }
+
+} // namespace pingus
 
 /* EOF */

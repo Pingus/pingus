@@ -20,6 +20,8 @@
 #include "util/pathname.hpp"
 #include "util/system.hpp"
 
+using namespace pingus;
+
 int main(int argc, char** argv)
 {
   std::vector<Pathname> files;

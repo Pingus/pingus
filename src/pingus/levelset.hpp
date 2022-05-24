@@ -21,6 +21,8 @@
 #include "pingus/pingus_level.hpp"
 #include "util/pathname.hpp"
 
+namespace pingus {
+
 class Levelset
 {
 public:
@@ -83,6 +85,8 @@ private:
   Levelset (const Levelset&);
   Levelset& operator= (const Levelset&);
 };
+
+} // namespace pingus
 
 #endif
 

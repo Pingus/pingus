@@ -22,6 +22,8 @@
 #include "engine/gui/gui_manager.hpp"
 #include "pingus/globals.hpp"
 
+namespace pingus {
+
 GUIScreen::GUIScreen() :
   Screen(Display::get_size()),
   gui_manager(new pingus::gui::GUIManager())
@@ -187,5 +189,7 @@ GUIScreen::resize(const Size& size_)
   Screen::resize(size_);
   gui_manager->set_rect(Rect(geom::ipoint(0, 0), size));
 }
+
+} // namespace pingus
 
 /* EOF */

@@ -53,6 +53,8 @@
 
 using namespace pingus::actions;
 
+namespace pingus {
+
 // Init a pingu at the given position while falling
 Pingu::Pingu(unsigned int arg_id, const Vector2f& arg_pos, int owner) :
   action(),
@@ -469,5 +471,7 @@ Pingu::create_action(ActionName::Enum action_)
     default: assert(false && "Invalid action name provied"); return {};
   }
 }
+
+} // namespace pingus
 
 /* EOF */

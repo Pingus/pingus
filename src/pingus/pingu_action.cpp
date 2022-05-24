@@ -23,6 +23,8 @@
 #include "pingus/world.hpp"
 #include "pingus/worldobj.hpp"
 
+namespace pingus {
+
 PinguAction::PinguAction (Pingu* p)
   : pingu (p)
 {
@@ -285,5 +287,7 @@ PinguAction::get_activation_mode(ActionName::Enum action_name)
       return INSTANT;
   }
 }
+
+} // namespace pingus
 
 /* EOF */

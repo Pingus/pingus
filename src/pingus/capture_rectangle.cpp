@@ -25,6 +25,8 @@
 #include "pingus/pingu_action.hpp"
 #include "pingus/screens/game_session.hpp"
 
+namespace pingus {
+
 CaptureRectangle::CaptureRectangle(GameSession* session_) :
   session(session_),
   pingu(nullptr),
@@ -104,5 +106,7 @@ CaptureRectangle::set_pingu (Pingu* p)
     }
   }
 }
+
+} // namespace pingus
 
 /* EOF */

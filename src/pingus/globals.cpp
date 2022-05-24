@@ -16,6 +16,8 @@
 
 #include "pingus/globals.hpp"
 
+namespace pingus {
+
 namespace globals {
 
 int         game_speed              = 20;
@@ -39,5 +41,7 @@ std::string default_language        = "en";
 bool        static_graphics         = false;
 
 } // namespace globals
+
+} // namespace pingus
 
 /* EOF */

@@ -24,6 +24,8 @@
 #include "util/pathname.hpp"
 #include "util/system.hpp"
 
+namespace pingus {
+
 PathManager g_path_manager;
 
 PathManager::PathManager() :
@@ -66,5 +68,7 @@ PathManager::complete(const std::string& relative_path)
 
   return Pathname::join(m_base_path, relative_path);
 }
+
+} // namespace pingus
 
 /* EOF */

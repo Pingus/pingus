@@ -19,6 +19,8 @@
 
 #include <string>
 
+namespace pingus {
+
 class FPSCounter
 {
 private:
@@ -49,6 +51,8 @@ private:
   FPSCounter (const FPSCounter&);
   FPSCounter& operator= (const FPSCounter&);
 };
+
+} // namespace pingus
 
 #endif
 

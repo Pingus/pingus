@@ -20,6 +20,8 @@
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 
+namespace pingus {
+
 ChoiceBox::ChoiceBox(const Rect& rect_) :
   RectComponent(rect_),
   current_choice(0),
@@ -90,5 +92,7 @@ ChoiceBox::set_current_choice(int choice)
   if (choice >= 0 && choice < int(choices.size()))
     current_choice = choice;
 }
+
+} // namespace pingus
 
 /* EOF */

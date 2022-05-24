@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_ENGINE_GUI_GAME_DELTA_RECORDER_HPP
 #define HEADER_PINGUS_ENGINE_GUI_GAME_DELTA_RECORDER_HPP
 
+namespace pingus {
+
 class GameDeltaRecorder
 {
 private:
@@ -25,6 +27,8 @@ private:
   GameDeltaRecorder ();
   GameDelta* get ();
 };
+
+} // namespace pingus
 
 #endif
 

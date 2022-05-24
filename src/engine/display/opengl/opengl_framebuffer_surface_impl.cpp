@@ -18,6 +18,8 @@
 
 #include <assert.h>
 
+namespace pingus {
+
 namespace {
 
 inline int next_power_of_two(int val)
@@ -85,5 +87,7 @@ OpenGLFramebufferSurfaceImpl::~OpenGLFramebufferSurfaceImpl()
 {
   glDeleteTextures(1, &m_handle);
 }
+
+} // namespace pingus
 
 /* EOF */

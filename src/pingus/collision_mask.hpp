@@ -21,6 +21,8 @@
 
 #include "engine/display/surface.hpp"
 
+namespace pingus {
+
 class ResDescriptor;
 
 class CollisionMask
@@ -51,6 +53,8 @@ private:
   CollisionMask(const CollisionMask&);
   CollisionMask & operator=(const CollisionMask&);
 };
+
+} // namespace pingus
 
 #endif
 

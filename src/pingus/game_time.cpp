@@ -21,6 +21,8 @@
 #include "gettext.h"
 #include "pingus/globals.hpp"
 
+namespace pingus {
+
 int
 GameTime::seconds_to_ticks(int seconds)
 {
@@ -73,5 +75,7 @@ GameTime::ticks_to_realtime_string(int ticks)
     return time_str;
   }
 }
+
+} // namespace pingus
 
 /* EOF */

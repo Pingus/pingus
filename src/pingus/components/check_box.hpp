@@ -22,6 +22,8 @@
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
 
+namespace pingus {
+
 class CheckBox : public pingus::gui::RectComponent
 {
 private:
@@ -45,6 +47,8 @@ private:
   CheckBox (const CheckBox&);
   CheckBox& operator= (const CheckBox&);
 };
+
+} // namespace pingus
 
 #endif
 

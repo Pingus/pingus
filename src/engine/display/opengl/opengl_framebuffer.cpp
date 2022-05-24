@@ -26,6 +26,8 @@
 #include "engine/display/opengl/opengl_framebuffer_surface_impl.hpp"
 #include "util/raise_exception.hpp"
 
+namespace pingus {
+
 OpenGLFramebuffer::OpenGLFramebuffer() :
   m_window(),
   m_glcontext(),
@@ -326,5 +328,7 @@ OpenGLFramebuffer::get_size() const
   SDL_GetWindowSize(m_window, &w, &h);
   return Size(w, h);
 }
+
+} // namespace pingus
 
 /* EOF */

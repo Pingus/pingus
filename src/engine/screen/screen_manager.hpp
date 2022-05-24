@@ -24,16 +24,9 @@
 #include "engine/input/controller.hpp"
 #include "engine/display/sprite.hpp"
 #include "math/vector2f.hpp"
+#include "fwd.hpp"
 
-namespace pingus::input {
-class Manager;
-struct Event;
-class Controller;
-}
-
-class FPSCounter;
-class DrawingContext;
-class Screen;
+namespace pingus {
 
 typedef std::shared_ptr<Screen> ScreenPtr;
 
@@ -102,6 +95,8 @@ private:
   ScreenManager (const ScreenManager&);
   ScreenManager& operator= (const ScreenManager&);
 };
+
+} // namespace pingus
 
 #endif
 

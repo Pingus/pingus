@@ -20,6 +20,8 @@
 #include "engine/display/font.hpp"
 #include "engine/screen/screen.hpp"
 
+namespace pingus {
+
 class Pathname;
 
 class FontTestScreen : public Screen
@@ -41,6 +43,8 @@ private:
   FontTestScreen (const FontTestScreen&);
   FontTestScreen& operator= (const FontTestScreen&);
 };
+
+} // namespace pingus
 
 #endif
 

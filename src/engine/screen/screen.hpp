@@ -18,10 +18,9 @@
 #define HEADER_PINGUS_ENGINE_SCREEN_SCREEN_HPP
 
 #include "math/size.hpp"
+#include "fwd.hpp"
 
-namespace pingus::input {
-struct Event;
-}
+namespace pingus {
 
 class DrawingContext;
 
@@ -56,6 +55,8 @@ private:
   Screen (const Screen&);
   Screen& operator= (const Screen&);
 };
+
+} // namespace pingus
 
 #endif
 

@@ -26,6 +26,8 @@
 #include "pingus/savegame_manager.hpp"
 #include "util/raise_exception.hpp"
 
+namespace pingus {
+
 std::unique_ptr<Levelset>
 Levelset::from_directory(const std::string& title,
                          const std::string& description,
@@ -293,5 +295,7 @@ Levelset::refresh()
     m_completion = std::clamp(m_completion * 100 / int(m_levels.size()), 0, 100);
   }
 }
+
+} // namespace pingus
 
 /* EOF */

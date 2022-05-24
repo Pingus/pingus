@@ -26,6 +26,8 @@
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/sprite.hpp"
 
+namespace pingus {
+
 struct DrawingRequestsSorter
 {
   bool operator()(DrawingRequest* a, DrawingRequest* b) {
@@ -401,5 +403,7 @@ DrawingContext::world_to_screen(const Vector2i& pos)
   return pos + geom::ioffset(translate_stack.back().x() + rect.left(),
                              translate_stack.back().y() + rect.top());
 }
+
+} // namespace pingus
 
 /* EOF */

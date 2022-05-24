@@ -21,6 +21,8 @@
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 
+namespace pingus {
+
 AddOnMenu::AddOnMenu() :
   background(),
   ok_button()
@@ -62,5 +64,7 @@ AddOnMenu::on_escape_press()
   //log_info("OptionMenu: poping screen");
   ScreenManager::instance()->pop_screen();
 }
+
+} // namespace pingus
 
 /* EOF */

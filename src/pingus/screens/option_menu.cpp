@@ -35,6 +35,8 @@
 
 #define C(x) connections.push_back(x)
 
+namespace pingus {
+
 class OptionMenuCloseButton
   : public pingus::gui::SurfaceButton
 {
@@ -478,5 +480,7 @@ OptionMenu::on_renderer_change(const std::string& str)
 {
   config_manager.set_renderer(framebuffer_type_from_string(str));
 }
+
+} // namespace pingus
 
 /* EOF */

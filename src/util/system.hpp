@@ -21,6 +21,8 @@
 #include <string>
 #include <vector>
 
+namespace pingus {
+
 class Pathname;
 
 /** A wrapper class around some system dependend functions (mostly
@@ -122,6 +124,8 @@ private:
   System (const System&);
   System& operator= (const System&);
 };
+
+} // namespace pingus
 
 #endif
 

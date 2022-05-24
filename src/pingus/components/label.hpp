@@ -19,6 +19,8 @@
 
 #include "engine/gui/rect_component.hpp"
 
+namespace pingus {
+
 class Label : public pingus::gui::RectComponent
 {
 private:
@@ -34,6 +36,8 @@ private:
   Label (const Label&);
   Label& operator= (const Label&);
 };
+
+} // namespace pingus
 
 #endif
 

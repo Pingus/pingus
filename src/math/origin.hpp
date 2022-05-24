@@ -36,9 +36,13 @@
 #include <geom/origin.hpp>
 #include "math/vector2i.hpp"
 
+namespace pingus {
+
 using Origin = geom::origin;
 
 Origin string2origin(const std::string& str);
 std::string origin2string(Origin origin);
+
+} // namespace pingus
 
 #endif

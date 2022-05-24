@@ -22,6 +22,8 @@
 #include <sstream>
 #include <fmt/format.h>
 
+namespace pingus {
+
 /** Simple class to allow a distinction of paths that refer to the
  *  filesystem and paths that refer to the datadir, it also hides
  *  path_manager from the rest of the code. */
@@ -86,8 +88,10 @@ public:
 
 std::ostream& operator<< (std::ostream& os, const Pathname& p);
 
+} // namespace pingus
+
 template<>
-struct fmt::formatter<Pathname>
+struct fmt::formatter<pingus::Pathname>
 {
   template<typename ParseContext>
   constexpr auto parse(ParseContext& ctx)
@@ -96,7 +100,7 @@ struct fmt::formatter<Pathname>
   }
 
   template<typename FormatContext>
-  auto format(Pathname const& v, FormatContext& ctx)
+  auto format(pingus::Pathname const& v, FormatContext& ctx)
   {
     std::ostringstream os;
     os << v;

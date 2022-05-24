@@ -18,6 +18,8 @@
 
 #include "engine/display/framebuffer.hpp"
 
+namespace pingus {
+
 #if 0
 # define SCALE_FACTOR 8.0f
 #endif
@@ -194,5 +196,7 @@ SceneContextDrawingRequest::render(Framebuffer& fb, const Rect& rect)
 {
   sc->render(fb, rect);
 }
+
+} // namespace pingus
 
 /* EOF */

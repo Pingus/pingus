@@ -23,6 +23,8 @@
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 
+namespace pingus {
+
 PingusCounter::PingusCounter(Server* s) :
   server(s),
   font(),
@@ -47,5 +49,7 @@ PingusCounter::draw(DrawingContext& gc)
 
   gc.print_center(font, Vector2i(gc.get_width()/2, -2), text);
 }
+
+} // namespace pingus
 
 /* EOF */

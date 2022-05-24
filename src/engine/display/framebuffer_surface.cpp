@@ -16,6 +16,8 @@
 
 #include "engine/display/framebuffer_surface.hpp"
 
+namespace pingus {
+
 FramebufferSurface::FramebufferSurface() :
   impl()
 {
@@ -79,5 +81,7 @@ FramebufferSurface::use_count() const
 {
   return impl.use_count();
 }
+
+} // namespace pingus
 
 /* EOF */

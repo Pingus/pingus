@@ -21,6 +21,8 @@
 #include <geom/fwd.hpp>
 #include "util/reader.hpp"
 
+namespace pingus {
+
 class Pathname;
 class PingusLevelImpl;
 
@@ -85,6 +87,8 @@ private:
 protected:
   std::shared_ptr<PingusLevelImpl> impl;
 };
+
+} // namespace pingus
 
 #endif
 

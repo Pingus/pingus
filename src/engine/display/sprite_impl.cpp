@@ -22,6 +22,8 @@
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/sprite_description.hpp"
 
+namespace pingus {
+
 namespace {
 
 FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifier::Enum modifier)
@@ -167,5 +169,7 @@ SpriteImpl::finish()
 {
   finished = true;
 }
+
+} // namespace pingus
 
 /* EOF */

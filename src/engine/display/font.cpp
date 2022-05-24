@@ -26,6 +26,8 @@
 #include "engine/display/font_description.hpp"
 #include "engine/display/framebuffer.hpp"
 
+namespace pingus {
+
 class FontImpl
 {
 public:
@@ -243,5 +245,7 @@ Font::bounding_rect(int x, int y, const std::string& str) const
   else
     return Rect();
 }
+
+} // namespace pingus
 
 /* EOF */

@@ -19,7 +19,7 @@
 
 #include "engine/input/event.hpp"
 
-class DrawingContext;
+#include "fwd.hpp"
 
 namespace pingus::gui {
 

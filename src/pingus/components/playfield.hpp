@@ -23,6 +23,8 @@
 #include "engine/gui/rect_component.hpp"
 #include "pingus/capture_rectangle.hpp"
 
+namespace pingus {
+
 class Pingu;
 class World;
 class Server;
@@ -84,6 +86,8 @@ private:
   Playfield (const Playfield&);
   Playfield& operator= (const Playfield&);
 };
+
+} // namespace pingus
 
 #endif
 

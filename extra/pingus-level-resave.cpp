@@ -15,6 +15,8 @@
 #include "pingus/resource.hpp"
 #include "util/raise_exception.hpp"
 
+using namespace pingus;
+
 enum class Syntax { FASTJSON, JSON, SEXPR };
 
 struct ResaveOptions

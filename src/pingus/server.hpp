@@ -22,6 +22,8 @@
 #include "pingus/server_event.hpp"
 #include <memory>
 
+namespace pingus {
+
 class Pingu;
 class World;
 class DemoRecorder;
@@ -69,6 +71,8 @@ private:
   Server (const Server&);
   Server& operator= (const Server&);
 };
+
+} // namespace pingus
 
 #endif
 

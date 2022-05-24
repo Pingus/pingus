@@ -23,6 +23,8 @@
 
 #include "util/reader.hpp"
 
+namespace pingus {
+
 /** The Savegame class holds savegame informations for a single
     level */
 class Savegame
@@ -62,6 +64,8 @@ public:
   int get_needed_time() const  { return needed_time;  }
   int get_saved_pingus() const { return saved_pingus; }
 };
+
+} // namespace pingus
 
 #endif
 

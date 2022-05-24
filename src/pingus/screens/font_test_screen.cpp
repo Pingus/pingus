@@ -25,6 +25,8 @@
 #include "engine/input/event.hpp"
 #include "pingus/fonts.hpp"
 
+namespace pingus {
+
 FontTestScreen::FontTestScreen(const Pathname& fontfile) :
   Screen(Display::get_size()),
   font(),
@@ -119,5 +121,7 @@ FontTestScreen::update_input(const pingus::input::Event& event)
       break;
   }
 }
+
+} // namespace pingus
 
 /* EOF */

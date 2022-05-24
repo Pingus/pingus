@@ -21,6 +21,8 @@
 #include "engine/display/sprite.hpp"
 #include "engine/gui/component.hpp"
 
+namespace pingus {
+
 class Font;
 class Server;
 class GameSession;
@@ -42,6 +44,8 @@ private:
   TimeDisplay (const TimeDisplay&);
   TimeDisplay& operator= (const TimeDisplay&);
 };
+
+} // namespace pingus
 
 #endif
 

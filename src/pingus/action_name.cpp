@@ -18,6 +18,8 @@
 
 #include "gettext.h"
 
+namespace pingus {
+
 namespace ActionName {
 
 std::string to_screenname(Enum action)
@@ -109,5 +111,7 @@ Enum from_string(const std::string& action)
 }
 
 } // namespace ActionName
+
+} // namespace pingus
 
 /* EOF */

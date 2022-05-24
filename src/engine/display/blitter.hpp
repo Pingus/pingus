@@ -19,6 +19,8 @@
 
 #include <SDL.h>
 
+namespace pingus {
+
 class Surface;
 
 /** A bunch of blitting and creation functions to operate on Surface.  */
@@ -63,7 +65,8 @@ private:
   Blitter& operator= (const Blitter&);
 };
 
+} // namespace pingus
+
 #endif
 
 /* EOF */
-

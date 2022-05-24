@@ -22,6 +22,8 @@
 
 #include <prio/fwd.hpp>
 
+namespace pingus {
+
 class Server;
 
 /** This class represents an event that the Server can recieve from
@@ -80,6 +82,8 @@ public:
       action to a Pingu */
   static ServerEvent make_pingu_action_event(int t, unsigned int id, const Vector2f& pos, ActionName::Enum action);
 };
+
+} // namespace pingus
 
 #endif
 

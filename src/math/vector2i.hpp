@@ -21,7 +21,11 @@
 #include <sstream>
 #include <geom/point.hpp>
 
+namespace pingus {
+
 using Vector2i = geom::ipoint;
+
+} // namespace pingus
 
 #endif
 

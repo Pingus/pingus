@@ -21,6 +21,8 @@
 #include "pingus/prefab_file.hpp"
 #include "math/vector2f.hpp"
 
+namespace pingus {
+
 WorldObjRenderer::WorldObjRenderer() :
   m_draw_op(),
   m_translate_stack()
@@ -268,5 +270,7 @@ WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
     }
   }
 }
+
+} // namespace pingus
 
 /* EOF */

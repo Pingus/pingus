@@ -16,6 +16,8 @@
 
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
 
+namespace pingus {
+
 SDLFramebufferSurfaceImpl::SDLFramebufferSurfaceImpl(SDL_Renderer* renderer, SDL_Surface* src) :
   m_texture(SDL_CreateTextureFromSurface(renderer, src)),
   m_width(src->w),
@@ -27,5 +29,7 @@ SDLFramebufferSurfaceImpl::~SDLFramebufferSurfaceImpl()
 {
   SDL_DestroyTexture(m_texture);
 }
+
+} // namespace pingus
 
 /* EOF */

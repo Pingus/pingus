@@ -20,6 +20,8 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/collision_mask.hpp"
 
+namespace pingus {
+
 CollisionMap::CollisionMap(int w, int h) :
   serial(0),
   width(w),
@@ -215,5 +217,7 @@ CollisionMap::get_serial() const
 {
   return serial;
 }
+
+} // namespace pingus
 
 /* EOF */

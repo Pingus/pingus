@@ -21,17 +21,21 @@
 #include <geom/size.hpp>
 #include <geom/rect.hpp>
 
+namespace pingus {
+
 using Writer = prio::Writer;
 
 class OutVector2fZ;
 class Color;
 class Colorf;
 
+} // namespace pingus
+
 namespace prio {
 
-template<> void write_custom(prio::Writer& writer, std::string_view key, OutVector2fZ const& value);
-template<> void write_custom(prio::Writer& writer, std::string_view key, Color const& value);
-template<> void write_custom(prio::Writer& writer, std::string_view key, Colorf const& value);
+template<> void write_custom(prio::Writer& writer, std::string_view key, pingus::OutVector2fZ const& value);
+template<> void write_custom(prio::Writer& writer, std::string_view key, pingus::Color const& value);
+template<> void write_custom(prio::Writer& writer, std::string_view key, pingus::Colorf const& value);
 template<> void write_custom(prio::Writer& writer, std::string_view key, geom::ipoint const& value);
 template<> void write_custom(prio::Writer& writer, std::string_view key, geom::isize const& value);
 template<> void write_custom(prio::Writer& writer, std::string_view key, geom::irect const& value);

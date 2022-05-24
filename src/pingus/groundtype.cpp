@@ -18,6 +18,8 @@
 
 #include <logmich/log.hpp>
 
+namespace pingus {
+
 Groundtype::GPType
 Groundtype::string_to_type(const std::string& arg_type)
 {
@@ -66,5 +68,7 @@ Groundtype::type_to_string(GPType arg_type)
       return "ground";
   }
 }
+
+} // namespace pingus
 
 /* EOF */

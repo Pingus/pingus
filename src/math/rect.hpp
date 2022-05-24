@@ -40,7 +40,11 @@
 #include "math/vector2i.hpp"
 #include "math/size.hpp"
 
+namespace pingus {
+
 using Rect = geom::irect;
+
+} // namespace pingus
 
 #endif
 

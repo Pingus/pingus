@@ -56,6 +56,8 @@
 #include "util/pathname.hpp"
 #include "util/raise_exception.hpp"
 
+namespace pingus {
+
 std::string System::userdir;
 std::string System::default_email;
 std::string System::default_username;
@@ -762,5 +764,7 @@ System::write_file(const std::string& filename, const std::string& content)
   }
 #endif
 }
+
+} // namespace pingus
 
 /* EOF */

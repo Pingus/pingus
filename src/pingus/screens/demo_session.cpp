@@ -34,6 +34,8 @@
 #include "pingus/server.hpp"
 #include "pingus/world.hpp"
 
+namespace pingus {
+
 static bool false_func() { return false; }
 
 class BButton : public pingus::gui::SurfaceButton
@@ -280,5 +282,7 @@ DemoSession::resize(const Size& size_)
 
   small_map->set_rect(Rect(geom::ipoint(5, size.height() - 105), Size(175, 100)));
 }
+
+} // namespace pingus
 
 /* EOF */

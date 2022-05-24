@@ -20,6 +20,8 @@
 
 #include "util/writer.hpp"
 
+namespace pingus {
+
 std::string
 Savegame::status_to_string(S_Status status)
 {
@@ -96,5 +98,7 @@ Savegame::write_sexpr(Writer& writer)
   writer.write("saved-pingus", saved_pingus);
   writer.end_mapping();
 }
+
+} // namespace pingus
 
 /* EOF */

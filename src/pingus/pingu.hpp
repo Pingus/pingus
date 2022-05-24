@@ -23,10 +23,9 @@
 #include "math/vector2f.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/action_name.hpp"
+#include "fwd.hpp"
 
-class ActionHolder;
-class PinguAction;
-class SceneContext;
+namespace pingus {
 
 /** The class for managing one of the many penguins which are walking
     around in the World. All actions are handled by PinguAction
@@ -231,6 +230,8 @@ private:
   Pingu (const Pingu&);
   Pingu& operator= (const Pingu&);
 };
+
+} // namespace pingus
 
 #endif
 

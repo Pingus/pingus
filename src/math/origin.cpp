@@ -31,6 +31,8 @@
 
 #include "math/origin.hpp"
 
+namespace pingus {
+
 Origin string2origin(const std::string& str)
 {
   if (str == "top_left")
@@ -92,6 +94,7 @@ std::string origin2string(Origin origin)
   }
 }
 
+} // namespace pingus
 
 /* EOF */
 
