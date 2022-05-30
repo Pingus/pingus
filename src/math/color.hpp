@@ -37,7 +37,7 @@ public:
     : r(r_), g(g_), b(b_), a(a_)
   {}
 
-  bool operator==(const Color& rhs) const {
+  bool operator==(Color const& rhs) const {
     return
       r == rhs.r &&
       g == rhs.g &&

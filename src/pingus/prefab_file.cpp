@@ -25,7 +25,7 @@
 namespace pingus {
 
 PrefabFile
-PrefabFile::from_path(const Pathname& filename)
+PrefabFile::from_path(Pathname const& filename)
 {
   auto doc = prio::ReaderDocument::from_file(filename.get_sys_path());
   if (doc.get_name() != "pingus-prefab") {
@@ -36,7 +36,7 @@ PrefabFile::from_path(const Pathname& filename)
 }
 
 PrefabFile
-PrefabFile::from_resource(const std::string& name)
+PrefabFile::from_resource(std::string const& name)
 {
   Pathname filename(name + ".prefab", Pathname::DATA_PATH);
   return from_path(filename);

@@ -21,7 +21,7 @@
 #include <string>
 #include <stdexcept>
 
-inline std::string raise_log_pretty_print(const std::string& str)
+inline std::string raise_log_pretty_print(std::string const& str)
 {
   // FIXME: very basic, might not work with complex return types
   std::string::size_type function_start = 0;

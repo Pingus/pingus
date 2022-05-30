@@ -34,11 +34,11 @@ private:
   int  count;
 
 public:
-  Smasher(const ReaderMapping& reader);
+  Smasher(ReaderMapping const& reader);
 
   float z_index () const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector2f& p) override { pos = p; }
+  void set_pos(Vector2f const& p) override { pos = p; }
   Vector2f get_pos() const override { return pos; }
 
   void draw (SceneContext& gc) override;
@@ -49,8 +49,8 @@ protected:
   void catch_pingu (Pingu* pingu);
 
 private:
-  Smasher (const Smasher&);
-  Smasher& operator= (const Smasher&);
+  Smasher (Smasher const&);
+  Smasher& operator= (Smasher const&);
 };
 
 } // namespace pingus::worldobjs

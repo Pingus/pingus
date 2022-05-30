@@ -174,8 +174,8 @@ public:
   }
 
 private:
-  Pathfinder (const Pathfinder&);
-  Pathfinder operator= (const Pathfinder&);
+  Pathfinder (Pathfinder const&);
+  Pathfinder operator= (Pathfinder const&);
 };
 
 } // namespace pingus::worldmap

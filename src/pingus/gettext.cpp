@@ -21,11 +21,11 @@
 
 tinygettext::DictionaryManager dictionary_manager(std::make_unique<tinygettext::UnixFileSystem>());
 
-std::string _(const std::string& msg) {
+std::string _(std::string const& msg) {
   return dictionary_manager.get_dictionary().translate(msg);
 }
 
-std::string _(const std::string& msg, const std::string& msg_pl, int num) {
+std::string _(std::string const& msg, std::string const& msg_pl, int num) {
   return dictionary_manager.get_dictionary().translate_plural(msg, msg_pl, num);
 }
 

@@ -61,11 +61,11 @@ public:
   }
 
 private:
-  CreditsOkButton(const CreditsOkButton&);
-  CreditsOkButton & operator=(const CreditsOkButton&);
+  CreditsOkButton(CreditsOkButton const&);
+  CreditsOkButton & operator=(CreditsOkButton const&);
 };
 
-Credits::Credits(const Pathname& filename) :
+Credits::Credits(Pathname const& filename) :
   scene_context(),
   fast_scrolling(false),
   background("core/menu/wood"),

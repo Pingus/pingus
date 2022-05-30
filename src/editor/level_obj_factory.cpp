@@ -23,7 +23,7 @@
 namespace pingus::editor {
 
 LevelObjPtr
-LevelObjFactory::create(const ReaderObject& reader_object)
+LevelObjFactory::create(ReaderObject const& reader_object)
 {
   if (reader_object.get_name() == "group")
   {

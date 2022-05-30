@@ -39,19 +39,19 @@ PathManager::~PathManager()
 }
 
 void
-PathManager::add_overlay_path(const std::string& path)
+PathManager::add_overlay_path(std::string const& path)
 {
   m_paths.push_back(System::normalize_path(path));
 }
 
 void
-PathManager::set_path(const std::string& path)
+PathManager::set_path(std::string const& path)
 {
   m_base_path = path;
 }
 
 std::string
-PathManager::complete(const std::string& relative_path)
+PathManager::complete(std::string const& relative_path)
 {
   for(auto it = m_paths.rbegin(); it != m_paths.rend(); ++it)
   {

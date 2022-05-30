@@ -35,7 +35,7 @@ private:
   PingusLevel plf;
 
 public:
-  LevelDot(const ReaderMapping& reader);
+  LevelDot(ReaderMapping const& reader);
 
   void draw(DrawingContext& gc) override;
   void draw_hover(DrawingContext& gc) override;
@@ -49,8 +49,8 @@ public:
   void unlock() override;
 
 private:
-  LevelDot (const LevelDot&);
-  LevelDot& operator= (const LevelDot&);
+  LevelDot (LevelDot const&);
+  LevelDot& operator= (LevelDot const&);
 };
 
 } // namespace pingus::worldmap

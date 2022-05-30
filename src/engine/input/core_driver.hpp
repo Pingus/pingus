@@ -35,15 +35,15 @@ public:
   std::string get_name() const override { return "core"; }
   void update(float delta) override {}
 
-  std::unique_ptr<Button> create_button(const ReaderObject& reader, Control* parent) override;
-  std::unique_ptr<Axis> create_axis(const ReaderObject& reader, Control* parent) override;
-  std::unique_ptr<Scroller> create_scroller(const ReaderObject& reader, Control* parent) override;
-  std::unique_ptr<Pointer> create_pointer (const ReaderObject& reader, Control* parent) override;
-  std::unique_ptr<Keyboard> create_keyboard(const ReaderObject& reader, Control* parent) override;
+  std::unique_ptr<Button> create_button(ReaderObject const& reader, Control* parent) override;
+  std::unique_ptr<Axis> create_axis(ReaderObject const& reader, Control* parent) override;
+  std::unique_ptr<Scroller> create_scroller(ReaderObject const& reader, Control* parent) override;
+  std::unique_ptr<Pointer> create_pointer (ReaderObject const& reader, Control* parent) override;
+  std::unique_ptr<Keyboard> create_keyboard(ReaderObject const& reader, Control* parent) override;
 
 private:
-  CoreDriver(const CoreDriver&);
-  CoreDriver & operator=(const CoreDriver&);
+  CoreDriver(CoreDriver const&);
+  CoreDriver & operator=(CoreDriver const&);
 };
 
 } // namespace pingus::input

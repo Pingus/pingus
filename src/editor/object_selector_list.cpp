@@ -26,7 +26,7 @@
 
 namespace pingus::editor {
 
-ObjectSelectorList::ObjectSelectorList(EditorScreen* editor_, ObjectSelector* object_selector_, const Rect& rect_) :
+ObjectSelectorList::ObjectSelectorList(EditorScreen* editor_, ObjectSelector* object_selector_, Rect const& rect_) :
   RectComponent(rect_),
   editor(editor_),
   object_selector(object_selector_),

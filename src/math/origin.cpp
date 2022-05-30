@@ -33,7 +33,7 @@
 
 namespace pingus {
 
-Origin string2origin(const std::string& str)
+Origin string2origin(std::string const& str)
 {
   if (str == "top_left")
     return Origin::TOP_LEFT;

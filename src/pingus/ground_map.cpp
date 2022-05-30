@@ -36,10 +36,10 @@ public:
   MapTile();
   ~MapTile();
 
-  void remove(const Surface&, int x, int y, int real_x, int real_y, GroundMap*);
-  void put(const Surface&, int x, int y);
+  void remove(Surface const&, int x, int y, int real_x, int real_y, GroundMap*);
+  void put(Surface const&, int x, int y);
 
-  const Sprite& get_sprite();
+  Sprite const& get_sprite();
 };
 
 MapTile::MapTile () :
@@ -54,7 +54,7 @@ MapTile::~MapTile()
 }
 
 void
-MapTile::remove(const Surface& src, int x, int y,
+MapTile::remove(Surface const& src, int x, int y,
                 int real_x, int real_y, GroundMap* parent)
 {
   if (surface)
@@ -65,7 +65,7 @@ MapTile::remove(const Surface& src, int x, int y,
 }
 
 void
-MapTile::put(const Surface& src, int x, int y)
+MapTile::put(Surface const& src, int x, int y)
 {
   if (!surface)
     surface = Surface(globals::tile_size, globals::tile_size);
@@ -74,7 +74,7 @@ MapTile::put(const Surface& src, int x, int y)
   sprite_needs_update = true;
 }
 
-const Sprite&
+Sprite const&
 MapTile::get_sprite()
 {
   if (sprite_needs_update)
@@ -132,7 +132,7 @@ GroundMap::draw_colmap(SceneContext& gc)
 void
 GroundMap::draw(SceneContext& gc)
 {
-  const Rect& display = gc.color().get_world_clip_rect();
+  Rect const& display = gc.color().get_world_clip_rect();
 
   if (globals::draw_collision_map)
     draw_colmap(gc);
@@ -181,7 +181,7 @@ GroundMap::get_height() const
 }
 
 void
-GroundMap::remove(const Surface& sprovider, int x, int y)
+GroundMap::remove(Surface const& sprovider, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = std::max(x / globals::tile_size, 0);
@@ -297,7 +297,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
 }
 
 void
-GroundMap::put(const Surface& source, int x, int y)
+GroundMap::put(Surface const& source, int x, int y)
 {
   // Get the start tile and end tile
   int start_x = std::max(0, x / globals::tile_size);

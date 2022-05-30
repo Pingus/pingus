@@ -31,16 +31,16 @@ class Font
 {
 public:
   Font();
-  Font(const FontDescription& desc);
+  Font(FontDescription const& desc);
 
-  void render(int x, int y, const std::string& text, Framebuffer& fb);
-  void render(Origin origin, int x, int y, const std::string& text, Framebuffer& fb);
+  void render(int x, int y, std::string const& text, Framebuffer& fb);
+  void render(Origin origin, int x, int y, std::string const& text, Framebuffer& fb);
 
   int  get_height() const;
   float get_width(uint32_t unicode) const;
-  float get_width(const std::string& text) const;
-  Size get_size(const std::string& text) const;
-  Rect bounding_rect(int , int, const std::string& str) const;
+  float get_width(std::string const& text) const;
+  Size get_size(std::string const& text) const;
+  Rect bounding_rect(int , int, std::string const& str) const;
 
 private:
   std::shared_ptr<FontImpl> impl;

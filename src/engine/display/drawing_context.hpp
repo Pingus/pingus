@@ -51,11 +51,11 @@ private:
 
 public:
   DrawingContext();
-  DrawingContext(const Rect& rect, bool clip = true);
+  DrawingContext(Rect const& rect, bool clip = true);
   virtual ~DrawingContext();
 
   /** Draws everything in the drawing context to the target */
-  void render(Framebuffer& fb, const Rect& rect);
+  void render(Framebuffer& fb, Rect const& rect);
 
   /** Empties the drawing context */
   void clear();
@@ -69,17 +69,17 @@ public:
       worth a try */
   void draw(DrawingContext& dc, float z = 0);
 
-  void draw(const Sprite& sprite, const Vector2i& pos, float z = 0);
-  void draw(const Sprite& sprite, const Vector2f& pos, float z = 0);
+  void draw(Sprite const& sprite, Vector2i const& pos, float z = 0);
+  void draw(Sprite const& sprite, Vector2f const& pos, float z = 0);
 
   /** Fills the screen with a given color, this is different from
       clear() in that it doesn't remove other DrawingRequest from the
       queue */
-  void fill_screen(const Color& color);
+  void fill_screen(Color const& color);
 
-  void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color, float z = 0);
-  void draw_fillrect(const Rect& rect, const Color& color, float z = 0);
-  void draw_rect(const Rect& rect, const Color& color, float z = 0);
+  void draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color, float z = 0);
+  void draw_fillrect(Rect const& rect, Color const& color, float z = 0);
+  void draw_rect(Rect const& rect, Color const& color, float z = 0);
   /*} */
 
   /** Translate the drawing context */
@@ -92,29 +92,29 @@ public:
   /** Return the area of the screen that will be visible*/
   Rect get_world_clip_rect() const;
 
-  void set_rect(const Rect& rect);
+  void set_rect(Rect const& rect);
   Rect get_rect() const;
 
   int get_width() const;
   int get_height() const;
 
   /** Print a text left aligned */
-  void print_left(const Font& font, const Vector2i& pos, const std::string& str, float z = 0.0f);
+  void print_left(Font const& font, Vector2i const& pos, std::string const& str, float z = 0.0f);
 
   /** Print a text centred to the given position */
-  void print_center(const Font& font, const Vector2i& pos, const std::string& str, float z = 0.0f);
+  void print_center(Font const& font, Vector2i const& pos, std::string const& str, float z = 0.0f);
 
   /** Print a text right aligned */
-  void print_right(const Font& font, const Vector2i& pos, const std::string& str, float z = 0.0f);
+  void print_right(Font const& font, Vector2i const& pos, std::string const& str, float z = 0.0f);
 
-  Vector2i screen_to_world(const Vector2i& pos);
-  Vector2i world_to_screen(const Vector2i& pos);
+  Vector2i screen_to_world(Vector2i const& pos);
+  Vector2i world_to_screen(Vector2i const& pos);
 
   void update_layout() {}
 
 private:
-  DrawingContext (const DrawingContext&);
-  DrawingContext& operator= (const DrawingContext&);
+  DrawingContext (DrawingContext const&);
+  DrawingContext& operator= (DrawingContext const&);
 };
 
 } // namespace pingus

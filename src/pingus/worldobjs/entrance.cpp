@@ -26,7 +26,7 @@
 
 namespace pingus::worldobjs {
 
-Entrance::Entrance(const ReaderMapping& reader) :
+Entrance::Entrance(ReaderMapping const& reader) :
   direction(MISC),
   pos(),
   m_z_index(0.0f),

@@ -93,7 +93,7 @@ public:
       @param arg_id The uniq id of the pingu
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
-  Pingu(unsigned int arg_id, const Vector2f& pos, int owner);
+  Pingu(unsigned int arg_id, Vector2f const& pos, int owner);
 
   /** Destruct the pingu... */
   ~Pingu ();
@@ -110,11 +110,11 @@ public:
   /** Returns the x position of the pingu
    * For backward comp. only
    */
-  const float& get_x () const { return pos_x; }
+  float const& get_x () const { return pos_x; }
 
   /** Returns the y position of the pingu
       For backward comp. only */
-  const float& get_y () const { return pos_y; }
+  float const& get_y () const { return pos_y; }
 
   int get_xi () const { return static_cast<int>(pos_x); }
   int get_yi () const { return static_cast<int>(pos_y); }
@@ -144,13 +144,13 @@ public:
   void set_y (float y);
 
   /// Set the pingu to the given coordinates
-  void set_pos (const Vector2f& arg_pos);
+  void set_pos (Vector2f const& arg_pos);
 
   glm::vec2 get_velocity () const { return velocity; }
   void set_velocity (glm::vec2 const& velocity_);
 
   // Set the pingu in the gives direction
-  void set_direction (const Direction& d);
+  void set_direction (Direction const& d);
 
   /** Request an action to be set to the pingu, if its a persistent
       action, it will be hold back for later execution, same with a
@@ -188,7 +188,7 @@ public:
   bool need_catch ();
 
   void draw (SceneContext& gc);
-  void apply_force(const glm::vec2&);
+  void apply_force(glm::vec2 const&);
 
   void update();
 
@@ -227,8 +227,8 @@ public:
   ActionName::Enum get_previous_action() const { return previous_action; }
 
 private:
-  Pingu (const Pingu&);
-  Pingu& operator= (const Pingu&);
+  Pingu (Pingu const&);
+  Pingu& operator= (Pingu const&);
 };
 
 } // namespace pingus

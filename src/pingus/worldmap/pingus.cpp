@@ -133,7 +133,7 @@ Pingus::walk_to_node (NodeId target)
   }
   else if (current_node != NoNode) // pingu stands still
   {
-    const PathfinderResult& res = path->get_path (current_node, target);
+    PathfinderResult const& res = path->get_path (current_node, target);
 
     if (res.path.empty())
     {
@@ -171,8 +171,8 @@ Pingus::walk_to_node (NodeId target)
     }
     else
     {
-      const PathfinderResult& node_path1 = path->get_path (source_node, target);
-      const PathfinderResult& node_path2 = path->get_path (target_node, target);
+      PathfinderResult const& node_path1 = path->get_path (source_node, target);
+      PathfinderResult const& node_path2 = path->get_path (target_node, target);
 
       // Check that a path exist
       if (node_path1.path.empty())

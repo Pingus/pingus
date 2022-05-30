@@ -39,7 +39,7 @@ WorldObjRenderer::blit(Surface& out_surface, int off_x, int off_y)
 }
 
 void
-WorldObjRenderer::blit_surface(const Surface& surface, int x, int y)
+WorldObjRenderer::blit_surface(Surface const& surface, int x, int y)
 {
   Vector2i offset = get_translate();
   m_draw_op.push_back(DrawOp{surface, Vector2i(x + offset.x(), y + offset.y())});
@@ -98,8 +98,8 @@ WorldObjRenderer::get_clip_rect() const
 }
 
 void
-WorldObjRenderer::render_sprite(const ResDescriptor& desc,
-                                const Vector2f& pos,
+WorldObjRenderer::render_sprite(ResDescriptor const& desc,
+                                Vector2f const& pos,
                                 float z_index)
 {
   Surface surface = Resource::load_surface(desc);
@@ -111,8 +111,8 @@ WorldObjRenderer::render_sprite(const ResDescriptor& desc,
 }
 
 void
-WorldObjRenderer::render_surface(const ResDescriptor& desc,
-                                 const Vector2f& pos,
+WorldObjRenderer::render_surface(ResDescriptor const& desc,
+                                 Vector2f const& pos,
                                  float z_index,
                                  int repeat)
 {
@@ -193,7 +193,7 @@ WorldObjRenderer::process(ReaderObject const& reader_object)
     ReaderCollection collection;
     reader.read("objects", collection);
     auto objects = collection.get_objects();
-    for(const auto& obj : objects)
+    for(auto const& obj : objects)
     {
       process(obj);
     }
@@ -226,7 +226,7 @@ WorldObjRenderer::process(ReaderObject const& reader_object)
 }
 
 void
-WorldObjRenderer::process_object_with_surface(const ReaderObject& reader_object)
+WorldObjRenderer::process_object_with_surface(ReaderObject const& reader_object)
 {
   ReaderMapping reader = reader_object.get_mapping();
 

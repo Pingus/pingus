@@ -56,7 +56,7 @@ public:
   /** @param worldmap is a pointer to the worldmap that holds this
       PathGraph, it is used so that the PathGraph can insert its
       drawables into the world */
-  PathGraph(Worldmap* worldmap, const ReaderMapping& reader);
+  PathGraph(Worldmap* worldmap, ReaderMapping const& reader);
 
   ~PathGraph();
 
@@ -72,19 +72,19 @@ public:
   /** Get a node by its position */
   Dot* get_dot(float x, float y);
 
-  EdgeId lookup_edge(const std::string& name);
-  NodeId lookup_node(const std::string& name);
+  EdgeId lookup_edge(std::string const& name);
+  NodeId lookup_node(std::string const& name);
 
   std::string lookup_node(EdgeId id);
   std::string lookup_edge(NodeId id);
 
 private:
-  void parse_nodes(const ReaderCollection& reader);
-  void parse_edges(const ReaderCollection& reader);
+  void parse_nodes(ReaderCollection const& reader);
+  void parse_edges(ReaderCollection const& reader);
   void init_cache();
 
-  PathGraph (const PathGraph&);
-  PathGraph& operator= (const PathGraph&);
+  PathGraph (PathGraph const&);
+  PathGraph& operator= (PathGraph const&);
 };
 
 } // namespace pingus::worldmap

@@ -28,14 +28,14 @@
 
 namespace pingus {
 
-Pathname Pathname::tmpfile(const std::string& prefix)
+Pathname Pathname::tmpfile(std::string const& prefix)
 {
   assert(false && "unimplemented");
   return Pathname();
 }
 
 std::string
-Pathname::join(const std::string& lhs, const std::string& rhs)
+Pathname::join(std::string const& lhs, std::string const& rhs)
 {
   if (lhs.empty())
   {
@@ -60,7 +60,7 @@ Pathname::Pathname() :
 {
 }
 
-Pathname::Pathname(const std::string& pathname_, Type type_)
+Pathname::Pathname(std::string const& pathname_, Type type_)
   : pathname(pathname_), type(type_)
 {
 }
@@ -142,7 +142,7 @@ Pathname::absolute() const
 }
 
 std::vector<Pathname>
-Pathname::opendir(const std::string& pattern) const
+Pathname::opendir(std::string const& pattern) const
 {
   switch(get_type())
   {
@@ -170,7 +170,7 @@ Pathname::opendir(const std::string& pattern) const
             result.insert(Pathname(Pathname::join(pathname, it->name), Pathname::DATA_PATH));
           }
         }
-        catch(const std::exception& err)
+        catch(std::exception const& err)
         {
           log_info("{}", err.what());
         }
@@ -188,7 +188,7 @@ Pathname::opendir(const std::string& pattern) const
           result.push_back(Pathname(it->name, Pathname::SYSTEM_PATH));
         }
       }
-      catch(const std::exception& err)
+      catch(std::exception const& err)
       {
         log_info("{}", err.what());
       }
@@ -255,7 +255,7 @@ Pathname::opendir_recursive() const
   return result;
 }
 
-std::ostream& operator<< (std::ostream& os, const Pathname& p)
+std::ostream& operator<< (std::ostream& os, Pathname const& p)
 {
   switch(p.get_type())
   {
@@ -275,13 +275,13 @@ std::ostream& operator<< (std::ostream& os, const Pathname& p)
 }
 
 bool
-Pathname::has_extension(const std::string& ext) const
+Pathname::has_extension(std::string const& ext) const
 {
   return pathname.ends_with(ext);
 }
 
 bool
-Pathname::operator<(const Pathname& rhs) const
+Pathname::operator<(Pathname const& rhs) const
 {
   if (type < rhs.type)
   {
@@ -299,7 +299,7 @@ Pathname::operator<(const Pathname& rhs) const
 }
 
 bool
-Pathname::operator==(const Pathname& rhs) const
+Pathname::operator==(Pathname const& rhs) const
 {
   return type == rhs.type && pathname == rhs.pathname;
 }

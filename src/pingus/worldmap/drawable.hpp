@@ -42,13 +42,13 @@ public:
   {
   }
 
-  Drawable(const std::string& arg_name):
+  Drawable(std::string const& arg_name):
     name(arg_name),
     visible(true)
   {
   }
 
-  Drawable(const ReaderMapping& reader) :
+  Drawable(ReaderMapping const& reader) :
     name(),
     visible(true)
   {
@@ -64,8 +64,8 @@ public:
   virtual void update(float delta) =0;
 
 private:
-  Drawable (const Drawable&);
-  Drawable& operator= (const Drawable&);
+  Drawable (Drawable const&);
+  Drawable& operator= (Drawable const&);
 };
 
 } // namespace pingus::worldmap

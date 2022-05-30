@@ -21,7 +21,7 @@
 
 namespace pingus::editor {
 
-Button::Button(const Rect& rect_, const std::string& text_) :
+Button::Button(Rect const& rect_, std::string const& text_) :
   RectComponent(rect_),
   text(text_),
   mouse_over(false),
@@ -32,7 +32,7 @@ Button::Button(const Rect& rect_, const std::string& text_) :
 }
 
 void
-Button::set_text(const std::string& text_)
+Button::set_text(std::string const& text_)
 {
   text = text_;
 }

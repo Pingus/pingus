@@ -85,9 +85,9 @@ public:
 
   /** Emitted whenever a keyboard character is pressed.  Only certain
       components should implement this */
-  virtual void on_key_pressed(const pingus::input::KeyboardEvent& ev) {}
+  virtual void on_key_pressed(pingus::input::KeyboardEvent const& ev) {}
 
-  virtual void on_text_input(const pingus::input::TextInputEvent& ev) {}
+  virtual void on_text_input(pingus::input::TextInputEvent const& ev) {}
 
   GroupComponent* get_parent() const;
   void set_parent(GroupComponent* p);
@@ -96,8 +96,8 @@ public:
   void ungrab();
 
 private:
-  Component (const Component&);
-  Component& operator= (const Component&);
+  Component (Component const&);
+  Component& operator= (Component const&);
 };
 
 } // namespace pingus::gui

@@ -43,7 +43,7 @@ public:
     FileType type;
     std::string name;
 
-    DirectoryEntry(const std::string&, FileType t = DE_FILE);
+    DirectoryEntry(std::string const&, FileType t = DE_FILE);
   };
 
   ///
@@ -52,20 +52,20 @@ public:
 
   /** Returns the content of the given directory, filtered by applying
       pattern. "." and ".." are removed from the output. */
-  static Directory opendir(const std::string& pathname, const std::string& pattern = "*");
-  static std::vector<std::string> opendir_recursive(const std::string& pathname);
+  static Directory opendir(std::string const& pathname, std::string const& pattern = "*");
+  static std::vector<std::string> opendir_recursive(std::string const& pathname);
 
-  static std::string get_file_extension(const std::string& filename);
-  static std::string cut_file_extension(const std::string& filename);
+  static std::string get_file_extension(std::string const& filename);
+  static std::string cut_file_extension(std::string const& filename);
 
   /** Check if a file is avaiblable (no checking for permissens is currently performed)
       @param filename The name of the file
       @return True, if the file exist, false otherwise */
-  static bool exist(const std::string& filename);
+  static bool exist(std::string const& filename);
 
   /** Creates directory if it does not already exist.
       @param dir The name of the directory */
-  static void create_dir(const std::string& dir);
+  static void create_dir(std::string const& dir);
 
   /** Check if all needed directories are available, if not then create
       them. */
@@ -73,16 +73,16 @@ public:
 
   /** Strips directory from filenames
       @param filename The complete filename */
-  static std::string basename(const std::string& filename);
+  static std::string basename(std::string const& filename);
 
   /** Strips basename from pathnames (see dirname(3))
       @param filename The complete filename */
-  static std::string dirname(const std::string& filename);
+  static std::string dirname(std::string const& filename);
 
   static std::string find_userdir();
 
   /** Sets the directory to save users data to */
-  static void set_userdir(const std::string&);
+  static void set_userdir(std::string const&);
 
   /** Returns the directory where Pingus can store its user specific
       state and config data (savegames, config files, demos, etc.) */
@@ -102,27 +102,27 @@ public:
   static std::string get_language();
 
   /** Return the modification time of a file */
-  static uint64_t get_mtime(const std::string& filename);
+  static uint64_t get_mtime(std::string const& filename);
 
   /** Removes all '..', double slashes and such from a pathname and
       makes it absolute */
-  static std::string realpath(const std::string& pathname);
+  static std::string realpath(std::string const& pathname);
 
   /** Removes all '..', double slashes and such from a pathname */
-  static std::string normalize_path(const std::string& pathname);
+  static std::string normalize_path(std::string const& pathname);
 
   /** Read a file and generate a checksum and return it. The checksum
       generation is very primitiv and should probably be replaced by CRC
       or md5. */
-  static std::string checksum (const std::string& filename);
-  static std::string checksum (const Pathname& pathname);
+  static std::string checksum (std::string const& filename);
+  static std::string checksum (Pathname const& pathname);
 
   /** Write \a content to the given filename atomically */
-  static void write_file(const std::string& filename, const std::string& content);
+  static void write_file(std::string const& filename, std::string const& content);
 
 private:
-  System (const System&);
-  System& operator= (const System&);
+  System (System const&);
+  System& operator= (System const&);
 };
 
 } // namespace pingus

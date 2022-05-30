@@ -32,8 +32,8 @@ public:
   void display ();
 
 private:
-  ScreenManagerImpl (const ScreenManagerImpl&);
-  ScreenManagerImpl& operator= (const ScreenManagerImpl&);
+  ScreenManagerImpl (ScreenManagerImpl const&);
+  ScreenManagerImpl& operator= (ScreenManagerImpl const&);
 };
 
 } // namespace pingus

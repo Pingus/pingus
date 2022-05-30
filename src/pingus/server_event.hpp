@@ -57,7 +57,7 @@ public:
   ServerEvent();
 
   /** Construct an server event from an xml subtree */
-  ServerEvent(const prio::ReaderObject& reader);
+  ServerEvent(prio::ReaderObject const& reader);
 
   void write(std::ostream& out) const;
 
@@ -80,7 +80,7 @@ public:
 
   /** The pingu action event is triggered whenever the user applies an
       action to a Pingu */
-  static ServerEvent make_pingu_action_event(int t, unsigned int id, const Vector2f& pos, ActionName::Enum action);
+  static ServerEvent make_pingu_action_event(int t, unsigned int id, Vector2f const& pos, ActionName::Enum action);
 };
 
 } // namespace pingus

@@ -58,7 +58,7 @@ std::string to_string(Enum action);
 
 /** Converts a internal action string back into its action enum
     representation  "bomber" => Bomber */
-Enum from_string(const std::string& action);
+Enum from_string(std::string const& action);
 
 /** Convert a action enum into its visual representation, aka the
     thing that is seen on the screen for the user Bomber => "Bomber" */

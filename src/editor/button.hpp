@@ -32,13 +32,13 @@ private:
   bool enabled;
 
 public:
-  Button(const Rect& rect, const std::string& text);
+  Button(Rect const& rect, std::string const& text);
 
   void draw (DrawingContext& gc) override;
   void update (float delta) override;
   void update_layout() override {}
 
-  void set_text(const std::string& text);
+  void set_text(std::string const& text);
 
   void on_pointer_enter() override;
   void on_pointer_leave() override;
@@ -51,8 +51,8 @@ public:
   sigc::signal<void()> on_click;
 
 private:
-  Button (const Button&);
-  Button& operator= (const Button&);
+  Button (Button const&);
+  Button& operator= (Button const&);
 };
 
 } // namespace pingus::editor

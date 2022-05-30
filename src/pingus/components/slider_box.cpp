@@ -22,7 +22,7 @@
 
 namespace pingus {
 
-SliderBox::SliderBox(const Rect& rect_, int steps)
+SliderBox::SliderBox(Rect const& rect_, int steps)
   : RectComponent(rect_),
     m_steps(steps),
     value(steps),

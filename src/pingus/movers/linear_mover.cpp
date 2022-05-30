@@ -20,7 +20,7 @@
 
 namespace pingus::movers {
 
-LinearMover::LinearMover(World const* world_arg, const Vector2f& pos_arg)
+LinearMover::LinearMover(World const* world_arg, Vector2f const& pos_arg)
   : Mover(world_arg, pos_arg)
 {
 }
@@ -30,7 +30,7 @@ LinearMover::~LinearMover()
 }
 
 void
-LinearMover::update(glm::vec2 const& move, const Collider& collision_check)
+LinearMover::update(glm::vec2 const& move, Collider const& collision_check)
 {
   int move_length = static_cast<int>(glm::length(move));
 

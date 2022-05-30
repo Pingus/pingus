@@ -55,11 +55,11 @@ public:
   void next_page();
   void prev_page();
 
-  void resize(const Size& size) override;
+  void resize(Size const& size) override;
 
 private:
-  LevelMenu (const LevelMenu&);
-  LevelMenu& operator= (const LevelMenu&);
+  LevelMenu (LevelMenu const&);
+  LevelMenu& operator= (LevelMenu const&);
 };
 
 } // namespace pingus

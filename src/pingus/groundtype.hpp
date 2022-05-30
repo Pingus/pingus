@@ -39,7 +39,7 @@ public:
     GP_OUTOFSCREEN
   };
 
-  static GPType      string_to_type (const std::string& arg_type);
+  static GPType      string_to_type (std::string const& arg_type);
   static std::string type_to_string (GPType arg_type);
 };
 

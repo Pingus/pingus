@@ -106,8 +106,8 @@ public:
   static ActionType get_activation_mode(ActionName::Enum action_name);
 
 private:
-  PinguAction (const PinguAction&);
-  PinguAction& operator= (const PinguAction&);
+  PinguAction (PinguAction const&);
+  PinguAction& operator= (PinguAction const&);
 };
 
 } // namespace pingus

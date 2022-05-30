@@ -49,14 +49,14 @@ private:
   void do_start(const std::string &filename);
   void do_edit();
 
-  void create_background(const Size& size);
+  void create_background(Size const& size);
 
 public:
   PingusMenu();
   ~PingusMenu() override;
 
   void on_click(MenuButton* button);
-  void set_hint(const std::string& str);
+  void set_hint(std::string const& str);
 
   /// Load all images and other stuff for the menu
   void on_escape_press () override;
@@ -64,11 +64,11 @@ public:
 
   void update(float delta) override;
 
-  void resize(const Size& size) override;
+  void resize(Size const& size) override;
 
 private:
-  PingusMenu (const PingusMenu&);
-  PingusMenu& operator= (const PingusMenu&);
+  PingusMenu (PingusMenu const&);
+  PingusMenu& operator= (PingusMenu const&);
 };
 
 } // namespace pingus

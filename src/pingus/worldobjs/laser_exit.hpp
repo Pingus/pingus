@@ -34,11 +34,11 @@ private:
   bool killing;
 
 public:
-  LaserExit(const ReaderMapping& reader);
+  LaserExit(ReaderMapping const& reader);
 
   float z_index() const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector2f& p) override { pos = p; }
+  void set_pos(Vector2f const& p) override { pos = p; }
   Vector2f get_pos() const override { return pos; }
 
   void draw (SceneContext& gc) override;
@@ -48,8 +48,8 @@ protected:
   void catch_pingu (Pingu*);
 
 private:
-  LaserExit (const LaserExit&);
-  LaserExit& operator= (const LaserExit&);
+  LaserExit (LaserExit const&);
+  LaserExit& operator= (LaserExit const&);
 };
 
 } // namespace pingus::worldobjs

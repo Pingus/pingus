@@ -36,7 +36,7 @@ ResourceManager::~ResourceManager()
 }
 
 std::vector<std::string>
-ResourceManager::get_section(const std::string& name)
+ResourceManager::get_section(std::string const& name)
 {
   std::vector<std::string> lst;
 
@@ -52,7 +52,7 @@ ResourceManager::get_section(const std::string& name)
 }
 
 void
-ResourceManager::add_resources_from_directory(const Pathname& path)
+ResourceManager::add_resources_from_directory(Pathname const& path)
 {
   assert(path.get_type() == Pathname::DATA_PATH);
 
@@ -72,7 +72,7 @@ ResourceManager::add_resources_from_directory(const Pathname& path)
 }
 
 std::shared_ptr<SpriteDescription>
-ResourceManager::get_sprite_description_from_file(const std::string& resname)
+ResourceManager::get_sprite_description_from_file(std::string const& resname)
 {
   // try to load a .sprite file
   std::string filename = "images/" + resname + ".sprite";
@@ -121,7 +121,7 @@ ResourceManager::get_sprite_description_from_file(const std::string& resname)
 }
 
 SpriteDescription*
-ResourceManager::get_sprite_description(const std::string& name)
+ResourceManager::get_sprite_description(std::string const& name)
 {
   auto i = m_cache.find(name);
   if (i != m_cache.end())

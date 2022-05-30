@@ -30,24 +30,24 @@ private:
   bool m_faulty_input;
 
 public:
-  Inputbox(const Rect& rect);
+  Inputbox(Rect const& rect);
   Inputbox();
 
   void draw(DrawingContext& gc) override;
 
-  void set_text(const std::string& text);
+  void set_text(std::string const& text);
   std::string get_text() const { return m_text; }
-  void on_key_pressed(const input::KeyboardEvent& ev) override;
-  void on_text_input(const input::TextInputEvent& ev) override;
+  void on_key_pressed(input::KeyboardEvent const& ev) override;
+  void on_text_input(input::TextInputEvent const& ev) override;
 
   void update_layout() override {}
 
-  sigc::signal<void (const std::string&)> on_change;
-  sigc::signal<void (const std::string&)> on_enter;
+  sigc::signal<void (std::string const&)> on_change;
+  sigc::signal<void (std::string const&)> on_enter;
 
 private:
-  Inputbox (const Inputbox&);
-  Inputbox& operator= (const Inputbox&);
+  Inputbox (Inputbox const&);
+  Inputbox& operator= (Inputbox const&);
 };
 
 } // namespace pingus::editor

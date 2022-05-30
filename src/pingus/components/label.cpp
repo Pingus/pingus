@@ -22,7 +22,7 @@
 
 namespace pingus {
 
-Label::Label(const std::string& label_, const Rect& rect_)
+Label::Label(std::string const& label_, Rect const& rect_)
   : RectComponent(rect_),
     label(label_)
 {

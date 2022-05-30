@@ -49,12 +49,12 @@ public:
   static S_Status string_to_status (std::string s);
 
   Savegame();
-  Savegame(const ReaderMapping& node);
-  Savegame(const std::string& filename,
+  Savegame(ReaderMapping const& node);
+  Savegame(std::string const& filename,
            S_Status arg_status, int arg_time, int arg_saved_pingus);
   ~Savegame();
 
-  void read_sexpr(const ReaderMapping& node);
+  void read_sexpr(ReaderMapping const& node);
   void write_sexpr(prio::Writer& xml);
 
   std::string get_filename() const { return filename; }

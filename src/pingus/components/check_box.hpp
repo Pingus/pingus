@@ -33,7 +33,7 @@ private:
   bool state;
 
 public:
-  CheckBox(const Rect& rect);
+  CheckBox(Rect const& rect);
 
   void draw(DrawingContext& gc) override;
   void on_primary_button_press(int x, int y) override;
@@ -44,8 +44,8 @@ public:
   sigc::signal<void (bool)> on_change;
 
 private:
-  CheckBox (const CheckBox&);
-  CheckBox& operator= (const CheckBox&);
+  CheckBox (CheckBox const&);
+  CheckBox& operator= (CheckBox const&);
 };
 
 } // namespace pingus

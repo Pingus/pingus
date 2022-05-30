@@ -63,7 +63,7 @@ Manager::~Manager()
 {
 }
 
-static std::string get_driver_part(const std::string& fullname)
+static std::string get_driver_part(std::string const& fullname)
 {
   std::string::size_type i = fullname.find_first_of(':');
   if (i != std::string::npos)
@@ -77,7 +77,7 @@ static std::string get_driver_part(const std::string& fullname)
 }
 
 ControllerPtr
-Manager::create_controller(const Pathname& filename)
+Manager::create_controller(Pathname const& filename)
 {
   ControllerPtr controller(new Controller(desc));
 
@@ -99,7 +99,7 @@ Manager::create_controller(const Pathname& filename)
     }
     else
     {
-      for (const auto& key : controls_mapping.get_keys())
+      for (auto const& key : controls_mapping.get_keys())
       {
         ReaderCollection collection;
         if (!controls_mapping.read(key.c_str(), collection))
@@ -112,7 +112,7 @@ Manager::create_controller(const Pathname& filename)
           {
             int id = desc.get_definition(key).id;
             ControllerPointer* ctrl_pointer = controller->get_pointer(id);
-            for(const auto& object : collection.get_objects())
+            for(auto const& object : collection.get_objects())
             {
               auto pointer = create_pointer(object, ctrl_pointer);
               if (pointer)
@@ -129,7 +129,7 @@ Manager::create_controller(const Pathname& filename)
           {
             int id = desc.get_definition(key).id;
             ControllerScroller* ctrl_scroller = controller->get_scroller(id);
-            for(const auto& object : collection.get_objects())
+            for(auto const& object : collection.get_objects())
             {
               auto scroller = create_scroller(object, ctrl_scroller);
               if (scroller)
@@ -146,7 +146,7 @@ Manager::create_controller(const Pathname& filename)
           {
             int id = desc.get_definition(key).id;
             ControllerButton* ctrl_button = controller->get_button(id);
-            for(const auto& object : collection.get_objects())
+            for(auto const& object : collection.get_objects())
             {
               auto button = create_button(object, ctrl_button);
               if (button)
@@ -163,7 +163,7 @@ Manager::create_controller(const Pathname& filename)
           {
             int id = desc.get_definition(key).id;
             ControllerAxis* ctrl_axis = controller->get_axis(id);
-            for(const auto& object : collection.get_objects())
+            for(auto const& object : collection.get_objects())
             {
               auto axis = create_axis(object, ctrl_axis);
               if (axis)
@@ -180,7 +180,7 @@ Manager::create_controller(const Pathname& filename)
           {
             int id = desc.get_definition(key).id;
             ControllerKeyboard* ctrl_keyboard = controller->get_keyboard(id);
-            for(const auto& object : collection.get_objects())
+            for(auto const& object : collection.get_objects())
             {
               std::unique_ptr<Keyboard> keyboard = create_keyboard(object, ctrl_keyboard);
               if (keyboard)
@@ -225,7 +225,7 @@ Manager::update(float delta)
 }
 
 Driver*
-Manager::get_driver(const std::string& name)
+Manager::get_driver(std::string const& name)
 {
   for(auto i = drivers.begin(); i != drivers.end(); ++i)
   {
@@ -238,7 +238,7 @@ Manager::get_driver(const std::string& name)
 }
 
 Driver*
-Manager::load_driver(const std::string& name)
+Manager::load_driver(std::string const& name)
 {
   Driver* driver_p = get_driver(name);
   if (driver_p)
@@ -264,7 +264,7 @@ Manager::load_driver(const std::string& name)
 }
 
 std::unique_ptr<Button>
-Manager::create_button(const ReaderObject& reader, Control* parent)
+Manager::create_button(ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -281,7 +281,7 @@ Manager::create_button(const ReaderObject& reader, Control* parent)
 }
 
 std::unique_ptr<Axis>
-Manager::create_axis(const ReaderObject& reader, Control* parent)
+Manager::create_axis(ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -298,7 +298,7 @@ Manager::create_axis(const ReaderObject& reader, Control* parent)
 }
 
 std::unique_ptr<Pointer>
-Manager::create_pointer(const ReaderObject& reader, Control* parent)
+Manager::create_pointer(ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -315,7 +315,7 @@ Manager::create_pointer(const ReaderObject& reader, Control* parent)
 }
 
 std::unique_ptr<Scroller>
-Manager::create_scroller(const ReaderObject& reader, Control* parent)
+Manager::create_scroller(ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -332,7 +332,7 @@ Manager::create_scroller(const ReaderObject& reader, Control* parent)
 }
 
 std::unique_ptr<Keyboard>
-Manager::create_keyboard(const ReaderObject& reader, Control* parent)
+Manager::create_keyboard(ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 

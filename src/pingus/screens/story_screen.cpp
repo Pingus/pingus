@@ -60,8 +60,8 @@ public:
   pingus::worldmap::WorldmapStory* get_story() const { return story; }
 
 private:
-  StoryScreenComponent(const StoryScreenComponent&);
-  StoryScreenComponent & operator=(const StoryScreenComponent&);
+  StoryScreenComponent(StoryScreenComponent const&);
+  StoryScreenComponent & operator=(StoryScreenComponent const&);
 };
 
 class StoryScreenContinueButton : public pingus::gui::SurfaceButton
@@ -90,8 +90,8 @@ public:
   }
 
 private:
-  StoryScreenContinueButton(const StoryScreenContinueButton&);
-  StoryScreenContinueButton & operator=(const StoryScreenContinueButton&);
+  StoryScreenContinueButton(StoryScreenContinueButton const&);
+  StoryScreenContinueButton & operator=(StoryScreenContinueButton const&);
 };
 
 class StoryScreenSkipButton : public pingus::gui::SurfaceButton
@@ -132,11 +132,11 @@ public:
   }
 
 private:
-  StoryScreenSkipButton(const StoryScreenSkipButton&);
-  StoryScreenSkipButton & operator=(const StoryScreenSkipButton&);
+  StoryScreenSkipButton(StoryScreenSkipButton const&);
+  StoryScreenSkipButton & operator=(StoryScreenSkipButton const&);
 };
 
-StoryScreen::StoryScreen(const prio::ReaderMapping& reader, bool credits) :
+StoryScreen::StoryScreen(prio::ReaderMapping const& reader, bool credits) :
   story(new pingus::worldmap::WorldmapStory(reader)),
   story_comp(),
   continue_button(nullptr),
@@ -284,7 +284,7 @@ StoryScreenComponent::next_text()
 }
 
 void
-StoryScreen::resize(const Size& size_)
+StoryScreen::resize(Size const& size_)
 {
   GUIScreen::resize(size_);
 

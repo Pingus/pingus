@@ -36,7 +36,7 @@ class Surface
 public:
   Surface();
 
-  Surface(const Pathname& name);
+  Surface(Pathname const& name);
 
   /** Create an empty RGBA Surface */
   Surface(int width, int height);
@@ -62,7 +62,7 @@ public:
 
   Color get_pixel(int x, int y) const;
 
-  void fill(const Color& color);
+  void fill(Color const& color);
 
   bool is_indexed() const;
   bool has_colorkey() const;
@@ -72,7 +72,7 @@ public:
   Surface clone() const;
   Surface convert_to_rgba() const;
   Surface convert_to_rgb() const;
-  Surface subsection(const Rect& rect) const;
+  Surface subsection(Rect const& rect) const;
 
   SDL_Surface* get_surface() const;
 

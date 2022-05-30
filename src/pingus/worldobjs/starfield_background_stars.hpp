@@ -54,8 +54,8 @@ public:
   void draw (SceneContext& gc);
 
 private:
-  StarfieldBackgroundStars (const StarfieldBackgroundStars&);
-  StarfieldBackgroundStars& operator= (const StarfieldBackgroundStars&);
+  StarfieldBackgroundStars (StarfieldBackgroundStars const&);
+  StarfieldBackgroundStars& operator= (StarfieldBackgroundStars const&);
 };
 
 } // namespace pingus::worldobjs

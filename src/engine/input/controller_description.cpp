@@ -33,7 +33,7 @@ ControllerDescription::~ControllerDescription()
 }
 
 void
-ControllerDescription::add_button(const std::string& name, int id)
+ControllerDescription::add_button(std::string const& name, int id)
 {
   InputEventDefinition event;
 
@@ -46,7 +46,7 @@ ControllerDescription::add_button(const std::string& name, int id)
 }
 
 void
-ControllerDescription::add_scroller(const std::string& name, int id)
+ControllerDescription::add_scroller(std::string const& name, int id)
 {
   InputEventDefinition event;
 
@@ -59,7 +59,7 @@ ControllerDescription::add_scroller(const std::string& name, int id)
 }
 
 void
-ControllerDescription::add_pointer (const std::string& name, int id)
+ControllerDescription::add_pointer (std::string const& name, int id)
 {
   InputEventDefinition event;
 
@@ -72,7 +72,7 @@ ControllerDescription::add_pointer (const std::string& name, int id)
 }
 
 void
-ControllerDescription::add_axis  (const std::string& name, int id)
+ControllerDescription::add_axis  (std::string const& name, int id)
 {
   InputEventDefinition event;
 
@@ -85,7 +85,7 @@ ControllerDescription::add_axis  (const std::string& name, int id)
 }
 
 void
-ControllerDescription::add_keyboard  (const std::string& name, int id)
+ControllerDescription::add_keyboard  (std::string const& name, int id)
 {
   InputEventDefinition event;
 
@@ -97,7 +97,7 @@ ControllerDescription::add_keyboard  (const std::string& name, int id)
   id_to_event[event.id]    = event;
 }
 
-const InputEventDefinition&
+InputEventDefinition const&
 ControllerDescription::get_definition(int id) const
 {
   std::map<int, InputEventDefinition>::const_iterator i = id_to_event.find(id);
@@ -108,8 +108,8 @@ ControllerDescription::get_definition(int id) const
   return i->second;
 }
 
-const InputEventDefinition&
-ControllerDescription::get_definition(const std::string& name) const
+InputEventDefinition const&
+ControllerDescription::get_definition(std::string const& name) const
 {
   std::map<std::string, InputEventDefinition>::const_iterator i = str_to_event.find(name);
   if (i == str_to_event.end())

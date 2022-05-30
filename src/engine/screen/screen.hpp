@@ -33,27 +33,27 @@ protected:
   Size size;
 
 public:
-  Screen (const Size& size_) : size(size_) { }
+  Screen (Size const& size_) : size(size_) { }
   virtual ~Screen () {}
 
   /** Draw this screen */
   virtual void draw(DrawingContext& gc) =0;
 
   /** Pass a delta to the screen */
-  virtual void update_input (const pingus::input::Event& event) =0;
+  virtual void update_input (pingus::input::Event const& event) =0;
   virtual void update (float delta) =0;
 
   /** Called once the screen gets activated and becomes the current
       screen */
   virtual void on_startup () {}
 
-  virtual void resize(const Size& s) { size = s; }
+  virtual void resize(Size const& s) { size = s; }
 
   virtual Size get_size() const { return size; }
 
 private:
-  Screen (const Screen&);
-  Screen& operator= (const Screen&);
+  Screen (Screen const&);
+  Screen& operator= (Screen const&);
 };
 
 } // namespace pingus

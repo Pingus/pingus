@@ -44,7 +44,7 @@ private:
   Inputbox* music;
 
 public:
-  LevelProperties(EditorScreen* editor, const Rect& rect);
+  LevelProperties(EditorScreen* editor, Rect const& rect);
   ~LevelProperties() override;
 
   void draw_background (DrawingContext& gc) override;
@@ -52,23 +52,23 @@ public:
 
   void set_level(EditorLevel* level);
 
-  void on_author_change(const std::string& str);
-  void on_levelname_change(const std::string& str);
-  void on_description_change(const std::string& str);
+  void on_author_change(std::string const& str);
+  void on_levelname_change(std::string const& str);
+  void on_description_change(std::string const& str);
 
-  void on_number_to_save_change(const std::string& str);
-  void on_number_of_pingus_change(const std::string& str);
+  void on_number_to_save_change(std::string const& str);
+  void on_number_of_pingus_change(std::string const& str);
 
-  void on_time_change(const std::string& str);
-  void on_width_change(const std::string& str);
-  void on_height_change(const std::string& str);
-  void on_music_change(const std::string& str);
+  void on_time_change(std::string const& str);
+  void on_width_change(std::string const& str);
+  void on_height_change(std::string const& str);
+  void on_music_change(std::string const& str);
 
   void update_layout() override;
 
 private:
-  LevelProperties (const LevelProperties&);
-  LevelProperties& operator= (const LevelProperties&);
+  LevelProperties (LevelProperties const&);
+  LevelProperties& operator= (LevelProperties const&);
 };
 
 } // namespace pingus::editor

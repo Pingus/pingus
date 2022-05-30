@@ -152,7 +152,7 @@ std::string to_string(ResourceModifier::Enum modifier)
   }
 }
 
-ResourceModifier::Enum from_string (const std::string& modifier)
+ResourceModifier::Enum from_string (std::string const& modifier)
 {
   if (modifier == "ROT0")
     return ROT0;

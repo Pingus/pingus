@@ -42,8 +42,8 @@ public:
   Size get_size() const { return m_size; }
 
 private:
-  OpenGLFramebufferSurfaceImpl(const OpenGLFramebufferSurfaceImpl&);
-  OpenGLFramebufferSurfaceImpl& operator=(const OpenGLFramebufferSurfaceImpl&);
+  OpenGLFramebufferSurfaceImpl(OpenGLFramebufferSurfaceImpl const&);
+  OpenGLFramebufferSurfaceImpl& operator=(OpenGLFramebufferSurfaceImpl const&);
 };
 
 } // namespace pingus

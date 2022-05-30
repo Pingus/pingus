@@ -27,7 +27,7 @@
 
 namespace pingus {
 
-FontTestScreen::FontTestScreen(const Pathname& fontfile) :
+FontTestScreen::FontTestScreen(Pathname const& fontfile) :
   Screen(Display::get_size()),
   font(),
   reference(),
@@ -102,7 +102,7 @@ FontTestScreen::draw(DrawingContext& gc)
 }
 
 void
-FontTestScreen::update_input(const pingus::input::Event& event)
+FontTestScreen::update_input(pingus::input::Event const& event)
 {
   switch (event.type)
   {

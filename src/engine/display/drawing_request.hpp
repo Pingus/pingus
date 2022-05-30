@@ -33,13 +33,13 @@ protected:
   float    z;
 
 public:
-  DrawingRequest(const Vector2i& pos_, float z_) : pos(pos_), z(z_) {}
+  DrawingRequest(Vector2i const& pos_, float z_) : pos(pos_), z(z_) {}
   virtual ~DrawingRequest() {}
 
   /** \a rect is the rectangle that is managed by the parent
       DrawingContext, all calls to fb have to be offset with
       (rect.left(),rect.top)  */
-  virtual void render(Framebuffer& fb, const Rect& rect) = 0;
+  virtual void render(Framebuffer& fb, Rect const& rect) = 0;
 
   /** Returns true if the request contains an alpha channel and needs
       to be drawn in order */
@@ -49,8 +49,8 @@ public:
   virtual float z_index() { return z; }
 
 private:
-  DrawingRequest (const DrawingRequest&);
-  DrawingRequest& operator= (const DrawingRequest&);
+  DrawingRequest (DrawingRequest const&);
+  DrawingRequest& operator= (DrawingRequest const&);
 };
 
 } // namespace pingus

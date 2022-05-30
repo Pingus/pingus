@@ -50,8 +50,8 @@ public:
   void on_primary_button_click (int x, int y) override;
 
 private:
-  ArmageddonButton (const ArmageddonButton&);
-  ArmageddonButton& operator= (const ArmageddonButton&);
+  ArmageddonButton (ArmageddonButton const&);
+  ArmageddonButton& operator= (ArmageddonButton const&);
 };
 
 /** Fast Forward button, press it to let the game run faster, press it
@@ -75,8 +75,8 @@ public:
   void on_primary_button_release (int x, int y) override;
 
 private:
-  ForwardButton (const ForwardButton&);
-  ForwardButton& operator= (const ForwardButton&);
+  ForwardButton (ForwardButton const&);
+  ForwardButton& operator= (ForwardButton const&);
 };
 
 /** Pause button, press it to pause the game, press it again to
@@ -101,8 +101,8 @@ public:
   void on_primary_button_click (int x, int y) override;
 
 private:
-  PauseButton (const PauseButton&);
-  PauseButton& operator= (const PauseButton&);
+  PauseButton (PauseButton const&);
+  PauseButton& operator= (PauseButton const&);
 };
 
 #endif /* ACTIONBUTTON */

@@ -38,11 +38,11 @@ private:
   bool smashing;
 
 public:
-  FakeExit(const ReaderMapping& reader);
+  FakeExit(ReaderMapping const& reader);
 
   float z_index () const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector2f& p) override { pos = p; }
+  void set_pos(Vector2f const& p) override { pos = p; }
   Vector2f get_pos() const override { return pos; }
 
   void draw (SceneContext& gc) override;
@@ -55,8 +55,8 @@ public:
 private:
   void catch_pingu (Pingu*);
 
-  FakeExit (const FakeExit&);
-  FakeExit& operator= (const FakeExit&);
+  FakeExit (FakeExit const&);
+  FakeExit& operator= (FakeExit const&);
 };
 
 } // namespace pingus::worldobjs

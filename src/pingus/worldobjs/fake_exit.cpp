@@ -24,7 +24,7 @@
 
 namespace pingus::worldobjs {
 
-FakeExit::FakeExit(const ReaderMapping& reader) :
+FakeExit::FakeExit(ReaderMapping const& reader) :
   surface("traps/fake_exit"),
   smallmap_symbol("core/misc/smallmap_exit"),
   pos(),

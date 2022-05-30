@@ -44,7 +44,7 @@ SDLSystem::~SDLSystem()
 }
 
 void
-SDLSystem::create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen, bool resizable)
+SDLSystem::create_window(FramebufferType framebuffer_type, Size const& size, bool fullscreen, bool resizable)
 {
   Display::create_window(framebuffer_type, size, fullscreen, resizable);
 }

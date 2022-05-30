@@ -59,19 +59,19 @@ public:
                 pingus::input::ControllerPtr arg_input_controller);
   ~ScreenManager();
 
-  void resize(const geom::isize& size);
+  void resize(geom::isize const& size);
 
   /** Start the screen manager and let it take control, this will
       not return until the somebody signals a quit() */
   void display();
 
-  void update(float delta, const std::vector<pingus::input::Event>& events);
+  void update(float delta, std::vector<pingus::input::Event> const& events);
 
   /** Replace the current screen */
   void replace_screen(ScreenPtr screen);
 
   /** Add a screen on top of another screen */
-  void push_screen(const ScreenPtr& screen);
+  void push_screen(ScreenPtr const& screen);
 
   /** Remove the current screen and fall back to the last one */
   void pop_screen();
@@ -86,14 +86,14 @@ public:
 
 private:
   /** FadeOver test*/
-  void fade_over(const ScreenPtr& old_screen, const ScreenPtr& new_screen);
+  void fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_screen);
 
 public:
   static ScreenManager* instance();
 
 private:
-  ScreenManager (const ScreenManager&);
-  ScreenManager& operator= (const ScreenManager&);
+  ScreenManager (ScreenManager const&);
+  ScreenManager& operator= (ScreenManager const&);
 };
 
 } // namespace pingus

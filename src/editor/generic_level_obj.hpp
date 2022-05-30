@@ -181,14 +181,14 @@ public:
   /// Operations
 public:
   /** Default Constructor */
-  GenericLevelObj(const std::string& obj_name);
-  GenericLevelObj(const GenericLevelObj& rhs);
+  GenericLevelObj(std::string const& obj_name);
+  GenericLevelObj(GenericLevelObj const& rhs);
 
   /** Destructor */
   ~GenericLevelObj() override { }
 
   /** Set the object's position */
-  void set_pos(const Vector2f& p) override;
+  void set_pos(Vector2f const& p) override;
 
   float z_index() const override;
   void set_z_index(float z_index) override;
@@ -200,13 +200,13 @@ public:
   float get_pos_y() const override;
 
   /** Original position of the objects before being dragged around */
-  void set_orig_pos(const Vector2f& p) override { orig_pos = p; }
+  void set_orig_pos(Vector2f const& p) override { orig_pos = p; }
 
   /** Set the object's resource name */
-  void set_res_desc(const ResDescriptor& d) override;
+  void set_res_desc(ResDescriptor const& d) override;
 
   /** Set the object's modifier */
-  void set_modifier(const std::string& m) override;
+  void set_modifier(std::string const& m) override;
 
   /** Set the object's modifier */
   void set_modifier(ResourceModifier::Enum modifier) override;
@@ -214,12 +214,12 @@ public:
   ResourceModifier::Enum get_modifier() const override;
 
   /** Set the object's section header name */
-  void set_section_name(const std::string& sn) override { section_name = sn; }
+  void set_section_name(std::string const& sn) override { section_name = sn; }
 
   /** Set the object's type */
-  void set_type(const std::string& t) override { object_type = t; }
+  void set_type(std::string const& t) override { object_type = t; }
 
-  void set_ground_type(const std::string& t) override { ground_type = t; }
+  void set_ground_type(std::string const& t) override { ground_type = t; }
 
   /** Set the object's speed */
   void set_speed(int s) override { speed = s; }
@@ -252,7 +252,7 @@ public:
   void set_keep_aspect(bool a) override;
 
   /** Set the objects color if applicable */
-  void set_color(const Color& c) override
+  void set_color(Color const& c) override
   { color = c; }
 
   /** Set the object's parallax scroll multiplier in the x direction */
@@ -262,10 +262,10 @@ public:
   void set_para_y(float p) override { para_y = p; }
 
   /** Set the object's direction if applicable */
-  void set_direction(const std::string& d) override { direction = d; }
+  void set_direction(std::string const& d) override { direction = d; }
 
-  void set_id(const std::string& t) override { id = t; }
-  void set_target_id(const std::string& t) override { target_id = t; }
+  void set_id(std::string const& t) override { id = t; }
+  void set_target_id(std::string const& t) override { target_id = t; }
 
   void set_height(int h) override { height = h; }
 
@@ -285,7 +285,7 @@ public:
   bool is_at (int x, int y) override;
 
   /** Returns a number representing which attributes this object possesses */
-  unsigned int get_attributes(const std::string& obj_type);
+  unsigned int get_attributes(std::string const& obj_type);
 
   Rect get_rect() const override;
 
@@ -297,7 +297,7 @@ public:
   void set_middle_stars(int n) override {  middle_stars = n; }
   void set_large_stars(int n) override  {   large_stars = n; }
 
-  LevelObjPtr duplicate(const Vector2i& offset) const override;
+  LevelObjPtr duplicate(Vector2i const& offset) const override;
 
 private:
   /** Loads any generic images necessary for objects with HAS_FAKE_SURFACE */
@@ -311,7 +311,7 @@ private:
   void set_translated_pos();
 
 private:
-  GenericLevelObj & operator=(const GenericLevelObj&);
+  GenericLevelObj & operator=(GenericLevelObj const&);
 };
 
 } // namespace pingus::editor

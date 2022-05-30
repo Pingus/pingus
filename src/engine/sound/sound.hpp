@@ -59,8 +59,8 @@ public:
   static float get_master_volume();
 
 private:
-  PingusSound (const PingusSound&);
-  PingusSound& operator= (const PingusSound&);
+  PingusSound (PingusSound const&);
+  PingusSound& operator= (PingusSound const&);
 };
 
 } // namespace pingus::sound

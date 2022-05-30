@@ -82,8 +82,8 @@ public:
   }
 
 private:
-  AxisPointer(const AxisPointer&);
-  AxisPointer & operator=(const AxisPointer&);
+  AxisPointer(AxisPointer const&);
+  AxisPointer & operator=(AxisPointer const&);
 };
 
 class AxisScroller : public Scroller
@@ -139,8 +139,8 @@ public:
   }
 
 private:
-  AxisScroller(const AxisScroller&);
-  AxisScroller & operator=(const AxisScroller&);
+  AxisScroller(AxisScroller const&);
+  AxisScroller & operator=(AxisScroller const&);
 };
 
 class ButtonScroller : public Scroller
@@ -207,24 +207,24 @@ public:
   }
 
 private:
-  ButtonScroller(const ButtonScroller&);
-  ButtonScroller & operator=(const ButtonScroller&);
+  ButtonScroller(ButtonScroller const&);
+  ButtonScroller & operator=(ButtonScroller const&);
 };
 
 std::unique_ptr<Button>
-CoreDriver::create_button(const ReaderObject& reader_object, Control* parent)
+CoreDriver::create_button(ReaderObject const& reader_object, Control* parent)
 {
   return {};
 }
 
 std::unique_ptr<Axis>
-CoreDriver::create_axis(const ReaderObject& reader_object, Control* parent)
+CoreDriver::create_axis(ReaderObject const& reader_object, Control* parent)
 {
   return {};
 }
 
 std::unique_ptr<Scroller>
-CoreDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
+CoreDriver::create_scroller(ReaderObject const& reader_object, Control* parent)
 {
   if (reader_object.get_name() == "core:axis-scroller")
   {
@@ -319,7 +319,7 @@ CoreDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
 }
 
 std::unique_ptr<Pointer>
-CoreDriver::create_pointer(const ReaderObject& reader_object, Control* parent)
+CoreDriver::create_pointer(ReaderObject const& reader_object, Control* parent)
 {
   if (reader_object.get_name() == "core:axis-pointer")
   {
@@ -368,7 +368,7 @@ CoreDriver::create_pointer(const ReaderObject& reader_object, Control* parent)
 }
 
 std::unique_ptr<Keyboard>
-CoreDriver::create_keyboard(const ReaderObject& reader, Control* parent)
+CoreDriver::create_keyboard(ReaderObject const& reader, Control* parent)
 {
   return {};
 }

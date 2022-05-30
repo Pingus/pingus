@@ -21,7 +21,7 @@
 namespace pingus {
 
 Groundtype::GPType
-Groundtype::string_to_type(const std::string& arg_type)
+Groundtype::string_to_type(std::string const& arg_type)
 {
   if (arg_type == "solid")
     return Groundtype::GP_SOLID;

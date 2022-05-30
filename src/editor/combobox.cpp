@@ -21,7 +21,7 @@
 
 namespace pingus::editor {
 
-Combobox::Combobox(const Rect& rect_) :
+Combobox::Combobox(Rect const& rect_) :
   RectComponent(rect_),
   sprite("core/editor/combobox"),
   list_rect(),
@@ -40,7 +40,7 @@ Combobox::~Combobox ()
 }
 
 void
-Combobox::add(int id, const std::string& str)
+Combobox::add(int id, std::string const& str)
 {
   item_list.push_back(ComboItem(id, str));
 }

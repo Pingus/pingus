@@ -23,7 +23,7 @@
 
 namespace pingus::worldobjs {
 
-LaserExit::LaserExit(const ReaderMapping& reader) :
+LaserExit::LaserExit(ReaderMapping const& reader) :
   surface("traps/laser_exit"),
   pos(),
   m_z_index(0.0f),

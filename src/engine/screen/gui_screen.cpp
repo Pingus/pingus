@@ -50,7 +50,7 @@ GUIScreen::update(float delta)
 }
 
 void
-GUIScreen::update_input(const pingus::input::Event& event)
+GUIScreen::update_input(pingus::input::Event const& event)
 {
   // Dispatch the recieved input events
   gui_manager->update(event);
@@ -103,7 +103,7 @@ GUIScreen::update_input(const pingus::input::Event& event)
 }
 
 void
-GUIScreen::process_button_event (const pingus::input::ButtonEvent& event)
+GUIScreen::process_button_event (pingus::input::ButtonEvent const& event)
 {
   if (event.state == pingus::input::BUTTON_PRESSED)
   {
@@ -184,7 +184,7 @@ GUIScreen::process_button_event (const pingus::input::ButtonEvent& event)
 }
 
 void
-GUIScreen::resize(const Size& size_)
+GUIScreen::resize(Size const& size_)
 {
   Screen::resize(size_);
   gui_manager->set_rect(Rect(geom::ipoint(0, 0), size));

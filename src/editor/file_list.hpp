@@ -41,14 +41,14 @@ private:
   int num_pages;
 
 public:
-  FileList(const Rect& rect);
+  FileList(Rect const& rect);
 
   void draw (DrawingContext& gc) override;
   void update (float delta) override;
 
   void update_layout() override;
   std::string get_direction() const { return m_direction; }
-  void set_directory(const std::string& pathname, const std::string& pattern = "*");
+  void set_directory(std::string const& pathname, std::string const& pattern = "*");
 
   void on_pointer_move (int x, int y) override;
 
@@ -61,13 +61,13 @@ public:
   bool has_more_next_pages() const;
   bool has_more_prev_pages() const;
 
-  sigc::signal<void (const System::DirectoryEntry&)> on_click;
+  sigc::signal<void (System::DirectoryEntry const&)> on_click;
 
 private:
   int items_per_page() const;
 
-  FileList (const FileList&);
-  FileList& operator= (const FileList&);
+  FileList (FileList const&);
+  FileList& operator= (FileList const&);
 };
 
 } // namespace pingus::editor

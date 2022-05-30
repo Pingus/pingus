@@ -23,7 +23,7 @@
 
 namespace pingus::worldobjs {
 
-Spike::Spike (const ReaderMapping& reader) :
+Spike::Spike (ReaderMapping const& reader) :
   surface("traps/spike"),
   pos(),
   m_z_index(0.0f),

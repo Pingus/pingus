@@ -169,7 +169,7 @@ inline Event makeScrollerEvent(EventName name, float x_delta, float y_delta)
   return event;
 }
 
-inline Event makeKeyboardEvent(const SDL_KeyboardEvent& ev)
+inline Event makeKeyboardEvent(SDL_KeyboardEvent const& ev)
 {
   Event event;
 
@@ -180,7 +180,7 @@ inline Event makeKeyboardEvent(const SDL_KeyboardEvent& ev)
   return event;
 }
 
-inline Event makeTextInputEvent(const SDL_TextInputEvent& ev)
+inline Event makeTextInputEvent(SDL_TextInputEvent const& ev)
 {
   Event event;
 

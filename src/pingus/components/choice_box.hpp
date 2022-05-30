@@ -30,19 +30,19 @@ private:
   std::vector<std::string> choices;
 
 public:
-  ChoiceBox(const Rect& rect);
+  ChoiceBox(Rect const& rect);
 
   void draw(DrawingContext& gc) override;
   void on_primary_button_press(int x, int y) override;
   void update_layout() override {}
-  void add_choice(const std::string& str);
+  void add_choice(std::string const& str);
   void set_current_choice(int choice);
 
   sigc::signal<void (std::string)> on_change;
 
 private:
-  ChoiceBox (const ChoiceBox&);
-  ChoiceBox& operator= (const ChoiceBox&);
+  ChoiceBox (ChoiceBox const&);
+  ChoiceBox& operator= (ChoiceBox const&);
 };
 
 } // namespace pingus

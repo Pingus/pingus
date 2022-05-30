@@ -41,17 +41,17 @@ public:
   ResourceManager();
   ~ResourceManager();
 
-  void add_resources_from_directory(const Pathname& path);
+  void add_resources_from_directory(Pathname const& path);
 
   /** Returns a pointer to the requested SpriteDescription or 0 if it's not found */
-  SpriteDescription* get_sprite_description(const std::string& name);
-  std::shared_ptr<SpriteDescription> get_sprite_description_from_file(const std::string& name);
+  SpriteDescription* get_sprite_description(std::string const& name);
+  std::shared_ptr<SpriteDescription> get_sprite_description_from_file(std::string const& name);
 
-  std::vector<std::string> get_section(const std::string& name);
+  std::vector<std::string> get_section(std::string const& name);
 
 private:
-  ResourceManager (const ResourceManager&);
-  ResourceManager& operator= (const ResourceManager&);
+  ResourceManager (ResourceManager const&);
+  ResourceManager& operator= (ResourceManager const&);
 };
 
 } // namespace pingus

@@ -21,7 +21,7 @@
 
 namespace pingus {
 
-PinguHolder::PinguHolder(const PingusLevel& plf) :
+PinguHolder::PinguHolder(PingusLevel const& plf) :
   number_of_allowed(plf.get_number_of_pingus()),
   number_of_exited(0),
   all_pingus(),
@@ -37,7 +37,7 @@ PinguHolder::~PinguHolder()
 }
 
 Pingu*
-PinguHolder::create_pingu (const Vector2f& pos, int owner_id)
+PinguHolder::create_pingu (Vector2f const& pos, int owner_id)
 {
   if (number_of_allowed > get_number_of_released())
   {

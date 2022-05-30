@@ -38,8 +38,8 @@ public:
   bool catchable () override { return false; }
 
 private:
-  Drown (const Drown&);
-  Drown& operator= (const Drown&);
+  Drown (Drown const&);
+  Drown& operator= (Drown const&);
 };
 
 } // namespace pingus::actions

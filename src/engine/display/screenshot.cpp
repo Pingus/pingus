@@ -53,7 +53,7 @@ Screenshot::make_screenshot()
 }
 
 void
-Screenshot::save_png(const std::string& filename, const uint8_t* buffer, int width, int height, int pitch)
+Screenshot::save_png(std::string const& filename, uint8_t const* buffer, int width, int height, int pitch)
 {
   FILE* fp;
   png_structp png_ptr;

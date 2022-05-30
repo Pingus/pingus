@@ -52,8 +52,8 @@ public:
   bool is_at (int, int) override { return true; }
 
 private:
-  WorldmapComponent (const WorldmapComponent&);
-  WorldmapComponent& operator= (const WorldmapComponent&);
+  WorldmapComponent (WorldmapComponent const&);
+  WorldmapComponent& operator= (WorldmapComponent const&);
 };
 
 } // namespace pingus::worldmap

@@ -27,7 +27,7 @@ private:
   float intensity;
 
 public:
-  SnowGenerator(const ReaderMapping& reader);
+  SnowGenerator(ReaderMapping const& reader);
   ~SnowGenerator () override;
 
   /** fill the screen with snow flocks */
@@ -36,12 +36,12 @@ public:
   void update() override;
   float z_index() const override { return 1000; }
   void set_z_index(float z_index) override {}
-  void set_pos(const Vector2f& p) override {}
+  void set_pos(Vector2f const& p) override {}
   Vector2f get_pos() const override { return Vector2f(); }
 
 private:
-  SnowGenerator (const SnowGenerator&);
-  SnowGenerator& operator= (const SnowGenerator&);
+  SnowGenerator (SnowGenerator const&);
+  SnowGenerator& operator= (SnowGenerator const&);
 };
 
 } // namespace pingus::worldobjs

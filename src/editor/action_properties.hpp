@@ -46,7 +46,7 @@ private:
   ActionComponents action_comps;
 
 public:
-  ActionProperties(EditorScreen* editor, const Rect& rect);
+  ActionProperties(EditorScreen* editor, Rect const& rect);
   ~ActionProperties() override;
 
   void draw_background(DrawingContext& gc) override;
@@ -57,11 +57,11 @@ public:
   void set_level(EditorLevel* level);
 
   void on_checkbox_change(bool t, ActionName::Enum id);
-  void on_inputbox_change(const std::string& str, ActionName::Enum id);
+  void on_inputbox_change(std::string const& str, ActionName::Enum id);
 
 private:
-  ActionProperties (const ActionProperties&);
-  ActionProperties& operator= (const ActionProperties&);
+  ActionProperties (ActionProperties const&);
+  ActionProperties& operator= (ActionProperties const&);
 };
 
 } // namespace pingus::editor

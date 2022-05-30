@@ -31,7 +31,7 @@ protected:
   float m_z_index;
 
 public:
-  Dot(const ReaderMapping& reader);
+  Dot(ReaderMapping const& reader);
 
   /** Draw stuff that should be displayed if the mouse is over the dot */
   virtual void draw_hover(DrawingContext& gc) =0;
@@ -46,8 +46,8 @@ public:
   /** makes the node accessible */
   virtual void unlock() =0;
 private:
-  Dot (const Dot&);
-  Dot& operator= (const Dot&);
+  Dot (Dot const&);
+  Dot& operator= (Dot const&);
 };
 
 } // namespace pingus::worldmap

@@ -38,7 +38,7 @@ public:
   virtual void draw_background (DrawingContext&) {}
   void draw(DrawingContext& gc) override;
 
-  void update_input (const pingus::input::Event& event) override;
+  void update_input (pingus::input::Event const& event) override;
   void update(float delta) override;
 
   virtual void on_pause_press () {}
@@ -59,13 +59,13 @@ public:
 
   virtual void on_action_axis_move (float) {}
 
-  void resize(const Size& size) override;
+  void resize(Size const& size) override;
 
 private:
-  void process_button_event (const pingus::input::ButtonEvent& event);
+  void process_button_event (pingus::input::ButtonEvent const& event);
 
-  GUIScreen (const GUIScreen&);
-  GUIScreen& operator= (const GUIScreen&);
+  GUIScreen (GUIScreen const&);
+  GUIScreen& operator= (GUIScreen const&);
 };
 
 } // namespace pingus

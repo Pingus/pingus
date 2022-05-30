@@ -32,7 +32,7 @@ namespace pingus::worldmap {
 
 Worldmap* Worldmap::current_ = nullptr;
 
-Worldmap::Worldmap(const Pathname& filename) :
+Worldmap::Worldmap(Pathname const& filename) :
   worldmap(),
   default_node(),
   final_node(),

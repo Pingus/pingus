@@ -24,7 +24,7 @@
 
 namespace pingus {
 
-PingusDemo::PingusDemo(const Pathname& pathname) :
+PingusDemo::PingusDemo(Pathname const& pathname) :
   m_levelname(),
   m_checksum(),
   m_events()

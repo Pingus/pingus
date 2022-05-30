@@ -29,10 +29,10 @@
 namespace pingus {
 
 std::unique_ptr<Levelset>
-Levelset::from_directory(const std::string& title,
-                         const std::string& description,
-                         const std::string& image,
-                         const Pathname& pathname)
+Levelset::from_directory(std::string const& title,
+                         std::string const& description,
+                         std::string const& image,
+                         Pathname const& pathname)
 {
   auto levelset = std::make_unique<Levelset>();
 
@@ -59,7 +59,7 @@ Levelset::from_directory(const std::string& title,
 }
 
 std::unique_ptr<Levelset>
-Levelset::from_file(const Pathname& pathname)
+Levelset::from_file(Pathname const& pathname)
 {
   auto doc = ReaderDocument::from_file(pathname.get_sys_path());
   if (doc.get_name() != "pingus-levelset")
@@ -148,19 +148,19 @@ Levelset::~Levelset()
 }
 
 void
-Levelset::set_title(const std::string& title)
+Levelset::set_title(std::string const& title)
 {
   m_title = title;
 }
 
 void
-Levelset::set_description(const std::string& description)
+Levelset::set_description(std::string const& description)
 {
   m_description = description;
 }
 
 void
-Levelset::set_image(const std::string& image)
+Levelset::set_image(std::string const& image)
 {
   m_sprite = Sprite(image);
 }
@@ -178,7 +178,7 @@ Levelset::set_priority(float priority)
 }
 
 void
-Levelset::add_level(const std::string& resname, bool accessible)
+Levelset::add_level(std::string const& resname, bool accessible)
 {
   try
   {
@@ -192,7 +192,7 @@ Levelset::add_level(const std::string& resname, bool accessible)
 
     m_levels.push_back(std::move(level));
   }
-  catch(const std::exception& err)
+  catch(std::exception const& err)
   {
     log_error("failed to load: {}: {}", resname, err.what());
   }

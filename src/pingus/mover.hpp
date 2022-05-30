@@ -28,13 +28,13 @@ class Mover
 {
 public:
   /** Constructor of abstract class */
-  Mover(const World* world_arg, const Vector2f& pos_arg);
+  Mover(World const* world_arg, Vector2f const& pos_arg);
 
   /** Destructor of abstract class */
   virtual ~Mover() = 0;
 
   /** Updates the position of the object taking into account collisions */
-  virtual void update(glm::vec2 const& move, const Collider& collider) = 0;
+  virtual void update(glm::vec2 const& move, Collider const& collider) = 0;
 
   /** Get the resulting position vector */
   Vector2f get_pos() const;
@@ -44,7 +44,7 @@ public:
 
 protected:
   /** World in which the object should move */
-  const World* world;
+  World const* world;
 
   /** Position of the object to move */
   Vector2f pos;
@@ -53,8 +53,8 @@ protected:
   bool collision;
 
 private:
-  Mover(const Mover&);
-  Mover & operator=(const Mover&);
+  Mover(Mover const&);
+  Mover & operator=(Mover const&);
 };
 
 } // namespace pingus

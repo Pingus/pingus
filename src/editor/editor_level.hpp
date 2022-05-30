@@ -38,8 +38,8 @@ class LevelObj;
 class EditorLevel
 {
 public:
-  static std::unique_ptr<EditorLevel> from_level_file(const Pathname& pathname);
-  static std::unique_ptr<EditorLevel> from_prefab_file(const Pathname& pathname);
+  static std::unique_ptr<EditorLevel> from_level_file(Pathname const& pathname);
+  static std::unique_ptr<EditorLevel> from_prefab_file(Pathname const& pathname);
 
 public:
   typedef std::list<LevelObjPtr> Objects;
@@ -49,15 +49,15 @@ public:
 
   /** Save the level to a file.  Returns true if successful */
   void save_level(Writer& writer);
-  void save_level(const std::string& filename);
-  void save_prefab(const std::string& filename);
+  void save_level(std::string const& filename);
+  void save_prefab(std::string const& filename);
 
   Size get_size() const;
-  void set_size(const Size& s);
+  void set_size(Size const& s);
 
-  void set_description(const std::string& str);
-  void set_levelname(const std::string& str);
-  void set_author(const std::string& str);
+  void set_description(std::string const& str);
+  void set_levelname(std::string const& str);
+  void set_author(std::string const& str);
 
   std::string get_description() const;
   std::string get_levelname() const;
@@ -73,31 +73,31 @@ public:
   std::string get_music() const;
 
   void set_time(int);
-  void set_music(const std::string&);
+  void set_music(std::string const&);
 
   /** Sorts the level according to the objects z-pos */
   void sort();
 
-  void set_action(const std::string& actionname, int count);
+  void set_action(std::string const& actionname, int count);
   std::map<std::string, int> get_actions() const;
 
-  void raise_object(const LevelObjPtr& obj);
-  void lower_object(const LevelObjPtr& obj);
+  void raise_object(LevelObjPtr const& obj);
+  void lower_object(LevelObjPtr const& obj);
 
-  void raise_object_to_top(const LevelObjPtr& obj);
-  void lower_object_to_bottom(const LevelObjPtr& obj);
+  void raise_object_to_top(LevelObjPtr const& obj);
+  void lower_object_to_bottom(LevelObjPtr const& obj);
 
   Objects* get_objects();
 
-  void add_object(const LevelObjPtr& obj);
+  void add_object(LevelObjPtr const& obj);
   LevelObjPtr object_at (int x, int y);
 
 private:
   std::unique_ptr<LevelImpl> impl;
 
 private:
-  EditorLevel (const EditorLevel&);
-  EditorLevel& operator= (const EditorLevel&);
+  EditorLevel (EditorLevel const&);
+  EditorLevel& operator= (EditorLevel const&);
 };
 
 } // Editor namespace

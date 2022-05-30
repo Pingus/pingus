@@ -49,7 +49,7 @@ private:
       x_offset(0), y_offset(0)
     {}
 
-    Layer (const Sprite& arg_sur, float x_o, float y_o, float x_u, float y_u) :
+    Layer (Sprite const& arg_sur, float x_o, float y_o, float x_u, float y_u) :
       sur(arg_sur),
       x_pos(0), y_pos(0),
       x_update(x_u), y_update(y_u),
@@ -78,13 +78,13 @@ public:
   LayerManager ();
   ~LayerManager();
 
-  void add_layer (const Sprite& sur, float x_o, float y_o, float x_u, float y_u);
+  void add_layer (Sprite const& sur, float x_o, float y_o, float x_u, float y_u);
   void draw (DrawingContext& gc);
   void update (float delta);
 
 private:
-  LayerManager (const LayerManager&);
-  LayerManager& operator= (const LayerManager&);
+  LayerManager (LayerManager const&);
+  LayerManager& operator= (LayerManager const&);
 };
 
 } // namespace pingus

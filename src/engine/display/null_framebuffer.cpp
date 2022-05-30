@@ -29,7 +29,7 @@ private:
   Size size;
 
 public:
-  NullFramebufferSurfaceImpl(const Size& size_) : size(size_) {}
+  NullFramebufferSurfaceImpl(Size const& size_) : size(size_) {}
   ~NullFramebufferSurfaceImpl() override {}
 
   int get_width()  const override { return size.width(); }
@@ -48,14 +48,14 @@ NullFramebuffer::~NullFramebuffer()
 }
 
 FramebufferSurface
-NullFramebuffer::create_surface(const Surface& surface)
+NullFramebuffer::create_surface(Surface const& surface)
 {
   log_info("creating surface: {}", surface.get_size());
   return FramebufferSurface(new NullFramebufferSurfaceImpl(surface.get_size()));
 }
 
 void
-NullFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
+NullFramebuffer::set_video_mode(Size const& size, bool fullscreen, bool resizable)
 {
   m_size = size;
   m_fullscreen = fullscreen;
@@ -84,7 +84,7 @@ NullFramebuffer::flip()
 }
 
 void
-NullFramebuffer::push_cliprect(const Rect&)
+NullFramebuffer::push_cliprect(Rect const&)
 {
 }
 
@@ -94,27 +94,27 @@ NullFramebuffer::pop_cliprect()
 }
 
 void
-NullFramebuffer::draw_surface(const FramebufferSurface& src, const Vector2i& pos)
+NullFramebuffer::draw_surface(FramebufferSurface const& src, Vector2i const& pos)
 {
 }
 
 void
-NullFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos)
+NullFramebuffer::draw_surface(FramebufferSurface const& src, Rect const& srcrect, Vector2i const& pos)
 {
 }
 
 void
-NullFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color)
+NullFramebuffer::draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color)
 {
 }
 
 void
-NullFramebuffer::draw_rect(const Rect& rect, const Color& color)
+NullFramebuffer::draw_rect(Rect const& rect, Color const& color)
 {
 }
 
 void
-NullFramebuffer::fill_rect(const Rect& rect, const Color& color)
+NullFramebuffer::fill_rect(Rect const& rect, Color const& color)
 {
 }
 

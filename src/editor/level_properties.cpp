@@ -39,7 +39,7 @@
 
 namespace pingus::editor {
 
-LevelProperties::LevelProperties(EditorScreen* editor_, const Rect& rect_) :
+LevelProperties::LevelProperties(EditorScreen* editor_, Rect const& rect_) :
   GroupComponent(rect_),
   editor(editor_),
   level(nullptr),
@@ -127,25 +127,25 @@ LevelProperties::set_level(EditorLevel* level_)
 }
 
 void
-LevelProperties::on_author_change(const std::string& str)
+LevelProperties::on_author_change(std::string const& str)
 {
   level->set_author(str);
 }
 
 void
-LevelProperties::on_levelname_change(const std::string& str)
+LevelProperties::on_levelname_change(std::string const& str)
 {
   level->set_levelname(str);
 }
 
 void
-LevelProperties::on_description_change(const std::string& str)
+LevelProperties::on_description_change(std::string const& str)
 {
   level->set_description(str);
 }
 
 void
-LevelProperties::on_width_change(const std::string& str)
+LevelProperties::on_width_change(std::string const& str)
 {
   Size s = level->get_size();
   level->set_size(Size(strut::from_string<int>(str), s.height()));
@@ -153,7 +153,7 @@ LevelProperties::on_width_change(const std::string& str)
 }
 
 void
-LevelProperties::on_height_change(const std::string& str)
+LevelProperties::on_height_change(std::string const& str)
 {
   Size s = level->get_size();
   level->set_size(Size(s.width(), strut::from_string<int>(str)));
@@ -161,7 +161,7 @@ LevelProperties::on_height_change(const std::string& str)
 }
 
 void
-LevelProperties::on_number_to_save_change(const std::string& str)
+LevelProperties::on_number_to_save_change(std::string const& str)
 {
   int num = 0;
   if (strut::from_string(str, num))
@@ -176,7 +176,7 @@ LevelProperties::on_number_to_save_change(const std::string& str)
 }
 
 void
-LevelProperties::on_number_of_pingus_change(const std::string& str)
+LevelProperties::on_number_of_pingus_change(std::string const& str)
 {
   int num = 0;
   if (strut::from_string(str, num))
@@ -190,13 +190,13 @@ LevelProperties::on_number_of_pingus_change(const std::string& str)
 }
 
 void
-LevelProperties::on_time_change(const std::string& str)
+LevelProperties::on_time_change(std::string const& str)
 {
   level->set_time(GameTime::seconds_to_ticks(strut::from_string<int>(str)));
 }
 
 void
-LevelProperties::on_music_change(const std::string& str)
+LevelProperties::on_music_change(std::string const& str)
 {
   level->set_music(str);
 }

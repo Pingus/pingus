@@ -52,7 +52,7 @@ private:
   DrawingContext* gc_ptr;
 
 public:
-  SmallMap(Server*, Playfield*, const Rect& rect);
+  SmallMap(Server*, Playfield*, Rect const& rect);
   ~SmallMap() override;
 
   /*{ @name Stuff called from the GUIManager */
@@ -75,11 +75,11 @@ public:
       @param sprite the Sprite to draw, it will keep its original size
       @param pos the position to draw it in World COs, it will get
       recalculated to screen CO */
-  void draw_sprite(const Sprite& sprite, const Vector2f& pos);
+  void draw_sprite(Sprite const& sprite, Vector2f const& pos);
 
 private:
-  SmallMap (const SmallMap&);
-  SmallMap& operator= (const SmallMap&);
+  SmallMap (SmallMap const&);
+  SmallMap& operator= (SmallMap const&);
 };
 
 } // namespace pingus

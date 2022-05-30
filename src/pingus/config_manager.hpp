@@ -36,7 +36,7 @@ public:
   ConfigManager();
   ~ConfigManager();
 
-  void apply(const Options& opts);
+  void apply(Options const& opts);
   Options get_options() const;
 
   void set_master_volume(int);
@@ -51,7 +51,7 @@ public:
   int  get_music_volume() const;
   sigc::signal<void(int)> on_music_volume_change;
 
-  void set_fullscreen_resolution(const Size& size);
+  void set_fullscreen_resolution(Size const& size);
   Size get_fullscreen_resolution() const;
   sigc::signal<void(Size)> on_fullscreen_resolution_change;
 
@@ -75,9 +75,9 @@ public:
   bool get_print_fps() const;
   sigc::signal<void(bool)> on_print_fps_change;
 
-  void set_language(const tinygettext::Language&);
+  void set_language(tinygettext::Language const&);
   tinygettext::Language get_language() const;
-  sigc::signal<void(const tinygettext::Language&)> on_language_change;
+  sigc::signal<void(tinygettext::Language const&)> on_language_change;
 
   void set_software_cursor(bool);
   bool get_software_cursor() const;
@@ -92,8 +92,8 @@ public:
   sigc::signal<void(bool)> on_drag_drop_scrolling_change;
 
 private:
-  ConfigManager (const ConfigManager&);
-  ConfigManager& operator= (const ConfigManager&);
+  ConfigManager (ConfigManager const&);
+  ConfigManager& operator= (ConfigManager const&);
 
   std::string filename;
 };

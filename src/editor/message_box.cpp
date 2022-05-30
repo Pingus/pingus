@@ -22,7 +22,7 @@
 
 namespace pingus::editor {
 
-MessageBox::MessageBox(const Rect& rect_) :
+MessageBox::MessageBox(Rect const& rect_) :
   GroupComponent(rect_),
   m_ok_button(),
   m_cancel_button(),
@@ -40,19 +40,19 @@ MessageBox::MessageBox(const Rect& rect_) :
 }
 
 void
-MessageBox::set_title(const std::string& text)
+MessageBox::set_title(std::string const& text)
 {
   m_title = text;
 }
 
 void
-MessageBox::set_text(const std::string& text)
+MessageBox::set_text(std::string const& text)
 {
   m_text = text;
 }
 
 void
-MessageBox::set_ok_text(const std::string& text)
+MessageBox::set_ok_text(std::string const& text)
 {
   m_ok_button->set_text(text);
 }

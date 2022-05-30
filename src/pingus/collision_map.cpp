@@ -73,7 +73,7 @@ CollisionMap::get_width() const
 }
 
 void
-CollisionMap::remove(const CollisionMask& mask, int x_pos, int y_pos)
+CollisionMap::remove(CollisionMask const& mask, int x_pos, int y_pos)
 {
   ++serial;
 
@@ -129,7 +129,7 @@ CollisionMap::blit_allowed (int x, int y,  Groundtype::GPType gtype) const
 
 // Puts a surface on the colmap
 void
-CollisionMap::put(const CollisionMask& mask, int sur_x, int sur_y, Groundtype::GPType pixel)
+CollisionMap::put(CollisionMask const& mask, int sur_x, int sur_y, Groundtype::GPType pixel)
 {
   // transparent groundpieces are only drawn on the gfx map, not on the colmap
   if (pixel == Groundtype::GP_TRANSPARENT)

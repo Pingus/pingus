@@ -49,8 +49,8 @@ public:
   void update() override;
 
 private:
-  Bomber (const Bomber&);
-  Bomber& operator= (const Bomber&);
+  Bomber (Bomber const&);
+  Bomber& operator= (Bomber const&);
 };
 
 } // namespace pingus::actions

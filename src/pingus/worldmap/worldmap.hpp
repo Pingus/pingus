@@ -57,7 +57,7 @@ private:
 
 public:
   /** Load the given*/
-  Worldmap(const Pathname& filename);
+  Worldmap(Pathname const& filename);
   ~Worldmap();
 
   Pingus* get_pingus() { return pingus; }
@@ -100,8 +100,8 @@ public:
   static Worldmap* current() { return current_; }
 
 private:
-  Worldmap(const Worldmap&);
-  Worldmap & operator=(const Worldmap&);
+  Worldmap(Worldmap const&);
+  Worldmap & operator=(Worldmap const&);
 };
 
 } // namespace pingus::worldmap

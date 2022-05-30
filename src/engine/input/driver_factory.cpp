@@ -22,7 +22,7 @@
 namespace pingus::input {
 
 std::unique_ptr<Driver>
-DriverFactory::create(const std::string& name, Manager* manager)
+DriverFactory::create(std::string const& name, Manager* manager)
 {
   if (name == "sdl")
   {

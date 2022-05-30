@@ -43,8 +43,8 @@ public:
   bool change_allowed (ActionName::Enum new_action) override;
 
 private:
-  Floater (const Floater&);
-  Floater& operator= (const Floater&);
+  Floater (Floater const&);
+  Floater& operator= (Floater const&);
 };
 
 } // namespace pingus::actions

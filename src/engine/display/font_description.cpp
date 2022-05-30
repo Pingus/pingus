@@ -34,7 +34,7 @@ GlyphDescription::GlyphDescription() :
 {
 }
 
-GlyphDescription::GlyphDescription(const ReaderMapping& reader) :
+GlyphDescription::GlyphDescription(ReaderMapping const& reader) :
   image(0),
   unicode(0),
   offset(),
@@ -49,7 +49,7 @@ GlyphDescription::GlyphDescription(const ReaderMapping& reader) :
   reader.read("rect", rect);
 }
 
-FontDescription::FontDescription(const Pathname& pathname_) :
+FontDescription::FontDescription(Pathname const& pathname_) :
   pathname(pathname_),
   char_spacing(),
   vertical_spacing(),

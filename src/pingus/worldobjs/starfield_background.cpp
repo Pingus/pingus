@@ -20,7 +20,7 @@
 
 namespace pingus::worldobjs {
 
-StarfieldBackground::StarfieldBackground(const ReaderMapping& reader) :
+StarfieldBackground::StarfieldBackground(ReaderMapping const& reader) :
   small_stars_count(100),
   middle_stars_count(50),
   large_stars_count(25),

@@ -66,7 +66,7 @@ FramebufferSurface::get_impl() const
 }
 
 bool
-FramebufferSurface::operator==(const FramebufferSurface& other) const
+FramebufferSurface::operator==(FramebufferSurface const& other) const
 {
   return impl == other.impl;
 }

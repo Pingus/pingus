@@ -31,7 +31,7 @@ GUIManager::GUIManager ()
 {
 }
 
-GUIManager::GUIManager(const Rect& rect_)
+GUIManager::GUIManager(Rect const& rect_)
   : GroupComponent(rect_),
     mouse_pos(400,300)
 {
@@ -48,7 +48,7 @@ GUIManager::update(float delta)
 }
 
 void
-GUIManager::update(const pingus::input::Event& event)
+GUIManager::update(pingus::input::Event const& event)
 {
   switch (event.type)
   {

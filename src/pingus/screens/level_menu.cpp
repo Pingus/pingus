@@ -66,8 +66,8 @@ public:
   }
 
 private:
-  LevelMenuAbortButton(const LevelMenuAbortButton&);
-  LevelMenuAbortButton & operator=(const LevelMenuAbortButton&);
+  LevelMenuAbortButton(LevelMenuAbortButton const&);
+  LevelMenuAbortButton & operator=(LevelMenuAbortButton const&);
 };
 
 class LevelScrollButton : public pingus::gui::SurfaceButton
@@ -76,7 +76,7 @@ private:
   std::function<void(void)> callback;
 
 public:
-  LevelScrollButton(int x, int y, const std::string& str, std::function<void (void)> callback_)
+  LevelScrollButton(int x, int y, std::string const& str, std::function<void (void)> callback_)
     : pingus::gui::SurfaceButton(x, y,
                          str,
                          str + "_pressed",
@@ -96,8 +96,8 @@ public:
   }
 
 private:
-  LevelScrollButton(const LevelScrollButton&);
-  LevelScrollButton & operator=(const LevelScrollButton&);
+  LevelScrollButton(LevelScrollButton const&);
+  LevelScrollButton & operator=(LevelScrollButton const&);
 };
 
 class LevelsetSelector : public pingus::gui::RectComponent
@@ -115,7 +115,7 @@ private:
   Rect list_rect;
 
 public:
-  LevelsetSelector(LevelMenu* level_menu_, const Rect& rect_) :
+  LevelsetSelector(LevelMenu* level_menu_, Rect const& rect_) :
     RectComponent(rect_),
     level_menu(level_menu_),
     levelsets(),
@@ -141,7 +141,7 @@ public:
           levelsets.push_back(std::move(levelset));
         }
       }
-      catch(const std::exception& err)
+      catch(std::exception const& err)
       {
         log_error("{}", err.what());
       }
@@ -156,7 +156,7 @@ public:
     }
 
     std::sort(levelsets.begin(), levelsets.end(),
-              [](const auto& lhs, const auto& rhs) {
+              [](auto const& lhs, auto const& rhs) {
                 return lhs->get_priority() > rhs->get_priority();
               });
   }
@@ -258,8 +258,8 @@ public:
   void update_layout() override {}
 
 private:
-  LevelsetSelector(const LevelsetSelector&);
-  LevelsetSelector & operator=(const LevelsetSelector&);
+  LevelsetSelector(LevelsetSelector const&);
+  LevelsetSelector & operator=(LevelsetSelector const&);
 };
 
 class LevelSelector : public pingus::gui::RectComponent
@@ -281,7 +281,7 @@ private:
   Rect list_rect;
 
 public:
-  LevelSelector(LevelMenu* level_menu_, const Rect& rect_) :
+  LevelSelector(LevelMenu* level_menu_, Rect const& rect_) :
     RectComponent(rect_),
     level_menu(level_menu_),
     marker(),
@@ -430,8 +430,8 @@ public:
   void update_layout() override {}
 
 private:
-  LevelSelector(const LevelSelector&);
-  LevelSelector & operator=(const LevelSelector&);
+  LevelSelector(LevelSelector const&);
+  LevelSelector & operator=(LevelSelector const&);
 };
 
 LevelMenu::LevelMenu() :
@@ -552,7 +552,7 @@ LevelMenu::set_levelset(Levelset* levelset)
 }
 
 void
-LevelMenu::resize(const Size& size_)
+LevelMenu::resize(Size const& size_)
 {
   GUIScreen::resize(size_);
 

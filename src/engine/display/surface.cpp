@@ -52,8 +52,8 @@ public:
   }
 
 private:
-  SurfaceImpl(const SurfaceImpl&);
-  SurfaceImpl& operator=(const SurfaceImpl&);
+  SurfaceImpl(SurfaceImpl const&);
+  SurfaceImpl& operator=(SurfaceImpl const&);
 };
 
 Surface::Surface() :
@@ -66,7 +66,7 @@ Surface::Surface(std::shared_ptr<SurfaceImpl> impl_) :
 {
 }
 
-Surface::Surface(const Pathname& pathname) :
+Surface::Surface(Pathname const& pathname) :
   impl()
 {
   SDL_Surface* surface = IMG_Load(pathname.get_sys_path().c_str());
@@ -404,7 +404,7 @@ Surface::clone() const
 }
 
 Surface
-Surface::subsection(const Rect& rect) const
+Surface::subsection(Rect const& rect) const
 {
   assert(rect.left()  >= 0);
   assert(rect.top()   >= 0);
@@ -434,7 +434,7 @@ Surface::subsection(const Rect& rect) const
 }
 
 void
-Surface::fill(const Color& color)
+Surface::fill(Color const& color)
 {
   if (color.a == 0)
   {

@@ -34,13 +34,13 @@ public:
   virtual ~Collider() = 0;
 
   /** Find out if object will collide with something */
-  virtual bool operator() (const World* world, const Vector2f& current_pos,
+  virtual bool operator() (World const* world, Vector2f const& current_pos,
                            glm::vec2 const& step_vector) const = 0;
 
 protected:
   /** Get the Collision Map pixel at the specified position in the specified
       world */
-  int getpixel(const World* world, const Vector2f& pos) const;
+  int getpixel(World const* world, Vector2f const& pos) const;
 };
 
 } // namespace pingus

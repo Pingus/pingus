@@ -41,8 +41,8 @@ public:
   void draw(DrawingContext& gc) override;
 
 private:
-  TimeDisplay (const TimeDisplay&);
-  TimeDisplay& operator= (const TimeDisplay&);
+  TimeDisplay (TimeDisplay const&);
+  TimeDisplay& operator= (TimeDisplay const&);
 };
 
 } // namespace pingus

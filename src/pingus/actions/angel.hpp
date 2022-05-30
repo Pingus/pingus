@@ -38,8 +38,8 @@ public:
   void  draw (SceneContext& gc) override;
 
 private:
-  Angel (const Angel&);
-  Angel& operator= (const Angel&);
+  Angel (Angel const&);
+  Angel& operator= (Angel const&);
 };
 
 } // namespace pingus::actions

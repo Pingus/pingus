@@ -22,7 +22,7 @@
 
 namespace pingus::worldobjs {
 
-Liquid::Liquid(const ReaderMapping& reader) :
+Liquid::Liquid(ReaderMapping const& reader) :
   sur(),
   pos(),
   m_z_index(0.0f),

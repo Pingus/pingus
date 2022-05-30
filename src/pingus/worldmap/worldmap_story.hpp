@@ -36,7 +36,7 @@ public:
     page_name()
   {}
 
-  StoryPage(const ResDescriptor& arg_image, const std::string& arg_text, const std::string& arg_name = "")
+  StoryPage(ResDescriptor const& arg_image, std::string const& arg_text, std::string const& arg_name = "")
     : image(arg_image), text(arg_text), page_name(arg_name)
   {}
 
@@ -48,7 +48,7 @@ public:
 class WorldmapStory
 {
 public:
-  WorldmapStory(const prio::ReaderMapping& reader);
+  WorldmapStory(prio::ReaderMapping const& reader);
   ~WorldmapStory() { }
 
   std::string get_title() const { return title; }

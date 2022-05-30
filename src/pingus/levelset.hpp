@@ -51,22 +51,22 @@ private:
   std::vector<std::unique_ptr<Level> > m_levels;
 
 public:
-  static std::unique_ptr<Levelset> from_file(const Pathname& pathname);
-  static std::unique_ptr<Levelset> from_directory(const std::string& title,
-                                                  const std::string& description,
-                                                  const std::string& image,
-                                                  const Pathname& pathname);
+  static std::unique_ptr<Levelset> from_file(Pathname const& pathname);
+  static std::unique_ptr<Levelset> from_directory(std::string const& title,
+                                                  std::string const& description,
+                                                  std::string const& image,
+                                                  Pathname const& pathname);
 
 public:
   Levelset();
   ~Levelset();
 
-  void set_title(const std::string& title);
-  void set_description(const std::string& description);
-  void set_image(const std::string& image);
+  void set_title(std::string const& title);
+  void set_description(std::string const& description);
+  void set_image(std::string const& image);
   void set_developer_only(bool developer_only);
   void set_priority(float priority);
-  void add_level(const std::string& resname, bool accessible = false);
+  void add_level(std::string const& resname, bool accessible = false);
 
   bool get_developer_only() const;
   float  get_priority() const;
@@ -82,8 +82,8 @@ public:
 
   void refresh();
 private:
-  Levelset (const Levelset&);
-  Levelset& operator= (const Levelset&);
+  Levelset (Levelset const&);
+  Levelset& operator= (Levelset const&);
 };
 
 } // namespace pingus

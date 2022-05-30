@@ -28,7 +28,7 @@ Controller::current()
   return current_;
 }
 
-Controller::Controller(const ControllerDescription& desc) :
+Controller::Controller(ControllerDescription const& desc) :
   buttons(),
   axes(),
   pointers(),
@@ -38,31 +38,31 @@ Controller::Controller(const ControllerDescription& desc) :
 {
   current_ = this;
 
-  const std::vector<int>& button_lst = desc.get_buttons();
+  std::vector<int> const& button_lst = desc.get_buttons();
   for(auto i = button_lst.begin(); i != button_lst.end(); ++i)
   {
     add_button(*i, std::make_unique<ControllerButton>(this, *i));
   }
 
-  const std::vector<int>& axis_lst = desc.get_axes();
+  std::vector<int> const& axis_lst = desc.get_axes();
   for(auto i = axis_lst.begin(); i != axis_lst.end(); ++i)
   {
     add_axis(*i, std::make_unique<ControllerAxis>(this, *i));
   }
 
-  const std::vector<int>& pointer_lst = desc.get_pointers();
+  std::vector<int> const& pointer_lst = desc.get_pointers();
   for(auto i = pointer_lst.begin(); i != pointer_lst.end(); ++i)
   {
     add_pointer(*i, std::make_unique<ControllerPointer>(this, *i));
   }
 
-  const std::vector<int>& scroller_lst = desc.get_scrollers();
+  std::vector<int> const& scroller_lst = desc.get_scrollers();
   for(auto i = scroller_lst.begin(); i != scroller_lst.end(); ++i)
   {
     add_scroller(*i, std::make_unique<ControllerScroller>(this, *i));
   }
 
-  const std::vector<int>& keyboard_lst = desc.get_keyboards();
+  std::vector<int> const& keyboard_lst = desc.get_keyboards();
   for(auto i = keyboard_lst.begin(); i != keyboard_lst.end(); ++i)
   {
     add_keyboard(*i, std::make_unique<ControllerKeyboard>(this, *i));
@@ -229,13 +229,13 @@ Controller::add_scroller_event(int id, float xrel, float yrel)
 }
 
 void
-Controller::add_keyboard_event(const SDL_KeyboardEvent& ev)
+Controller::add_keyboard_event(SDL_KeyboardEvent const& ev)
 {
   events.push_back(makeKeyboardEvent(ev));
 }
 
 void
-Controller::add_text_input_event(const SDL_TextInputEvent& ev)
+Controller::add_text_input_event(SDL_TextInputEvent const& ev)
 {
   events.push_back(makeTextInputEvent(ev));
 }

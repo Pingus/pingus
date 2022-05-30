@@ -52,8 +52,8 @@ public:
   float get_master_volume() const override { return m_master_volume; }
 
 private:
-  PingusSoundDummy (const PingusSoundDummy&);
-  PingusSoundDummy& operator= (const PingusSoundDummy&);
+  PingusSoundDummy (PingusSoundDummy const&);
+  PingusSoundDummy& operator= (PingusSoundDummy const&);
 };
 
 } // namespace pingus::sound

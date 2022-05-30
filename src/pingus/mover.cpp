@@ -18,7 +18,7 @@
 
 namespace pingus {
 
-Mover::Mover(const World* world_arg, const Vector2f& pos_arg)
+Mover::Mover(World const* world_arg, Vector2f const& pos_arg)
   : world(world_arg),
     pos(pos_arg),
     collision(false)

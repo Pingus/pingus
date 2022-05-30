@@ -37,7 +37,7 @@
 
 namespace pingus {
 
-GameSession::GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen) :
+GameSession::GameSession(PingusLevel const& arg_plf, bool arg_show_result_screen) :
   plf(arg_plf),
   show_result_screen(arg_show_result_screen),
   server(),
@@ -188,7 +188,7 @@ GameSession::update(float delta)
 }
 
 void
-GameSession::update_input(const pingus::input::Event& event)
+GameSession::update_input(pingus::input::Event const& event)
 {
   GUIScreen::update_input(event);
 
@@ -198,7 +198,7 @@ GameSession::update_input(const pingus::input::Event& event)
   {
     case pingus::input::BUTTON_EVENT_TYPE:
     {
-      const pingus::input::ButtonEvent& ev = event.button;
+      pingus::input::ButtonEvent const& ev = event.button;
 
       if (ev.state == pingus::input::BUTTON_PRESSED)
       {
@@ -245,14 +245,14 @@ GameSession::update_input(const pingus::input::Event& event)
 }
 
 void
-GameSession::process_scroll_event (const pingus::input::ScrollEvent& ev)
+GameSession::process_scroll_event (pingus::input::ScrollEvent const& ev)
 {
   playfield->scroll(static_cast<int>(-ev.x_delta),
                     static_cast<int>(-ev.y_delta));
 }
 
 void
-GameSession::process_axis_event (const pingus::input::AxisEvent& event)
+GameSession::process_axis_event (pingus::input::AxisEvent const& event)
 {
   // log_info("GameSession::process_axis_event ()");
 }
@@ -366,7 +366,7 @@ GameSession::get_pause() const
 }
 
 void
-GameSession::resize(const Size& size_)
+GameSession::resize(Size const& size_)
 {
   GUIScreen::resize(size_);
 

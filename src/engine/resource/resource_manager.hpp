@@ -43,7 +43,7 @@ public:
   {
   }
 
-  Resource<Data> get(const Key& key)
+  Resource<Data> get(Key const& key)
   {
     auto it = m_resources.find(key);
     if (it != m_resources.end())
@@ -70,8 +70,8 @@ public:
   }
 
 private:
-  ResourceManager(const ResourceManager&);
-  ResourceManager& operator=(const ResourceManager&);
+  ResourceManager(ResourceManager const&);
+  ResourceManager& operator=(ResourceManager const&);
 };
 
 } // namespace resource

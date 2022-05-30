@@ -32,14 +32,14 @@ public:
     rect()
   {}
 
-  RectComponent(const Rect& rect_) :
+  RectComponent(Rect const& rect_) :
     rect(rect_)
   {}
 
   bool is_at (int x, int y) override { return geom::contains(rect, geom::ipoint(x, y)); }
   virtual void update_layout() {}
 
-  void set_rect(const Rect& rect_)
+  void set_rect(Rect const& rect_)
   {
     rect = rect_;
     update_layout();

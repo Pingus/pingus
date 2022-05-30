@@ -31,7 +31,7 @@ private:
   bool drag_drop;
 
 public:
-  SliderBox(const Rect& rect, int steps);
+  SliderBox(Rect const& rect, int steps);
 
   void draw(DrawingContext& gc) override;
   void on_primary_button_press(int x, int y) override;
@@ -44,8 +44,8 @@ public:
   sigc::signal<void (int)> on_change;
 
 private:
-  SliderBox (const SliderBox&);
-  SliderBox& operator= (const SliderBox&);
+  SliderBox (SliderBox const&);
+  SliderBox& operator= (SliderBox const&);
 };
 
 } // namespace pingus

@@ -41,7 +41,7 @@ static std::string get_date_string ()
   return std::string(buffer);
 }
 
-static std::unique_ptr<std::ostream> get_demostream(const PingusLevel& plf)
+static std::unique_ptr<std::ostream> get_demostream(PingusLevel const& plf)
 {
   std::string flat_levelname = plf.get_resname();
 
@@ -74,7 +74,7 @@ static std::unique_ptr<std::ostream> get_demostream(const PingusLevel& plf)
   }
 }
 
-Server::Server(const PingusLevel& arg_plf, bool record_demo) :
+Server::Server(PingusLevel const& arg_plf, bool record_demo) :
   plf(arg_plf),
   world(new World (plf)),
   action_holder (plf),
@@ -129,7 +129,7 @@ Server::send_pingu_action_event (Pingu* pingu, ActionName::Enum action)
 }
 
 void
-Server::record(const ServerEvent& event)
+Server::record(ServerEvent const& event)
 {
   if (demostream)
     event.write(*demostream);

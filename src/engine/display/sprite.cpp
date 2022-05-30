@@ -29,7 +29,7 @@ Sprite::Sprite() :
 {
 }
 
-Sprite::Sprite(const std::string& name) :
+Sprite::Sprite(std::string const& name) :
   impl()
 {
   SpriteDescription* desc = Resource::load_sprite_desc(name);
@@ -46,7 +46,7 @@ Sprite::Sprite(const std::string& name) :
   }
 }
 
-Sprite::Sprite(const ResDescriptor& res_desc) :
+Sprite::Sprite(ResDescriptor const& res_desc) :
   impl()
 {
   SpriteDescription* desc = Resource::load_sprite_desc(res_desc.res_name);
@@ -63,12 +63,12 @@ Sprite::Sprite(const ResDescriptor& res_desc) :
   }
 }
 
-Sprite::Sprite(const Surface& surface) :
+Sprite::Sprite(Surface const& surface) :
   impl(std::make_shared<SpriteImpl>(surface))
 {
 }
 
-Sprite::Sprite(const SpriteDescription& desc, ResourceModifier::Enum mod) :
+Sprite::Sprite(SpriteDescription const& desc, ResourceModifier::Enum mod) :
   impl(std::make_shared<SpriteImpl>(desc, mod))
 {
 }

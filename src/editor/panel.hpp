@@ -37,19 +37,19 @@ private:
   Callback callback;
 
 public:
-  Panel(EditorScreen* e, const Rect& rect_);
+  Panel(EditorScreen* e, Rect const& rect_);
   ~Panel() override;
 
   void draw_background(DrawingContext& gc) override;
   void update(float delta) override;
 
-  void add_button(const std::string& image, const std::string& tooltip = "", Callback callback = nullptr);
-  void add_toggle_button(const std::string& image);
+  void add_button(std::string const& image, std::string const& tooltip = "", Callback callback = nullptr);
+  void add_toggle_button(std::string const& image);
   void add_separator();
 
 private:
-  Panel (const Panel&);
-  Panel& operator= (const Panel&);
+  Panel (Panel const&);
+  Panel& operator= (Panel const&);
 };
 
 } // namespace pingus::editor

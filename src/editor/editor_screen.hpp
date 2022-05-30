@@ -85,7 +85,7 @@ public:
   void draw (DrawingContext& gc) override;
 
   /** Update the GUI objects */
-  void update_input(const input::Event& event) override;
+  void update_input(input::Event const& event) override;
 
   /** Return the gui_manager */
   gui::GUIManager* get_gui_manager() const { return gui_manager.get(); }
@@ -105,10 +105,10 @@ public:
   void cancel();
 
   /** Saves the currently loaded level */
-  void save(const Pathname& file);
+  void save(Pathname const& file);
 
   /** Load a new level */
-  void load(const Pathname& file);
+  void load(Pathname const& file);
 
   // Functions accessible from the GUI
   void level_new_without_confirm();
@@ -143,13 +143,13 @@ public:
 
   void exit();
 
-  void resize(const Size&) override;
+  void resize(Size const&) override;
 
   void update_layout();
 
 private:
-  EditorScreen (const EditorScreen&);
-  EditorScreen& operator= (const EditorScreen&);
+  EditorScreen (EditorScreen const&);
+  EditorScreen& operator= (EditorScreen const&);
 };
 
 } // namespace pingus::editor

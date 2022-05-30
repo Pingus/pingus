@@ -22,7 +22,7 @@
 
 namespace pingus {
 
-ChoiceBox::ChoiceBox(const Rect& rect_) :
+ChoiceBox::ChoiceBox(Rect const& rect_) :
   RectComponent(rect_),
   current_choice(0),
   choices(),
@@ -81,7 +81,7 @@ ChoiceBox::on_primary_button_press(int x, int y)
 }
 
 void
-ChoiceBox::add_choice(const std::string& str)
+ChoiceBox::add_choice(std::string const& str)
 {
   choices.push_back(str);
 }

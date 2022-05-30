@@ -29,10 +29,10 @@ private:
 
 public:
   Direction ();
-  Direction (const Direction& dir);
+  Direction (Direction const& dir);
   ~Direction ();
 
-  Direction& operator= (const Direction&);
+  Direction& operator= (Direction const&);
 
   operator int () const { return direction; }
 

@@ -44,7 +44,7 @@ public:
 
   FramebufferSurfaceImpl* get_impl() const;
 
-  bool operator==(const FramebufferSurface& other) const;
+  bool operator==(FramebufferSurface const& other) const;
 
   operator bool() const;
 

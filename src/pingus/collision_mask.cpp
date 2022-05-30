@@ -30,7 +30,7 @@ CollisionMask::CollisionMask() :
 {
 }
 
-CollisionMask::CollisionMask(const std::string& gfx_name, const std::string& col_name) :
+CollisionMask::CollisionMask(std::string const& gfx_name, std::string const& col_name) :
   surface(),
   buffer(),
   width(),
@@ -40,7 +40,7 @@ CollisionMask::CollisionMask(const std::string& gfx_name, const std::string& col
   init_colmap(Resource::load_surface(col_name), col_name);
 }
 
-CollisionMask::CollisionMask(const std::string& name) :
+CollisionMask::CollisionMask(std::string const& name) :
   surface(),
   buffer(),
   width(),
@@ -50,7 +50,7 @@ CollisionMask::CollisionMask(const std::string& name) :
   init_colmap(surface, name);
 }
 
-CollisionMask::CollisionMask(const ResDescriptor& res_desc) :
+CollisionMask::CollisionMask(ResDescriptor const& res_desc) :
   surface(),
   buffer(),
   width(),
@@ -61,7 +61,7 @@ CollisionMask::CollisionMask(const ResDescriptor& res_desc) :
 }
 
 void
-CollisionMask::init_colmap(const Surface& surf, const std::string& surface_res)
+CollisionMask::init_colmap(Surface const& surf, std::string const& surface_res)
 {
   int pitch = surf.get_pitch();
   width  = surf.get_width();

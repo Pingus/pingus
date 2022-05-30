@@ -51,11 +51,11 @@ public:
   float get_offset() const { return offset; }
   void  set_offset(float o)  { offset = o; }
 
-  const Objects& get_objects() const { return objects; }
+  Objects const& get_objects() const { return objects; }
 
 private:
-  ObjectSelectorSet (const ObjectSelectorSet&);
-  ObjectSelectorSet& operator= (const ObjectSelectorSet&);
+  ObjectSelectorSet (ObjectSelectorSet const&);
+  ObjectSelectorSet& operator= (ObjectSelectorSet const&);
 };
 
 } // namespace pingus::editor

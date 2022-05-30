@@ -27,12 +27,12 @@ public:
   GlobalEvent ();
   virtual ~GlobalEvent() {}
 
-  virtual void on_button_press(const   SDL_KeyboardEvent& event);
-  virtual void on_button_release(const SDL_KeyboardEvent& event);
+  virtual void on_button_press(SDL_KeyboardEvent const& event);
+  virtual void on_button_release(SDL_KeyboardEvent const& event);
 
 private:
-  GlobalEvent (const GlobalEvent&);
-  GlobalEvent& operator= (const GlobalEvent&);
+  GlobalEvent (GlobalEvent const&);
+  GlobalEvent& operator= (GlobalEvent const&);
 };
 
 extern GlobalEvent global_event;

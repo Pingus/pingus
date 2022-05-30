@@ -62,7 +62,7 @@ public:
   reverse_iterator rbegin() { return vec.rbegin(); }
   reverse_iterator rend() { return vec.rend(); }
 
-  void push_back(const Vector2f& v) {
+  void push_back(Vector2f const& v) {
     path_length_valid = false;
     vec.push_back(v);
   }

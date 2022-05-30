@@ -32,7 +32,7 @@ public:
   int id;
   std::string label;
 
-  ComboItem(int id_, const std::string& label_)
+  ComboItem(int id_, std::string const& label_)
     : id(id_), label(label_)
   {}
 };
@@ -57,10 +57,10 @@ protected:
   int list_offset;
 
 public:
-  Combobox(const Rect& rect);
+  Combobox(Rect const& rect);
   ~Combobox () override;
 
-  void add(int id, const std::string& str);
+  void add(int id, std::string const& str);
 
   /** Clears all items from combobox */
   virtual void clear();
@@ -88,12 +88,12 @@ public:
 
   void update_layout() override {}
 
-  sigc::signal<void (const ComboItem&)> on_select;
+  sigc::signal<void (ComboItem const&)> on_select;
 
 private:
   Combobox();
-  Combobox (const Combobox&);
-  Combobox& operator= (const Combobox&);
+  Combobox (Combobox const&);
+  Combobox& operator= (Combobox const&);
 
 };
 

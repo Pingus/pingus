@@ -41,15 +41,15 @@ private:
 
 public:
   GUIManager();
-  GUIManager(const Rect&);
+  GUIManager(Rect const&);
   ~GUIManager () override;
 
   void update(float delta) override;
-  virtual void update(const pingus::input::Event& event);
+  virtual void update(pingus::input::Event const& event);
 
 private:
-  GUIManager (const GUIManager&);
-  GUIManager& operator= (const GUIManager&);
+  GUIManager (GUIManager const&);
+  GUIManager& operator= (GUIManager const&);
 };
 
 } // namespace pingus::gui

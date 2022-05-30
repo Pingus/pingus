@@ -41,8 +41,8 @@ public:
   bool catchable () override { return false; }
 
 private:
-  Smashed (const Smashed&);
-  Smashed& operator= (const Smashed&);
+  Smashed (Smashed const&);
+  Smashed& operator= (Smashed const&);
 };
 
 } // namespace pingus::actionss

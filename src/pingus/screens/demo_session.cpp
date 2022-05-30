@@ -46,7 +46,7 @@ private:
   std::function<bool(void)> highlight_func;
 
 public:
-  BButton(int x, int y, const std::string& name,
+  BButton(int x, int y, std::string const& name,
           std::function<void (void)> callback_,
           std::function<bool(void)> highlight_func_ = &false_func) :
     SurfaceButton(x, y, name, name + "-pressed", name + "-hover"),
@@ -74,7 +74,7 @@ public:
   }
 };
 
-DemoSession::DemoSession(const Pathname& pathname_) :
+DemoSession::DemoSession(Pathname const& pathname_) :
   pathname(pathname_),
   server(),
   demo(),
@@ -264,7 +264,7 @@ DemoSession::restart()
 }
 
 void
-DemoSession::resize(const Size& size_)
+DemoSession::resize(Size const& size_)
 {
   GUIScreen::resize(size_);
 

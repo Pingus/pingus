@@ -114,10 +114,10 @@ private:
 
   float calc_edge_path_length();
 
-  Vector2f interpolate(const Vector2f& a, const Vector2f& b, float perc);
+  Vector2f interpolate(Vector2f const& a, Vector2f const& b, float perc);
 
-  Pingus (const Pingus&);
-  Pingus& operator= (const Pingus&);
+  Pingus (Pingus const&);
+  Pingus& operator= (Pingus const&);
 };
 
 } // namespace pingus::worldmap

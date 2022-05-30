@@ -22,7 +22,7 @@
 
 namespace pingus {
 
-CheckBox::CheckBox(const Rect& rect_) :
+CheckBox::CheckBox(Rect const& rect_) :
   RectComponent(rect_),
   m_checkbox_marked("core/menu/checkbox_marked_small"),
   m_checkbox("core/menu/checkbox_small"),

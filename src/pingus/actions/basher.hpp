@@ -60,8 +60,8 @@ public:
   void bash ();
 
 private:
-  Basher (const Basher&);
-  Basher& operator= (const Basher&);
+  Basher (Basher const&);
+  Basher& operator= (Basher const&);
 };
 
 } // namespace pingus::actions

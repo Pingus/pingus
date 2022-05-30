@@ -38,8 +38,8 @@ public:
   void update () override;
 
 private:
-  Superman (const Superman&);
-  Superman& operator= (const Superman&);
+  Superman (Superman const&);
+  Superman& operator= (Superman const&);
 };
 
 } // namespace pingus::actions

@@ -34,9 +34,9 @@ private:
     std::string description;
     std::string author;
 
-    AddOnEntry(const std::string& title_,
-               const std::string& description_,
-               const std::string& author_)
+    AddOnEntry(std::string const& title_,
+               std::string const& description_,
+               std::string const& author_)
       : title(title_),
         description(description_),
         author(author_)
@@ -51,8 +51,8 @@ public:
   void on_escape_press () override;
 
 private:
-  AddOnMenu (const AddOnMenu&);
-  AddOnMenu& operator= (const AddOnMenu&);
+  AddOnMenu (AddOnMenu const&);
+  AddOnMenu& operator= (AddOnMenu const&);
 };
 
 } // namespace pingus

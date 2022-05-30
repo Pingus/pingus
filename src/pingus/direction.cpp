@@ -22,7 +22,7 @@ Direction::Direction() : direction(NONE)
 {
 }
 
-Direction::Direction(const Direction& dir) :
+Direction::Direction(Direction const& dir) :
   direction(dir.direction)
 {
 }
@@ -33,7 +33,7 @@ Direction::~Direction()
 }
 
 Direction&
-Direction::operator=(const Direction& dir)
+Direction::operator=(Direction const& dir)
 {
   if (this != &dir) {
     direction = dir.direction;

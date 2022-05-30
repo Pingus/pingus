@@ -103,7 +103,7 @@ PingusMain::read_rc_file (void)
         options.merge(cmd_options);
         cmd_options = options;
       }
-      catch(const std::exception& err)
+      catch(std::exception const& err)
       {
         log_error("{}", err.what());
       }
@@ -658,7 +658,7 @@ PingusMain::run(int argc, char** argv)
     {
       system.create_window(fbtype, screen_size, fullscreen, resizable);
     }
-    catch(const std::exception& err)
+    catch(std::exception const& err)
     {
       if (fbtype == SDL_FRAMEBUFFER)
       {
@@ -686,11 +686,11 @@ PingusMain::run(int argc, char** argv)
     // start and run the actual game
     start_game();
   }
-  catch (const std::bad_alloc&)
+  catch (std::bad_alloc const&)
   {
     std::cout << _("Pingus: Out of memory!") << std::endl;
   }
-  catch (const std::exception& a)
+  catch (std::exception const& a)
   {
     std::cout << _("Pingus: Standard exception caught!:\n") << a.what() << std::endl;
   }

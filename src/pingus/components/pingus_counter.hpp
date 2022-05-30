@@ -40,8 +40,8 @@ public:
 
   void draw(DrawingContext& gc) override;
 private:
-  PingusCounter (const PingusCounter&);
-  PingusCounter& operator= (const PingusCounter&);
+  PingusCounter (PingusCounter const&);
+  PingusCounter& operator= (PingusCounter const&);
 };
 
 } // namespace pingus

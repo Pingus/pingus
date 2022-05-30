@@ -41,8 +41,8 @@ public:
   void on_pointer_enter() override;
 
 private:
-  WorldmapScreenCloseButton(const WorldmapScreenCloseButton&);
-  WorldmapScreenCloseButton & operator=(const WorldmapScreenCloseButton&);
+  WorldmapScreenCloseButton(WorldmapScreenCloseButton const&);
+  WorldmapScreenCloseButton & operator=(WorldmapScreenCloseButton const&);
 };
 
 class WorldmapScreenCreditsButton
@@ -57,8 +57,8 @@ public:
   void on_pointer_enter() override;
 
 private:
-  WorldmapScreenCreditsButton(const WorldmapScreenCreditsButton&);
-  WorldmapScreenCreditsButton & operator=(const WorldmapScreenCreditsButton&);
+  WorldmapScreenCreditsButton(WorldmapScreenCreditsButton const&);
+  WorldmapScreenCreditsButton & operator=(WorldmapScreenCreditsButton const&);
 };
 
 WorldmapScreenCreditsButton::WorldmapScreenCreditsButton(WorldmapScreen* worldmap_screen_) :
@@ -140,7 +140,7 @@ WorldmapScreen::~WorldmapScreen ()
 }
 
 void
-WorldmapScreen::load(const Pathname& filename)
+WorldmapScreen::load(Pathname const& filename)
 {
   worldmap = std::unique_ptr<Worldmap>(new Worldmap(filename));
 
@@ -212,7 +212,7 @@ WorldmapScreen::show_end_story()
 }
 
 void
-WorldmapScreen::resize(const Size& size_)
+WorldmapScreen::resize(Size const& size_)
 {
   GUIScreen::resize(size_);
   close_button->set_pos(0, size.height() - 37);

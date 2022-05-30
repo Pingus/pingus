@@ -31,7 +31,7 @@ public:
   Data data;
   std::function<Data()> loader;
 
-  ResourceImpl(const std::function<Data()>& loader_) :
+  ResourceImpl(std::function<Data()> const& loader_) :
     data(),
     loader(loader_)
   {}
@@ -46,7 +46,7 @@ public:
   {
   }
 
-  Resource(const std::function<Data()>& loader) :
+  Resource(std::function<Data()> const& loader) :
     m_impl(new ResourceImpl<Data>(loader))
   {
   }

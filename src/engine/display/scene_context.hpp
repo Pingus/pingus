@@ -33,7 +33,7 @@ class SceneContext
 {
 public:
   SceneContext();
-  SceneContext(const Rect& rect);
+  SceneContext(Rect const& rect);
   ~SceneContext();
 
   /** The main drawing context, also known as color buffer, to this
@@ -69,20 +69,20 @@ public:
   void pop_modelview();
   void reset_modelview();
 
-  void set_rect(const Rect& rect);
-  void set_cliprect(const Rect& rect);
+  void set_rect(Rect const& rect);
+  void set_cliprect(Rect const& rect);
   void reset_cliprect();
 
   /** Takes all the buffers and combines them to form the final image
       that will be shown on the screen */
-  void render(Framebuffer& fb, const Rect& rect);
+  void render(Framebuffer& fb, Rect const& rect);
 
   void clear();
 private:
   std::unique_ptr<SceneContextImpl> impl;
 
-  SceneContext (const SceneContext&);
-  SceneContext& operator= (const SceneContext&);
+  SceneContext (SceneContext const&);
+  SceneContext& operator= (SceneContext const&);
 };
 
 class SceneContextDrawingRequest : public DrawingRequest
@@ -91,13 +91,13 @@ private:
   SceneContext* sc;
 
 public:
-  SceneContextDrawingRequest(SceneContext* sc, const Vector2i& pos, float z);
+  SceneContextDrawingRequest(SceneContext* sc, Vector2i const& pos, float z);
   ~SceneContextDrawingRequest() override;
-  void render(Framebuffer& fb, const Rect& render) override;
+  void render(Framebuffer& fb, Rect const& render) override;
 
 private:
-  SceneContextDrawingRequest(const SceneContextDrawingRequest&);
-  SceneContextDrawingRequest& operator=(const SceneContextDrawingRequest&);
+  SceneContextDrawingRequest(SceneContextDrawingRequest const&);
+  SceneContextDrawingRequest& operator=(SceneContextDrawingRequest const&);
 };
 
 } // namespace pingus

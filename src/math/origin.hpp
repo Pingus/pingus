@@ -40,7 +40,7 @@ namespace pingus {
 
 using Origin = geom::origin;
 
-Origin string2origin(const std::string& str);
+Origin string2origin(std::string const& str);
 std::string origin2string(Origin origin);
 
 } // namespace pingus

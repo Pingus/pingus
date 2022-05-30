@@ -55,7 +55,7 @@ private:
   Vector2i old_state_pos;
 
 public:
-  Playfield(Server*, GameSession*, const Rect& rect);
+  Playfield(Server*, GameSession*, Rect const& rect);
   ~Playfield() override;
 
   /** Returns the point onto which the Playfield is currently focused
@@ -68,13 +68,13 @@ public:
 
   void draw(DrawingContext& gc) override;
   void update(float delta) override;
-  Pingu* current_pingu_find(const Vector2f& pos);
+  Pingu* current_pingu_find(Vector2f const& pos);
 
   void on_primary_button_press (int x, int y) override;
   void on_secondary_button_press (int x, int y) override;
   void on_secondary_button_release (int x, int y) override;
   void on_pointer_move (int x, int y) override;
-  void on_key_pressed(const pingus::input::KeyboardEvent& ev) override;
+  void on_key_pressed(pingus::input::KeyboardEvent const& ev) override;
 
   void enable_scroll_mode();
   void do_scrolling();
@@ -83,8 +83,8 @@ public:
   void update_layout() override;
 
 private:
-  Playfield (const Playfield&);
-  Playfield& operator= (const Playfield&);
+  Playfield (Playfield const&);
+  Playfield& operator= (Playfield const&);
 };
 
 } // namespace pingus

@@ -53,10 +53,10 @@ private:
 public:
   /** Creates a new WorldObj*/
   WorldObj ();
-  WorldObj(const ReaderMapping& reader);
+  WorldObj(ReaderMapping const& reader);
 
-  WorldObj (const WorldObj&) : id() {}
-  WorldObj& operator= (const WorldObj&) { return *this; }
+  WorldObj (WorldObj const&) : id() {}
+  WorldObj& operator= (WorldObj const&) { return *this; }
 
   /** Destroys a world object */
   virtual ~WorldObj ();
@@ -67,7 +67,7 @@ public:
   virtual float z_index() const =0;
   virtual void set_z_index(float z_index) =0;
 
-  virtual void set_pos(const Vector2f& p) = 0;
+  virtual void set_pos(Vector2f const& p) = 0;
   virtual Vector2f get_pos() const = 0;
 
   /** Draw the WorldObj to the given SceneContext */

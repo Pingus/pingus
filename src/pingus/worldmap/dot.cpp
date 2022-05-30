@@ -19,7 +19,7 @@
 
 namespace pingus::worldmap {
 
-Dot::Dot(const ReaderMapping& reader) :
+Dot::Dot(ReaderMapping const& reader) :
   Drawable(),
   pos(),
   m_z_index(0.0f)

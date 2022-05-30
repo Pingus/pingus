@@ -33,13 +33,13 @@ ResDescriptor::ResDescriptor() :
 {
 }
 
-ResDescriptor::ResDescriptor(const std::string& res_name_)
+ResDescriptor::ResDescriptor(std::string const& res_name_)
   : res_name(res_name_),
     modifier(ResourceModifier::ROT0)
 {
 }
 
-ResDescriptor::ResDescriptor(const std::string& arg_res_name,
+ResDescriptor::ResDescriptor(std::string const& arg_res_name,
                              ResourceModifier::Enum arg_modifier)
   : res_name(arg_res_name),
     modifier(arg_modifier)
@@ -47,13 +47,13 @@ ResDescriptor::ResDescriptor(const std::string& arg_res_name,
 }
 
 bool
-ResDescriptor::operator<(const ResDescriptor& res_desc) const
+ResDescriptor::operator<(ResDescriptor const& res_desc) const
 {
 #pragma GCC diagnostic ignored "-Wzero-as-null-pointer-constant"
   return (res_name < res_desc.res_name) && (modifier < res_desc.modifier); // NOLINT
 }
 
-std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc)
+std::ostream& operator<<(std::ostream& s, ResDescriptor const& desc)
 {
   return s << "[" << desc.res_name << ", "
            << ResourceModifier::to_string(desc.modifier) << "]";

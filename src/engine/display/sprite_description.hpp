@@ -34,7 +34,7 @@ typedef std::shared_ptr<SpriteDescription> SpriteDescriptionPtr;
 class SpriteDescription
 {
 public:
-  static SpriteDescriptionPtr from_file(const Pathname& path);
+  static SpriteDescriptionPtr from_file(Pathname const& path);
 
 public:
   Pathname    filename;

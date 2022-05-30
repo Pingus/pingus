@@ -29,7 +29,7 @@
 
 namespace pingus::worldobjs {
 
-Smasher::Smasher(const ReaderMapping& reader) :
+Smasher::Smasher(ReaderMapping const& reader) :
   sprite("traps/smasher"),
   pos(),
   m_z_index(0.0f),

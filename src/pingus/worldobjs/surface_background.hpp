@@ -65,11 +65,11 @@ private:
   float scroll_oy;
 
 public:
-  SurfaceBackground(const ReaderMapping& reader);
+  SurfaceBackground(ReaderMapping const& reader);
 
   float z_index() const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector2f& p) override { }
+  void set_pos(Vector2f const& p) override { }
   Vector2f get_pos() const override { return Vector2f(); }
 
   void update() override;
@@ -78,8 +78,8 @@ public:
   bool is_solid_background() const override { return true; }
 
 private:
-  SurfaceBackground (const SurfaceBackground&);
-  SurfaceBackground& operator= (const SurfaceBackground&);
+  SurfaceBackground (SurfaceBackground const&);
+  SurfaceBackground& operator= (SurfaceBackground const&);
 };
 
 } // namespace pingus::worldobjs

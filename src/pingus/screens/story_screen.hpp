@@ -35,18 +35,18 @@ private:
   bool m_credits;
 
 public:
-  StoryScreen(const prio::ReaderMapping& reader, bool credits = false);
+  StoryScreen(prio::ReaderMapping const& reader, bool credits = false);
   ~StoryScreen() override;
 
   void on_startup() override;
   void on_fast_forward_press () override;
   void on_escape_press () override;
 
-  void resize(const Size& size) override;
+  void resize(Size const& size) override;
 
 private:
-  StoryScreen (const StoryScreen&);
-  StoryScreen& operator= (const StoryScreen&);
+  StoryScreen (StoryScreen const&);
+  StoryScreen& operator= (StoryScreen const&);
 };
 
 } // namespace pingus

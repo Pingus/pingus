@@ -42,12 +42,12 @@ protected:
   int    last_direction;
 
 public:
-  Entrance(const ReaderMapping& reader);
+  Entrance(ReaderMapping const& reader);
   ~Entrance() override;
 
   float z_index () const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector2f& p) override { pos = p; }
+  void set_pos(Vector2f const& p) override { pos = p; }
   Vector2f get_pos() const override { return pos; }
 
   virtual bool   pingu_ready ();
@@ -61,8 +61,8 @@ public:
 
   int get_owner_id() const { return owner_id; }
 private:
-  Entrance (const Entrance&);
-  Entrance& operator= (const Entrance&);
+  Entrance (Entrance const&);
+  Entrance& operator= (Entrance const&);
 };
 
 } // namespace pingus::worldobjs

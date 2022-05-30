@@ -32,7 +32,7 @@ private:
   pingus::gui::SurfaceButton* retry_button;
 
 public:
-  ResultScreen(const Result& result);
+  ResultScreen(Result const& result);
   void on_startup() override;
 
   void on_pause_press() override;
@@ -42,10 +42,10 @@ public:
   void retry_level();
   void close_screen();
 
-  void resize(const Size&) override;
+  void resize(Size const&) override;
 private:
-  ResultScreen (const ResultScreen&);
-  ResultScreen& operator= (const ResultScreen&);
+  ResultScreen (ResultScreen const&);
+  ResultScreen& operator= (ResultScreen const&);
 };
 
 } // namespace pingus

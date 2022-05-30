@@ -33,7 +33,7 @@ private:
   std::vector<ServerEvent> m_events;
 
 public:
-  PingusDemo(const Pathname& pathname);
+  PingusDemo(Pathname const& pathname);
 
   std::string get_levelname() const { return m_levelname; }
   std::string get_checksum() const { return m_checksum; }
@@ -41,8 +41,8 @@ public:
   std::vector<ServerEvent> get_events() const { return m_events; }
 
 private:
-  PingusDemo (const PingusDemo&);
-  PingusDemo& operator= (const PingusDemo&);
+  PingusDemo (PingusDemo const&);
+  PingusDemo& operator= (PingusDemo const&);
 };
 
 } // namespace pingus

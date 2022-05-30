@@ -30,7 +30,7 @@ namespace pingus::editor {
 static const int keyboard_movement_distance = 32;
 
 // Constructor
-Viewport::Viewport(EditorScreen* e, const Rect& rect_)  :
+Viewport::Viewport(EditorScreen* e, Rect const& rect_)  :
   RectComponent(rect_),
   state(rect.width(), rect.height()),
   drawing_context(new DrawingContext(rect)),
@@ -252,7 +252,7 @@ Viewport::on_pointer_move(int x_, int y_)
 }
 
 void
-Viewport::on_key_pressed(const input::KeyboardEvent& ev)
+Viewport::on_key_pressed(input::KeyboardEvent const& ev)
 {
   switch(ev.keysym.sym)
   {
@@ -783,7 +783,7 @@ Viewport::clear_selection()
 }
 
 void
-Viewport::move_objects(const Vector2i& offset)
+Viewport::move_objects(Vector2i const& offset)
 {
   for (auto it = selection.begin(); it != selection.end(); ++it)
   {
@@ -801,7 +801,7 @@ Viewport::get_scroll_pos() const
 }
 
 void
-Viewport::set_scroll_pos(const Vector2i& pos)
+Viewport::set_scroll_pos(Vector2i const& pos)
 {
   state.set_pos(pos);
 }

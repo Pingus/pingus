@@ -83,16 +83,16 @@ public:
   bool blit_allowed (int x, int y,  Groundtype::GPType) const;
 
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
-  void put(const CollisionMask& mask, int x, int y, Groundtype::GPType);
+  void put(CollisionMask const& mask, int x, int y, Groundtype::GPType);
 
   void remove(int x, int y);
-  void remove(const CollisionMask& mask, int x, int y);
+  void remove(CollisionMask const& mask, int x, int y);
 
   void draw(DrawingContext& gc);
 
 private:
-  CollisionMap (const CollisionMap&);
-  CollisionMap& operator= (const CollisionMap&);
+  CollisionMap (CollisionMap const&);
+  CollisionMap& operator= (CollisionMap const&);
 };
 
 } // namespace pingus

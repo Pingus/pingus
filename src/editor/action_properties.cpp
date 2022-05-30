@@ -34,7 +34,7 @@ namespace pingus::editor {
  * [active] [Actionname] [count]
  *
  */
-ActionProperties::ActionProperties(EditorScreen* editor_, const Rect& rect_) :
+ActionProperties::ActionProperties(EditorScreen* editor_, Rect const& rect_) :
   GroupComponent(rect_),
   editor(editor_),
   level(),
@@ -125,7 +125,7 @@ ActionProperties::on_checkbox_change(bool t, ActionName::Enum id)
 }
 
 void
-ActionProperties::on_inputbox_change(const std::string& value, ActionName::Enum id)
+ActionProperties::on_inputbox_change(std::string const& value, ActionName::Enum id)
 {
   level->set_action(ActionName::to_string(id), strut::from_string<int>(value));
 }

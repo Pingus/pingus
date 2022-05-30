@@ -30,7 +30,7 @@ public:
       less then \a width long. Line wrappings happens TeX style, i.e.
       a double newline marks a newline, while other whitespace is
       joined to a single space. */
-  static std::string break_line(const std::string& text, int width, const Font& font);
+  static std::string break_line(std::string const& text, int width, Font const& font);
 };
 
 } // namespace pingus

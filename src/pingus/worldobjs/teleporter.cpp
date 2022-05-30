@@ -26,7 +26,7 @@
 
 namespace pingus::worldobjs {
 
-Teleporter::Teleporter(const ReaderMapping& reader) :
+Teleporter::Teleporter(ReaderMapping const& reader) :
   pos(),
   m_z_index(0.0f),
   sprite("worldobjs/teleporter"),

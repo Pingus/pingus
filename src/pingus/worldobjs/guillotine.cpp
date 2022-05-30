@@ -23,7 +23,7 @@
 
 namespace pingus::worldobjs {
 
-Guillotine::Guillotine(const ReaderMapping& reader) :
+Guillotine::Guillotine(ReaderMapping const& reader) :
   sprite_kill_right("traps/guillotinekill/right"),
   sprite_kill_left("traps/guillotinekill/left"),
   sprite_idle("traps/guillotineidle"),

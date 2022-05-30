@@ -41,8 +41,8 @@ public:
   bool is_tumbling () const;
 
 private:
-  Faller (const Faller&);
-  Faller& operator= (const Faller&);
+  Faller (Faller const&);
+  Faller& operator= (Faller const&);
 };
 
 } // namespace pingus::actions

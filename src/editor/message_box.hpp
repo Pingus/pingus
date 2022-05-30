@@ -32,14 +32,14 @@ private:
   std::string m_text;
 
 public:
-  MessageBox(const Rect& rect);
+  MessageBox(Rect const& rect);
 
   void draw_background(DrawingContext& gc) override;
   void update_layout() override;
 
-  void set_title(const std::string& text);
-  void set_text(const std::string& text);
-  void set_ok_text(const std::string& text);
+  void set_title(std::string const& text);
+  void set_text(std::string const& text);
+  void set_ok_text(std::string const& text);
 
   void on_ok_button();
   void on_cancel_button();
@@ -48,8 +48,8 @@ public:
   sigc::signal<void()> on_ok;
 
 private:
-  MessageBox(const MessageBox&);
-  MessageBox& operator=(const MessageBox&);
+  MessageBox(MessageBox const&);
+  MessageBox& operator=(MessageBox const&);
 };
 
 } // namespace pingus::editor

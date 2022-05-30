@@ -28,7 +28,7 @@ namespace pingus::editor {
 class GroupLevelObj : public LevelObj
 {
 public:
-  static std::shared_ptr<GroupLevelObj> from_prefab(const std::string& name);
+  static std::shared_ptr<GroupLevelObj> from_prefab(std::string const& name);
 
 private:
   /** unnamed Groups are saved as (group ...) named ones are
@@ -52,7 +52,7 @@ public:
 
   bool is_prefab() const { return !m_name.empty(); }
 
-  void add_child(const LevelObjPtr&);
+  void add_child(LevelObjPtr const&);
 
   void draw(DrawingContext& gc) override;
   void draw_selection(DrawingContext &gc) override;
@@ -131,7 +131,7 @@ public:
   /// Operations
 public:
   /** Set the object's position */
-  void set_pos(const Vector2f& p) override;
+  void set_pos(Vector2f const& p) override;
 
   void set_pos_x(float x) override { }
   float get_pos_x() const override { return 0.0f; }
@@ -143,13 +143,13 @@ public:
   float z_index() const override { return 0.0f; }
 
   /** Original position of the objects before being dragged around */
-  void set_orig_pos(const Vector2f& p) override { m_orig_pos = p; }
+  void set_orig_pos(Vector2f const& p) override { m_orig_pos = p; }
 
   /** Set the object's resource name */
-  void set_res_desc(const ResDescriptor& d) override { }
+  void set_res_desc(ResDescriptor const& d) override { }
 
   /** Set the object's modifier */
-  void set_modifier(const std::string& m) override { }
+  void set_modifier(std::string const& m) override { }
 
   /** Set the object's modifier */
   void set_modifier(ResourceModifier::Enum modifier) override { }
@@ -157,12 +157,12 @@ public:
   ResourceModifier::Enum get_modifier() const override { return ResourceModifier::Enum::ROT0; }
 
   /** Set the object's section header name */
-  void set_section_name(const std::string& sn) override { }
+  void set_section_name(std::string const& sn) override { }
 
   /** Set the object's type */
-  void set_type(const std::string& t) override { }
+  void set_type(std::string const& t) override { }
 
-  void set_ground_type(const std::string& t) override { }
+  void set_ground_type(std::string const& t) override { }
 
   /** Set the object's speed */
   void set_speed(int s) override { }
@@ -195,7 +195,7 @@ public:
   void set_keep_aspect(const bool a) override { }
 
   /** Set the objects color if applicable */
-  void set_color(const Color& c) override { }
+  void set_color(Color const& c) override { }
 
   /** Set the object's parallax scroll multiplier in the x direction */
   void set_para_x(float p) override { }
@@ -204,10 +204,10 @@ public:
   void set_para_y(float p) override { }
 
   /** Set the object's direction if applicable */
-  void set_direction(const std::string& d) override;
+  void set_direction(std::string const& d) override;
 
-  void set_id(const std::string& t) override { }
-  void set_target_id(const std::string& t) override { }
+  void set_id(std::string const& t) override { }
+  void set_target_id(std::string const& t) override { }
 
   void set_height(int h) override { }
 
@@ -221,7 +221,7 @@ public:
   bool is_at (int x, int y) override;
 
   /** Returns a number representing which attributes this object possesses */
-  unsigned int get_attributes(const std::string& obj_type) { return 0; }
+  unsigned int get_attributes(std::string const& obj_type) { return 0; }
 
   Rect get_rect() const override;
 
@@ -233,11 +233,11 @@ public:
   void set_middle_stars(int n) override {}
   void set_large_stars(int n) override  {}
 
-  LevelObjPtr duplicate(const Vector2i& offset) const override;
+  LevelObjPtr duplicate(Vector2i const& offset) const override;
 
 private:
-  GroupLevelObj(const GroupLevelObj&);
-  GroupLevelObj& operator=(const GroupLevelObj&);
+  GroupLevelObj(GroupLevelObj const&);
+  GroupLevelObj& operator=(GroupLevelObj const&);
 };
 
 } // namespace pingus::editor

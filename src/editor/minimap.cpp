@@ -24,7 +24,7 @@
 
 namespace pingus::editor {
 
-Minimap::Minimap(EditorScreen* editor_, const Rect& rect_)
+Minimap::Minimap(EditorScreen* editor_, Rect const& rect_)
   : RectComponent(rect_),
     editor(editor_),
     drawing_context(new DrawingContext(geom::grow(rect, -3))),

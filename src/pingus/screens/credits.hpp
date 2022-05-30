@@ -58,7 +58,7 @@ private:
   std::vector<std::string> credits;
 
 public:
-  Credits(const Pathname& filename);
+  Credits(Pathname const& filename);
   ~Credits() override;
 
   void update(float) override;
@@ -71,8 +71,8 @@ public:
   void on_escape_press() override;
 
 private:
-  Credits(const Credits&);
-  Credits& operator=(const Credits&);
+  Credits(Credits const&);
+  Credits& operator=(Credits const&);
 
 };
 

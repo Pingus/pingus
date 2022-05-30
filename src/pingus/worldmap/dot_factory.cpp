@@ -25,7 +25,7 @@
 namespace pingus::worldmap {
 
 std::unique_ptr<Dot>
-DotFactory::create(const ReaderObject& reader)
+DotFactory::create(ReaderObject const& reader)
 {
   if (reader.get_name() == "storydot")
   {

@@ -37,10 +37,10 @@ class Sprite
 {
 public:
   Sprite();
-  Sprite(const std::string& name);
-  Sprite(const ResDescriptor& desc);
-  Sprite(const SpriteDescription& desc, ResourceModifier::Enum mod = ResourceModifier::ROT0);
-  Sprite(const Surface& surface);
+  Sprite(std::string const& name);
+  Sprite(ResDescriptor const& desc);
+  Sprite(SpriteDescription const& desc, ResourceModifier::Enum mod = ResourceModifier::ROT0);
+  Sprite(Surface const& surface);
   ~Sprite();
 
   int get_width()  const;

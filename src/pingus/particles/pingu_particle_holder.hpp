@@ -52,7 +52,7 @@ public:
 
   void set_z_index(float z_index) override {}
   float z_index () const override { return 1000.0f; }
-  void set_pos(const Vector2f& p) override { }
+  void set_pos(Vector2f const& p) override { }
   Vector2f get_pos() const override { return Vector2f(); }
 
   /// Let the particle move
@@ -62,8 +62,8 @@ public:
   void draw (SceneContext& gc) override;
 
 private:
-  PinguParticleHolder (const PinguParticleHolder&);
-  PinguParticleHolder& operator= (const PinguParticleHolder&);
+  PinguParticleHolder (PinguParticleHolder const&);
+  PinguParticleHolder& operator= (PinguParticleHolder const&);
 };
 
 } // namespace pingus::particles

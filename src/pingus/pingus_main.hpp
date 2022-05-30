@@ -49,8 +49,8 @@ private:
 
   void init_path_finder();
 
-  PingusMain (const PingusMain&);
-  PingusMain& operator= (const PingusMain&);
+  PingusMain (PingusMain const&);
+  PingusMain& operator= (PingusMain const&);
 };
 
 } // namespace pingus

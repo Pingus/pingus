@@ -42,20 +42,20 @@ private:
   static  PLFMap plf_map;
   /** Loads PLF from filename and stores it under 'res_name' in the
       map */
-  static PingusLevel load_plf_raw(const std::string& res_name,
-                                  const Pathname& pathname);
+  static PingusLevel load_plf_raw(std::string const& res_name,
+                                  Pathname const& pathname);
 public:
   /** @returns a handle to the PLF, which the caller *must not* delete
 
       @param res_name The resource name of the level, aka "snow11-grumbel"
   */
-  static PingusLevel load_plf(const std::string& res_name);
+  static PingusLevel load_plf(std::string const& res_name);
 
   /** @return a handle to the PLF, instead of loading it from a
       res_name, load it from a system dependend filename
 
       @param filename The filename of the plf, aka "../data/levels/snow11-grumbel.pingus" */
-  static PingusLevel load_plf_from_filename(const Pathname& filename);
+  static PingusLevel load_plf_from_filename(Pathname const& filename);
 };
 
 } // namespace pingus

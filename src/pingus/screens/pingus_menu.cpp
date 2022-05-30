@@ -198,7 +198,7 @@ PingusMenu::on_click(MenuButton* button)
 }
 
 void
-PingusMenu::set_hint(const std::string& str)
+PingusMenu::set_hint(std::string const& str)
 {
   hint = str;
 }
@@ -210,7 +210,7 @@ PingusMenu::update(float delta)
 }
 
 void
-PingusMenu::create_background(const Size& size_)
+PingusMenu::create_background(Size const& size_)
 {
   // Recreate the layer manager in the new size
   background = std::unique_ptr<LayerManager>(new LayerManager());
@@ -254,7 +254,7 @@ PingusMenu::create_background(const Size& size_)
 }
 
 void
-PingusMenu::resize(const Size& size_)
+PingusMenu::resize(Size const& size_)
 {
   GUIScreen::resize(size_);
   create_background(size);

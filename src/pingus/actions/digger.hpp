@@ -43,8 +43,8 @@ public:
   void update() override;
 
 private:
-  Digger (const Digger&);
-  Digger& operator= (const Digger&);
+  Digger (Digger const&);
+  Digger& operator= (Digger const&);
 };
 
 } // namespace pingus::actions

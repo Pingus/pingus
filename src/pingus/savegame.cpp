@@ -61,7 +61,7 @@ Savegame::Savegame() :
 {
 }
 
-Savegame::Savegame(const ReaderMapping& reader) :
+Savegame::Savegame(ReaderMapping const& reader) :
   filename(),
   status(),
   needed_time(),
@@ -73,7 +73,7 @@ Savegame::Savegame(const ReaderMapping& reader) :
   reader.read("saved-pingus", saved_pingus);
 }
 
-Savegame::Savegame(const std::string& filename_,
+Savegame::Savegame(std::string const& filename_,
                    S_Status status_,
                    int time_,
                    int saved_pingus_) :

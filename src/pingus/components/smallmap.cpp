@@ -25,7 +25,7 @@
 
 namespace pingus {
 
-SmallMap::SmallMap(Server* server_, Playfield* playfield_, const Rect& rect_) :
+SmallMap::SmallMap(Server* server_, Playfield* playfield_, Rect const& rect_) :
   RectComponent(rect_),
   server(server_),
   playfield(playfield_),
@@ -93,7 +93,7 @@ SmallMap::update (float delta)
 }
 
 void
-SmallMap::draw_sprite(const Sprite& sprite, const Vector2f& pos)
+SmallMap::draw_sprite(Sprite const& sprite, Vector2f const& pos)
 {
   World* world = server->get_world();
   float x = static_cast<float>(rect.left()) + (pos.x() * static_cast<float>(rect.width())  / static_cast<float>(world->get_width()));

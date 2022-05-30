@@ -26,7 +26,7 @@ namespace pingus {
 
 namespace {
 
-FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceModifier::Enum modifier)
+FramebufferSurface load_framebuffer_surface(Pathname const& filename, ResourceModifier::Enum modifier)
 {
   // FIXME: Implement proper cache
   try
@@ -38,7 +38,7 @@ FramebufferSurface load_framebuffer_surface(const Pathname& filename, ResourceMo
     }
     return Display::get_framebuffer()->create_surface(surface);
   }
-  catch(const std::exception& err)
+  catch(std::exception const& err)
   {
     // return a dummy surface for cases where the image file can't be found
     log_error("{}: exception on load: {}", filename, err.what());
@@ -65,7 +65,7 @@ SpriteImpl::SpriteImpl() :
 {
 }
 
-SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifier::Enum mod) :
+SpriteImpl::SpriteImpl(SpriteDescription const& desc, ResourceModifier::Enum mod) :
   filename(desc.filename),
   framebuffer_surface(),
   offset(),
@@ -97,7 +97,7 @@ SpriteImpl::SpriteImpl(const SpriteDescription& desc, ResourceModifier::Enum mod
 
 }
 
-SpriteImpl::SpriteImpl(const Surface& surface) :
+SpriteImpl::SpriteImpl(Surface const& surface) :
   filename(),
   framebuffer_surface(Display::get_framebuffer()->create_surface(surface)),
   offset(0,0),

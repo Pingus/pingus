@@ -30,14 +30,14 @@ private:
   Path path;
 
 public:
-  PathDrawable(const Path& arg_path);
+  PathDrawable(Path const& arg_path);
 
   void draw(DrawingContext& gc) override;
   void update(float delta) override;
 
 private:
-  PathDrawable (const PathDrawable&);
-  PathDrawable& operator= (const PathDrawable&);
+  PathDrawable (PathDrawable const&);
+  PathDrawable& operator= (PathDrawable const&);
 };
 
 } // namespace pingus::worldmap

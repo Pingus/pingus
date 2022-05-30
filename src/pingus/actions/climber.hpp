@@ -44,8 +44,8 @@ public:
   Vector2f get_center_pos() const override;
 
 private:
-  Climber (const Climber&);
-  Climber& operator= (const Climber&);
+  Climber (Climber const&);
+  Climber& operator= (Climber const&);
 };
 
 } // namespace pingus::actions

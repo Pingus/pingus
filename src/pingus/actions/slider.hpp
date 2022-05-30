@@ -36,8 +36,8 @@ public:
   void update() override;
 
 private:
-  Slider (const Slider&);
-  Slider& operator= (const Slider&);
+  Slider (Slider const&);
+  Slider& operator= (Slider const&);
 };
 
 } // namespace pingus::actions

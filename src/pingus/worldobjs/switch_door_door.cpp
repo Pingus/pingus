@@ -24,7 +24,7 @@
 
 namespace pingus::worldobjs {
 
-SwitchDoorDoor::SwitchDoorDoor(const ReaderMapping& reader) :
+SwitchDoorDoor::SwitchDoorDoor(ReaderMapping const& reader) :
   WorldObj(reader),
   door_pos(),
   m_z_index(0.0f),

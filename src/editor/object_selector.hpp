@@ -52,17 +52,17 @@ private:
   std::unique_ptr<ObjectSelectorSet>  prefab_set;
 
 public:
-  ObjectSelector(EditorScreen* editor, const Rect& rect);
+  ObjectSelector(EditorScreen* editor, Rect const& rect);
   ~ObjectSelector() override;
 
   void draw_background(DrawingContext& gc) override;
-  void add_button(const std::string& image, const std::string& tooltip, ObjectSelectorSet* set);
+  void add_button(std::string const& image, std::string const& tooltip, ObjectSelectorSet* set);
 
   void scroll_up();
   void scroll_down();
 
 private:
-  std::unique_ptr<ObjectSelectorSet> create_groundpiece(const std::string& prefix, const std::string& type);
+  std::unique_ptr<ObjectSelectorSet> create_groundpiece(std::string const& prefix, std::string const& type);
   std::unique_ptr<ObjectSelectorSet> create_gp_ground();
   std::unique_ptr<ObjectSelectorSet> create_gp_solid();
   std::unique_ptr<ObjectSelectorSet> create_gp_bridge();
@@ -80,8 +80,8 @@ private:
 
   void update_layout() override;
 private:
-  ObjectSelector (const ObjectSelector&);
-  ObjectSelector& operator= (const ObjectSelector&);
+  ObjectSelector (ObjectSelector const&);
+  ObjectSelector& operator= (ObjectSelector const&);
 };
 
 } // namespace pingus::editor

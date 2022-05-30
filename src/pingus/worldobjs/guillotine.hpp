@@ -37,11 +37,11 @@ private:
   bool killing;
 
 public:
-  Guillotine(const ReaderMapping& reader);
+  Guillotine(ReaderMapping const& reader);
 
   float z_index() const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector2f& p) override { pos = p; }
+  void set_pos(Vector2f const& p) override { pos = p; }
   Vector2f get_pos() const override { return pos; }
 
   void update() override;
@@ -50,8 +50,8 @@ protected:
   void catch_pingu(Pingu*);
 
 private:
-  Guillotine(const Guillotine&);
-  Guillotine& operator=(const Guillotine&);
+  Guillotine(Guillotine const&);
+  Guillotine& operator=(Guillotine const&);
 };
 
 } // namespace pingus::worldobjs

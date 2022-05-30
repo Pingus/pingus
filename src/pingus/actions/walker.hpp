@@ -39,8 +39,8 @@ public:
   ActionName::Enum get_type () const override { return ActionName::WALKER; }
 
 private:
-  Walker (const Walker&);
-  Walker& operator= (const Walker&);
+  Walker (Walker const&);
+  Walker& operator= (Walker const&);
 };
 
 } // namespace pingus::actions

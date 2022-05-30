@@ -27,15 +27,15 @@ private:
   std::string text;
 
 public:
-  Label(const Rect& rect, const std::string& text);
-  Label(const std::string& text);
+  Label(Rect const& rect, std::string const& text);
+  Label(std::string const& text);
 
   bool is_at(int, int) override { return false; }
   void draw (DrawingContext& gc) override;
   void update (float delta) override;
   void update_layout() override {}
 
-  void set_text(const std::string& text_) { text = text_; }
+  void set_text(std::string const& text_) { text = text_; }
 };
 
 } // namespace pingus::editor

@@ -50,17 +50,17 @@ public:
   void pop_translate();
 
 private:
-  void blit_surface(const Surface& surface, int x, int y);
+  void blit_surface(Surface const& surface, int x, int y);
 
-  void render_sprite(const ResDescriptor& desc,
-                     const Vector2f& pos,
+  void render_sprite(ResDescriptor const& desc,
+                     Vector2f const& pos,
                      float z_index);
-  void render_surface(const ResDescriptor& desc,
-                      const Vector2f& pos,
+  void render_surface(ResDescriptor const& desc,
+                      Vector2f const& pos,
                       float z_index,
                       int repeat = 1);
 
-  void process_object_with_surface(const ReaderObject& reader);
+  void process_object_with_surface(ReaderObject const& reader);
 };
 
 } // namespace pingus

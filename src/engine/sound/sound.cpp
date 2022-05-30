@@ -38,7 +38,7 @@ PingusSound::init(std::unique_ptr<PingusSoundImpl> s)
     {
       try {
         PingusSound::init(std::make_unique<PingusSoundReal>());
-      } catch (const std::exception& err) {
+      } catch (std::exception const& err) {
         log_error("Sound Error: {}", err.what());
         log_error("Sound will be disabled");
         PingusSound::init(std::make_unique<PingusSoundDummy>());
@@ -66,7 +66,7 @@ PingusSound::deinit ()
     @param volume The desired volume level
     @param panning The desired panning level (stereo only) */
 void
-PingusSound::play_sound(const std::string& name, float volume, float panning)
+PingusSound::play_sound(std::string const& name, float volume, float panning)
 {
   assert(sound);
   sound->real_play_sound(name, volume, panning);

@@ -53,7 +53,7 @@ private:
   std::vector<ActionButton>::size_type tip_button;
 
 public:
-  ButtonPanel(Server* s, const Vector2i& pos);
+  ButtonPanel(Server* s, Vector2i const& pos);
   ~ButtonPanel() override;
 
   void draw(DrawingContext& gc) override;
@@ -74,11 +74,11 @@ public:
   void on_pointer_leave() override;
   void on_pointer_move(int x, int y) override;
 
-  void set_pos(const Vector2i& pos);
+  void set_pos(Vector2i const& pos);
 
 private:
-  ButtonPanel (const ButtonPanel&);
-  ButtonPanel& operator= (const ButtonPanel&);
+  ButtonPanel (ButtonPanel const&);
+  ButtonPanel& operator= (ButtonPanel const&);
 };
 
 } // namespace pingus

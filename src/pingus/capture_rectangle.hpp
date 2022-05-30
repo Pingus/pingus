@@ -60,8 +60,8 @@ public:
   void draw(SceneContext& gc);
 
 private:
-  CaptureRectangle (const CaptureRectangle&);
-  CaptureRectangle& operator= (const CaptureRectangle&);
+  CaptureRectangle (CaptureRectangle const&);
+  CaptureRectangle& operator= (CaptureRectangle const&);
 };
 
 } // namespace pingus

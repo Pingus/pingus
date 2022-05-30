@@ -51,14 +51,14 @@ private:
   Inputbox* filename_inputbox;
 
 public:
-  FileDialog(EditorScreen* editor, const Rect& rect, Mode mode);
+  FileDialog(EditorScreen* editor, Rect const& rect, Mode mode);
   ~FileDialog() override;
 
   void draw_background(DrawingContext& gc) override;
   void update_layout() override;
 
-  void load_file(const System::DirectoryEntry& entry);
-  void set_directory(const std::string& pathname);
+  void load_file(System::DirectoryEntry const& entry);
+  void set_directory(std::string const& pathname);
 
 private:
   void on_cancel();
@@ -76,8 +76,8 @@ private:
 private:
   void update_button_state();
 
-  FileDialog (const FileDialog&);
-  FileDialog& operator= (const FileDialog&);
+  FileDialog (FileDialog const&);
+  FileDialog& operator= (FileDialog const&);
 };
 
 } // namespace pingus::editor

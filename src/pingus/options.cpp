@@ -48,7 +48,7 @@ std::string framebuffer_type_to_string(FramebufferType type)
   }
 }
 
-FramebufferType framebuffer_type_from_string(const std::string& str)
+FramebufferType framebuffer_type_from_string(std::string const& str)
 {
   if (str == "sdl")
   {
@@ -70,7 +70,7 @@ FramebufferType framebuffer_type_from_string(const std::string& str)
 }
 
 Options
-Options::from_file(const Pathname& filename)
+Options::from_file(Pathname const& filename)
 {
   auto doc = prio::ReaderDocument::from_file(filename.get_sys_path());
 
@@ -83,7 +83,7 @@ Options::from_file(const Pathname& filename)
 }
 
 Options
-Options::from_file_reader(const ReaderMapping& reader)
+Options::from_file_reader(ReaderMapping const& reader)
 {
   Options opts;
 
@@ -173,7 +173,7 @@ Options::from_file_reader(const ReaderMapping& reader)
 }
 
 void
-Options::save(const Pathname& filename) const
+Options::save(Pathname const& filename) const
 {
   std::ostringstream out;
   Writer writer(out);
@@ -233,7 +233,7 @@ Options::save(const Pathname& filename) const
 }
 
 void
-Options::merge(const Options& rhs)
+Options::merge(Options const& rhs)
 {
   // Display
   framebuffer_type.merge(rhs.framebuffer_type);
@@ -269,7 +269,7 @@ Options::merge(const Options& rhs)
 }
 
 void
-CommandLineOptions::merge(const CommandLineOptions& rhs)
+CommandLineOptions::merge(CommandLineOptions const& rhs)
 {
   Options::merge(rhs);
 

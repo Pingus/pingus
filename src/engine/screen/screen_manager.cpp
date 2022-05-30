@@ -34,9 +34,9 @@ namespace pingus {
 namespace {
 
 template<class C>
-void write(std::ostream& out, const C& value)
+void write(std::ostream& out, C const& value)
 {
-  out.write(reinterpret_cast<const char*>(&value), sizeof(value));
+  out.write(reinterpret_cast<char const*>(&value), sizeof(value));
 }
 
 template<class C>
@@ -45,7 +45,7 @@ void read(std::istream& out, C& value)
   out.read(reinterpret_cast<char*>(&value), sizeof(value));
 }
 
-void write_events(std::ostream& out, const std::vector<pingus::input::Event>& events)
+void write_events(std::ostream& out, std::vector<pingus::input::Event> const& events)
 {
   write(out, events.size());
   for(std::vector<pingus::input::Event>::const_iterator i = events.begin();
@@ -166,7 +166,7 @@ ScreenManager::display()
 }
 
 void
-ScreenManager::update(float delta, const std::vector<pingus::input::Event>& events)
+ScreenManager::update(float delta, std::vector<pingus::input::Event> const& events)
 {
   pingus::sound::PingusSound::update(delta);
 
@@ -245,7 +245,7 @@ ScreenManager::instance()
 }
 
 void
-ScreenManager::push_screen(const ScreenPtr& screen)
+ScreenManager::push_screen(ScreenPtr const& screen)
 {
   screens.push_back(screen);
   screen->on_startup();
@@ -284,7 +284,7 @@ ScreenManager::replace_screen(ScreenPtr screen)
 }
 
 void
-ScreenManager::fade_over(const ScreenPtr& old_screen, const ScreenPtr& new_screen)
+ScreenManager::fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_screen)
 {
   if (!old_screen.get() || !new_screen.get())
     return;
@@ -331,7 +331,7 @@ ScreenManager::fade_over(const ScreenPtr& old_screen, const ScreenPtr& new_scree
 }
 
 void
-ScreenManager::resize(const Size& size)
+ScreenManager::resize(Size const& size)
 {
   display_gc->set_rect(Rect(geom::ipoint(0, 0), size));
 

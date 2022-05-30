@@ -39,16 +39,16 @@ public:
       valid(false)
   {}
 
-  Value(const T& v)
+  Value(T const& v)
     : value(v),
       valid(true)
   {}
 
-  const T& get() const {
+  T const& get() const {
     return value;
   }
 
-  void set(const T& v) {
+  void set(T const& v) {
     value = v;
     valid = true;
   }
@@ -57,7 +57,7 @@ public:
     return valid;
   }
 
-  void merge(const Value<T>& rhs)
+  void merge(Value<T> const& rhs)
   {
     if (rhs.is_set())
     {
@@ -75,12 +75,12 @@ enum FramebufferType
 };
 
 std::string framebuffer_type_to_string(FramebufferType type);
-FramebufferType framebuffer_type_from_string(const std::string& str);
+FramebufferType framebuffer_type_from_string(std::string const& str);
 
 struct Options
 {
-  static Options from_file_reader(const prio::ReaderMapping& reader);
-  static Options from_file(const Pathname& filename);
+  static Options from_file_reader(prio::ReaderMapping const& reader);
+  static Options from_file(Pathname const& filename);
 
   // Display
   Value<FramebufferType> framebuffer_type;
@@ -142,9 +142,9 @@ struct Options
 
   virtual ~Options() {}
 
-  void merge(const Options& rhs);
+  void merge(Options const& rhs);
 
-  virtual void save(const Pathname& filename) const;
+  virtual void save(Pathname const& filename) const;
 };
 
 struct CommandLineOptions : public Options
@@ -165,8 +165,8 @@ struct CommandLineOptions : public Options
 
   ~CommandLineOptions() override {}
 
-  void merge(const Options& rhs) { Options::merge(rhs); }
-  void merge(const CommandLineOptions& rhs);
+  void merge(Options const& rhs) { Options::merge(rhs); }
+  void merge(CommandLineOptions const& rhs);
 };
 
 } // namespace pingus

@@ -38,7 +38,7 @@ public:
   Sprite blackboard;
   std::string time_str;
 
-  ResultScreenComponent(const Result& arg_result);
+  ResultScreenComponent(Result const& arg_result);
   ~ResultScreenComponent() override {}
   void draw(DrawingContext& gc) override;
 };
@@ -71,8 +71,8 @@ public:
   }
 
 private:
-  ResultScreenOkButton(const ResultScreenOkButton&);
-  ResultScreenOkButton & operator=(const ResultScreenOkButton&);
+  ResultScreenOkButton(ResultScreenOkButton const&);
+  ResultScreenOkButton & operator=(ResultScreenOkButton const&);
 };
 
 class ResultScreenAbortButton
@@ -108,8 +108,8 @@ public:
   }
 
 private:
-  ResultScreenAbortButton(const ResultScreenAbortButton&);
-  ResultScreenAbortButton & operator=(const ResultScreenAbortButton&);
+  ResultScreenAbortButton(ResultScreenAbortButton const&);
+  ResultScreenAbortButton & operator=(ResultScreenAbortButton const&);
 };
 
 class ResultScreenRetryButton : public pingus::gui::SurfaceButton
@@ -152,11 +152,11 @@ public:
   }
 
 private:
-  ResultScreenRetryButton(const ResultScreenRetryButton&);
-  ResultScreenRetryButton & operator=(const ResultScreenRetryButton&);
+  ResultScreenRetryButton(ResultScreenRetryButton const&);
+  ResultScreenRetryButton & operator=(ResultScreenRetryButton const&);
 };
 
-ResultScreenComponent::ResultScreenComponent(const Result& arg_result) :
+ResultScreenComponent::ResultScreenComponent(Result const& arg_result) :
   result(arg_result),
   background("core/menu/wood"),
   blackboard("core/menu/blackboard"),
@@ -249,7 +249,7 @@ ResultScreenComponent::draw(DrawingContext& gc)
   gc.print_right(pingus::fonts::chalk_normal, Vector2i(right_x, y), time_str);
 }
 
-ResultScreen::ResultScreen(const Result& arg_result) :
+ResultScreen::ResultScreen(Result const& arg_result) :
   result(arg_result),
   ok_button(),
   abort_button(),
@@ -325,7 +325,7 @@ ResultScreen::on_escape_press()
 }
 
 void
-ResultScreen::resize(const Size& size_)
+ResultScreen::resize(Size const& size_)
 {
   GUIScreen::resize(size_);
 

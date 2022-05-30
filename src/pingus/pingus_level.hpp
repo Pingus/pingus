@@ -33,23 +33,23 @@ class PingusLevel
 public:
   PingusLevel();
 
-  PingusLevel(const Pathname& pathname);
+  PingusLevel(Pathname const& pathname);
 
-  PingusLevel(const std::string& resname,
-              const Pathname& pathname);
+  PingusLevel(std::string const& resname,
+              Pathname const& pathname);
 
   /** Returns a short checksum for the level file */
   std::string get_checksum() const;
 
   /** Returns the name of the current level, {\em not} the level file name. */
-  const std::string& get_levelname() const;
+  std::string const& get_levelname() const;
 
   /** Returns the description of the level, which fit to the current
       language */
-  const std::string& get_description() const;
+  std::string const& get_description() const;
 
   /** Returns the width of the level */
-  const geom::isize&  get_size() const;
+  geom::isize const&  get_size() const;
 
   /** Returns the number of Pingus, which are going to be released in
       this level. */
@@ -65,24 +65,24 @@ public:
   int         get_time() const;
 
   /** Returns the name of the author, who creates this level */
-  const std::string& get_author() const;
+  std::string const& get_author() const;
 
   /** Returns the ResDescriptor where the music for this level can be
       found. The ResDescriptor points normaly to a file. */
-  const std::string& get_music() const;
+  std::string const& get_music() const;
 
   /** Returns the light to be used in this level */
-  const Color& get_ambient_light() const;
+  Color const& get_ambient_light() const;
 
   /** Returns the body of this file */
   ReaderCollection const& get_objects() const;
 
   /** Return the 'resource name' of the level ('snow22-grumbel', etc. ) */
-  const std::string& get_resname() const;
+  std::string const& get_resname() const;
 
 private:
-  void load(const std::string& resname,
-            const Pathname& pathname);
+  void load(std::string const& resname,
+            Pathname const& pathname);
 
 protected:
   std::shared_ptr<PingusLevelImpl> impl;

@@ -53,8 +53,8 @@ public:
   void update_surface();
 
 private:
-  SmallMapImage (const SmallMapImage&);
-  SmallMapImage& operator= (const SmallMapImage&);
+  SmallMapImage (SmallMapImage const&);
+  SmallMapImage& operator= (SmallMapImage const&);
 };
 
 } // namespace pingus

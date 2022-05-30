@@ -23,7 +23,7 @@
 
 namespace pingus::worldobjs {
 
-Hammer::Hammer(const ReaderMapping& reader) :
+Hammer::Hammer(ReaderMapping const& reader) :
   sprite("traps/hammer"),
   pos(),
   m_z_index(0.0f),

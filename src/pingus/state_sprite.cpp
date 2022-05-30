@@ -29,13 +29,13 @@ StateSprite::StateSprite() :
 }
 
 void
-StateSprite::load(int state, const std::string& name)
+StateSprite::load(int state, std::string const& name)
 {
   load(state, Sprite(name));
 }
 
 void
-StateSprite::load(int state, const Sprite& sprite)
+StateSprite::load(int state, Sprite const& sprite)
 {
   sprites[state] = sprite;
 }

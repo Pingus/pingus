@@ -28,10 +28,10 @@ class DrawableFactory
 private:
   public:
   /** Create a new drawable */
-  static std::unique_ptr<Drawable> create(const ReaderObject& reader);
+  static std::unique_ptr<Drawable> create(ReaderObject const& reader);
 private:
-  DrawableFactory (const DrawableFactory&);
-  DrawableFactory& operator= (const DrawableFactory&);
+  DrawableFactory (DrawableFactory const&);
+  DrawableFactory& operator= (DrawableFactory const&);
 };
 
 } // namespace pingus::worldmap

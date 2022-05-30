@@ -42,17 +42,17 @@ public:
   static WorldObjFactory& instance();
   static void deinit();
   /** Register a factory for object creation */
-  void register_factory(const std::string& id,
+  void register_factory(std::string const& id,
                         std::unique_ptr<WorldObjAbstractFactory> factory);
 
   /** Create a WorldObj type from a given piece of xml, use the
       'type' property for determinating the object type. */
-  std::vector<WorldObj*> create(const ReaderObject& reader);
-  std::vector<WorldObj*> create(const std::string& id, const ReaderMapping& reader);
+  std::vector<WorldObj*> create(ReaderObject const& reader);
+  std::vector<WorldObj*> create(std::string const& id, ReaderMapping const& reader);
 
 private:
-  WorldObjFactory (const WorldObjFactory&);
-  WorldObjFactory& operator= (const WorldObjFactory&);
+  WorldObjFactory (WorldObjFactory const&);
+  WorldObjFactory& operator= (WorldObjFactory const&);
 };
 
 } // namespace pingus

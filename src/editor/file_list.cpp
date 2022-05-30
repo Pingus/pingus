@@ -23,7 +23,7 @@
 
 namespace pingus::editor {
 
-FileList::FileList(const Rect& rect_) :
+FileList::FileList(Rect const& rect_) :
   RectComponent(rect_),
   hspace(),
   vspace(),
@@ -56,8 +56,8 @@ FileList::update_layout()
 
 struct DirectorySorter
 {
-  bool operator()(const System::DirectoryEntry& lhs,
-                  const System::DirectoryEntry& rhs)
+  bool operator()(System::DirectoryEntry const& lhs,
+                  System::DirectoryEntry const& rhs)
   {
     if (lhs.type == rhs.type)
     {
@@ -72,7 +72,7 @@ struct DirectorySorter
 };
 
 void
-FileList::set_directory(const std::string& pathname, const std::string& pattern)
+FileList::set_directory(std::string const& pathname, std::string const& pattern)
 {
   m_direction = pathname;
 
@@ -80,7 +80,7 @@ FileList::set_directory(const std::string& pathname, const std::string& pattern)
   {
     directory = System::opendir(pathname, pattern);
   }
-  catch(const std::exception& err)
+  catch(std::exception const& err)
   {
     log_error("{}", err.what());
     directory.clear();

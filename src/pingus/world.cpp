@@ -36,7 +36,7 @@
 
 namespace pingus {
 
-World::World(const PingusLevel& plf) :
+World::World(PingusLevel const& plf) :
   ambient_light(Color(plf.get_ambient_light())),
   gfx_map(new GroundMap(plf.get_size().width(), plf.get_size().height())),
   game_time(0),
@@ -78,7 +78,7 @@ World::add_object (WorldObj* obj)
 }
 
 void
-World::init_worldobjs(const PingusLevel& plf)
+World::init_worldobjs(PingusLevel const& plf)
 {
   for (auto const& reader_object : plf.get_objects().get_objects())
   {
@@ -244,7 +244,7 @@ World::get_gfx_map() const
 }
 
 void
-World::play_sound(const std::string& name, const Vector2f& pos, float volume)
+World::play_sound(std::string const& name, Vector2f const& pos, float volume)
 {
   // FIXME: Stereo is for the moment disabled
   /*
@@ -264,7 +264,7 @@ World::play_sound(const std::string& name, const Vector2f& pos, float volume)
 }
 
 Pingu*
-World::get_pingu (const Vector2f& pos)
+World::get_pingu (Vector2f const& pos)
 {
   Pingu* current_pingu = nullptr;
   float distance = -1.0;
@@ -294,21 +294,21 @@ World::put(int x, int y, Groundtype::GPType p)
 }
 
 void
-World::put(const CollisionMask& mask, int x, int y, Groundtype::GPType type)
+World::put(CollisionMask const& mask, int x, int y, Groundtype::GPType type)
 {
   gfx_map->put(mask.get_surface(), x, y);
   colmap->put(mask, x, y, type);
 }
 
 void
-World::remove(const CollisionMask& mask, int x, int y)
+World::remove(CollisionMask const& mask, int x, int y)
 {
   gfx_map->remove(mask.get_surface(), x, y);
   colmap->remove(mask, x, y);
 }
 
 WorldObj*
-World::get_worldobj(const std::string& id)
+World::get_worldobj(std::string const& id)
 {
   for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {

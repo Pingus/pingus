@@ -29,11 +29,11 @@ class DriverFactory
 {
 private:
 public:
-  static std::unique_ptr<Driver> create(const std::string& name, Manager* manager);
+  static std::unique_ptr<Driver> create(std::string const& name, Manager* manager);
 
 private:
-  DriverFactory(const DriverFactory&);
-  DriverFactory& operator=(const DriverFactory&);
+  DriverFactory(DriverFactory const&);
+  DriverFactory& operator=(DriverFactory const&);
 };
 
 } // namespace pingus::input

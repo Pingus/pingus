@@ -36,8 +36,8 @@ public:
   void  update() override;
 
 private:
-  Jumper (const Jumper&);
-  Jumper& operator= (const Jumper&);
+  Jumper (Jumper const&);
+  Jumper& operator= (Jumper const&);
 };
 
 } // namespace pingus::actions

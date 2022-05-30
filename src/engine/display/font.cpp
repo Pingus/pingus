@@ -39,7 +39,7 @@ public:
   float  vertical_spacing;
   int    size;
 
-  FontImpl(const FontDescription& desc) :
+  FontImpl(FontDescription const& desc) :
     framebuffer_surfaces(),
     glyphs(),
     space_length(),
@@ -89,7 +89,7 @@ public:
   {
   }
 
-  void render(Origin origin, int x, int y_, const std::string& text, Framebuffer& fb) const
+  void render(Origin origin, int x, int y_, std::string const& text, Framebuffer& fb) const
   {
     y_ += get_height();
 
@@ -113,11 +113,11 @@ public:
     strut::utf8::iterator i(text);
     while(i.next())
     {
-      const uint32_t& unicode = *i;
+      uint32_t const& unicode = *i;
 
       if (unicode < glyphs.size() && glyphs[unicode])
       {
-        const GlyphDescription& glyph = *glyphs[unicode];
+        GlyphDescription const& glyph = *glyphs[unicode];
         fb.draw_surface(framebuffer_surfaces[static_cast<size_t>(glyph.image)],
                         glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + geom::ioffset(glyph.offset.as_vec()));
         dstx += static_cast<float>(glyph.advance) + char_spacing;
@@ -150,7 +150,7 @@ public:
     strut::utf8::iterator i(text);
     while(i.next())
     {
-      const uint32_t& unicode = *i;
+      uint32_t const& unicode = *i;
 
       if (unicode == '\n')
       {
@@ -171,7 +171,7 @@ public:
     return Size(static_cast<int>(get_width(text)), get_height());
   }
 
-  Rect bounding_rect(int x, int y, const std::string& str) const
+  Rect bounding_rect(int x, int y, std::string const& str) const
   {
     return Rect(geom::ipoint(x, y), get_size(str));
   }
@@ -182,20 +182,20 @@ Font::Font() :
 {
 }
 
-Font::Font(const FontDescription& desc) :
+Font::Font(FontDescription const& desc) :
   impl(new FontImpl(desc))
 {
 }
 
 void
-Font::render(int x, int y, const std::string& text, Framebuffer& fb)
+Font::render(int x, int y, std::string const& text, Framebuffer& fb)
 {
   if (impl)
     impl->render(Origin::TOP_LEFT, x,y,text, fb);
 }
 
 void
-Font::render(Origin origin, int x, int y, const std::string& text, Framebuffer& fb)
+Font::render(Origin origin, int x, int y, std::string const& text, Framebuffer& fb)
 {
   if (impl)
     impl->render(origin, x,y,text, fb);
@@ -220,7 +220,7 @@ Font::get_width(uint32_t unicode) const
 }
 
 float
-Font::get_width(const std::string& text) const
+Font::get_width(std::string const& text) const
 {
   if (impl)
     return impl->get_width(text);
@@ -229,7 +229,7 @@ Font::get_width(const std::string& text) const
 }
 
 Size
-Font::get_size(const std::string& str) const
+Font::get_size(std::string const& str) const
 {
   if (impl)
     return impl->get_size(str);
@@ -238,7 +238,7 @@ Font::get_size(const std::string& str) const
 }
 
 Rect
-Font::bounding_rect(int x, int y, const std::string& str) const
+Font::bounding_rect(int x, int y, std::string const& str) const
 {
   if (impl)
     return impl->bounding_rect(x, y, str);

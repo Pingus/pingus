@@ -32,8 +32,8 @@ public:
 
   /** Find out if a Pingu at the specified position is colliding with
       something */
-  bool operator() (const World* world, const Vector2f& current_pos,
-                   const glm::vec2& step_vector) const override;
+  bool operator() (World const* world, Vector2f const& current_pos,
+                   glm::vec2 const& step_vector) const override;
 
 private:
   /** Pingu could be on its belly.  Therefore, this is the current height of

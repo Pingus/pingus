@@ -25,8 +25,8 @@ private:
   public:
 
   private:
-  Scene_Group (const Scene_Group&);
-  Scene_Group& operator= (const Scene_Group&);
+  Scene_Group (Scene_Group const&);
+  Scene_Group& operator= (Scene_Group const&);
 };
 
 } // namespace pingus

@@ -35,9 +35,9 @@ public:
 
 public:
   CollisionMask();
-  CollisionMask(const std::string& gfx_name, const std::string& col_name);
-  CollisionMask(const std::string& name);
-  CollisionMask(const ResDescriptor& res_desc);
+  CollisionMask(std::string const& gfx_name, std::string const& col_name);
+  CollisionMask(std::string const& name);
+  CollisionMask(ResDescriptor const& res_desc);
   ~CollisionMask();
 
   int get_width() const;
@@ -47,11 +47,11 @@ public:
   uint8_t* get_data() const;
 
 private:
-  void init_colmap(const Surface& surf, const std::string& surface_res);
+  void init_colmap(Surface const& surf, std::string const& surface_res);
 
 private:
-  CollisionMask(const CollisionMask&);
-  CollisionMask & operator=(const CollisionMask&);
+  CollisionMask(CollisionMask const&);
+  CollisionMask & operator=(CollisionMask const&);
 };
 
 } // namespace pingus

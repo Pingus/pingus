@@ -74,7 +74,7 @@ PingusWorldmap::PingusWorldmap() :
 {
 }
 
-PingusWorldmap::PingusWorldmap(const Pathname& pathname) :
+PingusWorldmap::PingusWorldmap(Pathname const& pathname) :
   impl(new PingusWorldmapImpl())
 {
   impl->doc = ReaderDocument::from_file(pathname.get_sys_path());
@@ -82,7 +82,7 @@ PingusWorldmap::PingusWorldmap(const Pathname& pathname) :
 }
 
 void
-PingusWorldmap::parse_file(const ReaderObject& reader_object)
+PingusWorldmap::parse_file(ReaderObject const& reader_object)
 {
   if (reader_object.get_name() != "pingus-worldmap")
   {
@@ -117,7 +117,7 @@ PingusWorldmap::parse_file(const ReaderObject& reader_object)
 }
 
 void
-PingusWorldmap::parse_properties(const ReaderMapping& reader)
+PingusWorldmap::parse_properties(ReaderMapping const& reader)
 {
   reader.read("music",  impl->music);
   reader.read("author", impl->author);

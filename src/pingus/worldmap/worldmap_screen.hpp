@@ -55,7 +55,7 @@ public:
   WorldmapScreen ();
   ~WorldmapScreen () override;
 
-  void load(const Pathname& filename);
+  void load(Pathname const& filename);
 
   /** Check if Worldmap manager still needs to run and exit if if
       not */
@@ -83,13 +83,13 @@ public:
   void show_intro_story();
   void show_end_story();
 
-  void resize(const Size& size) override;
+  void resize(Size const& size) override;
 private:
   /** Startup Hook of the Screen */
   void on_startup () override;
 
-  WorldmapScreen (const WorldmapScreen&);
-  WorldmapScreen& operator= (const WorldmapScreen&);
+  WorldmapScreen (WorldmapScreen const&);
+  WorldmapScreen& operator= (WorldmapScreen const&);
 };
 
 } // namespace pingus::worldmap

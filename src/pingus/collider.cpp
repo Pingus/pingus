@@ -30,13 +30,13 @@ Collider::~Collider()
 {
 }
 
-bool Collider::operator() (const World* world, const Vector2f& current_pos,
+bool Collider::operator() (World const* world, Vector2f const& current_pos,
                             glm::vec2 const& step_vector) const
 {
   return false;
 }
 
-int Collider::getpixel(const World* world, const Vector2f& pos) const
+int Collider::getpixel(World const* world, Vector2f const& pos) const
 {
   return world->get_colmap()->getpixel(static_cast<int>(pos.x()),
                                        static_cast<int>(pos.y()));

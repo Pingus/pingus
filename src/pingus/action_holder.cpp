@@ -21,7 +21,7 @@
 
 namespace pingus {
 
-ActionHolder::ActionHolder(const PingusLevel& plf) :
+ActionHolder::ActionHolder(PingusLevel const& plf) :
   m_actions()
 {
   const std::map<std::string, int>& actions = plf.get_actions();

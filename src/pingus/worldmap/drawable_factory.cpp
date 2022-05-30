@@ -23,7 +23,7 @@
 namespace pingus::worldmap {
 
 std::unique_ptr<Drawable>
-DrawableFactory::create(const ReaderObject& reader)
+DrawableFactory::create(ReaderObject const& reader)
 {
   if (reader.get_name() == "surface")
   {

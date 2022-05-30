@@ -20,7 +20,7 @@
 
 namespace pingus::worldobjs {
 
-TeleporterTarget::TeleporterTarget(const ReaderMapping& reader) :
+TeleporterTarget::TeleporterTarget(ReaderMapping const& reader) :
   WorldObj(reader),
   pos(),
   m_z_index(0.0f),

@@ -89,12 +89,12 @@ public:
   EditorLevel::Objects objects;
 
 private:
-  LevelImpl (const LevelImpl&);
-  LevelImpl& operator= (const LevelImpl&);
+  LevelImpl (LevelImpl const&);
+  LevelImpl& operator= (LevelImpl const&);
 };
 
 std::unique_ptr<EditorLevel>
-EditorLevel::from_level_file(const Pathname& pathname)
+EditorLevel::from_level_file(Pathname const& pathname)
 {
   log_info("{}", pathname.str());
 
@@ -136,7 +136,7 @@ EditorLevel::from_level_file(const Pathname& pathname)
 }
 
 std::unique_ptr<EditorLevel>
-EditorLevel::from_prefab_file(const Pathname& pathname)
+EditorLevel::from_prefab_file(Pathname const& pathname)
 {
   log_info("{}", pathname.str());
 
@@ -171,7 +171,7 @@ EditorLevel::from_prefab_file(const Pathname& pathname)
   return level;
 }
 
-static bool LevelObjSort(const LevelObjPtr& a, const LevelObjPtr& b)
+static bool LevelObjSort(LevelObjPtr const& a, LevelObjPtr const& b)
 {
   return a->z_index() < b->z_index();
 }
@@ -193,7 +193,7 @@ EditorLevel::get_size() const
 }
 
 void
-EditorLevel::save_prefab(const std::string& filename)
+EditorLevel::save_prefab(std::string const& filename)
 {
   // Sort the level before saving, so that object order doesn't change
   // after a save/load cycle (load sort() too)
@@ -228,7 +228,7 @@ EditorLevel::save_prefab(const std::string& filename)
 }
 
 void
-EditorLevel::save_level(const std::string& filename)
+EditorLevel::save_level(std::string const& filename)
 {
   // Create new file (overwrite existing file)
   std::ostringstream out_file;
@@ -291,19 +291,19 @@ EditorLevel::sort()
 }
 
 void
-EditorLevel::set_description(const std::string& str)
+EditorLevel::set_description(std::string const& str)
 {
   impl->description = str;
 }
 
 void
-EditorLevel::set_levelname(const std::string& str)
+EditorLevel::set_levelname(std::string const& str)
 {
   impl->levelname = str;
 }
 
 void
-EditorLevel::set_author(const std::string& str)
+EditorLevel::set_author(std::string const& str)
 {
   impl->author = str;
 }
@@ -351,7 +351,7 @@ EditorLevel::set_number_to_save(int i)
 }
 
 void
-EditorLevel::set_action(const std::string& actionname, int count)
+EditorLevel::set_action(std::string const& actionname, int count)
 {
   impl->actions[actionname] = count;
 }
@@ -381,20 +381,20 @@ EditorLevel::set_time(int t)
 }
 
 void
-EditorLevel::set_music(const std::string& str)
+EditorLevel::set_music(std::string const& str)
 {
   impl->music = str;
 }
 
 void
-EditorLevel::set_size(const Size& s)
+EditorLevel::set_size(Size const& s)
 {
   impl->size = Size(s.width() <= 0 ? 1 : s.width(),
                     s.height() <= 0 ? 1 : s.height());
 }
 
 void
-EditorLevel::raise_object_to_top(const LevelObjPtr& obj)
+EditorLevel::raise_object_to_top(LevelObjPtr const& obj)
 {
   Objects::iterator it = std::find(impl->objects.begin(), impl->objects.end(), obj);
   if (it != impl->objects.end())
@@ -405,7 +405,7 @@ EditorLevel::raise_object_to_top(const LevelObjPtr& obj)
 }
 
 void
-EditorLevel::lower_object_to_bottom(const LevelObjPtr& obj)
+EditorLevel::lower_object_to_bottom(LevelObjPtr const& obj)
 {
   Objects::iterator it = std::find(impl->objects.begin(), impl->objects.end(), obj);
   if (it != impl->objects.end())
@@ -419,17 +419,17 @@ struct OverlapsWith
 {
   Rect rect;
 
-  OverlapsWith(const Rect& rect_) :
+  OverlapsWith(Rect const& rect_) :
     rect(rect_)
   {}
 
-  bool operator()(const LevelObjPtr& obj) const {
+  bool operator()(LevelObjPtr const& obj) const {
     return geom::intersects(rect, obj->get_rect());
   }
 };
 
 void
-EditorLevel::raise_object(const LevelObjPtr& obj)
+EditorLevel::raise_object(LevelObjPtr const& obj)
 {
   Objects::iterator i = std::find(impl->objects.begin(), impl->objects.end(), obj);
   if (i == impl->objects.end())
@@ -455,7 +455,7 @@ EditorLevel::raise_object(const LevelObjPtr& obj)
 }
 
 void
-EditorLevel::lower_object(const LevelObjPtr& obj)
+EditorLevel::lower_object(LevelObjPtr const& obj)
 {
   Objects::reverse_iterator i = std::find(impl->objects.rbegin(), impl->objects.rend(), obj);
   if (i == impl->objects.rend())
@@ -490,7 +490,7 @@ EditorLevel::get_objects()
 }
 
 void
-EditorLevel::add_object(const LevelObjPtr& obj)
+EditorLevel::add_object(LevelObjPtr const& obj)
 {
   impl->objects.push_back(obj);
 }

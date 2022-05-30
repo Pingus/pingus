@@ -31,7 +31,7 @@ Inputbox::Inputbox() :
 {
 }
 
-Inputbox::Inputbox(const Rect& rect_) :
+Inputbox::Inputbox(Rect const& rect_) :
   RectComponent(rect_),
   m_text(),
   m_faulty_input(false),
@@ -55,13 +55,13 @@ Inputbox::draw(DrawingContext& gc)
 }
 
 void
-Inputbox::set_text(const std::string& text)
+Inputbox::set_text(std::string const& text)
 {
   m_text = text;
 }
 
 void
-Inputbox::on_key_pressed(const input::KeyboardEvent& ev)
+Inputbox::on_key_pressed(input::KeyboardEvent const& ev)
 {
   if (ev.keysym.sym == SDLK_BACKSPACE) // backspace
   {
@@ -91,7 +91,7 @@ Inputbox::on_key_pressed(const input::KeyboardEvent& ev)
 }
 
 void
-Inputbox::on_text_input(const input::TextInputEvent& ev)
+Inputbox::on_text_input(input::TextInputEvent const& ev)
 {
   m_text += ev.text;
   try {

@@ -29,8 +29,8 @@ PinguCollider::~PinguCollider()
 {
 }
 
-bool PinguCollider::operator() (const World* world, const Vector2f& current_pos,
-                                const glm::vec2& step_vector) const
+bool PinguCollider::operator() (World const* world, Vector2f const& current_pos,
+                                glm::vec2 const& step_vector) const
 {
   glm::vec2 new_pos = current_pos.as_vec() + step_vector;
   int pixel;

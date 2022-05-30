@@ -51,8 +51,8 @@ public:
   void update();
 
 private:
-  GoalManager (const GoalManager&);
-  GoalManager& operator= (const GoalManager&);
+  GoalManager (GoalManager const&);
+  GoalManager& operator= (GoalManager const&);
 };
 
 } // namespace pingus

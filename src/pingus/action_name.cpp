@@ -82,7 +82,7 @@ std::string to_string(Enum action)
   }
 }
 
-Enum from_string(const std::string& action)
+Enum from_string(std::string const& action)
 {
   if (action == "angel")          return ANGEL;
   if (action == "basher")         return BASHER;

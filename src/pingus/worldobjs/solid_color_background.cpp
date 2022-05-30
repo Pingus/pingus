@@ -20,7 +20,7 @@
 
 namespace pingus::worldobjs {
 
-SolidColorBackground::SolidColorBackground(const ReaderMapping& reader) :
+SolidColorBackground::SolidColorBackground(ReaderMapping const& reader) :
   color()
 {
   if (!reader.read("colori", color)) {

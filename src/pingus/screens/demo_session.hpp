@@ -52,7 +52,7 @@ private:
 
 public:
   /** @param filename the complete filename of the demo file */
-  DemoSession(const Pathname& pathname);
+  DemoSession(Pathname const& pathname);
   ~DemoSession() override;
 
   void draw_background(DrawingContext& gc) override;
@@ -72,11 +72,11 @@ public:
   bool is_pause() const { return pause; }
   bool is_fast_forward() const { return fast_forward; }
 
-  void resize(const Size& size) override;
+  void resize(Size const& size) override;
 
 private:
-  DemoSession (const DemoSession&);
-  DemoSession& operator= (const DemoSession&);
+  DemoSession (DemoSession const&);
+  DemoSession& operator= (DemoSession const&);
 };
 
 } // namespace pingus

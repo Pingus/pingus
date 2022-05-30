@@ -25,7 +25,7 @@
 
 namespace pingus::worldobjs {
 
-IceBlock::IceBlock(const ReaderMapping& reader) :
+IceBlock::IceBlock(ReaderMapping const& reader) :
   pos(),
   m_z_index(0.0f),
   width(),

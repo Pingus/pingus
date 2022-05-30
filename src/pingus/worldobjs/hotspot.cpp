@@ -21,7 +21,7 @@
 
 namespace pingus::worldobjs {
 
-Hotspot::Hotspot(const ReaderMapping& reader) :
+Hotspot::Hotspot(ReaderMapping const& reader) :
   sprite(),
   para(),
   pos(),

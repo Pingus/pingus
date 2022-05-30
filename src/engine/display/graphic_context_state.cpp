@@ -53,7 +53,7 @@ GraphicContextState::GraphicContextState(int w, int h)
   impl->have_limit = false;
 }
 
-GraphicContextState::GraphicContextState(const Rect& rect)
+GraphicContextState::GraphicContextState(Rect const& rect)
   : impl(new GraphicContextStateImpl())
 {
   impl->rect       = rect;
@@ -62,7 +62,7 @@ GraphicContextState::GraphicContextState(const Rect& rect)
 }
 
 void
-GraphicContextState::set_limit(const Rect& limit)
+GraphicContextState::set_limit(Rect const& limit)
 {
   impl->have_limit = true;
   impl->limit      = limit;
@@ -117,7 +117,7 @@ GraphicContextState::get_clip_rect()
 }
 
 void
-GraphicContextState::set_pos(const Vector2i& pos)
+GraphicContextState::set_pos(Vector2i const& pos)
 {
   impl->offset = geom::ioffset(-pos.x() + (get_width()/2),
                                -pos.y() + (get_height()/2));
@@ -165,7 +165,7 @@ GraphicContextState::get_pos() const
 }
 
 Vector2i
-GraphicContextState::screen2world(const Vector2i& pos_) const
+GraphicContextState::screen2world(Vector2i const& pos_) const
 {
   Vector2i pos(pos_.x() - impl->rect.left(),
                pos_.y() - impl->rect.top());

@@ -27,11 +27,11 @@ class LevelObjFactory
 {
 private:
 public:
-  static LevelObjPtr create(const prio::ReaderObject& reader_object);
+  static LevelObjPtr create(prio::ReaderObject const& reader_object);
 
 private:
-  LevelObjFactory(const LevelObjFactory&);
-  LevelObjFactory& operator=(const LevelObjFactory&);
+  LevelObjFactory(LevelObjFactory const&);
+  LevelObjFactory& operator=(LevelObjFactory const&);
 };
 
 } // namespace pingus::editor

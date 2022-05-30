@@ -38,8 +38,8 @@ public:
   SDL_Texture* get_texture() const { return m_texture; }
 
 private:
-  SDLFramebufferSurfaceImpl(const SDLFramebufferSurfaceImpl&);
-  SDLFramebufferSurfaceImpl & operator=(const SDLFramebufferSurfaceImpl&);
+  SDLFramebufferSurfaceImpl(SDLFramebufferSurfaceImpl const&);
+  SDLFramebufferSurfaceImpl & operator=(SDLFramebufferSurfaceImpl const&);
 };
 
 } // namespace pingus

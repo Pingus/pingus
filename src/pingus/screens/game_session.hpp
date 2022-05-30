@@ -56,7 +56,7 @@ private:
   bool single_step;
 
 public:
-  GameSession(const PingusLevel& arg_plf, bool arg_show_result_screen);
+  GameSession(PingusLevel const& arg_plf, bool arg_show_result_screen);
   ~GameSession () override;
 
   /** Pass a delta to the screen */
@@ -69,7 +69,7 @@ public:
 
   /** Update all parts of the world */
   void update (float delta) override;
-  void update_input(const pingus::input::Event& event) override;
+  void update_input(pingus::input::Event const& event) override;
   void draw_background (DrawingContext& gc) override;
 
   ButtonPanel* get_button_panel () { return button_panel; }
@@ -93,15 +93,15 @@ public:
   void set_pause(bool value);
   bool get_pause() const;
 
-  void resize(const Size&) override;
+  void resize(Size const&) override;
 
 private:
-  void process_scroll_event (const pingus::input::ScrollEvent&);
-  void process_axis_event (const pingus::input::AxisEvent&);
+  void process_scroll_event (pingus::input::ScrollEvent const&);
+  void process_axis_event (pingus::input::AxisEvent const&);
 
 private:
-  GameSession (const GameSession&);
-  GameSession& operator= (const GameSession&);
+  GameSession (GameSession const&);
+  GameSession& operator= (GameSession const&);
 };
 
 } // namespace pingus

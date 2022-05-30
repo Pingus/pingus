@@ -52,7 +52,7 @@ PingusSoundReal::update(float delta)
 }
 
 void
-PingusSoundReal::real_play_sound(const std::string& name, float volume, float panning)
+PingusSoundReal::real_play_sound(std::string const& name, float volume, float panning)
 {
   if (globals::sound_enabled &&
       m_master_volume > 0 &&
@@ -84,7 +84,7 @@ PingusSoundReal::real_stop_music ()
 }
 
 void
-PingusSoundReal::real_play_music(const std::string& filename, float volume, bool loop)
+PingusSoundReal::real_play_music(std::string const& filename, float volume, bool loop)
 {
   if (globals::music_enabled &&
       m_master_volume > 0 &&

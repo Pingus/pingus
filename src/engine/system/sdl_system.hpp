@@ -31,11 +31,11 @@ public:
   SDLSystem();
   ~SDLSystem();
 
-  void create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen, bool resizable);
+  void create_window(FramebufferType framebuffer_type, Size const& size, bool fullscreen, bool resizable);
 
 private:
-  SDLSystem(const SDLSystem&);
-  SDLSystem& operator=(const SDLSystem&);
+  SDLSystem(SDLSystem const&);
+  SDLSystem& operator=(SDLSystem const&);
 };
 
 } // namespace pingus

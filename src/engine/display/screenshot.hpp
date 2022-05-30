@@ -34,12 +34,12 @@ public:
   static std::string make_screenshot();
 
   /** buffer must be RGBX and width*height*4 large */
-  static void save_png(const std::string& filename, const uint8_t* buffer, int width, int height, int pitch);
+  static void save_png(std::string const& filename, uint8_t const* buffer, int width, int height, int pitch);
 
 private:
   Screenshot();
-  Screenshot(const Screenshot&);
-  Screenshot& operator=(const Screenshot&);
+  Screenshot(Screenshot const&);
+  Screenshot& operator=(Screenshot const&);
 };
 
 } // namespace pingus

@@ -30,7 +30,7 @@ private:
   std::string label;
 
 public:
-  Checkbox(const Rect& rect, const std::string& label = "");
+  Checkbox(Rect const& rect, std::string const& label = "");
   ~Checkbox() override;
 
   void draw(DrawingContext& gc) override;
@@ -43,8 +43,8 @@ public:
   sigc::signal<void (bool)> on_change;
 
 private:
-  Checkbox (const Checkbox&);
-  Checkbox& operator= (const Checkbox&);
+  Checkbox (Checkbox const&);
+  Checkbox& operator= (Checkbox const&);
 };
 
 } // namespace pingus::editor

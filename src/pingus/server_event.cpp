@@ -36,7 +36,7 @@ ServerEvent::ServerEvent() :
 {
 }
 
-ServerEvent::ServerEvent(const ReaderObject& reader_object) :
+ServerEvent::ServerEvent(ReaderObject const& reader_object) :
   type(PINGU_ACTION_EVENT),
   time_stamp(0),
   pingu_id(0),
@@ -136,7 +136,7 @@ ServerEvent::make_armageddon_event(int t)
 }
 
 ServerEvent
-ServerEvent::make_pingu_action_event(int t, unsigned int id, const Vector2f& pos, ActionName::Enum action)
+ServerEvent::make_pingu_action_event(int t, unsigned int id, Vector2f const& pos, ActionName::Enum action)
 {
   ServerEvent event;
   event.type         = PINGU_ACTION_EVENT;

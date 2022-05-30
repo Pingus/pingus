@@ -32,7 +32,7 @@
 
 namespace pingus::editor {
 
-ObjectProperties::ObjectProperties(EditorScreen* editor_, const Rect& rect_) :
+ObjectProperties::ObjectProperties(EditorScreen* editor_, Rect const& rect_) :
   gui::GroupComponent(rect_, false),
   editor(editor_),
   objects(),
@@ -363,7 +363,7 @@ ObjectProperties::hide_all()
 }
 
 void
-ObjectProperties::set_object(const LevelObjPtr& obj)
+ObjectProperties::set_object(LevelObjPtr const& obj)
 {
   hide_all();
 
@@ -529,7 +529,7 @@ ObjectProperties::draw_background(DrawingContext& gc)
 }
 
 void
-ObjectProperties::set_objects(const Selection& objs)
+ObjectProperties::set_objects(Selection const& objs)
 {
   objects = objs;
 
@@ -559,7 +559,7 @@ ObjectProperties::finalize()
 }
 
 void
-ObjectProperties::on_gptype_change(const ComboItem& item)
+ObjectProperties::on_gptype_change(ComboItem const& item)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_ground_type(Groundtype::type_to_string(static_cast<Groundtype::GPType>(item.id)));
@@ -587,7 +587,7 @@ ObjectProperties::on_keep_aspect_change(bool t)
 }
 
 void
-ObjectProperties::on_entrance_direction_change(const ComboItem& item)
+ObjectProperties::on_entrance_direction_change(ComboItem const& item)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
@@ -601,70 +601,70 @@ ObjectProperties::on_entrance_direction_change(const ComboItem& item)
 }
 
 void
-ObjectProperties::on_owner_change(const std::string& str)
+ObjectProperties::on_owner_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_owner(strut::from_string<int>(str));
 }
 
 void
-ObjectProperties::on_pos_x_change(const std::string& str)
+ObjectProperties::on_pos_x_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_pos_x(strut::from_string<float>(str));
 }
 
 void
-ObjectProperties::on_pos_y_change(const std::string& str)
+ObjectProperties::on_pos_y_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_pos_y(strut::from_string<float>(str));
 }
 
 void
-ObjectProperties::on_pos_z_change(const std::string& str)
+ObjectProperties::on_pos_z_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_z_index(strut::from_string<float>(str));
 }
 
 void
-ObjectProperties::on_para_x_change(const std::string& str)
+ObjectProperties::on_para_x_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_para_x(strut::from_string<float>(str));
 }
 
 void
-ObjectProperties::on_para_y_change(const std::string& str)
+ObjectProperties::on_para_y_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_para_y(strut::from_string<float>(str));
 }
 
 void
-ObjectProperties::on_scroll_x_change(const std::string& str)
+ObjectProperties::on_scroll_x_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_scroll_x(strut::from_string<float>(str));
 }
 
 void
-ObjectProperties::on_scroll_y_change(const std::string& str)
+ObjectProperties::on_scroll_y_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_scroll_y(strut::from_string<float>(str));
 }
 
 void
-ObjectProperties::on_release_rate_change(const std::string& str)
+ObjectProperties::on_release_rate_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_release_rate(strut::from_string<int>(str));
 }
 
 void
-ObjectProperties::on_color_r_change(const std::string& str)
+ObjectProperties::on_color_r_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
@@ -675,7 +675,7 @@ ObjectProperties::on_color_r_change(const std::string& str)
 }
 
 void
-ObjectProperties::on_color_g_change(const std::string& str)
+ObjectProperties::on_color_g_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
@@ -686,7 +686,7 @@ ObjectProperties::on_color_g_change(const std::string& str)
 }
 
 void
-ObjectProperties::on_color_b_change(const std::string& str)
+ObjectProperties::on_color_b_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
@@ -697,7 +697,7 @@ ObjectProperties::on_color_b_change(const std::string& str)
 }
 
 void
-ObjectProperties::on_color_a_change(const std::string& str)
+ObjectProperties::on_color_a_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
@@ -708,7 +708,7 @@ ObjectProperties::on_color_a_change(const std::string& str)
 }
 
 void
-ObjectProperties::on_small_stars_change(const std::string& str)
+ObjectProperties::on_small_stars_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
@@ -717,7 +717,7 @@ ObjectProperties::on_small_stars_change(const std::string& str)
 }
 
 void
-ObjectProperties::on_middle_stars_change(const std::string& str)
+ObjectProperties::on_middle_stars_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
@@ -726,7 +726,7 @@ ObjectProperties::on_middle_stars_change(const std::string& str)
 }
 
 void
-ObjectProperties::on_large_stars_change(const std::string& str)
+ObjectProperties::on_large_stars_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
   {
@@ -735,7 +735,7 @@ ObjectProperties::on_large_stars_change(const std::string& str)
 }
 
 void
-ObjectProperties::on_repeat_change(const std::string& str)
+ObjectProperties::on_repeat_change(std::string const& str)
 {
   int r = strut::from_string<int>(str);
   if (r <= 0)
@@ -775,21 +775,21 @@ ObjectProperties::on_rotate_270()
 }
 
 void
-ObjectProperties::on_id_change(const std::string& str)
+ObjectProperties::on_id_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_id(str);
 }
 
 void
-ObjectProperties::on_target_id_change(const std::string& str)
+ObjectProperties::on_target_id_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_target_id(str);
 }
 
 void
-ObjectProperties::on_height_change(const std::string& str)
+ObjectProperties::on_height_change(std::string const& str)
 {
   for(auto i = objects.begin(); i != objects.end(); ++i)
     (*i)->set_height(strut::from_string<int>(str));

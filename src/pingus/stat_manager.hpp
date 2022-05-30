@@ -36,25 +36,25 @@ public:
   static StatManager* instance();
 
 public:
-  StatManager(const std::string& filename);
+  StatManager(std::string const& filename);
   ~StatManager();
 
-  bool get_int   (const std::string&, int& value);
-  bool get_bool  (const std::string&, bool& value);
-  bool get_string(const std::string&, std::string& vlaue);
+  bool get_int   (std::string const&, int& value);
+  bool get_bool  (std::string const&, bool& value);
+  bool get_string(std::string const&, std::string& vlaue);
 
-  void set_string(const std::string& name, const std::string& value);
-  void set_int   (const std::string& name, int value);
-  void set_bool  (const std::string& name, bool value);
+  void set_string(std::string const& name, std::string const& value);
+  void set_int   (std::string const& name, int value);
+  void set_bool  (std::string const& name, bool value);
 
   /** Write the current status down */
   void flush();
 
-  void load(const std::string& filename);
-  void save(const std::string& filename);
+  void load(std::string const& filename);
+  void save(std::string const& filename);
 private:
-  StatManager (const StatManager&);
-  StatManager& operator= (const StatManager&);
+  StatManager (StatManager const&);
+  StatManager& operator= (StatManager const&);
 };
 
 } // namespace pingus

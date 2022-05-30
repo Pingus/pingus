@@ -35,19 +35,19 @@ public:
   static void deinit();
 
   /** Loads a 48x48 size thumbnail of a sprite */
-  static Sprite        load_thumb_sprite(const std::string&);
+  static Sprite        load_thumb_sprite(std::string const&);
 
-  static SpriteDescription* load_sprite_desc(const std::string& res_name);
+  static SpriteDescription* load_sprite_desc(std::string const& res_name);
 
-  static Surface       load_surface(const std::string& res_name);
-  static Surface       load_surface(const ResDescriptor&);
+  static Surface       load_surface(std::string const& res_name);
+  static Surface       load_surface(ResDescriptor const&);
 
   /** Load a font with res_name from datafile */
-  static Font          load_font(const std::string& res_name);
+  static Font          load_font(std::string const& res_name);
 
 private:
-  Resource (const Resource&);
-  Resource& operator= (const Resource&);
+  Resource (Resource const&);
+  Resource& operator= (Resource const&);
 };
 
 } // namespace pingus

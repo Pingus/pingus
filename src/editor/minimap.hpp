@@ -33,7 +33,7 @@ private:
   bool dragging;
 
 public:
-  Minimap(EditorScreen*, const Rect& );
+  Minimap(EditorScreen*, Rect const& );
   ~Minimap() override;
 
   void draw (DrawingContext& gc) override;
@@ -46,8 +46,8 @@ public:
   void update_layout() override;
 
 private:
-  Minimap(const Minimap&);
-  Minimap & operator=(const Minimap&);
+  Minimap(Minimap const&);
+  Minimap & operator=(Minimap const&);
 };
 
 } // namespace pingus::editor

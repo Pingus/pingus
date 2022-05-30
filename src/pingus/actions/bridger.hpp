@@ -62,8 +62,8 @@ public:
   void   walk_one_step_up ();
 
 private:
-  Bridger (const Bridger&);
-  Bridger& operator= (const Bridger&);
+  Bridger (Bridger const&);
+  Bridger& operator= (Bridger const&);
 };
 
 } // namespace pingus::actions

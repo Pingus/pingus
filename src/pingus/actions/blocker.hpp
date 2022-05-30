@@ -39,8 +39,8 @@ private:
   bool  standing_on_ground();
   void  catch_pingu(Pingu* pingu) override;
 
-  Blocker (const Blocker&);
-  Blocker& operator= (const Blocker&);
+  Blocker (Blocker const&);
+  Blocker& operator= (Blocker const&);
 };
 
 } // namespace pingus::actions

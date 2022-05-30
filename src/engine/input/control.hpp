@@ -61,8 +61,8 @@ public:
   }
 
 private:
-  Control(const Control&);
-  Control & operator=(const Control&);
+  Control(Control const&);
+  Control & operator=(Control const&);
 };
 
 class Button : public Control
@@ -149,8 +149,8 @@ public:
   }
 
 private:
-  ControllerButton(const ControllerButton&);
-  ControllerButton & operator=(const ControllerButton&);
+  ControllerButton(ControllerButton const&);
+  ControllerButton & operator=(ControllerButton const&);
 };
 
 class Axis : public Control
@@ -198,7 +198,7 @@ public:
 
   Vector2f get_pos() const { return pos; }
 
-  void set_pos(const Vector2f& new_pos) {
+  void set_pos(Vector2f const& new_pos) {
     if (pos != new_pos)
     {
       pos = new_pos;
@@ -220,7 +220,7 @@ public:
 
   Vector2f get_delta() const { return delta; }
 
-  void set_delta(const Vector2f& new_delta) {
+  void set_delta(Vector2f const& new_delta) {
     if (delta != new_delta)
     {
       delta = new_delta;
@@ -285,8 +285,8 @@ public:
   }
 
 private:
-  ControllerAxis(const ControllerAxis&);
-  ControllerAxis & operator=(const ControllerAxis&);
+  ControllerAxis(ControllerAxis const&);
+  ControllerAxis & operator=(ControllerAxis const&);
 };
 
 class PointerGroup : public Pointer
@@ -343,8 +343,8 @@ public:
   }
 
 private:
-  ControllerPointer(const ControllerPointer&);
-  ControllerPointer & operator=(const ControllerPointer&);
+  ControllerPointer(ControllerPointer const&);
+  ControllerPointer & operator=(ControllerPointer const&);
 };
 
 class ScrollerGroup : public Scroller
@@ -379,8 +379,8 @@ public:
   }
 
 private:
-  ScrollerGroup(const ScrollerGroup&);
-  ScrollerGroup & operator=(const ScrollerGroup&);
+  ScrollerGroup(ScrollerGroup const&);
+  ScrollerGroup & operator=(ScrollerGroup const&);
 };
 
 class ControllerScroller : public ScrollerGroup
@@ -401,8 +401,8 @@ public:
   }
 
 private:
-  ControllerScroller(const ControllerScroller&);
-  ControllerScroller & operator=(const ControllerScroller&);
+  ControllerScroller(ControllerScroller const&);
+  ControllerScroller & operator=(ControllerScroller const&);
 };
 
 class Keyboard : public Control
@@ -416,12 +416,12 @@ public:
     m_ev()
   {}
 
-  void send_event(const SDL_Event& ev) { m_ev = ev; notify_parent(); }
+  void send_event(SDL_Event const& ev) { m_ev = ev; notify_parent(); }
   SDL_Event get_ev() { return m_ev; }
 
 private:
-  Keyboard(const Keyboard&);
-  Keyboard & operator=(const Keyboard&);
+  Keyboard(Keyboard const&);
+  Keyboard & operator=(Keyboard const&);
 };
 
 class KeyboardGroup : public Keyboard
@@ -485,8 +485,8 @@ public:
   }
 
 private:
-  ControllerKeyboard(const ControllerKeyboard&);
-  ControllerKeyboard & operator=(const ControllerKeyboard&);
+  ControllerKeyboard(ControllerKeyboard const&);
+  ControllerKeyboard & operator=(ControllerKeyboard const&);
 };
 
 } // namespace pingus::input

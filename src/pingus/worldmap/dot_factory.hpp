@@ -30,11 +30,11 @@ class DotFactory
 private:
 public:
   /** Create a Dot from a given piece of XML */
-  static std::unique_ptr<Dot> create(const ReaderObject& reader);
+  static std::unique_ptr<Dot> create(ReaderObject const& reader);
 
 private:
-  DotFactory(const DotFactory&) = delete;
-  DotFactory& operator=(const DotFactory&) = delete;
+  DotFactory(DotFactory const&) = delete;
+  DotFactory& operator=(DotFactory const&) = delete;
 };
 
 } // namespace pingus::worldmap

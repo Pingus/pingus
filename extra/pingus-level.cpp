@@ -95,7 +95,7 @@ int main(int argc, char** argv)
   {
     for(auto it = files.begin(); it != files.end(); ++it)
     {
-      const Pathname& path = *it;
+      Pathname const& path = *it;
       PingusLevel plf(path);
 
       if (mode == 0)

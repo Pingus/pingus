@@ -51,7 +51,7 @@ private:
   std::list<Pingu*> pingus;
 
 public:
-  PinguHolder(const PingusLevel&);
+  PinguHolder(PingusLevel const&);
   ~PinguHolder() override;
 
   /*@{
@@ -67,7 +67,7 @@ public:
       @return 50 */
   float z_index() const override;
   void set_z_index(float) override {}
-  void set_pos(const Vector2f& p) override { }
+  void set_pos(Vector2f const& p) override { }
   Vector2f get_pos() const override { return Vector2f(); }
   /*@}*/
 
@@ -95,7 +95,7 @@ public:
       will take care of the deletion. The caller *must* not delete the
       Pingu. Might return 0 if all available pingus are already
       released */
-  Pingu* create_pingu(const Vector2f& pos, int owner_id);
+  Pingu* create_pingu(Vector2f const& pos, int owner_id);
 
   /** Get a pingu by id, references to dead or exited Pingus are not
       returned, but 0 instead
@@ -113,8 +113,8 @@ public:
   std::list<Pingu*>::size_type size ()  { return pingus.size (); }
 
 private:
-  PinguHolder (const PinguHolder&);
-  PinguHolder& operator= (const PinguHolder&);
+  PinguHolder (PinguHolder const&);
+  PinguHolder& operator= (PinguHolder const&);
 };
 
 } // namespace pingus

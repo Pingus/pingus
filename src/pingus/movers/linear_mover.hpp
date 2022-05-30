@@ -27,13 +27,13 @@ class LinearMover : public Mover
 {
 public:
   /** Constructor */
-  LinearMover(World const* world_arg, const Vector2f& pos_arg);
+  LinearMover(World const* world_arg, Vector2f const& pos_arg);
 
   /** Destructor */
   ~LinearMover() override;
 
   /** Updates the position of the object taking into account collisions */
-  void update(glm::vec2 const& move, const Collider& collision_at) override;
+  void update(glm::vec2 const& move, Collider const& collision_at) override;
 };
 
 } // namespace pingus::movers

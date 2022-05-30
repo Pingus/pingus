@@ -25,7 +25,7 @@
 
 namespace pingus::worldmap {
 
-PathGraph::PathGraph(Worldmap* arg_worldmap, const ReaderMapping& reader) :
+PathGraph::PathGraph(Worldmap* arg_worldmap, ReaderMapping const& reader) :
   worldmap(arg_worldmap),
   graph(),
   dots(),
@@ -53,7 +53,7 @@ PathGraph::~PathGraph()
 }
 
 void
-PathGraph::parse_nodes(const ReaderCollection& collection)
+PathGraph::parse_nodes(ReaderCollection const& collection)
 {
   std::vector<ReaderObject> childs = collection.get_objects();
   for(auto i = childs.begin(); i != childs.end(); ++i)
@@ -83,7 +83,7 @@ PathGraph::parse_nodes(const ReaderCollection& collection)
 }
 
 void
-PathGraph::parse_edges(const ReaderCollection& collection)
+PathGraph::parse_edges(ReaderCollection const& collection)
 {
   std::vector<ReaderObject> childs = collection.get_objects();
 
@@ -175,7 +175,7 @@ PathGraph::get_path(NodeId start_id, NodeId end_id)
 }
 
 EdgeId
-PathGraph::lookup_edge(const std::string& name)
+PathGraph::lookup_edge(std::string const& name)
 {
   std::map<std::string, EdgeId>::iterator i = edge_lookup.find(name);
   if (i == edge_lookup.end())
@@ -190,7 +190,7 @@ PathGraph::lookup_edge(const std::string& name)
 }
 
 NodeId
-PathGraph::lookup_node(const std::string& name)
+PathGraph::lookup_node(std::string const& name)
 {
   std::map<std::string, NodeId>::iterator i = node_lookup.find(name);
   if (i == node_lookup.end())

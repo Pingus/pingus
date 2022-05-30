@@ -21,7 +21,7 @@
 
 namespace pingus::editor {
 
-Checkbox::Checkbox(const Rect& rect_, const std::string& label_)
+Checkbox::Checkbox(Rect const& rect_, std::string const& label_)
   : RectComponent(rect_),
     checked(false),
     label(label_),

@@ -82,7 +82,7 @@ static char hex2int(char c)
     return 0;
 }
 
-float string2float(const std::string& str)
+float string2float(std::string const& str)
 {
   assert(str.size() == 2*sizeof(float));
 

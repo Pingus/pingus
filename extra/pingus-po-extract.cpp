@@ -10,7 +10,7 @@ using namespace pingus;
 namespace {
 
 void
-emit_msgid(const std::string& str)
+emit_msgid(std::string const& str)
 {
   std::cout
     << "#: " << "filename" << ":" << "lineno\n"
@@ -46,7 +46,7 @@ int po_extract_main(int argc, char** argv)
       }
 
       ReaderCollection all_pages = reader.get<ReaderCollection>("pages");
-      const auto& childs = all_pages.get_objects();
+      auto const& childs = all_pages.get_objects();
       for(auto it = childs.begin(); it != childs.end(); ++it)
       {
         ReaderMapping r = it->get_mapping();

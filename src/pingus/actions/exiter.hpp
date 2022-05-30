@@ -37,8 +37,8 @@ public:
   void update() override;
 
 private:
-  Exiter (const Exiter&);
-  Exiter& operator= (const Exiter&);
+  Exiter (Exiter const&);
+  Exiter& operator= (Exiter const&);
 };
 
 } // namespace pingus::actions

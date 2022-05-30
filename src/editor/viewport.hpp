@@ -79,7 +79,7 @@ private:
 public:
   /** Constructor
       @param e The EditorScreen to which this viewport belongs */
-  Viewport(EditorScreen* e, const Rect& rect);
+  Viewport(EditorScreen* e, Rect const& rect);
 
   /** Destructor */
   ~Viewport () override;
@@ -104,7 +104,7 @@ public:
   void set_snap_to(bool s) { snap_to = s; }
 
   Vector2i get_scroll_pos() const;
-  void     set_scroll_pos(const Vector2i& pos);
+  void     set_scroll_pos(Vector2i const& pos);
 
   /// Mouse actions
   void on_primary_button_press(int x, int y) override;
@@ -115,7 +115,7 @@ public:
 
   void on_secondary_button_click(int x, int y) override;
 
-  void on_key_pressed(const input::KeyboardEvent& ev) override;
+  void on_key_pressed(input::KeyboardEvent const& ev) override;
 
   void delete_selected_objects();
   void duplicate_selected_objects();
@@ -138,7 +138,7 @@ public:
   void group_selection();
   void ungroup_selection();
 
-  void move_objects(const Vector2i& offset);
+  void move_objects(Vector2i const& offset);
 
   Vector2i screen2world(int x, int y) const;
 
@@ -148,11 +148,11 @@ public:
 
   void clear_selection();
 
-  sigc::signal<void (const Selection&)> selection_changed;
+  sigc::signal<void (Selection const&)> selection_changed;
 private:
   Viewport();
-  Viewport (const Viewport&);
-  Viewport& operator= (const Viewport&);
+  Viewport (Viewport const&);
+  Viewport& operator= (Viewport const&);
 };
 
 } // Editor namespace

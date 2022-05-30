@@ -28,7 +28,7 @@
 
 namespace pingus::worldmap {
 
-LevelDot::LevelDot(const ReaderMapping& reader) :
+LevelDot::LevelDot(ReaderMapping const& reader) :
   Dot(reader.get<ReaderMapping>("dot")),
   green_dot_sur("core/worldmap/dot_green"),
   red_dot_sur("core/worldmap/dot_red"),

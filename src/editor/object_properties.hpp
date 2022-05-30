@@ -116,14 +116,14 @@ private:
   int y_pos;
 
 public:
-  ObjectProperties(EditorScreen* editor, const Rect& rect);
+  ObjectProperties(EditorScreen* editor, Rect const& rect);
   ~ObjectProperties() override;
 
-  void set_object(const LevelObjPtr& obj);
+  void set_object(LevelObjPtr const& obj);
   void draw_background(DrawingContext& gc) override;
   void update_layout() override;
 
-  void set_objects(const Selection& objs);
+  void set_objects(Selection const& objs);
 
   // GUI Placement functions
   void hide_all();
@@ -132,36 +132,36 @@ public:
   void place(gui::RectComponent* comp);
   void place(gui::RectComponent* comp1, gui::RectComponent* comp2);
 
-  void on_gptype_change(const ComboItem& item);
+  void on_gptype_change(ComboItem const& item);
   void on_stretch_x_change(bool t);
   void on_stretch_y_change(bool t);
   void on_keep_aspect_change(bool t);
-  void on_entrance_direction_change(const ComboItem& item);
-  void on_owner_change(const std::string& str);
-  void on_para_x_change(const std::string& str);
-  void on_para_y_change(const std::string& str);
-  void on_scroll_x_change(const std::string& str);
-  void on_scroll_y_change(const std::string& str);
-  void on_release_rate_change(const std::string& str);
-  void on_pos_x_change(const std::string& str);
-  void on_pos_y_change(const std::string& str);
-  void on_pos_z_change(const std::string& str);
+  void on_entrance_direction_change(ComboItem const& item);
+  void on_owner_change(std::string const& str);
+  void on_para_x_change(std::string const& str);
+  void on_para_y_change(std::string const& str);
+  void on_scroll_x_change(std::string const& str);
+  void on_scroll_y_change(std::string const& str);
+  void on_release_rate_change(std::string const& str);
+  void on_pos_x_change(std::string const& str);
+  void on_pos_y_change(std::string const& str);
+  void on_pos_z_change(std::string const& str);
 
-  void on_color_r_change(const std::string& str);
-  void on_color_g_change(const std::string& str);
-  void on_color_b_change(const std::string& str);
-  void on_color_a_change(const std::string& str);
+  void on_color_r_change(std::string const& str);
+  void on_color_g_change(std::string const& str);
+  void on_color_b_change(std::string const& str);
+  void on_color_a_change(std::string const& str);
 
-  void on_small_stars_change(const std::string& str);
-  void on_middle_stars_change(const std::string& str);
-  void on_large_stars_change(const std::string& str);
+  void on_small_stars_change(std::string const& str);
+  void on_middle_stars_change(std::string const& str);
+  void on_large_stars_change(std::string const& str);
 
-  void on_repeat_change(const std::string& str);
+  void on_repeat_change(std::string const& str);
 
-  void on_id_change(const std::string& str);
-  void on_target_id_change(const std::string& str);
+  void on_id_change(std::string const& str);
+  void on_target_id_change(std::string const& str);
 
-  void on_height_change(const std::string& str);
+  void on_height_change(std::string const& str);
 
   void on_flip_horizontal();
   void on_flip_vertical();
@@ -169,8 +169,8 @@ public:
   void on_rotate_270();
 
 private:
-  ObjectProperties(const ObjectProperties&);
-  ObjectProperties & operator=(const ObjectProperties&);
+  ObjectProperties(ObjectProperties const&);
+  ObjectProperties & operator=(ObjectProperties const&);
 };
 
 } // namespace pingus::editor

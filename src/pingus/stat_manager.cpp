@@ -36,7 +36,7 @@ StatManager::instance()
   return instance_;
 }
 
-StatManager::StatManager(const std::string& arg_filename)
+StatManager::StatManager(std::string const& arg_filename)
   : statfilename(System::get_userdir() + arg_filename),
     stats()
 {
@@ -53,7 +53,7 @@ StatManager::~StatManager()
 }
 
 void
-StatManager::load(const std::string& filename)
+StatManager::load(std::string const& filename)
 {
   if (!System::exist(filename))
   {
@@ -70,7 +70,7 @@ StatManager::load(const std::string& filename)
   else
   {
     ReaderMapping mapping = doc.get_mapping();
-    const std::vector<std::string>& section_names = mapping.get_keys();
+    std::vector<std::string> const& section_names = mapping.get_keys();
     for(std::vector<std::string>::const_iterator i = section_names.begin();
         i != section_names.end(); ++i)
     {
@@ -86,7 +86,7 @@ StatManager::flush()
 }
 
 void
-StatManager::save(const std::string& filename)
+StatManager::save(std::string const& filename)
 {
   std::ostringstream out;
   Writer writer(out);
@@ -105,7 +105,7 @@ StatManager::save(const std::string& filename)
 }
 
 bool
-StatManager::get_int(const std::string& name, int& value)
+StatManager::get_int(std::string const& name, int& value)
 {
   std::string str;
   if (get_string(name, str))
@@ -115,7 +115,7 @@ StatManager::get_int(const std::string& name, int& value)
 }
 
 bool
-StatManager::get_bool(const std::string& name, bool& value)
+StatManager::get_bool(std::string const& name, bool& value)
 {
   std::string str;
   if (get_string(name, str))
@@ -125,7 +125,7 @@ StatManager::get_bool(const std::string& name, bool& value)
 }
 
 bool
-StatManager::get_string(const std::string& name, std::string& value)
+StatManager::get_string(std::string const& name, std::string& value)
 {
   Table::iterator i = stats.find(name);
   if (i == stats.end())
@@ -140,21 +140,21 @@ StatManager::get_string(const std::string& name, std::string& value)
 }
 
 void
-StatManager::set_string(const std::string& name, const std::string& value)
+StatManager::set_string(std::string const& name, std::string const& value)
 {
   stats[name] = value;
   flush();
 }
 
 void
-StatManager::set_int(const std::string& name, int value)
+StatManager::set_int(std::string const& name, int value)
 {
   stats[name] = strut::to_string(value);
   flush();
 }
 
 void
-StatManager::set_bool(const std::string& name, bool value)
+StatManager::set_bool(std::string const& name, bool value)
 {
   stats[name] = strut::to_string(value);
   flush();

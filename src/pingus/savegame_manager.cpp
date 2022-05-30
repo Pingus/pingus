@@ -36,7 +36,7 @@ SavegameManager::instance()
   return instance_;
 }
 
-SavegameManager::SavegameManager(const std::string& arg_filename) :
+SavegameManager::SavegameManager(std::string const& arg_filename) :
   filename(System::get_userdir() + arg_filename),
   savegames()
 {
@@ -85,7 +85,7 @@ SavegameManager::~SavegameManager()
 }
 
 Savegame*
-SavegameManager::get(const std::string& filename_)
+SavegameManager::get(std::string const& filename_)
 {
   SavegameTable::iterator i = find(filename_);
   if (i == savegames.end())
@@ -123,7 +123,7 @@ SavegameManager::store(Savegame const& arg_savegame)
 }
 
 SavegameManager::SavegameTable::iterator
-SavegameManager::find(const std::string& filename_)
+SavegameManager::find(std::string const& filename_)
 {
   //log_info("SavegameManager::find: \"" << filename << "\"");
 

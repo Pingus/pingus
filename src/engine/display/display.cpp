@@ -58,7 +58,7 @@ Display::get_size()
 }
 
 void
-Display::resize(const Size& size_)
+Display::resize(Size const& size_)
 {
   // Limit Window size so some reasonable minimum
   Size size(size_.width() < 640 ? 640 : size_.width(),
@@ -89,7 +89,7 @@ Display::has_grab()
 }
 
 void
-Display::create_window(FramebufferType framebuffer_type, const Size& size, bool fullscreen, bool resizable)
+Display::create_window(FramebufferType framebuffer_type, Size const& size, bool fullscreen, bool resizable)
 {
   assert(!s_framebuffer.get());
 
@@ -119,7 +119,7 @@ Display::create_window(FramebufferType framebuffer_type, const Size& size, bool 
 }
 
 void
-Display::set_video_mode(const Size& size, bool fullscreen, bool resizable)
+Display::set_video_mode(Size const& size, bool fullscreen, bool resizable)
 {
   if (fullscreen)
   {
@@ -144,7 +144,7 @@ Display::get_framebuffer()
 }
 
 Size
-Display::find_closest_fullscreen_video_mode(const Size& size)
+Display::find_closest_fullscreen_video_mode(Size const& size)
 {
   SDL_DisplayMode target;
   SDL_DisplayMode closest;

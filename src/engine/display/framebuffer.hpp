@@ -36,26 +36,26 @@ public:
   Framebuffer() {}
   virtual ~Framebuffer() {}
 
-  virtual FramebufferSurface create_surface(const Surface& surface) =0;
+  virtual FramebufferSurface create_surface(Surface const& surface) =0;
 
   virtual Surface make_screenshot() const =0;
 
-  virtual void set_video_mode(const Size& size, bool fullscreen, bool resizable) =0;
+  virtual void set_video_mode(Size const& size, bool fullscreen, bool resizable) =0;
   virtual bool is_fullscreen() const =0;
   virtual bool is_resizable() const =0;
   virtual bool has_grab() const { return false; }
   virtual void flip() =0;
 
-  virtual void push_cliprect(const Rect&) =0;
+  virtual void push_cliprect(Rect const&) =0;
   virtual void pop_cliprect() =0;
 
-  virtual void draw_surface(const FramebufferSurface& src, const Vector2i& pos) =0;
-  virtual void draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos) =0;
+  virtual void draw_surface(FramebufferSurface const& src, Vector2i const& pos) =0;
+  virtual void draw_surface(FramebufferSurface const& src, Rect const& srcrect, Vector2i const& pos) =0;
 
-  virtual void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color) =0;
+  virtual void draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color) =0;
 
-  virtual void draw_rect(const Rect& rect, const Color& color) =0;
-  virtual void fill_rect(const Rect& rect, const Color& color) =0;
+  virtual void draw_rect(Rect const& rect, Color const& color) =0;
+  virtual void fill_rect(Rect const& rect, Color const& color) =0;
 
   virtual Size get_size() const =0;
 };

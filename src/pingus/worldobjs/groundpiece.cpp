@@ -20,7 +20,7 @@
 
 namespace pingus::worldobjs {
 
-Groundpiece::Groundpiece(const ReaderMapping& reader) :
+Groundpiece::Groundpiece(ReaderMapping const& reader) :
   pos(),
   m_z_index(0.0f),
   desc(),

@@ -27,7 +27,7 @@
 
 namespace pingus::worldmap {
 
-WorldmapStory::WorldmapStory(const ReaderMapping& reader) :
+WorldmapStory::WorldmapStory(ReaderMapping const& reader) :
   title(),
   music(),
   pages()

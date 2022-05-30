@@ -27,7 +27,7 @@
 
 namespace pingus::worldobjs {
 
-Exit::Exit(const ReaderMapping& reader) :
+Exit::Exit(ReaderMapping const& reader) :
   desc(),
   pos(),
   m_z_index(0.0f),

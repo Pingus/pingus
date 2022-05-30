@@ -21,13 +21,13 @@
 
 namespace pingus::editor {
 
-Label::Label(const Rect& rect_, const std::string& text_) :
+Label::Label(Rect const& rect_, std::string const& text_) :
   RectComponent(rect_),
   text(text_)
 {
 }
 
-Label::Label(const std::string& text_) :
+Label::Label(std::string const& text_) :
   text(text_)
 {
 }

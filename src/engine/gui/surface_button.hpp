@@ -39,9 +39,9 @@ protected:
 
 public:
   SurfaceButton (int x_pos, int y_pos,
-                 const std::string& button_surface,
-                 const std::string& button_pressed_surface,
-                 const std::string& button_mouse_over_surface);
+                 std::string const& button_surface,
+                 std::string const& button_pressed_surface,
+                 std::string const& button_mouse_over_surface);
   ~SurfaceButton () override;
 
   virtual void set_pos(int x, int y);
@@ -59,8 +59,8 @@ public:
   virtual void on_click() {}
 
 private:
-  SurfaceButton (const SurfaceButton&);
-  SurfaceButton& operator= (const SurfaceButton&);
+  SurfaceButton (SurfaceButton const&);
+  SurfaceButton& operator= (SurfaceButton const&);
 };
 
 } // namespace pingus::gui

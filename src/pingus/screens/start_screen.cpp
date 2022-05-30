@@ -42,12 +42,12 @@ private:
   std::string description;
 
 public:
-  StartScreenComponent(const PingusLevel& plf);
+  StartScreenComponent(PingusLevel const& plf);
   void draw(DrawingContext& gc) override;
   ~StartScreenComponent() override {}
 
 private:
-  const std::string& format_description(int length);
+  std::string const& format_description(int length);
 };
 
 class StartScreenOkButton : public pingus::gui::SurfaceButton
@@ -88,8 +88,8 @@ public:
   }
 
 private:
-  StartScreenOkButton(const StartScreenOkButton&);
-  StartScreenOkButton & operator=(const StartScreenOkButton&);
+  StartScreenOkButton(StartScreenOkButton const&);
+  StartScreenOkButton & operator=(StartScreenOkButton const&);
 };
 
 class StartScreenAbortButton
@@ -125,11 +125,11 @@ public:
   }
 
 private:
-  StartScreenAbortButton(const StartScreenAbortButton&);
-  StartScreenAbortButton & operator=(const StartScreenAbortButton&);
+  StartScreenAbortButton(StartScreenAbortButton const&);
+  StartScreenAbortButton & operator=(StartScreenAbortButton const&);
 };
 
-StartScreenComponent::StartScreenComponent(const PingusLevel& p) :
+StartScreenComponent::StartScreenComponent(PingusLevel const& p) :
   plf(p),
   background("core/menu/wood"),
   blackboard("core/menu/blackboard"),
@@ -186,7 +186,7 @@ StartScreenComponent::draw(DrawingContext& gc)
   }
 }
 
-const std::string&
+std::string const&
 StartScreenComponent::format_description(int length)
 {
   if (!description.empty())
@@ -202,7 +202,7 @@ StartScreenComponent::format_description(int length)
   return description;
 }
 
-StartScreen::StartScreen(const PingusLevel& arg_plf) :
+StartScreen::StartScreen(PingusLevel const& arg_plf) :
   plf(arg_plf),
   abort_button(),
   ok_button()
@@ -248,7 +248,7 @@ StartScreen::cancel_game()
 }
 
 void
-StartScreen::resize(const Size& size_)
+StartScreen::resize(Size const& size_)
 {
   GUIScreen::resize(size_);
 

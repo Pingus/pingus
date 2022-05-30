@@ -32,33 +32,33 @@ public:
   SDLFramebuffer();
   ~SDLFramebuffer() override;
 
-  FramebufferSurface create_surface(const Surface& surface) override;
+  FramebufferSurface create_surface(Surface const& surface) override;
 
   Surface make_screenshot() const override;
 
-  void set_video_mode(const Size& size, bool fullscreen, bool resizable) override;
+  void set_video_mode(Size const& size, bool fullscreen, bool resizable) override;
   bool is_fullscreen() const override;
   bool is_resizable() const override;
   bool has_grab() const override;
   void flip() override;
-  void update_rects(const std::vector<Rect>& rects);
+  void update_rects(std::vector<Rect> const& rects);
 
-  void push_cliprect(const Rect&) override;
+  void push_cliprect(Rect const&) override;
   void pop_cliprect() override;
 
-  void draw_surface(const FramebufferSurface& src, const Vector2i& pos) override;
-  void draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos) override;
+  void draw_surface(FramebufferSurface const& src, Vector2i const& pos) override;
+  void draw_surface(FramebufferSurface const& src, Rect const& srcrect, Vector2i const& pos) override;
 
-  void draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color) override;
+  void draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color) override;
 
-  void draw_rect(const Rect& rect, const Color& color) override;
-  void fill_rect(const Rect& rect, const Color& color) override;
+  void draw_rect(Rect const& rect, Color const& color) override;
+  void fill_rect(Rect const& rect, Color const& color) override;
 
   Size get_size() const override;
 
 private:
-  SDLFramebuffer (const SDLFramebuffer&);
-  SDLFramebuffer& operator= (const SDLFramebuffer&);
+  SDLFramebuffer (SDLFramebuffer const&);
+  SDLFramebuffer& operator= (SDLFramebuffer const&);
 };
 
 } // namespace pingus

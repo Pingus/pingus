@@ -42,17 +42,17 @@ public:
 
   void update(float delta);
 
-  ControllerPtr create_controller(const Pathname& filename);
+  ControllerPtr create_controller(Pathname const& filename);
 
-  std::unique_ptr<Button> create_button(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Axis> create_axis(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Pointer> create_pointer(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Scroller> create_scroller(const ReaderObject& reader, Control* parent);
-  std::unique_ptr<Keyboard> create_keyboard(const ReaderObject& reader, Control* parent);
+  std::unique_ptr<Button> create_button(ReaderObject const& reader, Control* parent);
+  std::unique_ptr<Axis> create_axis(ReaderObject const& reader, Control* parent);
+  std::unique_ptr<Pointer> create_pointer(ReaderObject const& reader, Control* parent);
+  std::unique_ptr<Scroller> create_scroller(ReaderObject const& reader, Control* parent);
+  std::unique_ptr<Keyboard> create_keyboard(ReaderObject const& reader, Control* parent);
 
 private:
-  Driver* load_driver(const std::string& name);
-  Driver* get_driver(const std::string& name);
+  Driver* load_driver(std::string const& name);
+  Driver* get_driver(std::string const& name);
 };
 
 } // namespace pingus::input

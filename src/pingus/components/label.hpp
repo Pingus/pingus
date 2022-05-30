@@ -27,14 +27,14 @@ private:
   std::string label;
 
 public:
-  Label(const std::string& label, const Rect& rect);
+  Label(std::string const& label, Rect const& rect);
 
   void draw(DrawingContext& gc) override;
   void update_layout() override {}
 
 private:
-  Label (const Label&);
-  Label& operator= (const Label&);
+  Label (Label const&);
+  Label& operator= (Label const&);
 };
 
 } // namespace pingus

@@ -26,7 +26,7 @@
 namespace pingus::editor {
 
 // Default constructor
-GenericLevelObj::GenericLevelObj(const std::string& obj_name) :
+GenericLevelObj::GenericLevelObj(std::string const& obj_name) :
   sprite(),
   surface(),
   desc(),
@@ -63,7 +63,7 @@ GenericLevelObj::GenericLevelObj(const std::string& obj_name) :
     load_generic_surface();
 }
 
-GenericLevelObj::GenericLevelObj(const GenericLevelObj& rhs) :
+GenericLevelObj::GenericLevelObj(GenericLevelObj const& rhs) :
   LevelObj(rhs),
   sprite(rhs.sprite),
   surface(rhs.surface),
@@ -99,7 +99,7 @@ GenericLevelObj::GenericLevelObj(const GenericLevelObj& rhs) :
 {}
 
 unsigned int
-GenericLevelObj::get_attributes(const std::string& obj_type)
+GenericLevelObj::get_attributes(std::string const& obj_type)
 {
   if (obj_type == "groundpiece")
     return HAS_GPTYPE | HAS_SPRITE | CAN_ROTATE;
@@ -152,7 +152,7 @@ GenericLevelObj::get_attributes(const std::string& obj_type)
 }
 
 void
-GenericLevelObj::set_res_desc(const ResDescriptor& d)
+GenericLevelObj::set_res_desc(ResDescriptor const& d)
 {
   desc = d;
   refresh_sprite();
@@ -256,7 +256,7 @@ GenericLevelObj::refresh_sprite()
 
 // Set the modifier and actually modify the sprite loaded in memory
 void
-GenericLevelObj::set_modifier(const std::string& m)
+GenericLevelObj::set_modifier(std::string const& m)
 {
   set_modifier(ResourceModifier::from_string(m));
 }
@@ -467,7 +467,7 @@ GenericLevelObj::load_generic_surface()
 }
 
 void
-GenericLevelObj::set_pos(const Vector2f& p)
+GenericLevelObj::set_pos(Vector2f const& p)
 {
   pos = p;
 }
@@ -524,7 +524,7 @@ GenericLevelObj::get_rect() const
 }
 
 LevelObjPtr
-GenericLevelObj::duplicate(const Vector2i& offset) const
+GenericLevelObj::duplicate(Vector2i const& offset) const
 {
   std::shared_ptr<GenericLevelObj> obj = std::make_shared<GenericLevelObj>(*this);
   obj->pos += geom::foffset(geom::ioffset(offset.x(), offset.y()));

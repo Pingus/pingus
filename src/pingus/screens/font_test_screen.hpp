@@ -33,15 +33,15 @@ private:
   bool  dark;
 
 public:
-  FontTestScreen(const Pathname& fontfile);
+  FontTestScreen(Pathname const& fontfile);
 
   void draw(DrawingContext& gc) override;
-  void update_input(const pingus::input::Event& event) override;
+  void update_input(pingus::input::Event const& event) override;
   void update(float delta) override {}
 
 private:
-  FontTestScreen (const FontTestScreen&);
-  FontTestScreen& operator= (const FontTestScreen&);
+  FontTestScreen (FontTestScreen const&);
+  FontTestScreen& operator= (FontTestScreen const&);
 };
 
 } // namespace pingus

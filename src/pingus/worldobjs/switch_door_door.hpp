@@ -46,7 +46,7 @@ private:
   int current_door_height;
 
 public:
-  SwitchDoorDoor(const ReaderMapping& reader);
+  SwitchDoorDoor(ReaderMapping const& reader);
 
   void on_startup() override;
   void draw (SceneContext& gc) override;
@@ -55,14 +55,14 @@ public:
   /// The switch and the door should stay above the pingus
   float z_index() const override { return 100; }
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector2f& p) override { door_pos = p; }
+  void set_pos(Vector2f const& p) override { door_pos = p; }
   Vector2f get_pos() const override { return door_pos; }
 
   void open_door();
 
 private:
-  SwitchDoorDoor(const SwitchDoorDoor&);
-  SwitchDoorDoor& operator=(const SwitchDoorDoor&);
+  SwitchDoorDoor(SwitchDoorDoor const&);
+  SwitchDoorDoor& operator=(SwitchDoorDoor const&);
 };
 
 } // namespace pingus::worldobjs

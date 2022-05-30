@@ -49,7 +49,7 @@ public:
 
 public:
   ObjectSelectorButton(ObjectSelectorList* object_list_,
-                       const Vector2i& pos_, const std::string& sprite_, const std::string& tooltip_) :
+                       Vector2i const& pos_, std::string const& sprite_, std::string const& tooltip_) :
     RectComponent(Rect(pos_, Size(30, 30))),
     object_list(object_list_),
     button_raised(Sprite("core/editor/obj_button-raised")),
@@ -118,11 +118,11 @@ public:
   void update_layout() override {}
 
 private:
-  ObjectSelectorButton(const ObjectSelectorButton&);
-  ObjectSelectorButton & operator=(const ObjectSelectorButton&);
+  ObjectSelectorButton(ObjectSelectorButton const&);
+  ObjectSelectorButton & operator=(ObjectSelectorButton const&);
 };
 
-ObjectSelector::ObjectSelector(EditorScreen* editor_, const Rect& rect_) :
+ObjectSelector::ObjectSelector(EditorScreen* editor_, Rect const& rect_) :
   GroupComponent(rect_, false),
   editor(editor_),
   button_pos(0,0),
@@ -188,7 +188,7 @@ ObjectSelector::draw_background(DrawingContext& parent_gc)
 }
 
 void
-ObjectSelector::add_button(const std::string& image, const std::string& tooltip,
+ObjectSelector::add_button(std::string const& image, std::string const& tooltip,
                            ObjectSelectorSet* set)
 {
   ObjectSelectorButton* button;
@@ -218,7 +218,7 @@ ObjectSelector::scroll_down()
 }
 
 std::unique_ptr<ObjectSelectorSet>
-ObjectSelector::create_groundpiece(const std::string& prefix, const std::string& type)
+ObjectSelector::create_groundpiece(std::string const& prefix, std::string const& type)
 {
   auto set = std::make_unique<ObjectSelectorSet>(object_list, 48, 48);
 

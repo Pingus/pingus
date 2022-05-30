@@ -62,13 +62,13 @@ std::string System::userdir;
 std::string System::default_email;
 std::string System::default_username;
 
-System::DirectoryEntry::DirectoryEntry(const std::string& n, FileType t)
+System::DirectoryEntry::DirectoryEntry(std::string const& n, FileType t)
   : type (t), name (n)
 {
 }
 
 std::string
-System::cut_file_extension(const std::string& filename)
+System::cut_file_extension(std::string const& filename)
 {
   for(int i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
   {
@@ -86,7 +86,7 @@ System::cut_file_extension(const std::string& filename)
 }
 
 std::string
-System::get_file_extension(const std::string& filename)
+System::get_file_extension(std::string const& filename)
 {
   for(int i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
   {
@@ -104,7 +104,7 @@ System::get_file_extension(const std::string& filename)
 }
 
 System::Directory
-System::opendir(const std::string& pathname, const std::string& pattern)
+System::opendir(std::string const& pathname, std::string const& pattern)
 {
   Directory dir_list;
 
@@ -181,7 +181,7 @@ System::opendir(const std::string& pathname, const std::string& pattern)
 }
 
 std::vector<std::string>
-System::opendir_recursive(const std::string& pathname)
+System::opendir_recursive(std::string const& pathname)
 {
   std::vector<std::string> lst;
   try
@@ -200,7 +200,7 @@ System::opendir_recursive(const std::string& pathname)
       }
     }
   }
-  catch(const std::exception& err)
+  catch(std::exception const& err)
   {
     log_warn("{}", err.what());
   }
@@ -209,10 +209,10 @@ System::opendir_recursive(const std::string& pathname)
 
 // Returns the basic filename without the path
 std::string
-System::basename(const std::string& filename)
+System::basename(std::string const& filename)
 {
   // Should be replaced with STL
-  const char* str = filename.c_str();
+  char const* str = filename.c_str();
   int i;
 
   for(i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
@@ -226,9 +226,9 @@ System::basename(const std::string& filename)
 }
 
 std::string
-System::dirname (const std::string& filename)
+System::dirname (std::string const& filename)
 {
-  const char* str = filename.c_str();
+  char const* str = filename.c_str();
   int i;
 
   for(i = static_cast<int>(filename.size()) - 1; i >= 0; --i)
@@ -242,13 +242,13 @@ System::dirname (const std::string& filename)
 }
 
 bool
-System::exist(const std::string& filename)
+System::exist(std::string const& filename)
 {
   return !access(filename.c_str(), F_OK);
 }
 
 void
-System::create_dir(const std::string& directory_)
+System::create_dir(std::string const& directory_)
 {
   std::string directory = directory_;
 #ifndef WIN32
@@ -382,7 +382,7 @@ System::init_directories()
 }
 
 void
-System::set_userdir(const std::string& u)
+System::set_userdir(std::string const& u)
 {
   userdir = u + "/";
 }
@@ -490,14 +490,14 @@ System::get_language()
 }
 
 std::string
-System::checksum(const Pathname& pathname)
+System::checksum(Pathname const& pathname)
 {
   return checksum(pathname.get_sys_path());
 }
 
 /** Read file and create a checksum and return it */
 std::string
-System::checksum(const std::string& filename)
+System::checksum(std::string const& filename)
 { // FIXME: Replace sys with SHA1 or MD5 or so
   FILE* in;
   size_t bytes_read;
@@ -534,7 +534,7 @@ System::checksum(const std::string& filename)
 }
 
 uint64_t
-System::get_mtime(const std::string& filename)
+System::get_mtime(std::string const& filename)
 {
 #ifndef WIN32
 
@@ -556,7 +556,7 @@ System::get_mtime(const std::string& filename)
 }
 
 std::string
-System::realpath(const std::string& pathname)
+System::realpath(std::string const& pathname)
 {
   std::string fullpath;
 
@@ -611,7 +611,7 @@ System::realpath(const std::string& pathname)
 
 namespace {
 
-void handle_directory(const std::string& dir, int& skip, std::string& result)
+void handle_directory(std::string const& dir, int& skip, std::string& result)
 {
   if (dir.empty() || dir == ".")
   {
@@ -645,7 +645,7 @@ void handle_directory(const std::string& dir, int& skip, std::string& result)
 } // namespaces
 
 std::string
-System::normalize_path(const std::string& path)
+System::normalize_path(std::string const& path)
 {
   if (path.empty())
   {
@@ -716,7 +716,7 @@ System::normalize_path(const std::string& path)
 }
 
 void
-System::write_file(const std::string& filename, const std::string& content)
+System::write_file(std::string const& filename, std::string const& content)
 {
   log_debug("writing {}", filename);
 

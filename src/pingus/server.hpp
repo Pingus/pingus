@@ -43,7 +43,7 @@ protected:
   std::unique_ptr<std::ostream> demostream;
 
 public:
-  Server(const PingusLevel& arg_plf, bool record_demo);
+  Server(PingusLevel const& arg_plf, bool record_demo);
   ~Server();
 
   void update();
@@ -66,10 +66,10 @@ public:
   void send_pingu_action_event(Pingu* pingu, ActionName::Enum action);
 
 private:
-  void record(const ServerEvent& event);
+  void record(ServerEvent const& event);
 
-  Server (const Server&);
-  Server& operator= (const Server&);
+  Server (Server const&);
+  Server& operator= (Server const&);
 };
 
 } // namespace pingus

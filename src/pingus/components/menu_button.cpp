@@ -24,8 +24,8 @@
 namespace pingus {
 
 MenuButton::MenuButton(PingusMenu* menu_,
-                       const Vector2i& pos_,
-                       const std::string& text_, const std::string& desc_) :
+                       Vector2i const& pos_,
+                       std::string const& text_, std::string const& desc_) :
   menu(menu_),
   surface_p(),
   highlight(),

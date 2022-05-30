@@ -40,13 +40,13 @@ Resource::deinit()
 }
 
 SpriteDescription*
-Resource::load_sprite_desc(const std::string& res_name)
+Resource::load_sprite_desc(std::string const& res_name)
 {
   return resmgr.get_sprite_description(res_name);
 }
 
 Surface
-Resource::load_surface(const ResDescriptor& desc_)
+Resource::load_surface(ResDescriptor const& desc_)
 {
   SpriteDescription* desc = resmgr.get_sprite_description(desc_.res_name);
   if (desc)
@@ -88,13 +88,13 @@ Resource::load_surface(const ResDescriptor& desc_)
 }
 
 Surface
-Resource::load_surface(const std::string& res_name)
+Resource::load_surface(std::string const& res_name)
 {
   return load_surface(ResDescriptor(res_name));
 }
 
 Font
-Resource::load_font(const std::string& res_name)
+Resource::load_font(std::string const& res_name)
 {
   FontDescription desc(Pathname("images/" + res_name + ".font", Pathname::DATA_PATH));
   //("data/images/fonts/chalk_large-iso-8859-1.font");
@@ -102,7 +102,7 @@ Resource::load_font(const std::string& res_name)
 }
 
 Sprite
-Resource::load_thumb_sprite(const std::string& name)
+Resource::load_thumb_sprite(std::string const& name)
 {
   Pathname thumb_path("thumbnails/" + name + ".png", Pathname::DATA_PATH);
   if (thumb_path.exist())

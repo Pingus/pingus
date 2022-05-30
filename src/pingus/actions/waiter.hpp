@@ -40,8 +40,8 @@ public:
   void update () override;
 
 private:
-  Waiter (const Waiter&);
-  Waiter& operator= (const Waiter&);
+  Waiter (Waiter const&);
+  Waiter& operator= (Waiter const&);
 };
 
 } // namespace pingus::actions

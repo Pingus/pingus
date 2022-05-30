@@ -152,7 +152,7 @@ EditorScreen::on_action_down_press()
 
 // Save the current level
 void
-EditorScreen::save(const Pathname& file)
+EditorScreen::save(Pathname const& file)
 {
   try
   {
@@ -196,7 +196,7 @@ EditorScreen::set_level(std::unique_ptr<EditorLevel> level)
 
 // Load a new level
 void
-EditorScreen::load(const Pathname& file)
+EditorScreen::load(Pathname const& file)
 {
   try
   {
@@ -213,7 +213,7 @@ EditorScreen::load(const Pathname& file)
       set_level(EditorLevel::from_level_file(level_pathname));
     }
   }
-  catch(const std::exception& err)
+  catch(std::exception const& err)
   {
     // FIXME: show a MessageBox
     log_error("{}", err.what());
@@ -314,7 +314,7 @@ EditorScreen::draw(DrawingContext& gc)
 }
 
 void
-EditorScreen::update_input(const input::Event& event)
+EditorScreen::update_input(input::Event const& event)
 {
   GUIScreen::update_input(event);
 
@@ -555,7 +555,7 @@ EditorScreen::update_layout()
 }
 
 void
-EditorScreen::resize(const Size& size_)
+EditorScreen::resize(Size const& size_)
 {
   gui_manager->set_rect(Rect(geom::ipoint(0, 0), size_));
 

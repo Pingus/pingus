@@ -31,7 +31,7 @@ private:
   pingus::gui::SurfaceButton* ok_button;
 
 public:
-  StartScreen(const PingusLevel& plf);
+  StartScreen(PingusLevel const& plf);
   ~StartScreen() override;
 
   void start_game();
@@ -41,11 +41,11 @@ public:
   void on_fast_forward_press() override;
   void on_escape_press() override;
 
-  void resize(const Size&) override;
+  void resize(Size const&) override;
 
 private:
-  StartScreen (const StartScreen&);
-  StartScreen& operator= (const StartScreen&);
+  StartScreen (StartScreen const&);
+  StartScreen& operator= (StartScreen const&);
 };
 
 } // namespace pingus

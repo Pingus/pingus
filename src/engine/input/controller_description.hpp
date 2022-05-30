@@ -46,14 +46,14 @@ public:
   ControllerDescription();
   ~ControllerDescription();
 
-  void add_button  (const std::string& name, int id);
-  void add_axis    (const std::string& name, int id);
-  void add_scroller(const std::string& name, int id);
-  void add_pointer (const std::string& name, int id);
-  void add_keyboard(const std::string& name, int id);
+  void add_button  (std::string const& name, int id);
+  void add_axis    (std::string const& name, int id);
+  void add_scroller(std::string const& name, int id);
+  void add_pointer (std::string const& name, int id);
+  void add_keyboard(std::string const& name, int id);
 
-  const InputEventDefinition& get_definition(int id) const;
-  const InputEventDefinition& get_definition(const std::string& name) const;
+  InputEventDefinition const& get_definition(int id) const;
+  InputEventDefinition const& get_definition(std::string const& name) const;
 
   std::vector<int> get_buttons() const;
   std::vector<int> get_axes() const;

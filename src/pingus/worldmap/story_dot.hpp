@@ -37,7 +37,7 @@ private:
   bool m_credits;
 
 public:
-  StoryDot(const prio::ReaderMapping& reader);
+  StoryDot(prio::ReaderMapping const& reader);
 
   void draw(DrawingContext& gc) override;
   void draw_hover(DrawingContext& gc) override;
@@ -50,8 +50,8 @@ public:
   void unlock() override {}
 
 private:
-  StoryDot(const StoryDot&);
-  StoryDot& operator=(const StoryDot&);
+  StoryDot(StoryDot const&);
+  StoryDot& operator=(StoryDot const&);
 };
 
 } // namespace pingus::worldmap

@@ -27,8 +27,8 @@ namespace pingus {
 class PrefabFile
 {
 public:
-  static PrefabFile from_resource(const std::string& name);
-  static PrefabFile from_path(const Pathname& file);
+  static PrefabFile from_resource(std::string const& name);
+  static PrefabFile from_path(Pathname const& file);
 
 private:
   PrefabFile(ReaderDocument doc);
@@ -43,8 +43,8 @@ private:
   ReaderMapping m_overrides;
 
 private:
-  PrefabFile(const PrefabFile&) = delete;
-  PrefabFile& operator=(const PrefabFile&) = delete;
+  PrefabFile(PrefabFile const&) = delete;
+  PrefabFile& operator=(PrefabFile const&) = delete;
 };
 
 } // namespace pingus

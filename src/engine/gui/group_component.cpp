@@ -18,7 +18,7 @@
 
 namespace pingus::gui {
 
-GroupComponent::GroupComponent(const Rect& rect_, bool clip_) :
+GroupComponent::GroupComponent(Rect const& rect_, bool clip_) :
   RectComponent(rect_),
   children(),
   drawing_context(rect_, clip_),
@@ -173,7 +173,7 @@ GroupComponent::on_secondary_button_release(int x, int y)
 }
 
 void
-GroupComponent::on_key_pressed(const pingus::input::KeyboardEvent& ev)
+GroupComponent::on_key_pressed(pingus::input::KeyboardEvent const& ev)
 {
   if (grabbed_comp)
     grabbed_comp->on_key_pressed(ev);
@@ -184,7 +184,7 @@ GroupComponent::on_key_pressed(const pingus::input::KeyboardEvent& ev)
 }
 
 void
-GroupComponent::on_text_input(const pingus::input::TextInputEvent& ev)
+GroupComponent::on_text_input(pingus::input::TextInputEvent const& ev)
 {
   if (grabbed_comp)
     grabbed_comp->on_text_input(ev);
@@ -239,7 +239,7 @@ GroupComponent::on_pointer_move(int x, int y)
 }
 
 Component*
-GroupComponent::component_at(const Vector2i& pos)
+GroupComponent::component_at(Vector2i const& pos)
 {
   for(Components::reverse_iterator i = children.rbegin(); i != children.rend(); ++i)
   {

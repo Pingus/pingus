@@ -37,7 +37,7 @@ public:
     Sprite  sprite;
     Sprite  thumbnail;
 
-    Object(const Sprite& sprite_, const Sprite& thumbnail_)
+    Object(Sprite const& sprite_, Sprite const& thumbnail_)
       : sprite(sprite_),
         thumbnail(thumbnail_)
     {
@@ -45,7 +45,7 @@ public:
 
     virtual ~Object() {}
 
-    virtual LevelObjPtr create(const Vector2i&) { return LevelObjPtr(); }
+    virtual LevelObjPtr create(Vector2i const&) { return LevelObjPtr(); }
   };
 
 private:
@@ -66,7 +66,7 @@ private:
   ObjectSelectorSet* set;
 
 public:
-  ObjectSelectorList(EditorScreen* editor_, ObjectSelector* object_selector_, const Rect& rect);
+  ObjectSelectorList(EditorScreen* editor_, ObjectSelector* object_selector_, Rect const& rect);
   ~ObjectSelectorList() override;
 
   void on_primary_button_press (int x, int y) override;
@@ -85,8 +85,8 @@ public:
 
   void update_layout() override;
 private:
-  ObjectSelectorList (const ObjectSelectorList&);
-  ObjectSelectorList& operator= (const ObjectSelectorList&);
+  ObjectSelectorList (ObjectSelectorList const&);
+  ObjectSelectorList& operator= (ObjectSelectorList const&);
 };
 
 } // namespace pingus::editor

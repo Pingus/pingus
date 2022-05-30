@@ -55,7 +55,7 @@ SDLFramebuffer::~SDLFramebuffer()
 }
 
 FramebufferSurface
-SDLFramebuffer::create_surface(const Surface& surface)
+SDLFramebuffer::create_surface(Surface const& surface)
 {
   return FramebufferSurface(new SDLFramebufferSurfaceImpl(m_renderer, surface.get_surface()));
 }
@@ -87,7 +87,7 @@ SDLFramebuffer::make_screenshot() const
 }
 
 void
-SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Vector2i& pos)
+SDLFramebuffer::draw_surface(FramebufferSurface const& surface, Vector2i const& pos)
 {
   SDLFramebufferSurfaceImpl* impl = dynamic_cast<SDLFramebufferSurfaceImpl*>(surface.get_impl());
   SDL_Texture* texture = impl->get_texture();
@@ -105,7 +105,7 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Vector2i& 
 }
 
 void
-SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcrect, const Vector2i& pos)
+SDLFramebuffer::draw_surface(FramebufferSurface const& surface, Rect const& srcrect, Vector2i const& pos)
 {
   SDLFramebufferSurfaceImpl* impl = dynamic_cast<SDLFramebufferSurfaceImpl*>(surface.get_impl());
   SDL_Texture* texture = impl->get_texture();
@@ -129,7 +129,7 @@ SDLFramebuffer::draw_surface(const FramebufferSurface& surface, const Rect& srcr
 }
 
 void
-SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color)
+SDLFramebuffer::draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color)
 {
   // FIXME: push render state
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
@@ -139,7 +139,7 @@ SDLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Colo
 }
 
 void
-SDLFramebuffer::draw_rect(const Rect& rect_, const Color& color)
+SDLFramebuffer::draw_rect(Rect const& rect_, Color const& color)
 {
   Rect rect = geom::normalize(rect_);
 
@@ -157,7 +157,7 @@ SDLFramebuffer::draw_rect(const Rect& rect_, const Color& color)
 }
 
 void
-SDLFramebuffer::fill_rect(const Rect& rect_, const Color& color)
+SDLFramebuffer::fill_rect(Rect const& rect_, Color const& color)
 {
   Rect rect = geom::normalize(rect_);
 
@@ -179,7 +179,7 @@ SDLFramebuffer::flip()
 }
 
 void
-SDLFramebuffer::update_rects(const std::vector<Rect>& rects)
+SDLFramebuffer::update_rects(std::vector<Rect> const& rects)
 {
   flip();
 }
@@ -194,7 +194,7 @@ SDLFramebuffer::get_size() const
 }
 
 void
-SDLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
+SDLFramebuffer::set_video_mode(Size const& size, bool fullscreen, bool resizable)
 {
   if (m_window)
   {
@@ -266,7 +266,7 @@ SDLFramebuffer::has_grab() const
 }
 
 void
-SDLFramebuffer::push_cliprect(const Rect& rect)
+SDLFramebuffer::push_cliprect(Rect const& rect)
 {
   SDL_Rect sdl_rect;
   sdl_rect.x = static_cast<Sint16>(rect.left());

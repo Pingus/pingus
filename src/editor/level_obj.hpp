@@ -128,7 +128,7 @@ public:
     removed(false)
   {}
 
-  LevelObj(const LevelObj& rhs) :
+  LevelObj(LevelObj const& rhs) :
     removed(rhs.removed)
   {}
 
@@ -136,7 +136,7 @@ public:
   virtual ~LevelObj() { }
 
   /** Set the object's position */
-  virtual void set_pos(const Vector2f& p) = 0;
+  virtual void set_pos(Vector2f const& p) = 0;
 
   virtual float z_index() const = 0;
   virtual void set_z_index(float z_index) = 0;
@@ -148,13 +148,13 @@ public:
   virtual float get_pos_y() const = 0;
 
   /** Original position of the objects before being dragged around */
-  virtual void set_orig_pos(const Vector2f& p) = 0;
+  virtual void set_orig_pos(Vector2f const& p) = 0;
 
   /** Set the object's resource name */
-  virtual void set_res_desc(const ResDescriptor& d) = 0;
+  virtual void set_res_desc(ResDescriptor const& d) = 0;
 
   /** Set the object's modifier */
-  virtual void set_modifier(const std::string& m) = 0;
+  virtual void set_modifier(std::string const& m) = 0;
 
   /** Set the object's modifier */
   virtual void set_modifier(ResourceModifier::Enum modifier) = 0;
@@ -162,12 +162,12 @@ public:
   virtual ResourceModifier::Enum get_modifier() const = 0;
 
   /** Set the object's section header name */
-  virtual void set_section_name(const std::string& sn) = 0;
+  virtual void set_section_name(std::string const& sn) = 0;
 
   /** Set the object's type */
-  virtual void set_type(const std::string& t) = 0;
+  virtual void set_type(std::string const& t) = 0;
 
-  virtual void set_ground_type(const std::string& t) = 0;
+  virtual void set_ground_type(std::string const& t) = 0;
 
   /** Set the object's speed */
   virtual void set_speed(int s) = 0;
@@ -200,7 +200,7 @@ public:
   virtual void set_keep_aspect(bool a) = 0;
 
   /** Set the objects color if applicable */
-  virtual void set_color(const Color& c) = 0;
+  virtual void set_color(Color const& c) = 0;
 
   /** Set the object's parallax scroll multiplier in the x direction */
   virtual void set_para_x(float p) = 0;
@@ -209,10 +209,10 @@ public:
   virtual void set_para_y(float p) = 0;
 
   /** Set the object's direction if applicable */
-  virtual void set_direction(const std::string& d) = 0;
+  virtual void set_direction(std::string const& d) = 0;
 
-  virtual void set_id(const std::string& t) = 0;
-  virtual void set_target_id(const std::string& t) = 0;
+  virtual void set_id(std::string const& t) = 0;
+  virtual void set_target_id(std::string const& t) = 0;
 
   virtual void set_height(int h) = 0;
 
@@ -245,7 +245,7 @@ public:
   virtual void set_middle_stars(int n) = 0;
   virtual void set_large_stars(int n)  = 0;
 
-  virtual LevelObjPtr duplicate(const Vector2i& offset) const = 0;
+  virtual LevelObjPtr duplicate(Vector2i const& offset) const = 0;
 };
 
 } // namespace pingus::editor

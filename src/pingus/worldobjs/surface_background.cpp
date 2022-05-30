@@ -23,7 +23,7 @@
 
 namespace pingus::worldobjs {
 
-SurfaceBackground::SurfaceBackground(const ReaderMapping& reader) :
+SurfaceBackground::SurfaceBackground(ReaderMapping const& reader) :
   para_x(0.5),
   para_y(0.5),
   pos(),

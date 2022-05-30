@@ -46,8 +46,8 @@ private:
   void mine(bool final);
 
 private:
-  Miner (const Miner&);
-  Miner& operator= (const Miner&);
+  Miner (Miner const&);
+  Miner& operator= (Miner const&);
 };
 
 } // namespace pingus::actions

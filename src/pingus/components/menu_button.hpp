@@ -47,8 +47,8 @@ protected:
   bool pressed;
 
 public:
-  MenuButton(PingusMenu* menu, const Vector2i& pos,
-             const std::string& text, const std::string& desc);
+  MenuButton(PingusMenu* menu, Vector2i const& pos,
+             std::string const& text, std::string const& desc);
   ~MenuButton() override;
 
   void draw(DrawingContext& gc) override;
@@ -68,8 +68,8 @@ public:
   void set_pos(int x, int y);
 
 private:
-  MenuButton (const MenuButton&);
-  MenuButton& operator= (const MenuButton&);
+  MenuButton (MenuButton const&);
+  MenuButton& operator= (MenuButton const&);
 };
 
 } // namespace pingus

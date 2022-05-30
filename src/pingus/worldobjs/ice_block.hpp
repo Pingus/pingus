@@ -40,11 +40,11 @@ private:
   CollisionMask block_sur_cmap;
 
 public:
-  IceBlock(const ReaderMapping& reader);
+  IceBlock(ReaderMapping const& reader);
 
   float z_index () const override { return m_z_index; }
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector2f& p) override { pos = p; }
+  void set_pos(Vector2f const& p) override { pos = p; }
   Vector2f get_pos() const override { return pos; }
 
   void on_startup () override;
@@ -52,8 +52,8 @@ public:
   void update () override;
 
 private:
-  IceBlock (const IceBlock&);
-  IceBlock& operator= (const IceBlock&);
+  IceBlock (IceBlock const&);
+  IceBlock& operator= (IceBlock const&);
 };
 
 } // namespace pingus::worldobjs

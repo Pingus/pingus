@@ -42,7 +42,7 @@ OpenGLFramebuffer::~OpenGLFramebuffer()
 }
 
 FramebufferSurface
-OpenGLFramebuffer::create_surface(const Surface& surface)
+OpenGLFramebuffer::create_surface(Surface const& surface)
 {
   return FramebufferSurface(new OpenGLFramebufferSurfaceImpl(surface.get_surface()));
 }
@@ -72,7 +72,7 @@ OpenGLFramebuffer::make_screenshot() const
 }
 
 void
-OpenGLFramebuffer::set_video_mode(const Size& size, bool fullscreen, bool resizable)
+OpenGLFramebuffer::set_video_mode(Size const& size, bool fullscreen, bool resizable)
 {
   if (m_window)
   {
@@ -174,7 +174,7 @@ OpenGLFramebuffer::flip()
 }
 
 void
-OpenGLFramebuffer::push_cliprect(const Rect& rect)
+OpenGLFramebuffer::push_cliprect(Rect const& rect)
 {
   if (cliprect_stack.empty())
     glEnable(GL_SCISSOR_TEST);
@@ -208,22 +208,22 @@ OpenGLFramebuffer::pop_cliprect()
   }
   else
   {
-    const Rect& rect = cliprect_stack.back();
+    Rect const& rect = cliprect_stack.back();
     glScissor(rect.left(), rect.top(),
               rect.width(), rect.height());
   }
 }
 
 void
-OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Vector2i& pos)
+OpenGLFramebuffer::draw_surface(FramebufferSurface const& src, Vector2i const& pos)
 {
   draw_surface(src, Rect(Vector2i(0, 0), src.get_size()),  pos);
 }
 
 void
-OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcrect, const Vector2i& pos)
+OpenGLFramebuffer::draw_surface(FramebufferSurface const& src, Rect const& srcrect, Vector2i const& pos)
 {
-  const OpenGLFramebufferSurfaceImpl* texture = static_cast<OpenGLFramebufferSurfaceImpl*>(src.get_impl());
+  OpenGLFramebufferSurfaceImpl const* texture = static_cast<OpenGLFramebufferSurfaceImpl*>(src.get_impl());
 
   glBindTexture(GL_TEXTURE_2D, texture->get_handle());
 
@@ -257,7 +257,7 @@ OpenGLFramebuffer::draw_surface(const FramebufferSurface& src, const Rect& srcre
 }
 
 void
-OpenGLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const Color& color)
+OpenGLFramebuffer::draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color)
 {
   glDisable(GL_TEXTURE_2D);
   glColor4ub(color.r, color.g, color.b, color.a);
@@ -277,7 +277,7 @@ OpenGLFramebuffer::draw_line(const Vector2i& pos1, const Vector2i& pos2, const C
 }
 
 void
-OpenGLFramebuffer::draw_rect(const Rect& rect, const Color& color)
+OpenGLFramebuffer::draw_rect(Rect const& rect, Color const& color)
 {
   glDisable(GL_TEXTURE_2D);
   glColor4ub(color.r, color.g, color.b, color.a);
@@ -299,7 +299,7 @@ OpenGLFramebuffer::draw_rect(const Rect& rect, const Color& color)
 }
 
 void
-OpenGLFramebuffer::fill_rect(const Rect& rect, const Color& color)
+OpenGLFramebuffer::fill_rect(Rect const& rect, Color const& color)
 {
   glDisable(GL_TEXTURE_2D);
   glColor4ub(color.r, color.g, color.b, color.a);

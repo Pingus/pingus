@@ -41,8 +41,8 @@ public:
   bool change_allowed (ActionName::Enum ) override { return false; }
 
 private:
-  Splashed (const Splashed&);
-  Splashed& operator= (const Splashed&);
+  Splashed (Splashed const&);
+  Splashed& operator= (Splashed const&);
 };
 
 } // namespace pingus::actions

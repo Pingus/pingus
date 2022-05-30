@@ -51,7 +51,7 @@ float atan2(float x, float y);
 std::string float2string(float value);
 
 /** Restore the raw bits of a float from a string */
-float string2float(const std::string& str);
+float string2float(std::string const& str);
 
 } // namespace Math
 

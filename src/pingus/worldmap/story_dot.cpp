@@ -29,7 +29,7 @@
 
 namespace pingus::worldmap {
 
-StoryDot::StoryDot(const ReaderMapping& reader) :
+StoryDot::StoryDot(ReaderMapping const& reader) :
   Dot(reader.get<ReaderMapping>("dot")),
   m_story_dot_highlight("core/worldmap/story_dot_highlight"),
   m_story_dot("core/worldmap/story_dot"),
@@ -73,7 +73,7 @@ StoryDot::on_click()
     auto doc = ReaderDocument::from_file(Pathname(m_story, Pathname::DATA_PATH).get_sys_path());
     ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(doc.get_mapping(), m_credits));
   }
-  catch(const std::exception& err)
+  catch(std::exception const& err)
   {
     log_error("{}", err.what());
   }

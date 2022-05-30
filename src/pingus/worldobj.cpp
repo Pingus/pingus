@@ -26,7 +26,7 @@ WorldObj::set_world(World* arg_world)
   world = arg_world;
 }
 
-WorldObj::WorldObj(const ReaderMapping& reader) :
+WorldObj::WorldObj(ReaderMapping const& reader) :
   id()
 {
   reader.read("id", id);

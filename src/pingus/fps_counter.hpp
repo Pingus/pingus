@@ -48,8 +48,8 @@ public:
   void draw();
 
 private:
-  FPSCounter (const FPSCounter&);
-  FPSCounter& operator= (const FPSCounter&);
+  FPSCounter (FPSCounter const&);
+  FPSCounter& operator= (FPSCounter const&);
 };
 
 } // namespace pingus

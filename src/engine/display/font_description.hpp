@@ -36,7 +36,7 @@ public:
   Rect     rect;
 
   GlyphDescription();
-  GlyphDescription(const prio::ReaderMapping& reader);
+  GlyphDescription(prio::ReaderMapping const& reader);
 };
 
 class GlyphImageDescription
@@ -70,7 +70,7 @@ public:
 
   std::vector<GlyphImageDescription> images;
 
-  FontDescription(const Pathname& filename);
+  FontDescription(Pathname const& filename);
 };
 
 } // namespace pingus

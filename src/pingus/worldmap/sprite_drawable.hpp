@@ -35,14 +35,14 @@ private:
   bool       auto_uncover;
 
 public:
-  SpriteDrawable(const ReaderMapping& reader);
+  SpriteDrawable(ReaderMapping const& reader);
 
   void update(float delta) override;
   void draw(DrawingContext&) override;
 
 private:
-  SpriteDrawable (const SpriteDrawable&);
-  SpriteDrawable& operator= (const SpriteDrawable&);
+  SpriteDrawable (SpriteDrawable const&);
+  SpriteDrawable& operator= (SpriteDrawable const&);
 };
 
 } // namespace pingus::worldmap

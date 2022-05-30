@@ -28,7 +28,7 @@
 
 namespace pingus::editor {
 
-FileDialog::FileDialog(EditorScreen* editor_, const Rect& rect_, Mode mode_) :
+FileDialog::FileDialog(EditorScreen* editor_, Rect const& rect_, Mode mode_) :
   GroupComponent(rect_),
   editor(editor_),
   mode(mode_),
@@ -104,7 +104,7 @@ FileDialog::draw_background(DrawingContext& gc)
 }
 
 void
-FileDialog::load_file(const System::DirectoryEntry& entry)
+FileDialog::load_file(System::DirectoryEntry const& entry)
 { // called when somebody clicks a file
 
   if (entry.type == System::DE_DIRECTORY)
@@ -119,7 +119,7 @@ FileDialog::load_file(const System::DirectoryEntry& entry)
 }
 
 void
-FileDialog::set_directory(const std::string& pathname_)
+FileDialog::set_directory(std::string const& pathname_)
 {
   std::string pathname = System::realpath(pathname_);
 

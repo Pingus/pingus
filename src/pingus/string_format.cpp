@@ -25,7 +25,7 @@
 namespace pingus {
 
 std::string
-StringFormat::break_line(const std::string& text, int width, const Font& font)
+StringFormat::break_line(std::string const& text, int width, Font const& font)
 {
   strut::utf8::iterator beg(text);
   float line_width = 0;

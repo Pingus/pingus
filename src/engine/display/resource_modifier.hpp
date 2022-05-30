@@ -42,7 +42,7 @@ ResourceModifier::Enum rotate_90(ResourceModifier::Enum modifier);
 ResourceModifier::Enum rotate_270(ResourceModifier::Enum modifier);
 
 std::string to_string(ResourceModifier::Enum modifier);
-ResourceModifier::Enum from_string(const std::string& name);
+ResourceModifier::Enum from_string(std::string const& name);
 
 } // namespace ResourceModifier
 

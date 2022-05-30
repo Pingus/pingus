@@ -43,7 +43,7 @@ public:
   {
   }
 
-  SceneContextImpl(const Rect& rect) :
+  SceneContextImpl(Rect const& rect) :
     color(rect),
     light(rect),
     highlight(rect),
@@ -58,7 +58,7 @@ SceneContext::SceneContext() :
 {
 }
 
-SceneContext::SceneContext(const Rect& rect) :
+SceneContext::SceneContext(Rect const& rect) :
   impl(new SceneContextImpl(rect))
 {
 }
@@ -119,7 +119,7 @@ SceneContext::reset_modelview()
 }
 
 void
-SceneContext::set_rect(const Rect& rect)
+SceneContext::set_rect(Rect const& rect)
 {
   impl->color.set_rect(rect);
   impl->light.set_rect(rect);
@@ -127,7 +127,7 @@ SceneContext::set_rect(const Rect& rect)
 }
 
 void
-SceneContext::set_cliprect(const Rect& rect)
+SceneContext::set_cliprect(Rect const& rect)
 {
   impl->cliprect = rect;
   impl->use_cliprect = true;
@@ -140,7 +140,7 @@ SceneContext::reset_cliprect()
 }
 
 void
-SceneContext::render(Framebuffer& fb, const Rect& rect)
+SceneContext::render(Framebuffer& fb, Rect const& rect)
 {
   // Render all buffers
   // FIXME: Render all to pbuffer for later combining of them
@@ -180,7 +180,7 @@ SceneContext::clear()
   impl->highlight.clear();
 }
 
-SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc_, const Vector2i& pos_, float z_)
+SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc_, Vector2i const& pos_, float z_)
   : DrawingRequest(pos_, z_),
     sc(sc_)
 {
@@ -192,7 +192,7 @@ SceneContextDrawingRequest::~SceneContextDrawingRequest()
 }
 
 void
-SceneContextDrawingRequest::render(Framebuffer& fb, const Rect& rect)
+SceneContextDrawingRequest::render(Framebuffer& fb, Rect const& rect)
 {
   sc->render(fb, rect);
 }

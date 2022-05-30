@@ -64,14 +64,14 @@ public:
   }
 
 private:
-  OptionMenuCloseButton(const OptionMenuCloseButton&);
-  OptionMenuCloseButton & operator=(const OptionMenuCloseButton&);
+  OptionMenuCloseButton(OptionMenuCloseButton const&);
+  OptionMenuCloseButton & operator=(OptionMenuCloseButton const&);
 };
 
 struct LanguageSorter
 {
-  bool operator()(const tinygettext::Language& lhs,
-                  const tinygettext::Language& rhs)
+  bool operator()(tinygettext::Language const& lhs,
+                  tinygettext::Language const& rhs)
   {
 #pragma GCC diagnostic ignored "-Wzero-as-null-pointer-constant"
     return lhs.get_name() < rhs.get_name(); // NOLINT
@@ -251,7 +251,7 @@ OptionMenu::OptionMenu() :
 }
 
 void
-OptionMenu::add_item(const std::string& label, std::unique_ptr<pingus::gui::RectComponent> control)
+OptionMenu::add_item(std::string const& label, std::unique_ptr<pingus::gui::RectComponent> control)
 {
   int x_offset = (Display::get_width()  - 800) / 2;
   int y_offset = (Display::get_height() - 600) / 2;
@@ -306,8 +306,8 @@ OptionMenu::~OptionMenu()
 }
 
 struct OptionEntry {
-  OptionEntry(const std::string& left_,
-              const std::string& right_)
+  OptionEntry(std::string const& left_,
+              std::string const& right_)
     : left(left_), right(right_)
   {}
 
@@ -351,7 +351,7 @@ OptionMenu::on_escape_press()
 }
 
 void
-OptionMenu::resize(const Size& size_)
+OptionMenu::resize(Size const& size_)
 {
   Size old_size = size;
   GUIScreen::resize(size_);
@@ -456,7 +456,7 @@ OptionMenu::on_language_change(const std::string &str)
 }
 
 void
-OptionMenu::on_resolution_change(const std::string& str)
+OptionMenu::on_resolution_change(std::string const& str)
 {
   int w;
   int h;
@@ -476,7 +476,7 @@ OptionMenu::on_resolution_change(const std::string& str)
 }
 
 void
-OptionMenu::on_renderer_change(const std::string& str)
+OptionMenu::on_renderer_change(std::string const& str)
 {
   config_manager.set_renderer(framebuffer_type_from_string(str));
 }

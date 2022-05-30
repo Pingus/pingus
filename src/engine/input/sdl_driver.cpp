@@ -34,7 +34,7 @@ SDLDriver::SDLDriver() :
 {
   for (int i = 0; i < SDL_NUM_SCANCODES; ++i)
   {
-    const char* key_name = SDL_GetScancodeName(static_cast<SDL_Scancode>(i));
+    char const* key_name = SDL_GetScancodeName(static_cast<SDL_Scancode>(i));
     // FIXME: Make the keynames somewhere user visible so that users can use them
     log_debug("Key: '{}'", key_name);
   }
@@ -46,7 +46,7 @@ SDLDriver::~SDLDriver()
 }
 
 std::unique_ptr<Keyboard>
-SDLDriver::create_keyboard(const ReaderObject& reader_object, Control* parent)
+SDLDriver::create_keyboard(ReaderObject const& reader_object, Control* parent)
 {
   auto keyboard = std::make_unique<Keyboard>(parent);
   keyboard_binding = keyboard.get();
@@ -54,7 +54,7 @@ SDLDriver::create_keyboard(const ReaderObject& reader_object, Control* parent)
 }
 
 std::unique_ptr<Button>
-SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
+SDLDriver::create_button(ReaderObject const& reader_object, Control* parent)
 {
   //log_info("SDL: " << reader_object.get_name());
   if (reader_object.get_name() == "sdl:joystick-button")
@@ -128,7 +128,7 @@ SDLDriver::create_button(const ReaderObject& reader_object, Control* parent)
 }
 
 std::unique_ptr<Axis>
-SDLDriver::create_axis(const ReaderObject& reader_object, Control* parent)
+SDLDriver::create_axis(ReaderObject const& reader_object, Control* parent)
 {
   if (reader_object.get_name() == "sdl:joystick-axis")
   {
@@ -160,7 +160,7 @@ SDLDriver::create_axis(const ReaderObject& reader_object, Control* parent)
 }
 
 std::unique_ptr<Scroller>
-SDLDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
+SDLDriver::create_scroller(ReaderObject const& reader_object, Control* parent)
 {
   if (reader_object.get_name() == "sdl:mouse-scroller")
   {
@@ -179,7 +179,7 @@ SDLDriver::create_scroller(const ReaderObject& reader_object, Control* parent)
 }
 
 std::unique_ptr<Pointer>
-SDLDriver::create_pointer(const ReaderObject& reader_object, Control* parent)
+SDLDriver::create_pointer(ReaderObject const& reader_object, Control* parent)
 {
   if (reader_object.get_name() == "sdl:mouse-pointer")
   {

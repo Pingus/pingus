@@ -31,9 +31,9 @@ class Pathname
 {
 public:
   /** Generate a temporary filename suitable for temporary files */
-  static Pathname tmpfile(const std::string& prefix = "");
+  static Pathname tmpfile(std::string const& prefix = "");
 
-  static std::string join(const std::string& lhs, const std::string& rhs);
+  static std::string join(std::string const& lhs, std::string const& rhs);
 
   enum Type {
     // The given pathname refers to the native file system
@@ -53,13 +53,13 @@ private:
 
 public:
   Pathname();
-  explicit Pathname(const std::string& pathname, Type type = DATA_PATH);
+  explicit Pathname(std::string const& pathname, Type type = DATA_PATH);
 
-  std::vector<Pathname> opendir(const std::string& pattern = "*") const;
+  std::vector<Pathname> opendir(std::string const& pattern = "*") const;
   std::vector<Pathname> opendir_recursive() const;
 
   /** Check if the pathname has the extension \a ext (i.e. ".png") */
-  bool has_extension(const std::string& ext) const;
+  bool has_extension(std::string const& ext) const;
 
   /** Return the pathname in a form suitable for the native file
       system (i.e. can be passed to ifstream and friends */
@@ -82,11 +82,11 @@ public:
 
   uint64_t mtime() const;
 
-  bool operator<(const Pathname& rhs) const;
-  bool operator==(const Pathname& rhs) const;
+  bool operator<(Pathname const& rhs) const;
+  bool operator==(Pathname const& rhs) const;
 };
 
-std::ostream& operator<< (std::ostream& os, const Pathname& p);
+std::ostream& operator<< (std::ostream& os, Pathname const& p);
 
 } // namespace pingus
 

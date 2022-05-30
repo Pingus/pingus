@@ -41,8 +41,8 @@ public:
   bool catchable () override { return false; }
 
 private:
-  LaserKill (const LaserKill&);
-  LaserKill& operator= (const LaserKill&);
+  LaserKill (LaserKill const&);
+  LaserKill& operator= (LaserKill const&);
 };
 
 } // namespace pingus::actions

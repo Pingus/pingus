@@ -36,7 +36,7 @@ private:
   Sprite smallmap_symbol;
 
 public:
-  Exit(const ReaderMapping& reader);
+  Exit(ReaderMapping const& reader);
   ~Exit() override;
 
   void  on_startup () override;
@@ -48,12 +48,12 @@ public:
 
   float z_index () const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector2f& p) override { pos = p; }
+  void set_pos(Vector2f const& p) override { pos = p; }
   Vector2f get_pos() const override { return pos; }
 
 private:
-  Exit (const Exit&);
-  Exit& operator= (const Exit&);
+  Exit (Exit const&);
+  Exit& operator= (Exit const&);
 };
 
 } // namespace pingus::worldobjs

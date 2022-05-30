@@ -39,17 +39,17 @@ public:
   std::vector<EdgeId> next;
 
 public:
-  Node (const NodeType& d) :
+  Node (NodeType const& d) :
     data(d),
     next()
   {}
 
-  Node (const Node& rhs) :
+  Node (Node const& rhs) :
     data(rhs.data),
     next(rhs.next)
   {}
 
-  Node& operator=(const Node& rhs)
+  Node& operator=(Node const& rhs)
   {
     if (this != &rhs)
     {
@@ -59,7 +59,7 @@ public:
     return *this;
   }
 
-  Node& operator=(const NodeType& d)
+  Node& operator=(NodeType const& d)
   {
     data = d;
     return *this;
@@ -76,7 +76,7 @@ public:
 
   EdgeType data;
 
-  Edge (const EdgeType& arg_data, const NodeId& s, const NodeId& d, float c)
+  Edge (EdgeType const& arg_data, NodeId const& s, NodeId const& d, float c)
     : source (s), destination (d), cost (c), data(arg_data)
   {
   }
@@ -97,12 +97,12 @@ public:
   {
   }
 
-  Graph (const Graph&)
+  Graph (Graph const&)
   {
     assert (false);
   }
 
-  Graph& operator= (const Graph&)
+  Graph& operator= (Graph const&)
   {
     assert (false);
     return *this;
@@ -118,7 +118,7 @@ public:
     return NodeId (nodes.size ()-1);
   }
 
-  EdgeId add_edge (const EdgeType& data, const NodeId& a, const NodeId& b, float cost)
+  EdgeId add_edge (EdgeType const& data, NodeId const& a, NodeId const& b, float cost)
   {
     Edge<EdgeType> new_edge (data, a, b, cost);
     edges.push_back (new_edge);
@@ -127,7 +127,7 @@ public:
   }
 
   std::pair<EdgeId, EdgeId>
-  add_bi_edge (const EdgeType& data, const NodeId& a, const NodeId& b, float cost)
+  add_bi_edge (EdgeType const& data, NodeId const& a, NodeId const& b, float cost)
   {
     std::pair<EdgeId, EdgeId> ret;
     ret.first  = add_edge (data, a, b, cost);
@@ -135,30 +135,30 @@ public:
     return ret;
   }
 
-  void remove_node (const NodeId& node)
+  void remove_node (NodeId const& node)
   {
     assert (!"remove_node: not implemented");
   }
 
-  void remove_edge (const NodeId& node1, const NodeId& node2)
+  void remove_edge (NodeId const& node1, NodeId const& node2)
   {
     assert (!"remove_edge: not implemented");
   }
 
-  Edge<EdgeType>& resolve_edge (const EdgeId& node)
+  Edge<EdgeType>& resolve_edge (EdgeId const& node)
   {
     // FIXME: No error handling
     return edges[static_cast<size_t>(node)];
   }
 
   /** Translates a NodeId into the corresponding Node */
-  Node<NodeType>& resolve_node (const NodeId& node)
+  Node<NodeType>& resolve_node (NodeId const& node)
   {
     // FIXME: No error handling
     return nodes[static_cast<size_t>(node)];
   }
 
-  Edge<EdgeType>& resolve_edge(const NodeId& source, const NodeId& destination)
+  Edge<EdgeType>& resolve_edge(NodeId const& source, NodeId const& destination)
   {
     // FIXME: this could be done faster with an adjacense matrix
     for (typename std::vector<Edge<EdgeType> >::iterator i = edges.begin();

@@ -32,7 +32,7 @@ private:
   Vector2i pos;
 
 public:
-  PanelSeparator(const Vector2i& pos_) :
+  PanelSeparator(Vector2i const& pos_) :
     sprite("core/editor/separator"),
     pos(pos_)
   {
@@ -64,7 +64,7 @@ private:
 
 public:
   PanelButton(EditorScreen* editor_,
-              const Vector2i& pos_, const std::string& name, const std::string& tooltip_,
+              Vector2i const& pos_, std::string const& name, std::string const& tooltip_,
               Callback callback_ = nullptr) :
     editor(editor_),
     button_raised("core/editor/button-raised"),
@@ -161,11 +161,11 @@ public:
   }
 
 private:
-  PanelButton(const PanelButton&);
-  PanelButton & operator=(const PanelButton&);
+  PanelButton(PanelButton const&);
+  PanelButton & operator=(PanelButton const&);
 };
 
-Panel::Panel(EditorScreen* editor_, const Rect& rect_) :
+Panel::Panel(EditorScreen* editor_, Rect const& rect_) :
   GroupComponent(rect_, false),
   editor(editor_),
   logo("core/editor/logo"),
@@ -233,14 +233,14 @@ Panel::update (float delta)
 }
 
 void
-Panel::add_button(const std::string& image, const std::string& tooltip, Callback callback_)
+Panel::add_button(std::string const& image, std::string const& tooltip, Callback callback_)
 {
   PanelButton* comp = create<PanelButton>(editor, pos, image, tooltip, callback_);
   pos += geom::ioffset(comp->get_width(), 0);
 }
 
 void
-Panel::add_toggle_button(const std::string& image)
+Panel::add_toggle_button(std::string const& image)
 {
   PanelButton* comp = create<PanelButton>(editor, pos, image, "");
   pos += geom::ioffset(comp->get_width(), 0);

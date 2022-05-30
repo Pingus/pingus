@@ -66,7 +66,7 @@ GoalManager::update()
   {
     World*       world  = server->get_world();
     PinguHolder* pingus = world->get_pingus();
-    const PingusLevel& plf    = server->get_plf();
+    PingusLevel const& plf    = server->get_plf();
 
     if (pingus->get_number_of_allowed() == pingus->get_number_of_released()
         && pingus->get_number_of_alive() == 0)

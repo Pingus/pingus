@@ -52,7 +52,7 @@ private:
 public:
   /** Create an action holder from the number of actions given in a
       Pingus Level file */
-  ActionHolder(const PingusLevel& plf);
+  ActionHolder(PingusLevel const& plf);
   ~ActionHolder();
 
   /** @return a list of available actions in the current level */
@@ -82,8 +82,8 @@ public:
   int get_used(ActionName::Enum name);
 
 private:
-  ActionHolder (const ActionHolder&);
-  ActionHolder& operator= (const ActionHolder&);
+  ActionHolder (ActionHolder const&);
+  ActionHolder& operator= (ActionHolder const&);
 };
 
 } // namespace pingus

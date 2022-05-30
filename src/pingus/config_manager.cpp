@@ -100,7 +100,7 @@ ConfigManager::get_music_volume() const
 }
 
 void
-ConfigManager::set_fullscreen_resolution(const Size& size)
+ConfigManager::set_fullscreen_resolution(Size const& size)
 {
   log_info("{}x{}", size.width(), size.height());
 
@@ -214,7 +214,7 @@ ConfigManager::get_print_fps() const
 }
 
 void
-ConfigManager::set_language(const tinygettext::Language& v)
+ConfigManager::set_language(tinygettext::Language const& v)
 {
   log_info("{}", v.str());
 
@@ -297,7 +297,7 @@ ConfigManager::get_options() const
 }
 
 void
-ConfigManager::apply(const Options& opts)
+ConfigManager::apply(Options const& opts)
 {
   m_opts.merge(opts);
 

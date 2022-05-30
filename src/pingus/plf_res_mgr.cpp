@@ -27,8 +27,8 @@ namespace pingus {
 PLFResMgr::PLFMap PLFResMgr::plf_map;
 
 PingusLevel
-PLFResMgr::load_plf_raw(const std::string& res_name,
-                        const Pathname& pathname)
+PLFResMgr::load_plf_raw(std::string const& res_name,
+                        Pathname const& pathname)
 {
   log_info("PLFResMgr: '{}' -> '{}'", res_name, pathname.str());
 
@@ -81,7 +81,7 @@ PLFResMgr::load_plf_raw(const std::string& res_name,
 }
 
 PingusLevel
-PLFResMgr::load_plf_from_filename(const Pathname& pathname)
+PLFResMgr::load_plf_from_filename(Pathname const& pathname)
 {
   // FIXME: Ugly resname guessing is ugly
   std::string res_name = System::basename(pathname.get_sys_path());
@@ -94,7 +94,7 @@ PLFResMgr::load_plf_from_filename(const Pathname& pathname)
 }
 
 PingusLevel
-PLFResMgr::load_plf(const std::string& res_name)
+PLFResMgr::load_plf(std::string const& res_name)
 {
   return load_plf_raw(res_name, Pathname("levels/" + res_name + ".pingus", Pathname::DATA_PATH));
 }

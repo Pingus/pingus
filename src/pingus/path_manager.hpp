@@ -36,10 +36,10 @@ public:
   /** Adds an overlay path, overlay path are search and used instead
       of the main datadir when a file is found in the same relative
       location */
-  void add_overlay_path(const std::string& path);
+  void add_overlay_path(std::string const& path);
 
   /** Set the main datadir */
-  void set_path(const std::string& path);
+  void set_path(std::string const& path);
 
   std::string get_path() const { return m_base_path; }
 
@@ -47,7 +47,7 @@ public:
 
   /** Complete a releative path to the absolute path, the returned
       path contains a trailing slash */
-  std::string complete(const std::string& relative_path);
+  std::string complete(std::string const& relative_path);
 };
 
 extern PathManager g_path_manager;

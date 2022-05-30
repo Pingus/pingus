@@ -62,13 +62,13 @@ private:
   // Pointers which are references to objects from other classes
   CollisionMap*         colmap;
 
-  void    init_worldobjs (const PingusLevel& plf);
+  void    init_worldobjs (PingusLevel const& plf);
 
   /** Acceleration due to gravity in the world */
   const float gravitational_acceleration;
 
 public:
-  World(const PingusLevel& level);
+  World(PingusLevel const& level);
   virtual ~World();
 
   /** Add an object to the world, obj needs to be new'ed the World
@@ -102,11 +102,11 @@ public:
   GroundMap* get_gfx_map() const;
 
   void put(int x, int y, Groundtype::GPType p = Groundtype::GP_GROUND);
-  void put(const CollisionMask&, int x, int y, Groundtype::GPType);
+  void put(CollisionMask const&, int x, int y, Groundtype::GPType);
 
-  void remove(const CollisionMask&, int x, int y);
+  void remove(CollisionMask const&, int x, int y);
 
-  WorldObj* get_worldobj(const std::string& id);
+  WorldObj* get_worldobj(std::string const& id);
 
   /** @return A pointer to the worlds pingu particle holder */
   pingus::particles::PinguParticleHolder* get_pingu_particle_holder () { return pingu_particle_holder; }
@@ -131,12 +131,12 @@ public:
       going to be ignored) void play_sound (std::string name, const
       @param volume The volume of the sound
   */
-  void play_sound (const std::string& name, const Vector2f& pos, float volume = 0.5f);
+  void play_sound (std::string const& name, Vector2f const& pos, float volume = 0.5f);
 
   PinguHolder* get_pingus(void) const;
 
   /** @return the pingu at the given word coordinates, 0 if none is there */
-  Pingu* get_pingu (const Vector2f& pos);
+  Pingu* get_pingu (Vector2f const& pos);
 
   /** Get the acceleration due to gravity in the world */
   float get_gravity() const;
@@ -145,8 +145,8 @@ public:
   Vector2i get_start_pos(int player_id) const;
 
 private:
-  World (const World&);
-  World& operator= (const World&);
+  World (World const&);
+  World& operator= (World const&);
 };
 
 } // namespace pingus

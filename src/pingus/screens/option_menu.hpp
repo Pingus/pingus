@@ -81,9 +81,9 @@ public:
   void draw_background (DrawingContext& gc) override;
   void on_escape_press () override;
 
-  void add_item(const std::string& label, std::unique_ptr<pingus::gui::RectComponent> control);
+  void add_item(std::string const& label, std::unique_ptr<pingus::gui::RectComponent> control);
 
-  void resize(const Size&) override;
+  void resize(Size const&) override;
   void close_screen();
 
   void on_software_cursor_change(bool v);
@@ -98,15 +98,15 @@ public:
   void on_sound_volume_change(int v);
   void on_music_volume_change(int v);
 
-  void on_language_change(const std::string& str);
-  void on_resolution_change(const std::string& str);
-  void on_renderer_change(const std::string& str);
+  void on_language_change(std::string const& str);
+  void on_resolution_change(std::string const& str);
+  void on_renderer_change(std::string const& str);
 
   void save_language();
 
 private:
-  OptionMenu (const OptionMenu&);
-  OptionMenu& operator= (const OptionMenu&);
+  OptionMenu (OptionMenu const&);
+  OptionMenu& operator= (OptionMenu const&);
 };
 
 } // namespace pingus

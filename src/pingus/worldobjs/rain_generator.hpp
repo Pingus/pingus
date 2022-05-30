@@ -29,19 +29,19 @@ private:
   float waiter_count;
 
 public:
-  RainGenerator(const ReaderMapping& reader);
+  RainGenerator(ReaderMapping const& reader);
   ~RainGenerator() override;
 
   void update () override;
   void draw (SceneContext& gc) override;
   float z_index () const override { return 1000; }
   void set_z_index(float z_index) override {}
-  void set_pos(const Vector2f& p) override {}
+  void set_pos(Vector2f const& p) override {}
   Vector2f get_pos() const override { return Vector2f(); }
 
 private:
-  RainGenerator (const RainGenerator&);
-  RainGenerator& operator= (const RainGenerator&);
+  RainGenerator (RainGenerator const&);
+  RainGenerator& operator= (RainGenerator const&);
 };
 
 } // namespace pingus::worldobjs

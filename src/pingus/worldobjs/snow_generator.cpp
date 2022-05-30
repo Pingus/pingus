@@ -22,7 +22,7 @@
 
 namespace pingus::worldobjs {
 
-SnowGenerator::SnowGenerator(const ReaderMapping& reader) :
+SnowGenerator::SnowGenerator(ReaderMapping const& reader) :
   intensity(1.0f)
 {
   reader.read("intensity", intensity);

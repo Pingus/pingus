@@ -19,7 +19,7 @@
 namespace pingus::editor {
 
 void
-GUIStyle::draw_raised_box(DrawingContext& gc, const Rect& rect, const Color& color, int border)
+GUIStyle::draw_raised_box(DrawingContext& gc, Rect const& rect, Color const& color, int border)
 {
   // FIXME: Should use draw_line
   gc.draw_fillrect(rect, Color(255, 255, 255));
@@ -30,7 +30,7 @@ GUIStyle::draw_raised_box(DrawingContext& gc, const Rect& rect, const Color& col
 }
 
 void
-GUIStyle::draw_lowered_box(DrawingContext& gc, const Rect& rect, const Color& color, int border)
+GUIStyle::draw_lowered_box(DrawingContext& gc, Rect const& rect, Color const& color, int border)
 {
   // FIXME: Should use draw_line
   gc.draw_fillrect(rect,

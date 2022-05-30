@@ -54,7 +54,7 @@ public:
   void clear_events();
   void poll_events(std::vector<Event>& events);
 
-  Controller(const ControllerDescription& desc);
+  Controller(ControllerDescription const& desc);
   ~Controller();
 
   ControllerAxis*     get_axis(int id);
@@ -67,8 +67,8 @@ public:
   void add_button_event(int id, ButtonState state);
   void add_pointer_event(int id, float x, float y);
   void add_scroller_event(int id, float xrel, float yrel);
-  void add_keyboard_event(const SDL_KeyboardEvent& ev);
-  void add_text_input_event(const SDL_TextInputEvent& ev);
+  void add_keyboard_event(SDL_KeyboardEvent const& ev);
+  void add_text_input_event(SDL_TextInputEvent const& ev);
 
   void add_axis(int id, std::unique_ptr<ControllerAxis> axis);
   void add_button(int id, std::unique_ptr<ControllerButton> button);
@@ -80,8 +80,8 @@ public:
   void update(float delta);
 
 private:
-  Controller(const Controller&);
-  Controller& operator= (const Controller&);
+  Controller(Controller const&);
+  Controller& operator= (Controller const&);
 };
 
 } // namespace pingus::input

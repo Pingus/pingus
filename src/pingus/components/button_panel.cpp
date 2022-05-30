@@ -27,7 +27,7 @@
 
 namespace pingus {
 
-ButtonPanel::ButtonPanel(Server* s, const Vector2i& pos) :
+ButtonPanel::ButtonPanel(Server* s, Vector2i const& pos) :
   RectComponent(Rect()),
   server(s),
   background("core/buttons/buttonbackground"),
@@ -182,7 +182,7 @@ ButtonPanel::on_pointer_move(int x, int y)
 }
 
 void
-ButtonPanel::set_pos(const Vector2i& pos)
+ButtonPanel::set_pos(Vector2i const& pos)
 {
   set_rect(Rect(geom::ipoint(pos.x(), pos.y() - (static_cast<int>(buttons.size()) * 38)/2),
                 Size(60, static_cast<int>(buttons.size()) * 38)));

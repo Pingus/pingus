@@ -25,7 +25,7 @@
 namespace pingus::editor {
 
 std::shared_ptr<GroupLevelObj>
-GroupLevelObj::from_prefab(const std::string& name)
+GroupLevelObj::from_prefab(std::string const& name)
 {
   try
   {
@@ -47,7 +47,7 @@ GroupLevelObj::from_prefab(const std::string& name)
 
     return group;
   }
-  catch(const std::exception& err)
+  catch(std::exception const& err)
   {
     log_error("{}", err.what());
     return std::shared_ptr<GroupLevelObj>();
@@ -85,13 +85,13 @@ GroupLevelObj::get_section_name() const
 }
 
 void
-GroupLevelObj::add_child(const LevelObjPtr& obj)
+GroupLevelObj::add_child(LevelObjPtr const& obj)
 {
   m_objects.push_back(obj);
 }
 
 void
-GroupLevelObj::set_overrides(const ReaderMapping& reader)
+GroupLevelObj::set_overrides(ReaderMapping const& reader)
 {
   if (reader.read("repeat", m_repeat))
   {
@@ -166,7 +166,7 @@ GroupLevelObj::draw_selection(DrawingContext& gc)
 }
 
 void
-GroupLevelObj::set_pos(const Vector2f& p)
+GroupLevelObj::set_pos(Vector2f const& p)
 {
   Vector2f diff = p.as_vec() - m_pos.as_vec();
   m_pos = p;
@@ -189,7 +189,7 @@ GroupLevelObj::get_rect() const
     Rect rect = (*it)->get_rect();
     for(; it != m_objects.end(); ++it)
     {
-      const Rect& rhs = (*it)->get_rect();
+      Rect const& rhs = (*it)->get_rect();
 
       rect = Rect(std::min(rect.left(), rhs.left()),
                   std::min(rect.top(), rhs.top()),
@@ -234,7 +234,7 @@ GroupLevelObj::set_owner(int owner)
 }
 
 void
-GroupLevelObj::set_direction(const std::string& direction)
+GroupLevelObj::set_direction(std::string const& direction)
 {
   m_direction = direction;
 
@@ -256,7 +256,7 @@ GroupLevelObj::set_repeat(int repeat)
 }
 
 LevelObjPtr
-GroupLevelObj::duplicate(const Vector2i& offset) const
+GroupLevelObj::duplicate(Vector2i const& offset) const
 {
   std::shared_ptr<GroupLevelObj> group = std::make_shared<GroupLevelObj>();
 

@@ -32,23 +32,23 @@ public:
   static SDL_Surface* create_surface_from_format(SDL_Surface* surface, int w, int h);
 
   /** Flip a surface horizontal */
-  static Surface flip_horizontal (const Surface& sur);
+  static Surface flip_horizontal (Surface const& sur);
 
   /** Flip a surface vertical */
-  static Surface flip_vertical (const Surface& sur);
+  static Surface flip_vertical (Surface const& sur);
 
   /** Rotate a surface 90 degrees */
-  static Surface rotate_90 (const Surface& sur);
+  static Surface rotate_90 (Surface const& sur);
 
-  static Surface rotate_180 (const Surface& sur);
+  static Surface rotate_180 (Surface const& sur);
 
-  static Surface rotate_270 (const Surface& sur);
+  static Surface rotate_270 (Surface const& sur);
 
-  static Surface rotate_90_flip (const Surface& sur);
+  static Surface rotate_90_flip (Surface const& sur);
 
-  static Surface rotate_180_flip (const Surface& sur);
+  static Surface rotate_180_flip (Surface const& sur);
 
-  static Surface rotate_270_flip (const Surface& sur);
+  static Surface rotate_270_flip (Surface const& sur);
 
   /** Creates a new surface with the given width and height and
       stretches the source surface onto it, the caller is responsible
@@ -61,8 +61,8 @@ public:
   static SDL_Surface* scale_surface(SDL_Surface* surface, int width, int height);
 
 private:
-  Blitter (const Blitter&);
-  Blitter& operator= (const Blitter&);
+  Blitter (Blitter const&);
+  Blitter& operator= (Blitter const&);
 };
 
 } // namespace pingus

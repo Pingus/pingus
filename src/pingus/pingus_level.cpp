@@ -33,13 +33,13 @@ PingusLevel::PingusLevel() :
 {
 }
 
-PingusLevel::PingusLevel(const Pathname& pathname) :
+PingusLevel::PingusLevel(Pathname const& pathname) :
   impl(std::make_shared<PingusLevelImpl>())
 {
   load("", pathname);
 }
 
-PingusLevel::PingusLevel(const std::string& resname, const Pathname& pathname) :
+PingusLevel::PingusLevel(std::string const& resname, Pathname const& pathname) :
   impl(std::make_shared<PingusLevelImpl>())
 {
   load(resname, pathname);
@@ -52,8 +52,8 @@ PingusLevel::get_checksum() const
 }
 
 void
-PingusLevel::load(const std::string& resname,
-                  const Pathname& pathname)
+PingusLevel::load(std::string const& resname,
+                  Pathname const& pathname)
 {
   impl->checksum = System::checksum(pathname);
 
@@ -120,19 +120,19 @@ PingusLevel::load(const std::string& resname,
   }
 }
 
-const std::string&
+std::string const&
 PingusLevel::get_levelname() const
 {
   return impl->levelname;
 }
 
-const std::string&
+std::string const&
 PingusLevel::get_description() const
 {
   return impl->description;
 }
 
-const Size&
+Size const&
 PingusLevel::get_size() const
 {
   return impl->size;
@@ -162,13 +162,13 @@ PingusLevel::get_time() const
   return impl->time;
 }
 
-const std::string&
+std::string const&
 PingusLevel::get_author() const
 {
   return impl->author;
 }
 
-const std::string&
+std::string const&
 PingusLevel::get_music() const
 {
   return impl->music;
@@ -180,13 +180,13 @@ PingusLevel::get_objects() const
   return impl->objects;
 }
 
-const std::string&
+std::string const&
 PingusLevel::get_resname() const
 {
   return impl->resname;
 }
 
-const Color&
+Color const&
 PingusLevel::get_ambient_light() const
 {
   return impl->ambient_light;

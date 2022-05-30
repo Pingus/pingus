@@ -71,8 +71,8 @@ private:
   float m_master_volume;
 
 private:
-  PingusSoundReal (const PingusSoundReal&);
-  PingusSoundReal& operator= (const PingusSoundReal&);
+  PingusSoundReal (PingusSoundReal const&);
+  PingusSoundReal& operator= (PingusSoundReal const&);
 };
 
 } // namespace pingus::sound

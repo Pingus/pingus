@@ -34,15 +34,15 @@ public:
   ResourceModifier::Enum modifier;
 
   ResDescriptor ();
-  ResDescriptor (const std::string& res_name);
-  ResDescriptor (const std::string& res_name,
+  ResDescriptor (std::string const& res_name);
+  ResDescriptor (std::string const& res_name,
                  ResourceModifier::Enum modifier);
 
-  bool operator< (const ResDescriptor&) const;
+  bool operator< (ResDescriptor const&) const;
 };
 
 /// Our own function to print out the ResDescriptor
-std::ostream& operator<<(std::ostream& s, const ResDescriptor& desc);
+std::ostream& operator<<(std::ostream& s, ResDescriptor const& desc);
 
 } // namespace pingus
 

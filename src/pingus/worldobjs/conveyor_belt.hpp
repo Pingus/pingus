@@ -36,19 +36,19 @@ private:
   float  counter;
 
 public:
-  ConveyorBelt(const ReaderMapping& reader);
+  ConveyorBelt(ReaderMapping const& reader);
 
   void draw (SceneContext& gc) override;
   void on_startup () override;
   void update () override;
   float z_index () const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
-  void set_pos(const Vector2f& p) override { pos = p; }
+  void set_pos(Vector2f const& p) override { pos = p; }
   Vector2f get_pos() const override { return pos; }
 
 private:
-  ConveyorBelt (const ConveyorBelt&);
-  ConveyorBelt& operator= (const ConveyorBelt&);
+  ConveyorBelt (ConveyorBelt const&);
+  ConveyorBelt& operator= (ConveyorBelt const&);
 };
 
 } // namespace pingus::worldobjs

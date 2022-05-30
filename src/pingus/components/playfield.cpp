@@ -26,7 +26,7 @@
 
 namespace pingus {
 
-Playfield::Playfield(Server* server_, GameSession* session_, const Rect& rect_) :
+Playfield::Playfield(Server* server_, GameSession* session_, Rect const& rect_) :
   RectComponent(rect_),
   server(server_),
   session(session_),
@@ -95,7 +95,7 @@ Playfield::draw(DrawingContext& gc)
 }
 
 Pingu*
-Playfield::current_pingu_find(const Vector2f& pos)
+Playfield::current_pingu_find(Vector2f const& pos)
 {
   float min_dist = 500.0;
   float dist;
@@ -166,7 +166,7 @@ Playfield::update(float delta)
 }
 
 void
-Playfield::on_key_pressed(const pingus::input::KeyboardEvent& ev)
+Playfield::on_key_pressed(pingus::input::KeyboardEvent const& ev)
 {
   if (globals::developer_mode)
   {
@@ -235,7 +235,7 @@ Playfield::on_pointer_move (int x, int y)
 
   if (globals::developer_mode)
   { // Some fun stuff that lets you draw directly on the level
-    const Uint8* keystate = SDL_GetKeyboardState(nullptr);
+    Uint8 const* keystate = SDL_GetKeyboardState(nullptr);
     if (keystate[SDL_SCANCODE_DELETE])
     {
       CollisionMask mask("other/bash_radius_gfx");

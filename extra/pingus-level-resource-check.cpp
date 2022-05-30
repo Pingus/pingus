@@ -35,7 +35,7 @@ int main(int argc, char** argv)
       PingusLevel plf(Pathname(argv[i], Pathname::SYSTEM_PATH));
       World world(plf);
     }
-    catch(const std::exception& err)
+    catch(std::exception const& err)
     {
       log_error("%1%: exception catched: %2%", argv[i], err.what());
     }

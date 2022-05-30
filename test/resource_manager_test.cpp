@@ -12,7 +12,7 @@ private:
   std::string m_key;
 
 public:
-  SpriteLoader(const std::string& key) :
+  SpriteLoader(std::string const& key) :
     m_key(key)
   {}
 

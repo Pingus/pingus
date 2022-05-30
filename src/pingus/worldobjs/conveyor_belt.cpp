@@ -25,7 +25,7 @@
 
 namespace pingus::worldobjs {
 
-ConveyorBelt::ConveyorBelt(const ReaderMapping& reader) :
+ConveyorBelt::ConveyorBelt(ReaderMapping const& reader) :
   left_sur  (Sprite ("worldobjs/conveyorbelt_left")),
   right_sur (Sprite ("worldobjs/conveyorbelt_right")),
   middle_sur(Sprite ("worldobjs/conveyorbelt_middle")),

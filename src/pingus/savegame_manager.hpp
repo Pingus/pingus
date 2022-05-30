@@ -30,14 +30,14 @@ private:
   std::string   filename;
   SavegameTable savegames;
 
-  SavegameTable::iterator find(const std::string& filename);
+  SavegameTable::iterator find(std::string const& filename);
 
 public:
   static SavegameManager* instance();
-  SavegameManager(const std::string& filename);
+  SavegameManager(std::string const& filename);
   ~SavegameManager();
 
-  Savegame* get(const std::string& filename);
+  Savegame* get(std::string const& filename);
 
   void store(Savegame const& savegame);
 
@@ -45,8 +45,8 @@ public:
   void flush();
 
 private:
-  SavegameManager (const SavegameManager&);
-  SavegameManager& operator= (const SavegameManager&);
+  SavegameManager (SavegameManager const&);
+  SavegameManager& operator= (SavegameManager const&);
 };
 
 } // namespace pingus

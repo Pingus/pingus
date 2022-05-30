@@ -22,7 +22,7 @@
 
 namespace pingus::worldmap {
 
-SpriteDrawable::SpriteDrawable(const ReaderMapping& reader) :
+SpriteDrawable::SpriteDrawable(ReaderMapping const& reader) :
   Drawable(reader),
   surface(),
   pos(),

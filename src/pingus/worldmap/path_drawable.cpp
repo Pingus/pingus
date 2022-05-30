@@ -20,7 +20,7 @@
 
 namespace pingus::worldmap {
 
-PathDrawable::PathDrawable (const Path& arg_path)
+PathDrawable::PathDrawable (Path const& arg_path)
   : path(arg_path)
 {
 }

@@ -58,11 +58,11 @@ public:
   WorldObjAbstractFactory() {}
   virtual ~WorldObjAbstractFactory() {}
 
-  virtual std::vector<WorldObj*> create(const ReaderMapping& reader) = 0;
+  virtual std::vector<WorldObj*> create(ReaderMapping const& reader) = 0;
 
 private:
-  WorldObjAbstractFactory (const WorldObjAbstractFactory&);
-  WorldObjAbstractFactory& operator= (const WorldObjAbstractFactory&);
+  WorldObjAbstractFactory (WorldObjAbstractFactory const&);
+  WorldObjAbstractFactory& operator= (WorldObjAbstractFactory const&);
 };
 
 template<class T>
@@ -71,15 +71,15 @@ class WorldObjFactoryImpl : public WorldObjAbstractFactory
 public:
   WorldObjFactoryImpl() {}
 
-  std::vector<WorldObj*> create(const ReaderMapping& reader) override {
+  std::vector<WorldObj*> create(ReaderMapping const& reader) override {
     std::vector<WorldObj*> lst;
     lst.push_back(new T(reader));
     return lst;
   }
 
 private:
-  WorldObjFactoryImpl (const WorldObjFactoryImpl&);
-  WorldObjFactoryImpl& operator= (const WorldObjFactoryImpl&);
+  WorldObjFactoryImpl (WorldObjFactoryImpl const&);
+  WorldObjFactoryImpl& operator= (WorldObjFactoryImpl const&);
 };
 
 class WorldObjGroupFactory : public WorldObjAbstractFactory
@@ -88,7 +88,7 @@ public:
   WorldObjGroupFactory() {}
   ~WorldObjGroupFactory() override {}
 
-  std::vector<WorldObj*> create(const ReaderMapping& reader) override
+  std::vector<WorldObj*> create(ReaderMapping const& reader) override
   {
     std::vector<WorldObj*> group;
 
@@ -110,8 +110,8 @@ public:
   }
 
 private:
-  WorldObjGroupFactory (const WorldObjGroupFactory&);
-  WorldObjGroupFactory& operator= (const WorldObjGroupFactory&);
+  WorldObjGroupFactory (WorldObjGroupFactory const&);
+  WorldObjGroupFactory& operator= (WorldObjGroupFactory const&);
 };
 
 class WorldObjPrefabFactory : public WorldObjAbstractFactory
@@ -120,7 +120,7 @@ public:
   WorldObjPrefabFactory() {}
   ~WorldObjPrefabFactory() override {}
 
-  std::vector<WorldObj*> create(const ReaderMapping& reader) override
+  std::vector<WorldObj*> create(ReaderMapping const& reader) override
   {
     std::string name;
     reader.read("name", name);
@@ -156,8 +156,8 @@ public:
   }
 
 private:
-  WorldObjPrefabFactory (const WorldObjPrefabFactory&);
-  WorldObjPrefabFactory& operator= (const WorldObjPrefabFactory&);
+  WorldObjPrefabFactory (WorldObjPrefabFactory const&);
+  WorldObjPrefabFactory& operator= (WorldObjPrefabFactory const&);
 };
 
 WorldObjFactory::WorldObjFactory() :
@@ -223,13 +223,13 @@ void WorldObjFactory::deinit()
 }
 
 std::vector<WorldObj*>
-WorldObjFactory::create(const ReaderObject& reader)
+WorldObjFactory::create(ReaderObject const& reader)
 {
   return create(reader.get_name(), reader.get_mapping());
 }
 
 std::vector<WorldObj*>
-WorldObjFactory::create(const std::string& id, const ReaderMapping& reader)
+WorldObjFactory::create(std::string const& id, ReaderMapping const& reader)
 {
   auto it = factories.find(id);
 
@@ -245,7 +245,7 @@ WorldObjFactory::create(const std::string& id, const ReaderMapping& reader)
 }
 
 void
-WorldObjFactory::register_factory(const std::string& id,
+WorldObjFactory::register_factory(std::string const& id,
                                   std::unique_ptr<WorldObjAbstractFactory> factory)
 {
   factories[id] = std::move(factory);

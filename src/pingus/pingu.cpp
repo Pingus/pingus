@@ -56,7 +56,7 @@ using namespace pingus::actions;
 namespace pingus {
 
 // Init a pingu at the given position while falling
-Pingu::Pingu(unsigned int arg_id, const Vector2f& arg_pos, int owner) :
+Pingu::Pingu(unsigned int arg_id, Vector2f const& arg_pos, int owner) :
   action(),
   countdown_action(),
   wall_action(),
@@ -115,7 +115,7 @@ Pingu::set_pos (float x, float y)
 }
 
 void
-Pingu::set_pos (const Vector2f& arg_pos)
+Pingu::set_pos (Vector2f const& arg_pos)
 {
   set_x(arg_pos.x());
   set_y(arg_pos.y());
@@ -384,7 +384,7 @@ Pingu::need_catch ()
 }
 
 void
-Pingu::set_direction (const Direction& d)
+Pingu::set_direction (Direction const& d)
 {
   direction = d;
 }
@@ -402,7 +402,7 @@ Pingu::get_action ()
 }
 
 void
-Pingu::apply_force (const glm::vec2& arg_v)
+Pingu::apply_force (glm::vec2 const& arg_v)
 {
   velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect

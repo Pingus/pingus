@@ -41,8 +41,8 @@ public:
 private:
   bool on_ground ();
 
-  Boarder (const Boarder&);
-  Boarder& operator= (const Boarder&);
+  Boarder (Boarder const&);
+  Boarder& operator= (Boarder const&);
 };
 
 } // namespace pingus::actions

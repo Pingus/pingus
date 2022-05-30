@@ -37,8 +37,8 @@ public:
   void update(float delta);
   void update();
 
-  void load(int state, const std::string& name);
-  void load(int state, const Sprite&);
+  void load(int state, std::string const& name);
+  void load(int state, Sprite const&);
   Sprite& operator[](int state);
 };
 
