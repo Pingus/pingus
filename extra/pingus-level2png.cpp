@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 
-#include <argparser/argparser.hpp>
+#include <argpp/argpp.hpp>
 #include <logmich/log.hpp>
 
 #include "engine/display/surface.hpp"
@@ -26,7 +26,7 @@ int main(int argc, char** argv)
   std::vector<Pathname> files;
   bool crop = false;
 
-  argparser::ArgParser argp;
+  argpp::Parser argp;
   argp.add_usage(argv[0], "[OPTIONS]... LEVELFILE OUTPUTFILE")
     .add_option('h', "help",    "", "Displays this help")
     .add_option('b', "background",  "RRGGBBAA", "Set background color")
@@ -49,7 +49,7 @@ int main(int argc, char** argv)
         // FIXME: not implemented
         break;
 
-      case argparser::ArgumentType::REST:
+      case argpp::ArgumentType::REST:
         files.push_back(Pathname(opt.argument, Pathname::SYSTEM_PATH));
         break;
     }

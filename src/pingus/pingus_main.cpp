@@ -21,6 +21,7 @@
 
 #include <logmich/log.hpp>
 #include <strut/from_string.hpp>
+#include <argpp/argpp.hpp>
 
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
@@ -54,7 +55,6 @@ extern "C" {
 #include "gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
 #include "tinygettext/log.hpp"
-#include <argparser/argparser.hpp>
 
 #include "engine/screen/screen_manager.hpp"
 #include "pingus/globals.hpp"
@@ -168,7 +168,7 @@ PingusMain::apply_args()
 void
 PingusMain::parse_args(int argc, char** argv)
 {
-  argparser::ArgParser argp;
+  argpp::Parser argp;
 
   argp.add_usage(argv[0], _("[OPTIONS]... [FILE]"))
     .add_text(_("Pingus is a puzzle game where you need to guide a bunch of little penguins around the world."));
@@ -406,7 +406,7 @@ PingusMain::parse_args(int argc, char** argv)
         exit(EXIT_SUCCESS);
         break;
 
-      case argparser::ArgumentType::REST:
+      case argpp::ArgumentType::REST:
         if (!cmd_options.rest.is_set())
         {
           cmd_options.rest.set(opt.argument);

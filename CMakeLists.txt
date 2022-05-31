@@ -81,7 +81,11 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
 function(build_dependencies)
   if(BUILD_TESTS)
     set(BUILD_TESTS OFF)
-    add_subdirectory(external/uitest/ EXCLUDE_FROM_ALL)
+
+    find_package(uitest QUIET)
+    if(NOT TARGET uitest::uitest)
+      add_subdirectory(external/uitest/ EXCLUDE_FROM_ALL)
+    endif()
   endif()
 
   set(BUILD_TESTS OFF)
@@ -92,9 +96,9 @@ function(build_dependencies)
     add_subdirectory(external/tinygettext/ EXCLUDE_FROM_ALL)
   endif()
 
-  find_package(argparser QUIET)
-  if(NOT TARGET argparser::argparser)
-    add_subdirectory(external/argparser/ EXCLUDE_FROM_ALL)
+  find_package(argpp QUIET)
+  if(NOT TARGET argpp::argpp)
+    add_subdirectory(external/argpp/ EXCLUDE_FROM_ALL)
   endif()
 
   find_package(geom QUIET)
@@ -123,7 +127,7 @@ function(build_dependencies)
   endif()
 
   find_package(wstsound QUIET)
-  if(NOT TARGET wstsound)
+  if(NOT TARGET wstsound::wstsound)
     add_subdirectory(external/wstsound/ EXCLUDE_FROM_ALL)
   endif()
 endfunction()
@@ -138,14 +142,14 @@ target_compile_definitions(libpingus PUBLIC
   -DPROJECT_VERSION="${PROJECT_VERSION}"
   -DPROJECT_NAME="${PROJECT_NAME}")
 target_link_libraries(libpingus PUBLIC
-  argparser::argparser
+  argpp::argpp
   geom::geom
   logmich::logmich
   prio::prio
   tinygettext
   strut::strut
   xdgcpp
-  wstsound
+  wstsound::wstsound
   fmt::fmt
   glm::glm
   PkgConfig::SDL2

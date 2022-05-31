@@ -2,41 +2,46 @@
   description = "A free Lemmings clone with penguins";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     flake-utils.url = "github:numtide/flake-utils";
 
-    tinycmmc.url = "gitlab:grumbel/cmake-modules";
+    tinycmmc.url = "github:grumbel/tinycmmc";
     tinycmmc.inputs.nixpkgs.follows = "nixpkgs";
     tinycmmc.inputs.flake-utils.follows = "flake-utils";
 
-    argparser.url = "gitlab:argparser/argparser/stable";
-    argparser.inputs.nixpkgs.follows = "nixpkgs";
-    argparser.inputs.flake-utils.follows = "flake-utils";
-    argparser.inputs.tinycmmc.follows = "tinycmmc";
+    uitest.url = "github:grumbel/uitest";
+    uitest.inputs.nixpkgs.follows = "nixpkgs";
+    uitest.inputs.flake-utils.follows = "flake-utils";
+    uitest.inputs.tinycmmc.follows = "tinycmmc";
 
-    geomcpp.url = "gitlab:grumbel/geomcpp";
+    argpp.url = "github:grumbel/argpp?ref=stable";
+    argpp.inputs.nixpkgs.follows = "nixpkgs";
+    argpp.inputs.flake-utils.follows = "flake-utils";
+    argpp.inputs.tinycmmc.follows = "tinycmmc";
+
+    geomcpp.url = "github:grumbel/geomcpp";
     geomcpp.inputs.nixpkgs.follows = "nixpkgs";
     geomcpp.inputs.flake-utils.follows = "flake-utils";
     geomcpp.inputs.tinycmmc.follows = "tinycmmc";
 
-    logmich.url = "gitlab:logmich/logmich";
+    logmich.url = "github:logmich/logmich";
     logmich.inputs.nixpkgs.follows = "nixpkgs";
     logmich.inputs.flake-utils.follows = "flake-utils";
     logmich.inputs.tinycmmc.follows = "tinycmmc";
 
-    priocpp.url = "gitlab:grumbel/priocpp";
+    priocpp.url = "github:grumbel/priocpp";
     priocpp.inputs.nixpkgs.follows = "nixpkgs";
     priocpp.inputs.flake-utils.follows = "flake-utils";
     priocpp.inputs.tinycmmc.follows = "tinycmmc";
     priocpp.inputs.logmich.follows = "logmich";
     priocpp.inputs.sexpcpp.follows = "sexpcpp";
 
-    sexpcpp.url = "gitlab:lispparser/sexp-cpp";
+    sexpcpp.url = "github:lispparser/sexp-cpp";
     sexpcpp.inputs.nixpkgs.follows = "nixpkgs";
     sexpcpp.inputs.flake-utils.follows = "flake-utils";
     sexpcpp.inputs.tinycmmc.follows = "tinycmmc";
 
-    strutcpp.url = "gitlab:grumbel/strutcpp";
+    strutcpp.url = "github:grumbel/strutcpp";
     strutcpp.inputs.nixpkgs.follows = "nixpkgs";
     strutcpp.inputs.flake-utils.follows = "flake-utils";
     strutcpp.inputs.tinycmmc.follows = "tinycmmc";
@@ -46,19 +51,19 @@
     tinygettext.inputs.flake-utils.follows = "flake-utils";
     tinygettext.inputs.tinycmmc.follows = "tinycmmc";
 
-    xdgcpp.url = "gitlab:grumbel/xdgcpp";
+    xdgcpp.url = "github:grumbel/xdgcpp";
     xdgcpp.inputs.nixpkgs.follows = "nixpkgs";
     xdgcpp.inputs.flake-utils.follows = "flake-utils";
     xdgcpp.inputs.tinycmmc.follows = "tinycmmc";
 
-    wstsound.url = "gitlab:windstille/wstsound";
+    wstsound.url = "github:WindstilleTeam/wstsound";
     wstsound.inputs.nixpkgs.follows = "nixpkgs";
     wstsound.inputs.flake-utils.follows = "flake-utils";
     wstsound.inputs.tinycmmc.follows = "tinycmmc";
   };
 
   outputs = { self, nixpkgs, flake-utils,
-              tinycmmc, argparser, geomcpp, logmich, priocpp, sexpcpp, strutcpp, tinygettext, xdgcpp, wstsound }:
+              tinycmmc, uitest, argpp, geomcpp, logmich, priocpp, sexpcpp, strutcpp, tinygettext, xdgcpp, wstsound }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
@@ -103,13 +108,14 @@
               openal
               opusfile
             ] ++ [
-              argparser.defaultPackage.${system}
+              argpp.defaultPackage.${system}
               geomcpp.defaultPackage.${system}
               logmich.defaultPackage.${system}
               priocpp.defaultPackage.${system}
               sexpcpp.defaultPackage.${system}
               strutcpp.defaultPackage.${system}
               tinygettext.defaultPackage.${system}
+              uitest.defaultPackage.${system}
               wstsound.defaultPackage.${system}
               xdgcpp.defaultPackage.${system}
             ];

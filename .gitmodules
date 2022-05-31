@@ -1,31 +1,33 @@
+[submodule "external/argpp"]
+	path = external/argpp
+	url = https://github.com/grumbel/argpp.git
+[submodule "external/geomcpp"]
+	path = external/geomcpp
+	url = https://github.com/grumbel/geomcpp.git
 [submodule "external/logmich"]
 	path = external/logmich
-	url = https://gitlab.com/logmich/logmich.git
+	url = https://github.com/logmich/logmich.git
+[submodule "external/priocpp"]
+	path = external/priocpp
+	url = https://github.com/grumbel/priocpp.git
+[submodule "external/sexpcpp"]
+	path = external/sexpcpp
+	url = https://github.com/lispparser/sexp-cpp.git
+[submodule "external/strutcpp"]
+	path = external/strutcpp
+	url = https://github.com/grumbel/strutcpp.git
+[submodule "external/tinycmmc"]
+	path = external/tinycmmc
+	url = https://github.com/grumbel/tinycmmc.git
 [submodule "external/tinygettext"]
 	path = external/tinygettext
 	url = https://github.com/tinygettext/tinygettext.git
-[submodule "external/xdgcpp"]
-	path = external/xdgcpp
-	url = https://gitlab.com/grumbel/xdgcpp.git
-[submodule "external/uitest"]
-	path = external/uitest
-	url = https://gitlab.com/Grumbel/uitest.git
-[submodule "external/argparser"]
-	branch = stable
-	path = external/argparser
-	url = https://gitlab.com/argparser/argparser.git
-[submodule "external/cmake-modules"]
-	path = external/cmake-modules
-	url = https://gitlab.com/grumbel/cmake-modules.git
-[submodule "external/geomcpp"]
-	path = external/geomcpp
-	url = https://gitlab.com/grumbel/geomcpp.git
-[submodule "external/strutcpp"]
-	path = external/strutcpp
-	url = https://gitlab.com/grumbel/strutcpp.git
-[submodule "external/priocpp"]
-	path = external/priocpp
-	url = https://gitlab.com/grumbel/priocpp.git
 [submodule "external/wstsound"]
 	path = external/wstsound
-	url = https://gitlab.com/Windstille/wstsound.git
+	url = https://github.com/WindstilleTeam/wstsound.git
+[submodule "external/xdgcpp"]
+	path = external/xdgcpp
+	url = https://github.com/grumbel/xdgcpp.git
+[submodule "external/uitest"]
+	path = external/uitest
+	url = https://github.com/grumbel/uitest.git

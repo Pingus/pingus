@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iostream>
 
-#include <argparser/argparser.hpp>
+#include <argpp/argpp.hpp>
 
 #include "engine/display/display.hpp"
 #include "engine/display/screenshot.hpp"
@@ -34,7 +34,7 @@ int main(int argc, char** argv)
 
   unsigned int mode = 0;
 
-  argparser::ArgParser argp;
+  argpp::Parser argp;
   argp.add_usage(argv[0], "[OPTIONS]... [FILE]...")
 
     .add_option('h', "help",    "", "Displays this help")
@@ -69,7 +69,7 @@ int main(int argc, char** argv)
         mode |= kFilename;
         break;
 
-      case argparser::ArgumentType::REST:
+      case argpp::ArgumentType::REST:
         files.push_back(Pathname(opt.argument, Pathname::SYSTEM_PATH));
         break;
     }

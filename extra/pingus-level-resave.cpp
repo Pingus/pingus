@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 
-#include <argparser/argparser.hpp>
+#include <argpp/argpp.hpp>
 #include <logmich/log.hpp>
 
 #include "editor/editor_level.hpp"
@@ -34,7 +34,7 @@ struct ResaveOptions
 
 int main(int argc, char** argv)
 {
-  argparser::ArgParser argp;
+  argpp::Parser argp;
   argp.add_usage(argv[0], "FILE...")
     .add_text("Load a level from file and save it to the same file again.\n"
               "Used for converting levels from an old format to a new one.\n")
@@ -78,7 +78,7 @@ int main(int argc, char** argv)
         opts.stdout = true;
         break;
 
-      case argparser::ArgumentType::REST:
+      case argpp::ArgumentType::REST:
         opts.files.push_back(opt.argument);
         break;
     }
