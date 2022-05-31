@@ -2,11 +2,11 @@
   "nodes": {
     "flake-utils": {
       "locked": {
-        "lastModified": 1644229661,
-        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
+        "lastModified": 1653893745,
+        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
+        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
         "type": "github"
       },
       "original": {
@@ -28,32 +28,32 @@
         ]
       },
       "locked": {
-        "lastModified": 1646653796,
-        "narHash": "sha256-GrThQcVengObRvag7T0dHahM25YLuQl1v4jaRYrtRxg=",
+        "lastModified": 1654002712,
+        "narHash": "sha256-TCoZBwTgvjxmMiDusJGg0IYp2ey0GJcOO2r5IvoDrV8=",
         "owner": "logmich",
         "repo": "logmich",
-        "rev": "4f68ab0ad5e338428cb391ea6e9dab2fbb6e5ac7",
-        "type": "gitlab"
+        "rev": "cc8f2c36a36ccd02aea58be587ba7fe95603f8ac",
+        "type": "github"
       },
       "original": {
         "owner": "logmich",
         "ref": "logmich-0.1.x",
         "repo": "logmich",
-        "type": "gitlab"
+        "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1646406548,
-        "narHash": "sha256-xp+3f76ycZXNf9pG65Ef9KfDl1fas2UQu/cBe/pLd+c=",
+        "lastModified": 1653920503,
+        "narHash": "sha256-BBeCZwZImtjP3oYy4WogkQYy5OxNyfNciVSc1AfZgLQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "47cd6702934434dd02bc53a67dbce3e5493e33a2",
+        "rev": "a634c8f6c1fbf9b9730e01764999666f3436f10a",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-21.11",
+        "ref": "nixos-22.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -94,17 +94,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1645974294,
-        "narHash": "sha256-Comma4p9L263ZMfhBpKKTuBVCq4Yd+hQrN33sGjwPAk=",
+        "lastModified": 1654000716,
+        "narHash": "sha256-aCfXSXWVki7moiSR/oFaZRnRdO/5jhZbJ39jEI8fi5I=",
         "owner": "grumbel",
-        "repo": "cmake-modules",
-        "rev": "297d1433067637903334b4c194eef5958e3f546f",
-        "type": "gitlab"
+        "repo": "tinycmmc",
+        "rev": "22c77404937829f4b2da539c6c2e0e99545440e8",
+        "type": "github"
       },
       "original": {
         "owner": "grumbel",
-        "repo": "cmake-modules",
-        "type": "gitlab"
+        "repo": "tinycmmc",
+        "type": "github"
       }
     },
     "tinygettext": {
@@ -120,11 +120,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1646232711,
-        "narHash": "sha256-2mvUerkADEh4TY8x6Zg2b5S9MPwoLTacvVY/XUk+JKY=",
+        "lastModified": 1654003362,
+        "narHash": "sha256-yXS5cP9tL9wj5+GGnPPWh5wyZn0aVHDMth+m7+9XsRI=",
         "owner": "tinygettext",
         "repo": "tinygettext",
-        "rev": "f0aecfcd7acedb1ec3d744a956a11ac887624695",
+        "rev": "0db94e04ec4a0d63c7926fd5eec86955afb02e63",
         "type": "github"
       },
       "original": {

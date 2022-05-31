@@ -2,7 +2,7 @@
   description = "A puzzle game with mechanics similar to Lemmings";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     flake-utils.url = "github:numtide/flake-utils";
 
     # FIXME: SCons in newer version seems bugged, ParseConfig() is not
@@ -10,7 +10,7 @@
     # time.
     nixpkgs_old.url = "github:NixOS/nixpkgs/nixos-20.09";
 
-    tinycmmc.url = "gitlab:grumbel/cmake-modules";
+    tinycmmc.url = "github:grumbel/tinycmmc";
     tinycmmc.inputs.nixpkgs.follows = "nixpkgs";
     tinycmmc.inputs.flake-utils.follows = "flake-utils";
 
@@ -19,7 +19,7 @@
     tinygettext.inputs.flake-utils.follows = "flake-utils";
     tinygettext.inputs.tinycmmc.follows = "tinycmmc";
 
-    logmich.url = "gitlab:logmich/logmich/logmich-0.1.x";
+    logmich.url = "github:logmich/logmich?ref=logmich-0.1.x";
     logmich.inputs.nixpkgs.follows = "nixpkgs";
     logmich.inputs.flake-utils.follows = "flake-utils";
     logmich.inputs.tinycmmc.follows = "tinycmmc";
