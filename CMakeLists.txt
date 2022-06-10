@@ -17,18 +17,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(pingus VERSION 0.8.0)
 
-set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/")
-find_package(tinycmmc CONFIG)
-message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
-list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
-
-option(BUILD_TESTS "Build test cases" OFF)
-option(BUILD_EXTRA "Build extra stuff" OFF)
-
-include(GetProjectVersion)
-include(GNUInstallDirs)
-include(MaximumWarnings)
-include(ClangTidy)
+include(mk/cmake/TinyCMMC.cmake)
 
 # FIXME: Move this into GetProjectVersion, get date from git
 string(TIMESTAMP PROJECT_DATE "%Y-%m-%d" UTC)
@@ -43,10 +32,6 @@ pkg_search_module(JSONCPP REQUIRED jsoncpp IMPORTED_TARGET)
 pkg_search_module(SIGCXX REQUIRED sigc++-2.0 IMPORTED_TARGET)
 find_package(fmt REQUIRED)
 find_package(glm REQUIRED)
-
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
 
 if (BUILD_TESTS)
   # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
@@ -77,59 +62,19 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/util/*.cpp
   )
 
-# Build dependencies
 function(build_dependencies)
-  if(BUILD_TESTS)
-    set(BUILD_TESTS OFF)
-
-    find_package(uitest QUIET)
-    if(NOT TARGET uitest::uitest)
-      add_subdirectory(external/uitest/ EXCLUDE_FROM_ALL)
-    endif()
-  endif()
-
   set(BUILD_TESTS OFF)
   set(TINYGETTEXT_WITH_SDL ON)
 
-  find_package(tinygettext QUIET)
-  if(NOT TARGET tinygettext)
-    add_subdirectory(external/tinygettext/ EXCLUDE_FROM_ALL)
-  endif()
-
-  find_package(argpp QUIET)
-  if(NOT TARGET argpp::argpp)
-    add_subdirectory(external/argpp/ EXCLUDE_FROM_ALL)
-  endif()
-
-  find_package(geom QUIET)
-  if(NOT TARGET geom::geom)
-    add_subdirectory(external/geomcpp/ EXCLUDE_FROM_ALL)
-  endif()
-
-  find_package(logmich QUIET)
-  if(NOT TARGET logmich::logmich)
-    add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
-  endif()
-
-  find_package(prio QUIET)
-  if(NOT TARGET prio::prio)
-    add_subdirectory(external/priocpp/ EXCLUDE_FROM_ALL)
-  endif()
-
-  find_package(strut QUIET)
-  if(NOT TARGET strut::strut)
-    add_subdirectory(external/strutcpp/ EXCLUDE_FROM_ALL)
-  endif()
-
-  find_package(xdgcpp QUIET)
-  if(NOT TARGET xdgcpp)
-    add_subdirectory(external/xdgcpp/ EXCLUDE_FROM_ALL)
-  endif()
-
-  find_package(wstsound QUIET)
-  if(NOT TARGET wstsound::wstsound)
-    add_subdirectory(external/wstsound/ EXCLUDE_FROM_ALL)
-  endif()
+  tinycmmc_find_dependency(uitest)
+  tinycmmc_find_dependency(tinygettext)
+  tinycmmc_find_dependency(argpp)
+  tinycmmc_find_dependency(geom)
+  tinycmmc_find_dependency(logmich)
+  tinycmmc_find_dependency(prio)
+  tinycmmc_find_dependency(strut)
+  tinycmmc_find_dependency(xdgcpp)
+  tinycmmc_find_dependency(wstsound)
 endfunction()
 build_dependencies()
 
@@ -137,7 +82,7 @@ build_dependencies()
 add_library(libpingus STATIC ${PINGUS_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_include_directories(libpingus PUBLIC src/)
-target_compile_options(libpingus PRIVATE ${WARNINGS_CXX_FLAGS})
+target_compile_options(libpingus PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
 target_compile_definitions(libpingus PUBLIC
   -DPROJECT_VERSION="${PROJECT_VERSION}"
   -DPROJECT_NAME="${PROJECT_NAME}")
@@ -161,7 +106,7 @@ target_link_libraries(libpingus PUBLIC
 
 add_executable(pingus src/main.cpp)
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
-target_compile_options(pingus PRIVATE ${WARNINGS_CXX_FLAGS})
+target_compile_options(pingus PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
 target_link_libraries(pingus libpingus)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data
@@ -174,7 +119,7 @@ if(BUILD_EXTRA)
     string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" EXTRA_EXE ${EXTRA_SOURCE})
     add_executable(${EXTRA_EXE} ${EXTRA_SOURCE})
     set_target_properties(${EXTRA_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "extra/")
-    target_compile_options(${EXTRA_EXE} PRIVATE ${WARNINGS_CXX_FLAGS})
+    target_compile_options(${EXTRA_EXE} PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
     target_link_libraries(${EXTRA_EXE} libpingus)
   endforeach(EXTRA_SOURCE)
 endif()
@@ -193,7 +138,7 @@ if(BUILD_TESTS)
     string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" TEST_EXE ${TEST_SOURCE})
     add_executable(${TEST_EXE} ${TEST_SOURCE})
     set_target_properties(${TEST_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
-    target_compile_options(${TEST_EXE} PRIVATE ${WARNINGS_CXX_FLAGS})
+    target_compile_options(${TEST_EXE} PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
     target_link_libraries(${TEST_EXE} libpingus)
   endforeach(TEST_SOURCE)
 
@@ -203,7 +148,7 @@ if(BUILD_TESTS)
     string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" UTIL_EXE ${UTIL_SOURCE})
     add_executable(${UTIL_EXE} ${UTIL_SOURCE})
     set_target_properties(${UTIL_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "test/")
-    target_compile_options(${UTIL_EXE} PRIVATE ${WARNINGS_CXX_FLAGS})
+    target_compile_options(${UTIL_EXE} PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
     target_link_libraries(${UTIL_EXE} libpingus)
   endforeach(UTIL_SOURCE)
 
@@ -212,7 +157,7 @@ if(BUILD_TESTS)
   add_executable(test_pingus ${TEST_PINGUS_SOURCES_CXX})
   target_include_directories(test_pingus PUBLIC src/ tests/)
   target_link_libraries(test_pingus libpingus GTest::GTest GTest::Main ${CMAKE_THREAD_LIBS_INIT})
-  target_compile_options(test_pingus PRIVATE ${WARNINGS_CXX_FLAGS})
+  target_compile_options(test_pingus PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
 
   add_test(NAME test_pingus
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
