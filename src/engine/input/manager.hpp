@@ -20,15 +20,17 @@
 #include <filesystem>
 #include <memory>
 
+#include <prio/fwd.hpp>
+
 #include "engine/input/controller_description.hpp"
-#include "engine/input/driver.hpp"
+#include "engine/input/fwd.hpp"
 
 namespace pingus::input {
 
 class Manager
 {
 public:
-  Manager(ControllerDescription desc);
+  Manager(DriverFactory& driver_factory, ControllerDescription desc);
   ~Manager();
 
   /** Resents events for the current controller state */
@@ -44,14 +46,12 @@ public:
   std::unique_ptr<Scroller> create_scroller(prio::ReaderObject const& reader, Control* parent);
   std::unique_ptr<Keyboard> create_keyboard(prio::ReaderObject const& reader, Control* parent);
 
-private:
-  std::vector<std::unique_ptr<Driver> > m_drivers;
-  std::vector<ControllerPtr> m_controllers;
-  ControllerDescription m_desc;
+  DriverFactory& driver_factory() const { return m_driver_factory; }
 
 private:
-  Driver* load_driver(std::string const& name);
-  Driver* get_driver(std::string const& name);
+  DriverFactory& m_driver_factory;
+  std::vector<ControllerPtr> m_controllers;
+  ControllerDescription m_desc;
 };
 
 } // namespace pingus::input

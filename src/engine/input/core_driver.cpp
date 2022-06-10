@@ -59,7 +59,7 @@ public:
     y_axis->update(delta);
     if (speed_button) speed_button->update(delta);
 
-    Vector2f new_pos = pos;
+    geom::fpoint new_pos = pos;
     float c_speed = speed;
 
     if (speed_button && speed_button->get_state() == BUTTON_PRESSED)
@@ -71,8 +71,8 @@ public:
                              y_axis->get_pos() * c_speed * delta);
 
     // FIXME: shouldn'tx depend on Display
-    new_pos = Vector2f(std::clamp(new_pos.x(), 0.0f, static_cast<float>(Display::get_width())),
-                       std::clamp(new_pos.y(), 0.0f, static_cast<float>(Display::get_height())));
+    new_pos = geom::fpoint(std::clamp(new_pos.x(), 0.0f, static_cast<float>(Display::get_width())),
+                           std::clamp(new_pos.y(), 0.0f, static_cast<float>(Display::get_height())));
 
     if (new_pos != pos)
     {
@@ -201,7 +201,7 @@ public:
     if (down && down->get_state() == BUTTON_PRESSED)
       delta_y += -speed * delta_t;
 
-    delta = Vector2f(delta_x, delta_y);
+    delta = geom::fpoint(delta_x, delta_y);
 
     notify_parent();
   }

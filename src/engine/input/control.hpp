@@ -20,10 +20,10 @@
 #include <vector>
 
 #include <logmich/log.hpp>
+#include <geom/point.hpp>
 
 #include "engine/input/controller.hpp"
 #include "engine/input/event.hpp"
-#include "math/vector2f.hpp"
 
 namespace pingus::input {
 
@@ -187,7 +187,7 @@ public:
 class Pointer : public Control
 {
 protected:
-  Vector2f pos;
+  geom::fpoint pos;
 
 public:
   Pointer(Control* parent_) :
@@ -195,9 +195,9 @@ public:
     pos()
   {}
 
-  Vector2f get_pos() const { return pos; }
+  geom::fpoint get_pos() const { return pos; }
 
-  void set_pos(Vector2f const& new_pos) {
+  void set_pos(geom::fpoint const& new_pos) {
     if (pos != new_pos)
     {
       pos = new_pos;
@@ -209,7 +209,7 @@ public:
 class Scroller : public Control
 {
 protected:
-  Vector2f delta;
+  geom::fpoint delta;
 
 public:
   Scroller(Control* parent_) :
@@ -217,9 +217,9 @@ public:
     delta(0.0f, 0.0f)
   {}
 
-  Vector2f get_delta() const { return delta; }
+  geom::fpoint get_delta() const { return delta; }
 
-  void set_delta(Vector2f const& new_delta) {
+  void set_delta(geom::fpoint const& new_delta) {
     if (delta != new_delta)
     {
       delta = new_delta;
@@ -306,7 +306,7 @@ public:
   void update(Control* p) override {
     Pointer* pointer_ = dynamic_cast<Pointer*>(p);
     assert(pointer_);
-    Vector2f new_pos = pointer_->get_pos();
+    geom::fpoint new_pos = pointer_->get_pos();
     if (new_pos != pos)
     {
       pos = new_pos;

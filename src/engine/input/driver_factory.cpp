@@ -21,21 +21,57 @@
 
 namespace pingus::input {
 
-std::unique_ptr<Driver>
-DriverFactory::create(std::string const& name, Manager* manager)
+SDLDriverFactory::SDLDriverFactory() :
+  m_core_driver(),
+  m_sdl_driver()
+{
+}
+
+SDLDriverFactory::~SDLDriverFactory()
+{
+}
+
+Driver*
+SDLDriverFactory::get(std::string const& name, Manager* manager)
 {
   if (name == "sdl")
   {
-    return std::make_unique<SDLDriver>();
+    if (!m_sdl_driver) {
+      m_sdl_driver = std::make_unique<SDLDriver>();
+    }
+
+    return m_sdl_driver.get();
   }
   else if (name == "core")
   {
-    return std::make_unique<CoreDriver>(manager);
+    if (!m_core_driver) {
+      m_core_driver = std::make_unique<CoreDriver>(manager);
+    }
+
+    return m_core_driver.get();
   }
   else
   {
     return nullptr;
   }
+}
+
+void
+SDLDriverFactory::update(float delta)
+{
+  if (m_sdl_driver) {
+    m_sdl_driver->update(delta);
+  }
+
+  if (m_core_driver) {
+    m_core_driver->update(delta);
+  }
+}
+
+void
+SDLDriverFactory::dispatch_event(SDL_Event const& event)
+{
+  m_sdl_driver->dispatch_event(event);
 }
 
 } // namespace pingus::input

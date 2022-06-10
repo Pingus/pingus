@@ -19,15 +19,19 @@
 #include <iostream>
 #include <utility>
 
+#include <logmich/log.hpp>
+
 #include "engine/display/display.hpp"
 #include "engine/display/drawing_context.hpp"
 #include "engine/display/framebuffer.hpp"
+#include "engine/input/driver_factory.hpp"
 #include "engine/input/manager.hpp"
 #include "engine/screen/screen.hpp"
 #include "engine/sound/sound.hpp"
 #include "pingus/event_name.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/fps_counter.hpp"
+#include "pingus/global_event.hpp"
 #include "pingus/globals.hpp"
 
 namespace pingus {
@@ -130,6 +134,7 @@ ScreenManager::display()
       last_ticks = ticks;
 
       // Update InputManager and get Events
+      process_events();
       input_manager.update(previous_frame_time);
       input_controller->poll_events(events);
     }
@@ -228,6 +233,60 @@ ScreenManager::update(float delta, std::vector<pingus::input::Event> const& even
   }
 
   Display::flip_display();
+}
+
+void
+ScreenManager::process_events()
+{
+  input::SDLDriverFactory& driver_factory = dynamic_cast<input::SDLDriverFactory&>(input_manager.driver_factory());
+  SDL_Event event;
+  while (SDL_PollEvent(&event))
+  {
+    switch (event.type) {
+      case SDL_QUIT: // FIXME: make this into a GameEvent
+        ScreenManager::instance()->pop_all_screens();
+        break;
+
+      case SDL_WINDOWEVENT:
+        switch(event.window.event)
+        {
+          case SDL_WINDOWEVENT_RESIZED:
+            Display::resize(Size(event.window.data1, event.window.data2));
+            break;
+
+          default:
+            break;
+        }
+        break;
+
+      case SDL_MOUSEMOTION:
+      case SDL_MOUSEWHEEL:
+      case SDL_TEXTINPUT:
+      case SDL_TEXTEDITING:
+      case SDL_MOUSEBUTTONDOWN:
+      case SDL_MOUSEBUTTONUP:
+      case SDL_KEYDOWN:
+      case SDL_KEYUP:
+      case SDL_JOYAXISMOTION:
+      case SDL_JOYBUTTONDOWN:
+      case SDL_JOYBUTTONUP:
+        if (event.type == SDL_KEYUP || event.type == SDL_KEYDOWN) {
+          // global event hacks
+          if (event.key.state == SDL_PRESSED) {
+            global_event.on_button_press(event.key);
+          } else {
+            global_event.on_button_release(event.key);
+          }
+        }
+
+        driver_factory.dispatch_event(event);
+        break;
+
+      default:
+        log_debug("unknown SDL_Event type: {}", event.type);
+        break;
+    }
+  }
 }
 
 ScreenPtr

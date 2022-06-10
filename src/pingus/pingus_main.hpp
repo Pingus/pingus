@@ -21,13 +21,8 @@
 
 namespace pingus {
 
-void segfault_handler(int);
-
 class PingusMain
 {
-private:
-  CommandLineOptions cmd_options;
-
 public:
   PingusMain();
   virtual ~PingusMain();
@@ -49,8 +44,12 @@ private:
 
   void init_path_finder();
 
-  PingusMain (PingusMain const&);
-  PingusMain& operator= (PingusMain const&);
+private:
+  CommandLineOptions cmd_options;
+
+public:
+  PingusMain(PingusMain const&);
+  PingusMain& operator=(PingusMain const&);
 };
 
 } // namespace pingus

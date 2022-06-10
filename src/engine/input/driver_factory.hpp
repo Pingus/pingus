@@ -20,20 +20,39 @@
 #include <memory>
 #include <string>
 
-namespace pingus::input {
+#include <SDL.h>
 
-class Driver;
-class Manager;
+#include "engine/input/fwd.hpp"
+
+namespace pingus::input {
 
 class DriverFactory
 {
-private:
 public:
-  static std::unique_ptr<Driver> create(std::string const& name, Manager* manager);
+  virtual ~DriverFactory() {}
+
+  virtual Driver* get(std::string const& name, Manager* manager) = 0;
+  virtual void update(float delta) = 0;
+};
+
+class SDLDriverFactory : public DriverFactory
+{
+public:
+  SDLDriverFactory();
+  ~SDLDriverFactory() override;
+
+  Driver* get(std::string const& name, Manager* manager) override;
+  void update(float delta) override;
+
+  void dispatch_event(SDL_Event const& event);
 
 private:
-  DriverFactory(DriverFactory const&);
-  DriverFactory& operator=(DriverFactory const&);
+  std::unique_ptr<CoreDriver> m_core_driver;
+  std::unique_ptr<SDLDriver> m_sdl_driver;
+
+public:
+  SDLDriverFactory(SDLDriverFactory const&) = delete;
+  SDLDriverFactory& operator=(SDLDriverFactory const&) = delete;
 };
 
 } // namespace pingus::input

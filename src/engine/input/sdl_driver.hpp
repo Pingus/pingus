@@ -88,6 +88,8 @@ public:
   void update(float delta) override;
   std::string get_name() const override { return "sdl"; }
 
+  void dispatch_event(SDL_Event const& event);
+
 private:
   bool open_joystick(int device);
 

@@ -17,16 +17,24 @@
 #include "engine/input/manager.hpp"
 
 #include <stdexcept>
-#include <fmt/format.h>
 
+#include <fmt/format.h>
+#include <logmich/log.hpp>
+#include <prio/reader_collection.hpp>
+#include <prio/reader_document.hpp>
+#include <prio/reader_mapping.hpp>
+
+#include "engine/input/control.hpp"
+#include "engine/input/controller.hpp"
+#include "engine/input/driver.hpp"
 #include "engine/input/driver_factory.hpp"
 
 namespace pingus::input {
 
-Manager::Manager(ControllerDescription desc) :
-  m_drivers(),
+Manager::Manager(DriverFactory& driver_factory, ControllerDescription desc) :
+  m_driver_factory(driver_factory),
   m_controllers(),
-  m_desc(desc)
+  m_desc(std::move(desc))
 {
 }
 
@@ -182,50 +190,10 @@ Manager::refresh()
 void
 Manager::update(float delta)
 {
-  for(auto i = m_drivers.begin(); i != m_drivers.end(); ++i)
-    (*i)->update(delta);
+  m_driver_factory.update(delta);
 
   for(auto i = m_controllers.begin(); i != m_controllers.end(); ++i)
     (*i)->update(delta);
-}
-
-Driver*
-Manager::get_driver(std::string const& name)
-{
-  for(auto i = m_drivers.begin(); i != m_drivers.end(); ++i)
-  {
-    if ((*i)->get_name() == name)
-    {
-      return i->get();
-    }
-  }
-  return nullptr;
-}
-
-Driver*
-Manager::load_driver(std::string const& name)
-{
-  Driver* driver_p = get_driver(name);
-  if (driver_p)
-  {
-    return driver_p;
-  }
-  else
-  {
-    log_info("loading driver '{}'", name);
-
-    auto driver = DriverFactory::create(name, this);
-    if (!driver)
-    {
-      log_error("unknown driver: {}", name);
-      return nullptr;
-    }
-    else
-    {
-      m_drivers.push_back(std::move(driver));
-      return m_drivers.back().get();
-    }
-  }
 }
 
 std::unique_ptr<Button>
@@ -233,7 +201,7 @@ Manager::create_button(prio::ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
-  Driver* drv = load_driver(driver);
+  Driver* drv = m_driver_factory.get(driver, this);
   if (drv)
   {
     return drv->create_button(reader, parent);
@@ -250,7 +218,7 @@ Manager::create_axis(prio::ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
-  Driver* drv = load_driver(driver);
+  Driver* drv = m_driver_factory.get(driver, this);
   if (drv)
   {
     return drv->create_axis(reader, parent);
@@ -267,7 +235,7 @@ Manager::create_pointer(prio::ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
-  Driver* drv = load_driver(driver);
+  Driver* drv = m_driver_factory.get(driver, this);
   if (drv)
   {
     return drv->create_pointer(reader, parent);
@@ -284,7 +252,7 @@ Manager::create_scroller(prio::ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
-  Driver* drv = load_driver(driver);
+  Driver* drv = m_driver_factory.get(driver, this);
   if (drv)
   {
     return drv->create_scroller(reader, parent);
@@ -301,7 +269,7 @@ Manager::create_keyboard(prio::ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
-  Driver* drv = load_driver(driver);
+  Driver* drv = m_driver_factory.get(driver, this);
   if (drv)
   {
     return drv->create_keyboard(reader, parent);

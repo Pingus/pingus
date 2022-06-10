@@ -21,6 +21,7 @@
 #include "util/pathname.hpp"
 #include "engine/input/manager.hpp"
 #include "engine/input/controller.hpp"
+#include "engine/input/driver_factory.hpp"
 #include "engine/system/sdl_system.hpp"
 #include "pingus/event_name.hpp"
 
@@ -62,7 +63,8 @@ int main()
     desc.add_button("action-9-button",     ACTION_9_BUTTON);
     desc.add_button("action-10-button",    ACTION_10_BUTTON);
 
-    pingus::input::Manager manager(desc);
+    pingus::input::SDLDriverFactory driver_factory;
+    pingus::input::Manager manager(driver_factory, desc);
 
     pingus::input::ControllerPtr controller
       = manager.create_controller(Pathname("../data/controller/default.scm", Pathname::SYSTEM_PATH).get_sys_path());

@@ -17,8 +17,6 @@
 #include "engine/input/sdl_driver.hpp"
 
 #include "engine/display/display.hpp"
-#include "engine/screen/screen_manager.hpp"
-#include "pingus/global_event.hpp"
 
 namespace pingus::input {
 
@@ -224,130 +222,107 @@ SDLDriver::open_joystick(int device)
 void
 SDLDriver::update(float delta)
 {
-  // FIXME: Little hackywacky, better way would be to fetch event
-  // loops somewhere else and only forward the relevant SDL_Events to
-  // the SDLDriver
-  SDL_Event event;
-  while (SDL_PollEvent(&event))
+}
+
+void
+SDLDriver::dispatch_event(SDL_Event const& event)
+{
+  switch(event.type)
   {
-    switch(event.type)
-    {
-      case SDL_QUIT: // FIXME: make this into a GameEvent
-        ScreenManager::instance()->pop_all_screens();
-        break;
+    case SDL_MOUSEMOTION:
+      for(auto i = pointer_bindings.begin();
+          i != pointer_bindings.end(); ++i)
+      {
+        i->binding->set_pos(geom::fpoint(static_cast<float>(event.motion.x),
+                                         static_cast<float>(event.motion.y)));
+      }
 
-      case SDL_MOUSEMOTION:
-        for(auto i = pointer_bindings.begin();
-            i != pointer_bindings.end(); ++i)
+      for(auto i = scroller_bindings.begin();
+          i != scroller_bindings.end(); ++i)
+      {
+        i->binding->set_delta(geom::fpoint(static_cast<float>(event.motion.xrel),
+                                           static_cast<float>(event.motion.yrel)));
+      }
+      break;
+
+    case SDL_MOUSEWHEEL:
+      log_error("mousewheel not implemented: {} {} {}", event.wheel.which, event.wheel.x, event.wheel.y);
+      break;
+
+    case SDL_TEXTINPUT:
+      if (keyboard_binding)
+      {
+        keyboard_binding->send_event(event);
+      }
+      break;
+
+    case SDL_TEXTEDITING:
+      log_error("textediting not implemented: {} {} '{}'",
+                event.edit.start, event.edit.length, event.edit.text);
+      break;
+
+    case SDL_MOUSEBUTTONDOWN:
+    case SDL_MOUSEBUTTONUP:
+      for(auto i = mouse_button_bindings.begin();
+          i != mouse_button_bindings.end(); ++i)
+      {
+        if (event.button.button == (*i).button)
         {
-          i->binding->set_pos(Vector2f(static_cast<float>(event.motion.x),
-                                       static_cast<float>(event.motion.y)));
+          if (event.button.state == SDL_PRESSED)
+            (*i).binding->set_state(BUTTON_PRESSED);
+          else
+            (*i).binding->set_state(BUTTON_RELEASED);
         }
+      }
+      break;
 
-        for(auto i = scroller_bindings.begin();
-            i != scroller_bindings.end(); ++i)
+
+    case SDL_KEYDOWN:
+    case SDL_KEYUP:
+      // keyboard events
+      if (keyboard_binding)
+        keyboard_binding->send_event(event);
+
+      // game button events
+      for(auto i = keyboard_button_bindings.begin();
+          i != keyboard_button_bindings.end(); ++i)
+      {
+        if (event.key.keysym.sym == i->key)
         {
-          i->binding->set_delta(Vector2f(static_cast<float>(event.motion.xrel),
-                                         static_cast<float>(event.motion.yrel)));
+          if (event.key.state == SDL_PRESSED)
+            i->binding->set_state(BUTTON_PRESSED);
+          else
+            i->binding->set_state(BUTTON_RELEASED);
         }
-        break;
+      }
+      break;
 
-      case SDL_MOUSEWHEEL:
-        log_error("mousewheel not implemented: {} {} {}", event.wheel.which, event.wheel.x, event.wheel.y);
-        break;
+    case SDL_JOYAXISMOTION:
+      for(auto i = joystick_axis_bindings.begin();
+          i != joystick_axis_bindings.end(); ++i)
+      {
+        if (event.jaxis.which == i->device &&
+            event.jaxis.axis  == i->axis)
+          i->binding->set_state(static_cast<float>(event.jaxis.value) / 32767.0f);
+      }
+      break;
 
-      case SDL_TEXTINPUT:
-        if (keyboard_binding)
+    case SDL_JOYBUTTONDOWN:
+    case SDL_JOYBUTTONUP:
+      for(auto i = joystick_button_bindings.begin();
+          i != joystick_button_bindings.end(); ++i)
+      {
+        if (event.jbutton.which  == i->device &&
+            event.jbutton.button == i->button)
         {
-          keyboard_binding->send_event(event);
+          i->binding->set_state(event.jbutton.state == SDL_PRESSED ? BUTTON_PRESSED : BUTTON_RELEASED);
         }
-        break;
+      }
+      break;
 
-      case SDL_TEXTEDITING:
-        log_error("textediting not implemented: {} {} '{}'",
-                  event.edit.start, event.edit.length, event.edit.text);
-        break;
-
-      case SDL_MOUSEBUTTONDOWN:
-      case SDL_MOUSEBUTTONUP:
-        for(auto i = mouse_button_bindings.begin();
-            i != mouse_button_bindings.end(); ++i)
-        {
-          if (event.button.button == (*i).button)
-          {
-            if (event.button.state == SDL_PRESSED)
-              (*i).binding->set_state(BUTTON_PRESSED);
-            else
-              (*i).binding->set_state(BUTTON_RELEASED);
-          }
-        }
-        break;
-
-      case SDL_WINDOWEVENT:
-        switch(event.window.event)
-        {
-          case SDL_WINDOWEVENT_RESIZED:
-            Display::resize(Size(event.window.data1, event.window.data2));
-            break;
-
-          default:
-            break;
-        }
-        break;
-
-      case SDL_KEYDOWN:
-      case SDL_KEYUP:
-        // keyboard events
-        if (keyboard_binding)
-          keyboard_binding->send_event(event);
-
-        // global event hacks
-        if (event.key.state == SDL_PRESSED)
-          global_event.on_button_press(event.key);
-        else
-          global_event.on_button_release(event.key);
-
-        // game button events
-        for(auto i = keyboard_button_bindings.begin();
-            i != keyboard_button_bindings.end(); ++i)
-        {
-          if (event.key.keysym.sym == i->key)
-          {
-            if (event.key.state == SDL_PRESSED)
-              i->binding->set_state(BUTTON_PRESSED);
-            else
-              i->binding->set_state(BUTTON_RELEASED);
-          }
-        }
-        break;
-
-      case SDL_JOYAXISMOTION:
-        for(auto i = joystick_axis_bindings.begin();
-            i != joystick_axis_bindings.end(); ++i)
-        {
-          if (event.jaxis.which == i->device &&
-              event.jaxis.axis  == i->axis)
-            i->binding->set_state(static_cast<float>(event.jaxis.value) / 32767.0f);
-        }
-        break;
-
-      case SDL_JOYBUTTONDOWN:
-      case SDL_JOYBUTTONUP:
-        for(auto i = joystick_button_bindings.begin();
-            i != joystick_button_bindings.end(); ++i)
-        {
-          if (event.jbutton.which  == i->device &&
-              event.jbutton.button == i->button)
-          {
-            i->binding->set_state(event.jbutton.state == SDL_PRESSED ? BUTTON_PRESSED : BUTTON_RELEASED);
-          }
-        }
-        break;
-
-      default:
-        // FIXME: Do something with other events
-        break;
-    }
+    default:
+      // FIXME: Do something with other events
+      break;
   }
 }
 

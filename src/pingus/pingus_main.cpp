@@ -26,6 +26,7 @@
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
 #include "engine/input/manager.hpp"
+#include "engine/input/driver_factory.hpp"
 #include "engine/system/sdl_system.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/event_name.hpp"
@@ -560,7 +561,8 @@ PingusMain::start_game ()
   desc.add_button("action-9-button",     ACTION_9_BUTTON);
   desc.add_button("action-10-button",    ACTION_10_BUTTON);
 
-  pingus::input::Manager input_manager(desc);
+  pingus::input::SDLDriverFactory driver_factory;
+  pingus::input::Manager input_manager(driver_factory, desc);
   pingus::input::ControllerPtr input_controller;
 
   if (!cmd_options.controller.is_set())
@@ -574,7 +576,7 @@ PingusMain::start_game ()
                                                                 Pathname::SYSTEM_PATH).get_sys_path());
   }
 
-  ScreenManager  screen_manager(input_manager, input_controller);
+  ScreenManager screen_manager(input_manager, input_controller);
 
   if (cmd_options.editor.is_set() && cmd_options.editor.get())
   { // Editor
