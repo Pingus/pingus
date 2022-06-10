@@ -36,8 +36,6 @@
 
 namespace pingus {
 
-static bool false_func() { return false; }
-
 class BButton : public pingus::gui::SurfaceButton
 {
 private:
@@ -48,7 +46,7 @@ private:
 public:
   BButton(int x, int y, std::string const& name,
           std::function<void (void)> callback_,
-          std::function<bool(void)> highlight_func_ = &false_func) :
+          std::function<bool(void)> highlight_func_ = []{ return false; }) :
     SurfaceButton(x, y, name, name + "-pressed", name + "-hover"),
     highlight("core/demo/highlight"),
     callback(std::move(callback_)),

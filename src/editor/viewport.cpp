@@ -27,7 +27,11 @@
 
 namespace pingus::editor {
 
-static const int keyboard_movement_distance = 32;
+namespace {
+
+int const keyboard_movement_distance = 32;
+
+} // namespace
 
 // Constructor
 Viewport::Viewport(EditorScreen* e, Rect const& rect_)  :

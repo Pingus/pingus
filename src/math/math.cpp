@@ -22,7 +22,21 @@ namespace pingus {
 
 namespace Math {
 
-static char num2hex[] = "0123456789abcdef";
+namespace {
+
+char const num2hex[] = "0123456789abcdef";
+
+char hex2int(char c)
+{
+  if (c >= '0' && c <= '9')
+    return static_cast<char>(c - '0');
+  else if (c >= 'a' && c <= 'f')
+    return static_cast<char>(c - 'a' + 0xa);
+  else
+    return 0;
+}
+
+} // namespace
 
 std::string float2string(float value)
 {
@@ -35,16 +49,6 @@ std::string float2string(float value)
     str[2*i + 1] = num2hex[v & 0x0f];
   }
   return str;
-}
-
-static char hex2int(char c)
-{
-  if (c >= '0' && c <= '9')
-    return static_cast<char>(c - '0');
-  else if (c >= 'a' && c <= 'f')
-    return static_cast<char>(c - 'a' + 0xa);
-  else
-    return 0;
 }
 
 float string2float(std::string const& str)

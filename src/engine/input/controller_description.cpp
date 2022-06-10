@@ -22,6 +22,23 @@
 
 namespace pingus::input {
 
+namespace {
+
+std::vector<int> map2vector(const std::map<int, InputEventDefinition>& map,
+                            EventType type)
+{
+  std::vector<int> lst;
+  for(std::map<int, InputEventDefinition>::const_iterator i = map.begin();
+      i != map.end(); ++i)
+  {
+    if (i->second.type == type)
+      lst.push_back(i->second.id);
+  }
+  return lst;
+}
+
+} // namespace
+
 ControllerDescription::ControllerDescription() :
   str_to_event(),
   id_to_event()
@@ -116,19 +133,6 @@ ControllerDescription::get_definition(std::string const& name) const
   }
 
   return i->second;
-}
-
-static std::vector<int> map2vector(const std::map<int, InputEventDefinition>& map,
-                                   EventType type)
-{
-  std::vector<int> lst;
-  for(std::map<int, InputEventDefinition>::const_iterator i = map.begin();
-      i != map.end(); ++i)
-  {
-    if (i->second.type == type)
-      lst.push_back(i->second.id);
-  }
-  return lst;
 }
 
 std::vector<int>

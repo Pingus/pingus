@@ -171,11 +171,6 @@ EditorLevel::from_prefab_file(Pathname const& pathname)
   return level;
 }
 
-static bool LevelObjSort(LevelObjPtr const& a, LevelObjPtr const& b)
-{
-  return a->z_index() < b->z_index();
-}
-
 // Default constructor
 EditorLevel::EditorLevel() :
   impl(new LevelImpl)
@@ -287,7 +282,9 @@ void
 EditorLevel::sort()
 {
   // Sort by Z coordinate
-  impl->objects.sort(LevelObjSort);
+  impl->objects.sort([](LevelObjPtr const& a, LevelObjPtr const& b) {
+    return a->z_index() < b->z_index();
+  });
 }
 
 void

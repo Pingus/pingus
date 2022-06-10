@@ -31,18 +31,9 @@
 
 namespace pingus::input {
 
-Manager::Manager(DriverFactory& driver_factory, ControllerDescription desc) :
-  m_driver_factory(driver_factory),
-  m_controllers(),
-  m_desc(std::move(desc))
-{
-}
+namespace {
 
-Manager::~Manager()
-{
-}
-
-static std::string get_driver_part(std::string const& fullname)
+std::string get_driver_part(std::string const& fullname)
 {
   std::string::size_type i = fullname.find_first_of(':');
   if (i != std::string::npos)
@@ -53,6 +44,19 @@ static std::string get_driver_part(std::string const& fullname)
   {
     return "core";
   }
+}
+
+} // namespace
+
+Manager::Manager(DriverFactory& driver_factory, ControllerDescription desc) :
+  m_driver_factory(driver_factory),
+  m_controllers(),
+  m_desc(std::move(desc))
+{
+}
+
+Manager::~Manager()
+{
 }
 
 ControllerPtr

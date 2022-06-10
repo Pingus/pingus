@@ -16,17 +16,18 @@
 
 #include "pingus/pingus_main.hpp"
 
+#include <filesystem>
 #include <iostream>
 #include <signal.h>
 
+#include <argpp/argpp.hpp>
 #include <logmich/log.hpp>
 #include <strut/from_string.hpp>
-#include <argpp/argpp.hpp>
 
 #include "editor/editor_level.hpp"
 #include "editor/editor_screen.hpp"
-#include "engine/input/manager.hpp"
 #include "engine/input/driver_factory.hpp"
+#include "engine/input/manager.hpp"
 #include "engine/system/sdl_system.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/event_name.hpp"
@@ -428,19 +429,6 @@ PingusMain::parse_args(int argc, char** argv)
   }
 }
 
-#if defined(__APPLE__)
-// private helper to check if a file exists
-static bool file_exists(char *filename)
-{
-  struct stat buf;
-  if (stat(filename, &buf) != -1)
-  {
-    return true;
-  }
-  return false;
-}
-#endif
-
 // Get all filenames and directories
 void
 PingusMain::init_path_finder()
@@ -459,7 +447,7 @@ PingusMain::init_path_finder()
 #if defined(__APPLE__)
     char path[PATH_MAX];
     getcwd(path, PATH_MAX);
-    if (file_exists(strcat(path,"/data/images/fonts/chalk-40px.font")))
+    if (std::filesystem::exists(std::filesystem::path(path) / "data/images/fonts/chalk-40px.font"))
     {
       g_path_manager.set_path("data"); // assume game is run from source dir
     }

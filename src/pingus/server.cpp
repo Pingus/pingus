@@ -29,7 +29,9 @@
 
 namespace pingus {
 
-static std::string get_date_string ()
+namespace {
+
+std::string get_date_string ()
 {
   char buffer[32];
   time_t curtime;
@@ -41,7 +43,7 @@ static std::string get_date_string ()
   return std::string(buffer);
 }
 
-static std::unique_ptr<std::ostream> get_demostream(PingusLevel const& plf)
+std::unique_ptr<std::ostream> get_demostream(PingusLevel const& plf)
 {
   std::string flat_levelname = plf.get_resname();
 
@@ -73,6 +75,8 @@ static std::unique_ptr<std::ostream> get_demostream(PingusLevel const& plf)
     return std::unique_ptr<std::ostream>(out.release());
   }
 }
+
+} // namespace
 
 Server::Server(PingusLevel const& arg_plf, bool record_demo) :
   plf(arg_plf),
