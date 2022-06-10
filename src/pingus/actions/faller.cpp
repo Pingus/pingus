@@ -111,7 +111,7 @@ Faller::update ()
         pingu->set_action(ActionName::DROWN);
       }
       // Did we stop too fast?
-      else if (Math::abs(pingu->get_velocity().y) > deadly_velocity)
+      else if (std::abs(pingu->get_velocity().y) > deadly_velocity)
       {
         //log_info("Pingus splashed: " << pingu->get_velocity().y << " " << deadly_velocity);
         pingu->set_action(ActionName::SPLASHED);
@@ -152,8 +152,8 @@ bool
 Faller::is_tumbling () const
 {
   // If we are going fast enough to get smashed, start tumbling
-  return (Math::abs(pingu->get_velocity().x) > deadly_velocity
-          || Math::abs(pingu->get_velocity().y) > deadly_velocity);
+  return (std::abs(pingu->get_velocity().x) > deadly_velocity
+          || std::abs(pingu->get_velocity().y) > deadly_velocity);
 }
 
 bool

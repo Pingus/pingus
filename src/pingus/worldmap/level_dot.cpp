@@ -54,7 +54,7 @@ LevelDot::draw(DrawingContext& gc)
 
   bool highlight = false;
 
-  if (Math::sqrt(x*x + y*y) < 30.0f)
+  if (std::sqrt(x*x + y*y) < 30.0f)
     highlight = true;
 
   Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());

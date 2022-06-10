@@ -16,46 +16,11 @@
 
 #include "math/math.hpp"
 
-#include <math.h>
+#include <cmath>
 
 namespace pingus {
 
 namespace Math {
-
-float abs(float v)
-{
-  return ::fabsf(v);
-}
-
-float sin(float a)
-{
-  return ::sinf(a);
-}
-
-float cos(float a)
-{
-  return ::cosf(a);
-}
-
-float sqrt(float a)
-{
-  return ::sqrtf(a);
-}
-
-float mod(float x, float y)
-{
-  return ::fmodf(x, y);
-}
-
-float floor(float x)
-{
-  return ::floorf(x);
-}
-
-float atan2(float x, float y)
-{
-  return ::atan2f(x, y);
-}
 
 static char num2hex[] = "0123456789abcdef";
 

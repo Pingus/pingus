@@ -35,7 +35,7 @@ SnowGenerator::~SnowGenerator()
 void
 SnowGenerator::update()
 {
-  for(int i = 0; static_cast<float>(i) < Math::floor(intensity); ++i)
+  for(int i = 0; static_cast<float>(i) < std::floor(intensity); ++i)
   {
     if (rand() % 3 != 0)
       world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -globals::tile_size, false);

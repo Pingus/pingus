@@ -174,7 +174,7 @@ public:
     if (invert)
       new_pos = -new_pos;
 
-    if (Math::abs(new_pos) < dead_zone)
+    if (std::abs(new_pos) < dead_zone)
       new_pos = 0.0f;
 
     if (new_pos != pos)

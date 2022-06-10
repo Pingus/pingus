@@ -66,8 +66,8 @@ private:
     {
       if (!globals::static_graphics)
       {
-        x_pos = Math::mod((x_pos + x_update * delta),static_cast<float>(Display::get_width()));
-        y_pos = Math::mod((y_pos + y_update * delta),static_cast<float>(Display::get_height()));
+        x_pos = std::fmod((x_pos + x_update * delta),static_cast<float>(Display::get_width()));
+        y_pos = std::fmod((y_pos + y_update * delta),static_cast<float>(Display::get_height()));
       }
     }
   };

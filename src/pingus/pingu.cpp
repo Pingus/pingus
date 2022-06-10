@@ -305,8 +305,8 @@ Pingu::dist(float x, float y) const
 {
   Vector2f p = get_center_pos ();
 
-  return Math::sqrt(((p.x() - x) * (p.x() - x) +
-                     (p.y() - y) * (p.y() - y)));
+  return std::sqrt(((p.x() - x) * (p.x() - x) +
+                    (p.y() - y) * (p.y() - y)));
 }
 
 // Let the pingu do his job (i.e. walk his way)

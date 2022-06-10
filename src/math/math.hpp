@@ -17,9 +17,11 @@
 #ifndef HEADER_PINGUS_MATH_MATH_HPP
 #define HEADER_PINGUS_MATH_MATH_HPP
 
-#include <assert.h>
-#include <stdlib.h>
+#include <cassert>
+#include <cmath>
+#include <cstdlib>
 #include <string>
+#include <numbers>
 
 namespace pingus {
 
@@ -30,22 +32,14 @@ namespace pingus {
     @brief A collection of mathematical helper functions */
 namespace Math {
 
-const float pi   = 3.14159265358979323846f;     /* pi */
-const float pi_2 = 1.57079632679489661923f;     /* pi/2 */
+float const pi = std::numbers::pi_v<float>;
+float const pi_2 = std::numbers::pi_v<float> / 2.0f;
 
 inline
 float frand()
 {
   return static_cast<float>(rand()) / (static_cast<float>(RAND_MAX) + 1.0f);
 }
-
-float abs(float v);
-float sin(float a);
-float cos(float a);
-float sqrt(float a);
-float mod(float x, float y);
-float floor(float x);
-float atan2(float x, float y);
 
 /** Write out the raw bits of a float as hex */
 std::string float2string(float value);

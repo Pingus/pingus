@@ -165,20 +165,20 @@ PinguAction::move_with_forces ()
   int x_inc = 0;
   int y_inc = 0;
 
-  if (Math::abs(resultant_force.x) > Math::abs(resultant_force.y))
+  if (std::abs(resultant_force.x) > std::abs(resultant_force.y))
   {
     // Initialise so that we move in whole pixels in x direction and
     // 'fractions' of a pixel in y direction.
-    denominator = static_cast<int>(Math::abs(resultant_force.x));
+    denominator = static_cast<int>(std::abs(resultant_force.x));
     x_inc = denominator;
-    y_inc = static_cast<int>(Math::abs(resultant_force.y));
+    y_inc = static_cast<int>(std::abs(resultant_force.y));
   }
   else
   {
     // Initialise so that we move in whole pixels in y direction and
     // 'fractions' of a pixel in x direction.
-    denominator = static_cast<int>(Math::abs(resultant_force.y));
-    x_inc = static_cast<int>(Math::abs(resultant_force.x));
+    denominator = static_cast<int>(std::abs(resultant_force.y));
+    x_inc = static_cast<int>(std::abs(resultant_force.x));
     y_inc = denominator;
   }
 
