@@ -23,7 +23,6 @@
 
 #include "engine/input/controller.hpp"
 #include "engine/input/event.hpp"
-#include "math/math.hpp"
 #include "math/vector2f.hpp"
 
 namespace pingus::input {

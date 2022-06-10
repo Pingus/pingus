@@ -212,34 +212,34 @@ private:
 };
 
 std::unique_ptr<Button>
-CoreDriver::create_button(ReaderObject const& reader_object, Control* parent)
+CoreDriver::create_button(prio::ReaderObject const& reader_object, Control* parent)
 {
   return {};
 }
 
 std::unique_ptr<Axis>
-CoreDriver::create_axis(ReaderObject const& reader_object, Control* parent)
+CoreDriver::create_axis(prio::ReaderObject const& reader_object, Control* parent)
 {
   return {};
 }
 
 std::unique_ptr<Scroller>
-CoreDriver::create_scroller(ReaderObject const& reader_object, Control* parent)
+CoreDriver::create_scroller(prio::ReaderObject const& reader_object, Control* parent)
 {
   if (reader_object.get_name() == "core:axis-scroller")
   {
-    ReaderMapping reader = reader_object.get_mapping();
+    prio::ReaderMapping reader = reader_object.get_mapping();
 
     auto axis = std::make_unique<AxisScroller>(parent);
 
-    ReaderObject x_reader;
+    prio::ReaderObject x_reader;
     if (!reader.read("x-axis", x_reader))
     {
       log_error("CoreDriver: Couldn't find x-axis");
       return {};
     }
 
-    ReaderObject y_reader;
+    prio::ReaderObject y_reader;
     if (!reader.read("y-axis", y_reader))
     {
       log_error("CoreDriver: Couldn't find y-axis");
@@ -250,7 +250,7 @@ CoreDriver::create_scroller(ReaderObject const& reader_object, Control* parent)
     std::unique_ptr<Axis> y_axis = manager->create_axis(y_reader, axis.get());
 
     std::unique_ptr<Button> button;
-    ReaderObject button_reader;
+    prio::ReaderObject button_reader;
     if (reader.read("button", button_reader))
     {
       button = manager->create_button(button_reader, axis.get());
@@ -268,32 +268,32 @@ CoreDriver::create_scroller(ReaderObject const& reader_object, Control* parent)
   }
   else if (reader_object.get_name() == "core:button-scroller")
   {
-    ReaderMapping reader = reader_object.get_mapping();
+    prio::ReaderMapping reader = reader_object.get_mapping();
 
     auto scroller = std::make_unique<ButtonScroller>(parent);
 
-    ReaderObject left_reader;
+    prio::ReaderObject left_reader;
     if (!reader.read("left", left_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'left'");
       return {};
     }
 
-    ReaderObject right_reader;
+    prio::ReaderObject right_reader;
     if (!reader.read("right", right_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'right'");
       return {};
     }
 
-    ReaderObject up_reader;
+    prio::ReaderObject up_reader;
     if (!reader.read("up", up_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'up'");
       return {};
     }
 
-    ReaderObject down_reader;
+    prio::ReaderObject down_reader;
     if (!reader.read("down", down_reader))
     {
       log_error("CoreDriver: core:button-scroller: Couldn't find 'down'");
@@ -319,22 +319,22 @@ CoreDriver::create_scroller(ReaderObject const& reader_object, Control* parent)
 }
 
 std::unique_ptr<Pointer>
-CoreDriver::create_pointer(ReaderObject const& reader_object, Control* parent)
+CoreDriver::create_pointer(prio::ReaderObject const& reader_object, Control* parent)
 {
   if (reader_object.get_name() == "core:axis-pointer")
   {
-    ReaderMapping reader = reader_object.get_mapping();
+    prio::ReaderMapping reader = reader_object.get_mapping();
 
     auto axis = std::make_unique<AxisPointer>(parent);
 
-    ReaderObject x_reader;
+    prio::ReaderObject x_reader;
     if (!reader.read("x-axis", x_reader))
     {
       log_error("CoreDriver: Couldn't find x-axis");
       return {};
     }
 
-    ReaderObject y_reader;
+    prio::ReaderObject y_reader;
     if (!reader.read("y-axis", y_reader))
     {
       log_error("CoreDriver: Couldn't find y-axis");
@@ -345,7 +345,7 @@ CoreDriver::create_pointer(ReaderObject const& reader_object, Control* parent)
     std::unique_ptr<Axis> y_axis = manager->create_axis(y_reader, axis.get());
 
     std::unique_ptr<Button> button;
-    ReaderObject button_reader;
+    prio::ReaderObject button_reader;
     if (reader.read("button", button_reader))
     {
       button = manager->create_button(button_reader, axis.get());
@@ -368,7 +368,7 @@ CoreDriver::create_pointer(ReaderObject const& reader_object, Control* parent)
 }
 
 std::unique_ptr<Keyboard>
-CoreDriver::create_keyboard(ReaderObject const& reader, Control* parent)
+CoreDriver::create_keyboard(prio::ReaderObject const& reader, Control* parent)
 {
   return {};
 }

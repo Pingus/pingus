@@ -17,8 +17,9 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_DRIVER_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_DRIVER_HPP
 
+#include <prio/reader.hpp>
+
 #include "engine/input/control.hpp"
-#include "util/reader.hpp"
 
 namespace pingus::input {
 
@@ -31,11 +32,11 @@ public:
   virtual std::string get_name() const =0;
   virtual void update(float delta) =0;
 
-  virtual std::unique_ptr<Button> create_button(ReaderObject const& reader, Control* parent) =0;
-  virtual std::unique_ptr<Axis> create_axis(ReaderObject const& reader, Control* parent) =0;
-  virtual std::unique_ptr<Scroller> create_scroller(ReaderObject const& reader, Control* parent) =0;
-  virtual std::unique_ptr<Pointer> create_pointer(ReaderObject const& reader, Control* parent) =0;
-  virtual std::unique_ptr<Keyboard> create_keyboard(ReaderObject const& reader, Control* parent) =0;
+  virtual std::unique_ptr<Button> create_button(prio::ReaderObject const& reader, Control* parent) =0;
+  virtual std::unique_ptr<Axis> create_axis(prio::ReaderObject const& reader, Control* parent) =0;
+  virtual std::unique_ptr<Scroller> create_scroller(prio::ReaderObject const& reader, Control* parent) =0;
+  virtual std::unique_ptr<Pointer> create_pointer(prio::ReaderObject const& reader, Control* parent) =0;
+  virtual std::unique_ptr<Keyboard> create_keyboard(prio::ReaderObject const& reader, Control* parent) =0;
 };
 
 } // namespace pingus::input

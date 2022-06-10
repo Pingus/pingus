@@ -17,10 +17,9 @@
 #include "engine/input/manager.hpp"
 
 #include <stdexcept>
+#include <fmt/format.h>
 
 #include "engine/input/driver_factory.hpp"
-#include "util/pathname.hpp"
-#include "util/raise_exception.hpp"
 
 namespace pingus::input {
 
@@ -77,127 +76,121 @@ static std::string get_driver_part(std::string const& fullname)
 }
 
 ControllerPtr
-Manager::create_controller(Pathname const& filename)
+Manager::create_controller(std::filesystem::path const& filename)
 {
   ControllerPtr controller(new Controller(desc));
 
-  auto doc = ReaderDocument::from_file(filename.get_sys_path());
+  auto doc = prio::ReaderDocument::from_file(filename);
+  if (doc.get_name() != "pingus-controller") {
+    throw std::runtime_error(fmt::format("Controller: invalid config file '{}'", filename));
+  }
 
-  if (doc.get_name() != "pingus-controller")
+  prio::ReaderMapping reader = doc.get_mapping();
+
+  prio::ReaderMapping controls_mapping;
+  if (!reader.read("controls", controls_mapping))
   {
-    raise_exception(std::runtime_error,
-                    "Controller: invalid config file '" << filename.str() << "'");
+    log_warn("{}: 'controls' section missing", filename);
   }
   else
   {
-    ReaderMapping reader = doc.get_mapping();
-
-    ReaderMapping controls_mapping;
-    if (!reader.read("controls", controls_mapping))
+    for (auto const& key : controls_mapping.get_keys())
     {
-      log_warn("{}: 'controls' section missing", filename);
-    }
-    else
-    {
-      for (auto const& key : controls_mapping.get_keys())
+      prio::ReaderCollection collection;
+      if (!controls_mapping.read(key.c_str(), collection))
       {
-        ReaderCollection collection;
-        if (!controls_mapping.read(key.c_str(), collection))
+        log_error("{}: mapping must contain object at {}", filename, key);
+      }
+      else
+      {
+        if (key.ends_with("pointer"))
         {
-          log_error("{}: mapping must contain object at {}", filename, key);
+          int id = desc.get_definition(key).id;
+          ControllerPointer* ctrl_pointer = controller->get_pointer(id);
+          for(auto const& object : collection.get_objects())
+          {
+            auto pointer = create_pointer(object, ctrl_pointer);
+            if (pointer)
+            {
+              ctrl_pointer->add_pointer(std::move(pointer));
+            }
+            else
+            {
+              log_error("Manager: pointer: Couldn't create pointer {}", object.get_name());
+            }
+          }
+        }
+        else if (key.ends_with("scroller"))
+        {
+          int id = desc.get_definition(key).id;
+          ControllerScroller* ctrl_scroller = controller->get_scroller(id);
+          for(auto const& object : collection.get_objects())
+          {
+            auto scroller = create_scroller(object, ctrl_scroller);
+            if (scroller)
+            {
+              ctrl_scroller->add_scroller(std::move(scroller));
+            }
+            else
+            {
+              log_error("Manager: scroller: Couldn't create scroller {}", object.get_name());
+            }
+          }
+        }
+        else if (key.ends_with("button"))
+        {
+          int id = desc.get_definition(key).id;
+          ControllerButton* ctrl_button = controller->get_button(id);
+          for(auto const& object : collection.get_objects())
+          {
+            auto button = create_button(object, ctrl_button);
+            if (button)
+            {
+              ctrl_button->add_button(std::move(button));
+            }
+            else
+            {
+              log_error("Manager: button: Couldn't create button {}", object.get_name());
+            }
+          }
+        }
+        else if (key.ends_with("axis"))
+        {
+          int id = desc.get_definition(key).id;
+          ControllerAxis* ctrl_axis = controller->get_axis(id);
+          for(auto const& object : collection.get_objects())
+          {
+            auto axis = create_axis(object, ctrl_axis);
+            if (axis)
+            {
+              ctrl_axis->add_axis(std::move(axis));
+            }
+            else
+            {
+              log_error("Manager: axis: Couldn't create axis {}", object.get_name());
+            }
+          }
+        }
+        else if (key.ends_with("keyboard"))
+        {
+          int id = desc.get_definition(key).id;
+          ControllerKeyboard* ctrl_keyboard = controller->get_keyboard(id);
+          for(auto const& object : collection.get_objects())
+          {
+            std::unique_ptr<Keyboard> keyboard = create_keyboard(object, ctrl_keyboard);
+            if (keyboard)
+            {
+              ctrl_keyboard->add_keyboard(std::move(keyboard));
+            }
+            else
+            {
+              log_error("Manager: keyboard: Couldn't create keyboard {}", object.get_name());
+            }
+          }
         }
         else
         {
-          if (key.ends_with("pointer"))
-          {
-            int id = desc.get_definition(key).id;
-            ControllerPointer* ctrl_pointer = controller->get_pointer(id);
-            for(auto const& object : collection.get_objects())
-            {
-              auto pointer = create_pointer(object, ctrl_pointer);
-              if (pointer)
-              {
-                ctrl_pointer->add_pointer(std::move(pointer));
-              }
-              else
-              {
-                log_error("Manager: pointer: Couldn't create pointer {}", object.get_name());
-              }
-            }
-          }
-          else if (key.ends_with("scroller"))
-          {
-            int id = desc.get_definition(key).id;
-            ControllerScroller* ctrl_scroller = controller->get_scroller(id);
-            for(auto const& object : collection.get_objects())
-            {
-              auto scroller = create_scroller(object, ctrl_scroller);
-              if (scroller)
-              {
-                ctrl_scroller->add_scroller(std::move(scroller));
-              }
-              else
-              {
-                log_error("Manager: scroller: Couldn't create scroller {}", object.get_name());
-              }
-            }
-          }
-          else if (key.ends_with("button"))
-          {
-            int id = desc.get_definition(key).id;
-            ControllerButton* ctrl_button = controller->get_button(id);
-            for(auto const& object : collection.get_objects())
-            {
-              auto button = create_button(object, ctrl_button);
-              if (button)
-              {
-                ctrl_button->add_button(std::move(button));
-              }
-              else
-              {
-                log_error("Manager: button: Couldn't create button {}", object.get_name());
-              }
-            }
-          }
-          else if (key.ends_with("axis"))
-          {
-            int id = desc.get_definition(key).id;
-            ControllerAxis* ctrl_axis = controller->get_axis(id);
-            for(auto const& object : collection.get_objects())
-            {
-              auto axis = create_axis(object, ctrl_axis);
-              if (axis)
-              {
-                ctrl_axis->add_axis(std::move(axis));
-              }
-              else
-              {
-                log_error("Manager: axis: Couldn't create axis {}", object.get_name());
-              }
-            }
-          }
-          else if (key.ends_with("keyboard"))
-          {
-            int id = desc.get_definition(key).id;
-            ControllerKeyboard* ctrl_keyboard = controller->get_keyboard(id);
-            for(auto const& object : collection.get_objects())
-            {
-              std::unique_ptr<Keyboard> keyboard = create_keyboard(object, ctrl_keyboard);
-              if (keyboard)
-              {
-                ctrl_keyboard->add_keyboard(std::move(keyboard));
-              }
-              else
-              {
-                log_error("Manager: keyboard: Couldn't create keyboard {}", object.get_name());
-              }
-            }
-          }
-          else
-          {
-            raise_exception(std::runtime_error, "Manager: Unkown Element in Controller Config: "
-                            << key);
-          }
+          throw std::runtime_error(fmt::format("Manager: Unkown Element in Controller Config: {}", key));
         }
       }
     }
@@ -264,7 +257,7 @@ Manager::load_driver(std::string const& name)
 }
 
 std::unique_ptr<Button>
-Manager::create_button(ReaderObject const& reader, Control* parent)
+Manager::create_button(prio::ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -281,7 +274,7 @@ Manager::create_button(ReaderObject const& reader, Control* parent)
 }
 
 std::unique_ptr<Axis>
-Manager::create_axis(ReaderObject const& reader, Control* parent)
+Manager::create_axis(prio::ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -298,7 +291,7 @@ Manager::create_axis(ReaderObject const& reader, Control* parent)
 }
 
 std::unique_ptr<Pointer>
-Manager::create_pointer(ReaderObject const& reader, Control* parent)
+Manager::create_pointer(prio::ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -315,7 +308,7 @@ Manager::create_pointer(ReaderObject const& reader, Control* parent)
 }
 
 std::unique_ptr<Scroller>
-Manager::create_scroller(ReaderObject const& reader, Control* parent)
+Manager::create_scroller(prio::ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 
@@ -332,7 +325,7 @@ Manager::create_scroller(ReaderObject const& reader, Control* parent)
 }
 
 std::unique_ptr<Keyboard>
-Manager::create_keyboard(ReaderObject const& reader, Control* parent)
+Manager::create_keyboard(prio::ReaderObject const& reader, Control* parent)
 {
   std::string driver = get_driver_part(reader.get_name());
 

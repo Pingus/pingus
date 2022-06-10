@@ -535,12 +535,12 @@ PingusMain::start_game ()
   if (!cmd_options.controller.is_set())
   {
     input_controller = input_manager.create_controller(Pathname("controller/default.scm",
-                                                                Pathname::DATA_PATH));
+                                                                Pathname::DATA_PATH).get_sys_path());
   }
   else
   {
     input_controller = input_manager.create_controller(Pathname(cmd_options.controller.get(),
-                                                                Pathname::SYSTEM_PATH));
+                                                                Pathname::SYSTEM_PATH).get_sys_path());
   }
 
   ScreenManager  screen_manager(input_manager, input_controller);

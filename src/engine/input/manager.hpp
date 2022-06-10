@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_MANAGER_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_MANAGER_HPP
 
+#include <filesystem>
 #include <memory>
 
 #include "engine/input/controller_description.hpp"
@@ -42,13 +43,13 @@ public:
 
   void update(float delta);
 
-  ControllerPtr create_controller(Pathname const& filename);
+  ControllerPtr create_controller(std::filesystem::path const& filename);
 
-  std::unique_ptr<Button> create_button(ReaderObject const& reader, Control* parent);
-  std::unique_ptr<Axis> create_axis(ReaderObject const& reader, Control* parent);
-  std::unique_ptr<Pointer> create_pointer(ReaderObject const& reader, Control* parent);
-  std::unique_ptr<Scroller> create_scroller(ReaderObject const& reader, Control* parent);
-  std::unique_ptr<Keyboard> create_keyboard(ReaderObject const& reader, Control* parent);
+  std::unique_ptr<Button> create_button(prio::ReaderObject const& reader, Control* parent);
+  std::unique_ptr<Axis> create_axis(prio::ReaderObject const& reader, Control* parent);
+  std::unique_ptr<Pointer> create_pointer(prio::ReaderObject const& reader, Control* parent);
+  std::unique_ptr<Scroller> create_scroller(prio::ReaderObject const& reader, Control* parent);
+  std::unique_ptr<Keyboard> create_keyboard(prio::ReaderObject const& reader, Control* parent);
 
 private:
   Driver* load_driver(std::string const& name);

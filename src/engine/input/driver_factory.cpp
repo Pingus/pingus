@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "driver_factory.hpp"
+#include "engine/input/driver_factory.hpp"
 
 #include "engine/input/core_driver.hpp"
 #include "engine/input/sdl_driver.hpp"

@@ -18,7 +18,7 @@
 
 #include <stdexcept>
 
-#include "util/raise_exception.hpp"
+#include <fmt/format.h>
 
 namespace pingus::input {
 
@@ -101,9 +101,8 @@ InputEventDefinition const&
 ControllerDescription::get_definition(int id) const
 {
   std::map<int, InputEventDefinition>::const_iterator i = id_to_event.find(id);
-  if (i == id_to_event.end())
-  {
-    raise_exception(std::runtime_error, "Unknown event id");
+  if (i == id_to_event.end()) {
+    throw std::runtime_error("Unknown event id");
   }
   return i->second;
 }
@@ -112,8 +111,9 @@ InputEventDefinition const&
 ControllerDescription::get_definition(std::string const& name) const
 {
   std::map<std::string, InputEventDefinition>::const_iterator i = str_to_event.find(name);
-  if (i == str_to_event.end())
-    raise_exception(std::runtime_error, "Unknown event str: " << name);
+  if (i == str_to_event.end()) {
+    throw std::runtime_error(fmt::format("Unknown event str: {}", name));
+  }
 
   return i->second;
 }

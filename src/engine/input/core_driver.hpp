@@ -35,11 +35,11 @@ public:
   std::string get_name() const override { return "core"; }
   void update(float delta) override {}
 
-  std::unique_ptr<Button> create_button(ReaderObject const& reader, Control* parent) override;
-  std::unique_ptr<Axis> create_axis(ReaderObject const& reader, Control* parent) override;
-  std::unique_ptr<Scroller> create_scroller(ReaderObject const& reader, Control* parent) override;
-  std::unique_ptr<Pointer> create_pointer (ReaderObject const& reader, Control* parent) override;
-  std::unique_ptr<Keyboard> create_keyboard(ReaderObject const& reader, Control* parent) override;
+  std::unique_ptr<Button> create_button(prio::ReaderObject const& reader, Control* parent) override;
+  std::unique_ptr<Axis> create_axis(prio::ReaderObject const& reader, Control* parent) override;
+  std::unique_ptr<Scroller> create_scroller(prio::ReaderObject const& reader, Control* parent) override;
+  std::unique_ptr<Pointer> create_pointer (prio::ReaderObject const& reader, Control* parent) override;
+  std::unique_ptr<Keyboard> create_keyboard(prio::ReaderObject const& reader, Control* parent) override;
 
 private:
   CoreDriver(CoreDriver const&);
