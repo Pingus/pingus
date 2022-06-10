@@ -22,6 +22,7 @@
 #include "engine/input/manager.hpp"
 #include "engine/input/controller.hpp"
 #include "engine/system/sdl_system.hpp"
+#include "pingus/event_name.hpp"
 
 using namespace pingus;
 
@@ -31,7 +32,37 @@ int main()
   {
     SDLSystem sdl_system;
 
-    pingus::input::Manager manager;
+    pingus::input::ControllerDescription desc;
+    desc.add_axis("action-axis",  ACTION_AXIS);
+
+    desc.add_keyboard("standard-keyboard",  STANDARD_KEYBOARD);
+
+    desc.add_pointer("standard-pointer",   STANDARD_POINTER);
+    desc.add_scroller("standard-scroller", STANDARD_SCROLLER);
+
+    desc.add_button("primary-button",      PRIMARY_BUTTON);
+    desc.add_button("secondary-button",    SECONDARY_BUTTON);
+    desc.add_button("fast-forward-button", FAST_FORWARD_BUTTON);
+    desc.add_button("armageddon-button",   ARMAGEDDON_BUTTON);
+    desc.add_button("pause-button",        PAUSE_BUTTON);
+    desc.add_button("single-step-button",  SINGLE_STEP_BUTTON);
+    desc.add_button("escape-button",       ESCAPE_BUTTON);
+
+    desc.add_button("action-up-button",    ACTION_UP_BUTTON);
+    desc.add_button("action-down-button",  ACTION_DOWN_BUTTON);
+
+    desc.add_button("action-1-button",     ACTION_1_BUTTON);
+    desc.add_button("action-2-button",     ACTION_2_BUTTON);
+    desc.add_button("action-3-button",     ACTION_3_BUTTON);
+    desc.add_button("action-4-button",     ACTION_4_BUTTON);
+    desc.add_button("action-5-button",     ACTION_5_BUTTON);
+    desc.add_button("action-6-button",     ACTION_6_BUTTON);
+    desc.add_button("action-7-button",     ACTION_7_BUTTON);
+    desc.add_button("action-8-button",     ACTION_8_BUTTON);
+    desc.add_button("action-9-button",     ACTION_9_BUTTON);
+    desc.add_button("action-10-button",    ACTION_10_BUTTON);
+
+    pingus::input::Manager manager(desc);
 
     pingus::input::ControllerPtr controller
       = manager.create_controller(Pathname("../data/controller/default.scm", Pathname::SYSTEM_PATH).get_sys_path());

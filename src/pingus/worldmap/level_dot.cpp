@@ -19,6 +19,7 @@
 #include "engine/display/drawing_context.hpp"
 #include "engine/input/control.hpp"
 #include "engine/screen/screen_manager.hpp"
+#include "pingus/event_name.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
@@ -47,7 +48,7 @@ void
 LevelDot::draw(DrawingContext& gc)
 {
   Vector2i mpos
-    = gc.screen_to_world(Vector2i(pingus::input::Controller::current()->get_pointer(pingus::input::STANDARD_POINTER)->get_pos()));
+    = gc.screen_to_world(Vector2i(pingus::input::Controller::current()->get_pointer(STANDARD_POINTER)->get_pos()));
 
   float x = static_cast<float>(mpos.x()) - pos.x();
   float y = static_cast<float>(mpos.y()) - pos.y();

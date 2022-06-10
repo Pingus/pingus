@@ -19,6 +19,7 @@
 #include <logmich/log.hpp>
 
 #include "engine/display/display.hpp"
+#include "pingus/event_name.hpp"
 #include "pingus/globals.hpp"
 
 using namespace pingus::input;

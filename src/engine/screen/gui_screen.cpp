@@ -21,6 +21,7 @@
 #include "engine/display/display.hpp"
 #include "engine/gui/gui_manager.hpp"
 #include "pingus/globals.hpp"
+#include "pingus/event_name.hpp"
 
 namespace pingus {
 
@@ -71,7 +72,7 @@ GUIScreen::update_input(pingus::input::Event const& event)
 
     case pingus::input::AXIS_EVENT_TYPE:
     {
-      if (event.axis.name == pingus::input::ACTION_AXIS)
+      if (event.axis.name == ACTION_AXIS)
       {
         on_action_axis_move(event.axis.dir);
       }
@@ -109,31 +110,31 @@ GUIScreen::process_button_event (pingus::input::ButtonEvent const& event)
   {
     switch (event.name)
     {
-      case pingus::input::PRIMARY_BUTTON:
+      case PRIMARY_BUTTON:
         // ignoring, handled in the gui_manager
         break;
-      case pingus::input::SECONDARY_BUTTON:
+      case SECONDARY_BUTTON:
         // ignoring, handled in the gui_manager
         break;
-      case pingus::input::PAUSE_BUTTON:
+      case PAUSE_BUTTON:
         on_pause_press ();
         break;
-      case pingus::input::SINGLE_STEP_BUTTON:
+      case SINGLE_STEP_BUTTON:
         on_single_step_press();
         break;
-      case pingus::input::FAST_FORWARD_BUTTON:
+      case FAST_FORWARD_BUTTON:
         on_fast_forward_press ();
         break;
-      case pingus::input::ARMAGEDDON_BUTTON:
+      case ARMAGEDDON_BUTTON:
         on_armageddon_press ();
         break;
-      case pingus::input::ESCAPE_BUTTON:
+      case ESCAPE_BUTTON:
         on_escape_press ();
         break;
-      case pingus::input::ACTION_UP_BUTTON:
+      case ACTION_UP_BUTTON:
         on_action_up_press();
         break;
-      case pingus::input::ACTION_DOWN_BUTTON:
+      case ACTION_DOWN_BUTTON:
         on_action_down_press();
         break;
       default:
@@ -145,31 +146,31 @@ GUIScreen::process_button_event (pingus::input::ButtonEvent const& event)
   {
     switch (event.name)
     {
-      case pingus::input::PRIMARY_BUTTON:
+      case PRIMARY_BUTTON:
         // ignoring, handled in the gui_manager
         break;
-      case pingus::input::SECONDARY_BUTTON:
+      case SECONDARY_BUTTON:
         // ignoring, handled in the gui_manager
         break;
-      case pingus::input::PAUSE_BUTTON:
+      case PAUSE_BUTTON:
         on_pause_release ();
         break;
-      case pingus::input::SINGLE_STEP_BUTTON:
+      case SINGLE_STEP_BUTTON:
         on_single_step_release();
         break;
-      case pingus::input::FAST_FORWARD_BUTTON:
+      case FAST_FORWARD_BUTTON:
         on_fast_forward_release ();
         break;
-      case pingus::input::ARMAGEDDON_BUTTON:
+      case ARMAGEDDON_BUTTON:
         on_armageddon_release ();
         break;
-      case pingus::input::ESCAPE_BUTTON:
+      case ESCAPE_BUTTON:
         on_escape_release ();
         break;
-      case pingus::input::ACTION_UP_BUTTON:
+      case ACTION_UP_BUTTON:
         on_action_up_release();
         break;
-      case pingus::input::ACTION_DOWN_BUTTON:
+      case ACTION_DOWN_BUTTON:
         on_action_down_release();
         break;
       default:

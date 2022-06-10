@@ -28,7 +28,7 @@ namespace pingus::input {
 class Manager
 {
 public:
-  Manager();
+  Manager(ControllerDescription desc);
   ~Manager();
 
   /** Resents events for the current controller state */

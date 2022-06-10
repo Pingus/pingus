@@ -207,19 +207,19 @@ Controller::add_button(int id, std::unique_ptr<ControllerButton> button)
 void
 Controller::add_axis_event(int id, float pos)
 {
-  events.push_back(makeAxisEvent(static_cast<EventName>(id), pos));
+  events.push_back(makeAxisEvent(id, pos));
 }
 
 void
 Controller::add_button_event(int id, ButtonState state)
 {
-  events.push_back(makeButtonEvent(static_cast<EventName>(id), state));
+  events.push_back(makeButtonEvent(id, state));
 }
 
 void
 Controller::add_pointer_event(int id, float x, float y)
 {
-  events.push_back(makePointerEvent(static_cast<EventName>(id), x, y));
+  events.push_back(makePointerEvent(id, x, y));
 }
 
 void

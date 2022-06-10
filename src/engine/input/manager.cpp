@@ -23,39 +23,11 @@
 
 namespace pingus::input {
 
-Manager::Manager() :
+Manager::Manager(ControllerDescription desc) :
   m_drivers(),
   m_controllers(),
-  m_desc()
+  m_desc(desc)
 {
-  m_desc.add_axis("action-axis",  ACTION_AXIS);
-
-  m_desc.add_keyboard("standard-keyboard",  STANDARD_KEYBOARD);
-
-  m_desc.add_pointer("standard-pointer",   STANDARD_POINTER);
-  m_desc.add_scroller("standard-scroller", STANDARD_SCROLLER);
-
-  m_desc.add_button("primary-button",      PRIMARY_BUTTON);
-  m_desc.add_button("secondary-button",    SECONDARY_BUTTON);
-  m_desc.add_button("fast-forward-button", FAST_FORWARD_BUTTON);
-  m_desc.add_button("armageddon-button",   ARMAGEDDON_BUTTON);
-  m_desc.add_button("pause-button",        PAUSE_BUTTON);
-  m_desc.add_button("single-step-button",  SINGLE_STEP_BUTTON);
-  m_desc.add_button("escape-button",       ESCAPE_BUTTON);
-
-  m_desc.add_button("action-up-button",    ACTION_UP_BUTTON);
-  m_desc.add_button("action-down-button",  ACTION_DOWN_BUTTON);
-
-  m_desc.add_button("action-1-button",     ACTION_1_BUTTON);
-  m_desc.add_button("action-2-button",     ACTION_2_BUTTON);
-  m_desc.add_button("action-3-button",     ACTION_3_BUTTON);
-  m_desc.add_button("action-4-button",     ACTION_4_BUTTON);
-  m_desc.add_button("action-5-button",     ACTION_5_BUTTON);
-  m_desc.add_button("action-6-button",     ACTION_6_BUTTON);
-  m_desc.add_button("action-7-button",     ACTION_7_BUTTON);
-  m_desc.add_button("action-8-button",     ACTION_8_BUTTON);
-  m_desc.add_button("action-9-button",     ACTION_9_BUTTON);
-  m_desc.add_button("action-10-button",    ACTION_10_BUTTON);
 }
 
 Manager::~Manager()

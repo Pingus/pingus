@@ -28,9 +28,10 @@
 #include "engine/input/manager.hpp"
 #include "engine/system/sdl_system.hpp"
 #include "pingus/config_manager.hpp"
+#include "pingus/event_name.hpp"
 #include "pingus/screens/demo_session.hpp"
-#include "pingus/screens/pingus_menu.hpp"
 #include "pingus/screens/level_menu.hpp"
+#include "pingus/screens/pingus_menu.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 #include "util/system.hpp"
 
@@ -529,7 +530,37 @@ PingusMain::print_greeting_message()
 void
 PingusMain::start_game ()
 {
-  pingus::input::Manager input_manager;
+  pingus::input::ControllerDescription desc;
+  desc.add_axis("action-axis",  ACTION_AXIS);
+
+  desc.add_keyboard("standard-keyboard",  STANDARD_KEYBOARD);
+
+  desc.add_pointer("standard-pointer",   STANDARD_POINTER);
+  desc.add_scroller("standard-scroller", STANDARD_SCROLLER);
+
+  desc.add_button("primary-button",      PRIMARY_BUTTON);
+  desc.add_button("secondary-button",    SECONDARY_BUTTON);
+  desc.add_button("fast-forward-button", FAST_FORWARD_BUTTON);
+  desc.add_button("armageddon-button",   ARMAGEDDON_BUTTON);
+  desc.add_button("pause-button",        PAUSE_BUTTON);
+  desc.add_button("single-step-button",  SINGLE_STEP_BUTTON);
+  desc.add_button("escape-button",       ESCAPE_BUTTON);
+
+  desc.add_button("action-up-button",    ACTION_UP_BUTTON);
+  desc.add_button("action-down-button",  ACTION_DOWN_BUTTON);
+
+  desc.add_button("action-1-button",     ACTION_1_BUTTON);
+  desc.add_button("action-2-button",     ACTION_2_BUTTON);
+  desc.add_button("action-3-button",     ACTION_3_BUTTON);
+  desc.add_button("action-4-button",     ACTION_4_BUTTON);
+  desc.add_button("action-5-button",     ACTION_5_BUTTON);
+  desc.add_button("action-6-button",     ACTION_6_BUTTON);
+  desc.add_button("action-7-button",     ACTION_7_BUTTON);
+  desc.add_button("action-8-button",     ACTION_8_BUTTON);
+  desc.add_button("action-9-button",     ACTION_9_BUTTON);
+  desc.add_button("action-10-button",    ACTION_10_BUTTON);
+
+  pingus::input::Manager input_manager(desc);
   pingus::input::ControllerPtr input_controller;
 
   if (!cmd_options.controller.is_set())

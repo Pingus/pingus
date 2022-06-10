@@ -25,8 +25,9 @@
 #include "engine/input/manager.hpp"
 #include "engine/screen/screen.hpp"
 #include "engine/sound/sound.hpp"
-#include "pingus/fps_counter.hpp"
+#include "pingus/event_name.hpp"
 #include "pingus/fonts.hpp"
+#include "pingus/fps_counter.hpp"
 #include "pingus/globals.hpp"
 
 namespace pingus {
@@ -178,7 +179,7 @@ ScreenManager::update(float delta, std::vector<pingus::input::Event> const& even
 
   for(std::vector<pingus::input::Event>::const_iterator i = events.begin(); i != events.end(); ++i)
   {
-    if (i->type == pingus::input::POINTER_EVENT_TYPE && i->pointer.name == pingus::input::STANDARD_POINTER)
+    if (i->type == pingus::input::POINTER_EVENT_TYPE && i->pointer.name == STANDARD_POINTER)
       mouse_pos = Vector2i(static_cast<int>(i->pointer.x),
                            static_cast<int>(i->pointer.y));
 

@@ -29,6 +29,7 @@
 #include "pingus/components/playfield.hpp"
 #include "pingus/components/smallmap.hpp"
 #include "pingus/components/time_display.hpp"
+#include "pingus/event_name.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/savegame_manager.hpp"
@@ -202,15 +203,15 @@ GameSession::update_input(pingus::input::Event const& event)
 
       if (ev.state == pingus::input::BUTTON_PRESSED)
       {
-        if (ev.name >= pingus::input::ACTION_1_BUTTON && ev.name <= pingus::input::ACTION_10_BUTTON)
+        if (ev.name >= ACTION_1_BUTTON && ev.name <= ACTION_10_BUTTON)
         {
-          button_panel->set_button(ev.name - pingus::input::ACTION_1_BUTTON);
+          button_panel->set_button(ev.name - ACTION_1_BUTTON);
         }
-        else if (ev.name == pingus::input::ACTION_DOWN_BUTTON)
+        else if (ev.name == ACTION_DOWN_BUTTON)
         {
           button_panel->next_action();
         }
-        else if (ev.name == pingus::input::ACTION_UP_BUTTON)
+        else if (ev.name == ACTION_UP_BUTTON)
         {
           button_panel->previous_action();
         }

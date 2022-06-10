@@ -23,6 +23,7 @@
 #include "engine/display/drawing_context.hpp"
 #include "engine/display/font_description.hpp"
 #include "engine/input/event.hpp"
+#include "pingus/event_name.hpp"
 #include "pingus/fonts.hpp"
 
 namespace pingus {
@@ -108,7 +109,7 @@ FontTestScreen::update_input(pingus::input::Event const& event)
   {
     case pingus::input::BUTTON_EVENT_TYPE:
       if (event.button.state == pingus::input::BUTTON_PRESSED &&
-          event.button.name == pingus::input::PRIMARY_BUTTON)
+          event.button.name == PRIMARY_BUTTON)
         dark = !dark;
       break;
 
