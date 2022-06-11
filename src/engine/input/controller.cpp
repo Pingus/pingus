@@ -20,14 +20,6 @@
 
 namespace pingus::input {
 
-Controller* Controller::current_ = nullptr;
-
-Controller*
-Controller::current()
-{
-  return current_;
-}
-
 Controller::Controller(ControllerDescription const& desc) :
   buttons(),
   axes(),
@@ -36,8 +28,6 @@ Controller::Controller(ControllerDescription const& desc) :
   keyboards(),
   events()
 {
-  current_ = this;
-
   std::vector<int> const& button_lst = desc.get_buttons();
   for(auto i = button_lst.begin(); i != button_lst.end(); ++i)
   {

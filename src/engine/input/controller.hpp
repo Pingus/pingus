@@ -36,11 +36,6 @@ typedef std::shared_ptr<Controller> ControllerPtr;
 class Controller
 {
 private:
-  static Controller* current_;
-public:
-  static Controller* current();
-
-private:
   // State Stuff
   std::vector<std::unique_ptr<ControllerButton> > buttons;
   std::vector<std::unique_ptr<ControllerAxis> > axes;
