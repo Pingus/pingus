@@ -34,17 +34,21 @@ public:
 
   virtual void on_click() = 0;
 
-  virtual bool finished() = 0;
-  virtual bool accessible() = 0;
+  virtual bool is_finished() const = 0;
+  virtual bool is_accessible() const = 0;
   /** makes the node accessible */
   virtual void unlock() = 0;
 
   Vector2f get_pos() { return m_pos; }
   float z_index() const { return m_z_index; }
 
+  bool get_highlight() const { return m_highlight; }
+  void set_highlight(bool highlight) { m_highlight = highlight; }
+
 protected:
   Vector2f m_pos;
   float m_z_index;
+  bool m_highlight;
 
 private:
   Dot(Dot const&);

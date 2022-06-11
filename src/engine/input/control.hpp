@@ -188,14 +188,24 @@ class Pointer : public Control
 {
 protected:
   geom::fpoint pos;
+  geom::frect m_limits;
 
 public:
   Pointer(Control* parent_) :
     Control(parent_),
-    pos()
+    pos(),
+    m_limits(0, 0, 800, 600) // FIXME: this must be updated
   {}
 
   geom::fpoint get_pos() const { return pos; }
+
+  void set_limits(geom::frect const& limits) {
+    m_limits = limits;
+  }
+
+  geom::frect get_limits() const {
+    return m_limits;
+  }
 
   void set_pos(geom::fpoint const& new_pos) {
     if (pos != new_pos)

@@ -37,8 +37,8 @@ public:
   void update(float delta) override;
   void on_click() override;
 
-  bool finished() override { return true; }
-  bool accessible() override { return true; }
+  bool is_finished() const override { return true; }
+  bool is_accessible() const override { return true; }
   void unlock() override {}
 
 private:

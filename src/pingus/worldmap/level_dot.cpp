@@ -47,35 +47,23 @@ LevelDot::LevelDot(ReaderMapping const& reader) :
 void
 LevelDot::draw(DrawingContext& gc)
 {
-  bool const highlight = [&]{
-    Vector2i const mpos
-      = gc.screen_to_world(Vector2i(pingus::input::Controller::current()->get_pointer(STANDARD_POINTER)->get_pos()));
-
-    float const x = static_cast<float>(mpos.x()) - m_pos.x();
-    float const y = static_cast<float>(mpos.y()) - m_pos.y();
-
-    return std::sqrt(x*x + y*y) < 30.0f;
-  }();
-
-  Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
+  Savegame* const savegame = SavegameManager::instance()->get(plf.get_resname());
   if (savegame && (savegame->get_status() == Savegame::FINISHED ||
                    savegame->get_status() == Savegame::ACCESSIBLE))
   {
-    if (savegame->get_status() == Savegame::FINISHED)
-      if (highlight)
-      {
+    if (savegame->get_status() == Savegame::FINISHED) {
+      if (m_highlight) {
         gc.draw(highlight_green_dot_sur, m_pos, m_z_index);
-      }
-      else
-      {
+      } else {
         gc.draw(green_dot_sur, m_pos, m_z_index);
       }
-    else
-      if (highlight) {
+    } else {
+      if (m_highlight) {
         gc.draw(highlight_red_dot_sur, m_pos, m_z_index);
       } else {
         gc.draw(red_dot_sur, m_pos, m_z_index);
       }
+    }
   }
   else
   {
@@ -84,35 +72,9 @@ LevelDot::draw(DrawingContext& gc)
 }
 
 void
-LevelDot::update(float delta)
-{
-}
-
-void
-LevelDot::on_click()
-{
-  //log_info("Starting level: " << levelname);
-  ScreenManager::instance()->push_screen(std::make_shared<StartScreen>(plf));
-}
-
-bool
-LevelDot::finished()
-{
-  Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
-  return savegame && savegame->get_status() == Savegame::FINISHED;
-}
-
-bool
-LevelDot::accessible()
-{
-  Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
-  return savegame && savegame->get_status() != Savegame::NONE;
-}
-
-void
 LevelDot::draw_hover(DrawingContext& gc)
 {
-  if (accessible())
+  if (is_accessible())
   {
     gc.print_center(pingus::fonts::pingus_small,
                     Vector2i(static_cast<int>(m_pos.x()),
@@ -139,9 +101,34 @@ LevelDot::draw_hover(DrawingContext& gc)
 }
 
 void
-LevelDot::unlock()
+LevelDot::update(float delta)
+{
+}
+
+void
+LevelDot::on_click()
+{
+  ScreenManager::instance()->push_screen(std::make_shared<StartScreen>(plf));
+}
+
+bool
+LevelDot::is_finished() const
 {
   Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
+  return savegame && savegame->get_status() == Savegame::FINISHED;
+}
+
+bool
+LevelDot::is_accessible() const
+{
+  Savegame* const savegame = SavegameManager::instance()->get(plf.get_resname());
+  return savegame && savegame->get_status() != Savegame::NONE;
+}
+
+void
+LevelDot::unlock()
+{
+  Savegame* const savegame = SavegameManager::instance()->get(plf.get_resname());
   if (savegame == nullptr || savegame->get_status() == Savegame::NONE)
   {
     Savegame savegame_(plf.get_resname(),
@@ -149,9 +136,6 @@ LevelDot::unlock()
                        0,
                        0);
     SavegameManager::instance()->store(savegame_);
-  }
-  else
-  {
   }
 }
 

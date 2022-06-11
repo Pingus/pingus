@@ -16,8 +16,6 @@
 
 #include "engine/input/sdl_driver.hpp"
 
-#include "engine/display/display.hpp"
-
 namespace pingus::input {
 
 SDLDriver::SDLDriver() :

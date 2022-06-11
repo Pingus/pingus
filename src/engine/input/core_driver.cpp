@@ -16,7 +16,6 @@
 
 #include "engine/input/core_driver.hpp"
 
-#include "engine/display/display.hpp"
 #include "engine/input/manager.hpp"
 
 namespace pingus::input {
@@ -70,9 +69,7 @@ public:
     new_pos += geom::foffset(x_axis->get_pos() * c_speed * delta,
                              y_axis->get_pos() * c_speed * delta);
 
-    // FIXME: shouldn'tx depend on Display
-    new_pos = geom::fpoint(std::clamp(new_pos.x(), 0.0f, static_cast<float>(Display::get_width())),
-                           std::clamp(new_pos.y(), 0.0f, static_cast<float>(Display::get_height())));
+    new_pos = geom::clamp(new_pos, m_limits);
 
     if (new_pos != pos)
     {

@@ -72,6 +72,7 @@ public:
   int get_height() const;
 
   PingusWorldmap get_worldmap() const { return worldmap; }
+
 private:
   /** Unlock nodes according to the finished ones */
   void update_locked_nodes();
@@ -95,9 +96,6 @@ private:
 
   /** A collection of drawable things */
   std::vector<std::unique_ptr<Drawable> > drawables;
-
-  int mouse_x;
-  int mouse_y;
 
 private:
   Worldmap(Worldmap const&);

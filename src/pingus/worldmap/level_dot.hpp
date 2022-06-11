@@ -34,8 +34,8 @@ public:
   void update(float delta) override;
    void on_click() override;
 
-  bool finished() override;
-  bool accessible() override;
+  bool is_finished() const override;
+  bool is_accessible() const override;
   void unlock() override;
 
   PingusLevel get_plf () const { return plf; }
