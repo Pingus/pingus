@@ -21,7 +21,6 @@
 #include <logmich/log.hpp>
 
 #include "util/reader.hpp"
-#include "util/raise_exception.hpp"
 
 namespace pingus {
 
@@ -63,7 +62,7 @@ FontDescription::FontDescription(Pathname const& pathname_) :
 
   if (doc.get_root().get_name() != "pingus-font")
   {
-    raise_exception(std::runtime_error, pathname << ": not a pingus-font file");
+    throw std::runtime_error(fmt::format("{}: not a pingus-font file", pathname));
   }
   else
   {
