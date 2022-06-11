@@ -27,7 +27,6 @@
 #include "engine/display/display.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/surface.hpp"
-#include "pingus/gettext.h"
 #include "util/system.hpp"
 
 namespace pingus {

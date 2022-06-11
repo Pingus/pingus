@@ -21,6 +21,7 @@
 
 #include <prio/fwd.hpp>
 
+#include "engine/display/framebuffer_type.hpp"
 #include "math/size.hpp"
 #include "util/pathname.hpp"
 
@@ -66,16 +67,6 @@ public:
     }
   }
 };
-
-enum FramebufferType
-{
- SDL_FRAMEBUFFER,
- OPENGL_FRAMEBUFFER,
- NULL_FRAMEBUFFER
-};
-
-std::string framebuffer_type_to_string(FramebufferType type);
-FramebufferType framebuffer_type_from_string(std::string const& str);
 
 struct Options
 {

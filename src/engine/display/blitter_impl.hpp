@@ -19,7 +19,7 @@
 
 #include <logmich/log.hpp>
 
-#include "blitter.hpp"
+#include "engine/display/blitter.hpp"
 #include "engine/display/surface.hpp"
 
 namespace pingus {

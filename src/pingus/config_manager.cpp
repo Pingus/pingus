@@ -304,7 +304,7 @@ ConfigManager::apply(Options const& opts)
   if (m_opts.framebuffer_type.is_set())
     set_renderer(m_opts.framebuffer_type.get());
   else
-    set_renderer(SDL_FRAMEBUFFER);
+    set_renderer(FramebufferType::SDL);
 
   if (opts.master_volume.is_set())
     set_master_volume(opts.master_volume.get());

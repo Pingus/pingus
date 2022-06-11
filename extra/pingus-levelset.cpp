@@ -89,7 +89,7 @@ int main(int argc, char** argv)
     StatManager stat_manager("savegames/variables.scm");
     Resource::init();
 
-    Display::create_window(NULL_FRAMEBUFFER, Size(), false, false);
+    Display::create_window(FramebufferType::NULL_FRAMEBUFFER, Size(), false, false);
 
     for(auto it = files.begin(); it != files.end(); ++it)
     {

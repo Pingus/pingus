@@ -137,8 +137,8 @@ OptionMenu::OptionMenu() :
 
   switch(config_manager.get_renderer())
   {
-    case SDL_FRAMEBUFFER:    renderer_box->set_current_choice(0); break;
-    case OPENGL_FRAMEBUFFER: renderer_box->set_current_choice(1); break;
+    case FramebufferType::SDL: renderer_box->set_current_choice(0); break;
+    case FramebufferType::OPENGL: renderer_box->set_current_choice(1); break;
     default: assert(false && "unknown renderer type");
   }
 
@@ -478,7 +478,7 @@ OptionMenu::on_resolution_change(std::string const& str)
 void
 OptionMenu::on_renderer_change(std::string const& str)
 {
-  config_manager.set_renderer(framebuffer_type_from_string(str));
+  config_manager.set_renderer(FramebufferType_from_string(str));
 }
 
 } // namespace pingus

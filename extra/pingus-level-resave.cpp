@@ -87,7 +87,7 @@ int main(int argc, char** argv)
   g_path_manager.set_path("data");
   Resource::init();
 
-  Display::create_window(NULL_FRAMEBUFFER, Size(640, 480), false, false);
+  Display::create_window(FramebufferType::NULL_FRAMEBUFFER, Size(640, 480), false, false);
 
   pingus::fonts::init();
   pingus::sound::PingusSound::init();

@@ -263,7 +263,7 @@ PingusMain::parse_args(int argc, char** argv)
         }
         else
         {
-          cmd_options.framebuffer_type.set(framebuffer_type_from_string(opt.argument));
+          cmd_options.framebuffer_type.set(FramebufferType_from_string(opt.argument));
 
           //FIXME:
           //std::cout << "Unknown renderer: " << opt.argument
@@ -649,7 +649,7 @@ PingusMain::run(int argc, char** argv)
     print_greeting_message();
 
     // init the display
-    FramebufferType fbtype = SDL_FRAMEBUFFER;
+    FramebufferType fbtype = FramebufferType::SDL;
     if (cmd_options.framebuffer_type.is_set())
     {
       fbtype = cmd_options.framebuffer_type.get();
@@ -681,15 +681,15 @@ PingusMain::run(int argc, char** argv)
     }
     catch(std::exception const& err)
     {
-      if (fbtype == SDL_FRAMEBUFFER)
+      if (fbtype == FramebufferType::SDL)
       {
         throw;
       }
       else
       {
         log_error("couldn't create window, falling back to SDL: {}", err.what());
-        system.create_window(SDL_FRAMEBUFFER, screen_size, fullscreen, resizable);
-        config_manager.set_renderer(SDL_FRAMEBUFFER);
+        system.create_window(FramebufferType::SDL, screen_size, fullscreen, resizable);
+        config_manager.set_renderer(FramebufferType::SDL);
       }
     }
 

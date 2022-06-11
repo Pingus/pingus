@@ -29,46 +29,6 @@
 
 namespace pingus {
 
-std::string framebuffer_type_to_string(FramebufferType type)
-{
-  switch(type)
-  {
-    case SDL_FRAMEBUFFER:
-      return "sdl";
-
-    case NULL_FRAMEBUFFER:
-      return "null";
-
-    case OPENGL_FRAMEBUFFER:
-      return "opengl";
-
-    default:
-      log_error("unknown FramebufferType: {}", static_cast<int>(type));
-      return "sdl";
-  }
-}
-
-FramebufferType framebuffer_type_from_string(std::string const& str)
-{
-  if (str == "sdl")
-  {
-    return SDL_FRAMEBUFFER;
-  }
-  else if (str == "null")
-  {
-    return NULL_FRAMEBUFFER;
-  }
-  else if (str == "opengl")
-  {
-    return OPENGL_FRAMEBUFFER;
-  }
-  else
-  {
-    log_error("unknown FramebufferType '{}', default to 'sdl'", str);
-    return SDL_FRAMEBUFFER;
-  }
-}
-
 Options
 Options::from_file(Pathname const& filename)
 {
@@ -92,9 +52,9 @@ Options::from_file_reader(ReaderMapping const& reader)
   std::string string_value;
   Size size_value;
 
-  FramebufferType fbtype_value = SDL_FRAMEBUFFER;
+  FramebufferType fbtype_value = FramebufferType::SDL;
 
-  if (reader.read("renderer", fbtype_value, framebuffer_type_from_string))
+  if (reader.read("renderer", fbtype_value, FramebufferType_from_string))
   {
     opts.framebuffer_type.set(fbtype_value);
   }
@@ -181,7 +141,7 @@ Options::save(Pathname const& filename) const
   writer.begin_object("pingus-config");
 
   if (framebuffer_type.is_set())
-    writer.write("renderer", framebuffer_type.get(), framebuffer_type_to_string);
+    writer.write("renderer", framebuffer_type.get(), FramebufferType_to_string);
 
   if (master_volume.is_set())
     writer.write("master-volume", master_volume.get());

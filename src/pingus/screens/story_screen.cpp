@@ -27,6 +27,7 @@
 #include "pingus/gettext.h"
 #include "pingus/globals.hpp"
 #include "pingus/screens/credits.hpp"
+#include "util/pathname.hpp"
 
 namespace pingus {
 

@@ -25,7 +25,6 @@
 
 #include "engine/display/sdl_framebuffer.hpp"
 #include "engine/screen/screen_manager.hpp"
-#include "pingus/globals.hpp"
 #include "engine/display/opengl/opengl_framebuffer.hpp"
 #include "engine/display/null_framebuffer.hpp"
 
@@ -93,21 +92,21 @@ Display::create_window(FramebufferType framebuffer_type, Size const& size, bool 
 {
   assert(!s_framebuffer.get());
 
-  log_info("{} {} {}", framebuffer_type_to_string(framebuffer_type), size, (fullscreen?"fullscreen":"window"));
+  log_info("{} {} {}", FramebufferType_to_string(framebuffer_type), size, (fullscreen?"fullscreen":"window"));
 
   switch (framebuffer_type)
   {
-    case OPENGL_FRAMEBUFFER:
+    case FramebufferType::OPENGL:
       s_framebuffer = std::unique_ptr<Framebuffer>(new OpenGLFramebuffer());
       s_framebuffer->set_video_mode(size, fullscreen, resizable);
       break;
 
-    case NULL_FRAMEBUFFER:
+    case FramebufferType::NULL_FRAMEBUFFER:
       s_framebuffer = std::unique_ptr<Framebuffer>(new NullFramebuffer());
       s_framebuffer->set_video_mode(size, fullscreen, resizable);
       break;
 
-    case SDL_FRAMEBUFFER:
+    case FramebufferType::SDL:
       s_framebuffer = std::unique_ptr<Framebuffer>(new SDLFramebuffer());
       s_framebuffer->set_video_mode(size, fullscreen, resizable);
       break;

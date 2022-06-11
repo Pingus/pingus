@@ -21,9 +21,9 @@
 #include <vector>
 #include <SDL.h>
 
+#include "engine/display/framebuffer_type.hpp"
 #include "math/rect.hpp"
 #include "math/size.hpp"
-#include "pingus/options.hpp"
 
 namespace pingus {
 
