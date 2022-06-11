@@ -40,17 +40,6 @@ class WorldmapComponent;
     accessible in the Worldmap Screen */
 class WorldmapScreen : public GUIScreen
 {
-private:
-  bool is_init;
-  bool exit_worldmap;
-
-  std::unique_ptr<Worldmap> worldmap;
-  std::unique_ptr<Worldmap> new_worldmap;
-
-  pingus::gui::SurfaceButton* close_button;
-  pingus::gui::SurfaceButton* credits_button;
-  WorldmapComponent* m_worldmap_component;
-
 public:
   WorldmapScreen ();
   ~WorldmapScreen () override;
@@ -84,9 +73,21 @@ public:
   void show_end_story();
 
   void resize(Size const& size) override;
+
 private:
   /** Startup Hook of the Screen */
   void on_startup () override;
+
+private:
+  bool is_init;
+  bool exit_worldmap;
+
+  std::unique_ptr<Worldmap> worldmap;
+  std::unique_ptr<Worldmap> new_worldmap;
+
+  pingus::gui::SurfaceButton* close_button;
+  pingus::gui::SurfaceButton* credits_button;
+  WorldmapComponent* m_worldmap_component;
 
   WorldmapScreen (WorldmapScreen const&);
   WorldmapScreen& operator= (WorldmapScreen const&);

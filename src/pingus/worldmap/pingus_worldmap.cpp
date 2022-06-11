@@ -28,6 +28,26 @@ namespace pingus {
 class PingusWorldmapImpl
 {
 public:
+  PingusWorldmapImpl() :
+    doc(),
+    filename(),
+    name(),
+    short_name(),
+    description(),
+    music(),
+    author(),
+    email(),
+    width(),
+    height(),
+    default_node(),
+    final_node(),
+    intro_story(),
+    end_story(),
+    path_graph(),
+    objects()
+  {}
+
+public:
   ReaderDocument doc;
   std::string filename;
 
@@ -48,25 +68,6 @@ public:
   ReaderMapping path_graph;
 
   ReaderCollection objects;
-
-  PingusWorldmapImpl() :
-    doc(),
-    filename(),
-    name(),
-    short_name(),
-    description(),
-    music(),
-    author(),
-    email(),
-    width(),
-    height(),
-    default_node(),
-    final_node(),
-    intro_story(),
-    end_story(),
-    path_graph(),
-    objects()
-  {}
 };
 
 PingusWorldmap::PingusWorldmap() :

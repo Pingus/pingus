@@ -28,13 +28,6 @@ namespace pingus::worldmap {
     sprite, interface only */
 class Drawable
 {
-protected:
-  /** The symbolic id of the drawable */
-  std::string name;
-
-  /** True if object should be visible, false otherwise */
-  bool visible;
-
 public:
   Drawable() :
     name(),
@@ -57,11 +50,18 @@ public:
 
   virtual ~Drawable() {}
 
+  virtual void draw(DrawingContext& gc) =0;
+  virtual void update(float delta) =0;
+
   bool is_visible() const { return visible; }
   std::string get_name() const { return name; }
 
-  virtual void draw(DrawingContext& gc) =0;
-  virtual void update(float delta) =0;
+protected:
+  /** The symbolic id of the drawable */
+  std::string name;
+
+  /** True if object should be visible, false otherwise */
+  bool visible;
 
 private:
   Drawable (Drawable const&);

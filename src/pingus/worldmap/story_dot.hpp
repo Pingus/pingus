@@ -28,14 +28,6 @@ namespace pingus::worldmap {
 
 class StoryDot : public Dot
 {
-private:
-  Sprite m_story_dot_highlight;
-  Sprite m_story_dot;
-
-  std::string m_name;
-  std::string m_story;
-  bool m_credits;
-
 public:
   StoryDot(prio::ReaderMapping const& reader);
 
@@ -48,6 +40,14 @@ public:
   bool finished() override { return true; }
   bool accessible() override { return true; }
   void unlock() override {}
+
+private:
+  Sprite m_story_dot_highlight;
+  Sprite m_story_dot;
+
+  std::string m_name;
+  std::string m_story;
+  bool m_credits;
 
 private:
   StoryDot(StoryDot const&);

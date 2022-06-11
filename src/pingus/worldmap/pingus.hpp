@@ -27,6 +27,47 @@ namespace pingus::worldmap {
     on the worldmap */
 class Pingus : public Drawable
 {
+public:
+  Pingus (PathGraph* arg_path);
+  ~Pingus () override;
+
+  void draw (DrawingContext& gc) override;
+  void update (float delta) override;
+
+  /** @return true if the node is reachable, false otherwise */
+  bool walk_to_node (NodeId target);
+
+  bool is_walking() const;
+
+  /** @return the node on which the pingu is currently standing, 0 is
+      returned if the pingu is currently between two nodes */
+  NodeId get_node () const {
+    return current_node;
+  }
+
+  /** Set the pingu to the position of a given node */
+  void set_position (NodeId node);
+
+  /** return the current position in world coordinates */
+  Vector2f get_pos() const { return pos; }
+  float z_index() const { return m_z_index; }
+
+private:
+  /** Calculate the direction in which the pingu is heading, return
+      value is in degrees => [0,360[, 0=north, 180=south, 270=east, 90=west */
+  float get_direction() const;
+
+  /** calculate the position of the pingu */
+  Vector2f calc_pos ();
+
+  void  update_walk (float delta);
+
+  void update_edge_path();
+
+  float calc_edge_path_length();
+
+  Vector2f interpolate(Vector2f const& a, Vector2f const& b, float perc);
+
 private:
   PathGraph* path;
   StateSprite sprite;
@@ -76,46 +117,6 @@ private:
   Vector2f last_pos;
 
 public:
-  Pingus (PathGraph* arg_path);
-  ~Pingus () override;
-
-  void draw (DrawingContext& gc) override;
-  void update (float delta) override;
-
-  /** @return true if the node is reachable, false otherwise */
-  bool walk_to_node (NodeId target);
-
-  bool is_walking() const;
-
-  /** @return the node on which the pingu is currently standing, 0 is
-      returned if the pingu is currently between two nodes */
-  NodeId get_node () const {
-    return current_node;
-  }
-
-  /** Set the pingu to the position of a given node */
-  void set_position (NodeId node);
-
-  /** return the current position in world coordinates */
-  Vector2f get_pos() const { return pos; }
-  float z_index() const { return m_z_index; }
-
-private:
-  /** Calculate the direction in which the pingu is heading, return
-      value is in degrees => [0,360[, 0=north, 180=south, 270=east, 90=west */
-  float get_direction() const;
-
-  /** calculate the position of the pingu */
-  Vector2f calc_pos ();
-
-  void  update_walk (float delta);
-
-  void update_edge_path();
-
-  float calc_edge_path_length();
-
-  Vector2f interpolate(Vector2f const& a, Vector2f const& b, float perc);
-
   Pingus (Pingus const&);
   Pingus& operator= (Pingus const&);
 };

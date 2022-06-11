@@ -27,7 +27,6 @@ class Dot;
 
 class DotFactory
 {
-private:
 public:
   /** Create a Dot from a given piece of XML */
   static std::unique_ptr<Dot> create(ReaderObject const& reader);

@@ -26,28 +26,29 @@ namespace pingus::worldmap {
     LevelDots TubeDots and other availabe. */
 class Dot : public Drawable
 {
-protected:
-  Vector2f pos;
-  float m_z_index;
-
 public:
   Dot(ReaderMapping const& reader);
 
   /** Draw stuff that should be displayed if the mouse is over the dot */
-  virtual void draw_hover(DrawingContext& gc) =0;
+  virtual void draw_hover(DrawingContext& gc) = 0;
 
-  Vector2f get_pos() { return pos; }
+  virtual void on_click() = 0;
+
+  virtual bool finished() = 0;
+  virtual bool accessible() = 0;
+  /** makes the node accessible */
+  virtual void unlock() = 0;
+
+  Vector2f get_pos() { return m_pos; }
   float z_index() const { return m_z_index; }
 
-  virtual void on_click() =0;
+protected:
+  Vector2f m_pos;
+  float m_z_index;
 
-  virtual bool finished() =0;
-  virtual bool accessible() =0;
-  /** makes the node accessible */
-  virtual void unlock() =0;
 private:
-  Dot (Dot const&);
-  Dot& operator= (Dot const&);
+  Dot(Dot const&);
+  Dot& operator=(Dot const&);
 };
 
 } // namespace pingus::worldmap

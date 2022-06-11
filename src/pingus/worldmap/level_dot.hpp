@@ -25,6 +25,21 @@ namespace pingus::worldmap {
 
 class LevelDot : public Dot
 {
+public:
+  LevelDot(ReaderMapping const& reader);
+
+  void draw(DrawingContext& gc) override;
+  void draw_hover(DrawingContext& gc) override;
+
+  void update(float delta) override;
+   void on_click() override;
+
+  bool finished() override;
+  bool accessible() override;
+  void unlock() override;
+
+  PingusLevel get_plf () const { return plf; }
+
 private:
   Sprite green_dot_sur;
   Sprite red_dot_sur;
@@ -34,23 +49,9 @@ private:
 
   PingusLevel plf;
 
-public:
-  LevelDot(ReaderMapping const& reader);
-
-  void draw(DrawingContext& gc) override;
-  void draw_hover(DrawingContext& gc) override;
-
-  void update(float delta) override;
-  PingusLevel get_plf () const { return plf; }
-  void on_click() override;
-
-  bool finished() override;
-  bool accessible() override;
-  void unlock() override;
-
 private:
-  LevelDot (LevelDot const&);
-  LevelDot& operator= (LevelDot const&);
+  LevelDot(LevelDot const&);
+  LevelDot& operator=(LevelDot const&);
 };
 
 } // namespace pingus::worldmap

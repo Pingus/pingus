@@ -35,10 +35,6 @@ template<class NodeType>
 class Node
 {
 public:
-  NodeType data;
-  std::vector<EdgeId> next;
-
-public:
   Node (NodeType const& d) :
     data(d),
     next()
@@ -64,32 +60,36 @@ public:
     data = d;
     return *this;
   }
+
+public:
+  NodeType data;
+  std::vector<EdgeId> next;
 };
 
 template<class EdgeType>
 class Edge
 {
 public:
+  Edge (EdgeType const& arg_data, NodeId const& s, NodeId const& d, float c) :
+    source(s),
+    destination(d),
+    cost(c),
+    data(arg_data)
+  {
+  }
+
+public:
   NodeId source;
   NodeId destination;
   float cost;
 
   EdgeType data;
-
-  Edge (EdgeType const& arg_data, NodeId const& s, NodeId const& d, float c)
-    : source (s), destination (d), cost (c), data(arg_data)
-  {
-  }
 };
 
 template<class NodeType,
          class EdgeType>
 class Graph
 {
-private:
-  std::vector<Node<NodeType> > nodes;
-  std::vector<Edge<EdgeType> > edges;
-
 public:
   Graph() :
     nodes(),
@@ -194,6 +194,10 @@ public:
   int max_node_handler_value () {
     return static_cast<int>(nodes.size());
   }
+
+private:
+  std::vector<Node<NodeType> > nodes;
+  std::vector<Edge<EdgeType> > edges;
 };
 
 } // namespace pingus::worldmap

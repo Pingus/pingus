@@ -47,40 +47,39 @@ LevelDot::LevelDot(ReaderMapping const& reader) :
 void
 LevelDot::draw(DrawingContext& gc)
 {
-  Vector2i mpos
-    = gc.screen_to_world(Vector2i(pingus::input::Controller::current()->get_pointer(STANDARD_POINTER)->get_pos()));
+  bool const highlight = [&]{
+    Vector2i const mpos
+      = gc.screen_to_world(Vector2i(pingus::input::Controller::current()->get_pointer(STANDARD_POINTER)->get_pos()));
 
-  float x = static_cast<float>(mpos.x()) - pos.x();
-  float y = static_cast<float>(mpos.y()) - pos.y();
+    float const x = static_cast<float>(mpos.x()) - m_pos.x();
+    float const y = static_cast<float>(mpos.y()) - m_pos.y();
 
-  bool highlight = false;
-
-  if (std::sqrt(x*x + y*y) < 30.0f)
-    highlight = true;
+    return std::sqrt(x*x + y*y) < 30.0f;
+  }();
 
   Savegame* savegame = SavegameManager::instance()->get(plf.get_resname());
-  if (savegame
-      && (savegame->get_status() == Savegame::FINISHED
-          || savegame->get_status() == Savegame::ACCESSIBLE))
+  if (savegame && (savegame->get_status() == Savegame::FINISHED ||
+                   savegame->get_status() == Savegame::ACCESSIBLE))
   {
     if (savegame->get_status() == Savegame::FINISHED)
       if (highlight)
       {
-        gc.draw(highlight_green_dot_sur, pos, m_z_index);
+        gc.draw(highlight_green_dot_sur, m_pos, m_z_index);
       }
       else
       {
-        gc.draw(green_dot_sur, pos, m_z_index);
+        gc.draw(green_dot_sur, m_pos, m_z_index);
       }
     else
-      if (highlight)
-        gc.draw(highlight_red_dot_sur, pos, m_z_index);
-      else
-        gc.draw(red_dot_sur, pos, m_z_index);
+      if (highlight) {
+        gc.draw(highlight_red_dot_sur, m_pos, m_z_index);
+      } else {
+        gc.draw(red_dot_sur, m_pos, m_z_index);
+      }
   }
   else
   {
-    gc.draw(inaccessible_dot_sur, pos, m_z_index);
+    gc.draw(inaccessible_dot_sur, m_pos, m_z_index);
   }
 }
 
@@ -116,16 +115,16 @@ LevelDot::draw_hover(DrawingContext& gc)
   if (accessible())
   {
     gc.print_center(pingus::fonts::pingus_small,
-                    Vector2i(static_cast<int>(pos.x()),
-                             static_cast<int>(pos.y()) - 44),
+                    Vector2i(static_cast<int>(m_pos.x()),
+                             static_cast<int>(m_pos.y()) - 44),
                     _(get_plf().get_levelname()),
                     10000);
   }
   else
   {
     gc.print_center(pingus::fonts::pingus_small,
-                    Vector2i(static_cast<int>(pos.x()),
-                             static_cast<int>(pos.y()) - 44),
+                    Vector2i(static_cast<int>(m_pos.x()),
+                             static_cast<int>(m_pos.y()) - 44),
                     _("???"),
                     10000);
   }
@@ -133,7 +132,7 @@ LevelDot::draw_hover(DrawingContext& gc)
   if (globals::developer_mode)
   {
     gc.print_center(pingus::fonts::pingus_small,
-                    Vector2i(static_cast<int>(pos.x()), static_cast<int>(pos.y()) - 70),
+                    Vector2i(static_cast<int>(m_pos.x()), static_cast<int>(m_pos.y()) - 70),
                     get_plf().get_resname(),
                     10000);
   }

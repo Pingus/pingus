@@ -28,19 +28,12 @@ namespace pingus::worldmap {
     the length of the path and a few other things */
 class Path
 {
-private:
-  typedef std::vector<Vector2f> Vec;
-  Vec vec;
-
-  bool  path_length_valid;
-  float path_length;
-
-private:
-  float calc_length();
 public:
+  typedef std::vector<Vector2f> Vec;
   typedef Vec::iterator iterator;
   typedef Vec::reverse_iterator reverse_iterator;
 
+public:
   Path();
 
   /** Return the number of nodes */
@@ -82,6 +75,15 @@ public:
   }
 
   void reverse();
+
+private:
+  float calc_length();
+
+private:
+  Vec vec;
+
+  bool  path_length_valid;
+  float path_length;
 };
 
 } // namespace pingus::worldmap

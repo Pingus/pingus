@@ -21,10 +21,10 @@ namespace pingus::worldmap {
 
 Dot::Dot(ReaderMapping const& reader) :
   Drawable(),
-  pos(),
+  m_pos(),
   m_z_index(0.0f)
 {
-  InVector2fZ in_vec{pos, m_z_index};
+  InVector2fZ in_vec{m_pos, m_z_index};
   reader.read("position", in_vec);
   reader.read("name",     name);
 

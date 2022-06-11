@@ -29,6 +29,7 @@ private:
   public:
   /** Create a new drawable */
   static std::unique_ptr<Drawable> create(ReaderObject const& reader);
+
 private:
   DrawableFactory (DrawableFactory const&);
   DrawableFactory& operator= (DrawableFactory const&);

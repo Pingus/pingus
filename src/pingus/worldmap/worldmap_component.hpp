@@ -30,11 +30,6 @@ class Worldmap;
 
 class WorldmapComponent : public pingus::gui::Component
 {
-private:
-  std::unique_ptr<SceneContext> scene_context;
-  WorldmapScreen* worldmap_screen;
-  bool m_fast_forward;
-
 public:
   WorldmapComponent(WorldmapScreen* worldmap_screen);
   ~WorldmapComponent() override;
@@ -50,6 +45,11 @@ public:
   void update (float delta) override;
 
   bool is_at (int, int) override { return true; }
+
+private:
+  std::unique_ptr<SceneContext> scene_context;
+  WorldmapScreen* worldmap_screen;
+  bool m_fast_forward;
 
 private:
   WorldmapComponent (WorldmapComponent const&);

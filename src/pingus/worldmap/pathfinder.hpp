@@ -25,13 +25,13 @@ namespace pingus::worldmap {
 
 struct PathfinderResult
 {
-  std::vector<NodeId> path;
-  float cost;
-
   PathfinderResult() :
     path(),
     cost()
   {}
+
+  std::vector<NodeId> path;
+  float cost;
 };
 
 template<class T, class C>

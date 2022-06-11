@@ -25,6 +25,12 @@ namespace pingus::worldmap {
 
 class SpriteDrawable : public Drawable
 {
+public:
+  SpriteDrawable(ReaderMapping const& reader);
+
+  void update(float delta) override;
+  void draw(DrawingContext&) override;
+
 private:
   Sprite surface;
   Vector2f  pos;
@@ -33,12 +39,6 @@ private:
       covered by it, so that the Pingu can travel into caves and other
       things, while the roof will disapear */
   bool       auto_uncover;
-
-public:
-  SpriteDrawable(ReaderMapping const& reader);
-
-  void update(float delta) override;
-  void draw(DrawingContext&) override;
 
 private:
   SpriteDrawable (SpriteDrawable const&);

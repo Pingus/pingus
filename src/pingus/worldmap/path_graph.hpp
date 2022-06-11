@@ -32,32 +32,11 @@ namespace pingus::worldmap {
 /** This class represents the walkable path on the Worldmap */
 class PathGraph
 {
-private:
-  Worldmap* worldmap;
-
-public:
-  // FIXME: Memory leak? Where do we free stuff data inside the graph?
-  // FIXME: shouldn't be public
-  Graph<Dot*, Path*> graph;
-
-  std::vector<Dot*> dots;
-  typedef std::vector<Pathfinder<Dot*, Path*>* > PFinderCache;
-  PFinderCache pathfinder_cache;
-private:
-
-  // FIXME: This could/should probally be moved inside the graph (or not?!)
-  /** Map to look up node names and get the coresponding id's */
-  std::map<std::string, NodeId> node_lookup;
-
-  /** Map to look up edge names and get the corresponding id's */
-  std::map<std::string, EdgeId> edge_lookup;
-
 public:
   /** @param worldmap is a pointer to the worldmap that holds this
       PathGraph, it is used so that the PathGraph can insert its
       drawables into the world */
   PathGraph(Worldmap* worldmap, ReaderMapping const& reader);
-
   ~PathGraph();
 
   /** @return a list of positions to walk to reach node \a end, by
@@ -83,6 +62,27 @@ private:
   void parse_edges(ReaderCollection const& reader);
   void init_cache();
 
+private:
+  Worldmap* worldmap;
+
+public:
+  // FIXME: Memory leak? Where do we free stuff data inside the graph?
+  // FIXME: shouldn't be public
+  Graph<Dot*, Path*> graph;
+
+  std::vector<Dot*> dots;
+  typedef std::vector<Pathfinder<Dot*, Path*>* > PFinderCache;
+  PFinderCache pathfinder_cache;
+
+private:
+  // FIXME: This could/should probally be moved inside the graph (or not?!)
+  /** Map to look up node names and get the coresponding id's */
+  std::map<std::string, NodeId> node_lookup;
+
+  /** Map to look up edge names and get the corresponding id's */
+  std::map<std::string, EdgeId> edge_lookup;
+
+public:
   PathGraph (PathGraph const&);
   PathGraph& operator= (PathGraph const&);
 };

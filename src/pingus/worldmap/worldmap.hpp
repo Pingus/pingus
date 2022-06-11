@@ -37,23 +37,9 @@ typedef int NodeId;
 class Worldmap
 {
 private:
-  PingusWorldmap worldmap;
-
-  NodeId default_node;
-  NodeId final_node;
-
-  Pingus* pingus;
-
-  GraphicContextState gc_state;
-
-  /** The graph that represents the path on the map */
-  std::unique_ptr<PathGraph> path_graph;
-
-  /** A collection of drawable things */
-  std::vector<std::unique_ptr<Drawable> > drawables;
-
-  int mouse_x;
-  int mouse_y;
+  static Worldmap* current_;
+public:
+  static Worldmap* current() { return current_; }
 
 public:
   /** Load the given*/
@@ -95,9 +81,23 @@ private:
   void set_starting_node();
 
 private:
-  static Worldmap* current_;
-public:
-  static Worldmap* current() { return current_; }
+  PingusWorldmap worldmap;
+
+  NodeId default_node;
+  NodeId final_node;
+
+  Pingus* pingus;
+
+  GraphicContextState gc_state;
+
+  /** The graph that represents the path on the map */
+  std::unique_ptr<PathGraph> path_graph;
+
+  /** A collection of drawable things */
+  std::vector<std::unique_ptr<Drawable> > drawables;
+
+  int mouse_x;
+  int mouse_y;
 
 private:
   Worldmap(Worldmap const&);

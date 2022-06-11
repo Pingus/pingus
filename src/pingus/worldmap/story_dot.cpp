@@ -45,17 +45,17 @@ StoryDot::StoryDot(ReaderMapping const& reader) :
 void
 StoryDot::draw(DrawingContext& gc)
 {
-  gc.draw (m_story_dot, pos);
+  gc.draw (m_story_dot, m_pos);
 }
 
 void
 StoryDot::draw_hover(DrawingContext& gc)
 {
-  gc.draw (m_story_dot_highlight, pos);
+  gc.draw (m_story_dot_highlight, m_pos);
 
   gc.print_center(pingus::fonts::pingus_small,
-                  Vector2i(static_cast<int>(pos.x()),
-                           static_cast<int>(pos.y()) - 44),
+                  Vector2i(static_cast<int>(m_pos.x()),
+                           static_cast<int>(m_pos.y()) - 44),
                   _(m_name),
                   10000);
 }

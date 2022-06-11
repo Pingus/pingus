@@ -26,14 +26,14 @@ namespace pingus::worldmap {
     debugging */
 class PathDrawable : public Drawable
 {
-private:
-  Path path;
-
 public:
   PathDrawable(Path const& arg_path);
 
   void draw(DrawingContext& gc) override;
   void update(float delta) override;
+
+private:
+  Path path;
 
 private:
   PathDrawable (PathDrawable const&);
