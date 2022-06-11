@@ -55,11 +55,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1654008785,
-        "narHash": "sha256-QNXk1tbkE6ROxC6NY5ld4y4L5iM7lneEe2ytZhKtVtA=",
+        "lastModified": 1654945760,
+        "narHash": "sha256-CKbHv8kLdeLE3dgdDrZ/jdmQiiT3MisQL0sUg09225k=",
         "owner": "grumbel",
         "repo": "geomcpp",
-        "rev": "d68e33814fbd32404b39621621a8d49d6be41652",
+        "rev": "d6fdc065888b737a2e4376a08073d01357ff22a4",
         "type": "github"
       },
       "original": {
