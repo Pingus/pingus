@@ -29,6 +29,7 @@
 #include "engine/input/driver_factory.hpp"
 #include "engine/input/manager.hpp"
 #include "engine/system/sdl_system.hpp"
+#include "pingus/application.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/event_name.hpp"
 #include "pingus/screens/demo_session.hpp"
@@ -519,114 +520,8 @@ PingusMain::print_greeting_message()
 void
 PingusMain::start_game ()
 {
-  pingus::input::ControllerDescription desc;
-  desc.add_axis("action-axis",  ACTION_AXIS);
-
-  desc.add_keyboard("standard-keyboard",  STANDARD_KEYBOARD);
-
-  desc.add_pointer("standard-pointer",   STANDARD_POINTER);
-  desc.add_scroller("standard-scroller", STANDARD_SCROLLER);
-
-  desc.add_button("primary-button",      PRIMARY_BUTTON);
-  desc.add_button("secondary-button",    SECONDARY_BUTTON);
-  desc.add_button("fast-forward-button", FAST_FORWARD_BUTTON);
-  desc.add_button("armageddon-button",   ARMAGEDDON_BUTTON);
-  desc.add_button("pause-button",        PAUSE_BUTTON);
-  desc.add_button("single-step-button",  SINGLE_STEP_BUTTON);
-  desc.add_button("escape-button",       ESCAPE_BUTTON);
-
-  desc.add_button("action-up-button",    ACTION_UP_BUTTON);
-  desc.add_button("action-down-button",  ACTION_DOWN_BUTTON);
-
-  desc.add_button("action-1-button",     ACTION_1_BUTTON);
-  desc.add_button("action-2-button",     ACTION_2_BUTTON);
-  desc.add_button("action-3-button",     ACTION_3_BUTTON);
-  desc.add_button("action-4-button",     ACTION_4_BUTTON);
-  desc.add_button("action-5-button",     ACTION_5_BUTTON);
-  desc.add_button("action-6-button",     ACTION_6_BUTTON);
-  desc.add_button("action-7-button",     ACTION_7_BUTTON);
-  desc.add_button("action-8-button",     ACTION_8_BUTTON);
-  desc.add_button("action-9-button",     ACTION_9_BUTTON);
-  desc.add_button("action-10-button",    ACTION_10_BUTTON);
-
-  pingus::input::SDLDriverFactory driver_factory;
-  pingus::input::Manager input_manager(driver_factory, desc);
-  pingus::input::ControllerPtr input_controller;
-
-  if (!cmd_options.controller.is_set())
-  {
-    input_controller = input_manager.create_controller(Pathname("controller/default.scm",
-                                                                Pathname::DATA_PATH).get_sys_path());
-  }
-  else
-  {
-    input_controller = input_manager.create_controller(Pathname(cmd_options.controller.get(),
-                                                                Pathname::SYSTEM_PATH).get_sys_path());
-  }
-
-  ScreenManager screen_manager(input_manager, input_controller);
-
-  if (cmd_options.editor.is_set() && cmd_options.editor.get())
-  { // Editor
-    std::shared_ptr<pingus::editor::EditorScreen> editor = std::make_shared<pingus::editor::EditorScreen>();
-    // optionally load a map in the editor if it was given
-    if (cmd_options.rest.is_set())
-      editor->load(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH));
-
-    screen_manager.push_screen(editor);
-  }
-  else if (cmd_options.rest.is_set())
-  { // just start the map that was passed on the command line
-    if (cmd_options.rest.get().ends_with(".pingus-demo"))
-    { // Demo file
-      screen_manager.push_screen
-        (std::make_shared<DemoSession>(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH)));
-    }
-    else if (cmd_options.rest.get().ends_with(".font"))
-    {
-      Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-      screen_manager.push_screen(std::make_shared<FontTestScreen>(filename));
-    }
-    else if (cmd_options.rest.get().ends_with(".credits"))
-    {
-      Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-      screen_manager.push_screen(std::make_shared<Credits>(filename));
-    }
-    else if (cmd_options.rest.get().ends_with(".worldmap"))
-    {
-      Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
-
-      std::shared_ptr<pingus::worldmap::WorldmapScreen> worldmap_screen = std::make_shared<pingus::worldmap::WorldmapScreen>();
-      worldmap_screen->load(filename);
-      ScreenManager::instance()->push_screen(worldmap_screen);
-    }
-    else if (cmd_options.rest.get().ends_with(".story"))
-    {
-      auto story_desc = ReaderDocument::from_file(cmd_options.rest.get());
-      screen_manager.push_screen(std::make_shared<StoryScreen>(story_desc.get_mapping()));
-    }
-    else if (cmd_options.rest.get().ends_with(".levelset"))
-    {
-      std::shared_ptr<LevelMenu> lvlm = std::make_shared<LevelMenu>();
-      std::unique_ptr<Levelset> levelset = Levelset::from_file(Pathname(cmd_options.rest.get(), Pathname::SYSTEM_PATH));
-      lvlm->set_levelset(levelset.release());
-      screen_manager.push_screen(lvlm);
-    }
-    else
-    { // Level file
-      screen_manager.push_screen
-        (std::make_shared<StartScreen>(PLFResMgr::load_plf_from_filename(Pathname(cmd_options.rest.get(),
-                                                                                  Pathname::SYSTEM_PATH))));
-    }
-  }
-  else // start a normal game
-  {
-    log_info("starting normal game");
-    screen_manager.push_screen(std::make_shared<PingusMenu>());
-    log_info("done: starting normal game");
-  }
-
-  screen_manager.display();
+  Application app(cmd_options);
+  app.run();
 }
 
 int

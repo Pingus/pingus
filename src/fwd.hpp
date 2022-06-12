@@ -17,12 +17,15 @@
 #ifndef HEADER_PINGUS_FWD_HPP
 #define HEADER_PINGUS_FWD_HPP
 
+#include "engine/input/fwd.hpp"
+
 namespace pingus {
 class ActionHolder;
 class ArmageddonButton;
 class BButton;
 class ButtonPanel;
 class CollisionMap;
+class CommandLineOptions;
 class DemoPlayer;
 class DrawingContext;
 class FPSCounter;
@@ -43,21 +46,13 @@ class PingusLevel;
 class Playfield;
 class SceneContext;
 class Screen;
+class ScreenManager;
 class Server;
 class SmallMap;
 class StoryScreenComponent;
 class WorldObj;
 class WorldObjAbstractFactory;
 } // namespace pingus
-
-namespace pingus::input {
-class Controller;
-class Manager;
-struct AxisEvent;
-struct ButtonEvent;
-struct Event;
-struct ScrollEvent;
-} // namespace pingus::input
 
 namespace pingus::gui {
 class GUIManager;

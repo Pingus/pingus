@@ -1,5 +1,5 @@
 //  Pingus - A free Lemmings clone
-//  Copyright (C) 1998-2021 Ingo Ruhnke <grumbel@gmail.com>
+//  Copyright (C) 1998-2022 Ingo Ruhnke <grumbel@gmail.com>
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,35 +14,34 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef HEADER_PINGUS_ENGINE_INPUT_FWD_HPP
-#define HEADER_PINGUS_ENGINE_INPUT_FWD_HPP
+#ifndef HEADER_PINGUS_PINGUS_APPLICATION_HPP
+#define HEADER_PINGUS_PINGUS_APPLICATION_HPP
 
 #include <memory>
 
-namespace pingus::input {
+#include "fwd.hpp"
 
-class Axis;
-class Button;
-class Control;
-class Controller;
-class ControllerPointer;
-class CoreDriver;
-class Driver;
-class DriverFactory;
-class Keyboard;
-class Manager;
-class Pointer;
-class SDLDriver;
-class SDLDriverFactory;
-class Scroller;
-struct AxisEvent;
-struct ButtonEvent;
-struct Event;
-struct ScrollEvent;
+namespace pingus {
 
-typedef std::shared_ptr<Controller> ControllerPtr;
+class Application
+{
+public:
+  Application(CommandLineOptions const& cmd_options);
 
-} // namespace pingus::input
+  void run();
+
+private:
+  std::unique_ptr<input::SDLDriverFactory> m_driver_factory;
+  std::unique_ptr<input::Manager> m_input_manager;
+  input::ControllerPtr m_input_controller;
+  std::unique_ptr<ScreenManager> m_screen_manager;
+
+public:
+  Application(Application const&) = delete;
+  Application& operator=(Application const&) = delete;
+};
+
+} // namespace pingus
 
 #endif
 
