@@ -62,7 +62,7 @@ ConveyorBelt::draw (SceneContext& gc)
 }
 
 void
-ConveyorBelt::on_startup ()
+ConveyorBelt::on_startup()
 {
   CollisionMask mask("worldobjs/conveyorbelt_cmap");
 
@@ -74,7 +74,7 @@ ConveyorBelt::on_startup ()
 }
 
 void
-ConveyorBelt::update ()
+ConveyorBelt::update()
 {
   left_sur.update();
   middle_sur.update();
@@ -95,7 +95,7 @@ ConveyorBelt::update ()
 }
 
 float
-ConveyorBelt::z_index () const
+ConveyorBelt::z_index() const
 {
   return m_z_index;
 }

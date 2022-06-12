@@ -43,7 +43,7 @@ public:
 
   void on_startup() override;
   void draw (SceneContext& gc) override;
-  void update () override;
+  void update() override;
 
   /// The switch and the door should stay above the pingus
   float z_index() const override { return 100; }

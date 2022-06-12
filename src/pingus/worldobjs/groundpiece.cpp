@@ -35,7 +35,7 @@ Groundpiece::Groundpiece(ReaderMapping const& reader) :
 }
 
 void
-Groundpiece::on_startup ()
+Groundpiece::on_startup()
 {
   // FIXME: using a CollisionMask is kind of unneeded here
   CollisionMask mask(desc);

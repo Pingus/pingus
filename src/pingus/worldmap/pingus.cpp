@@ -46,7 +46,7 @@ Pingus::Pingus (PathGraph* arg_path) :
   current_node = NoNode;
 }
 
-Pingus::~Pingus ()
+Pingus::~Pingus()
 {
 }
 
@@ -99,7 +99,7 @@ Pingus::update_walk (float delta)
 
   if (edge_path_position > edge_path.length()) // target reached
   {
-    if (node_path.empty ()) // final target reached
+    if (node_path.empty()) // final target reached
     {
       current_node = target_node;
       final_target_node = NoNode;
@@ -112,7 +112,7 @@ Pingus::update_walk (float delta)
 
   // Recalc pingu position on the screen
   last_pos = pos;
-  pos = calc_pos ();
+  pos = calc_pos();
 }
 
 float
@@ -214,11 +214,11 @@ Pingus::walk_to_node (NodeId target)
 }
 
 Vector2f
-Pingus::calc_pos ()
+Pingus::calc_pos()
 {
   if (current_node != NoNode) // pingu stands still
   {
-    return path->graph.resolve_node(current_node).data->get_pos ();
+    return path->graph.resolve_node(current_node).data->get_pos();
   }
   else // between two nodes
   {
@@ -238,8 +238,8 @@ Pingus::update_edge_path()
 {
   // Update source and target nodes
   source_node = target_node;
-  target_node = node_path.back ();
-  node_path.pop_back (); // remove target node from list of nodes
+  target_node = node_path.back();
+  node_path.pop_back(); // remove target node from list of nodes
 
   edge_path_position = 0.0f;
   edge_path.clear();

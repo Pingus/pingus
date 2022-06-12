@@ -30,14 +30,14 @@ PinguAction::PinguAction (Pingu* p)
 {
 }
 
-PinguAction::~PinguAction ()
+PinguAction::~PinguAction()
 {
 }
 
 // Checks if the pingu action needs to catch another pingu (needed for
 // example by the blocker)
 bool
-PinguAction::need_catch ()
+PinguAction::need_catch()
 {
   return false;
 }
@@ -59,7 +59,7 @@ PinguAction::rel_getpixel (int x, int y)
 }
 
 char
-PinguAction::get_persistent_char ()
+PinguAction::get_persistent_char()
 {
   assert(false && "This is not a persitent action!");
   return '-';
@@ -94,13 +94,13 @@ PinguAction::collision_on_walk (int x, int y)
 }
 
 std::string
-PinguAction::get_name () const
+PinguAction::get_name() const
 {
   return ActionName::to_screenname(get_type());
 }
 
 void
-PinguAction::move_with_forces ()
+PinguAction::move_with_forces()
 {
   // Apply gravity
   pingu->set_velocity(pingu->get_velocity() + glm::vec2(0.0f, 1.0f));

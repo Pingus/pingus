@@ -51,17 +51,17 @@ private:
   std::vector<RainParticle> particles;
 
 public:
-  RainParticleHolder ();
+  RainParticleHolder();
 
   void add_particle(int x, int y);
 
   void set_z_index(float z_index) override {}
-  float z_index () const override { return 1000.0f; }
+  float z_index() const override { return 1000.0f; }
   void set_pos(Vector2f const& p) override { }
   Vector2f get_pos() const override { return Vector2f(); }
 
   /// Let the particle move
-  void update () override;
+  void update() override;
 
   /// Draw the particle with the correct zoom resize
   void draw (SceneContext& gc) override;

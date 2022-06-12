@@ -61,7 +61,7 @@ public:
   virtual bool change_allowed (ActionName::Enum action) { return true; }
 
   /// The "AI" of the pingu.
-  virtual void update () = 0;
+  virtual void update() = 0;
 
   /** Draws the action */
   virtual void draw (SceneContext& gc) =0;
@@ -70,14 +70,14 @@ public:
 
   /** The name of the action, this is used in the CaputreRectangle, so
       it can contain more than just the name */
-  virtual std::string get_name () const;
+  virtual std::string get_name() const;
 
   /// The type of the action
-  virtual ActionName::Enum get_type () const =0;
+  virtual ActionName::Enum get_type() const =0;
 
   /** Return the character that is shown when a persitent action is
       activated in the CaptureRectangle. */
-  virtual char get_persistent_char ();
+  virtual char get_persistent_char();
 
   /// Catch another pingu and act on it (see blocker.hxx)
   virtual bool  need_catch();
@@ -86,12 +86,12 @@ public:
   virtual void  catch_pingu (Pingu*) { /* do nothing */}
 
   /// The time the action needs to get activated (see bomber.cxx)
-  virtual int   activation_time () { return -1; }
+  virtual int   activation_time() { return -1; }
 
   /** Return true if the pingu can be caught with the mouse and
       another action can be applied, false otherwise (exiter,
       splashed, etc.) */
-  virtual bool catchable () { return true; }
+  virtual bool catchable() { return true; }
 
   /// True if Pingu in specified position would bang its head if it were walking
   bool head_collision_on_walk (int x, int y);
@@ -100,7 +100,7 @@ public:
   bool collision_on_walk (int x, int y);
 
   /** Move Pingu according to the forces applied to it */
-  void move_with_forces ();
+  void move_with_forces();
 
 public:
   static ActionType get_activation_mode(ActionName::Enum action_name);

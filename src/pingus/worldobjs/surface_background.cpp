@@ -124,7 +124,7 @@ SurfaceBackground::SurfaceBackground(ReaderMapping const& reader) :
 }
 
 float
-SurfaceBackground::z_index () const
+SurfaceBackground::z_index() const
 {
   return m_z_index;
 }

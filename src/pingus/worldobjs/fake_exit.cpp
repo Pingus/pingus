@@ -36,7 +36,7 @@ FakeExit::FakeExit(ReaderMapping const& reader) :
 }
 
 float
-FakeExit::z_index () const
+FakeExit::z_index() const
 {
   return m_z_index;
 }
@@ -48,10 +48,10 @@ FakeExit::draw (SceneContext& gc)
 }
 
 void
-FakeExit::update ()
+FakeExit::update()
 {
   PinguHolder* holder = world->get_pingus();
-  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+  for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
     catch_pingu(*pingu);
 
   if (smashing)

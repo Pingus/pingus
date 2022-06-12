@@ -31,7 +31,7 @@ SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x
   use_surf2 = rand() % 2;
 }
 
-SmokeParticleHolder::SmokeParticleHolder ()
+SmokeParticleHolder::SmokeParticleHolder()
   : surf1("particles/smoke"),
     surf2("particles/smoke2"),
     particles()
@@ -54,7 +54,7 @@ SmokeParticleHolder::add_particle (float x, float y, float vel_x, float vel_y)
 }
 
 void
-SmokeParticleHolder::update ()
+SmokeParticleHolder::update()
 {
   // update all contained particles
   for (std::vector<SmokeParticle>::iterator it=particles.begin(); it != particles.end(); ++it)

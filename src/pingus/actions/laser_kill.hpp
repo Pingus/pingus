@@ -32,13 +32,13 @@ private:
 public:
   LaserKill (Pingu*);
 
-  ActionName::Enum get_type () const override { return ActionName::LASERKILL; }
+  ActionName::Enum get_type() const override { return ActionName::LASERKILL; }
   void init (void);
 
   void draw (SceneContext& gc) override;
-  void update () override;
+  void update() override;
 
-  bool catchable () override { return false; }
+  bool catchable() override { return false; }
 
 private:
   LaserKill (LaserKill const&);

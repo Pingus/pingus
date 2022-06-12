@@ -130,7 +130,7 @@ Worldmap::draw(DrawingContext& gc)
 void
 Worldmap::update(float delta)
 {
-  for (auto i = drawables.begin (); i != drawables.end (); ++i)
+  for (auto i = drawables.begin(); i != drawables.end(); ++i)
   {
     (*i)->update (delta);
   }

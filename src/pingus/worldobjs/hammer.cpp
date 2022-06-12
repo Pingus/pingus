@@ -58,7 +58,7 @@ Hammer::update()
     {
       PinguHolder* holder = world->get_pingus();
 
-      for (PinguIter pingu_it = holder->begin (); pingu_it != holder->end (); ++pingu_it)
+      for (PinguIter pingu_it = holder->begin(); pingu_it != holder->end(); ++pingu_it)
       {
         Pingu* pingu = *pingu_it;
         if (pingu->get_action() != ActionName::SPLASHED)

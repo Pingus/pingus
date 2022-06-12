@@ -34,10 +34,10 @@ private:
 public:
   Waiter (Pingu*);
 
-  ActionName::Enum get_type () const override { return ActionName::WAITER; }
+  ActionName::Enum get_type() const override { return ActionName::WAITER; }
 
   void draw (SceneContext& gc) override;
-  void update () override;
+  void update() override;
 
 private:
   Waiter (Waiter const&);

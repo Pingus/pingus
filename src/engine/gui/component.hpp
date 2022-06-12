@@ -36,7 +36,7 @@ private:
   bool visible;
 
 public:
-  Component () : parent(), focus(false), mouse_over(false), visible(true) { }
+  Component() : parent(), focus(false), mouse_over(false), visible(true) { }
   virtual ~Component() {}
 
   virtual void set_focus(bool val) { focus = val; }
@@ -72,10 +72,10 @@ public:
   virtual void on_secondary_button_click (int x, int y) {}
 
   /** Emmitted when pointer enters the region of the component */
-  virtual void on_pointer_enter () {}
+  virtual void on_pointer_enter() {}
 
   /** Emmitted when pointer leaves the region of the component */
-  virtual void on_pointer_leave () {}
+  virtual void on_pointer_leave() {}
 
   /** Emitted when the pointer moved, x and y are the new pointer
       coordinates */

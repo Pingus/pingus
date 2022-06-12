@@ -32,11 +32,11 @@ LaserKill::LaserKill(Pingu* p) :
 void
 LaserKill::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos () + geom::foffset(0, 2));
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos() + geom::foffset(0, 2));
 }
 
 void
-LaserKill::update ()
+LaserKill::update()
 {
   if (sprite[pingu->direction].is_finished())
     pingu->set_status(Pingu::PS_DEAD);

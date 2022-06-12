@@ -52,7 +52,7 @@ SmallMapImage::update (float delta)
 }
 
 Sprite
-SmallMapImage::get_surface ()
+SmallMapImage::get_surface()
 {
   if (sur)
   {

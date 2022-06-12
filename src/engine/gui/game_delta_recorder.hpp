@@ -24,8 +24,8 @@ class GameDeltaRecorder
 private:
 
   public:
-  GameDeltaRecorder ();
-  GameDelta* get ();
+  GameDeltaRecorder();
+  GameDelta* get();
 };
 
 } // namespace pingus

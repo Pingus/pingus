@@ -37,7 +37,7 @@ Hotspot::Hotspot(ReaderMapping const& reader) :
   sprite = Sprite(desc);
 }
 
-Hotspot::~Hotspot ()
+Hotspot::~Hotspot()
 {
 }
 
@@ -55,7 +55,7 @@ Hotspot::draw (SceneContext& gc)
 }
 
 float
-Hotspot::z_index () const
+Hotspot::z_index() const
 {
   return m_z_index;
 }

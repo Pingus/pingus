@@ -49,12 +49,12 @@ Exit::Exit(ReaderMapping const& reader) :
   sprite = Sprite(desc);
 }
 
-Exit::~Exit ()
+Exit::~Exit()
 {
 }
 
 void
-Exit::on_startup ()
+Exit::on_startup()
 {
   CollisionMask mask(desc);
   world->get_colmap()->remove(mask,
@@ -76,7 +76,7 @@ Exit::draw_smallmap(SmallMap* smallmap)
 }
 
 void
-Exit::update ()
+Exit::update()
 {
   sprite.update();
 
@@ -105,7 +105,7 @@ Exit::update ()
 }
 
 float
-Exit::z_index () const
+Exit::z_index() const
 {
   return m_z_index;
 }

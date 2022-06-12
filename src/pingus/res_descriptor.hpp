@@ -33,7 +33,7 @@ public:
 
   ResourceModifier::Enum modifier;
 
-  ResDescriptor ();
+  ResDescriptor();
   ResDescriptor (std::string const& res_name);
   ResDescriptor (std::string const& res_name,
                  ResourceModifier::Enum modifier);

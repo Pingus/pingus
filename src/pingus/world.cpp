@@ -269,7 +269,7 @@ World::get_pingu (Vector2f const& pos)
   Pingu* current_pingu = nullptr;
   float distance = -1.0;
 
-  for (PinguIter i = pingus->begin (); i != pingus->end (); ++i) {
+  for (PinguIter i = pingus->begin(); i != pingus->end(); ++i) {
     if ((*i)->is_over(pos.x(), pos.y()))
     {
       if (distance == -1.0f || distance >= (*i)->dist(pos.x(), pos.y()))

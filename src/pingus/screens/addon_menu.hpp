@@ -48,7 +48,7 @@ public:
   ~AddOnMenu() override;
 
   void draw_background (DrawingContext& gc) override;
-  void on_escape_press () override;
+  void on_escape_press() override;
 
 private:
   AddOnMenu (AddOnMenu const&);

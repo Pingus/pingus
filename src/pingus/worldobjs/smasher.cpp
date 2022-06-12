@@ -44,16 +44,16 @@ Smasher::Smasher(ReaderMapping const& reader) :
 }
 
 float
-Smasher::z_index () const
+Smasher::z_index() const
 {
   return m_z_index;
 }
 
 void
-Smasher::update ()
+Smasher::update()
 {
   PinguHolder* holder = world->get_pingus();
-  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+  for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
   {
     catch_pingu(*pingu);
   }
@@ -78,7 +78,7 @@ Smasher::update ()
                          pos.y() + 180, Math::frand()-0.5f, Math::frand()-0.5f);
         }
 
-        for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+        for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
         {
           if ((*pingu)->is_inside(pos.x() + 30,
                                   pos.y() + 90,
@@ -109,7 +109,7 @@ Smasher::update ()
 }
 
 void
-Smasher::on_startup ()
+Smasher::on_startup()
 {
   log_info("Drawing colmap entry");
   CollisionMask buf("traps/smasher_cmap");

@@ -25,7 +25,7 @@ Mover::Mover(World const* world_arg, Vector2f const& pos_arg)
 {
 }
 
-Mover::~Mover ()
+Mover::~Mover()
 {
 }
 

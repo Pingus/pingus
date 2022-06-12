@@ -32,7 +32,7 @@ Smashed::Smashed (Pingu* p) :
 void
 Smashed::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite, pingu->get_pos ());
+  gc.color().draw(sprite, pingu->get_pos());
 }
 
 void

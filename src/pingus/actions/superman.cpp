@@ -30,7 +30,7 @@ Superman::Superman (Pingu* p)
 }
 
 void
-Superman::update ()
+Superman::update()
 {
   sprite.update();
   counter += 0.025f;
@@ -43,7 +43,7 @@ Superman::update ()
 void
 Superman::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite, pingu->get_pos ());
+  gc.color().draw(sprite, pingu->get_pos());
 }
 
 } // namespace pingus::actions

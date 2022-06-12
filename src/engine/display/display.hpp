@@ -57,7 +57,7 @@ public:
   static std::vector<SDL_DisplayMode> get_fullscreen_video_modes();
 
 private:
-  Display ();
+  Display();
   Display (Display const&);
   Display& operator= (Display const&);
 };

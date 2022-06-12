@@ -34,7 +34,7 @@ Floater::Floater(Pingu* p) :
 void
 Floater::update()
 {
-  sprite.update ();
+  sprite.update();
 
   pingu->set_velocity(glm::vec2(0.0f, 1.0f));
 

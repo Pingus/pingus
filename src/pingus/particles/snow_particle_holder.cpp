@@ -79,7 +79,7 @@ SnowParticleHolder::add_particle (int x, int y, bool colliding)
 }
 
 void
-SnowParticleHolder::update ()
+SnowParticleHolder::update()
 {
   // update all contained particles
   for (std::vector<SnowParticle>::iterator it=particles.begin(); it != particles.end(); ++it)

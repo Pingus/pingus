@@ -41,7 +41,7 @@ Walker::Walker (Pingu* p) :
 }
 
 void
-Walker::update ()
+Walker::update()
 {
   // update the sprite
   walker[pingu->direction].update(0.033f);

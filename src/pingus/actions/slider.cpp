@@ -34,7 +34,7 @@ Slider::Slider (Pingu* p) :
 }
 
 void
-Slider::update ()
+Slider::update()
 {
   sprite[pingu->direction].update();
 

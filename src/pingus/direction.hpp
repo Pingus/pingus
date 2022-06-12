@@ -28,20 +28,20 @@ private:
   Dir direction;
 
 public:
-  Direction ();
+  Direction();
   Direction (Direction const& dir);
-  ~Direction ();
+  ~Direction();
 
   Direction& operator= (Direction const&);
 
-  operator int () const { return direction; }
+  operator int() const { return direction; }
 
-  void change ();
-  void left ();
-  void right ();
+  void change();
+  void left();
+  void right();
 
-  bool is_left () const;
-  bool is_right () const;
+  bool is_left() const;
+  bool is_right() const;
 };
 
 } // namespace pingus

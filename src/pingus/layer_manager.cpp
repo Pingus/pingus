@@ -18,7 +18,7 @@
 
 namespace pingus {
 
-LayerManager::LayerManager () :
+LayerManager::LayerManager() :
   layers()
 {
 }
@@ -36,16 +36,16 @@ LayerManager::add_layer(Sprite const& sprite, float x_o, float y_o, float x_u, f
 void
 LayerManager::draw (DrawingContext& gc)
 {
-  for (std::vector<Layer>::iterator i = layers.begin ();
-       i != layers.end (); ++i)
+  for (std::vector<Layer>::iterator i = layers.begin();
+       i != layers.end(); ++i)
     i->draw(gc);
 }
 
 void
 LayerManager::update (float delta)
 {
-  for (std::vector<Layer>::iterator i = layers.begin ();
-       i != layers.end (); ++i)
+  for (std::vector<Layer>::iterator i = layers.begin();
+       i != layers.end(); ++i)
     i->update(delta);
 }
 

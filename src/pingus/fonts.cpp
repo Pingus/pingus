@@ -34,7 +34,7 @@ Font verdana11;
 Font lcd;
 
 void
-init ()
+init()
 {
   chalk_large  = Resource::load_font("fonts/chalk-40px");
   chalk_normal = Resource::load_font("fonts/chalk-20px");
@@ -50,7 +50,7 @@ init ()
   lcd          = pingus_small;
 }
 
-void deinit ()
+void deinit()
 {
   chalk_large  = Font();
   chalk_normal = Font();

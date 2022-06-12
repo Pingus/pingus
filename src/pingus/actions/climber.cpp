@@ -48,7 +48,7 @@ Climber::get_center_pos() const
 }
 
 void
-Climber::update ()
+Climber::update()
 {
   sprite[pingu->direction].update();
 

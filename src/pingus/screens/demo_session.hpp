@@ -61,9 +61,9 @@ public:
   void update(float delta) override;
   void update_demo();
 
-  void on_pause_press () override;
-  void on_fast_forward_press () override;
-  void on_escape_press () override;
+  void on_pause_press() override;
+  void on_fast_forward_press() override;
+  void on_escape_press() override;
 
   void restart();
 

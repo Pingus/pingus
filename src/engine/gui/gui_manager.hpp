@@ -42,7 +42,7 @@ private:
 public:
   GUIManager();
   GUIManager(Rect const&);
-  ~GUIManager () override;
+  ~GUIManager() override;
 
   void update(float delta) override;
   virtual void update(pingus::input::Event const& event);

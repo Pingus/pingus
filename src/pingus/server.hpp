@@ -48,7 +48,7 @@ public:
 
   void update();
 
-  PingusLevel get_plf () { return plf; }
+  PingusLevel get_plf() { return plf; }
 
   int get_time();
 

@@ -80,13 +80,13 @@ Blocker::catch_pingu(Pingu* target)
 {
   if (target != pingu) // avoid 'self' catch
   {
-    if (target->get_x () > pingu->get_x () - 16
-        && target->get_x () < pingu->get_x () + 16
-        && target->get_y () > pingu->get_y () - 32
-        && target->get_y () < pingu->get_y () + 5
+    if (target->get_x() > pingu->get_x() - 16
+        && target->get_x() < pingu->get_x() + 16
+        && target->get_y() > pingu->get_y() - 32
+        && target->get_y() < pingu->get_y() + 5
       )
     {
-      if (target->get_x () > pingu->get_x ()) {
+      if (target->get_x() > pingu->get_x()) {
         target->direction.right();
       } else {
         target->direction.left();

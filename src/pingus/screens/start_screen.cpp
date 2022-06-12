@@ -224,7 +224,7 @@ StartScreen::on_fast_forward_press()
 }
 
 void
-StartScreen::on_pause_press ()
+StartScreen::on_pause_press()
 {
   start_game();
 }

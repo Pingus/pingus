@@ -56,7 +56,7 @@ PingusSound::init(std::unique_ptr<PingusSoundImpl> s)
 }
 
 void
-PingusSound::deinit ()
+PingusSound::deinit()
 {
   sound = {};
 }

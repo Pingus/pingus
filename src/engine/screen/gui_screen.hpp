@@ -30,8 +30,8 @@ protected:
   std::unique_ptr<pingus::gui::GUIManager> gui_manager;
 
 public:
-  GUIScreen ();
-  ~GUIScreen () override;
+  GUIScreen();
+  ~GUIScreen() override;
 
   /** Draw this screen */
   virtual void draw_foreground (DrawingContext&) {}
@@ -41,19 +41,19 @@ public:
   void update_input (pingus::input::Event const& event) override;
   void update(float delta) override;
 
-  virtual void on_pause_press () {}
-  virtual void on_single_step_press () {}
-  virtual void on_fast_forward_press () {}
-  virtual void on_armageddon_press () {}
-  virtual void on_escape_press () {}
+  virtual void on_pause_press() {}
+  virtual void on_single_step_press() {}
+  virtual void on_fast_forward_press() {}
+  virtual void on_armageddon_press() {}
+  virtual void on_escape_press() {}
   virtual void on_action_up_press() {}
   virtual void on_action_down_press() {}
 
-  virtual void on_pause_release () {}
-  virtual void on_single_step_release () {}
-  virtual void on_fast_forward_release () {}
-  virtual void on_armageddon_release () {}
-  virtual void on_escape_release () {}
+  virtual void on_pause_release() {}
+  virtual void on_single_step_release() {}
+  virtual void on_fast_forward_release() {}
+  virtual void on_armageddon_release() {}
+  virtual void on_escape_release() {}
   virtual void on_action_up_release() {}
   virtual void on_action_down_release() {}
 

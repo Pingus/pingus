@@ -125,7 +125,7 @@ System::opendir(std::string const& pathname, std::string const& pattern)
       if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0)
       {
         struct stat buf;
-        stat((Pathname::join(pathname, de->d_name)).c_str (), &buf);
+        stat((Pathname::join(pathname, de->d_name)).c_str(), &buf);
 
         if (strcmp(de->d_name, "..") != 0 &&
             strcmp(de->d_name, ".") != 0)

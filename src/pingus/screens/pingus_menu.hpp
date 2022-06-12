@@ -59,7 +59,7 @@ public:
   void set_hint(std::string const& str);
 
   /// Load all images and other stuff for the menu
-  void on_escape_press () override;
+  void on_escape_press() override;
   void draw_background(DrawingContext& gc) override;
 
   void update(float delta) override;

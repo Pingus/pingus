@@ -40,19 +40,19 @@ StarfieldBackground::StarfieldBackground(ReaderMapping const& reader) :
     stars.push_back(new StarfieldBackgroundStars(StarfieldBackgroundStars::LARGE_STAR));
 }
 
-StarfieldBackground::~StarfieldBackground ()
+StarfieldBackground::~StarfieldBackground()
 {
   for (unsigned int i = 0; i < stars.size(); ++i)
     delete stars[i];
 }
 
 void
-StarfieldBackground::update ()
+StarfieldBackground::update()
 {
   for (std::vector<StarfieldBackgroundStars*>::iterator i = stars.begin();
        i != stars.end(); ++i)
   {
-    (*i)->update ();
+    (*i)->update();
   }
 }
 

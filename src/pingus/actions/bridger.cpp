@@ -87,19 +87,19 @@ Bridger::update()
   switch (mode)
   {
     case B_BUILDING:
-      update_build ();
+      update_build();
       break;
 
     case B_WALKING:
-      update_walk ();
+      update_walk();
       break;
   }
 }
 
 void
-Bridger::update_walk ()
+Bridger::update_walk()
 {
-  if (walk_sprite[pingu->direction].is_finished ()) // FIXME: Dangerous! might not be fixed timing
+  if (walk_sprite[pingu->direction].is_finished()) // FIXME: Dangerous! might not be fixed timing
   {
     if (way_is_free())
     {
@@ -110,24 +110,24 @@ Bridger::update_walk ()
     }
     else // We reached a wall...
     {
-      pingu->direction.change ();
+      pingu->direction.change();
       pingu->set_action (ActionName::WALKER);
       return;
     }
   }
   else
   {
-    walk_sprite.update ();
+    walk_sprite.update();
   }
 }
 
 void
-Bridger::update_build ()
+Bridger::update_build()
 {
   build_sprite[pingu->direction].update();
 
   // FIXME: Game logic must not depend on Sprite states
-  if (build_sprite[pingu->direction].get_current_frame () >= 7 && !block_build)
+  if (build_sprite[pingu->direction].get_current_frame() >= 7 && !block_build)
   {
     block_build = true;
 
@@ -137,7 +137,7 @@ Bridger::update_build ()
         place_a_brick();
       else
       {
-        pingu->direction.change ();
+        pingu->direction.change();
         pingu->set_action (ActionName::WALKER);
         return;
       }
@@ -149,7 +149,7 @@ Bridger::update_build ()
     }
   }
 
-  if (build_sprite[pingu->direction].is_finished ())
+  if (build_sprite[pingu->direction].is_finished())
   {
     mode = B_WALKING;
     build_sprite[pingu->direction].restart();
@@ -223,7 +223,7 @@ Bridger::walk_one_step_up()
 }
 
 std::string
-Bridger::get_name () const
+Bridger::get_name() const
 {
   return name;
 }

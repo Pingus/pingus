@@ -42,7 +42,7 @@ public:
   Vector2f get_pos() const override { return pos; }
 
   void draw (SceneContext& gc) override;
-  void update () override;
+  void update() override;
 
 protected:
   void catch_pingu (Pingu*);

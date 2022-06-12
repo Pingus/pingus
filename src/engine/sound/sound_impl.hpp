@@ -24,8 +24,8 @@ namespace pingus::sound {
 class PingusSoundImpl
 {
 public:
-  PingusSoundImpl () { }
-  virtual ~PingusSoundImpl () { }
+  PingusSoundImpl() { }
+  virtual ~PingusSoundImpl() { }
 
   virtual void update(float delta) = 0;
 

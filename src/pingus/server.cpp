@@ -31,7 +31,7 @@ namespace pingus {
 
 namespace {
 
-std::string get_date_string ()
+std::string get_date_string()
 {
   char buffer[32];
   time_t curtime;
@@ -91,7 +91,7 @@ Server::Server(PingusLevel const& arg_plf, bool record_demo) :
   }
 }
 
-Server::~Server ()
+Server::~Server()
 {
   if (demostream) // FIXME: Any better place to put this?
     (*demostream) << "(end (time " << get_time() << "))" << std::endl;
@@ -111,7 +111,7 @@ Server::update()
 }
 
 void
-Server::send_armageddon_event ()
+Server::send_armageddon_event()
 {
   record(ServerEvent::make_armageddon_event(get_time()));
 
@@ -140,19 +140,19 @@ Server::record(ServerEvent const& event)
 }
 
 bool
-Server::is_finished ()
+Server::is_finished()
 {
   return goal_manager->is_finished();
 }
 
 ActionHolder*
-Server::get_action_holder ()
+Server::get_action_holder()
 {
   return &action_holder;
 }
 
 int
-Server::get_time ()
+Server::get_time()
 {
   return get_world()->get_time();
 }

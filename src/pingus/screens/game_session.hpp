@@ -57,7 +57,7 @@ private:
 
 public:
   GameSession(PingusLevel const& arg_plf, bool arg_show_result_screen);
-  ~GameSession () override;
+  ~GameSession() override;
 
   /** Pass a delta to the screen */
   void update_server(float delta);
@@ -72,17 +72,17 @@ public:
   void update_input(pingus::input::Event const& event) override;
   void draw_background (DrawingContext& gc) override;
 
-  ButtonPanel* get_button_panel () { return button_panel; }
+  ButtonPanel* get_button_panel() { return button_panel; }
 
   // Overloaded GUIScreen stuff
-  void on_startup () override;
+  void on_startup() override;
 
-  void on_pause_press () override;
-  void on_single_step_press () override;
-  void on_fast_forward_press () override;
-  void on_fast_forward_release () override;
-  void on_armageddon_press () override;
-  void on_escape_press () override;
+  void on_pause_press() override;
+  void on_single_step_press() override;
+  void on_fast_forward_press() override;
+  void on_fast_forward_release() override;
+  void on_armageddon_press() override;
+  void on_escape_press() override;
   void on_action_axis_move (float) override;
 
   ActionName::Enum get_action_name() const;

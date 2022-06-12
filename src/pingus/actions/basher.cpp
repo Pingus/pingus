@@ -57,7 +57,7 @@ Basher::draw (SceneContext& gc)
 }
 
 void
-Basher::update ()
+Basher::update()
 {
   sprite[pingu->direction].update();
 

@@ -26,10 +26,10 @@ class ScreenManagerImpl
 private:
   typedef enum { PINGUSMAIN_MENU } States;
 public:
-  ScreenManagerImpl ();
-  ~ScreenManagerImpl ();
+  ScreenManagerImpl();
+  ~ScreenManagerImpl();
 
-  void display ();
+  void display();
 
 private:
   ScreenManagerImpl (ScreenManagerImpl const&);

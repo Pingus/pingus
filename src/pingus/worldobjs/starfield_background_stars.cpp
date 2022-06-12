@@ -50,7 +50,7 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type) :
 }
 
 void
-StarfieldBackgroundStars::update ()
+StarfieldBackgroundStars::update()
 {
   x_pos += x_add;
   y_pos += y_add;

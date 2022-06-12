@@ -24,7 +24,7 @@ namespace pingus {
 class GlobalEvent
 {
 public:
-  GlobalEvent ();
+  GlobalEvent();
   virtual ~GlobalEvent() {}
 
   virtual void on_button_press(SDL_KeyboardEvent const& event);

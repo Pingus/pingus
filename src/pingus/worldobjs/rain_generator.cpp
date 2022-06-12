@@ -32,7 +32,7 @@ RainGenerator::RainGenerator (ReaderMapping const& reader) :
 {
 }
 
-RainGenerator::~RainGenerator ()
+RainGenerator::~RainGenerator()
 {
 }
 
@@ -54,7 +54,7 @@ RainGenerator::draw (SceneContext& gc)
 void
 RainGenerator::update()
 {
-  if (waiter_count < 0.0f && rand () % 150 == 0)
+  if (waiter_count < 0.0f && rand() % 150 == 0)
   {
     log_info("Doing thunder");
     do_thunder = true;

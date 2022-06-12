@@ -96,28 +96,28 @@ public:
   Pingu(unsigned int arg_id, Vector2f const& pos, int owner);
 
   /** Destruct the pingu... */
-  ~Pingu ();
+  ~Pingu();
 
   /** Return the logical pingus position, this is the position which
       is used for collision detection to the ground (the pingus
       feet) */
-  Vector2f get_pos () const;
+  Vector2f get_pos() const;
 
   /** Returns the visible position of the pingu, the graphical center
       of the pingu. */
-  Vector2f get_center_pos () const;
+  Vector2f get_center_pos() const;
 
   /** Returns the x position of the pingu
    * For backward comp. only
    */
-  float const& get_x () const { return pos_x; }
+  float const& get_x() const { return pos_x; }
 
   /** Returns the y position of the pingu
       For backward comp. only */
-  float const& get_y () const { return pos_y; }
+  float const& get_y() const { return pos_y; }
 
-  int get_xi () const { return static_cast<int>(pos_x); }
-  int get_yi () const { return static_cast<int>(pos_y); }
+  int get_xi() const { return static_cast<int>(pos_x); }
+  int get_yi() const { return static_cast<int>(pos_y); }
 
   /** Checks if this action allows to be overwritten with the given new action */
   bool change_allowed (ActionName::Enum new_action);
@@ -146,7 +146,7 @@ public:
   /// Set the pingu to the given coordinates
   void set_pos (Vector2f const& arg_pos);
 
-  glm::vec2 get_velocity () const { return velocity; }
+  glm::vec2 get_velocity() const { return velocity; }
   void set_velocity (glm::vec2 const& velocity_);
 
   // Set the pingu in the gives direction
@@ -163,14 +163,14 @@ public:
   void set_action (ActionName::Enum action_name);
 
   /// set the wall action if we have one
-  bool request_wall_action ();
+  bool request_wall_action();
 
   /// set the fall action if we have one
-  bool request_fall_action ();
+  bool request_fall_action();
 
-  PinguAction* get_wall_action () { return wall_action.get(); }
+  PinguAction* get_wall_action() { return wall_action.get(); }
 
-  PinguAction* get_fall_action () { return fall_action.get(); }
+  PinguAction* get_fall_action() { return fall_action.get(); }
 
   /** Returns the `color' of the colmap in the walking direction
       Examples:
@@ -185,7 +185,7 @@ public:
   void catch_pingu (Pingu* pingu);
 
   /** Returns true if the pingu needs to catch another pingu */
-  bool need_catch ();
+  bool need_catch();
 
   void draw (SceneContext& gc);
   void apply_force(glm::vec2 const&);
@@ -195,15 +195,15 @@ public:
   /** Indicate if the pingu's speed is above the deadly velocity */
   //bool is_tumbling () const;
 
-  float z_index () const { return 0; }
+  float z_index() const { return 0; }
 
   /** @return The owner_id of the owner, only used in multiplayer
       configurations, ought to be 0 in single player */
-  int get_owner () const;
+  int get_owner() const;
 
   /** @return The owner_id as a string. Only used in multiplayer
       configurations, ought to be "0" in single player */
-  std::string get_owner_str () const;
+  std::string get_owner_str() const;
 
   bool   is_over (float x, float y) const;
 
@@ -214,10 +214,10 @@ public:
   /** Return true if the pingu can be caught with the mouse and
       another action can be applied, false otherwise (exiter,
       splashed, etc.) */
-  bool catchable ();
+  bool catchable();
 
   /** @return the name of the action the Pingu currently has */
-  ActionName::Enum get_action ();
+  ActionName::Enum get_action();
 
   /** @return the action that was active before the action returned by
       get_action() took place. This is used in a few situations where

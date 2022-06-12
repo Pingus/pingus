@@ -42,7 +42,7 @@ public:
                  std::string const& button_surface,
                  std::string const& button_pressed_surface,
                  std::string const& button_mouse_over_surface);
-  ~SurfaceButton () override;
+  ~SurfaceButton() override;
 
   virtual void set_pos(int x, int y);
 
@@ -53,8 +53,8 @@ public:
   void on_primary_button_release (int x, int y) override;
   void on_primary_button_click (int x, int y) override;
 
-  void on_pointer_enter () override;
-  void on_pointer_leave () override;
+  void on_pointer_enter() override;
+  void on_pointer_leave() override;
 
   virtual void on_click() {}
 

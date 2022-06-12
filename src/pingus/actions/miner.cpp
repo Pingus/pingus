@@ -41,7 +41,7 @@ Miner::Miner (Pingu* p) :
 }
 
 void
-Miner::update ()
+Miner::update()
 {
   sprite[pingu->direction].update();
 

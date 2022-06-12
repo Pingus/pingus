@@ -34,7 +34,7 @@ protected:
 
 public:
   Screen (Size const& size_) : size(size_) { }
-  virtual ~Screen () {}
+  virtual ~Screen() {}
 
   /** Draw this screen */
   virtual void draw(DrawingContext& gc) =0;
@@ -45,7 +45,7 @@ public:
 
   /** Called once the screen gets activated and becomes the current
       screen */
-  virtual void on_startup () {}
+  virtual void on_startup() {}
 
   virtual void resize(Size const& s) { size = s; }
 

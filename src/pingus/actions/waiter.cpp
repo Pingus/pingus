@@ -30,7 +30,7 @@ Waiter::Waiter (Pingu* p) :
 }
 
 void
-Waiter::update ()
+Waiter::update()
 {
   sprite.update();
 
@@ -46,7 +46,7 @@ Waiter::update ()
 void
 Waiter::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite, pingu->get_pos ());
+  gc.color().draw(sprite, pingu->get_pos());
 }
 
 } // namespace pingus::actions

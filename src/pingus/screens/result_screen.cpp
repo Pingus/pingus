@@ -58,7 +58,7 @@ public:
   {
   }
 
-  void on_pointer_enter () override
+  void on_pointer_enter() override
   {
     SurfaceButton::on_pointer_enter();
     pingus::sound::PingusSound::play_sound("tick");

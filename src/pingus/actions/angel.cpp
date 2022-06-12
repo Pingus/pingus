@@ -31,9 +31,9 @@ Angel::Angel (Pingu* p)
 }
 
 void
-Angel::update ()
+Angel::update()
 {
-  sprite.update ();
+  sprite.update();
 
   counter += static_cast<float>(globals::game_speed);
   pingu->set_pos(x_pos + 20 * std::sin(counter * 3.0f), pingu->get_y() - 50.0f * 0.025f);
@@ -46,7 +46,7 @@ Angel::update ()
 void
 Angel::draw (SceneContext& gc)
 {
-  gc.color().draw (sprite, pingu->get_pos ());
+  gc.color().draw (sprite, pingu->get_pos());
 }
 
 } // namespace pingus::actions

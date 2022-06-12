@@ -34,11 +34,11 @@ Drown::Drown (Pingu* p) :
 void
 Drown::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos ());
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 void
-Drown::update ()
+Drown::update()
 {
   sprite[pingu->direction].update();
   if (sprite[pingu->direction].is_finished())

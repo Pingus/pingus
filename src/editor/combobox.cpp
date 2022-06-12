@@ -34,7 +34,7 @@ Combobox::Combobox(Rect const& rect_) :
 {
 }
 
-Combobox::~Combobox ()
+Combobox::~Combobox()
 {
   clear();
 }

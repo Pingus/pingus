@@ -29,13 +29,13 @@ private:
   float m_music_volume;
 
 public:
-  PingusSoundDummy () :
+  PingusSoundDummy() :
     m_master_volume(1.0f),
     m_sound_volume(1.0f),
     m_music_volume(1.0f)
   {}
 
-  ~PingusSoundDummy () override { }
+  ~PingusSoundDummy() override { }
 
   void update(float delta) override {}
 

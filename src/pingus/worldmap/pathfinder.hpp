@@ -47,7 +47,7 @@ public:
     float  cost;
     NodeId handle;
 
-    NodeStat ()
+    NodeStat()
       : status (UNKNOWN),
         parent(-1),
         cost(0),
@@ -90,12 +90,12 @@ public:
 
     while (!open_nodes.empty())
     {
-      NodeId current = open_nodes.top ();
-      open_nodes.pop ();
+      NodeId current = open_nodes.top();
+      open_nodes.pop();
 
       Node<T>& node = graph.resolve_node (current);
-      for (std::vector<EdgeId>::iterator e = node.next.begin ();
-           e != node.next.end ();
+      for (std::vector<EdgeId>::iterator e = node.next.begin();
+           e != node.next.end();
            ++e)
       {
         NodeId child_node = graph.resolve_edge(*e).destination;

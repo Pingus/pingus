@@ -34,7 +34,7 @@ PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
 {
 }
 
-PinguParticleHolder::PinguParticleHolder () :
+PinguParticleHolder::PinguParticleHolder() :
   surface("particles/pingu_explo"),
   particles()
 {
@@ -64,7 +64,7 @@ PinguParticleHolder::add_particle (int x, int y)
 }
 
 void
-PinguParticleHolder::update ()
+PinguParticleHolder::update()
 {
   // update all contained particles
   for (std::vector<PinguParticle>::iterator it=particles.begin(); it != particles.end(); ++it)

@@ -31,7 +31,7 @@ GUIScreen::GUIScreen() :
 {
 }
 
-GUIScreen::~GUIScreen ()
+GUIScreen::~GUIScreen()
 {
 }
 
@@ -117,19 +117,19 @@ GUIScreen::process_button_event (pingus::input::ButtonEvent const& event)
         // ignoring, handled in the gui_manager
         break;
       case PAUSE_BUTTON:
-        on_pause_press ();
+        on_pause_press();
         break;
       case SINGLE_STEP_BUTTON:
         on_single_step_press();
         break;
       case FAST_FORWARD_BUTTON:
-        on_fast_forward_press ();
+        on_fast_forward_press();
         break;
       case ARMAGEDDON_BUTTON:
-        on_armageddon_press ();
+        on_armageddon_press();
         break;
       case ESCAPE_BUTTON:
-        on_escape_press ();
+        on_escape_press();
         break;
       case ACTION_UP_BUTTON:
         on_action_up_press();
@@ -153,19 +153,19 @@ GUIScreen::process_button_event (pingus::input::ButtonEvent const& event)
         // ignoring, handled in the gui_manager
         break;
       case PAUSE_BUTTON:
-        on_pause_release ();
+        on_pause_release();
         break;
       case SINGLE_STEP_BUTTON:
         on_single_step_release();
         break;
       case FAST_FORWARD_BUTTON:
-        on_fast_forward_release ();
+        on_fast_forward_release();
         break;
       case ARMAGEDDON_BUTTON:
-        on_armageddon_release ();
+        on_armageddon_release();
         break;
       case ESCAPE_BUTTON:
-        on_escape_release ();
+        on_escape_release();
         break;
       case ACTION_UP_BUTTON:
         on_action_up_release();

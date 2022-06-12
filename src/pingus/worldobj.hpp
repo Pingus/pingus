@@ -45,21 +45,21 @@ public:
   static void   set_world(World*);
 
   /** Return the current active world */
-  static World* get_world () { return world; }
+  static World* get_world() { return world; }
 
 private:
   std::string id;
 
 public:
   /** Creates a new WorldObj*/
-  WorldObj ();
+  WorldObj();
   WorldObj(ReaderMapping const& reader);
 
   WorldObj (WorldObj const&) : id() {}
   WorldObj& operator= (WorldObj const&) { return *this; }
 
   /** Destroys a world object */
-  virtual ~WorldObj ();
+  virtual ~WorldObj();
 
   std::string get_id() const { return id; }
 
@@ -76,7 +76,7 @@ public:
 
   /** Draws the objects collision map to the main collision map, draws
       stuff onto the gfx map or do other manipulations to the World */
-  virtual void on_startup ();
+  virtual void on_startup();
 
   /** @return true if this WorldObj is empty and doesn't have an
       update() or draw() function, but only a on_startup() one. The
@@ -87,7 +87,7 @@ public:
   /** The update function is called once a game loop, the delta
    * specifies how much time is passed since the last update
    * delta = 1.0 means that one second of realtime has passed. */
-  virtual void update ();
+  virtual void update();
 
   /** Returns true if the object covers the whole screen */
   virtual bool is_solid_background() const;

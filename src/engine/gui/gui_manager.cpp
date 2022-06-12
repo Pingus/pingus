@@ -26,7 +26,7 @@ using namespace pingus::input;
 
 namespace pingus::gui {
 
-GUIManager::GUIManager ()
+GUIManager::GUIManager()
   : GroupComponent(Rect(0, 0, Display::get_width(), Display::get_height()), false),
     mouse_pos(400,300)
 {
@@ -38,7 +38,7 @@ GUIManager::GUIManager(Rect const& rect_)
 {
 }
 
-GUIManager::~GUIManager ()
+GUIManager::~GUIManager()
 {
 }
 

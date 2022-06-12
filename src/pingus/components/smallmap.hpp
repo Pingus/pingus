@@ -61,8 +61,8 @@ public:
   void on_pointer_move(int x, int y) override;
 
   // Events
-  void on_pointer_enter () override;
-  void on_pointer_leave () override;
+  void on_pointer_enter() override;
+  void on_pointer_leave() override;
 
   bool is_at (int x, int y) override;
   bool mouse_over();

@@ -39,7 +39,7 @@ private:
 public:
   Liquid(ReaderMapping const& reader);
 
-  float z_index () const override;
+  float z_index() const override;
   void set_z_index(float z_index) override { m_z_index = z_index; }
   void set_pos(Vector2f const& p) override { pos = p; }
   Vector2f get_pos() const override { return pos; }

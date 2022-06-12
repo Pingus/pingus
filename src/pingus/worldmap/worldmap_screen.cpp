@@ -116,7 +116,7 @@ WorldmapScreenCloseButton::draw (DrawingContext& gc)
 void
 WorldmapScreenCloseButton::on_click()
 {
-  ScreenManager::instance ()->pop_screen ();
+  ScreenManager::instance()->pop_screen();
 }
 
 WorldmapScreen::WorldmapScreen() :
@@ -135,7 +135,7 @@ WorldmapScreen::WorldmapScreen() :
   close_button = gui_manager->create<WorldmapScreenCloseButton>(this);
 }
 
-WorldmapScreen::~WorldmapScreen ()
+WorldmapScreen::~WorldmapScreen()
 {
 }
 
@@ -153,17 +153,17 @@ WorldmapScreen::load(Pathname const& filename)
 }
 
 void
-WorldmapScreen::on_startup ()
+WorldmapScreen::on_startup()
 {
   exit_worldmap = false;
   pingus::sound::PingusSound::stop_music();
 
   if (worldmap)
-    worldmap->on_startup ();
+    worldmap->on_startup();
 }
 
 void
-WorldmapScreen::on_escape_press ()
+WorldmapScreen::on_escape_press()
 {
   //log_info("WorldmapScreen::on_escape_press ()...");
   exit_worldmap = true;
@@ -176,7 +176,7 @@ WorldmapScreen::update (float delta)
 
   // Exit the word
   if (exit_worldmap)
-    ScreenManager::instance ()->pop_screen();
+    ScreenManager::instance()->pop_screen();
 
   // Check if new worldmap is set and if so, change it
   if (new_worldmap)

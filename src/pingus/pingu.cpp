@@ -71,19 +71,19 @@ Pingu::Pingu(unsigned int arg_id, Vector2f const& arg_pos, int owner) :
   velocity(0, 0),
   direction()
 {
-  direction.left ();
+  direction.left();
 
   // Initialisize the action, after this step the action ptr will
   // always be valid in the pingu class
   action = create_action(ActionName::FALLER);
 }
 
-Pingu::~Pingu ()
+Pingu::~Pingu()
 {
 }
 
 unsigned int
-Pingu::get_id () const
+Pingu::get_id() const
 {
   return id;
 }
@@ -243,7 +243,7 @@ Pingu::set_action(std::shared_ptr<PinguAction> act)
 }
 
 bool
-Pingu::request_fall_action ()
+Pingu::request_fall_action()
 {
   if (fall_action)
   {
@@ -255,7 +255,7 @@ Pingu::request_fall_action ()
 }
 
 bool
-Pingu::request_wall_action ()
+Pingu::request_wall_action()
 {
   if (wall_action)
   {
@@ -282,7 +282,7 @@ Pingu::set_status (PinguStatus s)
 bool
 Pingu::is_over (float x, float y) const
 {
-  Vector2f center = get_center_pos ();
+  Vector2f center = get_center_pos();
 
   return (center.x() + 16 > x && center.x() - 16 < x &&
           center.y() + 16 > y && center.y() - 16 < y);
@@ -303,7 +303,7 @@ Pingu::is_inside (float x1, float y1, float x2, float y2) const
 float
 Pingu::dist(float x, float y) const
 {
-  Vector2f p = get_center_pos ();
+  Vector2f p = get_center_pos();
 
   return std::sqrt(((p.x() - x) * (p.x() - x) +
                     (p.y() - y) * (p.y() - y)));
@@ -375,7 +375,7 @@ Pingu::catch_pingu (Pingu* pingu)
 }
 
 bool
-Pingu::need_catch ()
+Pingu::need_catch()
 {
   if (status == PS_DEAD || status == PS_EXITED)
     return false;
@@ -396,7 +396,7 @@ Pingu::get_name()
 }
 
 ActionName::Enum
-Pingu::get_action ()
+Pingu::get_action()
 {
   return action->get_type();
 }
@@ -411,25 +411,25 @@ Pingu::apply_force (glm::vec2 const& arg_v)
 }
 
 Vector2f
-Pingu::get_pos () const
+Pingu::get_pos() const
 {
   return Vector2f(pos_x, pos_y);
 }
 
 Vector2f
-Pingu::get_center_pos () const
+Pingu::get_center_pos() const
 {
   return action->get_center_pos();
 }
 
 int
-Pingu::get_owner () const
+Pingu::get_owner() const
 {
   return owner_id;
 }
 
 std::string
-Pingu::get_owner_str () const
+Pingu::get_owner_str() const
 {
   std::ostringstream ostr;
   ostr << owner_id;
@@ -437,9 +437,9 @@ Pingu::get_owner_str () const
 }
 
 bool
-Pingu::catchable ()
+Pingu::catchable()
 {
-  return action->catchable ();
+  return action->catchable();
 }
 
 std::shared_ptr<PinguAction>

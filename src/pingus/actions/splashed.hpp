@@ -32,12 +32,12 @@ private:
 public:
   Splashed (Pingu*);
 
-  ActionName::Enum get_type () const override { return ActionName::SPLASHED; }
+  ActionName::Enum get_type() const override { return ActionName::SPLASHED; }
 
   void draw (SceneContext& gc) override;
-  void update () override;
+  void update() override;
 
-  bool catchable () override { return false; }
+  bool catchable() override { return false; }
   bool change_allowed (ActionName::Enum ) override { return false; }
 
 private:

@@ -61,13 +61,13 @@ Button::update (float delta)
 }
 
 void
-Button::on_pointer_enter ()
+Button::on_pointer_enter()
 {
   mouse_over = true;
 }
 
 void
-Button::on_pointer_leave ()
+Button::on_pointer_leave()
 {
   mouse_over = false;
 }

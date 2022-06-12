@@ -39,7 +39,7 @@ public:
   void draw (SceneContext& gc) override;
   void update() override;
 
-  char get_persistent_char () override { return 'f'; }
+  char get_persistent_char() override { return 'f'; }
   bool change_allowed (ActionName::Enum new_action) override;
 
 private:

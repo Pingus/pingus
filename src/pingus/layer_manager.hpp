@@ -42,7 +42,7 @@ private:
     float y_offset;
 
   public:
-    Layer () :
+    Layer() :
       sur(),
       x_pos(0), y_pos(0),
       x_update(0), y_update(0),
@@ -75,7 +75,7 @@ private:
   std::vector<Layer> layers;
 
 public:
-  LayerManager ();
+  LayerManager();
   ~LayerManager();
 
   void add_layer (Sprite const& sur, float x_o, float y_o, float x_u, float y_u);

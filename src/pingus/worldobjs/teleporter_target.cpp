@@ -31,7 +31,7 @@ TeleporterTarget::TeleporterTarget(ReaderMapping const& reader) :
 }
 
 float
-TeleporterTarget::z_index () const
+TeleporterTarget::z_index() const
 {
   return m_z_index;
 }
@@ -43,7 +43,7 @@ TeleporterTarget::draw (SceneContext& gc)
 }
 
 void
-TeleporterTarget::update ()
+TeleporterTarget::update()
 {
   sprite.update();
 }

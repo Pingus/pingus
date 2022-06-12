@@ -42,7 +42,7 @@ public:
   Sprite const& get_sprite();
 };
 
-MapTile::MapTile () :
+MapTile::MapTile() :
   sprite(),
   surface(),
   sprite_needs_update(false)

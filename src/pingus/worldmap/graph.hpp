@@ -108,14 +108,14 @@ public:
     return *this;
   }
 
-  ~Graph ()
+  ~Graph()
   {
   }
 
   NodeId add_node (NodeType d)
   {
     nodes.push_back(Node<NodeType>(d));
-    return NodeId (nodes.size ()-1);
+    return NodeId (nodes.size()-1);
   }
 
   EdgeId add_edge (EdgeType const& data, NodeId const& a, NodeId const& b, float cost)
@@ -123,7 +123,7 @@ public:
     Edge<EdgeType> new_edge (data, a, b, cost);
     edges.push_back (new_edge);
     resolve_node(a).next.push_back (static_cast<int>(edges.size())-1);
-    return EdgeId (edges.size ()-1);
+    return EdgeId (edges.size()-1);
   }
 
   std::pair<EdgeId, EdgeId>
@@ -178,20 +178,20 @@ public:
   template<class Func>
   void for_each_node (Func func)
   {
-    std::for_each (nodes.begin (), nodes.end (), func);
+    std::for_each (nodes.begin(), nodes.end(), func);
   }
 
   template<class Func>
   void for_each_edge (Func func)
   {
-    std::for_each (edges.begin (), edges.end (), func);
+    std::for_each (edges.begin(), edges.end(), func);
   }
 
-  int nodes_size () {
-    return nodes.size ();
+  int nodes_size() {
+    return nodes.size();
   }
 
-  int max_node_handler_value () {
+  int max_node_handler_value() {
     return static_cast<int>(nodes.size());
   }
 

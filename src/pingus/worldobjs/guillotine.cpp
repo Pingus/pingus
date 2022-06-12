@@ -54,20 +54,20 @@ Guillotine::draw (SceneContext& gc)
 }
 
 float
-Guillotine::z_index () const
+Guillotine::z_index() const
 {
   return m_z_index;
 }
 
 void
-Guillotine::update ()
+Guillotine::update()
 {
   // Only have to check one sprite because they update simultaneously
   if (sprite_kill_left.is_finished())
     killing = false;
 
   PinguHolder* holder = world->get_pingus();
-  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+  for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
     catch_pingu(*pingu);
 
   if (killing) {

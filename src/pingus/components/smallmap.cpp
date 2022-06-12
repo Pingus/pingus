@@ -144,13 +144,13 @@ SmallMap::on_primary_button_release(int x, int y)
 }
 
 void
-SmallMap::on_pointer_enter ()
+SmallMap::on_pointer_enter()
 {
   has_focus = true;
 }
 
 void
-SmallMap::on_pointer_leave ()
+SmallMap::on_pointer_leave()
 {
   has_focus = false;
 }

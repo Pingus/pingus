@@ -49,7 +49,7 @@ public:
   {
   }
 
-  void on_pointer_enter () override
+  void on_pointer_enter() override
   {
     SurfaceButton::on_pointer_enter();
     pingus::sound::PingusSound::play_sound("tick");
@@ -132,7 +132,7 @@ Credits::Credits(Pathname const& filename) :
   end_offset = -end_offset;
 }
 
-Credits::~Credits ()
+Credits::~Credits()
 {
   StatManager::instance()->set_bool("credits-seen", true);
 }
@@ -204,33 +204,33 @@ Credits::draw_background (DrawingContext& gc)
 }
 
 void
-Credits::on_startup ()
+Credits::on_startup()
 {
   offset = static_cast<float>(Display::get_height()) - 50;
   //PingusSound::play_music("pingus-5.it");
 }
 
 void
-Credits::on_pause_press ()
+Credits::on_pause_press()
 {
 }
 
 void
-Credits::on_fast_forward_press ()
+Credits::on_fast_forward_press()
 {
   fast_scrolling = ! fast_scrolling;
 }
 
 void
-Credits::on_escape_press ()
+Credits::on_escape_press()
 {
   bool credits_seen = false;
   StatManager::instance()->get_bool("credits-seen", credits_seen);
   if (!credits_seen)
   {
-    ScreenManager::instance ()->pop_screen ();
+    ScreenManager::instance()->pop_screen();
   }
-  ScreenManager::instance ()->pop_screen ();
+  ScreenManager::instance()->pop_screen();
 }
 
 } // namespace pingus

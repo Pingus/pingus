@@ -33,13 +33,13 @@ private:
 public:
   Boarder (Pingu* p);
 
-  ActionName::Enum get_type () const override { return ActionName::BOARDER; }
+  ActionName::Enum get_type() const override { return ActionName::BOARDER; }
 
   void  draw (SceneContext& gc) override;
-  void  update () override;
+  void  update() override;
 
 private:
-  bool on_ground ();
+  bool on_ground();
 
   Boarder (Boarder const&);
   Boarder& operator= (Boarder const&);

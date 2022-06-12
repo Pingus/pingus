@@ -34,7 +34,7 @@ Spike::Spike (ReaderMapping const& reader) :
 }
 
 float
-Spike::z_index () const
+Spike::z_index() const
 {
   return m_z_index;
 }
@@ -56,7 +56,7 @@ Spike::update()
     surface.update();
 
   PinguHolder* holder = world->get_pingus();
-  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+  for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
     catch_pingu(*pingu);
 
   if (surface.get_current_frame() == surface.get_frame_count() - 1)

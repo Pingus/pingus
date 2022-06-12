@@ -35,10 +35,10 @@ extern Font verdana11;
 extern Font lcd;
 
 /** Load all fonts */
-void init ();
+void init();
 
 /** Unload fonts */
-void deinit ();
+void deinit();
 
 } // namespace pingus::fonts
 

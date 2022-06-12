@@ -104,7 +104,7 @@ PingusMenu::show_credits()
 void
 PingusMenu::do_quit()
 {
-  ScreenManager::instance ()->pop_screen ();
+  ScreenManager::instance()->pop_screen();
 }
 
 void
@@ -133,7 +133,7 @@ void PingusMenu::do_edit()
 }
 
 void
-PingusMenu::on_escape_press ()
+PingusMenu::on_escape_press()
 {
   //FIXME: get_manager()->show_exit_menu ();
 }
@@ -153,9 +153,9 @@ PingusMenu::draw_background(DrawingContext& gc)
                 "welcome to redistribute it under certain conditions; see the file COPYING for details.\n");
 
   gc.draw_fillrect(Rect(0,
-                        Display::get_height () - 26,
-                        Display::get_width (),
-                        Display::get_height ()),
+                        Display::get_height() - 26,
+                        Display::get_width(),
+                        Display::get_height()),
                    Color(0, 0, 0, 255));
 
   gc.print_center(pingus::fonts::pingus_small,

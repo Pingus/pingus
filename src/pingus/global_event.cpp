@@ -30,7 +30,7 @@ namespace pingus {
 
 GlobalEvent global_event;
 
-GlobalEvent::GlobalEvent ()
+GlobalEvent::GlobalEvent()
 {
 }
 

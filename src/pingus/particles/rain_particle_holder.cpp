@@ -36,7 +36,7 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y) :
   xy_mod = 1.0f + Math::frand() * 3.0f;
 }
 
-RainParticleHolder::RainParticleHolder () :
+RainParticleHolder::RainParticleHolder() :
   rain1_surf("particles/rain1"),
   rain2_surf("particles/rain2"),
   rain_splash("particles/rain_splash"),
@@ -60,7 +60,7 @@ RainParticleHolder::add_particle (int x, int y)
 }
 
 void
-RainParticleHolder::update ()
+RainParticleHolder::update()
 {
   // update all contained particles
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)

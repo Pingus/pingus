@@ -43,13 +43,13 @@ Liquid::Liquid(ReaderMapping const& reader) :
 }
 
 float
-Liquid::z_index () const
+Liquid::z_index() const
 {
   return m_z_index;
 }
 
 void
-Liquid::on_startup ()
+Liquid::on_startup()
 {
   CollisionMask mask("liquids/water_cmap");
 

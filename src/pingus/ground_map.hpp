@@ -69,7 +69,7 @@ public:
       is removed from the map) */
   void remove(Surface const&, int x, int y);
 
-  float z_index () const override { return 0; }
+  float z_index() const override { return 0; }
   void set_z_index(float z_index) override {}
   void set_pos(Vector2f const& p) override {}
   Vector2f get_pos() const override { return Vector2f(); }

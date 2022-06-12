@@ -33,7 +33,7 @@ Splashed::Splashed (Pingu* p) :
 }
 
 void
-Splashed::update ()
+Splashed::update()
 {
   sprite.update();
 
@@ -52,7 +52,7 @@ Splashed::update ()
 void
 Splashed::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite, pingu->get_pos ());
+  gc.color().draw(sprite, pingu->get_pos());
 }
 
 } // namespace pingus::actions

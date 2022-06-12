@@ -54,12 +54,12 @@ MenuButton::MenuButton(PingusMenu* menu_,
   pressed    = false;
 }
 
-MenuButton::~MenuButton ()
+MenuButton::~MenuButton()
 {
 }
 
 void
-MenuButton::on_click ()
+MenuButton::on_click()
 {
   //log_info("MenuButton: Click");
   menu->on_click(this);
@@ -87,7 +87,7 @@ MenuButton::update (float delta)
 }
 
 void
-MenuButton::on_pointer_enter ()
+MenuButton::on_pointer_enter()
 {
   mouse_over = true;
   pingus::sound::PingusSound::play_sound ("tick");
@@ -96,7 +96,7 @@ MenuButton::on_pointer_enter ()
 }
 
 void
-MenuButton::on_pointer_leave ()
+MenuButton::on_pointer_leave()
 {
   //log_info("X: " << this << "leave");
   mouse_over = false;
@@ -104,13 +104,13 @@ MenuButton::on_pointer_leave ()
 }
 
 void
-MenuButton::on_pointer_press ()
+MenuButton::on_pointer_press()
 {
   pressed = true;
 }
 
 void
-MenuButton::on_pointer_release ()
+MenuButton::on_pointer_release()
 {
   pressed = false;
 }

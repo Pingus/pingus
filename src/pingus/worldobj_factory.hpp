@@ -34,7 +34,7 @@ private:
 
   static std::unique_ptr<WorldObjFactory> instance_;
 
-  WorldObjFactory ();
+  WorldObjFactory();
   void free_factories();
 
 public:

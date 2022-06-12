@@ -74,7 +74,7 @@ PingusSoundReal::real_play_sound(std::string const& name, float volume, float pa
 }
 
 void
-PingusSoundReal::real_stop_music ()
+PingusSoundReal::real_stop_music()
 {
   if (m_music_source)
   {

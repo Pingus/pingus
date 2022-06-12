@@ -36,7 +36,7 @@ ArmageddonButton::ArmageddonButton(Server* s, int x, int y) :
   sprite       = Sprite("core/buttons/armageddon_anim");
 }
 
-ArmageddonButton::~ArmageddonButton ()
+ArmageddonButton::~ArmageddonButton()
 {
 }
 
@@ -45,7 +45,7 @@ ArmageddonButton::draw (DrawingContext& gc)
 {
   Vector2i pos(rect.left(), rect.top());
 
-  if (server->get_world()->check_armageddon ())
+  if (server->get_world()->check_armageddon())
   {
     gc.draw(backgroundhl, pos);
     gc.draw(sprite, pos);
@@ -103,7 +103,7 @@ ForwardButton::ForwardButton(GameSession* s, int x, int y) :
   surface = Sprite("core/buttons/fast_forward");
 }
 
-ForwardButton::~ForwardButton () {}
+ForwardButton::~ForwardButton() {}
 
 void
 ForwardButton::draw (DrawingContext& gc)
@@ -144,7 +144,7 @@ PauseButton::PauseButton(GameSession* s, int x, int y) :
   surface = Sprite("core/buttons/pause");
 }
 
-PauseButton::~PauseButton ()
+PauseButton::~PauseButton()
 {
 }
 

@@ -41,8 +41,8 @@ class WorldmapComponent;
 class WorldmapScreen : public GUIScreen
 {
 public:
-  WorldmapScreen ();
-  ~WorldmapScreen () override;
+  WorldmapScreen();
+  ~WorldmapScreen() override;
 
   void load(Pathname const& filename);
 
@@ -62,7 +62,7 @@ public:
   void on_fast_forward_release() override;
 
   /** Exit the WorldmapScreen and return to the previous screen */
-  void on_escape_press () override;
+  void on_escape_press() override;
   /** @}*/
 
   Worldmap* get_worldmap() { return worldmap.get(); }
@@ -76,7 +76,7 @@ public:
 
 private:
   /** Startup Hook of the Screen */
-  void on_startup () override;
+  void on_startup() override;
 
 private:
   bool is_init;

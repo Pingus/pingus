@@ -45,7 +45,7 @@ IceBlock::IceBlock(ReaderMapping const& reader) :
 }
 
 void
-IceBlock::on_startup ()
+IceBlock::on_startup()
 {
   world->put(block_sur_cmap,
              static_cast<int>(pos.x()),

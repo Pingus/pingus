@@ -28,7 +28,7 @@ private:
 
 public:
   SnowGenerator(ReaderMapping const& reader);
-  ~SnowGenerator () override;
+  ~SnowGenerator() override;
 
   /** fill the screen with snow flocks */
   void on_startup() override;

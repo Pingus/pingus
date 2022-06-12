@@ -259,26 +259,26 @@ GameSession::process_axis_event (pingus::input::AxisEvent const& event)
 }
 
 void
-GameSession:: on_escape_press ()
+GameSession:: on_escape_press()
 {
   server->send_finish_event();
 }
 
 void
-GameSession:: on_pause_press ()
+GameSession:: on_pause_press()
 {
   set_pause(!get_pause());
 }
 
 void
-GameSession::on_single_step_press ()
+GameSession::on_single_step_press()
 {
   set_pause(true);
   single_step = true;
 }
 
 void
-GameSession::on_fast_forward_press ()
+GameSession::on_fast_forward_press()
 {
   if (get_pause())
   {
@@ -291,13 +291,13 @@ GameSession::on_fast_forward_press ()
 }
 
 void
-GameSession::on_fast_forward_release ()
+GameSession::on_fast_forward_release()
 {
   set_fast_forward(false);
 }
 
 void
-GameSession::on_armageddon_press ()
+GameSession::on_armageddon_press()
 {
   server->send_armageddon_event();
 }
@@ -306,13 +306,13 @@ void
 GameSession::on_action_axis_move (float move)
 {
   if (move > 0)
-    button_panel->next_action ();
+    button_panel->next_action();
   else if (move < 0)
-    button_panel->previous_action ();
+    button_panel->previous_action();
 }
 
 void
-GameSession::on_startup ()
+GameSession::on_startup()
 {
   if (globals::developer_mode)
     log_info("Starting Music: {}", server->get_plf().get_music());

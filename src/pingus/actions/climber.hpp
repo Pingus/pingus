@@ -32,13 +32,13 @@ private:
 public:
   Climber (Pingu*);
 
-  ActionName::Enum get_type () const override { return ActionName::CLIMBER; }
+  ActionName::Enum get_type() const override { return ActionName::CLIMBER; }
 
   void draw (SceneContext& gc) override;
 
-  void update () override;
+  void update() override;
 
-  char get_persistent_char () override { return 'c'; }
+  char get_persistent_char() override { return 'c'; }
   bool change_allowed(ActionName::Enum new_action) override;
 
   Vector2f get_center_pos() const override;

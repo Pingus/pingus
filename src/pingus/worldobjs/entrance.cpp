@@ -63,18 +63,18 @@ Entrance::Entrance(ReaderMapping const& reader) :
   last_release = 150 - release_rate; // wait ~2sec at startup to allow a 'lets go' sound
 }
 
-Entrance::~Entrance ()
+Entrance::~Entrance()
 {
 }
 
 float
-Entrance::z_index () const
+Entrance::z_index() const
 {
   return m_z_index;
 }
 
 bool
-Entrance::pingu_ready ()
+Entrance::pingu_ready()
 {
   if (last_release + release_rate < (world->get_time())) {
     last_release = world->get_time();
@@ -85,7 +85,7 @@ Entrance::pingu_ready ()
 }
 
 void
-Entrance::create_pingu ()
+Entrance::create_pingu()
 {
   Direction d;
 
@@ -136,7 +136,7 @@ Entrance::create_pingu ()
 }
 
 void
-Entrance::update ()
+Entrance::update()
 {
   if (pingu_ready() && (! world->check_armageddon()))
   {

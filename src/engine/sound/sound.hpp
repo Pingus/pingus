@@ -32,8 +32,8 @@ private:
   static std::unique_ptr<PingusSoundImpl> sound;
 
 public:
-  PingusSound  () { }
-  ~PingusSound () { }
+  PingusSound() { }
+  ~PingusSound() { }
 
   static void init(std::unique_ptr<PingusSoundImpl> s = {});
   static void deinit();

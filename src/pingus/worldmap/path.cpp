@@ -40,7 +40,7 @@ Path::length()
   }
   else
   {
-    path_length = calc_length ();
+    path_length = calc_length();
     path_length_valid = true;
     return path_length;
   }
@@ -71,8 +71,8 @@ Path::at(float vec_position)
 {
   assert(!vec.empty());
 
-  Path::iterator current = vec.begin ();
-  Path::iterator next    = vec.begin () + 1;
+  Path::iterator current = vec.begin();
+  Path::iterator next    = vec.begin() + 1;
 
   float comp_length = 0.0f;
   while (next != vec.end())
@@ -99,7 +99,7 @@ Path::at(float vec_position)
 void
 Path::reverse()
 {
-  std::reverse(vec.begin (), vec.end ());
+  std::reverse(vec.begin(), vec.end());
 }
 
 } // namespace pingus::worldmap

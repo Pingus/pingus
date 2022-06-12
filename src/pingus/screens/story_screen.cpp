@@ -50,7 +50,7 @@ private:
 
 public:
   StoryScreenComponent (pingus::worldmap::WorldmapStory *arg_pages, bool credits);
-  ~StoryScreenComponent () override {}
+  ~StoryScreenComponent() override {}
 
   void draw (DrawingContext& gc) override;
   void update(float delta) override;
@@ -224,13 +224,13 @@ StoryScreenComponent::update(float delta)
 }
 
 void
-StoryScreen::on_fast_forward_press ()
+StoryScreen::on_fast_forward_press()
 {
   story_comp->next_text();
 }
 
 void
-StoryScreen::on_escape_press ()
+StoryScreen::on_escape_press()
 {
   ScreenManager::instance()->pop_screen();
 }

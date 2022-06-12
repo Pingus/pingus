@@ -82,13 +82,13 @@ public:
   void    draw_smallmap(SmallMap* smallmap);
 
   /** Update the World */
-  void    update ();
+  void    update();
 
   /** Issue an armageddon, all Pingus will explode in some seconds. */
-  void    armageddon ();
+  void    armageddon();
 
   /** @return The absolute height of the world. */
-  int     get_height () const;
+  int     get_height() const;
   /** @return The absolute width of the world */
   int     get_width() const;
 
@@ -109,16 +109,16 @@ public:
   WorldObj* get_worldobj(std::string const& id);
 
   /** @return A pointer to the worlds pingu particle holder */
-  pingus::particles::PinguParticleHolder* get_pingu_particle_holder () { return pingu_particle_holder; }
+  pingus::particles::PinguParticleHolder* get_pingu_particle_holder() { return pingu_particle_holder; }
 
   /** @return A pointer to the worlds rain particle holder */
-  pingus::particles::RainParticleHolder* get_rain_particle_holder () { return rain_particle_holder; }
+  pingus::particles::RainParticleHolder* get_rain_particle_holder() { return rain_particle_holder; }
 
   /** @return A pointer to the worlds smoke particle holder */
-  pingus::particles::SmokeParticleHolder* get_smoke_particle_holder () { return smoke_particle_holder; }
+  pingus::particles::SmokeParticleHolder* get_smoke_particle_holder() { return smoke_particle_holder; }
 
   /** @return A pointer to the worlds snow particle holder */
-  pingus::particles::SnowParticleHolder* get_snow_particle_holder () { return snow_particle_holder; }
+  pingus::particles::SnowParticleHolder* get_snow_particle_holder() { return snow_particle_holder; }
 
   /** @return true if the world is currently doing an armageddon */
   bool check_armageddon() const { return do_armageddon; }

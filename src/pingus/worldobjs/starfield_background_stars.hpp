@@ -47,10 +47,10 @@ public:
   StarfieldBackgroundStars(Type type);
 
   // Never used
-  float z_index () const { return -100; }
+  float z_index() const { return -100; }
 
-  void init ();
-  void update ();
+  void init();
+  void update();
   void draw (SceneContext& gc);
 
 private:

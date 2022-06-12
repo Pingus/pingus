@@ -119,7 +119,7 @@ EditorScreen::~EditorScreen()
 }
 
 void
-EditorScreen::on_startup ()
+EditorScreen::on_startup()
 {
   pingus::sound::PingusSound::stop_music();
 }

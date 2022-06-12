@@ -63,14 +63,14 @@ public:
   void insert(Path& p) {
     path_length_valid = false;
     //vec.insert(vec.end(), p.vec.begin(), p.vec.end());
-    vec.reserve(vec.size() + p.vec.size ());
+    vec.reserve(vec.size() + p.vec.size());
     std::copy(p.vec.begin(), p.vec.end(), std::back_inserter(vec));
   }
 
   void reverse_insert(Path& p) {
     path_length_valid = false;
     //vec.insert(vec.end(), p.vec.rbegin(), p.vec.rend());
-    vec.reserve(vec.size() + p.vec.size ());
+    vec.reserve(vec.size() + p.vec.size());
     std::copy(p.vec.rbegin(), p.vec.rend(), std::back_inserter(vec));
   }
 

@@ -497,7 +497,7 @@ EditorLevel::object_at(int x, int y)
 {
   // we travel reversly through the object list, so that we get the
   // top-most object
-  for (auto i = (*get_objects()).rbegin (); i != (*get_objects()).rend (); ++i)
+  for (auto i = (*get_objects()).rbegin(); i != (*get_objects()).rend(); ++i)
   {
     if ((*i)->is_at(x, y))
       return *i;

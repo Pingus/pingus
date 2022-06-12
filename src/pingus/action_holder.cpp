@@ -32,7 +32,7 @@ ActionHolder::ActionHolder(PingusLevel const& plf) :
   }
 }
 
-ActionHolder::~ActionHolder ()
+ActionHolder::~ActionHolder()
 {
 }
 

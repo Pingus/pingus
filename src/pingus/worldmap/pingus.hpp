@@ -29,7 +29,7 @@ class Pingus : public Drawable
 {
 public:
   Pingus (PathGraph* arg_path);
-  ~Pingus () override;
+  ~Pingus() override;
 
   void draw (DrawingContext& gc) override;
   void update (float delta) override;
@@ -41,7 +41,7 @@ public:
 
   /** @return the node on which the pingu is currently standing, 0 is
       returned if the pingu is currently between two nodes */
-  NodeId get_node () const {
+  NodeId get_node() const {
     return current_node;
   }
 
@@ -58,7 +58,7 @@ private:
   float get_direction() const;
 
   /** calculate the position of the pingu */
-  Vector2f calc_pos ();
+  Vector2f calc_pos();
 
   void  update_walk (float delta);
 

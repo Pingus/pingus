@@ -108,9 +108,9 @@ public:
   unsigned int get_end_id() const;
 
   // FIXME: Dirty cruft, needs cleanup
-  std::list<Pingu*>::iterator  begin () { return pingus.begin (); }
-  std::list<Pingu*>::iterator  end ()   { return pingus.end (); }
-  std::list<Pingu*>::size_type size ()  { return pingus.size (); }
+  std::list<Pingu*>::iterator  begin() { return pingus.begin(); }
+  std::list<Pingu*>::iterator  end()   { return pingus.end(); }
+  std::list<Pingu*>::size_type size()  { return pingus.size(); }
 
 private:
   PinguHolder (PinguHolder const&);

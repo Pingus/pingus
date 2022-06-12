@@ -37,14 +37,14 @@ private:
 public:
   Groundpiece(ReaderMapping const& reader);
 
-  float z_index () const override { return m_z_index; }
+  float z_index() const override { return m_z_index; }
   void set_z_index(float z_index) override { m_z_index = z_index; }
   void set_pos(Vector2f const& p) override { pos = p; }
   Vector2f get_pos() const override { return pos; }
 
   void draw (SceneContext&) override {}
-  void on_startup () override;
-  bool purge_after_startup () override { return true; }
+  void on_startup() override;
+  bool purge_after_startup() override { return true; }
 
 private:
   Groundpiece (Groundpiece const&);

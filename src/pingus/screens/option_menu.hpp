@@ -79,7 +79,7 @@ public:
   ~OptionMenu() override;
 
   void draw_background (DrawingContext& gc) override;
-  void on_escape_press () override;
+  void on_escape_press() override;
 
   void add_item(std::string const& label, std::unique_ptr<pingus::gui::RectComponent> control);
 

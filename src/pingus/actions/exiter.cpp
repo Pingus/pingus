@@ -34,7 +34,7 @@ Exiter::Exiter (Pingu* p) :
 }
 
 void
-Exiter::update ()
+Exiter::update()
 {
   sprite[pingu->direction].update();
 

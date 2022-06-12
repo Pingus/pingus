@@ -122,13 +122,13 @@ public:
   }
 
   /** Emmitted when pointer enters the region of the component */
-  void on_pointer_enter () override
+  void on_pointer_enter() override
   {
     mouse_over = true;
   }
 
   /** Emmitted when pointer leaves the region of the component */
-  void on_pointer_leave () override
+  void on_pointer_leave() override
   {
     mouse_over = false;
   }

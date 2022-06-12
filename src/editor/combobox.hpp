@@ -58,7 +58,7 @@ protected:
 
 public:
   Combobox(Rect const& rect);
-  ~Combobox () override;
+  ~Combobox() override;
 
   void add(int id, std::string const& str);
 

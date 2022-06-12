@@ -41,7 +41,7 @@ SwitchDoorSwitch::SwitchDoorSwitch(ReaderMapping const& reader) :
 }
 
 void
-SwitchDoorSwitch::on_startup ()
+SwitchDoorSwitch::on_startup()
 {
   if (m_target.empty())
   {
@@ -62,7 +62,7 @@ SwitchDoorSwitch::draw (SceneContext& gc)
 }
 
 void
-SwitchDoorSwitch::update ()
+SwitchDoorSwitch::update()
 {
   if (!is_triggered)
   {
@@ -71,7 +71,7 @@ SwitchDoorSwitch::update ()
       // Check if a pingu is passing the switch
       PinguHolder* holder = world->get_pingus();
 
-      for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu)
+      for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
       {
         if ((*pingu)->get_pos().x() > switch_pos.x() &&
             (*pingu)->get_pos().x() < switch_pos.x() + static_cast<float>(switch_sur.get_width()) &&

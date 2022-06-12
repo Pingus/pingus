@@ -44,10 +44,10 @@ Faller::Faller (Pingu* p) :
   // FIXME: add sprites for jumping here: if x_vel > y_vel, use them
 }
 
-Faller::~Faller () { }
+Faller::~Faller() { }
 
 void
-Faller::update ()
+Faller::update()
 {
   if (is_tumbling())
   {
@@ -149,7 +149,7 @@ Faller::draw (SceneContext& gc)
 }
 
 bool
-Faller::is_tumbling () const
+Faller::is_tumbling() const
 {
   // If we are going fast enough to get smashed, start tumbling
   return (std::abs(pingu->get_velocity().x) > deadly_velocity

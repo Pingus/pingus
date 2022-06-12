@@ -82,7 +82,7 @@ public:
   Viewport(EditorScreen* e, Rect const& rect);
 
   /** Destructor */
-  ~Viewport () override;
+  ~Viewport() override;
 
   /** Draws all of the objects in the viewport */
   void draw(DrawingContext &gc) override;

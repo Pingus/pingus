@@ -44,7 +44,7 @@ public:
   void set_pos(Vector2f const& p) override {}
   Vector2f get_pos() const override { return Vector2f(); }
 
-  void update () override;
+  void update() override;
   void draw (SceneContext& gc) override;
 
 private:

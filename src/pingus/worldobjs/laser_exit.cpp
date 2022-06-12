@@ -34,7 +34,7 @@ LaserExit::LaserExit(ReaderMapping const& reader) :
 }
 
 float
-LaserExit::z_index () const
+LaserExit::z_index() const
 {
   return m_z_index;
 }
@@ -46,11 +46,11 @@ LaserExit::draw (SceneContext& gc)
 }
 
 void
-LaserExit::update ()
+LaserExit::update()
 {
 
   PinguHolder* holder = world->get_pingus();
-  for (PinguIter pingu = holder->begin (); pingu != holder->end (); ++pingu){
+  for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu){
     catch_pingu(*pingu);
   }
 
@@ -69,8 +69,8 @@ LaserExit::catch_pingu (Pingu* pingu)
 {
   if (!killing)
   {
-    if (   pingu->get_x () < pos.x() + 34 + 10 && pingu->get_x () > pos.x() + 34
-           && pingu->get_y () < pos.y() + 43 + 20 && pingu->get_y () > pos.y() + 43)
+    if (   pingu->get_x() < pos.x() + 34 + 10 && pingu->get_x() > pos.x() + 34
+           && pingu->get_y() < pos.y() + 43 + 20 && pingu->get_y() > pos.y() + 43)
     {
       if (pingu->get_action() != ActionName::LASERKILL)
       {

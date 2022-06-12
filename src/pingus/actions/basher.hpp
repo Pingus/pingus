@@ -50,14 +50,14 @@ private:
 public:
   Basher (Pingu* p);
 
-  ActionName::Enum get_type () const override { return ActionName::BASHER; }
+  ActionName::Enum get_type() const override { return ActionName::BASHER; }
 
   void draw (SceneContext& gc) override;
-  void update () override;
+  void update() override;
 
-  bool have_something_to_dig ();
-  bool walk_forward ();
-  void bash ();
+  bool have_something_to_dig();
+  bool walk_forward();
+  void bash();
 
 private:
   Basher (Basher const&);

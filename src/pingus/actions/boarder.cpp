@@ -34,7 +34,7 @@ Boarder::Boarder (Pingu* p) :
 }
 
 void
-Boarder::update ()
+Boarder::update()
 {
   sprite[pingu->direction].update();
 
@@ -79,11 +79,11 @@ Boarder::update ()
 void
 Boarder::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos ());
+  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 bool
-Boarder::on_ground ()
+Boarder::on_ground()
 {
   return pingu->rel_getpixel (0, -1) || pingu->rel_getpixel (0, -2);
 }

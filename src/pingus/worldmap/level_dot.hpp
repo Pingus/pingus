@@ -38,7 +38,7 @@ public:
   bool is_accessible() const override;
   void unlock() override;
 
-  PingusLevel get_plf () const { return plf; }
+  PingusLevel get_plf() const { return plf; }
 
 private:
   Sprite green_dot_sur;

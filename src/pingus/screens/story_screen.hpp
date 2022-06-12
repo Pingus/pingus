@@ -39,8 +39,8 @@ public:
   ~StoryScreen() override;
 
   void on_startup() override;
-  void on_fast_forward_press () override;
-  void on_escape_press () override;
+  void on_fast_forward_press() override;
+  void on_escape_press() override;
 
   void resize(Size const& size) override;
 

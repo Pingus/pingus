@@ -38,7 +38,7 @@ public:
   bool change_allowed (ActionName::Enum new_action) override;
 
   ActionName::Enum get_type() const override { return ActionName::FALLER; }
-  bool is_tumbling () const;
+  bool is_tumbling() const;
 
 private:
   Faller (Faller const&);

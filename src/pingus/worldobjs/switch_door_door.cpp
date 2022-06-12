@@ -69,7 +69,7 @@ SwitchDoorDoor::draw(SceneContext& gc)
 }
 
 void
-SwitchDoorDoor::update ()
+SwitchDoorDoor::update()
 {
   if (current_door_height > 0)
   {

@@ -38,7 +38,7 @@ Jumper::draw (SceneContext& gc)
 }
 
 void
-Jumper::update ()
+Jumper::update()
 {
   // if climber, do a wall-jump, else just jump forward
   if ((pingu->get_previous_action() == ActionName::CLIMBER))
