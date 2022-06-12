@@ -19,6 +19,7 @@
 
 #include <SDL.h>
 
+#include <filesystem>
 #include <string>
 
 namespace pingus {
@@ -26,12 +27,8 @@ namespace pingus {
 /** Simple class to get a screenshot and save it as pnm */
 class Screenshot
 {
-private:
-  static std::string get_date();
-  static std::string get_filename();
-
 public:
-  static std::string make_screenshot();
+  static void save_screenshot(std::filesystem::path const& filename);
 
   /** buffer must be RGBX and width*height*4 large */
   static void save_png(std::string const& filename, uint8_t const* buffer, int width, int height, int pitch);

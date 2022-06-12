@@ -24,6 +24,7 @@
 #include "pingus/globals.hpp"
 #include "pingus/screens/addon_menu.hpp"
 #include "pingus/screens/option_menu.hpp"
+#include "util/system.hpp"
 
 namespace pingus {
 
@@ -88,7 +89,33 @@ GlobalEvent::on_button_press(SDL_KeyboardEvent const& event)
 
     case SDLK_F12:
       {
-        Screenshot::make_screenshot();
+        auto get_date = []() -> std::string {
+          char buffer[64];
+          time_t curtime;
+          struct tm *loctime;
+          curtime = time (nullptr);
+          loctime = localtime(&curtime);
+          strftime(buffer, 64, "%Y%m%d-%H%M%S", loctime);
+
+          return std::string(buffer);
+        };
+
+        auto get_filename = [get_date]() -> std::string {
+          std::string tmp_filename;
+          char str [16];
+          int i = 1;
+
+          do {
+            snprintf(str, 16, "%d.png", i);
+            tmp_filename = System::get_userdir() + "screenshots/"
+              + "pingus-" + get_date() + "-" + std::string(str);
+            ++i;
+          } while (std::filesystem::exists(tmp_filename));
+
+          return tmp_filename;
+        };
+
+        Screenshot::save_screenshot(get_filename());
       }
       break;
 

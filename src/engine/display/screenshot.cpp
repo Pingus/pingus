@@ -28,27 +28,20 @@
 #include "engine/display/display.hpp"
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/surface.hpp"
-#include "util/system.hpp"
 
 namespace pingus {
 
 // Saves a screenshot to file, it return the filename the screenshot
 // was saved to.
-std::string
-Screenshot::make_screenshot()
+void
+Screenshot::save_screenshot(std::filesystem::path const& filename)
 {
   Surface screen = Display::get_framebuffer()->make_screenshot();
   if (screen)
   {
-    std::string filename = get_filename();
     log_info("Screenshot: Saving screenshot to: {}", filename);
     save_png(filename, screen.get_data(), screen.get_width(), screen.get_height(), screen.get_pitch());
     log_info("Screenshot: Screenshot is done.");
-    return filename;
-  }
-  else
-  {
-    return std::string();
   }
 }
 
@@ -117,36 +110,6 @@ Screenshot::save_png(std::string const& filename, uint8_t const* buffer, int wid
   png_destroy_write_struct(&png_ptr, &info_ptr);
 
   fclose(fp);
-}
-
-std::string
-Screenshot::get_filename()
-{
-  std::string tmp_filename;
-  char str [16];
-  int i = 1;
-
-  do {
-    snprintf(str, 16, "%d.png", i);
-    tmp_filename = System::get_userdir() + "screenshots/"
-      + "pingus-" + get_date() + "-" + std::string(str);
-    ++i;
-  } while (std::filesystem::exists(tmp_filename));
-
-  return tmp_filename;
-}
-
-std::string
-Screenshot::get_date()
-{
-  char buffer[64];
-  time_t curtime;
-  struct tm *loctime;
-  curtime = time (nullptr);
-  loctime = localtime(&curtime);
-  strftime(buffer, 64, "%Y%m%d-%H%M%S", loctime);
-
-  return std::string(buffer);
 }
 
 } // namespace pingus
