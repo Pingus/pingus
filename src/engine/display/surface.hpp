@@ -19,10 +19,11 @@
 
 #include <memory>
 
+#include <geom/size.hpp>
+#include <geom/rect.hpp>
+
 #include "engine/display/resource_modifier.hpp"
 #include "math/color.hpp"
-#include "math/size.hpp"
-#include "math/rect.hpp"
 #include "util/pathname.hpp"
 
 namespace pingus {
@@ -53,7 +54,7 @@ public:
   void lock();
   void unlock();
 
-  Size get_size()   const;
+  geom::isize get_size()   const;
   int  get_width()  const;
   int  get_height() const;
   int  get_pitch()  const;
@@ -72,7 +73,7 @@ public:
   Surface clone() const;
   Surface convert_to_rgba() const;
   Surface convert_to_rgb() const;
-  Surface subsection(Rect const& rect) const;
+  Surface subsection(geom::irect const& rect) const;
 
   SDL_Surface* get_surface() const;
 

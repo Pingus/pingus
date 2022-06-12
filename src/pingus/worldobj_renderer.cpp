@@ -70,24 +70,24 @@ WorldObjRenderer::pop_translate()
   m_translate_stack.pop_back();
 }
 
-Rect
+geom::irect
 WorldObjRenderer::get_clip_rect() const
 {
   if (m_draw_op.empty())
   {
-    return Rect();
+    return geom::irect();
   }
   else
   {
-    Rect rect(m_draw_op.front().pos,
+    geom::irect rect(m_draw_op.front().pos,
               geom::isize(m_draw_op.front().surface.get_width(),
                           m_draw_op.front().surface.get_height()));
 
     for(auto it = m_draw_op.begin()+1; it != m_draw_op.end(); ++it)
     {
-      Rect img(it->pos, it->surface.get_size());
+      geom::irect img(it->pos, it->surface.get_size());
 
-      rect = Rect(std::min(img.left(),   rect.left()),
+      rect = geom::irect(std::min(img.left(),   rect.left()),
                   std::min(img.top(),    rect.top()),
                   std::max(img.right(),  rect.right()),
                   std::max(img.bottom(), rect.bottom()));
@@ -99,7 +99,7 @@ WorldObjRenderer::get_clip_rect() const
 
 void
 WorldObjRenderer::render_sprite(ResDescriptor const& desc,
-                                Vector2f const& pos,
+                                geom::fpoint const& pos,
                                 float z_index)
 {
   Surface surface = Resource::load_surface(desc);
@@ -112,7 +112,7 @@ WorldObjRenderer::render_sprite(ResDescriptor const& desc,
 
 void
 WorldObjRenderer::render_surface(ResDescriptor const& desc,
-                                 Vector2f const& pos,
+                                 geom::fpoint const& pos,
                                  float z_index,
                                  int repeat)
 {
@@ -158,7 +158,7 @@ WorldObjRenderer::process(ReaderObject const& reader_object)
   }
   else if (reader_object.get_name() == "entrance")
   {
-    Vector2f pos;
+    geom::fpoint pos;
     float z_index = 0.0f;
     InVector2fZ in_vec{pos, z_index};
     reader.read("position", in_vec);
@@ -166,7 +166,7 @@ WorldObjRenderer::process(ReaderObject const& reader_object)
   }
   else if (reader_object.get_name() == "spike")
   {
-    Vector2f pos;
+    geom::fpoint pos;
     float z_index = 0.0f;
     InVector2fZ in_vec{pos, z_index};
     reader.read("position", in_vec);
@@ -174,7 +174,7 @@ WorldObjRenderer::process(ReaderObject const& reader_object)
   }
   else if (reader_object.get_name() == "switchdoor-switch")
   {
-    Vector2f pos;
+    geom::fpoint pos;
     float z_index = 0.0f;
     InVector2fZ in_vec{pos, z_index};
     reader.read("position", in_vec);
@@ -182,7 +182,7 @@ WorldObjRenderer::process(ReaderObject const& reader_object)
   }
   else if (reader_object.get_name() == "switchdoor-door")
   {
-    Vector2f pos;
+    geom::fpoint pos;
     float z_index = 0.0f;
     InVector2fZ in_vec{pos, z_index};
     reader.read("position", in_vec);
@@ -209,7 +209,7 @@ WorldObjRenderer::process(ReaderObject const& reader_object)
     {
       PrefabFile prefab = PrefabFile::from_resource(name);
 
-      Vector2f position;
+      geom::fpoint position;
       float z_index = 0.0f;
       InVector2fZ in_vec{position, z_index};
       reader.read("position", in_vec);
@@ -230,7 +230,7 @@ WorldObjRenderer::process_object_with_surface(ReaderObject const& reader_object)
 {
   ReaderMapping reader = reader_object.get_mapping();
 
-  Vector2f pos;
+  geom::fpoint pos;
   float z_index = 0.0f;
   ResDescriptor desc;
 

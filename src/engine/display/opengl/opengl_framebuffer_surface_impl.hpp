@@ -27,8 +27,8 @@ class OpenGLFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {
 private:
   GLuint m_handle;
-  Size   m_size;
-  Size   m_texture_size;
+  geom::isize   m_size;
+  geom::isize   m_texture_size;
 
 public:
   OpenGLFramebufferSurfaceImpl(SDL_Surface* src);
@@ -38,8 +38,8 @@ public:
   int get_height() const override { return m_size.height(); }
 
   GLuint get_handle() const { return m_handle; }
-  Size get_texture_size() const { return m_texture_size; }
-  Size get_size() const { return m_size; }
+  geom::isize get_texture_size() const { return m_texture_size; }
+  geom::isize get_size() const { return m_size; }
 
 private:
   OpenGLFramebufferSurfaceImpl(OpenGLFramebufferSurfaceImpl const&);

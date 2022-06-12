@@ -19,6 +19,7 @@
 #include <stdexcept>
 
 #include <logmich/log.hpp>
+#include <prio/reader.hpp>
 
 #include "util/reader.hpp"
 
@@ -33,7 +34,7 @@ GlyphDescription::GlyphDescription() :
 {
 }
 
-GlyphDescription::GlyphDescription(ReaderMapping const& reader) :
+GlyphDescription::GlyphDescription(prio::ReaderMapping const& reader) :
   image(0),
   unicode(0),
   offset(),
@@ -58,7 +59,7 @@ FontDescription::FontDescription(Pathname const& pathname_) :
   char_spacing     = 1.0f;
   vertical_spacing = 1.0f;
 
-  auto doc = ReaderDocument::from_file(pathname.get_sys_path());
+  auto doc = prio::ReaderDocument::from_file(pathname.get_sys_path());
 
   if (doc.get_root().get_name() != "pingus-font")
   {
@@ -66,28 +67,28 @@ FontDescription::FontDescription(Pathname const& pathname_) :
   }
   else
   {
-    ReaderMapping reader = doc.get_root().get_mapping();
+    prio::ReaderMapping reader = doc.get_root().get_mapping();
 
     reader.read("char-spacing", char_spacing);
     reader.read("vertical-spacing", vertical_spacing);
     reader.read("size", size);
 
-    ReaderCollection images_reader;
+    prio::ReaderCollection images_reader;
     if (reader.read("images", images_reader))
     {
       auto images_lst = images_reader.get_objects();
 
       for(auto i = images_lst.begin(); i != images_lst.end(); ++i)
       {
-        ReaderMapping mapping = i->get_mapping();
+        prio::ReaderMapping mapping = i->get_mapping();
 
         GlyphImageDescription image_desc;
         mapping.read("filename", image_desc.pathname);
 
-        ReaderCollection glyph_collection;
+        prio::ReaderCollection glyph_collection;
         if (mapping.read("glyphs", glyph_collection))
         {
-          std::vector<ReaderObject> glyph_reader = glyph_collection.get_objects();
+          std::vector<prio::ReaderObject> glyph_reader = glyph_collection.get_objects();
           for(auto j = glyph_reader.begin(); j != glyph_reader.end(); ++j)
           {
             if (j->get_name() == "glyph")

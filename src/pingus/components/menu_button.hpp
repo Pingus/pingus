@@ -47,7 +47,7 @@ protected:
   bool pressed;
 
 public:
-  MenuButton(PingusMenu* menu, Vector2i const& pos,
+  MenuButton(PingusMenu* menu, geom::ipoint const& pos,
              std::string const& text, std::string const& desc);
   ~MenuButton() override;
 

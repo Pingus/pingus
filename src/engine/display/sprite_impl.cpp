@@ -85,7 +85,7 @@ SpriteImpl::SpriteImpl(SpriteDescription const& desc, ResourceModifier::Enum mod
 
   array = desc.array;
 
-  frame_size = Size((desc.frame_size.width()  == -1) ? framebuffer_surface.get_width()/array.width()   : desc.frame_size.width(),
+  frame_size = geom::isize((desc.frame_size.width()  == -1) ? framebuffer_surface.get_width()/array.width()   : desc.frame_size.width(),
                     (desc.frame_size.height() == -1) ? framebuffer_surface.get_height()/array.height() : desc.frame_size.height());
 
   frame_delay  = desc.speed;
@@ -149,10 +149,10 @@ void
 SpriteImpl::render(int x, int y, Framebuffer& fb)
 {
   fb.draw_surface(framebuffer_surface,
-                  Rect(frame_pos + geom::ioffset(frame_size.width()  * (frame%array.width()),
+                  geom::irect(frame_pos + geom::ioffset(frame_size.width()  * (frame%array.width()),
                                                  frame_size.height() * (frame/array.width())),
                        frame_size),
-                  Vector2i(x - offset.x(), y - offset.y()));
+                  geom::ipoint(x - offset.x(), y - offset.y()));
 }
 
 void

@@ -20,11 +20,12 @@
 #include <SDL.h>
 #include <vector>
 
+#include <geom/point.hpp>
+#include <geom/size.hpp>
+#include <geom/rect.hpp>
+
 #include "engine/display/framebuffer_surface.hpp"
 #include "math/color.hpp"
-#include "math/rect.hpp"
-#include "math/size.hpp"
-#include "math/vector2i.hpp"
 
 namespace pingus {
 
@@ -40,24 +41,24 @@ public:
 
   virtual Surface make_screenshot() const =0;
 
-  virtual void set_video_mode(Size const& size, bool fullscreen, bool resizable) =0;
+  virtual void set_video_mode(geom::isize const& size, bool fullscreen, bool resizable) =0;
   virtual bool is_fullscreen() const =0;
   virtual bool is_resizable() const =0;
   virtual bool has_grab() const { return false; }
   virtual void flip() =0;
 
-  virtual void push_cliprect(Rect const&) =0;
+  virtual void push_cliprect(geom::irect const&) =0;
   virtual void pop_cliprect() =0;
 
-  virtual void draw_surface(FramebufferSurface const& src, Vector2i const& pos) =0;
-  virtual void draw_surface(FramebufferSurface const& src, Rect const& srcrect, Vector2i const& pos) =0;
+  virtual void draw_surface(FramebufferSurface const& src, geom::ipoint const& pos) =0;
+  virtual void draw_surface(FramebufferSurface const& src, geom::irect const& srcrect, geom::ipoint const& pos) =0;
 
-  virtual void draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color) =0;
+  virtual void draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Color const& color) =0;
 
-  virtual void draw_rect(Rect const& rect, Color const& color) =0;
-  virtual void fill_rect(Rect const& rect, Color const& color) =0;
+  virtual void draw_rect(geom::irect const& rect, Color const& color) =0;
+  virtual void fill_rect(geom::irect const& rect, Color const& color) =0;
 
-  virtual Size get_size() const =0;
+  virtual geom::isize get_size() const =0;
 };
 
 } // namespace pingus

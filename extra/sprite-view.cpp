@@ -19,7 +19,7 @@ int main(int argc, char** argv)
   g_path_manager.set_path("data");
   Resource::init();
 
-  Display::create_window(FramebufferType::OPENGL, Size(800, 600), false, false);
+  Display::create_window(FramebufferType::OPENGL, geom::isize(800, 600), false, false);
 
   pingus::fonts::init();
   pingus::sound::PingusSound::init();
@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 
   while(true)
   {
-    Display::get_framebuffer()->fill_rect(Rect(0, 0, 800, 600), Color(155, 0, 155));
+    Display::get_framebuffer()->fill_rect(geom::irect(0, 0, 800, 600), Color(155, 0, 155));
     for(auto it = sprites.begin(); it != sprites.end(); ++it)
     {
       (*it).render(400 - (*it).get_width()/2, 300 - (*it).get_height()/2, *Display::get_framebuffer());

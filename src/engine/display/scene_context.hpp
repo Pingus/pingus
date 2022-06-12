@@ -33,7 +33,7 @@ class SceneContext
 {
 public:
   SceneContext();
-  SceneContext(Rect const& rect);
+  SceneContext(geom::irect const& rect);
   ~SceneContext();
 
   /** The main drawing context, also known as color buffer, to this
@@ -69,13 +69,13 @@ public:
   void pop_modelview();
   void reset_modelview();
 
-  void set_rect(Rect const& rect);
-  void set_cliprect(Rect const& rect);
+  void set_rect(geom::irect const& rect);
+  void set_cliprect(geom::irect const& rect);
   void reset_cliprect();
 
   /** Takes all the buffers and combines them to form the final image
       that will be shown on the screen */
-  void render(Framebuffer& fb, Rect const& rect);
+  void render(Framebuffer& fb, geom::irect const& rect);
 
   void clear();
 private:
@@ -91,9 +91,9 @@ private:
   SceneContext* sc;
 
 public:
-  SceneContextDrawingRequest(SceneContext* sc, Vector2i const& pos, float z);
+  SceneContextDrawingRequest(SceneContext* sc, geom::ipoint const& pos, float z);
   ~SceneContextDrawingRequest() override;
-  void render(Framebuffer& fb, Rect const& render) override;
+  void render(Framebuffer& fb, geom::irect const& render) override;
 
 private:
   SceneContextDrawingRequest(SceneContextDrawingRequest const&);

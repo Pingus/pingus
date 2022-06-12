@@ -26,10 +26,10 @@ namespace pingus {
 class NullFramebufferSurfaceImpl : public FramebufferSurfaceImpl
 {
 private:
-  Size size;
+  geom::isize size;
 
 public:
-  NullFramebufferSurfaceImpl(Size const& size_) : size(size_) {}
+  NullFramebufferSurfaceImpl(geom::isize const& size_) : size(size_) {}
   ~NullFramebufferSurfaceImpl() override {}
 
   int get_width()  const override { return size.width(); }
@@ -55,7 +55,7 @@ NullFramebuffer::create_surface(Surface const& surface)
 }
 
 void
-NullFramebuffer::set_video_mode(Size const& size, bool fullscreen, bool resizable)
+NullFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool resizable)
 {
   m_size = size;
   m_fullscreen = fullscreen;
@@ -84,7 +84,7 @@ NullFramebuffer::flip()
 }
 
 void
-NullFramebuffer::push_cliprect(Rect const&)
+NullFramebuffer::push_cliprect(geom::irect const&)
 {
 }
 
@@ -94,31 +94,31 @@ NullFramebuffer::pop_cliprect()
 }
 
 void
-NullFramebuffer::draw_surface(FramebufferSurface const& src, Vector2i const& pos)
+NullFramebuffer::draw_surface(FramebufferSurface const& src, geom::ipoint const& pos)
 {
 }
 
 void
-NullFramebuffer::draw_surface(FramebufferSurface const& src, Rect const& srcrect, Vector2i const& pos)
+NullFramebuffer::draw_surface(FramebufferSurface const& src, geom::irect const& srcrect, geom::ipoint const& pos)
 {
 }
 
 void
-NullFramebuffer::draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color)
+NullFramebuffer::draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Color const& color)
 {
 }
 
 void
-NullFramebuffer::draw_rect(Rect const& rect, Color const& color)
+NullFramebuffer::draw_rect(geom::irect const& rect, Color const& color)
 {
 }
 
 void
-NullFramebuffer::fill_rect(Rect const& rect, Color const& color)
+NullFramebuffer::fill_rect(geom::irect const& rect, Color const& color)
 {
 }
 
-Size
+geom::isize
 NullFramebuffer::get_size() const
 {
   return m_size;

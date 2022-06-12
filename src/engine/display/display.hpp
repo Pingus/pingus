@@ -21,9 +21,10 @@
 #include <vector>
 #include <SDL.h>
 
+#include <geom/rect.hpp>
+#include <geom/size.hpp>
+
 #include "engine/display/framebuffer_type.hpp"
-#include "math/rect.hpp"
-#include "math/size.hpp"
 
 namespace pingus {
 
@@ -40,11 +41,11 @@ public:
 
   static int  get_width();
   static int  get_height();
-  static Size get_size();
+  static geom::isize get_size();
 
-  static void create_window(FramebufferType framebuffer_type, Size const& size, bool fullscreen, bool resizable);
-  static void set_video_mode(Size const& size, bool fullscreen, bool resizable);
-  static void resize(Size const& size);
+  static void create_window(FramebufferType framebuffer_type, geom::isize const& size, bool fullscreen, bool resizable);
+  static void set_video_mode(geom::isize const& size, bool fullscreen, bool resizable);
+  static void resize(geom::isize const& size);
 
   static bool is_fullscreen();
   static bool is_resizable();
@@ -52,7 +53,7 @@ public:
 
   static Framebuffer* get_framebuffer();
 
-  static Size find_closest_fullscreen_video_mode(Size const& size);
+  static geom::isize find_closest_fullscreen_video_mode(geom::isize const& size);
   static std::vector<SDL_DisplayMode> get_fullscreen_video_modes();
 
 private:

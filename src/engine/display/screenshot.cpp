@@ -16,6 +16,7 @@
 
 #include "engine/display/screenshot.hpp"
 
+#include <filesystem>
 #include <memory>
 #include <assert.h>
 #include <png.h>
@@ -130,7 +131,7 @@ Screenshot::get_filename()
     tmp_filename = System::get_userdir() + "screenshots/"
       + "pingus-" + get_date() + "-" + std::string(str);
     ++i;
-  } while (System::exist(tmp_filename));
+  } while (std::filesystem::exists(tmp_filename));
 
   return tmp_filename;
 }

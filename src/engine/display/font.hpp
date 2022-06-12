@@ -19,7 +19,7 @@
 
 #include <memory>
 
-#include "math/rect.hpp"
+#include <geom/rect.hpp>
 
 namespace pingus {
 
@@ -34,13 +34,13 @@ public:
   Font(FontDescription const& desc);
 
   void render(int x, int y, std::string const& text, Framebuffer& fb);
-  void render(Origin origin, int x, int y, std::string const& text, Framebuffer& fb);
+  void render(geom::origin origin, int x, int y, std::string const& text, Framebuffer& fb);
 
   int  get_height() const;
   float get_width(uint32_t unicode) const;
   float get_width(std::string const& text) const;
-  Size get_size(std::string const& text) const;
-  Rect bounding_rect(int , int, std::string const& str) const;
+  geom::isize get_size(std::string const& text) const;
+  geom::irect bounding_rect(int , int, std::string const& str) const;
 
 private:
   std::shared_ptr<FontImpl> impl;

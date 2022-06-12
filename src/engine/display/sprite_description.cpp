@@ -18,13 +18,16 @@
 
 #include <logmich/log.hpp>
 
+#include "math/origin.hpp"
+#include "util/reader.hpp"
+
 namespace pingus {
 
 SpriteDescriptionPtr
 SpriteDescription::from_file(Pathname const& path)
 {
-  auto doc = ReaderDocument::from_file(path.get_sys_path());
-  ReaderMapping reader = doc.get_root().get_mapping();
+  auto doc = prio::ReaderDocument::from_file(path.get_sys_path());
+  prio::ReaderMapping reader = doc.get_root().get_mapping();
 
   SpriteDescriptionPtr desc(new SpriteDescription);
 

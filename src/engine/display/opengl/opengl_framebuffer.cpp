@@ -50,7 +50,7 @@ OpenGLFramebuffer::create_surface(Surface const& surface)
 Surface
 OpenGLFramebuffer::make_screenshot() const
 {
-  Size size = get_size();
+  geom::isize size = get_size();
 
   glPixelStorei(GL_PACK_ALIGNMENT, 1);
   std::unique_ptr<uint8_t[]> buffer(new uint8_t[static_cast<size_t>(size.width() * size.height() * 4)]);
@@ -72,7 +72,7 @@ OpenGLFramebuffer::make_screenshot() const
 }
 
 void
-OpenGLFramebuffer::set_video_mode(Size const& size, bool fullscreen, bool resizable)
+OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool resizable)
 {
   if (m_window)
   {
@@ -174,7 +174,7 @@ OpenGLFramebuffer::flip()
 }
 
 void
-OpenGLFramebuffer::push_cliprect(Rect const& rect)
+OpenGLFramebuffer::push_cliprect(geom::irect const& rect)
 {
   if (cliprect_stack.empty())
     glEnable(GL_SCISSOR_TEST);
@@ -185,7 +185,7 @@ OpenGLFramebuffer::push_cliprect(Rect const& rect)
   }
   else
   {
-    cliprect_stack.push_back(Rect(std::max(cliprect_stack.back().left(),   rect.left()),
+    cliprect_stack.push_back(geom::irect(std::max(cliprect_stack.back().left(),   rect.left()),
                                   std::max(cliprect_stack.back().top(),    rect.top()),
                                   std::min(cliprect_stack.back().right(),  rect.right()),
                                   std::min(cliprect_stack.back().bottom(), rect.bottom())));
@@ -208,20 +208,20 @@ OpenGLFramebuffer::pop_cliprect()
   }
   else
   {
-    Rect const& rect = cliprect_stack.back();
+    geom::irect const& rect = cliprect_stack.back();
     glScissor(rect.left(), rect.top(),
               rect.width(), rect.height());
   }
 }
 
 void
-OpenGLFramebuffer::draw_surface(FramebufferSurface const& src, Vector2i const& pos)
+OpenGLFramebuffer::draw_surface(FramebufferSurface const& src, geom::ipoint const& pos)
 {
-  draw_surface(src, Rect(Vector2i(0, 0), src.get_size()),  pos);
+  draw_surface(src, geom::irect(geom::ipoint(0, 0), src.get_size()),  pos);
 }
 
 void
-OpenGLFramebuffer::draw_surface(FramebufferSurface const& src, Rect const& srcrect, Vector2i const& pos)
+OpenGLFramebuffer::draw_surface(FramebufferSurface const& src, geom::irect const& srcrect, geom::ipoint const& pos)
 {
   OpenGLFramebufferSurfaceImpl const* texture = static_cast<OpenGLFramebufferSurfaceImpl*>(src.get_impl());
 
@@ -257,7 +257,7 @@ OpenGLFramebuffer::draw_surface(FramebufferSurface const& src, Rect const& srcre
 }
 
 void
-OpenGLFramebuffer::draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color)
+OpenGLFramebuffer::draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Color const& color)
 {
   glDisable(GL_TEXTURE_2D);
   glColor4ub(color.r, color.g, color.b, color.a);
@@ -277,7 +277,7 @@ OpenGLFramebuffer::draw_line(Vector2i const& pos1, Vector2i const& pos2, Color c
 }
 
 void
-OpenGLFramebuffer::draw_rect(Rect const& rect, Color const& color)
+OpenGLFramebuffer::draw_rect(geom::irect const& rect, Color const& color)
 {
   glDisable(GL_TEXTURE_2D);
   glColor4ub(color.r, color.g, color.b, color.a);
@@ -299,7 +299,7 @@ OpenGLFramebuffer::draw_rect(Rect const& rect, Color const& color)
 }
 
 void
-OpenGLFramebuffer::fill_rect(Rect const& rect, Color const& color)
+OpenGLFramebuffer::fill_rect(geom::irect const& rect, Color const& color)
 {
   glDisable(GL_TEXTURE_2D);
   glColor4ub(color.r, color.g, color.b, color.a);
@@ -320,13 +320,13 @@ OpenGLFramebuffer::fill_rect(Rect const& rect, Color const& color)
   glColor4f(1, 1, 1, 1);
 }
 
-Size
+geom::isize
 OpenGLFramebuffer::get_size() const
 {
   int w = 0;
   int h = 0;
   SDL_GetWindowSize(m_window, &w, &h);
-  return Size(w, h);
+  return geom::isize(w, h);
 }
 
 } // namespace pingus

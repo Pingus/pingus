@@ -188,7 +188,7 @@ Sprite::get_offset() const
 }
 
 void
-Sprite::set_hotspot(Origin origin, int x, int y)
+Sprite::set_hotspot(geom::origin origin, int x, int y)
 {
   if (impl.get())
   {

@@ -20,7 +20,9 @@
 #include <memory>
 #include <string>
 
-#include "math/origin.hpp"
+#include <geom/origin.hpp>
+#include <geom/offset.hpp>
+
 #include "engine/display/resource_modifier.hpp"
 
 namespace pingus {
@@ -49,7 +51,7 @@ public:
   void render(int x, int y, Framebuffer& target);
   void update(float delta = 0.033f);
 
-  void set_hotspot(Origin origin, int x, int y);
+  void set_hotspot(geom::origin origin, int x, int y);
   geom::ioffset get_offset() const;
   void set_frame(int i);
   int  get_frame_count() const;

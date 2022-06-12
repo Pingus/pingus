@@ -18,11 +18,12 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_DRAWING_CONTEXT_HPP
 
 #include <vector>
+
 #include <geom/offset.hpp>
+#include <geom/point.hpp>
 
 #include "engine/display/drawing_request.hpp"
 #include "math/color.hpp"
-#include "math/vector2f.hpp"
 
 namespace pingus {
 
@@ -45,17 +46,17 @@ private:
   std::vector<geom::ioffset> translate_stack;
 
   /** The rectangle that the DrawingContext uses on the screen */
-  Rect rect;
+  geom::irect rect;
 
   bool do_clipping;
 
 public:
   DrawingContext();
-  DrawingContext(Rect const& rect, bool clip = true);
+  DrawingContext(geom::irect const& rect, bool clip = true);
   virtual ~DrawingContext();
 
   /** Draws everything in the drawing context to the target */
-  void render(Framebuffer& fb, Rect const& rect);
+  void render(Framebuffer& fb, geom::irect const& rect);
 
   /** Empties the drawing context */
   void clear();
@@ -69,17 +70,17 @@ public:
       worth a try */
   void draw(DrawingContext& dc, float z = 0);
 
-  void draw(Sprite const& sprite, Vector2i const& pos, float z = 0);
-  void draw(Sprite const& sprite, Vector2f const& pos, float z = 0);
+  void draw(Sprite const& sprite, geom::ipoint const& pos, float z = 0);
+  void draw(Sprite const& sprite, geom::fpoint const& pos, float z = 0);
 
   /** Fills the screen with a given color, this is different from
       clear() in that it doesn't remove other DrawingRequest from the
       queue */
   void fill_screen(Color const& color);
 
-  void draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color, float z = 0);
-  void draw_fillrect(Rect const& rect, Color const& color, float z = 0);
-  void draw_rect(Rect const& rect, Color const& color, float z = 0);
+  void draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Color const& color, float z = 0);
+  void draw_fillrect(geom::irect const& rect, Color const& color, float z = 0);
+  void draw_rect(geom::irect const& rect, Color const& color, float z = 0);
   /*} */
 
   /** Translate the drawing context */
@@ -90,25 +91,25 @@ public:
   void reset_modelview();
 
   /** Return the area of the screen that will be visible*/
-  Rect get_world_clip_rect() const;
+  geom::irect get_world_clip_rect() const;
 
-  void set_rect(Rect const& rect);
-  Rect get_rect() const;
+  void set_rect(geom::irect const& rect);
+  geom::irect get_rect() const;
 
   int get_width() const;
   int get_height() const;
 
   /** Print a text left aligned */
-  void print_left(Font const& font, Vector2i const& pos, std::string const& str, float z = 0.0f);
+  void print_left(Font const& font, geom::ipoint const& pos, std::string const& str, float z = 0.0f);
 
   /** Print a text centred to the given position */
-  void print_center(Font const& font, Vector2i const& pos, std::string const& str, float z = 0.0f);
+  void print_center(Font const& font, geom::ipoint const& pos, std::string const& str, float z = 0.0f);
 
   /** Print a text right aligned */
-  void print_right(Font const& font, Vector2i const& pos, std::string const& str, float z = 0.0f);
+  void print_right(Font const& font, geom::ipoint const& pos, std::string const& str, float z = 0.0f);
 
-  Vector2i screen_to_world(Vector2i const& pos);
-  Vector2i world_to_screen(Vector2i const& pos);
+  geom::ipoint screen_to_world(geom::ipoint const& pos);
+  geom::ipoint world_to_screen(geom::ipoint const& pos);
 
   void update_layout() {}
 

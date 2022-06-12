@@ -36,25 +36,25 @@ public:
 
   Surface make_screenshot() const override;
 
-  void set_video_mode(Size const& size, bool fullscreen, bool resizable) override;
+  void set_video_mode(geom::isize const& size, bool fullscreen, bool resizable) override;
   bool is_fullscreen() const override;
   bool is_resizable() const override;
   bool has_grab() const override;
   void flip() override;
-  void update_rects(std::vector<Rect> const& rects);
+  void update_rects(std::vector<geom::irect> const& rects);
 
-  void push_cliprect(Rect const&) override;
+  void push_cliprect(geom::irect const&) override;
   void pop_cliprect() override;
 
-  void draw_surface(FramebufferSurface const& src, Vector2i const& pos) override;
-  void draw_surface(FramebufferSurface const& src, Rect const& srcrect, Vector2i const& pos) override;
+  void draw_surface(FramebufferSurface const& src, geom::ipoint const& pos) override;
+  void draw_surface(FramebufferSurface const& src, geom::irect const& srcrect, geom::ipoint const& pos) override;
 
-  void draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color) override;
+  void draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Color const& color) override;
 
-  void draw_rect(Rect const& rect, Color const& color) override;
-  void fill_rect(Rect const& rect, Color const& color) override;
+  void draw_rect(geom::irect const& rect, Color const& color) override;
+  void fill_rect(geom::irect const& rect, Color const& color) override;
 
-  Size get_size() const override;
+  geom::isize get_size() const override;
 
 private:
   SDLFramebuffer (SDLFramebuffer const&);

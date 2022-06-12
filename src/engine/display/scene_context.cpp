@@ -31,7 +31,7 @@ public:
   DrawingContext light;
   DrawingContext highlight;
 
-  Rect cliprect;
+  geom::irect cliprect;
   bool use_cliprect;
 
   SceneContextImpl() :
@@ -43,7 +43,7 @@ public:
   {
   }
 
-  SceneContextImpl(Rect const& rect) :
+  SceneContextImpl(geom::irect const& rect) :
     color(rect),
     light(rect),
     highlight(rect),
@@ -58,7 +58,7 @@ SceneContext::SceneContext() :
 {
 }
 
-SceneContext::SceneContext(Rect const& rect) :
+SceneContext::SceneContext(geom::irect const& rect) :
   impl(new SceneContextImpl(rect))
 {
 }
@@ -119,7 +119,7 @@ SceneContext::reset_modelview()
 }
 
 void
-SceneContext::set_rect(Rect const& rect)
+SceneContext::set_rect(geom::irect const& rect)
 {
   impl->color.set_rect(rect);
   impl->light.set_rect(rect);
@@ -127,7 +127,7 @@ SceneContext::set_rect(Rect const& rect)
 }
 
 void
-SceneContext::set_cliprect(Rect const& rect)
+SceneContext::set_cliprect(geom::irect const& rect)
 {
   impl->cliprect = rect;
   impl->use_cliprect = true;
@@ -140,7 +140,7 @@ SceneContext::reset_cliprect()
 }
 
 void
-SceneContext::render(Framebuffer& fb, Rect const& rect)
+SceneContext::render(Framebuffer& fb, geom::irect const& rect)
 {
   // Render all buffers
   // FIXME: Render all to pbuffer for later combining of them
@@ -180,7 +180,7 @@ SceneContext::clear()
   impl->highlight.clear();
 }
 
-SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc_, Vector2i const& pos_, float z_)
+SceneContextDrawingRequest::SceneContextDrawingRequest(SceneContext* sc_, geom::ipoint const& pos_, float z_)
   : DrawingRequest(pos_, z_),
     sc(sc_)
 {
@@ -192,7 +192,7 @@ SceneContextDrawingRequest::~SceneContextDrawingRequest()
 }
 
 void
-SceneContextDrawingRequest::render(Framebuffer& fb, Rect const& rect)
+SceneContextDrawingRequest::render(Framebuffer& fb, geom::irect const& rect)
 {
   sc->render(fb, rect);
 }

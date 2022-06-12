@@ -21,9 +21,9 @@
 #include <fmt/format.h>
 
 #include <logmich/log.hpp>
+#include <geom/rect.hpp>
 
 #include "engine/display/blitter.hpp"
-#include "math/rect.hpp"
 
 namespace pingus {
 
@@ -248,13 +248,13 @@ Surface::get_data() const
   return static_cast<uint8_t*>(get_surface()->pixels);
 }
 
-Size
+geom::isize
 Surface::get_size()  const
 {
   if (get_surface())
-    return Size(impl->surface->w, impl->surface->h);
+    return geom::isize(impl->surface->w, impl->surface->h);
   else
-    return Size();
+    return geom::isize();
 }
 
 int
@@ -404,7 +404,7 @@ Surface::clone() const
 }
 
 Surface
-Surface::subsection(Rect const& rect) const
+Surface::subsection(geom::irect const& rect) const
 {
   assert(rect.left()  >= 0);
   assert(rect.top()   >= 0);

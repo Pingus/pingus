@@ -39,7 +39,7 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
 {
   glGenTextures(1, &m_handle);
 
-  m_texture_size = Size(next_power_of_two(src->w),
+  m_texture_size = geom::isize(next_power_of_two(src->w),
                         next_power_of_two(src->h));
 
   //  Convert the src surface to a format usable for upload to OpenGL

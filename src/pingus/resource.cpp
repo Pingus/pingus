@@ -51,13 +51,13 @@ Resource::load_surface(ResDescriptor const& desc_)
   SpriteDescription* desc = resmgr.get_sprite_description(desc_.res_name);
   if (desc)
   {
-    if (desc->array != Size(1, 1) ||
-        desc->frame_pos != Vector2i(0, 0) ||
-        desc->frame_size != Size(-1, -1))
+    if (desc->array != geom::isize(1, 1) ||
+        desc->frame_pos != geom::ipoint(0, 0) ||
+        desc->frame_size != geom::isize(-1, -1))
     {
       Surface surface(desc->filename);
 
-      surface = surface.subsection(Rect(desc->frame_pos, desc->frame_size));
+      surface = surface.subsection(geom::irect(desc->frame_pos, desc->frame_size));
 
       if (desc_.modifier == ResourceModifier::ROT0)
       {
@@ -119,11 +119,11 @@ Resource::load_thumb_sprite(std::string const& name)
     }
     else
     {
-      Size thumb_size(std::min(surface.get_width(), 48),
+      geom::isize thumb_size(std::min(surface.get_width(), 48),
                       std::min(surface.get_height(), 48));
 
       Sprite sprite(surface.scale(thumb_size.width(), thumb_size.height()));
-      sprite.set_hotspot(Origin::TOP_LEFT, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
+      sprite.set_hotspot(geom::origin::TOP_LEFT, (48 - sprite.get_width())/2, (48 - sprite.get_height())/2);
       return sprite;
     }
   }

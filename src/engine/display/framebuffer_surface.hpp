@@ -40,7 +40,7 @@ public:
 
   int  get_width()  const;
   int  get_height() const;
-  Size get_size()   const;
+  geom::isize get_size()   const;
 
   FramebufferSurfaceImpl* get_impl() const;
 

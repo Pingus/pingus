@@ -132,7 +132,7 @@ GroundMap::draw_colmap(SceneContext& gc)
 void
 GroundMap::draw(SceneContext& gc)
 {
-  Rect const& display = gc.color().get_world_clip_rect();
+  geom::irect const& display = gc.color().get_world_clip_rect();
 
   if (globals::draw_collision_map)
     draw_colmap(gc);
@@ -156,7 +156,7 @@ GroundMap::draw(SceneContext& gc)
       {
         if ((false))
         {
-          gc.color().draw_fillrect(Rect(x * globals::tile_size,
+          gc.color().draw_fillrect(geom::irect(x * globals::tile_size,
                                         y * globals::tile_size,
                                         x * globals::tile_size + globals::tile_size,
                                         y * globals::tile_size + globals::tile_size),

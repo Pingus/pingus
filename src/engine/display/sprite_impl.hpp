@@ -17,8 +17,9 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_SPRITE_IMPL_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_SPRITE_IMPL_HPP
 
+#include <geom/point.hpp>
+
 #include "engine/display/framebuffer_surface.hpp"
-#include "math/vector2i.hpp"
 
 namespace pingus {
 
@@ -35,11 +36,11 @@ private:
 
   geom::ioffset offset;
 
-  Vector2i frame_pos;
-  Size     frame_size;
+  geom::ipoint frame_pos;
+  geom::isize     frame_size;
   int      frame_delay;
 
-  Size     array;
+  geom::isize     array;
 
   bool     loop;
   bool     loop_last_cycle;

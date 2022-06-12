@@ -89,7 +89,7 @@ public:
   {
   }
 
-  void render(Origin origin, int x, int y_, std::string const& text, Framebuffer& fb) const
+  void render(geom::origin origin, int x, int y_, std::string const& text, Framebuffer& fb) const
   {
     y_ += get_height();
 
@@ -101,7 +101,7 @@ public:
     }
   }
 
-  void render_line(Origin origin, int x, int y, std::string_view text, Framebuffer& fb) const
+  void render_line(geom::origin origin, int x, int y, std::string_view text, Framebuffer& fb) const
   {
     if (text.empty()) { return; }
 
@@ -119,7 +119,7 @@ public:
       {
         GlyphDescription const& glyph = *glyphs[unicode];
         fb.draw_surface(framebuffer_surfaces[static_cast<size_t>(glyph.image)],
-                        glyph.rect, Vector2i(static_cast<int>(dstx), static_cast<int>(dsty)) + geom::ioffset(glyph.offset.as_vec()));
+                        glyph.rect, geom::ipoint(static_cast<int>(dstx), static_cast<int>(dsty)) + geom::ioffset(glyph.offset.as_vec()));
         dstx += static_cast<float>(glyph.advance) + char_spacing;
       }
       else
@@ -166,14 +166,14 @@ public:
     return std::max(width, last_width);
   }
 
-  Size get_size(std::string_view text) const
+  geom::isize get_size(std::string_view text) const
   {
-    return Size(static_cast<int>(get_width(text)), get_height());
+    return geom::isize(static_cast<int>(get_width(text)), get_height());
   }
 
-  Rect bounding_rect(int x, int y, std::string const& str) const
+  geom::irect bounding_rect(int x, int y, std::string const& str) const
   {
-    return Rect(geom::ipoint(x, y), get_size(str));
+    return geom::irect(geom::ipoint(x, y), get_size(str));
   }
 };
 
@@ -191,11 +191,11 @@ void
 Font::render(int x, int y, std::string const& text, Framebuffer& fb)
 {
   if (impl)
-    impl->render(Origin::TOP_LEFT, x,y,text, fb);
+    impl->render(geom::origin::TOP_LEFT, x,y,text, fb);
 }
 
 void
-Font::render(Origin origin, int x, int y, std::string const& text, Framebuffer& fb)
+Font::render(geom::origin origin, int x, int y, std::string const& text, Framebuffer& fb)
 {
   if (impl)
     impl->render(origin, x,y,text, fb);
@@ -228,22 +228,22 @@ Font::get_width(std::string const& text) const
     return 0;
 }
 
-Size
+geom::isize
 Font::get_size(std::string const& str) const
 {
   if (impl)
     return impl->get_size(str);
   else
-    return Size();
+    return geom::isize();
 }
 
-Rect
+geom::irect
 Font::bounding_rect(int x, int y, std::string const& str) const
 {
   if (impl)
     return impl->bounding_rect(x, y, str);
   else
-    return Rect();
+    return geom::irect();
 }
 
 } // namespace pingus

@@ -50,17 +50,17 @@ Display::get_height()
   return s_framebuffer ? s_framebuffer->get_size().height() : 0;
 }
 
-Size
+geom::isize
 Display::get_size()
 {
-  return s_framebuffer ? s_framebuffer->get_size() : Size(0, 0);
+  return s_framebuffer ? s_framebuffer->get_size() : geom::isize(0, 0);
 }
 
 void
-Display::resize(Size const& size_)
+Display::resize(geom::isize const& size_)
 {
   // Limit Window size so some reasonable minimum
-  Size size(size_.width() < 640 ? 640 : size_.width(),
+  geom::isize size(size_.width() < 640 ? 640 : size_.width(),
             size_.height() < 480 ? 480 : size_.height());
 
   Display::set_video_mode(size, is_fullscreen(), true);
@@ -88,7 +88,7 @@ Display::has_grab()
 }
 
 void
-Display::create_window(FramebufferType framebuffer_type, Size const& size, bool fullscreen, bool resizable)
+Display::create_window(FramebufferType framebuffer_type, geom::isize const& size, bool fullscreen, bool resizable)
 {
   assert(!s_framebuffer.get());
 
@@ -118,11 +118,11 @@ Display::create_window(FramebufferType framebuffer_type, Size const& size, bool 
 }
 
 void
-Display::set_video_mode(Size const& size, bool fullscreen, bool resizable)
+Display::set_video_mode(geom::isize const& size, bool fullscreen, bool resizable)
 {
   if (fullscreen)
   {
-    Size new_size = find_closest_fullscreen_video_mode(size);
+    geom::isize new_size = find_closest_fullscreen_video_mode(size);
     s_framebuffer->set_video_mode(new_size, fullscreen, resizable);
   }
   else
@@ -142,8 +142,8 @@ Display::get_framebuffer()
   return s_framebuffer.get();
 }
 
-Size
-Display::find_closest_fullscreen_video_mode(Size const& size)
+geom::isize
+Display::find_closest_fullscreen_video_mode(geom::isize const& size)
 {
   SDL_DisplayMode target;
   SDL_DisplayMode closest;

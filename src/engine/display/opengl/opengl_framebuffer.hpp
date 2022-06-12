@@ -19,6 +19,10 @@
 
 #include "engine/display/framebuffer.hpp"
 
+#include <geom/point.hpp>
+#include <geom/rect.hpp>
+#include <geom/size.hpp>
+
 namespace pingus {
 
 class OpenGLFramebuffer : public Framebuffer
@@ -26,7 +30,7 @@ class OpenGLFramebuffer : public Framebuffer
 private:
   SDL_Window* m_window;
   SDL_GLContext m_glcontext;
-  std::vector<Rect> cliprect_stack;
+  std::vector<geom::irect> cliprect_stack;
 
 public:
   OpenGLFramebuffer();
@@ -36,23 +40,23 @@ public:
 
   Surface make_screenshot() const override;
 
-  void set_video_mode(Size const& size, bool fullscreen, bool resizable) override;
+  void set_video_mode(geom::isize const& size, bool fullscreen, bool resizable) override;
   bool is_fullscreen() const override;
   bool is_resizable() const override;
   void flip() override;
 
-  void push_cliprect(Rect const&) override;
+  void push_cliprect(geom::irect const&) override;
   void pop_cliprect() override;
 
-  void draw_surface(FramebufferSurface const& src, Vector2i const& pos)  override;
-  void draw_surface(FramebufferSurface const& src, Rect const& srcrect, Vector2i const& pos) override;
+  void draw_surface(FramebufferSurface const& src, geom::ipoint const& pos)  override;
+  void draw_surface(FramebufferSurface const& src, geom::irect const& srcrect, geom::ipoint const& pos) override;
 
-  void draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color) override;
+  void draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Color const& color) override;
 
-  void draw_rect(Rect const& rect, Color const& color) override;
-  void fill_rect(Rect const& rect, Color const& color) override;
+  void draw_rect(geom::irect const& rect, Color const& color) override;
+  void fill_rect(geom::irect const& rect, Color const& color) override;
 
-  Size get_size() const override;
+  geom::isize get_size() const override;
 
 private:
   OpenGLFramebuffer(OpenGLFramebuffer const&);

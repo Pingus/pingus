@@ -31,21 +31,21 @@ private:
   struct DrawOp
   {
     Surface  surface;
-    Vector2i pos;
+    geom::ipoint pos;
   };
 
   std::vector<DrawOp> m_draw_op;
-  std::vector<Vector2i> m_translate_stack;
+  std::vector<geom::ipoint> m_translate_stack;
 
 public:
   WorldObjRenderer();
 
-  Rect get_clip_rect() const;
+  geom::irect get_clip_rect() const;
   void process(ReaderCollection const& collection);
   void process(ReaderObject const& reader);
   void blit(Surface& out_surface, int off_x = 0, int off_y = 0);
 
-  Vector2i get_translate() const;
+  geom::ipoint get_translate() const;
   void push_translate(int x, int y);
   void pop_translate();
 
@@ -53,10 +53,10 @@ private:
   void blit_surface(Surface const& surface, int x, int y);
 
   void render_sprite(ResDescriptor const& desc,
-                     Vector2f const& pos,
+                     geom::fpoint const& pos,
                      float z_index);
   void render_surface(ResDescriptor const& desc,
-                      Vector2f const& pos,
+                      geom::fpoint const& pos,
                       float z_index,
                       int repeat = 1);
 

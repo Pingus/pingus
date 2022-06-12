@@ -86,7 +86,7 @@ int main(int argc, char** argv)
 
     if (crop)
     {
-      Rect rect = renderer.get_clip_rect();
+      geom::irect rect = renderer.get_clip_rect();
 
       out_surface = Surface(rect.width(), rect.height());
 

@@ -19,8 +19,8 @@
 
 #include <SDL.h>
 
-#include "math/rect.hpp"
-#include "math/vector2i.hpp"
+#include <geom/point.hpp>
+#include <geom/rect.hpp>
 
 namespace pingus {
 
@@ -29,17 +29,17 @@ class Framebuffer;
 class DrawingRequest
 {
 protected:
-  Vector2i pos;
+  geom::ipoint pos;
   float    z;
 
 public:
-  DrawingRequest(Vector2i const& pos_, float z_) : pos(pos_), z(z_) {}
+  DrawingRequest(geom::ipoint const& pos_, float z_) : pos(pos_), z(z_) {}
   virtual ~DrawingRequest() {}
 
   /** \a rect is the rectangle that is managed by the parent
       DrawingContext, all calls to fb have to be offset with
       (rect.left(),rect.top)  */
-  virtual void render(Framebuffer& fb, Rect const& rect) = 0;
+  virtual void render(Framebuffer& fb, geom::irect const& rect) = 0;
 
   /** Returns true if the request contains an alpha channel and needs
       to be drawn in order */

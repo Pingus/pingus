@@ -66,7 +66,7 @@ Worldmap::Worldmap(Pathname const& filename) :
   set_starting_node();
   add_drawable(std::move(pingus_up));
 
-  gc_state.set_limit(Rect(geom::ipoint(0, 0), Size(worldmap.get_width(), worldmap.get_height())));
+  gc_state.set_limit(geom::irect(geom::ipoint(0, 0), geom::isize(worldmap.get_width(), worldmap.get_height())));
 }
 
 Worldmap::~Worldmap()

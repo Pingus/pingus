@@ -48,16 +48,16 @@ FontTestScreen::draw(DrawingContext& gc)
     for(int x = 0; x < gc.get_width()/checker; x += 1)
     {
       if ((x+y) % 2 != 0)
-        gc.draw_fillrect(Rect(x*checker, y*checker,
+        gc.draw_fillrect(geom::irect(x*checker, y*checker,
                               x*checker + checker, y*checker + checker),
                          dark ? Color(50, 50, 50) : Color(255, 255, 255));
       else
-        gc.draw_fillrect(Rect(x*checker, y*checker,
+        gc.draw_fillrect(geom::irect(x*checker, y*checker,
                               x*checker + checker, y*checker + checker),
                          dark ? Color(0, 0, 0) : Color(200,200,200));
     }
 
-  gc.print_left(pingus::fonts::chalk_large, Vector2i(10, 10), "Pingus - Font Test");
+  gc.print_left(pingus::fonts::chalk_large, geom::ipoint(10, 10), "Pingus - Font Test");
 
   gc.push_modelview();
   gc.translate(scroll.x(), scroll.y());
@@ -69,31 +69,31 @@ FontTestScreen::draw(DrawingContext& gc)
 
     // print the actual character
     gc.print_left(reference,
-                  Vector2i(x,
+                  geom::ipoint(x,
                            y - reference.get_height()),
                   std::string(1, char(i)));
     // print the index number
     gc.print_left(reference,
-                  Vector2i(x,
+                  geom::ipoint(x,
                            y + font.get_height()),
                   strut::to_string(i));
 
     if (font.get_width(i) > 0.0f)
     {
-      gc.draw_rect(Rect(x, y,
+      gc.draw_rect(geom::irect(x, y,
                         x+font.get_height(),
                         y+font.get_height()),
                    Color(0,0,255));
-      gc.draw_rect(Rect(x, y,
+      gc.draw_rect(geom::irect(x, y,
                         x + static_cast<int>(font.get_width(i)),
                         y + font.get_height()),
                    Color(255,0,255));
-      gc.print_left(font, Vector2i(x, y),
+      gc.print_left(font, geom::ipoint(x, y),
                     std::string(1, static_cast<char>(i)));
     }
     else
     {
-      gc.draw_rect(Rect(x, y,
+      gc.draw_rect(geom::irect(x, y,
                         x+font.get_height(),
                         y+font.get_height()),
                    Color(255,0,0));

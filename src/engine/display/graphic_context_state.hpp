@@ -33,12 +33,12 @@ class GraphicContextState
 public:
   GraphicContextState();
   GraphicContextState(int w, int h);
-  GraphicContextState(Rect const& rect);
+  GraphicContextState(geom::irect const& rect);
 
   /** Limit the graphic context to the given limits rectangle, meaning
       that no point of the current visible region will be outside the
       limit */
-  void set_limit(Rect const& limit);
+  void set_limit(geom::irect const& limit);
   void set_unlimited();
 
   void set_size(int w, int h);
@@ -51,16 +51,16 @@ public:
 
   /** Return a rectangle in world coordinates that represents the area
       visible on the screen */
-  Rect get_clip_rect();
+  geom::irect get_clip_rect();
 
   int get_width()  const;
   int get_height() const;
 
   /** Move the center of the visible area to pos */
-  void      set_pos(Vector2i const& pos);
-  Vector2i  get_pos() const;
+  void      set_pos(geom::ipoint const& pos);
+  geom::ipoint  get_pos() const;
 
-  Vector2i screen2world(Vector2i const& pos) const;
+  geom::ipoint screen2world(geom::ipoint const& pos) const;
 
 private:
   std::shared_ptr<GraphicContextStateImpl> impl;

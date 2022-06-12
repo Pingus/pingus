@@ -19,10 +19,12 @@
 
 #include <memory>
 
-#include "math/origin.hpp"
-#include "math/size.hpp"
-#include "math/vector2i.hpp"
-#include "util/reader.hpp"
+#include <geom/point.hpp>
+#include <geom/size.hpp>
+#include <geom/rect.hpp>
+#include <geom/origin.hpp>
+#include <prio/reader.hpp>
+
 #include "util/pathname.hpp"
 
 namespace pingus {
@@ -38,20 +40,20 @@ public:
 
 public:
   Pathname    filename;
-  Vector2i    offset;
-  Origin      origin;
+  geom::ipoint    offset;
+  geom::origin      origin;
 
   bool        loop;
   int         speed;
-  Size        array;
-  Vector2i    frame_pos;
-  Size        frame_size;
+  geom::isize        array;
+  geom::ipoint    frame_pos;
+  geom::isize        frame_size;
 
 public:
   SpriteDescription() :
     filename(),
     offset(),
-    origin(Origin::TOP_LEFT),
+    origin(geom::origin::TOP_LEFT),
     loop(true),
     speed(100),
     array(1, 1),

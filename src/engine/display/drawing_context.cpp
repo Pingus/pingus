@@ -39,11 +39,11 @@ class FontDrawingRequest : public DrawingRequest
 {
 private:
   Font font;
-  Origin origin;
+  geom::origin origin;
   std::string text;
 
 public:
-  FontDrawingRequest(Font const& font_, Origin origin_, Vector2i const& pos_, std::string const& text_, float z_)
+  FontDrawingRequest(Font const& font_, geom::origin origin_, geom::ipoint const& pos_, std::string const& text_, float z_)
     : DrawingRequest(pos_, z_),
       font(font_),
       origin(origin_),
@@ -53,7 +53,7 @@ public:
 
   ~FontDrawingRequest() override {}
 
-  void render(Framebuffer& fb, Rect const& rect) override {
+  void render(Framebuffer& fb, geom::irect const& rect) override {
     font.render(origin, pos.x() + rect.left(), pos.y() + rect.top(), text, fb);
   }
 };
@@ -64,7 +64,7 @@ private:
   Sprite sprite;
 
 public:
-  SpriteDrawingRequest(Sprite const& sprite_, Vector2i const& pos_, float z_)
+  SpriteDrawingRequest(Sprite const& sprite_, geom::ipoint const& pos_, float z_)
     : DrawingRequest(pos_, z_),
       sprite(sprite_)
   {
@@ -72,7 +72,7 @@ public:
 
   ~SpriteDrawingRequest() override {}
 
-  void render(Framebuffer& fb, Rect const& rect) override {
+  void render(Framebuffer& fb, geom::irect const& rect) override {
     sprite.render(pos.x() + rect.left(), pos.y() + rect.top(), fb);
   }
 };
@@ -84,13 +84,13 @@ private:
 
 public:
   FillScreenDrawingRequest(Color const& color_)
-    : DrawingRequest(Vector2i(0, 0), -1000.0f),
+    : DrawingRequest(geom::ipoint(0, 0), -1000.0f),
       color(color_)
   {
   }
   ~FillScreenDrawingRequest() override {}
 
-  void render(Framebuffer& fb, Rect const& rect) override {
+  void render(Framebuffer& fb, geom::irect const& rect) override {
     fb.fill_rect(rect, color);
   }
 };
@@ -98,23 +98,23 @@ public:
 class LineDrawingRequest : public DrawingRequest
 {
 private:
-  Vector2i pos1;
-  Vector2i pos2;
+  geom::ipoint pos1;
+  geom::ipoint pos2;
   Color    color;
 
 public:
-  LineDrawingRequest(Vector2i const& pos1_,
-                     Vector2i const& pos2_,
+  LineDrawingRequest(geom::ipoint const& pos1_,
+                     geom::ipoint const& pos2_,
                      Color const&  color_,
                      float z_)
-    : DrawingRequest(Vector2i(0, 0), z_),
+    : DrawingRequest(geom::ipoint(0, 0), z_),
       pos1(pos1_),
       pos2(pos2_),
       color(color_)
   {
   }
 
-  void render(Framebuffer& fb, Rect const& rect) override
+  void render(Framebuffer& fb, geom::irect const& rect) override
   {
     fb.draw_line(pos1 + geom::ioffset(rect.left(), rect.top()),
                  pos2 + geom::ioffset(rect.left(), rect.top()), color);
@@ -124,28 +124,28 @@ public:
 class RectDrawingRequest : public DrawingRequest
 {
 private:
-  Rect  d_rect;
+  geom::irect  d_rect;
   Color color;
   bool  filled;
 
 public:
-  RectDrawingRequest(Rect const& rect_, Color const& color_, bool filled_, float z_)
-    : DrawingRequest(Vector2i(0, 0), z_),
+  RectDrawingRequest(geom::irect const& rect_, Color const& color_, bool filled_, float z_)
+    : DrawingRequest(geom::ipoint(0, 0), z_),
       d_rect(rect_), color(color_), filled(filled_)
   {}
 
-  void render(Framebuffer& fb, Rect const& rect) override
+  void render(Framebuffer& fb, geom::irect const& rect) override
   {
     if (filled)
     {
-      fb.fill_rect(Rect(geom::ipoint(d_rect.left() + rect.left(),
+      fb.fill_rect(geom::irect(geom::ipoint(d_rect.left() + rect.left(),
                                  d_rect.top()  + rect.top()),
                         d_rect.size()),
                    color);
     }
     else
     {
-      fb.draw_rect(Rect(geom::ipoint(d_rect.left() + rect.left(),
+      fb.draw_rect(geom::irect(geom::ipoint(d_rect.left() + rect.left(),
                                  d_rect.top()  + rect.top()),
                         d_rect.size()),
                    color);
@@ -160,7 +160,7 @@ private:
 
 public:
   DrawingContextDrawingRequest(DrawingContext& dc_, float z_)
-    : DrawingRequest(Vector2i(0,0), z_),
+    : DrawingRequest(geom::ipoint(0,0), z_),
       dc(dc_)
   {}
 
@@ -168,12 +168,12 @@ public:
   {
   }
 
-  void render(Framebuffer& fb, Rect const& rect) override {
+  void render(Framebuffer& fb, geom::irect const& rect) override {
     dc.render(fb, rect);
   }
 };
 
-DrawingContext::DrawingContext(Rect const& rect_, bool clip) :
+DrawingContext::DrawingContext(geom::irect const& rect_, bool clip) :
   drawingrequests(),
   translate_stack(),
   rect(rect_),
@@ -198,9 +198,9 @@ DrawingContext::~DrawingContext()
 }
 
 void
-DrawingContext::render(Framebuffer& fb, Rect const& parent_rect)
+DrawingContext::render(Framebuffer& fb, geom::irect const& parent_rect)
 {
-  Rect this_rect(std::max(rect.left()   + parent_rect.left(), parent_rect.left()),
+  geom::irect this_rect(std::max(rect.left()   + parent_rect.left(), parent_rect.left()),
                  std::max(rect.top()    + parent_rect.top(),  parent_rect.top()),
                  std::min(rect.right()  + parent_rect.left(), parent_rect.right()),
                  std::min(rect.bottom() + parent_rect.top(),  parent_rect.bottom()));
@@ -250,21 +250,21 @@ DrawingContext::draw(DrawingContext& dc, float z)
 }
 
 void
-DrawingContext::draw(Sprite const& sprite, Vector2i const& pos, float z)
+DrawingContext::draw(Sprite const& sprite, geom::ipoint const& pos, float z)
 {
   draw(new SpriteDrawingRequest(sprite, pos + translate_stack.back(), z));
 }
 
 void
-DrawingContext::draw(Sprite const& sprite, Vector2f const& pos, float z_index)
+DrawingContext::draw(Sprite const& sprite, geom::fpoint const& pos, float z_index)
 {
-  draw(new SpriteDrawingRequest(sprite, Vector2i(translate_stack.back().x() + static_cast<int>(pos.x()),
+  draw(new SpriteDrawingRequest(sprite, geom::ipoint(translate_stack.back().x() + static_cast<int>(pos.x()),
                                                  translate_stack.back().y() + static_cast<int>(pos.y())),
                                 z_index));
 }
 
 void
-DrawingContext::draw_line(Vector2i const& pos1, Vector2i const& pos2,
+DrawingContext::draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2,
                           Color const& color, float z)
 {
   draw(new LineDrawingRequest(pos1.as_vec() + translate_stack.back().as_vec(),
@@ -273,9 +273,9 @@ DrawingContext::draw_line(Vector2i const& pos1, Vector2i const& pos2,
 }
 
 void
-DrawingContext::draw_fillrect(Rect const& rect_, Color const& color_, float z_)
+DrawingContext::draw_fillrect(geom::irect const& rect_, Color const& color_, float z_)
 {
-  draw(new RectDrawingRequest(Rect(rect_.left() + translate_stack.back().x(),
+  draw(new RectDrawingRequest(geom::irect(rect_.left() + translate_stack.back().x(),
                                    rect_.top() + translate_stack.back().y(),
                                    rect_.right() + translate_stack.back().x(),
                                    rect_.bottom() + translate_stack.back().y()),
@@ -285,9 +285,9 @@ DrawingContext::draw_fillrect(Rect const& rect_, Color const& color_, float z_)
 }
 
 void
-DrawingContext::draw_rect(Rect const& rect_, Color const& color_, float z_)
+DrawingContext::draw_rect(geom::irect const& rect_, Color const& color_, float z_)
 {
-  draw(new RectDrawingRequest(Rect(rect_.left()   + translate_stack.back().x(),
+  draw(new RectDrawingRequest(geom::irect(rect_.left()   + translate_stack.back().x(),
                                    rect_.top()    + translate_stack.back().y(),
                                    rect_.right()  + translate_stack.back().x(),
                                    rect_.bottom() + translate_stack.back().y()),
@@ -328,21 +328,21 @@ DrawingContext::reset_modelview()
   translate_stack.emplace_back(0, 0);
 }
 
-Rect
+geom::irect
 DrawingContext::get_world_clip_rect() const
 {
-  return Rect(geom::ipoint(-translate_stack.back().x(),
+  return geom::irect(geom::ipoint(-translate_stack.back().x(),
                            -translate_stack.back().y()),
-              Size(get_width(), get_height()));
+              geom::isize(get_width(), get_height()));
 }
 
 void
-DrawingContext::set_rect(Rect const& rect_)
+DrawingContext::set_rect(geom::irect const& rect_)
 {
   rect = rect_;
 }
 
-Rect
+geom::irect
 DrawingContext::get_rect() const
 {
   return rect;
@@ -361,44 +361,44 @@ DrawingContext::get_height() const
 }
 
 void
-DrawingContext::print_left(Font const& font_, Vector2i const& pos, std::string const& str, float z)
+DrawingContext::print_left(Font const& font_, geom::ipoint const& pos, std::string const& str, float z)
 {
   draw(new FontDrawingRequest(font_,
-                              Origin::TOP_LEFT,
+                              geom::origin::TOP_LEFT,
                               pos + translate_stack.back(),
                               str,
                               z));
 }
 
 void
-DrawingContext::print_center(Font const& font_, Vector2i const& pos, std::string const& str, float z)
+DrawingContext::print_center(Font const& font_, geom::ipoint const& pos, std::string const& str, float z)
 {
   draw(new FontDrawingRequest(font_,
-                              Origin::TOP_CENTER,
+                              geom::origin::TOP_CENTER,
                               pos + translate_stack.back(),
                               str,
                               z));
 }
 
 void
-DrawingContext::print_right(Font const& font_, Vector2i const& pos, std::string const& str, float z)
+DrawingContext::print_right(Font const& font_, geom::ipoint const& pos, std::string const& str, float z)
 {
   draw(new FontDrawingRequest(font_,
-                              Origin::TOP_RIGHT,
+                              geom::origin::TOP_RIGHT,
                               pos + translate_stack.back(),
                               str,
                               z));
 }
 
-Vector2i
-DrawingContext::screen_to_world(Vector2i const& pos)
+geom::ipoint
+DrawingContext::screen_to_world(geom::ipoint const& pos)
 {
   return pos - geom::ioffset(translate_stack.back().x() + rect.left(),
                              translate_stack.back().y() + rect.top());
 }
 
-Vector2i
-DrawingContext::world_to_screen(Vector2i const& pos)
+geom::ipoint
+DrawingContext::world_to_screen(geom::ipoint const& pos)
 {
   return pos + geom::ioffset(translate_stack.back().x() + rect.left(),
                              translate_stack.back().y() + rect.top());

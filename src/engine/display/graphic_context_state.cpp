@@ -23,11 +23,11 @@ namespace pingus {
 class GraphicContextStateImpl
 {
 public:
-  Rect rect;
+  geom::irect rect;
   geom::ioffset offset;
 
   bool have_limit;
-  Rect limit;
+  geom::irect limit;
 
   GraphicContextStateImpl() :
     rect(),
@@ -40,7 +40,7 @@ public:
 GraphicContextState::GraphicContextState()
   : impl(new GraphicContextStateImpl())
 {
-  impl->rect       = Rect(geom::ipoint(0,0), Size(Display::get_width(), Display::get_height()));
+  impl->rect       = geom::irect(geom::ipoint(0,0), geom::isize(Display::get_width(), Display::get_height()));
   impl->offset     = geom::ioffset(0,0);
   impl->have_limit = false;
 }
@@ -48,12 +48,12 @@ GraphicContextState::GraphicContextState()
 GraphicContextState::GraphicContextState(int w, int h)
   : impl(new GraphicContextStateImpl())
 {
-  impl->rect       = Rect(geom::ipoint(0,0), Size(w, h));
+  impl->rect       = geom::irect(geom::ipoint(0,0), geom::isize(w, h));
   impl->offset     = geom::ioffset(0,0);
   impl->have_limit = false;
 }
 
-GraphicContextState::GraphicContextState(Rect const& rect)
+GraphicContextState::GraphicContextState(geom::irect const& rect)
   : impl(new GraphicContextStateImpl())
 {
   impl->rect       = rect;
@@ -62,7 +62,7 @@ GraphicContextState::GraphicContextState(Rect const& rect)
 }
 
 void
-GraphicContextState::set_limit(Rect const& limit)
+GraphicContextState::set_limit(geom::irect const& limit)
 {
   impl->have_limit = true;
   impl->limit      = limit;
@@ -77,7 +77,7 @@ GraphicContextState::set_unlimited()
 void
 GraphicContextState::set_size(int w, int h)
 {
-  impl->rect = Rect(geom::ipoint(impl->rect.left(), impl->rect.top()), Size(w, h));
+  impl->rect = geom::irect(geom::ipoint(impl->rect.left(), impl->rect.top()), geom::isize(w, h));
 }
 
 void
@@ -110,14 +110,14 @@ GraphicContextState::pop (DrawingContext& gc)
   gc.pop_modelview();
 }
 
-Rect
+geom::irect
 GraphicContextState::get_clip_rect()
 {
-  return Rect(geom::ipoint(0, 0) - impl->offset, impl->rect.size());
+  return geom::irect(geom::ipoint(0, 0) - impl->offset, impl->rect.size());
 }
 
 void
-GraphicContextState::set_pos(Vector2i const& pos)
+GraphicContextState::set_pos(geom::ipoint const& pos)
 {
   impl->offset = geom::ioffset(-pos.x() + (get_width()/2),
                                -pos.y() + (get_height()/2));
@@ -157,17 +157,17 @@ GraphicContextState::set_pos(Vector2i const& pos)
   }
 }
 
-Vector2i
+geom::ipoint
 GraphicContextState::get_pos() const
 {
-  return Vector2i(-impl->offset.x() + (get_width()/2),
+  return geom::ipoint(-impl->offset.x() + (get_width()/2),
                   -impl->offset.y() + (get_height()/2));
 }
 
-Vector2i
-GraphicContextState::screen2world(Vector2i const& pos_) const
+geom::ipoint
+GraphicContextState::screen2world(geom::ipoint const& pos_) const
 {
-  Vector2i pos(pos_.x() - impl->rect.left(),
+  geom::ipoint pos(pos_.x() - impl->rect.left(),
                pos_.y() - impl->rect.top());
 
   return pos

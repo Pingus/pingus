@@ -50,13 +50,13 @@ FramebufferSurface::get_height() const
     return 0;
 }
 
-Size
+geom::isize
 FramebufferSurface::get_size() const
 {
   if (impl.get())
-    return Size(impl->get_width(), impl->get_height());
+    return geom::isize(impl->get_width(), impl->get_height());
   else
-    return Size(0, 0);
+    return geom::isize(0, 0);
 }
 
 FramebufferSurfaceImpl*

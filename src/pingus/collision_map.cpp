@@ -209,7 +209,7 @@ CollisionMap::draw(DrawingContext& gc)
     m_colmap_sprite = Sprite(canvas);
   }
 
-  gc.draw(m_colmap_sprite, Vector2i(0, 0), 1000);
+  gc.draw(m_colmap_sprite, geom::ipoint(0, 0), 1000);
 }
 
 unsigned

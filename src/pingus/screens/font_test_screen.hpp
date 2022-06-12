@@ -29,7 +29,7 @@ class FontTestScreen : public Screen
 private:
   Font font;
   Font reference;
-  Vector2i scroll;
+  geom::ipoint scroll;
   bool  dark;
 
 public:

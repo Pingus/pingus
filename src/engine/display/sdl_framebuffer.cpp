@@ -67,7 +67,7 @@ SDLFramebuffer::make_screenshot() const
   int h;
   if (SDL_GetRendererOutputSize(m_renderer, &w, &h) != 0)
   {
-    log_error("SDL_GetRenderOutputSize failed: {}", SDL_GetError());
+    log_error("SDL_GetRenderOutputgeom::isize failed: {}", SDL_GetError());
     return Surface();
   }
   else
@@ -87,7 +87,7 @@ SDLFramebuffer::make_screenshot() const
 }
 
 void
-SDLFramebuffer::draw_surface(FramebufferSurface const& surface, Vector2i const& pos)
+SDLFramebuffer::draw_surface(FramebufferSurface const& surface, geom::ipoint const& pos)
 {
   SDLFramebufferSurfaceImpl* impl = dynamic_cast<SDLFramebufferSurfaceImpl*>(surface.get_impl());
   SDL_Texture* texture = impl->get_texture();
@@ -105,7 +105,7 @@ SDLFramebuffer::draw_surface(FramebufferSurface const& surface, Vector2i const& 
 }
 
 void
-SDLFramebuffer::draw_surface(FramebufferSurface const& surface, Rect const& srcrect, Vector2i const& pos)
+SDLFramebuffer::draw_surface(FramebufferSurface const& surface, geom::irect const& srcrect, geom::ipoint const& pos)
 {
   SDLFramebufferSurfaceImpl* impl = dynamic_cast<SDLFramebufferSurfaceImpl*>(surface.get_impl());
   SDL_Texture* texture = impl->get_texture();
@@ -129,7 +129,7 @@ SDLFramebuffer::draw_surface(FramebufferSurface const& surface, Rect const& srcr
 }
 
 void
-SDLFramebuffer::draw_line(Vector2i const& pos1, Vector2i const& pos2, Color const& color)
+SDLFramebuffer::draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Color const& color)
 {
   // FIXME: push render state
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
@@ -139,9 +139,9 @@ SDLFramebuffer::draw_line(Vector2i const& pos1, Vector2i const& pos2, Color cons
 }
 
 void
-SDLFramebuffer::draw_rect(Rect const& rect_, Color const& color)
+SDLFramebuffer::draw_rect(geom::irect const& rect_, Color const& color)
 {
-  Rect rect = geom::normalize(rect_);
+  geom::irect rect = geom::normalize(rect_);
 
   SDL_Rect sdl_rect;
   sdl_rect.x = rect.left();
@@ -157,9 +157,9 @@ SDLFramebuffer::draw_rect(Rect const& rect_, Color const& color)
 }
 
 void
-SDLFramebuffer::fill_rect(Rect const& rect_, Color const& color)
+SDLFramebuffer::fill_rect(geom::irect const& rect_, Color const& color)
 {
-  Rect rect = geom::normalize(rect_);
+  geom::irect rect = geom::normalize(rect_);
 
   SDL_Rect sdl_rect;
   sdl_rect.x = rect.left();
@@ -179,22 +179,22 @@ SDLFramebuffer::flip()
 }
 
 void
-SDLFramebuffer::update_rects(std::vector<Rect> const& rects)
+SDLFramebuffer::update_rects(std::vector<geom::irect> const& rects)
 {
   flip();
 }
 
-Size
+geom::isize
 SDLFramebuffer::get_size() const
 {
   int w;
   int h;
   SDL_GetWindowSize(m_window, &w, &h);
-  return Size(w, h);
+  return geom::isize(w, h);
 }
 
 void
-SDLFramebuffer::set_video_mode(Size const& size, bool fullscreen, bool resizable)
+SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool resizable)
 {
   if (m_window)
   {
@@ -266,7 +266,7 @@ SDLFramebuffer::has_grab() const
 }
 
 void
-SDLFramebuffer::push_cliprect(Rect const& rect)
+SDLFramebuffer::push_cliprect(geom::irect const& rect)
 {
   SDL_Rect sdl_rect;
   sdl_rect.x = static_cast<Sint16>(rect.left());

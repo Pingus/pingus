@@ -208,7 +208,7 @@ ScreenManager::update(float delta, std::vector<pingus::input::Event> const& even
   get_current_screen()->draw(*display_gc);
 
   // Render the DrawingContext to the screen
-  display_gc->render(*Display::get_framebuffer(), Rect(geom::ipoint(0,0), Size(Display::get_width(),
+  display_gc->render(*Display::get_framebuffer(), geom::irect(geom::ipoint(0,0), Size(Display::get_width(),
                                                                            Display::get_height())));
   display_gc->clear();
 
@@ -222,13 +222,13 @@ ScreenManager::update(float delta, std::vector<pingus::input::Event> const& even
     fps_counter->draw();
     if (globals::developer_mode)
     {
-      pingus::fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 60,
+      pingus::fonts::pingus_small.render(geom::origin::CENTER, Display::get_width()/2, 60,
                                  "Developer Mode", *Display::get_framebuffer());
     }
   }
   else if (globals::developer_mode)
   {
-    pingus::fonts::pingus_small.render(Origin::CENTER, Display::get_width()/2, 35,
+    pingus::fonts::pingus_small.render(geom::origin::CENTER, Display::get_width()/2, 35,
                                "Developer Mode", *Display::get_framebuffer());
   }
 
@@ -359,7 +359,7 @@ ScreenManager::fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_scree
     int border_y = static_cast<int>(static_cast<float>(Display::get_height()/2) * (1.0f - p)); // NOLINT
 
     old_screen->draw(*display_gc);
-    display_gc->render(fb, Rect(geom::ipoint(0,0), Size(Display::get_width(),
+    display_gc->render(fb, geom::irect(geom::ipoint(0,0), Size(Display::get_width(),
                                                     Display::get_height())));
     display_gc->clear();
 
@@ -369,11 +369,11 @@ ScreenManager::fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_scree
     if (clip_size != Size(0, 0))
     {
       // skip drawing the second screen when the cliprect
-      fb.push_cliprect(Rect(geom::ipoint(0 + border_x, 0 + border_y),
+      fb.push_cliprect(geom::irect(geom::ipoint(0 + border_x, 0 + border_y),
                             clip_size));
 
       new_screen->draw(*display_gc);
-      display_gc->render(*Display::get_framebuffer(), Rect(geom::ipoint(0,0), Size(Display::get_width(),
+      display_gc->render(*Display::get_framebuffer(), geom::irect(geom::ipoint(0,0), Size(Display::get_width(),
                                                                                Display::get_height())));
       display_gc->clear();
 
@@ -393,7 +393,7 @@ ScreenManager::fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_scree
 void
 ScreenManager::resize(Size const& size)
 {
-  display_gc->set_rect(Rect(geom::ipoint(0, 0), size));
+  display_gc->set_rect(geom::irect(geom::ipoint(0, 0), size));
 
   // The other screens will get resized when they become the current screen
   get_current_screen()->resize(size);

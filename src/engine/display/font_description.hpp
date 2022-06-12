@@ -19,9 +19,9 @@
 
 #include <vector>
 
+#include <geom/rect.hpp>
 #include <prio/fwd.hpp>
 
-#include "math/rect.hpp"
 #include "util/pathname.hpp"
 
 namespace pingus {
@@ -31,9 +31,9 @@ class GlyphDescription
 public:
   int      image;
   uint32_t unicode;
-  Vector2i offset;
+  geom::ipoint offset;
   int      advance;
-  Rect     rect;
+  geom::irect     rect;
 
   GlyphDescription();
   GlyphDescription(prio::ReaderMapping const& reader);
