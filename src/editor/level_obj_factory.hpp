@@ -25,7 +25,6 @@ namespace pingus::editor {
 
 class LevelObjFactory
 {
-private:
 public:
   static LevelObjPtr create(prio::ReaderObject const& reader_object);
 

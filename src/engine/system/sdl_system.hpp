@@ -26,7 +26,6 @@ namespace pingus {
 
 class SDLSystem
 {
-private:
 public:
   SDLSystem();
   ~SDLSystem();
