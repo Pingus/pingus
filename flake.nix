@@ -72,7 +72,7 @@
                          then ("0.8.0-${nixpkgs.lib.substring 0 8 self.lastModifiedDate}-${self.shortRev or "dirty"}")
                          else (builtins.substring 1 ((builtins.stringLength version_file) - 2) version_file);
       in rec {
-        packages = flake-utils.lib.flattenTree {
+        packages = flake-utils.lib.flattenTree rec {
           pingus = pkgs.stdenv.mkDerivation {
             pname = "pingus";
             version = pingus_version;
@@ -88,7 +88,7 @@
               makeWrapper
               pkgconfig
             ] ++ [
-              tinycmmc.defaultPackage.${system}
+              tinycmmc.packages.${system}.default
             ];
             buildInputs = with pkgs; [
               SDL2
@@ -108,19 +108,20 @@
               openal
               opusfile
             ] ++ [
-              argpp.defaultPackage.${system}
-              geomcpp.defaultPackage.${system}
-              logmich.defaultPackage.${system}
-              priocpp.defaultPackage.${system}
-              sexpcpp.defaultPackage.${system}
-              strutcpp.defaultPackage.${system}
-              tinygettext.defaultPackage.${system}
-              uitest.defaultPackage.${system}
-              wstsound.defaultPackage.${system}
-              xdgcpp.defaultPackage.${system}
+              argpp.packages.${system}.default
+              geomcpp.packages.${system}.default
+              logmich.packages.${system}.default
+              priocpp.packages.${system}.default
+              sexpcpp.packages.${system}.default
+              strutcpp.packages.${system}.default
+              tinygettext.packages.${system}.default
+              uitest.packages.${system}.default
+              wstsound.packages.${system}.default
+              xdgcpp.packages.${system}.default
             ];
-           };
+          };
+          default = pingus;
         };
-        defaultPackage = packages.pingus;
-      });
+      }
+    );
 }
