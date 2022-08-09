@@ -73,6 +73,8 @@
                          else (builtins.substring 1 ((builtins.stringLength version_file) - 2) version_file);
       in rec {
         packages = flake-utils.lib.flattenTree rec {
+          default = pingus;
+
           pingus = pkgs.stdenv.mkDerivation {
             pname = "pingus";
             version = pingus_version;
@@ -98,20 +100,12 @@
             buildInputs = with pkgs; [
               SDL2
               SDL2_image
-              boost
               fmt
               gtest
-              jsoncpp
               libGL
               libGLU
-              libmodplug
-              libogg
               libpng
               libsigcxx
-              libvorbis
-              mpg123
-              openal
-              opusfile
             ] ++ [
               argpp.packages.${system}.default
               geomcpp.packages.${system}.default
@@ -125,7 +119,6 @@
               xdgcpp.packages.${system}.default
             ];
           };
-          default = pingus;
         };
       }
     );
