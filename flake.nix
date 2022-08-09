@@ -77,7 +77,12 @@
             pname = "pingus";
             version = pingus_version;
             src = nixpkgs.lib.cleanSource ./.;
-            cmakeFlags = [ "-DBUILD_EXTRA=ON" ];
+            cmakeFlags = [
+              "-DWARNINGS=ON"
+              "-DWERROR=ON"
+              "-DBUILD_EXTRA=ON"
+              "-DBUILD_TESTS=ON"
+            ];
             postFixup = ''
               wrapProgram $out/libexec/pingus \
                 --prefix LIBGL_DRIVERS_PATH ":" "${pkgs.mesa.drivers}/lib/dri" \
