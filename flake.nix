@@ -60,65 +60,79 @@
     wstsound.inputs.nixpkgs.follows = "nixpkgs";
     wstsound.inputs.flake-utils.follows = "flake-utils";
     wstsound.inputs.tinycmmc.follows = "tinycmmc";
+
+    SDL2_src.url = "https://libsdl.org/release/SDL2-devel-2.0.22-mingw.tar.gz";
+    SDL2_src.flake = false;
+
+    SDL2_image_src.url = "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.5-mingw.tar.gz";
+    SDL2_image_src.flake = false;
   };
 
   outputs = { self, nixpkgs, flake-utils,
-              tinycmmc, uitest, argpp, geomcpp, logmich, priocpp, sexpcpp, strutcpp, tinygettext, xdgcpp, wstsound }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-        version_file = pkgs.lib.fileContents ./VERSION;
-        pingus_version = if (((builtins.substring 0 1) version_file) != "v")
-                         then ("0.8.0-${nixpkgs.lib.substring 0 8 self.lastModifiedDate}-${self.shortRev or "dirty"}")
-                         else (builtins.substring 1 ((builtins.stringLength version_file) - 2) version_file);
-      in rec {
-        packages = flake-utils.lib.flattenTree rec {
+              tinycmmc, uitest, argpp, geomcpp, logmich, priocpp, sexpcpp, strutcpp, tinygettext, xdgcpp, wstsound,
+              SDL2_src, SDL2_image_src }:
+    tinycmmc.lib.eachSystemWithPkgs (pkgs:
+      {
+        packages = rec {
           default = pingus;
 
-          pingus = pkgs.stdenv.mkDerivation {
-            pname = "pingus";
-            version = pingus_version;
-            src = nixpkgs.lib.cleanSource ./.;
-            cmakeFlags = [
-              "-DWARNINGS=ON"
-              "-DWERROR=ON"
-              "-DBUILD_EXTRA=ON"
-              "-DBUILD_TESTS=ON"
-            ];
-            postFixup = ''
-              wrapProgram $out/libexec/pingus \
-                --prefix LIBGL_DRIVERS_PATH ":" "${pkgs.mesa.drivers}/lib/dri" \
-                --prefix LD_LIBRARY_PATH ":" "${pkgs.mesa.drivers}/lib"
+          SDL2 = pkgs.stdenv.mkDerivation {
+            pname = "SDL2";
+            version = "2.0.22";
+            src = SDL2_src;
+            installPhase = ''
+              mkdir $out
+              cp -vr ${pkgs.targetPlatform.config}/. $out/
+              substituteInPlace $out/lib/pkgconfig/sdl2.pc \
+                --replace "prefix=/opt/local/${pkgs.targetPlatform.config}" \
+                          "prefix=$out"
             '';
-            nativeBuildInputs = with pkgs; [
-              cmake
-              makeWrapper
-              pkgconfig
-            ] ++ [
-              tinycmmc.packages.${system}.default
-            ];
-            buildInputs = with pkgs; [
-              SDL2
-              SDL2_image
-              fmt
-              gtest
-              libGL
-              libGLU
-              libpng
-              libsigcxx
-            ] ++ [
-              argpp.packages.${system}.default
-              geomcpp.packages.${system}.default
-              logmich.packages.${system}.default
-              priocpp.packages.${system}.default
-              sexpcpp.packages.${system}.default
-              strutcpp.packages.${system}.default
-              tinygettext.packages.${system}.default
-              uitest.packages.${system}.default
-              wstsound.packages.${system}.default
-              xdgcpp.packages.${system}.default
-            ];
           };
+
+          SDL2_image = pkgs.stdenv.mkDerivation rec {
+            pname = "SDL2";
+            version = "2.0.22";
+            src = SDL2_image_src;
+            installPhase = ''
+              mkdir $out
+              cp -vr ${pkgs.targetPlatform.config}/. $out/
+              substituteInPlace $out/lib/pkgconfig/SDL2_image.pc \
+                --replace "prefix=/opt/local/${pkgs.targetPlatform.config}" \
+                          "prefix=$out"
+            '';
+          };
+
+          pingus = pkgs.callPackage ./pingus.nix {
+            inherit self;
+            argpp = argpp.packages.${pkgs.system}.default;
+            geomcpp = geomcpp.packages.${pkgs.system}.default;
+            logmich = logmich.packages.${pkgs.system}.default;
+            priocpp = priocpp.packages.${pkgs.system}.default;
+            sexpcpp = sexpcpp.packages.${pkgs.system}.default;
+            strutcpp = strutcpp.packages.${pkgs.system}.default;
+            tinycmmc = tinycmmc.packages.${pkgs.system}.default;
+            tinygettext = tinygettext.packages.${pkgs.system}.default;
+            uitest = uitest.packages.${pkgs.system}.default;
+            wstsound = wstsound.packages.${pkgs.system}.default;
+            xdgcpp = if !pkgs.targetPlatform.isWindows
+                     then xdgcpp.packages.${pkgs.system}.default
+                     else null;
+            mcfgthreads = if pkgs.targetPlatform.isWindows
+                          then pkgs.windows.mcfgthreads
+                          else null;
+
+            SDL2 = if pkgs.targetPlatform.isWindows then SDL2 else pkgs.SDL2;
+            SDL2_image = if pkgs.targetPlatform.isWindows then SDL2_image else pkgs.SDL2_image;
+          };
+
+          pingus-win32 = pkgs.runCommand "pingus-win32" {} ''
+            mkdir -p $out
+            mkdir -p $out/data/
+
+            cp -vr ${pingus}/bin/pingus.exe $out/
+            cp -vLr ${pingus}/bin/*.dll $out/
+            cp -vr ${pingus}/share/pingus/. $out/data/
+          '';
         };
       }
     );

@@ -1,5 +1,29 @@
 {
   "nodes": {
+    "SDL2_image_src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-GNKF/bhxZ9WxpNVqRQ3yFf/8yiQntLXOYnhn22Sy9k0=",
+        "type": "tarball",
+        "url": "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.5-mingw.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.5-mingw.tar.gz"
+      }
+    },
+    "SDL2_src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-7F8KGZaY6R7tzv/+0gNNm1FvDyrY4Z4PPuzYu+3pvNM=",
+        "type": "tarball",
+        "url": "https://libsdl.org/release/SDL2-devel-2.0.22-mingw.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://libsdl.org/release/SDL2-devel-2.0.22-mingw.tar.gz"
+      }
+    },
     "argpp": {
       "inputs": {
         "flake-utils": [
@@ -13,11 +37,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1658513093,
-        "narHash": "sha256-jUCDBJRkmZs9KJ/buDK6FbvIgV14e/Qt4Afy5jb9WWw=",
+        "lastModified": 1660505203,
+        "narHash": "sha256-unfAFxgvv1BOUEqrYYMFfouGe2xIcKJ3ithCel1P9sc=",
         "owner": "grumbel",
         "repo": "argpp",
-        "rev": "cbbf41f228b986df9bdd898e7203e7988876404e",
+        "rev": "9e1d54f8ed20af0aa5857e6653ab605b2ab63d5c",
         "type": "github"
       },
       "original": {
@@ -55,17 +79,53 @@
         ]
       },
       "locked": {
-        "lastModified": 1658511308,
-        "narHash": "sha256-mMpDWcJKeN89EBuDli94uz/IyxKwdeNcjZ2uwpCOlKM=",
+        "lastModified": 1660502867,
+        "narHash": "sha256-28IgLsA30BGJcfQRVH4hP/Pjipk202qVESE0hNuNkAg=",
         "owner": "grumbel",
         "repo": "geomcpp",
-        "rev": "290cda394df7efe25094887327faf3e1d28c333d",
+        "rev": "ea25e7aac8c35ce772b3efb023ebff203f01a9a8",
         "type": "github"
       },
       "original": {
         "owner": "grumbel",
         "repo": "geomcpp",
         "type": "github"
+      }
+    },
+    "libmodplug_src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-jNHspgIcrv5AUEgq2MB4TSqbj//tTCXiOoSqYjShGkw=",
+        "type": "tarball",
+        "url": "https://downloads.sourceforge.net/project/modplug-xmms/libmodplug/0.8.9.0/libmodplug-0.8.9.0.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.sourceforge.net/project/modplug-xmms/libmodplug/0.8.9.0/libmodplug-0.8.9.0.tar.gz"
+      }
+    },
+    "libogg_src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-L8hFWoCh2VTdlsOq+cbP1eYAnciH70xlk1eSwr8YP5c=",
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.gz"
+      }
+    },
+    "libvorbis_src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-xXty8sK0hmJX7jQu5+CDBslNVQ0+dZaUrbp/12xVmy0=",
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz"
       }
     },
     "logmich": {
@@ -81,11 +141,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1658511561,
-        "narHash": "sha256-GlkvWHtZfVWM/mhxrAOaGa1vUSkVmtPXDAtStK86gPQ=",
+        "lastModified": 1660503729,
+        "narHash": "sha256-NKVJPa8JMRWy5YPCdA/OrAdUDQHGPFPHpcz8arQ0oYg=",
         "owner": "logmich",
         "repo": "logmich",
-        "rev": "c963f735df02f1944cd8db4c86a4c45f6f923d2a",
+        "rev": "22186da9b4a2fe7318cabcdf327f1b7693a50378",
         "type": "github"
       },
       "original": {
@@ -94,13 +154,25 @@
         "type": "github"
       }
     },
+    "mpg123_src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-df+AH4sCwVj89IRKBCseDR+93LY8RPuGo/F0KtULEys=",
+        "type": "tarball",
+        "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.30.2/mpg123-1.30.2.tar.bz2"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.30.2/mpg123-1.30.2.tar.bz2"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1659907814,
-        "narHash": "sha256-JEYCjAFJQK0JGe2ApyGu/+doxzTraT+g1LP3npXnuBI=",
+        "lastModified": 1660406417,
+        "narHash": "sha256-ekKl2IWxAEjwrAtE//PgR95UcvqFK+FaT4kR5XFcdjQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "92fe622fdfe477a85662bb77678e39fa70373f13",
+        "rev": "d816f474aa79d020a75cc3e69113759e32aabc2e",
         "type": "github"
       },
       "original": {
@@ -108,6 +180,47 @@
         "ref": "nixos-22.05",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "openal-soft_src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1656318833,
+        "narHash": "sha256-MVM0qCZDWcO7/Hnco+0dBqzBLcWD279xjx0slxxlc4w=",
+        "owner": "kcat",
+        "repo": "openal-soft",
+        "rev": "dc83d99c95a42c960150ddeee06c124134b52208",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kcat",
+        "ref": "1.22.2",
+        "repo": "openal-soft",
+        "type": "github"
+      }
+    },
+    "opus_src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-VyHmKoRXCJ0shVfUn6cX13b0fAXIQk0Z5NLZIfy8Gh4=",
+        "type": "tarball",
+        "url": "https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz"
+      }
+    },
+    "opusfile_src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-UEoOyY9DM5lINTAHIfSRK5+o622pIK2ObQ00swIcM40=",
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/opus/opusfile-0.12.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/opus/opusfile-0.12.tar.gz"
       }
     },
     "priocpp": {
@@ -129,11 +242,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1658511916,
-        "narHash": "sha256-BgEvAwN3+jC4Bg9LX+I6Sx51xeaBZjVR6oM5JCWnkuo=",
+        "lastModified": 1660504736,
+        "narHash": "sha256-t0BXpjsPjCXlh/XNXUVcMzvYgnROwYjwVsBTwT+Yhlc=",
         "owner": "grumbel",
         "repo": "priocpp",
-        "rev": "58fc2c18003e738d274f7fb76f1177151ff2f3cb",
+        "rev": "5dfa953ff0b099903c905a76ae9055aa9831ca97",
         "type": "github"
       },
       "original": {
@@ -144,6 +257,8 @@
     },
     "root": {
       "inputs": {
+        "SDL2_image_src": "SDL2_image_src",
+        "SDL2_src": "SDL2_src",
         "argpp": "argpp",
         "flake-utils": "flake-utils",
         "geomcpp": "geomcpp",
@@ -172,11 +287,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1658511744,
-        "narHash": "sha256-XdhhZKJi82f6Li3bVHx7KSFIUJSH812tS+hWpxZ/g4s=",
+        "lastModified": 1660503231,
+        "narHash": "sha256-Bm+FIzO3iyK0NtZOeRVyhuFdPHon3VQUyrOjy3EHpCI=",
         "owner": "lispparser",
         "repo": "sexp-cpp",
-        "rev": "c7137f1e0351b8e193ae9d48fb381157a1f8377e",
+        "rev": "ade5eb3193500031dab0c2b180e4fd4fcb7bda26",
         "type": "github"
       },
       "original": {
@@ -187,9 +302,6 @@
     },
     "strutcpp": {
       "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -198,11 +310,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1658512613,
-        "narHash": "sha256-Cxuhg7bRHMai7PflzDTRq+VM1Qbre69dgDG8t4hDVEg=",
+        "lastModified": 1660505409,
+        "narHash": "sha256-4juFaDnOhUKhIo8bNLeKEFeXQ+bw+iDQ0G22Qr9w7K0=",
         "owner": "grumbel",
         "repo": "strutcpp",
-        "rev": "06e63e8fbfe103e51bebe82299b2dc83969fa794",
+        "rev": "4b00d49250db4e42e46068d5b4e42a2f8c5ccf51",
         "type": "github"
       },
       "original": {
@@ -221,11 +333,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1658424416,
-        "narHash": "sha256-i8jdYQy/IrCFNnnLTQ90oJ0btEHrW1MgnLOhYtHMFzM=",
+        "lastModified": 1660502431,
+        "narHash": "sha256-y8/oijBPvI74DSmOULeNuG0Y0+S6c7sx8yKSULI82As=",
         "owner": "grumbel",
         "repo": "tinycmmc",
-        "rev": "43c75c5344979c5ad4c65233aa407e3ec6d92c03",
+        "rev": "fe10bcbb5ba1a3f9a3cc58bd07ab3f6320c24648",
         "type": "github"
       },
       "original": {
@@ -247,11 +359,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1658513235,
-        "narHash": "sha256-03HGviUL7w0ui5Q73xs+aBuqT8ipeDchLU3w3nuXaFs=",
+        "lastModified": 1660505802,
+        "narHash": "sha256-rCneT/lpadOKDytVgY+6R1XwD8OrMTg7an4hBLhRl24=",
         "owner": "tinygettext",
         "repo": "tinygettext",
-        "rev": "a23e9ef7406b3c430ec088214a2a063b2e64c6fe",
+        "rev": "2fcecb76900fac852fd4006e4d49b0744b1031e1",
         "type": "github"
       },
       "original": {
@@ -273,11 +385,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1658513397,
-        "narHash": "sha256-FO2wDt7wgkEmevqmA9UjEtmnBDZkoyK/71WVMEVINWU=",
+        "lastModified": 1660505521,
+        "narHash": "sha256-ySgrHgwQO5itI1JgLtFMULPhYNipOYrGd/ECtxFbWO8=",
         "owner": "grumbel",
         "repo": "uitest",
-        "rev": "6be34dc37b1877b366fb26a7f0fc461b102eaa34",
+        "rev": "c436b1b990a94d2d989966013e602fd8a621e43d",
         "type": "github"
       },
       "original": {
@@ -291,19 +403,26 @@
         "flake-utils": [
           "flake-utils"
         ],
+        "libmodplug_src": "libmodplug_src",
+        "libogg_src": "libogg_src",
+        "libvorbis_src": "libvorbis_src",
+        "mpg123_src": "mpg123_src",
         "nixpkgs": [
           "nixpkgs"
         ],
+        "openal-soft_src": "openal-soft_src",
+        "opus_src": "opus_src",
+        "opusfile_src": "opusfile_src",
         "tinycmmc": [
           "tinycmmc"
         ]
       },
       "locked": {
-        "lastModified": 1660059031,
-        "narHash": "sha256-xaHhfJOKwKkI72wLdk8L0cMUVsjw0ZaCGFujM6krI2g=",
+        "lastModified": 1660506563,
+        "narHash": "sha256-iK4kugtPWEMNvB5oWmsh4MCvrVJI8HFIydmU2sDK88I=",
         "owner": "WindstilleTeam",
         "repo": "wstsound",
-        "rev": "41cceb115e1aa87cf040fba6560448dafce67e6e",
+        "rev": "8071dc4217e4afcc78ff9f2f602b871086d154b8",
         "type": "github"
       },
       "original": {
