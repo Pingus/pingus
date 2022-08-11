@@ -515,13 +515,13 @@ Surface::is_indexed() const
 void
 Surface::print(std::ostream& out)
 {
-  out << fmt::format("Pointer: 0x{}\n"
+  out << fmt::format("Pointer: 0x{:p}\n"
                      "Rmask:   0x{:08x}\n"
                      "Gmask:   0x{:08x}\n"
                      "Bmask:   0x{:08x}\n"
                      "Amask:   0x{:08x}\n"
-                     "Flags:   0x{:08x} -> {}{}{}{}\n"
-                     "Palette: 0x{:08x}\n"
+                     "Flags:   0x{:08x}\n"
+                     "Palette: 0x{:p}\n"
                      "BitsPerPixel: {:d}\n",
                      static_cast<void*>(impl->surface),
                      impl->surface->format->Rmask,

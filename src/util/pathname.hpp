@@ -20,7 +20,6 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include <fmt/format.h>
 
 namespace pingus {
 
@@ -89,24 +88,6 @@ public:
 std::ostream& operator<< (std::ostream& os, Pathname const& p);
 
 } // namespace pingus
-
-template<>
-struct fmt::formatter<pingus::Pathname>
-{
-  template<typename ParseContext>
-  constexpr auto parse(ParseContext& ctx)
-  {
-    return ctx.begin();
-  }
-
-  template<typename FormatContext>
-  auto format(pingus::Pathname const& v, FormatContext& ctx)
-  {
-    std::ostringstream os;
-    os << v;
-    return fmt::format_to(ctx.out(), os.str());
-  }
-};
 
 #endif
 

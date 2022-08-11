@@ -40,7 +40,7 @@ PingusCounter::draw(DrawingContext& gc)
 
   World* world = server->get_world();
 
-  std::string text = fmt::format(_("Released:{:3d}/{:d}   Out:{:3d}   Saved:{:3d}/{:d}"),
+  std::string text = fmt::format(fmt::runtime(_("Released:{:3d}/{:d}   Out:{:3d}   Saved:{:3d}/{:d}")),
                                  world->get_pingus()->get_number_of_released(),
                                  world->get_pingus()->get_number_of_allowed(),
                                  world->get_pingus()->get_number_of_alive(),
