@@ -73,8 +73,12 @@ function(build_dependencies)
   tinycmmc_find_dependency(logmich)
   tinycmmc_find_dependency(prio)
   tinycmmc_find_dependency(strut)
-  tinycmmc_find_dependency(xdgcpp)
   tinycmmc_find_dependency(wstsound)
+  if(WIN32)
+    add_library(xdgcpp INTERFACE)
+  else()
+    tinycmmc_find_dependency(xdgcpp)
+  endif()
 endfunction()
 build_dependencies()
 
@@ -168,18 +172,23 @@ if(BUILD_TESTS)
     COMMAND desktop-file-validate pingus.desktop)
 endif(BUILD_TESTS)
 
-install(TARGETS pingus
-  RUNTIME DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
+if(WIN32)
+  install(TARGETS pingus
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+else()
+  configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/pingus.sh.in
+    ${CMAKE_BINARY_DIR}/pingus.sh)
 
-configure_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/pingus.sh.in
-  ${CMAKE_BINARY_DIR}/pingus.sh)
+  install(TARGETS pingus
+    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
 
-install(FILES
-  ${CMAKE_BINARY_DIR}/pingus.sh
-  RENAME pingus
-  PERMISSIONS OWNER_EXECUTE OWNER_READ OWNER_WRITE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
-  DESTINATION ${CMAKE_INSTALL_BINDIR})
+  install(FILES
+    ${CMAKE_BINARY_DIR}/pingus.sh
+    RENAME pingus
+    PERMISSIONS OWNER_EXECUTE OWNER_READ OWNER_WRITE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+    DESTINATION ${CMAKE_INSTALL_BINDIR})
+endif()
 
 install(DIRECTORY data/ DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}
   PATTERN "*~" EXCLUDE)
