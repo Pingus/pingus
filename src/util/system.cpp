@@ -30,7 +30,7 @@
 #include <CoreFoundation/CFString.h>
 #endif
 
-#ifndef WIN32
+#ifndef _WIN32
 #  include <dirent.h>
 #  include <fcntl.h>
 #  include <fnmatch.h>
@@ -39,7 +39,8 @@
 #  include <unistd.h>
 #  include <errno.h>
 #  include <xdg.h>
-#else /* WIN32 */
+#else /* _WIN32 */
+#  define NOGDI
 #  include <windows.h>
 #  include <direct.h>
 #  include <sys/stat.h>
@@ -146,8 +147,7 @@ System::opendir(std::string const& pathname, std::string const& pattern)
   }
 #else /* WIN32 */
   WIN32_FIND_DATA coFindData;
-  std::string FindFileDir = Pathname::join(pathname, pattern);
-  HANDLE hFind = FindFirstFile(TEXT(FindFileDir.c_str()),&coFindData);
+  HANDLE hFind = FindFirstFile(TEXT(pathname.c_str()), &coFindData);
 
   if (hFind == INVALID_HANDLE_VALUE)
   {
@@ -269,7 +269,7 @@ System::create_dir(std::string const& directory_)
     }
   }
 #else
-  if (!CreateDirectory(directory.c_str(), 0))
+  if (!CreateDirectory(directory.c_str(), nullptr))
   {
     DWORD dwError = GetLastError();
     if (dwError == ERROR_ALREADY_EXISTS)
@@ -284,7 +284,7 @@ System::create_dir(std::string const& directory_)
     else
     {
       raise_exception(std::runtime_error,
-                      "CreateDirectory: " << directory << ": failed with error " << StringUtil::to_string(dwError));
+                      "CreateDirectory: " << directory << ": failed with error " << std::to_string(dwError));
     }
   }
   else

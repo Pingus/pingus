@@ -21,8 +21,6 @@
 #include <assert.h>
 #include <png.h>
 
-#include <SDL_opengl.h>
-
 #include <logmich/log.hpp>
 
 #include "engine/display/display.hpp"
@@ -40,22 +38,22 @@ Screenshot::save_screenshot(std::filesystem::path const& filename)
   if (screen)
   {
     log_info("Screenshot: Saving screenshot to: {}", filename);
-    save_png(filename, screen.get_data(), screen.get_width(), screen.get_height(), screen.get_pitch());
+    save_png(filename.string(), screen.get_data(), screen.get_width(), screen.get_height(), screen.get_pitch());
     log_info("Screenshot: Screenshot is done.");
   }
 }
 
 void
-Screenshot::save_png(std::string const& filename, uint8_t const* buffer, int width, int height, int pitch)
+Screenshot::save_png(std::filesystem::path const& filename, uint8_t const* buffer, int width, int height, int pitch)
 {
   FILE* fp;
   png_structp png_ptr;
   png_infop info_ptr;
 
-  fp = fopen(filename.c_str(), "wb");
+  fp = fopen(filename.string().c_str(), "wb");
   if (fp == nullptr)
   {
-    perror(filename.c_str());
+    perror(filename.string().c_str());
     log_info("Screenshot: Couldn't write file: {}", filename);
     return;
   }

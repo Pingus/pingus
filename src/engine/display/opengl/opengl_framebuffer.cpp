@@ -16,6 +16,10 @@
 
 #include "engine/display/opengl/opengl_framebuffer.hpp"
 
+#ifdef _WIN32
+#  define NOGDI
+#endif
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include <sstream>

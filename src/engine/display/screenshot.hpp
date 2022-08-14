@@ -31,7 +31,7 @@ public:
   static void save_screenshot(std::filesystem::path const& filename);
 
   /** buffer must be RGBX and width*height*4 large */
-  static void save_png(std::string const& filename, uint8_t const* buffer, int width, int height, int pitch);
+  static void save_png(std::filesystem::path const& filename, uint8_t const* buffer, int width, int height, int pitch);
 
 private:
   Screenshot();

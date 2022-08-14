@@ -22,12 +22,12 @@ enum class Syntax { FASTJSON, JSON, SEXPR };
 struct ResaveOptions
 {
   prio::Format syntax;
-  bool stdout;
+  bool to_stdout;
   std::vector<std::string> files;
 
   ResaveOptions() :
     syntax(prio::Format::SEXPR),
-    stdout(false),
+    to_stdout(false),
     files()
   {}
 };
@@ -75,7 +75,7 @@ int main(int argc, char** argv)
         break;
 
       case 'S':
-        opts.stdout = true;
+        opts.to_stdout = true;
         break;
 
       case argpp::ArgumentType::REST:
@@ -105,7 +105,7 @@ int main(int argc, char** argv)
 
       std::ostream* stream = nullptr;
       std::ofstream fout;
-      if (opts.stdout)
+      if (opts.to_stdout)
       {
         stream = &std::cout;
       }
