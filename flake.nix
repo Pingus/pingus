@@ -133,6 +133,20 @@
             cp -vLr ${pingus}/bin/*.dll $out/
             cp -vr ${pingus}/share/pingus/. $out/data/
           '';
+
+          pingus-win32-zip = pkgs.runCommand "pingus-win32-zip" {} ''
+            mkdir -p $out
+            WORKDIR=$(mktemp -d)
+
+            cp --no-preserve mode,ownership --verbose --recursive \
+              ${pingus-win32}/. "$WORKDIR"
+
+            cd "$WORKDIR"
+            ${nixpkgs.legacyPackages.x86_64-linux.zip}/bin/zip \
+              -r \
+              $out/pingus-${pingus.version}-${pkgs.system}.zip \
+              .
+          '';
         };
       }
     );

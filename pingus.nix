@@ -39,6 +39,8 @@ stdenv.mkDerivation {
 
   src = lib.cleanSource ./.;
 
+  enableParallelBuilding = true;
+
   cmakeFlags = [
     "-DWARNINGS=ON"
     "-DWERROR=ON"
