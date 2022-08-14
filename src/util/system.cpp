@@ -33,7 +33,6 @@
 #ifndef _WIN32
 #  include <dirent.h>
 #  include <fcntl.h>
-#  include <fnmatch.h>
 #  include <sys/stat.h>
 #  include <sys/types.h>
 #  include <unistd.h>
@@ -105,7 +104,7 @@ System::get_file_extension(std::string const& filename)
 }
 
 System::Directory
-System::opendir(std::string const& pathname, std::string const& pattern)
+System::opendir(std::string const& pathname)
 {
   Directory dir_list;
 
@@ -123,22 +122,19 @@ System::opendir(std::string const& pathname, std::string const& pattern)
   {
     while ((de = ::readdir(dp)) != nullptr)
     {
-      if (fnmatch(pattern.c_str(), de->d_name, FNM_PATHNAME) == 0)
-      {
-        struct stat buf;
-        stat((Pathname::join(pathname, de->d_name)).c_str(), &buf);
+      struct stat buf;
+      stat((Pathname::join(pathname, de->d_name)).c_str(), &buf);
 
-        if (strcmp(de->d_name, "..") != 0 &&
-            strcmp(de->d_name, ".") != 0)
+      if (strcmp(de->d_name, "..") != 0 &&
+          strcmp(de->d_name, ".") != 0)
+      {
+        if (S_ISDIR(buf.st_mode))
         {
-          if (S_ISDIR(buf.st_mode))
-          {
-            dir_list.push_back(DirectoryEntry(de->d_name, DE_DIRECTORY));
-          }
-          else
-          {
-            dir_list.push_back(DirectoryEntry(de->d_name, DE_FILE));
-          }
+          dir_list.push_back(DirectoryEntry(de->d_name, DE_DIRECTORY));
+        }
+        else
+        {
+          dir_list.push_back(DirectoryEntry(de->d_name, DE_FILE));
         }
       }
     }

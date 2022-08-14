@@ -48,7 +48,7 @@ public:
 
   void update_layout() override;
   std::string get_direction() const { return m_direction; }
-  void set_directory(std::string const& pathname, std::string const& pattern = "*");
+  void set_directory(std::string const& pathname);
 
   void on_pointer_move (int x, int y) override;
 

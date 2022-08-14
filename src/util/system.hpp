@@ -52,7 +52,7 @@ public:
 
   /** Returns the content of the given directory, filtered by applying
       pattern. "." and ".." are removed from the output. */
-  static Directory opendir(std::string const& pathname, std::string const& pattern = "*");
+  static Directory opendir(std::string const& pathname);
   static std::vector<std::string> opendir_recursive(std::string const& pathname);
 
   static std::string get_file_extension(std::string const& filename);

@@ -72,13 +72,13 @@ struct DirectorySorter
 };
 
 void
-FileList::set_directory(std::string const& pathname, std::string const& pattern)
+FileList::set_directory(std::string const& pathname)
 {
   m_direction = pathname;
 
   try
   {
-    directory = System::opendir(pathname, pattern);
+    directory = System::opendir(pathname);
   }
   catch(std::exception const& err)
   {

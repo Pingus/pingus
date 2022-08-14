@@ -164,7 +164,7 @@ Pathname::opendir(std::string const& pattern) const
         std::string path = Pathname::join(*p, pathname);
         try
         {
-          System::Directory lst = System::opendir(path, pattern);
+          System::Directory lst = System::opendir(path);
           for(auto it = lst.begin(); it != lst.end(); ++it)
           {
             result.insert(Pathname(Pathname::join(pathname, it->name), Pathname::DATA_PATH));
@@ -182,7 +182,7 @@ Pathname::opendir(std::string const& pattern) const
       std::vector<Pathname> result;
       try
       {
-        auto lst = System::opendir(pathname, pattern);
+        auto lst = System::opendir(pathname);
         for(auto it = lst.begin(); it != lst.end(); ++it)
         {
           result.push_back(Pathname(it->name, Pathname::SYSTEM_PATH));
