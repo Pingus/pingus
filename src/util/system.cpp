@@ -355,6 +355,8 @@ System::init_directories()
 
   // FIXME: We need a better seperation between user created levels,
   // FIXME: third party levels and levels from the base distri
+  create_dir(statdir);
+  create_dir(statdir + "levels/");
   create_dir(statdir + "levels/dist");
   create_dir(statdir + "themes/");
 
