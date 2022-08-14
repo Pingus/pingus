@@ -108,7 +108,12 @@ target_link_libraries(libpingus PUBLIC
   PkgConfig::SIGCXX
   OpenGL::GL)
 
-add_executable(pingus src/main.cpp)
+set(PINGUS_MAIN_SOURCES_CXX src/main.cpp)
+if(WIN32)
+  list(APPEND PINGUS_MAIN_SOURCES_CXX
+    src/win32/pingus.rc)
+endif()
+add_executable(pingus ${PINGUS_MAIN_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_compile_options(pingus PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
 target_link_libraries(pingus libpingus)
