@@ -111,6 +111,7 @@ target_link_libraries(libpingus PUBLIC
 set(PINGUS_MAIN_SOURCES_CXX src/main.cpp)
 if(WIN32)
   list(APPEND PINGUS_MAIN_SOURCES_CXX
+    src/win32/console.cpp
     src/win32/pingus.rc)
 endif()
 add_executable(pingus ${PINGUS_MAIN_SOURCES_CXX})

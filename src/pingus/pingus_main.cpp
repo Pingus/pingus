@@ -56,6 +56,10 @@ extern "C" {
 }
 #endif
 
+#ifdef _WIN32
+#  include "win32/console.hpp"
+#endif
+
 #include "gettext.h"
 #include "tinygettext/dictionary_manager.hpp"
 #include "tinygettext/log.hpp"
@@ -527,6 +531,10 @@ PingusMain::start_game ()
 int
 PingusMain::run(int argc, char** argv)
 {
+#ifdef _WIN32
+  attachOutputToConsole();
+#endif
+
   logmich::set_log_level(logmich::LogLevel::WARNING);
 
   tinygettext::Log::set_log_info_callback(nullptr);
@@ -619,6 +627,10 @@ PingusMain::run(int argc, char** argv)
   pingus::fonts::deinit();
   WorldObjFactory::deinit();
   Resource::deinit();
+
+#ifdef _WIN32
+  detachOutputFromConsole();
+#endif
 
   return 0;
 }
