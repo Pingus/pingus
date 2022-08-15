@@ -532,7 +532,7 @@ int
 PingusMain::run(int argc, char** argv)
 {
 #ifdef _WIN32
-  attachOutputToConsole();
+  win32_redirect_stdio();
 #endif
 
   logmich::set_log_level(logmich::LogLevel::WARNING);
@@ -627,10 +627,6 @@ PingusMain::run(int argc, char** argv)
   pingus::fonts::deinit();
   WorldObjFactory::deinit();
   Resource::deinit();
-
-#ifdef _WIN32
-  detachOutputFromConsole();
-#endif
 
   return 0;
 }

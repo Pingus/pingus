@@ -22,7 +22,8 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-bool attachOutputToConsole();
-void detachOutputFromConsole();
+/** Redirect stdout/stderr either to the console it was started from
+    or to stdout.txt/stderr.txt files if started from the GUI */
+bool win32_redirect_stdio();
 
 /* EOF */

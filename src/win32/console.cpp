@@ -26,49 +26,16 @@
 // https://www.tillett.info/2013/05/13/how-to-create-a-windows-program-that-works-as-both-as-a-gui-and-console-application/
 
 #include <assert.h>
+#include <fcntl.h>
+#include <io.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-#define WINVER 0x0501 // Allow use of features specific to Windows XP or later.
-#define _WIN32_WINNT 0x0501
 #define WIN32_LEAN_AND_MEAN
-#include "windows.h"
-#include "io.h"
-#include "fcntl.h"
-#include "stdio.h"
-#include "stdlib.h"
-#pragma comment(lib, "User32.lib")
+#include <windows.h>
 
-namespace {
-
-bool g_is_console_app = false;
-
-// Send the "enter" to the console to release the command prompt
-// on the parent console
-void sendEnterKey()
+bool win32_redirect_stdio()
 {
-  INPUT ip;
-  // Set up a generic keyboard event.
-  ip.type = INPUT_KEYBOARD;
-  ip.ki.wScan = 0; // hardware scan code for key
-  ip.ki.time = 0;
-  ip.ki.dwExtraInfo = 0;
-
-  // Send the "Enter" key
-  ip.ki.wVk = 0x0D; // virtual-key code for the "Enter" key
-  ip.ki.dwFlags = 0; // 0 for key press
-  SendInput(1, &ip, sizeof(INPUT));
-
-  // Release the "Enter" key
-  ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release
-  SendInput(1, &ip, sizeof(INPUT));
-}
-
-} // namespace
-
-// Attach output of application to parent console
-bool attachOutputToConsole()
-{
-  assert(g_is_console_app == false);
-
   if (AttachConsole(ATTACH_PARENT_PROCESS))
   {
     // Redirect unbuffered STDOUT to the console
@@ -89,24 +56,12 @@ bool attachOutputToConsole()
       return false;
     }
 
-    g_is_console_app = true;
+    return true;
+  } else {
+    freopen("stdout.txt", "w", stdout);
+    freopen("stderr.txt", "w", stderr);
 
     return true;
-  }
-
-  //Not a console application
-  return false;
-}
-
-void detachOutputFromConsole()
-{
-  // Send "enter" to release application from the console
-  // This is a hack, but if not used the console doesn't know the application has
-  // returned. The "enter" key only sent if the console window is in focus.
-  if (g_is_console_app &&
-      (GetConsoleWindow() == GetForegroundWindow()))
-  {
-    sendEnterKey();
   }
 }
 
