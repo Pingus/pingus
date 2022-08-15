@@ -9,6 +9,11 @@
     tinycmmc.inputs.nixpkgs.follows = "nixpkgs";
     tinycmmc.inputs.flake-utils.follows = "flake-utils";
 
+    nix-cross.url = "github:grumbel/nix-cross";
+    nix-cross.inputs.nixpkgs.follows = "nixpkgs";
+    nix-cross.inputs.flake-utils.follows = "flake-utils";
+    nix-cross.inputs.tinycmmc.follows = "tinycmmc";
+
     uitest.url = "github:grumbel/uitest";
     uitest.inputs.nixpkgs.follows = "nixpkgs";
     uitest.inputs.flake-utils.follows = "flake-utils";
@@ -60,47 +65,16 @@
     wstsound.inputs.nixpkgs.follows = "nixpkgs";
     wstsound.inputs.flake-utils.follows = "flake-utils";
     wstsound.inputs.tinycmmc.follows = "tinycmmc";
-
-    SDL2_src.url = "https://libsdl.org/release/SDL2-devel-2.0.22-mingw.tar.gz";
-    SDL2_src.flake = false;
-
-    SDL2_image_src.url = "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.5-mingw.tar.gz";
-    SDL2_image_src.flake = false;
+    wstsound.inputs.nix-cross.follows = "nix-cross";
   };
 
   outputs = { self, nixpkgs, flake-utils,
-              tinycmmc, uitest, argpp, geomcpp, logmich, priocpp, sexpcpp, strutcpp, tinygettext, xdgcpp, wstsound,
-              SDL2_src, SDL2_image_src }:
+              tinycmmc, nix-cross, uitest, argpp, geomcpp, logmich, priocpp, sexpcpp, strutcpp, tinygettext, xdgcpp, wstsound,
+            }:
     tinycmmc.lib.eachSystemWithPkgs (pkgs:
       {
         packages = rec {
           default = pingus;
-
-          SDL2 = pkgs.stdenv.mkDerivation {
-            pname = "SDL2";
-            version = "2.0.22";
-            src = SDL2_src;
-            installPhase = ''
-              mkdir $out
-              cp -vr ${pkgs.targetPlatform.config}/. $out/
-              substituteInPlace $out/lib/pkgconfig/sdl2.pc \
-                --replace "prefix=/opt/local/${pkgs.targetPlatform.config}" \
-                          "prefix=$out"
-            '';
-          };
-
-          SDL2_image = pkgs.stdenv.mkDerivation rec {
-            pname = "SDL2";
-            version = "2.0.22";
-            src = SDL2_image_src;
-            installPhase = ''
-              mkdir $out
-              cp -vr ${pkgs.targetPlatform.config}/. $out/
-              substituteInPlace $out/lib/pkgconfig/SDL2_image.pc \
-                --replace "prefix=/opt/local/${pkgs.targetPlatform.config}" \
-                          "prefix=$out"
-            '';
-          };
 
           pingus = pkgs.callPackage ./pingus.nix {
             inherit self;
@@ -121,8 +95,12 @@
                           then pkgs.windows.mcfgthreads
                           else null;
 
-            SDL2 = if pkgs.targetPlatform.isWindows then SDL2 else pkgs.SDL2;
-            SDL2_image = if pkgs.targetPlatform.isWindows then SDL2_image else pkgs.SDL2_image;
+            SDL2 = if pkgs.targetPlatform.isWindows
+                   then nix-cross.packages.${pkgs.system}.SDL2
+                   else pkgs.SDL2;
+            SDL2_image = if pkgs.targetPlatform.isWindows
+                         then nix-cross.packages.${pkgs.system}.SDL2_image
+                         else pkgs.SDL2_image;
           };
 
           pingus-win32 = pkgs.runCommand "pingus-win32" {} ''

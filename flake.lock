@@ -79,11 +79,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660502867,
-        "narHash": "sha256-28IgLsA30BGJcfQRVH4hP/Pjipk202qVESE0hNuNkAg=",
+        "lastModified": 1660561995,
+        "narHash": "sha256-z2d2nz8BKyPjudk619U0D8aiPrXTtasMoBOewYPRkCo=",
         "owner": "grumbel",
         "repo": "geomcpp",
-        "rev": "ea25e7aac8c35ce772b3efb023ebff203f01a9a8",
+        "rev": "e166eb4514efb46b7f0b6eb6524c1b6cb1457a92",
         "type": "github"
       },
       "original": {
@@ -166,13 +166,48 @@
         "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.30.2/mpg123-1.30.2.tar.bz2"
       }
     },
+    "nix-cross": {
+      "inputs": {
+        "SDL2_image_src": "SDL2_image_src",
+        "SDL2_src": "SDL2_src",
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "libmodplug_src": "libmodplug_src",
+        "libogg_src": "libogg_src",
+        "libvorbis_src": "libvorbis_src",
+        "mpg123_src": "mpg123_src",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "openal-soft_src": "openal-soft_src",
+        "opus_src": "opus_src",
+        "opusfile_src": "opusfile_src",
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1660559753,
+        "narHash": "sha256-0Hcmz+unvkkK2TWwFN6BdlgY/qszYnt5AdTI/fBEfRM=",
+        "owner": "grumbel",
+        "repo": "nix-cross",
+        "rev": "c2099438503f524ae713d638901b92629e1a530e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "grumbel",
+        "repo": "nix-cross",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1660406417,
-        "narHash": "sha256-ekKl2IWxAEjwrAtE//PgR95UcvqFK+FaT4kR5XFcdjQ=",
+        "lastModified": 1660496378,
+        "narHash": "sha256-sgAhmrC1iSnl5T2VPPiMpciH1aRw5c7PYEdXX6jd6Gk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d816f474aa79d020a75cc3e69113759e32aabc2e",
+        "rev": "879121648fe522b38cc1cf75aef160a14a1f2e7b",
         "type": "github"
       },
       "original": {
@@ -257,12 +292,11 @@
     },
     "root": {
       "inputs": {
-        "SDL2_image_src": "SDL2_image_src",
-        "SDL2_src": "SDL2_src",
         "argpp": "argpp",
         "flake-utils": "flake-utils",
         "geomcpp": "geomcpp",
         "logmich": "logmich",
+        "nix-cross": "nix-cross",
         "nixpkgs": "nixpkgs",
         "priocpp": "priocpp",
         "sexpcpp": "sexpcpp",
@@ -403,26 +437,22 @@
         "flake-utils": [
           "flake-utils"
         ],
-        "libmodplug_src": "libmodplug_src",
-        "libogg_src": "libogg_src",
-        "libvorbis_src": "libvorbis_src",
-        "mpg123_src": "mpg123_src",
+        "nix-cross": [
+          "nix-cross"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
-        "openal-soft_src": "openal-soft_src",
-        "opus_src": "opus_src",
-        "opusfile_src": "opusfile_src",
         "tinycmmc": [
           "tinycmmc"
         ]
       },
       "locked": {
-        "lastModified": 1660506563,
-        "narHash": "sha256-iK4kugtPWEMNvB5oWmsh4MCvrVJI8HFIydmU2sDK88I=",
+        "lastModified": 1660560972,
+        "narHash": "sha256-ayGUzv3YmBJQQ+HBIm2wfmxFY1fE4xyyv1MvBq55hbc=",
         "owner": "WindstilleTeam",
         "repo": "wstsound",
-        "rev": "8071dc4217e4afcc78ff9f2f602b871086d154b8",
+        "rev": "8e1e5ed936a1e5985f4621fc70fabed9c6982ffb",
         "type": "github"
       },
       "original": {
