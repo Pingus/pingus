@@ -9,11 +9,6 @@
     tinycmmc.inputs.nixpkgs.follows = "nixpkgs";
     tinycmmc.inputs.flake-utils.follows = "flake-utils";
 
-    nix-cross.url = "github:grumbel/nix-cross";
-    nix-cross.inputs.nixpkgs.follows = "nixpkgs";
-    nix-cross.inputs.flake-utils.follows = "flake-utils";
-    nix-cross.inputs.tinycmmc.follows = "tinycmmc";
-
     uitest.url = "github:grumbel/uitest";
     uitest.inputs.nixpkgs.follows = "nixpkgs";
     uitest.inputs.flake-utils.follows = "flake-utils";
@@ -65,11 +60,19 @@
     wstsound.inputs.nixpkgs.follows = "nixpkgs";
     wstsound.inputs.flake-utils.follows = "flake-utils";
     wstsound.inputs.tinycmmc.follows = "tinycmmc";
-    wstsound.inputs.nix-cross.follows = "nix-cross";
+
+    SDL2-win32.url = "github:grumnix/SDL2-win32";
+    SDL2-win32.inputs.nixpkgs.follows = "nixpkgs";
+    SDL2-win32.inputs.tinycmmc.follows = "tinycmmc";
+
+    SDL2_image-win32.url = "github:grumnix/SDL2_image-win32";
+    SDL2_image-win32.inputs.nixpkgs.follows = "nixpkgs";
+    SDL2_image-win32.inputs.tinycmmc.follows = "tinycmmc";
   };
 
   outputs = { self, nixpkgs, flake-utils,
-              tinycmmc, nix-cross, uitest, argpp, geomcpp, logmich, priocpp, sexpcpp, strutcpp, tinygettext, xdgcpp, wstsound,
+              tinycmmc, uitest, argpp, geomcpp, logmich, priocpp, sexpcpp, strutcpp,
+              tinygettext, xdgcpp, wstsound, SDL2-win32, SDL2_image-win32
             }:
     tinycmmc.lib.eachSystemWithPkgs (pkgs:
       {
@@ -96,10 +99,10 @@
                           else null;
 
             SDL2 = if pkgs.targetPlatform.isWindows
-                   then nix-cross.packages.${pkgs.system}.SDL2
+                   then SDL2-win32.packages.${pkgs.system}.default
                    else pkgs.SDL2;
             SDL2_image = if pkgs.targetPlatform.isWindows
-                         then nix-cross.packages.${pkgs.system}.SDL2_image
+                         then SDL2_image-win32.packages.${pkgs.system}.default
                          else pkgs.SDL2_image;
           };
 
