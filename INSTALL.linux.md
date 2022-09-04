@@ -16,7 +16,7 @@ To compile Pingus you need:
 In most cases you will find all of these in your distribution and
 there shouln't be a need to compile anything manually.
 
-In Ubuntu 15.04 you can install everything by typing:
+In Ubuntu 20.04, 22.04 and Debian 10, 11 you can install everything by typing:
 
     sudo apt-get install \
      g++ \
@@ -24,6 +24,15 @@ In Ubuntu 15.04 you can install everything by typing:
      libsdl2-mixer-dev \
      libsdl2-image-dev \
      libpng12-dev \
+     libjsoncpp-dev \
+     libsigc++-2.0-dev \
+     libfmt-dev \
+     libglm-dev \
+     libopenal-dev \
+     libopusfile-dev \
+     libvorbis-dev \
+     libmpg123-dev \
+     libmodplug-dev \
      cmake
 
 
