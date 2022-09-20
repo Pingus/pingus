@@ -30,8 +30,10 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         pkgs_old = nixpkgs_old.legacyPackages.${system};
-      in rec {
-        packages = flake-utils.lib.flattenTree {
+      in {
+        packages = rec {
+          default = pingus;
+
           pingus = pkgs.stdenv.mkDerivation rec {
             name = "pingus";
             src = nixpkgs.lib.cleanSource ./.;
@@ -40,10 +42,10 @@
             };
             patchPhase = ''
               substituteInPlace SConscript \
-                 --replace external/tinygettext/include/ "${tinygettext.defaultPackage.${system}}/include/" \
-                 --replace external/logmich/include/ "${logmich.defaultPackage.${system}}/include/" \
+                 --replace external/tinygettext/include/ "${tinygettext.packages.${system}.default}/include/" \
+                 --replace external/logmich/include/ "${logmich.packages.${system}.default}/include/" \
                  --replace "self.env.Default(self.env.Program('pingus', ['src/main.cpp', libpingus]))" \
-                           "self.env.Default(self.env.Program('pingus', ['src/main.cpp', libpingus, '${tinygettext.defaultPackage.${system}}/lib/libtinygettext.a', '${logmich.defaultPackage.${system}}/lib/liblogmich.a']))"
+                           "self.env.Default(self.env.Program('pingus', ['src/main.cpp', libpingus, '${tinygettext.packages.${system}.default}/lib/libtinygettext.a', '${logmich.packages.${system}.default}/lib/liblogmich.a']))"
             '';
             enableParallelBuilding = true;
             installPhase = ''
@@ -62,6 +64,6 @@
             ];
           };
         };
-        defaultPackage = packages.pingus;
-      });
+      }
+    );
 }
