@@ -6,6 +6,7 @@
 # Copyright (C) Harald Brass <brassh@web.de>, 2007.
 # Copyright (C) David Philippi <david@torangan.de>, 2003, 2004, 2007.
 # Copyright (C) Helge Kreutzmann <debian@helgefjell.de>, 2011, 2013.
+# Copyright (C) Etienne Ruedin, 2022.
 # This file is distributed under the same license as the pingus package.
 #
 msgid ""
@@ -25,19 +26,19 @@ msgstr ""
 
 #: src/engine/display/screenshot.cpp:37
 msgid "Screenshot: Saving screenshot to: "
-msgstr "Screenshot: speichere Bildschirmphoto als: "
+msgstr "Bildschirmphoto: speichere Bildschirmphoto als: "
 
 #: src/engine/display/screenshot.cpp:39
 msgid "Screenshot: Screenshot is done."
-msgstr "Screenshot: Bildschirmphoto wurde erstellt."
+msgstr "Bildschirmphoto: Bildschirmphoto wurde erstellt."
 
 #: src/engine/display/screenshot.cpp:124 src/engine/display/screenshot.cpp:152
 msgid "Screenshot: Couldn't write file: "
-msgstr "Screenshot: Datei konnte nicht geschrieben werden: "
+msgstr "Bildschirmphoto: Datei konnte nicht geschrieben werden: "
 
 #: src/editor/editor_screen.cpp:230
 msgid "== Editor Help =="
-msgstr "== Editor-Hilfe =="
+msgstr "== Bearbeiter-Hilfe =="
 
 #: src/editor/editor_screen.cpp:248
 msgid ""
@@ -102,22 +103,22 @@ msgid ""
 "to the GPL, if you want to have your level under a different license, you "
 "have to change that reference.\n"
 msgstr ""
-"Level-Dateinamen sollten einem festen Schema folgen, d.h. ihrem Thema, ihrer "
+"Spielrunden-Dateinamen sollten einem festen Schema folgen, d.h. ihrem Thema, ihrer "
 "Nummer und Deinem Kurznamen:\n"
 "\n"
-"     <Level-Name><Nummer>-<Autor>.pingus\n"
+"     <Runden-Name><Nummer>-<Autor>.pingus\n"
 "\n"
-"Wenn zum Beispiel das Thema des Levels Steine sind und es der zweite Level "
+"Wenn zum Beispiel das Thema der Runde Steine sind und es die zweite Runde "
 "mit diesem Thema ist, dann wäre der Name: Steine2-Deinname.pingus\n"
 "\n"
-"Wenn Du einen Level erstellt hast und ihn ins Spiel eingefügt haben willst, "
-"sende ihn an:\n"
+"Wenn Du eine Spielrunde erstellt hast und sie ins Spiel eingefügt haben willst, "
+"sende sie an:\n"
 "\n"
 "   pingus-devel@nongnu.org\n"
 "\n"
-"Nur Level, die unter der GPL stehen, können ins Spiel aufgenommen werden. "
-"Alle mit diesem Editor erstellten\n"
-"Level enthalten automatisch einen Verweis auf die GPL. Wer eine andere "
+"Nur Runden, die unter der GPL stehen, können ins Spiel aufgenommen werden. "
+"Alle mit diesem Bearbeiter erstellten\n"
+"Runden enthalten automatisch einen Verweis auf die GPL. Wer eine andere "
 "Lizenz will, muss diesen Verweis ändern.\n"
 
 #: src/editor/file_dialog.cpp:58
@@ -150,31 +151,31 @@ msgstr "Pfadname:"
 
 #: src/editor/file_dialog.cpp:98
 msgid "Open a level"
-msgstr "Level öffnen"
+msgstr "Runde öffnen"
 
 #: src/editor/file_dialog.cpp:98
 msgid "Save your level"
-msgstr "Level speichern"
+msgstr "Runde speichern"
 
 #: src/editor/panel.cpp:171
 msgid "New level"
-msgstr "Neuer Level"
+msgstr "Neue Runde"
 
 #: src/editor/panel.cpp:173
 msgid "Open level..."
-msgstr "Level laden ..."
+msgstr "Runde laden ..."
 
 #: src/editor/panel.cpp:175
 msgid "Save level..."
-msgstr "Level speichern ..."
+msgstr "Runde speichern ..."
 
 #: src/editor/panel.cpp:177
 msgid "Save level as..."
-msgstr "Level speichern als ..."
+msgstr "Runde speichern als ..."
 
 #: src/editor/panel.cpp:180
 msgid "Play level..."
-msgstr "Level spielen ..."
+msgstr "Runde spielen ..."
 
 #: src/editor/panel.cpp:183
 msgid "Configure actions"
@@ -182,7 +183,7 @@ msgstr "Aktionen konfigurieren"
 
 #: src/editor/panel.cpp:185
 msgid "Configure level"
-msgstr "Level konfigurieren"
+msgstr "Runde einstellen"
 
 #: src/editor/panel.cpp:187
 msgid "Display object properties"
@@ -523,7 +524,7 @@ msgstr "Alle verfügbare Sprachen auflisten"
 
 #: src/pingus/pingus_main.cpp:221
 msgid "Loads the level editor"
-msgstr "Level-Editor laden"
+msgstr "Runden-Bearbeiter laden"
 
 #: src/pingus/pingus_main.cpp:223
 msgid "Directory Options:"
@@ -642,11 +643,11 @@ msgstr "..:: das Spiel starten ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:59
 msgid "Editor"
-msgstr "Editor"
+msgstr "Bearbeiter"
 
 #: src/pingus/screens/pingus_menu.cpp:60
 msgid "..:: Create your own levels ::.."
-msgstr "..:: erstelle Deinen eigenen Level ::.."
+msgstr "..:: erstelle Deine eigenen Runden ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:64
 msgid "Options"
@@ -658,11 +659,11 @@ msgstr "..:: Das Spiel konfigurieren ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:69 src/pingus/screens/level_menu.cpp:177
 msgid "Levelsets"
-msgstr "Levelsets"
+msgstr "Rundeneinstellungen"
 
 #: src/pingus/screens/pingus_menu.cpp:70
 msgid "..:: Play User Built levels ::.."
-msgstr "..:: benutzererstellte Level spielen ::.."
+msgstr "..:: benutzererstellte Runden spielen ::.."
 
 #: src/pingus/screens/pingus_menu.cpp:75
 msgid "..:: Bye, bye ::.."
@@ -682,7 +683,7 @@ msgstr "In Entwicklung"
 
 #: src/pingus/screens/level_menu.cpp:156
 msgid "Untested, unpolished and broken levels"
-msgstr "Ungetestete, unfertige und defekte Level"
+msgstr "Ungetestete, unfertige und defekte Runden"
 
 #: src/pingus/screens/level_menu.cpp:192
 msgid "Solved:"
@@ -690,7 +691,7 @@ msgstr "Gelöst:"
 
 #: src/pingus/screens/level_menu.cpp:193
 msgid "levels"
-msgstr "Level"
+msgstr "Runden"
 
 #: src/pingus/screens/story_screen.cpp:108
 #: src/pingus/screens/story_screen.cpp:114
@@ -946,9 +947,9 @@ msgid ""
 "opposed to the vertical dig ability the Digger action provides. This new "
 "action is called Basher. "
 msgstr ""
-"Vergleichbar zum Lochgräber, der bereits aus den vorherigen Leveln bekannt "
-"ist, gibt es auch eine Fähigkeit, mit der ein Pingu horizontal graben kann, "
-"im Gegensatz zur Fähigkeit zum vertikalen Graben eines Lochgräbers. Diese "
+"Vergleichbar zum Lochgräber, der bereits aus den vorherigen Runden bekannt "
+"ist, gibt es auch eine Fähigkeit, mit der ein Pingu horizontal (geradeaus) graben kann, "
+"im Gegensatz zur Fähigkeit zum vertikalen (nach unten) Graben eines Lochgräbers. Diese "
 "neue Fähigkeit heißt Tunnelbauer. "
 
 #: data/levels/tutorial/bomber-tutorial2-grumbel.pingus:5
@@ -1038,8 +1039,8 @@ msgid ""
 "one gets a bit trickier. The Pingus are coming out of two entrances in "
 "parallel and it is your job to coordinate the two groups wisely. "
 msgstr ""
-"Während die vorangegangen Level nicht viel schnelle Reaktionen von Dir "
-"gefordert haben, wird dieser etwas schwieriger. Die Pingus kommen aus zwei "
+"Während die vorangegangen Runden nicht viel schnelle Reaktionen von Dir "
+"gefordert haben, wird diese etwas schwieriger. Die Pingus kommen aus zwei "
 "Eingängen gleichzeitig, und es ist Deine Aufgabe, beide Gruppen umsichtig zu "
 "koordinieren. "
 
@@ -1070,9 +1071,9 @@ msgid ""
 "level gives you enough time to think your actions through. No more tips this "
 "time, but good luck! "
 msgstr ""
-"Diesmal hast Du zwei Gruppen zu koordinieren, aber keine Panik, denn dieser "
-"Level gibt Dir genug Zeit zum Überlegen. Keine weiteren Tipps dieses Mal, "
-"aber Viel Glück! "
+"Diesmal hast Du zwei Gruppen zu koordinieren, aber keine Panik, denn diese "
+"Runde gibt Dir genug Zeit zum Überlegen. Keine weiteren Tipps dieses Mal, "
+"aber viel Glück! "
 
 #: data/levels/tutorial/snow14-grumbel.pingus:5
 msgid "Block'a Rock"
@@ -1084,7 +1085,7 @@ msgid ""
 "levels. Blast your way free and make sure you also keep the rest of the "
 "Pingus under control. The Blocker action will be helpful."
 msgstr ""
-"Es ist wieder mal Zeit, die Dinge, die Du in Deinen vorherigen Leveln gelernt "
+"Es ist wieder mal Zeit, die Dinge, die Du in Deinen vorherigen Runden gelernt "
 "hast, zu kombinieren. Sprenge Deinen Weg frei und pass auf, dass Du die "
 "restlichen Pinguine unter Kontrolle hältst. Die Blockier-Aktion hilft auch."
 
@@ -1099,7 +1100,7 @@ msgid ""
 "Digger action in this level the Bomber needs to jump in, but how can it "
 "reach the place to bomb? "
 msgstr ""
-"Wie Du wohl bereits in den vorherigen Leveln bemerkt hast, musst Du oftmals "
+"Wie Du wohl bereits in den vorherigen Runden bemerkt hast, musst Du oftmals "
 "mehrere Fähigkeiten kombinieren, um das Ziel zu erreichen. Da die Lochgräber-"
 "Fähigkeit fehlt, muss der Bomber einspringen, aber wie erreicht er den Platz "
 "zum Sprengen? "
@@ -1157,8 +1158,8 @@ msgid ""
 "This level presents you with at least three different ways to solve it. It's "
 "up to you which one you pick. "
 msgstr ""
-"Nun, da Du alle Fähigkeiten kennst, ist es Zeit für etwas mehr Übung. Dieser "
-"Level bietet mindestens drei verschiedene Lösungswege. Du kannst "
+"Nun, da Du alle Fähigkeiten kennst, ist es Zeit für etwas mehr Übung. Diese "
+"Runde bietet mindestens drei verschiedene Lösungswege. Du kannst "
 "entscheiden, welchen Du wählst. "
 
 #: data/levels/tutorial/snow21-grumbel.pingus:5
@@ -1188,8 +1189,8 @@ msgid ""
 msgstr ""
 "Wenn Du nicht genug Schweber hast, um alle Pingus zum Ausgang hinunter zu "
 "bringen, dann musst Du andere Wege finden, sie nach unten zu führen. Alles, "
-"was Du in diesem Level brauchst, solltest Du bereits in vorangegangen Leveln "
-"gelernt haben. Daher sollte dies kein sonderliches Problem darstellen. "
+"was Du in dieser Runde brauchst, solltest Du bereits in vorangegangen Runden "
+"gelernt haben. Daher sollte dies kein besonderes Problem darstellen. "
 
 #: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
@@ -1217,7 +1218,7 @@ msgid ""
 "apply it to the Pingus so that they will be able to reach the exit. Make "
 "sure that not too many of them die. "
 msgstr ""
-"Im Gegensatz zu den beiden ersten Leveln hast Du hier zwei Fähigkeiten zur "
+"Im Gegensatz zu den beiden ersten Runden hast Du hier zwei Fähigkeiten zur "
 "Verfügung. Deine Aufgabe ist wieder einfach: Wähle eine Fähigkeit in der "
 "Liste links und wende sie auf die Pingus an, damit sie den Ausgang erreichen "
 "können. Stelle sicher, dass nicht zu viele von ihnen sterben. "
@@ -1234,10 +1235,10 @@ msgid ""
 "think you've reached a situation from which you can no longer solve the "
 "level, double click the armageddon button at the lower right. "
 msgstr ""
-"Je weiter Du kommst, desto schwieriger wird es, aber keine Panik, dieser "
-"Level ist noch immer recht einfach. Benutze einfach das Wissen aus den "
-"vorherigen Leveln und es sollte kaum Probleme geben. Wenn Du glaubst, den "
-"Level nicht mehr lösen zu können, klicke doppelt auf den Armageddon-Knopf am "
+"Je weiter Du kommst, desto schwieriger wird es, aber keine Angst, diese "
+"Runde ist noch immer recht einfach. Benutze einfach das Wissen aus den "
+"vorherigen Runden, und es sollte kaum Probleme geben. Wenn Du glaubst, die "
+"Runde nicht mehr lösen zu können, klicke doppelt auf den Armageddon-Knopf am "
 "unteren, rechten Rand. "
 
 #: data/levels/tutorial/solid-tutorial-grumbel.pingus:5
@@ -1251,9 +1252,9 @@ msgid ""
 "These regions are marked dark grey on the level map and cannot be destroyed, "
 "so you must find a way around them. "
 msgstr ""
-"Wie Du in den früheren Leveln gelernt hast, kann ein Pingu durch fast alles "
+"Wie Du in den früheren Runden gelernt hast, kann ein Pingu durch fast alles "
 "graben, aber es gibt ein Material, durch das sie nicht durchkommen: Stahl. "
-"Diese Bereiche sind auf der Karte des Levels dunkelgrau markiert und können "
+"Diese Bereiche sind auf der Karte dunkelgrau markiert und können "
 "nicht zerstört werden, also finde einen Weg, sie zu umgehen. "
 
 #: data/levels/halloween/halloween1-grumbel.pingus:5
@@ -2340,11 +2341,11 @@ msgid ""
 "\n"
 "Good Luck & a Merry Xmas 2011"
 msgstr ""
-"Der letzte Level für dieses Weihnachten. Sieht ein bisschen kompliziert aus, "
+"Die letzte Runde für diese Weihnachten. Sieht ein bisschen kompliziert aus, "
 "oder? Keine Sorge, mit allem, was Du bisher gelernt hast, solltest Du es "
 "lösen können.\n"
 "\n"
-"Viel Erfolg und Frohe Weihnachten 2011"
+"Viel Erfolg und frohe Weihnachten!"
 
 #: data/levels/xmas2011/xmas06-grumbel.pingus:5
 msgid "The Big Jump"
@@ -2494,7 +2495,7 @@ msgid ""
 msgstr ""
 "Und sie wählten Dich, um sie auf der Reise um die Welt zu führen. Denn die "
 "Reise wird gefährlich und schwierig werden. Dein erstes Ziel ist die Insel "
-"Mogorok, auch bekannt als Tutorial Island (Übungsinsel). Den Weisen zufolge "
+"Mogorok, auch bekannt als Übungsinsel. Den Weisen zufolge "
 "war diese Insel immer der erste Anlaufpunkt für Pingus, die in die Welt "
 "gesandt wurden."
 
@@ -2528,7 +2529,7 @@ msgid ""
 "\n"
 "Good Luck!"
 msgstr ""
-"Jetzt, da Du und die Pingus auf dem Tutorial Island angekommen seid, ist es "
+"Jetzt, da Du und die Pingus auf der Übungsinsel angekommen seid, ist es "
 "an der Zeit, das Heft in die Hand zu nehmen und Deine Mission zu beginnen.\n"
 "\n"
 "Viel Erfolg!"
@@ -2547,7 +2548,7 @@ msgid ""
 msgstr ""
 "Nachdem Du und die Pingus nun die Grundlagen gelernt und ein wenig Übung "
 "haben, ist es an der Zeit, weiter zu gehen und die Reise in die Welt zu "
-"beginnen. Da die Scholle, mit der die Pingus zum Tutorial Island reisten, "
+"beginnen. Da die Scholle, mit der die Pingus zur Übungsinsel reisten, "
 "nicht den ganzen Weg in die wärmeren Regionen halten wird, müssen die Pingus "
 "etwas anderes finden, um sie auf der Reise zu begleiten."
 
@@ -2559,7 +2560,7 @@ msgid ""
 "large tree at the end of the island which gave them wood to construct a "
 "float."
 msgstr ""
-"Aber wie die Weisen sagten, bietet das Tutorial Island nicht nur eine gute "
+"Aber wie die Weisen sagten, bietet die Übungsinsel nicht nur eine gute "
 "Übungsmöglichkeit, sondern ist auch der erste Schritt in die Welt. Nach "
 "einiger Suche entdeckten die Pingus die Bedeutung dieser Aussage und sie "
 "fanden den riesigen Baum am Ende der Insel, der ihnen Holz zum Bauen eines "
@@ -2705,7 +2706,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "Spielt eine Demo-Sitzung ab"
 
 #~ msgid "Record demos for each played level"
-#~ msgstr "Nehme Demos für jeden gespielten Level auf"
+#~ msgstr "Nimm Demos für jede gespielte Runde auf"
 
 #~ msgid "Couldn't open: "
 #~ msgstr "Datei oder Verzeichnis konnte nicht geöffnet werden: "
@@ -2765,7 +2766,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "-Musik"
 
 #~ msgid "-Level Design"
-#~ msgstr "-Level-Design"
+#~ msgstr "-Runden-Gestaltung"
 
 #~ msgid "-Story"
 #~ msgstr "-Geschichte"
@@ -2810,14 +2811,14 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "Anzeige:"
 
 #~ msgid "Sound:"
-#~ msgstr "Sound:"
+#~ msgstr "Musik:"
 
 # FIXME Original s/level given/given/
 #~ msgid "Save the level given level to FILENAME and quit"
-#~ msgstr "Den übergebenen Level in DATEINAME speichern und beenden"
+#~ msgstr "Die übergebene Runde in DATEINAME speichern und beenden"
 
 #~ msgid "Shows the credits"
-#~ msgstr "Liste der Mitwirkende anzeigen"
+#~ msgstr "Liste der Mitwirkenden anzeigen"
 
 #~ msgid "PATH"
 #~ msgstr "PFAD"
@@ -2911,13 +2912,13 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "Laden"
 
 #~ msgid "Level Editor"
-#~ msgstr "Level-Editor"
+#~ msgstr "Runden-Bearbeiter"
 
 #~ msgid "--- Empty Placeholder Level ---"
-#~ msgstr "--- Leerer Platzhalter-Level ---"
+#~ msgstr "--- Leere Platzhalter-Runde ---"
 
 #~ msgid "This Level is not playable and EMPTY!"
-#~ msgstr "Dieser Level ist leer und nicht spielbar"
+#~ msgstr "Diese Runde ist leer und nicht spielbar"
 
 #~ msgid ""
 #~ "Print some more messages to stdout, can be set multiple times to increase "
@@ -2983,7 +2984,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "Die Wiederholungsrate für Vollbild setzen (Standard: 60)"
 
 #~ msgid "Load a custom level from FILE"
-#~ msgstr "Einen Level aus DATEI laden"
+#~ msgstr "Eine Runde aus DATEI laden"
 
 #~ msgid "language:                "
 #~ msgstr "Sprache:                "
@@ -3016,7 +3017,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "verwende OpenGL:            "
 
 #~ msgid "PingusMain: Levelfile not found, ignoring: "
-#~ msgstr "PingusMain: Leveldatei nicht gefunden, Fehler wird ignoriert: "
+#~ msgstr "PingusMain: Rundendatei nicht gefunden, Fehler wird ignoriert: "
 
 #~ msgid "Environment variable $HOME not set, fix that and start again."
 #~ msgstr ""
@@ -3035,16 +3036,16 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "..:: Liste der Mitwirkenden ansehen ::.."
 
 #~ msgid "EditorDefaultValue: Please give me a name..."
-#~ msgstr "EditorDefaultValue: Bitte geb mir einen Namen ..."
+#~ msgstr "EditorDefaultValue: Bitte gib mir einen Namen ..."
 
 #~ msgid "EditorDefaultValue: ...and a short descriptions"
 #~ msgstr "EditorDefaultValue: ... und eine Kurzbeschreibung"
 
 #~ msgid "PLE Level"
-#~ msgstr "PLE-Level"
+#~ msgstr "PLE-Runde"
 
 #~ msgid "Level 0"
-#~ msgstr "Level 0"
+#~ msgstr "Runde 0"
 
 #~ msgid "Blocked Exit"
 #~ msgstr "gesperrter Ausgang"
@@ -3102,22 +3103,22 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "Bild hat falsche Farbtiefe: %d"
 
 #~ msgid "Editor Helpscreen (hide with F1)"
-#~ msgstr "Editor-Hilfe (ausblenden mit F1)"
+#~ msgstr "Bearbeiter-Hilfe (ausblenden mit F1)"
 
 #~ msgid "F1 - show/hide this help screen"
 #~ msgstr "F1 - Hilfe anzeigen/verstecken"
 
 #~ msgid "F2 - launch level building tutorial"
-#~ msgstr "F2 - Starte Levelbau-Tutorial"
+#~ msgstr "F2 - Starte Rundenbau-Anleitung"
 
 #~ msgid "F3 - toggle background color"
 #~ msgstr "F3 - Hintergrundfarbe ändern"
 
 #~ msgid "F4 - play/test the level"
-#~ msgstr "F4 - Level starten/testen"
+#~ msgstr "F4 - Runde starten/testen"
 
 #~ msgid "F6 - save this level"
-#~ msgstr "F6 - Level speichern"
+#~ msgstr "F6 - Runde speichern"
 
 #~ msgid "F7 - [unset]"
 #~ msgstr "F7 - [nicht belegt]"
@@ -3126,7 +3127,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "F8 - Schnellspeichern/Backup"
 
 #~ msgid "F9 - change level width and height"
-#~ msgstr "F9 - Level-Höhe und -Breite ändern"
+#~ msgstr "F9 - Runden-Höhe und -Breite ändern"
 
 #~ msgid "F10 - [unset]"
 #~ msgstr "F10 - [nicht belegt]"
@@ -3196,8 +3197,8 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ "release,\n"
 #~ "please mail it to pingus-devel@nongnu.org."
 #~ msgstr ""
-#~ "Falls Du einen Level erstellt hast und ihn gerne im nächsten Pingus-\n"
-#~ "Release hättest, schicke ihn an pingus-devel@nongnu.org."
+#~ "Falls Du eine Spielrunde erstellt hast und sie gerne im nächsten Pingus-\n"
+#~ "Version integriert hättest, schicke sie an pingus-devel@nongnu.org."
 
 #~ msgid "1 - guillotine"
 #~ msgstr "1 - Guillotine"
@@ -3293,22 +3294,22 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "4 - Gewitter-Hintergrund"
 
 #~ msgid "Load a level (F5)"
-#~ msgstr "Level laden (F5)"
+#~ msgstr "Runde laden (F5)"
 
 #~ msgid "Exit the editor (Escape)"
-#~ msgstr "Editor Beenden (Esc)"
+#~ msgstr "Bearbeiter Beenden (Esc)"
 
 #~ msgid "Delete marked objects (delete)"
 #~ msgstr "Markierte Objekte löschen (entfernen)"
 
 #~ msgid "Edit Level Properties"
-#~ msgstr "Level-Eigenschaften ändern"
+#~ msgstr "Runden-Eigenschaften ändern"
 
 #~ msgid "Start the level and test it (F4)"
-#~ msgstr "Level starten und testen (F4)"
+#~ msgstr "Runde starten und testen (F4)"
 
 #~ msgid "Create a new level from scratch"
-#~ msgstr "Neuen Level erstellen"
+#~ msgstr "Neue Runde erstellen"
 
 #~ msgid "Insert an object (Insert)"
 #~ msgstr "Objekt einfügen (Einfg)"
@@ -3336,7 +3337,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 
 #~ msgid "Loading finished. Press a mouse button to start the level"
 #~ msgstr ""
-#~ "Ladevorgang abgeschlossen. Drücke eine Maustaste, um den Level zu starten"
+#~ "Ladevorgang abgeschlossen. Drücke eine Maustaste, um die Runde zu starten"
 
 #~ msgid "Pingus saved:   %3d/%3d"
 #~ msgstr "Gerettete Pingus: %3d/%3d"
@@ -3351,7 +3352,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ "As many Pingus escaped as entered the level. That's going to be hard to "
 #~ "beat.... unless this game becomes pornographic."
 #~ msgstr ""
-#~ "Es wurden alle Pingu dieses Levels gerettet. Das wird hart zu schlagen "
+#~ "Es wurden alle Pingu dieser Runde gerettet. Das wird hart zu schlagen "
 #~ "sein ... es sei denn, dieses Spiel wird pornographisch."
 
 #~ msgid "Very impressive indeed."
@@ -3371,7 +3372,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ "gestiegen."
 
 #~ msgid "Maybe this level calls for a different strategy."
-#~ msgstr "Möglicherweise verlangt dieser Level eine andere Strategie."
+#~ msgstr "Möglicherweise verlangt diese Runde eine andere Strategie."
 
 #~ msgid "Exactly half. Are you saving only the female ones?"
 #~ msgstr "Genau die Hälfte! Rettest Du nur die Weibchen?"
@@ -3402,13 +3403,13 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "Ein negativer Wert? Hier liegt ein Fehler vor."
 
 #~ msgid "Launch the Level editor (experimental)"
-#~ msgstr "Level-Editor starten (experimentell)"
+#~ msgstr "Runden-Bearbeiter starten (experimentell)"
 
 #~ msgid "Screenshot: Couldn't save screenshot"
-#~ msgstr "Screenshot: Bildschirmphoto konnte nicht gespeichert werden"
+#~ msgstr "Bildschirmphoto: Bildschirmphoto konnte nicht gespeichert werden"
 
 #~ msgid "WorldMap: File not found: "
-#~ msgstr "Worldmap: Datei nicht gefunden: "
+#~ msgstr "Weltkarte: Datei nicht gefunden: "
 
 #~ msgid "..:: The people who brought this game to you ::.."
 #~ msgstr "..:: Die Leute, die für dieses Spiel verantwortlich sind ... ::.."
@@ -3462,13 +3463,13 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ "Objekte nach rechts bewegen\n"
 
 #~ msgid "    New level"
-#~ msgstr "    Neuer Level"
+#~ msgstr "    Neue Runde"
 
 #~ msgid "Set the resolution for pingus (default: 800x600)"
 #~ msgstr "Die Auflösung für Pingus setzen (Standard: 800x600)"
 
 #~ msgid "Autoscrolling:"
-#~ msgstr "Automatisches Scrollen:"
+#~ msgstr "Automatisches herunterfahren:"
 
 #~ msgid "Print FPS:"
 #~ msgstr "FPS ausgeben:"
@@ -3477,7 +3478,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ msgstr "Maus festhalten:"
 
 #~ msgid "Software Cursor:"
-#~ msgstr "Software-Cursor:"
+#~ msgstr "Mauszeiger:"
 
 #~ msgid "Dig and float, but just don't fall and smash"
 #~ msgstr "Graben und schweben, aber bloß nicht fallen und sterben"
@@ -3486,7 +3487,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ "Now that you and the Pingus have arrived at Tutorial Island it is time to "
 #~ "take command and begin your mission. Good Luck!"
 #~ msgstr ""
-#~ "Nun da Du und die Pingus im Tutorial Island angekommen seid, musst Du das "
+#~ "Nun da Du und die Pingus auf der Übungsinsel angekommen seid, musst Du das "
 #~ "Kommando übernehmen und Deine Mission beginnen. Viel Glück!"
 
 #~ msgid ""
@@ -3502,7 +3503,7 @@ msgstr "Frohe Weihnachten und ein Glückliches Neues Jahr"
 #~ "previous levels. Blast your way free and make sure you also keep the rest "
 #~ "of the Pingus under control. The Blocker action will be helpful. "
 #~ msgstr ""
-#~ "Wieder ist es an der Zeit, die in den vorangangenen Leveln gelernten "
+#~ "Wieder ist es an der Zeit, die in den vorangangenen Runden gelernten "
 #~ "Dinge zu verbinden. Sprenge Dir den Weg frei und achte darauf, dass Du "
 #~ "auch die restlichen Pingus unter Kontrolle hältst. Der Blockierer wird "
 #~ "Dir helfen. "
