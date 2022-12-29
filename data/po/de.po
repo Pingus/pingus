@@ -1,4 +1,4 @@
-# Translation of pingus to German
+# Translation of Pingus to German
 # Copyright (C) Felix, 2001.
 # Copyright (C) Andy Balaam, 2003.
 # Copyright (C) Giray Devlet <giray@devlet.cc>, 2001.
