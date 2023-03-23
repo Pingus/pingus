@@ -2,7 +2,7 @@
   description = "A free Lemmings clone with penguins";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     flake-utils.url = "github:numtide/flake-utils";
 
     tinycmmc.url = "github:grumbel/tinycmmc";
@@ -21,12 +21,10 @@
 
     geomcpp.url = "github:grumbel/geomcpp";
     geomcpp.inputs.nixpkgs.follows = "nixpkgs";
-    geomcpp.inputs.flake-utils.follows = "flake-utils";
     geomcpp.inputs.tinycmmc.follows = "tinycmmc";
 
     logmich.url = "github:logmich/logmich";
     logmich.inputs.nixpkgs.follows = "nixpkgs";
-    logmich.inputs.flake-utils.follows = "flake-utils";
     logmich.inputs.tinycmmc.follows = "tinycmmc";
 
     priocpp.url = "github:grumbel/priocpp";
@@ -43,7 +41,6 @@
 
     strutcpp.url = "github:grumbel/strutcpp";
     strutcpp.inputs.nixpkgs.follows = "nixpkgs";
-    strutcpp.inputs.flake-utils.follows = "flake-utils";
     strutcpp.inputs.tinycmmc.follows = "tinycmmc";
 
     tinygettext.url = "github:tinygettext/tinygettext";
@@ -54,7 +51,6 @@
     xdgcpp.url = "github:grumbel/xdgcpp";
     xdgcpp.inputs.nixpkgs.follows = "nixpkgs";
     xdgcpp.inputs.flake-utils.follows = "flake-utils";
-    xdgcpp.inputs.tinycmmc.follows = "tinycmmc";
 
     wstsound.url = "github:WindstilleTeam/wstsound";
     wstsound.inputs.nixpkgs.follows = "nixpkgs";
@@ -81,6 +77,8 @@
 
           pingus = pkgs.callPackage ./pingus.nix {
             inherit self;
+            stdenv = pkgs.gcc12Stdenv;
+
             argpp = argpp.packages.${pkgs.system}.default;
             geomcpp = geomcpp.packages.${pkgs.system}.default;
             logmich = logmich.packages.${pkgs.system}.default;
