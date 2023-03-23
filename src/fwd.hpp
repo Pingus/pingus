@@ -25,7 +25,6 @@ class ArmageddonButton;
 class BButton;
 class ButtonPanel;
 class CollisionMap;
-class CommandLineOptions;
 class DemoPlayer;
 class DrawingContext;
 class FPSCounter;
@@ -52,6 +51,7 @@ class SmallMap;
 class StoryScreenComponent;
 class WorldObj;
 class WorldObjAbstractFactory;
+struct CommandLineOptions;
 } // namespace pingus
 
 namespace pingus::gui {
