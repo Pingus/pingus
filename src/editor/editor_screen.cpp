@@ -17,6 +17,7 @@
 
 #include "editor/editor_screen.hpp"
 
+#include <functional>
 #include <sstream>
 
 #include <logmich/log.hpp>

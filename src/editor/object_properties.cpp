@@ -16,6 +16,8 @@
 
 #include "editor/object_properties.hpp"
 
+#include <functional>
+
 #include <logmich/log.hpp>
 #include <strut/from_string.hpp>
 #include <strut/to_string.hpp>

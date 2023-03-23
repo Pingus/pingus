@@ -16,6 +16,8 @@
 
 #include "editor/file_dialog.hpp"
 
+#include <functional>
+
 #include <logmich/log.hpp>
 
 #include "editor/button.hpp"

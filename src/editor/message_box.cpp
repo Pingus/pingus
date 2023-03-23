@@ -16,6 +16,8 @@
 
 #include "editor/message_box.hpp"
 
+#include <functional>
+
 #include "editor/gui_style.hpp"
 #include "pingus/gettext.h"
 #include "pingus/fonts.hpp"

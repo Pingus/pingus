@@ -16,6 +16,7 @@
 
 #include "pingus/screens/option_menu.hpp"
 
+#include <functional>
 #include <sstream>
 
 #include <logmich/log.hpp>

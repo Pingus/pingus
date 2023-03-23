@@ -16,6 +16,8 @@
 
 #include "editor/object_selector.hpp"
 
+#include <functional>
+
 #include <sigc++/signal.h>
 
 #include "editor/generic_level_obj.hpp"
