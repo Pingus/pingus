@@ -16,10 +16,10 @@
 
 #include "pingus/screens/level_menu.hpp"
 
-#include <fmt/format.h>
-
+#include <functional>
 #include <utility>
 
+#include <fmt/format.h>
 #include <logmich/log.hpp>
 
 #include "engine/display/display.hpp"

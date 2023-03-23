@@ -17,6 +17,8 @@
 
 #include "editor/viewport.hpp"
 
+#include <functional>
+
 #include <logmich/log.hpp>
 
 #include "editor/editor_level.hpp"
