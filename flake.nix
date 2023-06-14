@@ -32,12 +32,6 @@
     priocpp.inputs.flake-utils.follows = "flake-utils";
     priocpp.inputs.tinycmmc.follows = "tinycmmc";
     priocpp.inputs.logmich.follows = "logmich";
-    priocpp.inputs.sexpcpp.follows = "sexpcpp";
-
-    sexpcpp.url = "github:lispparser/sexp-cpp";
-    sexpcpp.inputs.nixpkgs.follows = "nixpkgs";
-    sexpcpp.inputs.flake-utils.follows = "flake-utils";
-    sexpcpp.inputs.tinycmmc.follows = "tinycmmc";
 
     strutcpp.url = "github:grumbel/strutcpp";
     strutcpp.inputs.nixpkgs.follows = "nixpkgs";
@@ -67,7 +61,7 @@
   };
 
   outputs = { self, nixpkgs, flake-utils,
-              tinycmmc, uitest, argpp, geomcpp, logmich, priocpp, sexpcpp, strutcpp,
+              tinycmmc, uitest, argpp, geomcpp, logmich, priocpp, strutcpp,
               tinygettext, xdgcpp, wstsound, SDL2-win32, SDL2_image-win32
             }:
     tinycmmc.lib.eachSystemWithPkgs (pkgs:
@@ -82,8 +76,7 @@
             argpp = argpp.packages.${pkgs.system}.default;
             geomcpp = geomcpp.packages.${pkgs.system}.default;
             logmich = logmich.packages.${pkgs.system}.default;
-            priocpp = priocpp.packages.${pkgs.system}.default;
-            sexpcpp = sexpcpp.packages.${pkgs.system}.default;
+            priocpp = priocpp.packages.${pkgs.system}.priocpp-sexp;
             strutcpp = strutcpp.packages.${pkgs.system}.default;
             tinycmmc = tinycmmc.packages.${pkgs.system}.default;
             tinygettext = tinygettext.packages.${pkgs.system}.default;

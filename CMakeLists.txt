@@ -28,7 +28,6 @@ find_package(OpenGL REQUIRED)
 pkg_search_module(SDL2 REQUIRED sdl2 IMPORTED_TARGET)
 pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0 IMPORTED_TARGET)
 pkg_search_module(PNG REQUIRED libpng IMPORTED_TARGET)
-pkg_search_module(JSONCPP REQUIRED jsoncpp IMPORTED_TARGET)
 pkg_search_module(SIGCXX REQUIRED sigc++-2.0 IMPORTED_TARGET)
 find_package(fmt REQUIRED)
 find_package(glm REQUIRED)
@@ -104,7 +103,6 @@ target_link_libraries(libpingus PUBLIC
   PkgConfig::SDL2
   PkgConfig::SDL2IMAGE
   PkgConfig::PNG
-  PkgConfig::JSONCPP
   PkgConfig::SIGCXX
   OpenGL::GL)
 

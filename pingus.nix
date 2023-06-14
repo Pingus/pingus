@@ -18,7 +18,6 @@
 , geomcpp
 , logmich
 , priocpp
-, sexpcpp
 , strutcpp
 , tinycmmc
 , tinygettext
@@ -87,7 +86,6 @@ stdenv.mkDerivation {
     geomcpp
     logmich
     priocpp
-    sexpcpp
     strutcpp
     tinycmmc
     tinygettext
