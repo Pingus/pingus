@@ -2,7 +2,7 @@
   description = "A puzzle game with mechanics similar to Lemmings";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils";
 
     # FIXME: SCons in newer version seems bugged, ParseConfig() is not
@@ -30,16 +30,15 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         pkgs_old = nixpkgs_old.legacyPackages.${system};
-      in {
+      in rec {
         packages = rec {
           default = pingus;
 
           pingus = pkgs.stdenv.mkDerivation rec {
-            name = "pingus";
-            src = nixpkgs.lib.cleanSource ./.;
-            meta = {
-              mainProgram = "pingus-0.7";
-            };
+            pname = "pingus";
+            version = "0.7.7";
+            src =  ./.;
+
             patchPhase = ''
               substituteInPlace SConscript \
                  --replace external/tinygettext/include/ "${tinygettext.packages.${system}.default}/include/" \
@@ -47,21 +46,34 @@
                  --replace "self.env.Default(self.env.Program('pingus', ['src/main.cpp', libpingus]))" \
                            "self.env.Default(self.env.Program('pingus', ['src/main.cpp', libpingus, '${tinygettext.packages.${system}.default}/lib/libtinygettext.a', '${logmich.packages.${system}.default}/lib/liblogmich.a']))"
             '';
+
             enableParallelBuilding = true;
+
             installPhase = ''
               make install PREFIX=$out PROJECT_NAME=pingus-0.7
             '';
+
             nativeBuildInputs = [
               pkgs_old.scons
               pkgs.pkg-config
             ];
-            buildInputs = [
-              pkgs.SDL
-              pkgs.SDL_image
-              pkgs.SDL_mixer
-              pkgs.libpng
-              pkgs.boost
+
+            buildInputs = with pkgs; [
+              SDL
+              SDL_image
+              SDL_mixer
+              libpng
+              boost
             ];
+          };
+        };
+
+        apps = rec {
+          default = pingus;
+
+          pingus = flake-utils.lib.mkApp {
+            drv = packages.pingus;
+            exePath = "/bin/pingus-0.7";
           };
         };
       }
