@@ -28,18 +28,18 @@
   </description>
   <developer_name>Ingo Ruhnke</developer_name>
   <update_contact>grumbel@gmail.com</update_contact>
-  <url type="homepage">https://pingus.gitlab.io</url>
-  <url type="bugtracker">https://gitlab.com/pingus/pingus/issues</url>
+  <url type="homepage">https://pingus.github.io</url>
+  <url type="bugtracker">https://github.com/pingus/pingus/issues</url>
   <categories>
     <category>Game</category>
     <category>LogicGame</category>
   </categories>
   <screenshots>
-    <screenshot type="default">http://pingus.gitlab.io/images/screen_0.7.0-1.jpg</screenshot>
-    <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-2.jpg</screenshot>
-    <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-3.jpg</screenshot>
-    <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-4.jpg</screenshot>
-    <screenshot>http://pingus.gitlab.io/images/screen_0.7.0-5.jpg</screenshot>
+    <screenshot type="default">http://pingus.github.io/images/screen_0.7.0-1.jpg</screenshot>
+    <screenshot>http://pingus.github.io/images/screen_0.7.0-2.jpg</screenshot>
+    <screenshot>http://pingus.github.io/images/screen_0.7.0-3.jpg</screenshot>
+    <screenshot>http://pingus.github.io/images/screen_0.7.0-4.jpg</screenshot>
+    <screenshot>http://pingus.github.io/images/screen_0.7.0-5.jpg</screenshot>
   </screenshots>
   <releases>
     <release version="@PROJECT_VERSION@" date="@PROJECT_DATE@" />

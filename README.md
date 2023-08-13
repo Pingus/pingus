@@ -4,9 +4,8 @@ Pingus
 Introduction
 ------------
 
-Pingus is a free Lemmings(tm) clone for GNU/Linux, Win32 and other
-operating systems supported by SDL2. It is covered under the GPL, check
-the file COPYING, for more information.
+Pingus is a free Lemmings™ clone for GNU/Linux, Win32 and other
+operating systems supported by SDL2. It is licensed under the GPLv3+.
 
 See `INSTALL.linux.md` for instructions on how to compile and run Pingus
 from source on GNU/Linux.
@@ -14,33 +13,24 @@ from source on GNU/Linux.
 Information about the game, new versions and additional documentation
 can be found at the Pingus webpage:
 
-* http://pingus.gitlab.io/
+* https://pingus.github.io/
 
 
 Mailing Lists
 -------------
 
-There are currently two mailing lists available:
-
-* pingus-devel - A list for discussing development issues, like level
+* pingus-devel - https://lists.nongnu.org/mailman/listinfo/pingus-devel  
+  A list for discussing development issues, like level
   creation or code changes, but might as well be used for user issues
   like how to solve levels and such
 
-* pingus-cvs - Read-only list to which all CVS commits get submitted,
-  only intersting for developers in general
 
-For information on how to subscribe to any of these lists have a look
-at:
+Chat
+----
 
-* http://pingus.gitlab.io/contact.html
+* IRC: irc://irc.libera.chat:6667/#pingus
 
-
-IRC
----
-
-For a quick help you can try the IRC server irc.freenode.net:6667 and
-the channel #pingus, you can sometimes find the project maintainer
-(nick: grumbel) there.
+* Matrix: https://matrix.to/#/#pingus:matrix.org
 
 
 Bug Reports
@@ -49,5 +39,5 @@ Bug Reports
 Bug reports, new levels and feature requests can be submitted to the
 issue tracker at:
 
-* https://gitlab.com/pingus/pingus/issues
+* https://github.com/pingus/pingus/issues
 
