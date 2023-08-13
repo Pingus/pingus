@@ -9,7 +9,7 @@ operating systems supported by SDL2. It is covered under the GPL, check
 the file COPYING, for more information.
 
 See `INSTALL.linux.md` for instructions on how to compile and run Pingus
-from source on GNU/Linux and `INSTALL.macosx.md` for MacOSX.
+from source on GNU/Linux.
 
 Information about the game, new versions and additional documentation
 can be found at the Pingus webpage:
