@@ -19,9 +19,6 @@ project(pingus VERSION 0.8.0)
 
 include(mk/cmake/TinyCMMC.cmake)
 
-# FIXME: Move this into GetProjectVersion, get date from git
-string(TIMESTAMP PROJECT_DATE "%Y-%m-%d" UTC)
-
 find_package(PkgConfig REQUIRED)
 set(OpenGL_GL_PREFERENCE "LEGACY")
 find_package(OpenGL REQUIRED)
@@ -207,15 +204,5 @@ install(FILES
 
 install(DIRECTORY data/icons/
   DESTINATION ${CMAKE_INSTALL_DATADIR}/icons)
-
-configure_file(pingus.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/pingus.appdata.xml)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/pingus.appdata.xml
-  DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
-
-if (BUILD_TESTS)
-  add_test(NAME pingus.appdata.xml
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    COMMAND appstream-util validate-relax ${CMAKE_CURRENT_BINARY_DIR}/pingus.appdata.xml)
-endif(BUILD_TESTS)
 
 # EOF #
