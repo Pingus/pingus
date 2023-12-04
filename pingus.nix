@@ -11,7 +11,7 @@
 , libsigcxx
 , makeWrapper
 , mesa
-, pkgconfig
+, pkg-config
 , mcfgthreads
 
 , argpp
@@ -49,7 +49,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     cmake
-    pkgconfig
+    pkg-config
   ] ++ (lib.optional (!stdenv.targetPlatform.isWindows) makeWrapper);
 
   postFixup = ''

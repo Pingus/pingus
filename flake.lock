@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660923972,
-        "narHash": "sha256-xkVYQOjJyHkhxCKVz5S8Xhy30WzzolG538JCVeu4kQw=",
+        "lastModified": 1687870306,
+        "narHash": "sha256-IRbYRi6XhoHJMxEObuiqWxSwY+DaPXEHkdn9BuOvV6E=",
         "owner": "grumnix",
         "repo": "SDL2-win32",
-        "rev": "34f0919fec05bcdba1c97ec6425bf18b5ebe2b4d",
+        "rev": "31c1fc30c3e316c94b17e5090b4e6c21cab08830",
         "type": "github"
       },
       "original": {
@@ -35,11 +35,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1661193406,
-        "narHash": "sha256-x1iqSyMexVTzEXS4XWkoBRq6OUR4vqnHhmtLQNDOx6U=",
+        "lastModified": 1687870067,
+        "narHash": "sha256-aUK8BZkwXa7RCRwk/XGw7Rn0Gfr+1egHWRz1Fgn5ouM=",
         "owner": "grumnix",
         "repo": "SDL2_image-win32",
-        "rev": "0e9be7312eed117812fe07d3045a4f174cde79c0",
+        "rev": "17d77150985a63944c7bbb1133c5f8ab529077da",
         "type": "github"
       },
       "original": {
@@ -104,11 +104,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1685518550,
-        "narHash": "sha256-o2d0KcvaXzTrPRIo0kOLV0/QXHhDQ5DTi+OxcjO8xqY=",
+        "lastModified": 1701680307,
+        "narHash": "sha256-kAuep2h5ajznlPMD9rnQyffWG8EM/C73lejGofXvdM8=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "a1720a10a6cfe8234c0e93907ffe81be440f4cef",
+        "rev": "4022d587cbbfd70fe950c1e2083a02621806a725",
         "type": "github"
       },
       "original": {
@@ -268,11 +268,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1684870196,
-        "narHash": "sha256-5Y5FfBXM53OBSJzO6q+7M3Fj1KsusJcFg3cAfnFAWcA=",
+        "lastModified": 1701699800,
+        "narHash": "sha256-Vju/twhkSbuRbwtHq5sdH6P/JIMZesqpZCRwpOv0Ey8=",
         "owner": "logmich",
         "repo": "logmich",
-        "rev": "5924b2beabd2169a077ae57401bdd3cd8ebfba7d",
+        "rev": "8a20ecdefe3bd0d7d1733acf5ec7c9c4a7a48484",
         "type": "github"
       },
       "original": {
@@ -321,16 +321,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1686513595,
-        "narHash": "sha256-H3JNqj7TEiMx5rd8lRiONvgFZvmf3kmwHI2umDdqgFY=",
+        "lastModified": 1701539137,
+        "narHash": "sha256-nVO/5QYpf1GwjvtpXhyxx5M3U/WN0MwBro4Lsk+9mL0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "bb8b5735d6f7e06b9ddd27de115b0600c1ffbdb4",
+        "rev": "933d7dc155096e7575d207be6fb7792bc9f34f6d",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-23.05",
+        "ref": "nixos-23.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -479,11 +479,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1686756002,
-        "narHash": "sha256-WNolGIJRNtvOWIbQ5W7ivyNsy9JSOXOl5GyNNIQe7D4=",
+        "lastModified": 1701699950,
+        "narHash": "sha256-m7JA+J0zKm0C7V/iUK4m9YgG7qWJhYzgWo6+laZhnk0=",
         "owner": "grumbel",
         "repo": "priocpp",
-        "rev": "701a4c7ae9a100c4752ddf6ef8cbebf2ae39156b",
+        "rev": "90944b1ed6c2f941adbba5e2e604ba06949b3854",
         "type": "github"
       },
       "original": {
@@ -526,11 +526,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1685364855,
-        "narHash": "sha256-VVqrWhgTGmknJPc6GCr9spbot1H2ZNxAlzJaegN/SHc=",
+        "lastModified": 1701699901,
+        "narHash": "sha256-hN84QetcLLOFuU+hnaTZwGeAQ0lBRdLIJkNAH0ulZZA=",
         "owner": "lispparser",
         "repo": "sexp-cpp",
-        "rev": "c10e5d948bd1cd087deecfe400c3b64fddb493ee",
+        "rev": "8be22d81cdb18cc3c14d29231978abe13a539792",
         "type": "github"
       },
       "original": {
@@ -587,11 +587,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1684952066,
-        "narHash": "sha256-yS8/+TOL2OA7f/RQs1Zr20mmlPFIVvFOgWShLAQvH8w=",
+        "lastModified": 1701699760,
+        "narHash": "sha256-L0vwqcTQFOiFfRY90nBgDuUsVOYS0+S8BfVxFvaFBNM=",
         "owner": "grumbel",
         "repo": "tinycmmc",
-        "rev": "01fe277570a290837726de6eb3c16d617bfda28c",
+        "rev": "9a51e13802d930feb7261ba8876940659b258cb7",
         "type": "github"
       },
       "original": {
