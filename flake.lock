@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1687870306,
-        "narHash": "sha256-IRbYRi6XhoHJMxEObuiqWxSwY+DaPXEHkdn9BuOvV6E=",
+        "lastModified": 1712097214,
+        "narHash": "sha256-lXu+tuvZw8WnbNHMHzCMeSE93fLQEhSz+xLWkaJ1cCA=",
         "owner": "grumnix",
         "repo": "SDL2-win32",
-        "rev": "31c1fc30c3e316c94b17e5090b4e6c21cab08830",
+        "rev": "123c65858c5259437469a06f20cec5944ea4bb4b",
         "type": "github"
       },
       "original": {
@@ -35,11 +35,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1687870067,
-        "narHash": "sha256-aUK8BZkwXa7RCRwk/XGw7Rn0Gfr+1egHWRz1Fgn5ouM=",
+        "lastModified": 1712097214,
+        "narHash": "sha256-XOPvwQkey5ud2rz4f9WIuAya9uUk0oweBPfs/KmX3cA=",
         "owner": "grumnix",
         "repo": "SDL2_image-win32",
-        "rev": "17d77150985a63944c7bbb1133c5f8ab529077da",
+        "rev": "621836b1854237666d7f3ca9e1b55f000a1f3c8a",
         "type": "github"
       },
       "original": {
@@ -51,6 +51,7 @@
     "SDL2_image_src": {
       "flake": false,
       "locked": {
+        "lastModified": 1561870399,
         "narHash": "sha256-GNKF/bhxZ9WxpNVqRQ3yFf/8yiQntLXOYnhn22Sy9k0=",
         "type": "tarball",
         "url": "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.5-mingw.tar.gz"
@@ -63,6 +64,7 @@
     "SDL2_src": {
       "flake": false,
       "locked": {
+        "lastModified": 1650910413,
         "narHash": "sha256-7F8KGZaY6R7tzv/+0gNNm1FvDyrY4Z4PPuzYu+3pvNM=",
         "type": "tarball",
         "url": "https://libsdl.org/release/SDL2-devel-2.0.22-mingw.tar.gz"
@@ -104,11 +106,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1701680307,
-        "narHash": "sha256-kAuep2h5ajznlPMD9rnQyffWG8EM/C73lejGofXvdM8=",
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "4022d587cbbfd70fe950c1e2083a02621806a725",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
         "type": "github"
       },
       "original": {
@@ -153,11 +155,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660923767,
-        "narHash": "sha256-diDVUqzXbGDS2OxNmkVQxKYeDlQAOcF3nNaMzaeCMAE=",
+        "lastModified": 1712097214,
+        "narHash": "sha256-4L8wi+A5eKevKcjxLMhXvvHpolUMAyaejjohJmPOSBE=",
         "owner": "grumnix",
         "repo": "libmodplug-win32",
-        "rev": "1f1e3c13c85ac605b58fddc556ff73b2b9e4eab3",
+        "rev": "34cd19009c09b43e1d9b7dea7e95142ff5a6d15e",
         "type": "github"
       },
       "original": {
@@ -169,6 +171,7 @@
     "libmodplug_src": {
       "flake": false,
       "locked": {
+        "lastModified": 1493040202,
         "narHash": "sha256-jNHspgIcrv5AUEgq2MB4TSqbj//tTCXiOoSqYjShGkw=",
         "type": "tarball",
         "url": "https://downloads.sourceforge.net/project/modplug-xmms/libmodplug/0.8.9.0/libmodplug-0.8.9.0.tar.gz"
@@ -191,11 +194,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660923789,
-        "narHash": "sha256-+DPxwLvI7MtJEeUUEn5xOHmZjttCuiJjZ+0bgxy3by0=",
+        "lastModified": 1712097214,
+        "narHash": "sha256-HulmNbgQfUNZ2t9O4cOFoV6F2+32/yu1bVUTOGnS8KI=",
         "owner": "grumnix",
         "repo": "libogg-win32",
-        "rev": "6cafd6a3608db0b47b8bcd3e8b0f1bda4c1f46f0",
+        "rev": "e70c934408e1ab5807319d7c4b01c53cd125cc52",
         "type": "github"
       },
       "original": {
@@ -207,6 +210,7 @@
     "libogg_src": {
       "flake": false,
       "locked": {
+        "lastModified": 1622776889,
         "narHash": "sha256-L8hFWoCh2VTdlsOq+cbP1eYAnciH70xlk1eSwr8YP5c=",
         "type": "tarball",
         "url": "https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.gz"
@@ -233,11 +237,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660923805,
-        "narHash": "sha256-oI59MRrNeI7ueYG04VfHvBEXm1UeVudjyUfNWLNxdt8=",
+        "lastModified": 1712097405,
+        "narHash": "sha256-TZdtYh2HUHaczKRkbfq4EOaGLTG7fOk7JOy7K1vZqMo=",
         "owner": "grumnix",
         "repo": "libvorbis-win32",
-        "rev": "1aabf677f7ec7ec5f29be2651f05e7163c0b1f2e",
+        "rev": "44265a9a7cf3dd811b826eede62653ed211b69de",
         "type": "github"
       },
       "original": {
@@ -249,6 +253,7 @@
     "libvorbis_src": {
       "flake": false,
       "locked": {
+        "lastModified": 1593843770,
         "narHash": "sha256-xXty8sK0hmJX7jQu5+CDBslNVQ0+dZaUrbp/12xVmy0=",
         "type": "tarball",
         "url": "https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz"
@@ -294,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660923818,
-        "narHash": "sha256-BoxEFDJt0VbA1rZoYTjv1J+HF/aMZP4GcKa+5bhC3u4=",
+        "lastModified": 1712097214,
+        "narHash": "sha256-ek27HM5IArBSSkir/77SqPbn+RO6dbanfDNgS+4VA+s=",
         "owner": "grumnix",
         "repo": "mpg123-win32",
-        "rev": "81f61824b806555d2d7f4c2229b987a3b2238c26",
+        "rev": "af19bdda50f2397657b2f6f2cf486117bdd270fd",
         "type": "github"
       },
       "original": {
@@ -310,22 +315,23 @@
     "mpg123_src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-df+AH4sCwVj89IRKBCseDR+93LY8RPuGo/F0KtULEys=",
+        "lastModified": 1679225440,
+        "narHash": "sha256-OGSGPiIZbcBhovnX+rMquDECVT0myZDpJFxMYQMK4TM=",
         "type": "tarball",
-        "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.30.2/mpg123-1.30.2.tar.bz2"
+        "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.31.3/mpg123-1.31.3.tar.bz2"
       },
       "original": {
         "type": "tarball",
-        "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.30.2/mpg123-1.30.2.tar.bz2"
+        "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.31.3/mpg123-1.31.3.tar.bz2"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1701539137,
-        "narHash": "sha256-nVO/5QYpf1GwjvtpXhyxx5M3U/WN0MwBro4Lsk+9mL0=",
+        "lastModified": 1711668574,
+        "narHash": "sha256-u1dfs0ASQIEr1icTVrsKwg2xToIpn7ZXxW3RHfHxshg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "933d7dc155096e7575d207be6fb7792bc9f34f6d",
+        "rev": "219951b495fc2eac67b1456824cc1ec1fd2ee659",
         "type": "github"
       },
       "original": {
@@ -348,11 +354,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660923864,
-        "narHash": "sha256-aDhqX8rBQQ5vQG/8xFx0yQYYcpWoPuylnCdWrrsuwLA=",
+        "lastModified": 1712097214,
+        "narHash": "sha256-cuiOE7lCr25PVRgrRZ0nlT9e07oXDh20e/Tc4XoUNcs=",
         "owner": "grumnix",
         "repo": "openal-soft-win32",
-        "rev": "0bf5853f9484fb7352a906d895fc34c809687626",
+        "rev": "cf2d13dc31a9cbeafcd871287ed82d8c634f0348",
         "type": "github"
       },
       "original": {
@@ -391,11 +397,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660923895,
-        "narHash": "sha256-6y5gWCTzoSb0BGsK+If79hoxV/4TFKmQ39aRsz1QL0E=",
+        "lastModified": 1712096980,
+        "narHash": "sha256-v6i0z0A+PFAWbfoFTGcqbJ4d4HJ+ZxYeTxY5xOeQtKU=",
         "owner": "grumnix",
         "repo": "opus-win32",
-        "rev": "c2ee58f8908bcc677ed854c548d3f662293e1cac",
+        "rev": "ac173fe169c8d70083732493c4ca46dd9f591bba",
         "type": "github"
       },
       "original": {
@@ -407,6 +413,7 @@
     "opus_src": {
       "flake": false,
       "locked": {
+        "lastModified": 1555106623,
         "narHash": "sha256-VyHmKoRXCJ0shVfUn6cX13b0fAXIQk0Z5NLZIfy8Gh4=",
         "type": "tarball",
         "url": "https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz"
@@ -437,11 +444,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660923918,
-        "narHash": "sha256-WU3SUyEwufVFygaUEL2u4gfkovW1vc2ueHhhji1jRtQ=",
+        "lastModified": 1712097405,
+        "narHash": "sha256-TpxsAQGJsfNjCJwU3W9HoORXwjlGt5uhlv+YT68mgUU=",
         "owner": "grumnix",
         "repo": "opusfile-win32",
-        "rev": "7422707b6478d31e73450afa6e972fb106d346e1",
+        "rev": "1d2c63169e0799f8d17ce22cfbe3ee3dd43a513f",
         "type": "github"
       },
       "original": {
@@ -453,6 +460,7 @@
     "opusfile_src": {
       "flake": false,
       "locked": {
+        "lastModified": 1593226173,
         "narHash": "sha256-UEoOyY9DM5lINTAHIfSRK5+o622pIK2ObQ00swIcM40=",
         "type": "tarball",
         "url": "https://downloads.xiph.org/releases/opus/opusfile-0.12.tar.gz"
@@ -672,11 +680,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1684951755,
-        "narHash": "sha256-j7+CF3IkffPTz07Vkyw4lZ2622BDq3W1ZLxjWNr2fQU=",
+        "lastModified": 1712097579,
+        "narHash": "sha256-/eWmYCltmYeXHtO460modOIM6d352TNfXU7fR/Srwog=",
         "owner": "WindstilleTeam",
         "repo": "wstsound",
-        "rev": "02175efb729fd95a8e8fa4432e186c37171b5c75",
+        "rev": "e07830cb623a7f241dfb1265fb2b0e0c4d982211",
         "type": "github"
       },
       "original": {
