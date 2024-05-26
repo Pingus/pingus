@@ -2,7 +2,7 @@
   description = "A puzzle game with mechanics similar to Lemmings";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.05";
     flake-utils.url = "github:numtide/flake-utils";
 
     # FIXME: SCons in newer version seems bugged, ParseConfig() is not
