@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_UTIL_PATHNAME_HPP
 #define HEADER_PINGUS_UTIL_PATHNAME_HPP
 
+#include <cstdint>
 #include <string>
 #include <vector>
 #include <sstream>
