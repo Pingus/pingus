@@ -129,11 +129,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1685394246,
-        "narHash": "sha256-PRm9LTpN2eKVcl1jMSBOPL/KAHtNOWEbt32JSxNHJDQ=",
+        "lastModified": 1716729078,
+        "narHash": "sha256-c5CIQTRS8qmlTdZ2D1hNnht3gD9snuQaqOWDiLAkE2g=",
         "owner": "grumbel",
         "repo": "geomcpp",
-        "rev": "6fd6402a02275e8f2ac250a84900843e56aaf04e",
+        "rev": "730b3d35bc4fcd5f68764239682d936bae192811",
         "type": "github"
       },
       "original": {
@@ -194,11 +194,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712097214,
-        "narHash": "sha256-HulmNbgQfUNZ2t9O4cOFoV6F2+32/yu1bVUTOGnS8KI=",
+        "lastModified": 1716728441,
+        "narHash": "sha256-HjPNH3gJisG7+keqmWh2SsRRKn/+0yeLloaow78RpFU=",
         "owner": "grumnix",
         "repo": "libogg-win32",
-        "rev": "e70c934408e1ab5807319d7c4b01c53cd125cc52",
+        "rev": "7ac1ded6d96c3924a0a7905b75af2af3ea0dfaa3",
         "type": "github"
       },
       "original": {
@@ -237,11 +237,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712097405,
-        "narHash": "sha256-TZdtYh2HUHaczKRkbfq4EOaGLTG7fOk7JOy7K1vZqMo=",
+        "lastModified": 1716728493,
+        "narHash": "sha256-Ooh0dv6uRegUdvbVovgmctj0oxhp9tQh56ZyCYVouNE=",
         "owner": "grumnix",
         "repo": "libvorbis-win32",
-        "rev": "44265a9a7cf3dd811b826eede62653ed211b69de",
+        "rev": "c7fc737798ad8eec2e8d0899d603fbe0cb2e9455",
         "type": "github"
       },
       "original": {
@@ -273,11 +273,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1701699800,
-        "narHash": "sha256-Vju/twhkSbuRbwtHq5sdH6P/JIMZesqpZCRwpOv0Ey8=",
+        "lastModified": 1716728859,
+        "narHash": "sha256-RgyLWkRBOCvuCmyvfG0WSDH6PzTEuE36RKcIrgef7eA=",
         "owner": "logmich",
         "repo": "logmich",
-        "rev": "8a20ecdefe3bd0d7d1733acf5ec7c9c4a7a48484",
+        "rev": "0cc475efc10c6786d1d805c997fab1d7da60252a",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712097214,
-        "narHash": "sha256-ek27HM5IArBSSkir/77SqPbn+RO6dbanfDNgS+4VA+s=",
+        "lastModified": 1716728685,
+        "narHash": "sha256-+oyZIT88pcIuWUW1jw69KpxEjvqU1QDtF3VV6hiTVAo=",
         "owner": "grumnix",
         "repo": "mpg123-win32",
-        "rev": "af19bdda50f2397657b2f6f2cf486117bdd270fd",
+        "rev": "aead750a3614f02601f7e81f67751b9f64eeab07",
         "type": "github"
       },
       "original": {
@@ -327,16 +327,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1711668574,
-        "narHash": "sha256-u1dfs0ASQIEr1icTVrsKwg2xToIpn7ZXxW3RHfHxshg=",
+        "lastModified": 1716542732,
+        "narHash": "sha256-0Y9fRr0CUqWT4KgBITmaGwlnNIGMYuydu2L8iLTfHU4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "219951b495fc2eac67b1456824cc1ec1fd2ee659",
+        "rev": "d12251ef6e8e6a46e05689eeccd595bdbd3c9e60",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-23.11",
+        "ref": "nixos-24.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -397,11 +397,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712096980,
-        "narHash": "sha256-v6i0z0A+PFAWbfoFTGcqbJ4d4HJ+ZxYeTxY5xOeQtKU=",
+        "lastModified": 1716728603,
+        "narHash": "sha256-3+GUby3dHbQPdsBiGQlQ9XgNyZe1hORqbQpGUCzFm1E=",
         "owner": "grumnix",
         "repo": "opus-win32",
-        "rev": "ac173fe169c8d70083732493c4ca46dd9f591bba",
+        "rev": "4530cd6280b2c239d8df717943fa0f63b1a3a650",
         "type": "github"
       },
       "original": {
@@ -444,11 +444,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712097405,
-        "narHash": "sha256-TpxsAQGJsfNjCJwU3W9HoORXwjlGt5uhlv+YT68mgUU=",
+        "lastModified": 1716728646,
+        "narHash": "sha256-pCL8yrYE3EppKKrv8ORuCaWepm6eYmsYj3I1WoIxWDQ=",
         "owner": "grumnix",
         "repo": "opusfile-win32",
-        "rev": "1d2c63169e0799f8d17ce22cfbe3ee3dd43a513f",
+        "rev": "c19b24efe82fd596016d7805e9206466c0b5744e",
         "type": "github"
       },
       "original": {
@@ -487,11 +487,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1701699950,
-        "narHash": "sha256-m7JA+J0zKm0C7V/iUK4m9YgG7qWJhYzgWo6+laZhnk0=",
+        "lastModified": 1716729881,
+        "narHash": "sha256-49nt9ehd6YJPKjQaqfJoiiriLge6ui0RuJI+YXt/j5A=",
         "owner": "grumbel",
         "repo": "priocpp",
-        "rev": "90944b1ed6c2f941adbba5e2e604ba06949b3854",
+        "rev": "214a0ff789d5c58e76d870fe2e75f98857991855",
         "type": "github"
       },
       "original": {
@@ -534,11 +534,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1701699901,
-        "narHash": "sha256-hN84QetcLLOFuU+hnaTZwGeAQ0lBRdLIJkNAH0ulZZA=",
+        "lastModified": 1716729616,
+        "narHash": "sha256-P9NQI/H7zR2SGBghL7XsV4WM5e+yI1XNojLOuM7g5Fc=",
         "owner": "lispparser",
         "repo": "sexp-cpp",
-        "rev": "8be22d81cdb18cc3c14d29231978abe13a539792",
+        "rev": "4d8096c223d2f469ca6e407e793d20980f6aba76",
         "type": "github"
       },
       "original": {
@@ -557,11 +557,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1685394354,
-        "narHash": "sha256-MWrcllCoMyvb/kXoYInDYW6GGqTcgUHjQ4IU0yiHdoc=",
+        "lastModified": 1716730715,
+        "narHash": "sha256-RwTHHC1S2rFnvkeF5SzvQtqCUpfOCLY/VeuUNjAmZFQ=",
         "owner": "grumbel",
         "repo": "strutcpp",
-        "rev": "7bf070c08e4234cd51426b6f319fa474692f9ef4",
+        "rev": "108ac9bb4993d661187ac7add0863abc7ff2531f",
         "type": "github"
       },
       "original": {
@@ -621,11 +621,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1684962355,
-        "narHash": "sha256-O5qj9N5XmzjaBs83gfGmFQe+lvWms3HBrlVz7S8U1rw=",
+        "lastModified": 1716730780,
+        "narHash": "sha256-sUm+Eet95i1JIRaUote7vvf8eS+QY7Vo9rSjNZnS4mM=",
         "owner": "tinygettext",
         "repo": "tinygettext",
-        "rev": "eb077671ef7849e3d7884cbb1544ce195ab269d9",
+        "rev": "2e25c91ddb6c180928a6a29d7091f0bdfe5a81bd",
         "type": "github"
       },
       "original": {
@@ -647,11 +647,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1660505521,
-        "narHash": "sha256-ySgrHgwQO5itI1JgLtFMULPhYNipOYrGd/ECtxFbWO8=",
+        "lastModified": 1716730030,
+        "narHash": "sha256-xD2Ecs9hW3lcQW6RNcjVhGX/eor2RbCHHXohTafC9y0=",
         "owner": "grumbel",
         "repo": "uitest",
-        "rev": "c436b1b990a94d2d989966013e602fd8a621e43d",
+        "rev": "d845427140cbcbce99bb6c72919199ac5f033784",
         "type": "github"
       },
       "original": {
@@ -680,11 +680,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712097579,
-        "narHash": "sha256-/eWmYCltmYeXHtO460modOIM6d352TNfXU7fR/Srwog=",
+        "lastModified": 1716728751,
+        "narHash": "sha256-YUEYUNb8eiQI1KeI0x7NigxZJ0eM7teienylpE19Zw0=",
         "owner": "WindstilleTeam",
         "repo": "wstsound",
-        "rev": "e07830cb623a7f241dfb1265fb2b0e0c4d982211",
+        "rev": "289cae8dd2b1e75c447b063a6a4299bf139d4249",
         "type": "github"
       },
       "original": {
@@ -703,11 +703,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1685020673,
-        "narHash": "sha256-bH8Xu2KZxASEJKLysuoYu77xVWXVRVWFAIA0KNEwjjE=",
+        "lastModified": 1716727866,
+        "narHash": "sha256-eujYRUw8UpDFgEvjHUPsJ/QJN+A+hzcebfgteM9kvXM=",
         "owner": "grumbel",
         "repo": "xdgcpp",
-        "rev": "7776bc77ad59a8e9b3ea7a30e87bcc7fa7efc31e",
+        "rev": "e2c40c081e2ee2d315d1d0b3ae5981d5fd77260e",
         "type": "github"
       },
       "original": {
