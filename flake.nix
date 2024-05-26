@@ -2,7 +2,7 @@
   description = "A free Lemmings clone with penguins";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.05";
     flake-utils.url = "github:numtide/flake-utils";
 
     tinycmmc.url = "github:grumbel/tinycmmc";
@@ -71,7 +71,7 @@
 
           pingus = pkgs.callPackage ./pingus.nix {
             inherit self;
-            stdenv = pkgs.gcc12Stdenv;
+            stdenv = pkgs.stdenv;
 
             argpp = argpp.packages.${pkgs.system}.default;
             geomcpp = geomcpp.packages.${pkgs.system}.default;
