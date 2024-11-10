@@ -348,7 +348,7 @@ msgstr "Dereita"
 
 #: src/editor/object_properties.cpp:117
 msgid "ReleaseRate:"
-msgstr "data de lanzamento:"
+msgstr "Data de lanzamento:"
 
 #: src/editor/object_properties.cpp:140
 msgid "Para-X:"
@@ -916,7 +916,7 @@ msgstr "Camiñante"
 #: src/pingus/components/pingus_counter.cpp:43
 #, c-format, boost-format
 msgid "Released:%3d/%d   Out:%3d   Saved:%3d/%d"
-msgstr "Ceibados:%3d/%d Fora:%3d Salvados:%3d/%d"
+msgstr "Ceibos:%3d/%d Fora:%3d Salvados:%3d/%d"
 
 #: src/pingus/worldmap/level_dot.cpp:134
 msgid "???"
@@ -1123,7 +1123,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow19-grumbel.pingus:5
 msgid "Learn to use the bridge"
-msgstr "Aprende a contruir pontes"
+msgstr "Aprende a construir pontes"
 
 #: data/levels/tutorial/snow19-grumbel.pingus:6
 msgid ""
@@ -1181,7 +1181,7 @@ msgstr ""
 
 #: data/levels/tutorial/snow7-grumbel.pingus:5
 msgid "One must prepare, the rest must follow"
-msgstr "Un prepararse, o resto debe seguilo"
+msgstr "Un preparase, o resto debe seguilo"
 
 #: data/levels/tutorial/snow7-grumbel.pingus:6
 msgid ""
@@ -1274,7 +1274,7 @@ msgstr ""
 "Coa saída tan alta e lonxe do alcance dun Pingu normal, que opcións hai? "
 "Quizais un saltador poida rescatalos? Ou simplemente ralentizará a súa "
 "inevitable desaparición? O teu traballo é descubrilo, pero "
-"es o suficientemente bo para salvalos a todos? "
+"es o suficientemente bo para salvalos a todos?"
 
 #: data/levels/halloween/halloween3-grumbel.pingus:5
 msgid "Boom Boom"
@@ -1401,7 +1401,7 @@ msgstr ""
 "cruzar a parede? Por suposto, sabes ca mellor solución pode non ser a obvia. "
 "Pero os teus Pingus son case libres e confían na túa habilidade para guialos "
 "sans e salvos unha vez máis. se tes éxito liberarás dunha vez por "
-"todas do malfeitor cos meteu neste pesadelo... polo menos este ano. "
+"todas do malfeitor cos meteu neste pesadelo... polo menos este ano."
 
 #: data/levels/halloween2011/halloween10-grumbel.pingus:5
 msgid "Down Into The Cave"
@@ -1437,7 +1437,7 @@ msgstr ""
 
 #: data/levels/halloween2011/halloween12-grumbel.pingus:5
 msgid "Red Herring Cave"
-msgstr ""Cova do arenque vermello""
+msgstr "Cova do arenque vermello"
 
 #: data/levels/halloween2011/halloween12-grumbel.pingus:6
 msgid ""
@@ -2577,7 +2577,7 @@ msgstr "Expedición Pingus"
 
 #: data/levelsets/halloween.levelset:3
 msgid "Halloween 2007"
-msgstr "samain 2007"
+msgstr "Samain 2007"
 
 #: data/levelsets/halloween.levelset:4
 msgid "Trapped at All Hallows Eve"
@@ -2601,7 +2601,7 @@ msgstr "Unha cova chea de lama..."
 
 #: data/levelsets/jungle.levelset:3
 msgid "Jungle"
-msgstr "xungla"
+msgstr "Xungla"
 
 #: data/levelsets/mysteryisland.levelset:3
 msgid "Island of Mystery"
@@ -2609,7 +2609,7 @@ msgstr "Illa do Misterio"
 
 #: data/levelsets/mysteryisland.levelset:4
 msgid "Marooned on an Uncharted Isle [by Lachlan McCubbin]"
-msgstr ""Abandonado nunha illa sen cartografar" [por Lachlan McCubbin]"
+msgstr "Abandonado nunha illa sen cartografar [por Lachlan McCubbin]"
 
 #: data/levelsets/pacman.levelset:3
 msgid "Pac-Man"
