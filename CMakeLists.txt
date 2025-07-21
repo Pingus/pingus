@@ -29,7 +29,14 @@ pkg_search_module(SIGCXX REQUIRED sigc++-2.0 IMPORTED_TARGET)
 find_package(fmt REQUIRED)
 find_package(glm REQUIRED)
 
-if (BUILD_TESTS)
+if(WIN32)
+  # Fix for this issue:
+  # include/mcfgthread/fwd.h:24:4: error:
+  # #error Please define _WIN32_WINNT to at least Windows 7.
+  add_definitions(-D_WIN32_WINNT=0x0601)
+endif()
+
+if(BUILD_TESTS)
   # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
   enable_testing()
 endif(BUILD_TESTS)

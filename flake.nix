@@ -88,6 +88,12 @@
             mcfgthreads = if pkgs.targetPlatform.isWindows
                           then pkgs.windows.mcfgthreads
                           else null;
+            libGL = if pkgs.targetPlatform.isWindows
+                    then null
+                    else pkgs.libGL;
+            libGLU  = if pkgs.targetPlatform.isWindows
+                      then null
+                      else pkgs.libGLU;
 
             SDL2 = if pkgs.targetPlatform.isWindows
                    then SDL2-win32.packages.${pkgs.system}.default

@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716833876,
-        "narHash": "sha256-1p8eoLonn1t3XfCYhCGzzGtleHEz4xUI+qT/clZJBg4=",
+        "lastModified": 1753127534,
+        "narHash": "sha256-73UFk9wGZb0CQ2EpFaXRczHzUUlOzK/Ov2KP3ewk4qw=",
         "owner": "grumnix",
         "repo": "SDL2-win32",
-        "rev": "d210bca9d350d58aea48ee96a2710ad1d062a4b2",
+        "rev": "278a40a7bff4c0b0bf4f5ad1c528308df4a1b0f9",
         "type": "github"
       },
       "original": {
@@ -35,11 +35,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716833919,
-        "narHash": "sha256-nhpySqczCp+tMF4zTtfXU4hnr3N8xwV8PZfgAli4v6I=",
+        "lastModified": 1753127641,
+        "narHash": "sha256-tyxJ/BVa8cTM/RnrNvA74+VGKqXZjDnpSFeyTEmagDs=",
         "owner": "grumnix",
         "repo": "SDL2_image-win32",
-        "rev": "801d25043ee82bf6c76ae35af19aaa9381d0f660",
+        "rev": "4cc470369cc84058739367683c8f75de31c9f132",
         "type": "github"
       },
       "original": {
@@ -51,27 +51,27 @@
     "SDL2_image_src": {
       "flake": false,
       "locked": {
-        "lastModified": 1704144974,
-        "narHash": "sha256-/q0v/d79cmte4+7jE3uuzREnspNAzChiwb89dbLU6Dk=",
+        "lastModified": 1741038808,
+        "narHash": "sha256-RdfL5vmppsxWqvhz6ZL41GtnSc63hrEMan3uG22iEyE=",
         "type": "tarball",
-        "url": "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.8.2-mingw.tar.gz"
+        "url": "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.8.8-mingw.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.8.2-mingw.tar.gz"
+        "url": "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.8.8-mingw.tar.gz"
       }
     },
     "SDL2_src": {
       "flake": false,
       "locked": {
-        "lastModified": 1714580322,
-        "narHash": "sha256-vAZh6I18Vuw2MfY5NKpv4QcHx20SUSds4mPosUgicmg=",
+        "lastModified": 1748906407,
+        "narHash": "sha256-aakdhaTL0dgt2BQEtv3w6pp1mwOrmNzEorh3lLxJgyo=",
         "type": "tarball",
-        "url": "https://libsdl.org/release/SDL2-devel-2.30.3-mingw.tar.gz"
+        "url": "https://libsdl.org/release/SDL2-devel-2.32.8-mingw.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://libsdl.org/release/SDL2-devel-2.30.3-mingw.tar.gz"
+        "url": "https://libsdl.org/release/SDL2-devel-2.32.8-mingw.tar.gz"
       }
     },
     "argpp": {
