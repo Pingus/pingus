@@ -54,11 +54,6 @@ stdenv.mkDerivation {
 
   postFixup = ''
   ''
-  + (lib.optionalString (!stdenv.targetPlatform.isWindows) ''
-     wrapProgram $out/libexec/pingus \
-       --prefix LIBGL_DRIVERS_PATH ":" "${mesa.drivers}/lib/dri" \
-       --prefix LD_LIBRARY_PATH ":" "${mesa.drivers}/lib"
-  '')
   + (lib.optionalString stdenv.targetPlatform.isWindows ''
      mkdir -p $out/bin/
      find ${mcfgthreads} -iname "*.dll" -exec ln -sfv {} $out/bin/ \;
