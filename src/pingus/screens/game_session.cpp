@@ -240,7 +240,7 @@ GameSession::update_input(pingus::input::Event const& event)
 
     default:
       // unhandled event
-      log_info("unhandled event: {}", event.type);
+      log_info("unhandled event: {}", fmt::streamed(event.type));
       break;
   }
 }

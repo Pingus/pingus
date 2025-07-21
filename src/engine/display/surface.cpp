@@ -376,7 +376,7 @@ Surface::mod(ResourceModifier::Enum modifier)
       return Blitter::rotate_270_flip(*this);
 
     default:
-      log_error("Surface: unhandled modifier: {}", modifier);
+      log_error("Surface: unhandled modifier: {}", fmt::streamed(modifier));
       return *this;
   }
 }

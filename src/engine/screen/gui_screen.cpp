@@ -98,7 +98,7 @@ GUIScreen::update_input(pingus::input::Event const& event)
     break;
 
     default:
-      log_error("unhandled event type: {}", event.type);
+      log_error("unhandled event type: {}", fmt::streamed(event.type));
       break;
   }
 }
@@ -180,7 +180,7 @@ GUIScreen::process_button_event (pingus::input::ButtonEvent const& event)
   }
   else
   {
-    log_error("got unknown event.state: {}", event.state);
+    log_error("got unknown event.state: {}", fmt::streamed(event.state));
   }
 }
 

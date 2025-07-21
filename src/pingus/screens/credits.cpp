@@ -94,7 +94,7 @@ Credits::Credits(Pathname const& filename) :
     std::ifstream in(filename.get_sys_path());
     if (!in)
     {
-      log_error("couldn't open {}", filename);
+      log_error("couldn't open {}", fmt::streamed(filename));
 
       std::ostringstream out;
       out << "couldn't open " << filename;

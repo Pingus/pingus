@@ -35,7 +35,7 @@ FontTestScreen::FontTestScreen(Pathname const& fontfile) :
   scroll(),
   dark(true)
 {
-  log_info("### Loading font file: {}", fontfile);
+  log_info("### Loading font file: {}", fmt::streamed(fontfile));
   font = Font(FontDescription(fontfile));
   reference = Font(FontDescription(Pathname("images/fonts/reference-iso-8859-1.font", Pathname::DATA_PATH)));
 }

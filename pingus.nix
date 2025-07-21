@@ -5,7 +5,7 @@
 , SDL2
 , SDL2_image
 , cmake
-, fmt_8
+, fmt
 , gtest
 , libpng
 , libsigcxx
@@ -72,7 +72,7 @@ stdenv.mkDerivation {
   buildInputs = [
     SDL2
     SDL2_image
-    fmt_8
+    fmt
     gtest
     libpng
     libsigcxx

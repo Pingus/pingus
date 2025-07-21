@@ -101,7 +101,7 @@ GUIManager::update(pingus::input::Event const& event)
       break;
 
     default:
-      log_warn("unhandled event type {}", event.type);
+      log_warn("unhandled event type {}", fmt::streamed(event.type));
       break;
   }
 }

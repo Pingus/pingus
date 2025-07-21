@@ -37,7 +37,7 @@ Screenshot::save_screenshot(std::filesystem::path const& filename)
   Surface screen = Display::get_framebuffer()->make_screenshot();
   if (screen)
   {
-    log_info("Screenshot: Saving screenshot to: {}", filename);
+    log_info("Screenshot: Saving screenshot to: {}", fmt::streamed(filename));
     save_png(filename.string(), screen.get_data(), screen.get_width(), screen.get_height(), screen.get_pitch());
     log_info("Screenshot: Screenshot is done.");
   }
@@ -54,7 +54,7 @@ Screenshot::save_png(std::filesystem::path const& filename, uint8_t const* buffe
   if (fp == nullptr)
   {
     perror(filename.string().c_str());
-    log_info("Screenshot: Couldn't write file: {}", filename);
+    log_info("Screenshot: Couldn't write file: {}", fmt::streamed(filename));
     return;
   }
 
