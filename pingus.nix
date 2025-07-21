@@ -10,7 +10,8 @@
 , libpng
 , libsigcxx
 , makeWrapper
-, mesa
+, libGL
+, libGLU
 , pkg-config
 , mcfgthreads
 
@@ -60,7 +61,7 @@ stdenv.mkDerivation {
      find ${stdenv.cc.cc} -iname "*.dll" -exec ln -sfv {} $out/bin/ \;
      ln -sfv ${SDL2}/bin/*.dll $out/bin/
      ln -sfv ${SDL2_image}/bin/*.dll $out/bin/
-     ln -sfv ${fmt_8}/bin/*.dll $out/bin/
+     ln -sfv ${fmt}/bin/*.dll $out/bin/
      ln -sfv ${gtest}/bin/*.dll $out/bin/
      ln -sfv ${libsigcxx}/bin/*.dll $out/bin/
 
@@ -70,6 +71,9 @@ stdenv.mkDerivation {
    '');
 
   buildInputs = [
+    libGL
+    libGLU
+
     SDL2
     SDL2_image
     fmt
