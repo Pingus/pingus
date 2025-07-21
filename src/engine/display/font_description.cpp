@@ -63,7 +63,7 @@ FontDescription::FontDescription(Pathname const& pathname_) :
 
   if (doc.get_root().get_name() != "pingus-font")
   {
-    throw std::runtime_error(fmt::format("{}: not a pingus-font file", pathname));
+    throw std::runtime_error(fmt::format("{}: not a pingus-font file", fmt::streamed(pathname)));
   }
   else
   {

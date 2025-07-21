@@ -92,7 +92,7 @@ Display::create_window(FramebufferType framebuffer_type, geom::isize const& size
 {
   assert(!s_framebuffer.get());
 
-  log_info("{} {} {}", FramebufferType_to_string(framebuffer_type), size, (fullscreen?"fullscreen":"window"));
+  log_info("{} {} {}", FramebufferType_to_string(framebuffer_type), fmt::streamed(size), (fullscreen?"fullscreen":"window"));
 
   switch (framebuffer_type)
   {

@@ -66,7 +66,7 @@ Manager::create_controller(std::filesystem::path const& filename)
 
   auto doc = prio::ReaderDocument::from_file(filename);
   if (doc.get_name() != "pingus-controller") {
-    throw std::runtime_error(fmt::format("Controller: invalid config file '{}'", filename));
+    throw std::runtime_error(fmt::format("Controller: invalid config file '{}'", fmt::streamed(filename)));
   }
 
   prio::ReaderMapping reader = doc.get_mapping();
@@ -74,7 +74,7 @@ Manager::create_controller(std::filesystem::path const& filename)
   prio::ReaderMapping controls_mapping;
   if (!reader.read("controls", controls_mapping))
   {
-    log_warn("{}: 'controls' section missing", filename);
+    log_warn("{}: 'controls' section missing", fmt::streamed(filename));
   }
   else
   {
@@ -83,7 +83,7 @@ Manager::create_controller(std::filesystem::path const& filename)
       prio::ReaderCollection collection;
       if (!controls_mapping.read(key.c_str(), collection))
       {
-        log_error("{}: mapping must contain object at {}", filename, key);
+        log_error("{}: mapping must contain object at {}", fmt::streamed(filename), key);
       }
       else
       {

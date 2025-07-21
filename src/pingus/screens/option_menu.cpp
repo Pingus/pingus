@@ -347,7 +347,7 @@ OptionMenu::on_escape_press()
 
   // save configuration
   Pathname cfg_filename(System::get_userdir() + "config", Pathname::SYSTEM_PATH);
-  log_info("saving configuration: {}", cfg_filename);
+  log_info("saving configuration: {}", fmt::streamed(cfg_filename));
   config_manager.get_options().save(cfg_filename);
 }
 

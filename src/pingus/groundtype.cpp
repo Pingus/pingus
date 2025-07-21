@@ -39,7 +39,7 @@ Groundtype::string_to_type(std::string const& arg_type)
     return Groundtype::GP_REMOVE;
   else
   {
-    log_error("Groundtype: Unhandled type: '{}'", arg_type);
+    log_error("Groundtype: Unhandled type: '{}'", fmt::streamed(arg_type));
     return Groundtype::GP_GROUND;
   }
 }
@@ -64,7 +64,7 @@ Groundtype::type_to_string(GPType arg_type)
     case Groundtype::GP_REMOVE:
       return "remove";
     default:
-      log_error("Groundtype: Unhandled type: {}", arg_type);
+      log_error("Groundtype: Unhandled type: {}", fmt::streamed(arg_type));
       return "ground";
   }
 }

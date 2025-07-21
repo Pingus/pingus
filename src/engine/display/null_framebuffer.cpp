@@ -50,7 +50,7 @@ NullFramebuffer::~NullFramebuffer()
 FramebufferSurface
 NullFramebuffer::create_surface(Surface const& surface)
 {
-  log_info("creating surface: {}", surface.get_size());
+  log_info("creating surface: {}", fmt::streamed(surface.get_size()));
   return FramebufferSurface(new NullFramebufferSurfaceImpl(surface.get_size()));
 }
 
