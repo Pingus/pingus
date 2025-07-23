@@ -65,7 +65,7 @@
               tinygettext, xdgcpp, wstsound, SDL2-win32, SDL2_image-win32
             }:
     tinycmmc.lib.eachSystemWithPkgs (pkgs:
-      {
+      rec {
         packages = rec {
           default = pingus;
 
@@ -102,14 +102,14 @@
                          then SDL2_image-win32.packages.${pkgs.system}.default
                          else pkgs.SDL2_image;
           };
-
+        } // (pkgs.lib.optionalAttrs (pkgs.targetPlatform.isWindows) rec {
           pingus-win32 = pkgs.runCommand "pingus-win32" {} ''
             mkdir -p $out
             mkdir -p $out/data/
 
-            cp -vr ${pingus}/bin/pingus.exe $out/
-            cp -vLr ${pingus}/bin/*.dll $out/
-            cp -vr ${pingus}/share/pingus/. $out/data/
+            cp -vr ${packages.pingus}/bin/pingus.exe $out/
+            cp -vLr ${packages.pingus}/bin/*.dll $out/
+            cp -vr ${packages.pingus}/share/pingus/. $out/data/
           '';
 
           pingus-win32-zip = pkgs.runCommand "pingus-win32-zip" {} ''
@@ -122,10 +122,10 @@
             cd "$WORKDIR"
             ${nixpkgs.legacyPackages.x86_64-linux.zip}/bin/zip \
               -r \
-              $out/pingus-${pingus.version}-${pkgs.system}.zip \
+              $out/pingus-${packages.pingus.version}-${pkgs.system}.zip \
               .
           '';
-        };
+        });
       }
     );
 }
