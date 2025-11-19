@@ -73,36 +73,36 @@
             inherit self;
             stdenv = pkgs.stdenv;
 
-            argpp = argpp.packages.${pkgs.system}.default;
-            geomcpp = geomcpp.packages.${pkgs.system}.default;
-            logmich = logmich.packages.${pkgs.system}.default;
-            priocpp = priocpp.packages.${pkgs.system}.priocpp-sexp;
-            strutcpp = strutcpp.packages.${pkgs.system}.default;
-            tinycmmc = tinycmmc.packages.${pkgs.system}.default;
-            tinygettext = tinygettext.packages.${pkgs.system}.default;
-            uitest = uitest.packages.${pkgs.system}.default;
-            wstsound = wstsound.packages.${pkgs.system}.default;
-            xdgcpp = if !pkgs.targetPlatform.isWindows
-                     then xdgcpp.packages.${pkgs.system}.default
+            argpp = argpp.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            geomcpp = geomcpp.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            logmich = logmich.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            priocpp = priocpp.packages.${pkgs.stdenv.hostPlatform.system}.priocpp-sexp;
+            strutcpp = strutcpp.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            tinycmmc = tinycmmc.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            tinygettext = tinygettext.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            uitest = uitest.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            wstsound = wstsound.packages.${pkgs.stdenv.hostPlatform.system}.default;
+            xdgcpp = if !pkgs.stdenv.targetPlatform.isWindows
+                     then xdgcpp.packages.${pkgs.stdenv.hostPlatform.system}.default
                      else null;
-            mcfgthreads = if pkgs.targetPlatform.isWindows
+            mcfgthreads = if pkgs.stdenv.targetPlatform.isWindows
                           then pkgs.windows.mcfgthreads
                           else null;
-            libGL = if pkgs.targetPlatform.isWindows
+            libGL = if pkgs.stdenv.targetPlatform.isWindows
                     then null
                     else pkgs.libGL;
-            libGLU  = if pkgs.targetPlatform.isWindows
+            libGLU  = if pkgs.stdenv.targetPlatform.isWindows
                       then null
                       else pkgs.libGLU;
 
-            SDL2 = if pkgs.targetPlatform.isWindows
-                   then SDL2-win32.packages.${pkgs.system}.default
+            SDL2 = if pkgs.stdenv.targetPlatform.isWindows
+                   then SDL2-win32.packages.${pkgs.stdenv.hostPlatform.system}.default
                    else pkgs.SDL2;
-            SDL2_image = if pkgs.targetPlatform.isWindows
-                         then SDL2_image-win32.packages.${pkgs.system}.default
+            SDL2_image = if pkgs.stdenv.targetPlatform.isWindows
+                         then SDL2_image-win32.packages.${pkgs.stdenv.hostPlatform.system}.default
                          else pkgs.SDL2_image;
           };
-        } // (pkgs.lib.optionalAttrs (pkgs.targetPlatform.isWindows) rec {
+        } // (pkgs.lib.optionalAttrs (pkgs.stdenv.targetPlatform.isWindows) rec {
           pingus-win32 = pkgs.runCommand "pingus-win32" {} ''
             mkdir -p $out
             mkdir -p $out/data/
@@ -122,7 +122,7 @@
             cd "$WORKDIR"
             ${nixpkgs.legacyPackages.x86_64-linux.zip}/bin/zip \
               -r \
-              $out/pingus-${packages.pingus.version}-${pkgs.system}.zip \
+              $out/pingus-${packages.pingus.version}-${pkgs.stdenv.hostPlatform.system}.zip \
               .
           '';
         });
