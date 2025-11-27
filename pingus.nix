@@ -51,11 +51,11 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     pkg-config
-  ] ++ (lib.optional (!stdenv.targetPlatform.isWindows) makeWrapper);
+  ] ++ (lib.optional (!stdenv.hostPlatform.isWindows) makeWrapper);
 
   postFixup = ''
   ''
-  + (lib.optionalString stdenv.targetPlatform.isWindows ''
+  + (lib.optionalString stdenv.hostPlatform.isWindows ''
      mkdir -p $out/bin/
      find ${mcfgthreads} -iname "*.dll" -exec ln -sfv {} $out/bin/ \;
      find ${stdenv.cc.cc} -iname "*.dll" -exec ln -sfv {} $out/bin/ \;
@@ -91,5 +91,5 @@ stdenv.mkDerivation {
     uitest
     wstsound
   ]
-  ++ lib.optional (!stdenv.targetPlatform.isWindows) xdgcpp;
+  ++ lib.optional (!stdenv.hostPlatform.isWindows) xdgcpp;
 }
