@@ -27,11 +27,17 @@
     logmich.inputs.nixpkgs.follows = "nixpkgs";
     logmich.inputs.tinycmmc.follows = "tinycmmc";
 
+    sexpcpp.url = "github:lispparser/sexp-cpp";
+    sexpcpp.inputs.nixpkgs.follows = "nixpkgs";
+    sexpcpp.inputs.flake-utils.follows = "flake-utils";
+    sexpcpp.inputs.tinycmmc.follows = "tinycmmc";
+
     priocpp.url = "github:grumbel/priocpp";
     priocpp.inputs.nixpkgs.follows = "nixpkgs";
     priocpp.inputs.flake-utils.follows = "flake-utils";
     priocpp.inputs.tinycmmc.follows = "tinycmmc";
     priocpp.inputs.logmich.follows = "logmich";
+    priocpp.inputs.sexpcpp.follows = "sexpcpp";
 
     strutcpp.url = "github:grumbel/strutcpp";
     strutcpp.inputs.nixpkgs.follows = "nixpkgs";
@@ -61,7 +67,7 @@
   };
 
   outputs = { self, nixpkgs, flake-utils,
-              tinycmmc, uitest, argpp, geomcpp, logmich, priocpp, strutcpp,
+              tinycmmc, uitest, argpp, geomcpp, logmich, priocpp, strutcpp, sexpcpp,
               tinygettext, xdgcpp, wstsound, SDL2-win32, SDL2_image-win32
             }:
     tinycmmc.lib.eachSystemWithPkgs (pkgs:
