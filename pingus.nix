@@ -28,10 +28,11 @@
 }:
 
 let
-  version_file = lib.fileContents ./VERSION;
-  pingus_version = if (((builtins.substring 0 1) version_file) != "v")
-                   then ("0.8.0-${lib.substring 0 8 self.lastModifiedDate}-${self.shortRev or "dirty"}")
-                   else (builtins.substring 1 ((builtins.stringLength version_file) - 2) version_file);
+  #version_file = lib.fileContents ./VERSION;
+  #pingus_version = if (((builtins.substring 0 1) version_file) != "v")
+  #                 then ("0.8.0-${lib.substring 0 8 self.lastModifiedDate}-${self.shortRev or "dirty"}")
+  #                 else (builtins.substring 1 ((builtins.stringLength version_file) - 2) version_file);
+  pingus_version = "0.7.6.${toString (self.revCount or 0)}-g${self.shortRev or "dirty"}";
 in
 stdenv.mkDerivation {
   pname = "pingus";
@@ -52,6 +53,10 @@ stdenv.mkDerivation {
     cmake
     pkg-config
   ] ++ (lib.optional (!stdenv.hostPlatform.isWindows) makeWrapper);
+
+  preConfigure = ''
+    echo "$version" > VERSION
+  '';
 
   postFixup = ''
   ''
