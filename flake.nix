@@ -5,63 +5,63 @@
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    tinycmmc.url = "github:grumbel/tinycmmc";
+    tinycmmc.url = "git+https://github.com/grumbel/tinycmmc.git";
     tinycmmc.inputs.nixpkgs.follows = "nixpkgs";
     tinycmmc.inputs.flake-utils.follows = "flake-utils";
 
-    uitest.url = "github:grumbel/uitest";
+    uitest.url = "git+https://github.com/grumbel/uitest.git";
     uitest.inputs.nixpkgs.follows = "nixpkgs";
     uitest.inputs.flake-utils.follows = "flake-utils";
     uitest.inputs.tinycmmc.follows = "tinycmmc";
 
-    argpp.url = "github:grumbel/argpp?ref=stable";
+    argpp.url = "git+https://github.com/grumbel/argpp.git?ref=stable";
     argpp.inputs.nixpkgs.follows = "nixpkgs";
     argpp.inputs.flake-utils.follows = "flake-utils";
     argpp.inputs.tinycmmc.follows = "tinycmmc";
 
-    geomcpp.url = "github:grumbel/geomcpp";
+    geomcpp.url = "git+https://github.com/grumbel/geomcpp.git";
     geomcpp.inputs.nixpkgs.follows = "nixpkgs";
     geomcpp.inputs.tinycmmc.follows = "tinycmmc";
 
-    logmich.url = "github:logmich/logmich";
+    logmich.url = "git+https://github.com/logmich/logmich.git";
     logmich.inputs.nixpkgs.follows = "nixpkgs";
     logmich.inputs.tinycmmc.follows = "tinycmmc";
 
-    sexpcpp.url = "github:lispparser/sexp-cpp";
+    sexpcpp.url = "git+https://github.com/lispparser/sexp-cpp.git";
     sexpcpp.inputs.nixpkgs.follows = "nixpkgs";
     sexpcpp.inputs.flake-utils.follows = "flake-utils";
     sexpcpp.inputs.tinycmmc.follows = "tinycmmc";
 
-    priocpp.url = "github:grumbel/priocpp";
+    priocpp.url = "git+https://github.com/grumbel/priocpp.git";
     priocpp.inputs.nixpkgs.follows = "nixpkgs";
     priocpp.inputs.flake-utils.follows = "flake-utils";
     priocpp.inputs.tinycmmc.follows = "tinycmmc";
     priocpp.inputs.logmich.follows = "logmich";
     priocpp.inputs.sexpcpp.follows = "sexpcpp";
 
-    strutcpp.url = "github:grumbel/strutcpp";
+    strutcpp.url = "git+https://github.com/grumbel/strutcpp.git";
     strutcpp.inputs.nixpkgs.follows = "nixpkgs";
     strutcpp.inputs.tinycmmc.follows = "tinycmmc";
 
-    tinygettext.url = "github:tinygettext/tinygettext";
+    tinygettext.url = "git+https://github.com/tinygettext/tinygettext.git";
     tinygettext.inputs.nixpkgs.follows = "nixpkgs";
     tinygettext.inputs.flake-utils.follows = "flake-utils";
     tinygettext.inputs.tinycmmc.follows = "tinycmmc";
 
-    xdgcpp.url = "github:grumbel/xdgcpp";
+    xdgcpp.url = "git+https://github.com/grumbel/xdgcpp.git";
     xdgcpp.inputs.nixpkgs.follows = "nixpkgs";
     xdgcpp.inputs.flake-utils.follows = "flake-utils";
 
-    wstsound.url = "github:WindstilleTeam/wstsound";
+    wstsound.url = "git+https://github.com/WindstilleTeam/wstsound.git";
     wstsound.inputs.nixpkgs.follows = "nixpkgs";
     wstsound.inputs.flake-utils.follows = "flake-utils";
     wstsound.inputs.tinycmmc.follows = "tinycmmc";
 
-    SDL2-win32.url = "github:grumnix/SDL2-win32";
+    SDL2-win32.url = "git+https://github.com/grumnix/SDL2-win32.git";
     SDL2-win32.inputs.nixpkgs.follows = "nixpkgs";
     SDL2-win32.inputs.tinycmmc.follows = "tinycmmc";
 
-    SDL2_image-win32.url = "github:grumnix/SDL2_image-win32";
+    SDL2_image-win32.url = "git+https://github.com/grumnix/SDL2_image-win32.git";
     SDL2_image-win32.inputs.nixpkgs.follows = "nixpkgs";
     SDL2_image-win32.inputs.tinycmmc.follows = "tinycmmc";
   };
