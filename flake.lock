@@ -129,11 +129,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775669653,
-        "narHash": "sha256-brC1Xkk17mQTw2C+/em1C1BxsJa7X9/wkQWIb4kucoQ=",
+        "lastModified": 1775758053,
+        "narHash": "sha256-HYD1Fpz2JlIJM/QqZ56eHfFVR5T1bg2Pp5mc+YN6iq8=",
         "ref": "refs/heads/master",
-        "rev": "af84b6266807f66efb338fdd5d88d060ee741267",
-        "revCount": 112,
+        "rev": "717bea5e23cfd35fa3ef8206219b1e85b87c2a96",
+        "revCount": 113,
         "type": "git",
         "url": "https://github.com/grumbel/geomcpp.git"
       },
@@ -273,11 +273,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763578800,
-        "narHash": "sha256-mnqKS+m/m/zwlOpse3+QnP54fgaXR9/8FW+FDq/MKlo=",
+        "lastModified": 1775758246,
+        "narHash": "sha256-2PrrrybeNySSJj7jJJjzmr46f4RdFWD9NUFAB362dgk=",
         "ref": "refs/heads/master",
-        "rev": "f69ccb6b8963d995eeb886f60e8c30b2742d596e",
-        "revCount": 53,
+        "rev": "2610fad6768e5b493b52ff08d60d1eb8825f1ab6",
+        "revCount": 54,
         "type": "git",
         "url": "https://github.com/logmich/logmich.git"
       },
@@ -327,11 +327,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1775423009,
-        "narHash": "sha256-vPKLpjhIVWdDrfiUM8atW6YkIggCEKdSAlJPzzhkQlw=",
+        "lastModified": 1782723713,
+        "narHash": "sha256-oPXCU/SSUokcGaJREHibG1CBX3+s/W7orDWQOZDsEeQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "68d8aa3d661f0e6bd5862291b5bb263b2a6595c9",
+        "rev": "b5aa0fbd538984f6e3d201be0005b4463d8b09f8",
         "type": "github"
       },
       "original": {
@@ -489,11 +489,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764247710,
-        "narHash": "sha256-Ar/V9Q5jCOok7r3t0/f7DvBc6nxMDX4SbCiSKh36UDo=",
+        "lastModified": 1775758282,
+        "narHash": "sha256-cpOKbHD129Lf18BnPkG4RCSNyHIkycS06/aPAj+T1Bw=",
         "ref": "refs/heads/master",
-        "rev": "ea15402adcd0d9191dc29ca6f7e4dd0bff67b9b5",
-        "revCount": 159,
+        "rev": "6163ea81df05e5ff08cf21f39868175f0f578360",
+        "revCount": 160,
         "type": "git",
         "url": "https://github.com/grumbel/priocpp.git"
       },
@@ -534,11 +534,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764247650,
-        "narHash": "sha256-IK1T95qcuDEm7aN59HZsvrf8RL4+07pxJ5Vuiuo7hSk=",
+        "lastModified": 1775758176,
+        "narHash": "sha256-H74KlewiOhyXDXZsbCmHU4n0YP0ZsRMdpL4WsRrqK80=",
         "ref": "refs/heads/master",
-        "rev": "e33eacf64ee5f1c24ed715ffc62519543bd40d64",
-        "revCount": 335,
+        "rev": "af9455d4612f87f44ab7ec4c56ffdb1dbf6502e3",
+        "revCount": 336,
         "type": "git",
         "url": "https://github.com/lispparser/sexp-cpp.git"
       },
@@ -621,11 +621,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768052311,
-        "narHash": "sha256-fU65+VMr/bQgCkIsqCFEHTmLlCTBW7RyjUdyXckGTQs=",
+        "lastModified": 1781699585,
+        "narHash": "sha256-SK4he/+iJJkpfr/oa/kb7ciiQlzuHmm2RdyQNe9UPIM=",
         "ref": "refs/heads/master",
-        "rev": "a1ccbc92e04d1a7078efe18ef77e0e7418baaa7b",
-        "revCount": 346,
+        "rev": "95208892e8ec1eb22e7ff151f596696a20e0d5c6",
+        "revCount": 349,
         "type": "git",
         "url": "https://github.com/tinygettext/tinygettext.git"
       },
