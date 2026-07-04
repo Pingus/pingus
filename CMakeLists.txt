@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 cmake_minimum_required(VERSION 3.15)
-project(pingus VERSION 0.8.0)
+project(pingus)
 
 include(mk/cmake/TinyCMMC.cmake)
 
@@ -91,7 +91,7 @@ set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_include_directories(libpingus PUBLIC src/)
 target_compile_options(libpingus PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
 target_compile_definitions(libpingus PUBLIC
-  -DPROJECT_VERSION="${PROJECT_VERSION}"
+  -DPROJECT_VERSION="${PROJECT_VERSION_FULL}"
   -DPROJECT_NAME="${PROJECT_NAME}")
 target_link_libraries(libpingus PUBLIC
   argpp::argpp

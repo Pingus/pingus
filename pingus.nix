@@ -1,6 +1,7 @@
 { self
 , stdenv
 , lib
+, tinycmmc_lib
 
 , SDL2
 , SDL2_image
@@ -28,13 +29,9 @@
 }:
 
 let
-  #version_file = lib.fileContents ./VERSION;
-  #pingus_version = if (((builtins.substring 0 1) version_file) != "v")
-  #                 then ("0.8.0-${lib.substring 0 8 self.lastModifiedDate}-${self.shortRev or "dirty"}")
-  #                 else (builtins.substring 1 ((builtins.stringLength version_file) - 2) version_file);
-  pingus_version = "0.7.6.${toString (self.revCount or 0)}-g${self.shortRev or "dirty"}";
+  pingus_version = tinycmmc_lib.versionFromVERSION self;
 in
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "pingus";
   version = pingus_version;
 
@@ -47,6 +44,7 @@ stdenv.mkDerivation {
     "-DWERROR=ON"
     "-DBUILD_EXTRA=OFF"
     "-DBUILD_TESTS=OFF" # tests fail due to SDLmain vs GTest::Main
+    "-DPROJECT_VERSION_FULL=${pingus_version}"
   ];
 
   nativeBuildInputs = [

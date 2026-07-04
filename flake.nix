@@ -78,6 +78,7 @@
           pingus = pkgs.callPackage ./pingus.nix {
             inherit self;
             stdenv = pkgs.stdenv;
+            tinycmmc_lib = tinycmmc.lib;
 
             argpp = argpp.packages.${pkgs.stdenv.hostPlatform.system}.default;
             geomcpp = geomcpp.packages.${pkgs.stdenv.hostPlatform.system}.default;
