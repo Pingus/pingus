@@ -17,8 +17,20 @@
 cmake_minimum_required(VERSION 3.6)
 project(strut VERSION 0.0.0)
 
-set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/")
-find_package(tinycmmc CONFIG)
+if(NOT tinycmmc_FOUND)
+  find_package(tinycmmc CONFIG QUIET)
+endif()
+if(tinycmmc_FOUND AND TINYCMMC_MODULE_PATH)
+  # use package
+elseif(EXISTS "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/TinyCMMC.cmake")
+  set(TINYCMMC_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/")
+elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/TinyCMMC.cmake")
+  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/")
+elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/TinyCMMC.cmake")
+  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/")
+else()
+  message(FATAL_ERROR "tinycmmc modules not found")
+endif()
 message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
 list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
 

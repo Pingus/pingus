@@ -145,10 +145,11 @@ The flake pins a full dependency set (SDL2 family, OpenGL, fmt, the various
   binaries the build already guarantees. Missing dependencies are a packaging
   bug; fail clearly at configure or run time.
 
-Longer-term direction: reduce the large set of flake inputs by vendoring the
-small related libraries under `external/` as git subtrees (prefer `--squash`),
-teach CMake to `add_subdirectory` them when present, and keep system-library
-fallbacks for distros.
+Helper libraries live under `external/` (git subtrees). CMake resolves them
+via `tinycmmc_find_dependency` (`find_package` first, then
+`add_subdirectory(external/…)`). The Nix flake builds those same trees with
+`callPackage` and no longer pulls them in as separate flake inputs. System
+packages may still satisfy `find_package` for distro builds.
 
 ---
 

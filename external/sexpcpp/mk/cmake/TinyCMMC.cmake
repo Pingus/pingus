@@ -23,16 +23,18 @@ if(tinycmmc_FOUND)
   message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
   list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
 else()
-  if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/tinycmmc/CMakeLists.txt")
-    message(FATAL_ERROR
-      "The git submodule \"external/tinycmmc\" could not be found. "
-      "To retrieve it, run:\n"
-      "    git submodule update --init --recursive\n")
-  else()
+  if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/tinycmmc/CMakeLists.txt")
     set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/tinycmmc/modules/")
-    message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
-    list(APPEND CMAKE_MODULE_PATH "${TINYCMMC_MODULE_PATH}")
+  elseif(EXISTS "${CMAKE_SOURCE_DIR}/external/tinycmmc/CMakeLists.txt")
+    # Monorepo / git-subtree layout (e.g. Pingus): shared external/tinycmmc
+    set(TINYCMMC_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/")
+  else()
+    message(FATAL_ERROR
+      "tinycmmc could not be found (no config package and no external/tinycmmc).\n"
+      "Vendored layout: top-level external/tinycmmc or per-project external/tinycmmc.")
   endif()
+  message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
+  list(APPEND CMAKE_MODULE_PATH "${TINYCMMC_MODULE_PATH}")
 endif()
 
 include(TinyCMMC)

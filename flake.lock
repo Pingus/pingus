@@ -506,19 +506,8 @@
       "inputs": {
         "SDL2-win32": "SDL2-win32",
         "SDL2_image-win32": "SDL2_image-win32",
-        "argpp": "argpp",
         "flake-utils": "flake-utils",
-        "geomcpp": "geomcpp",
-        "logmich": "logmich",
-        "nixpkgs": "nixpkgs",
-        "priocpp": "priocpp",
-        "sexpcpp": "sexpcpp",
-        "strutcpp": "strutcpp",
-        "tinycmmc": "tinycmmc",
-        "tinygettext": "tinygettext",
-        "uitest": "uitest",
-        "wstsound": "wstsound",
-        "xdgcpp": "xdgcpp"
+        "nixpkgs": "nixpkgs"
       }
     },
     "sexpcpp": {

@@ -69,11 +69,14 @@ function(build_dependencies)
   set(BUILD_TESTS OFF)
   set(TINYGETTEXT_WITH_SDL ON)
 
+  # Order matters when using external/ via add_subdirectory: sexp + logmich
+  # before prio (priocpp links them and checks TARGET …::…).
   tinycmmc_find_dependency(uitest)
   tinycmmc_find_dependency(tinygettext)
   tinycmmc_find_dependency(argpp)
   tinycmmc_find_dependency(geom)
   tinycmmc_find_dependency(logmich)
+  tinycmmc_find_dependency(sexp)
   tinycmmc_find_dependency(prio)
   tinycmmc_find_dependency(strut)
   tinycmmc_find_dependency(wstsound)
