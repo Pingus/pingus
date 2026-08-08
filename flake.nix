@@ -49,11 +49,13 @@
         # Build helper libraries from external/ (no flake inputs).
         # `selfFor path` makes versionFromVERSION / versionFromFile read the
         # right VERSION file under external/<name>.
+        # Do not inject the monorepo shortRev into external package versions —
+        # that forced a rebuild of every external/* derivation on every commit.
         selfFor = path: {
           outPath = path;
-          shortRev = self.shortRev or "dirty";
-          dirtyShortRev = self.dirtyShortRev or "dirty";
-          lastModifiedDate = self.lastModifiedDate or "19700101";
+          shortRev = "vendored";
+          dirtyShortRev = "vendored";
+          lastModifiedDate = "19700101";
         };
 
         mkLibs = pkgs':

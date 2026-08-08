@@ -35,7 +35,13 @@ stdenv.mkDerivation rec {
   pname = "pingus";
   version = pingus_version;
 
-  src = lib.cleanSource ./.;
+  src = lib.cleanSourceWith {
+    src = ./.;
+    filter = path: type:
+      let base = baseNameOf path; in
+      !(base == ".git" || base == "result" || base == "build"
+        || lib.hasSuffix ".bundle" base);
+  };
 
   enableParallelBuilding = true;
 
