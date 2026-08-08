@@ -35,6 +35,19 @@ cp -r "$APP_DIR/res" src/res
 # Game C++ sources next to the module Android.mk.
 cp -r "$GAME_SRC_DIR"/. src/jni/src/
 
+# Stage public headers from repo external/ (sources still need linking — TODO).
+REPO_ROOT="$(cd "$GAME_SRC_DIR/.." && pwd)"
+if [ -d "$REPO_ROOT/external" ]; then
+  mkdir -p src/jni/external_includes
+  for name in argpp geomcpp logmich priocpp strutcpp sexpcpp tinygettext uitest wstsound xdgcpp; do
+    inc="$REPO_ROOT/external/$name/include"
+    if [ -d "$inc" ]; then
+      cp -a "$inc"/. src/jni/external_includes/
+    fi
+  done
+  echo "==> staged external/ headers into jni/external_includes"
+fi
+
 # IMG_* shim + headers.
 cp "$APP_DIR/jni/img_stb_min.c" src/jni/src/img_stb_min.c
 cp "$APP_DIR/jni/SDL_image.h" src/jni/src/SDL_image.h

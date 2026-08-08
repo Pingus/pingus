@@ -34,17 +34,17 @@ ENABLE_GLES2="${ENABLE_GLES2:-1}"
 # Default OFF (ENABLE_ASYNCIFY=0); set enableAsyncify = true in mkApp if needed.
 LINK_FLAGS=(
   "SHELL:-sALLOW_MEMORY_GROWTH=1"
+  # Fixed-function OpenGL client (glOrtho, SDL_opengl.h) via Emscripten emulation.
   "SHELL:-sFULL_ES2=1"
+  "SHELL:-sLEGACY_GL_EMULATION=1"
   "SHELL:-sMIN_WEBGL_VERSION=1"
   "SHELL:-sMAX_WEBGL_VERSION=2"
   "SHELL:-sFORCE_FILESYSTEM=1"
   "SHELL:-sEXIT_RUNTIME=0"
-  # IDBFS JS library (FS.mount(IDBFS, …) for config/saves). Without this,
-  # runtime logs "IDBFS is not defined" and persistence is a no-op.
   "SHELL:-lidbfs.js"
-  # Canvas resize + C main-loop pause/resume for mk/wasm/shell.html. Comma list (no JS-array
-  # quotes) survives CMake separate_arguments(NATIVE_COMMAND).
-  "SHELL:-sEXPORTED_FUNCTIONS=_main,_st_emscripten_canvas_resize,_st_emscripten_canvas_native,_emscripten_pause_main_loop,_emscripten_resume_main_loop,_st_emscripten_audio_pause,_st_emscripten_audio_resume"
+  # Only symbols Pingus actually provides today (+ emscripten main-loop helpers).
+  # SuperTux _st_emscripten_* hooks are optional in shell.html when missing.
+  "SHELL:-sEXPORTED_FUNCTIONS=_main,_emscripten_pause_main_loop,_emscripten_resume_main_loop"
   "SHELL:-sEXPORTED_RUNTIME_METHODS=ccall,cwrap,FS"
 )
 if [ "${ENABLE_ASYNCIFY:-0}" = 1 ]; then

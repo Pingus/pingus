@@ -31,6 +31,8 @@ use older copyright notices; do not mass-rewrite them without reason.)
 Repository: https://github.com/Pingus/pingus  
 Homepage: https://pingus.github.io/
 
+Port / flake progress checklist: **`TODO.md`** (keep it current).
+
 ---
 
 ## Goals

@@ -4,24 +4,36 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := main
 
-# Sources are copied under jni/src/ by build-apk.sh (entire src/ tree + optional shims).
-# Recursive wildcard: every .cpp under this module directory.
+# Sources are copied under jni/src/ by build-apk.sh (entire src/ tree).
 RWILDCARD = $(foreach d,$(wildcard $1*),$(call RWILDCARD,$d/,$2)$(filter $2,$d))
 LOCAL_SRC_FILES := $(patsubst $(LOCAL_PATH)/%,%,$(call RWILDCARD,$(LOCAL_PATH)/,%.cpp))
 LOCAL_SRC_FILES += $(patsubst $(LOCAL_PATH)/%,%,$(wildcard $(LOCAL_PATH)/*.c))
+# Exclude desktop-only / optional backends when present under the tree.
+LOCAL_SRC_FILES := $(filter-out %/sound_real.cpp,$(LOCAL_SRC_FILES))
+LOCAL_SRC_FILES := $(filter-out %/win32/%,$(LOCAL_SRC_FILES))
 
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/../SDL/include \
+	$(LOCAL_PATH)/../SDL/include/SDL2 \
 	$(LOCAL_PATH) \
-	$(LOCAL_PATH)/../SDL/include/SDL2
+	$(LOCAL_PATH)/../external_includes \
+	$(LOCAL_PATH)/../external_includes/argpp \
+	$(LOCAL_PATH)/../external_includes/geom \
+	$(LOCAL_PATH)/../external_includes/logmich \
+	$(LOCAL_PATH)/../external_includes/prio \
+	$(LOCAL_PATH)/../external_includes/strut \
+	$(LOCAL_PATH)/../external_includes/sexp \
+	$(LOCAL_PATH)/../external_includes/tinygettext \
+	$(LOCAL_PATH)/../external_includes/uitest \
+	$(LOCAL_PATH)/../external_includes/wstsound \
+	$(LOCAL_PATH)/../external_includes/xdgcpp
 
-# Prefer SDL2_image from the prebuilt layer when present; otherwise STB shim may be used.
 LOCAL_SHARED_LIBRARIES := SDL2 SDL2_image
 
 LOCAL_LDLIBS := -llog -landroid -lz -lGLESv2 -lEGL
 
-LOCAL_CFLAGS += -DUSE_SDL2 -DANDROID
-LOCAL_CPPFLAGS += -DUSE_SDL2 -DANDROID -std=c++17
+LOCAL_CFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_NO_SOUND=1 -DPINGUS_USE_GLES=1
+LOCAL_CPPFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_NO_SOUND=1 -DPINGUS_USE_GLES=1 -std=c++17
 ifndef PINGUS_VERSION
 PINGUS_VERSION := 0.8.0-dev
 endif
