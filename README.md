@@ -19,11 +19,18 @@ Building
 Pingus uses [Nix package manager](https://nixos.org/download/), to
 automatically download, compile and run it in Linux:
 
-    nix run github:pingus/pingus
+    nix run github:Pingus/pingus
 
-The Windows version can be compiled in Linux with:
+Windows cross builds are produced from a Linux host (packages live under
+the *host* system, not under `packages.*-windows`):
 
-    nix build github:pingus/pingus#packages.i686-windows.pingus-win32
+    nix build github:Pingus/pingus#pingus-win32-x64   # mingwW64 → x86_64 PE
+    nix build github:Pingus/pingus#pingus-win32-x86   # mingw32  → i686 PE
+
+Zipped redistributables:
+
+    nix build github:Pingus/pingus#pingus-win32-x64-zip
+    nix build github:Pingus/pingus#pingus-win32-x86-zip
 
 
 Mailing Lists

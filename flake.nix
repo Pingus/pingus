@@ -57,6 +57,8 @@
     wstsound.inputs.flake-utils.follows = "flake-utils";
     wstsound.inputs.tinycmmc.follows = "tinycmmc";
 
+    # Official MinGW SDL2 devel packages (same pattern as SuperTux Milestone 1).
+    # Exposed under packages.x86_64-windows / i686-windows by those flakes.
     SDL2-win32.url = "git+https://github.com/grumnix/SDL2-win32.git";
     SDL2-win32.inputs.nixpkgs.follows = "nixpkgs";
     SDL2-win32.inputs.tinycmmc.follows = "tinycmmc";
@@ -70,69 +72,133 @@
               tinycmmc, uitest, argpp, geomcpp, logmich, priocpp, strutcpp, sexpcpp,
               tinygettext, xdgcpp, wstsound, SDL2-win32, SDL2_image-win32
             }:
-    tinycmmc.lib.eachSystemWithPkgs (pkgs:
-      rec {
-        packages = rec {
-          default = pingus;
+    # Host systems only (Linux/mac/…). Windows is a *target* built via pkgsCross
+    # from a Linux host — packages live under packages.<host>.pingus-win32-x64,
+    # not under packages.x86_64-windows (that confused hostSystem vs buildSystem).
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        lib = nixpkgs.lib;
+        isWin = pkgs.stdenv.hostPlatform.isWindows;
 
-          pingus = pkgs.callPackage ./pingus.nix {
+        # Resolve a helper-library package for a given target system attr
+        # (e.g. "x86_64-linux" or "x86_64-windows").
+        dep = flake: attr: system':
+          flake.packages.${system'}.${attr};
+
+        mkPingus = {
+          pkgs',
+          targetSystem,
+          pname ? "pingus",
+        }:
+          pkgs'.callPackage ./pingus.nix {
             inherit self;
-            stdenv = pkgs.stdenv;
+            stdenv = pkgs'.stdenv;
             tinycmmc_lib = tinycmmc.lib;
 
-            argpp = argpp.packages.${pkgs.stdenv.hostPlatform.system}.default;
-            geomcpp = geomcpp.packages.${pkgs.stdenv.hostPlatform.system}.default;
-            logmich = logmich.packages.${pkgs.stdenv.hostPlatform.system}.default;
-            priocpp = priocpp.packages.${pkgs.stdenv.hostPlatform.system}.priocpp-sexp;
-            strutcpp = strutcpp.packages.${pkgs.stdenv.hostPlatform.system}.default;
-            tinycmmc = tinycmmc.packages.${pkgs.stdenv.hostPlatform.system}.default;
-            tinygettext = tinygettext.packages.${pkgs.stdenv.hostPlatform.system}.default;
-            uitest = uitest.packages.${pkgs.stdenv.hostPlatform.system}.default;
-            wstsound = wstsound.packages.${pkgs.stdenv.hostPlatform.system}.default;
-            xdgcpp = if !pkgs.stdenv.hostPlatform.isWindows
-                     then xdgcpp.packages.${pkgs.stdenv.hostPlatform.system}.default
-                     else null;
-            mcfgthreads = if pkgs.stdenv.hostPlatform.isWindows
-                          then pkgs.windows.mcfgthreads
+            argpp = dep argpp "default" targetSystem;
+            geomcpp = dep geomcpp "default" targetSystem;
+            logmich = dep logmich "default" targetSystem;
+            priocpp = dep priocpp "priocpp-sexp" targetSystem;
+            strutcpp = dep strutcpp "default" targetSystem;
+            tinycmmc = dep tinycmmc "default" targetSystem;
+            tinygettext = dep tinygettext "default" targetSystem;
+            uitest = dep uitest "default" targetSystem;
+            wstsound = dep wstsound "default" targetSystem;
+            xdgcpp = if targetSystem == "x86_64-windows" || targetSystem == "i686-windows"
+                     then null
+                     else dep xdgcpp "default" targetSystem;
+            mcfgthreads = if pkgs'.stdenv.hostPlatform.isWindows
+                          then pkgs'.windows.mcfgthreads
                           else null;
-            libGL = if pkgs.stdenv.hostPlatform.isWindows
-                    then null
-                    else pkgs.libGL;
-            libGLU  = if pkgs.stdenv.hostPlatform.isWindows
-                      then null
-                      else pkgs.libGLU;
+            libGL = if pkgs'.stdenv.hostPlatform.isWindows then null else pkgs'.libGL;
+            libGLU = if pkgs'.stdenv.hostPlatform.isWindows then null else pkgs'.libGLU;
 
-            SDL2 = if pkgs.stdenv.hostPlatform.isWindows
-                   then SDL2-win32.packages.${pkgs.stdenv.hostPlatform.system}.default
-                   else pkgs.SDL2;
-            SDL2_image = if pkgs.stdenv.hostPlatform.isWindows
-                         then SDL2_image-win32.packages.${pkgs.stdenv.hostPlatform.system}.default
-                         else pkgs.SDL2_image;
+            SDL2 = if pkgs'.stdenv.hostPlatform.isWindows
+                   then SDL2-win32.packages.${targetSystem}.default
+                   else pkgs'.SDL2;
+            SDL2_image = if pkgs'.stdenv.hostPlatform.isWindows
+                         then SDL2_image-win32.packages.${targetSystem}.default
+                         else pkgs'.SDL2_image;
           };
-        } // (pkgs.lib.optionalAttrs (pkgs.stdenv.hostPlatform.isWindows) rec {
-          pingus-win32 = pkgs.runCommand "pingus-win32" {} ''
-            mkdir -p $out
-            mkdir -p $out/data/
 
-            cp -vr ${packages.pingus}/bin/pingus.exe $out/
-            cp -vLr ${packages.pingus}/bin/*.dll $out/
-            cp -vr ${packages.pingus}/share/pingus/. $out/data/
+        pingusNative = mkPingus {
+          pkgs' = pkgs;
+          targetSystem = system;
+          pname = "pingus";
+        };
+
+        # Flat redistributable: .exe + DLLs + data/ at the root (pingus-style).
+        mkWinFlat = { game, pname }:
+          pkgs.runCommand pname { } ''
+            mkdir -p $out/data
+            cp -vr ${game}/bin/pingus.exe $out/ 2>/dev/null \
+              || cp -vr ${game}/bin/*.exe $out/
+            cp -vLr ${game}/bin/*.dll $out/ 2>/dev/null || true
+            if [ -d ${game}/share/pingus ]; then
+              cp -vr ${game}/share/pingus/. $out/data/
+            fi
           '';
 
-          pingus-win32-zip = pkgs.runCommand "pingus-win32-zip" {} ''
+        mkWinZip = pkg: name:
+          pkgs.runCommand name { } ''
             mkdir -p $out
             WORKDIR=$(mktemp -d)
-
             cp --no-preserve mode,ownership --verbose --recursive \
-              ${pingus-win32}/. "$WORKDIR"
-
+              ${pkg}/. "$WORKDIR"
             cd "$WORKDIR"
-            ${nixpkgs.legacyPackages.x86_64-linux.zip}/bin/zip \
+            ${pkgs.zip}/bin/zip \
               -r \
-              $out/pingus-${packages.pingus.version}-${pkgs.stdenv.hostPlatform.system}.zip \
+              $out/${name}-${pingusNative.version}-${system}.zip \
               .
           '';
-        });
+
+        # Windows cross only from non-Windows build hosts (same idea as SuperTux).
+        win64Game = if isWin then null else mkPingus {
+          pkgs' = pkgs.pkgsCross.mingwW64;
+          targetSystem = "x86_64-windows";
+          pname = "pingus-win32-x64";
+        };
+        win32Game = if isWin then null else mkPingus {
+          pkgs' = pkgs.pkgsCross.mingw32;
+          targetSystem = "i686-windows";
+          pname = "pingus-win32-x86";
+        };
+
+        win64Package = if isWin then null else mkWinFlat {
+          game = win64Game;
+          pname = "pingus-win32-x64";
+        };
+        win32Package = if isWin then null else mkWinFlat {
+          game = win32Game;
+          pname = "pingus-win32-x86";
+        };
+      in {
+        packages = {
+          default = pingusNative;
+          pingus = pingusNative;
+        } // lib.optionalAttrs (!isWin) {
+          # Host = Linux (or other Unix); target = Windows PE via pkgsCross.
+          #   nix build .#pingus-win32-x64
+          #   nix build .#packages.x86_64-linux.pingus-win32-x86
+          pingus-win32-x64 = win64Package;
+          pingus-win32-x86 = win32Package;
+          pingus-win32-x64-zip = mkWinZip win64Package "pingus";
+          pingus-win32-x86-zip = mkWinZip win32Package "pingus";
+        };
+
+        apps = {
+          default = {
+            type = "app";
+            program = "${pingusNative}/bin/pingus";
+            meta.description = "Pingus (native)";
+          };
+          pingus = {
+            type = "app";
+            program = "${pingusNative}/bin/pingus";
+            meta.description = "Pingus (native)";
+          };
+        };
       }
     );
 }

@@ -116,7 +116,8 @@ message** for the human (subject ≤ ~72 chars, body explaining why and what).
   ```sh
   nix run github:Pingus/pingus          # or .# for local
   nix build .#pingus
-  nix build .#packages.i686-windows.pingus-win32
+  nix build .#pingus-win32-x64          # Windows cross (host = Linux)
+  nix build .#pingus-win32-x86
   ```
 
 - Non-Nix builds: configure with CMake, ensure dependencies (SDL2, SDL2_image,
