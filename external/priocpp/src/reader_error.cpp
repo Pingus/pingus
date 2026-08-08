@@ -16,6 +16,8 @@
 
 #include "reader_error.hpp"
 
+#include <utility>
+
 namespace prio {
 
 ReaderError::ReaderError(std::string message) :
