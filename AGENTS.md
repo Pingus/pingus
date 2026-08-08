@@ -217,9 +217,22 @@ Repository: https://github.com/Pingus/pingus.git
 
 ### Handoff: git bundle only
 
-Agent handoffs use **`git bundle` only** — not `git format-patch`, `.mbox`, or
-`git am`. Bundles carry real commits (`fetch` / `pull`) and chain cleanly when
-each bundle is based on the consumer’s current tip.
+Agent handoffs use **`git bundle` + `git pull` only**.
+
+**Forbidden for handoffs (never suggest, never use):**
+
+- `git fetch` (of a handoff bundle or as a substitute for stacking)
+- `git cherry-pick`
+- `git format-patch` / `.mbox` / `git am`
+- `git rebase` onto an older parent to “fix” a non-stacking bundle
+- Any workflow that applies commits out of order or rewrites the consumer tip
+
+If a bundle does not fast-forward onto the consumer’s current tip, the
+**producer** was wrong — do not invent consumer-side workarounds. Produce a
+new bundle whose required parent is exactly the tip the consumer already has.
+
+Bundles carry real commits and chain cleanly **only** when each bundle is based
+on the consumer’s current tip.
 
 **Bundles must stack.** Each handoff bundle’s required parent is the tip the
 consumer already has (last applied bundle or `origin/master` after they push).
@@ -236,13 +249,16 @@ git bundle verify changes.bundle
 ```
 
 State the required parent SHA in the handoff note so the consumer can confirm
-before pulling.
+before pulling. The parent **must** be the SHA the consumer reported (or the
+tip of the previous handoff bundle), never an older `origin/master` when a
+newer tip already exists.
 
-**Consumer:**
+**Consumer (only this):**
 
 ```sh
 git pull changes.bundle HEAD
 ```
 
-If `git pull` reports diverging branches, fetch into a side branch and inspect
-with `git log --graph` before merge/rebase. Do not force-push unless intentional.
+That is the entire apply path. No `git fetch`, no `git cherry-pick`, no side
+branch. If `git pull` does not fast-forward, stop and ask for a correctly
+stacked bundle.
