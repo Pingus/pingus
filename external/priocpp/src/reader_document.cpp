@@ -22,6 +22,8 @@
 #include <utility>
 
 #include <logmich/log.hpp>
+#include <format>
+#include "prio/format_util.hpp"
 
 #ifdef PRIO_USE_JSONCPP
 #  include <json/reader.h>

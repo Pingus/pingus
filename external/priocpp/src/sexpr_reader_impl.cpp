@@ -20,6 +20,8 @@
 #include <sstream>
 
 #include <logmich/log.hpp>
+#include <format>
+#include "prio/format_util.hpp"
 #include <sstream>
 #include <sexp/util.hpp>
 #include <sexp/io.hpp>
