@@ -2,7 +2,6 @@
 
 include(CMakeFindDependencyMacro)
 
-find_dependency(fmt)
 find_dependency(PkgConfig)
 
 find_dependency(logmich)
