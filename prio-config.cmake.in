@@ -1,0 +1,21 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+find_dependency(fmt)
+find_dependency(PkgConfig)
+
+find_dependency(logmich)
+
+if(@PRIO_USE_JSONCPP@)
+  pkg_search_module(JSONCPP REQUIRED jsoncpp IMPORTED_TARGET)
+endif()
+
+if(@PRIO_USE_SEXPCPP@)
+  find_dependency(sexp)
+endif()
+
+include("${CMAKE_CURRENT_LIST_DIR}/prio-config-version.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/prio-targets.cmake")
+
+# EOF #
