@@ -9,6 +9,53 @@
 let
   lib = pkgs.lib;
 
+  # Header-only glm (find_package config for emscripten FIND_ROOT).
+  glmPrefix = pkgs.runCommand "glm-headers-wasm" { } ''
+    mkdir -p $out/include $out/lib/cmake/glm
+    cp -a ${pkgs.glm}/include/. $out/include/
+    cat > $out/lib/cmake/glm/glmConfig.cmake <<'EOF'
+set(_glm_inc "${CMAKE_CURRENT_LIST_DIR}/../../../include")
+if(NOT TARGET glm::glm)
+  add_library(glm::glm INTERFACE IMPORTED)
+  set_target_properties(glm::glm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_glm_inc}")
+endif()
+set(glm_FOUND TRUE)
+EOF
+  '';
+
+  # libsigc++ 2.x static for wasm (sigc++-2.0.pc).
+  sigcWasm = pkgs.stdenv.mkDerivation rec {
+    pname = "libsigc++-wasm";
+    version = "2.12.1";
+    src = pkgs.fetchurl {
+      url = "mirror://gnome/sources/libsigc++/2.12/libsigc++-${version}.tar.xz";
+      hash = "sha256-T+DZtpS/Lg3ImPVyQUWZC1zi/bNMPYW5dKPkz8gEBUc=";
+    };
+    nativeBuildInputs = [ pkgs.emscripten pkgs.meson pkgs.ninja pkgs.pkg-config pkgs.python3 ];
+    dontConfigure = true;
+    dontUseMesonConfigure = true;
+    buildPhase = ''
+      runHook preBuild
+      export EM_CACHE="''${TMPDIR:-/tmp}/emcache"
+      mkdir -p "$EM_CACHE"
+      export CC=emcc CXX=em++ AR=emar NM=emnm RANLIB=emranlib
+      meson setup build \
+        --prefix=$out \
+        --default-library=static \
+        -Dbuild-examples=false \
+        -Dbuild-tests=false \
+        -Dmaintainer-mode=false
+      meson compile -C build
+      runHook postBuild
+    '';
+    installPhase = ''
+      runHook preInstall
+      meson install -C build
+      runHook postInstall
+    '';
+  };
+
+
   # Shared install helper bits for a single-component prefix under $PWD/prefix.
   installPrefixPhase = ''
     runHook preInstall
@@ -270,6 +317,8 @@ EOF
         APP_NAME = appName;
         SRC_DIR = "${srcDir}";
         SDL_WASM_LIBS = sdlWasmLibs;
+        EXTRA_PREFIX_PATH = "${glmPrefix}:${sigcWasm}";
+        CMAKE_PREFIX_PATH = "${glmPrefix}:${sigcWasm}";
         ENABLE_SOUND = if enableSound then "1" else "0";
         ENABLE_GLES2 = if enableGles2 then "1" else "0";
         ENABLE_ASYNCIFY = if enableAsyncify then "1" else "0";

@@ -6,7 +6,7 @@
 , SDL2
 , SDL2_image
 , cmake
-, fmt
+
 , gtest
 , libpng
 , libsigcxx
@@ -64,7 +64,7 @@ stdenv.mkDerivation rec {
      find ${stdenv.cc.cc} -iname "*.dll" -exec ln -sfv {} $out/bin/ \;
      ln -sfv ${SDL2}/bin/*.dll $out/bin/
      ln -sfv ${SDL2_image}/bin/*.dll $out/bin/
-     ln -sfv ${fmt}/bin/*.dll $out/bin/
+     ln -sfv ${null}/bin/*.dll $out/bin/
      ln -sfv ${gtest}/bin/*.dll $out/bin/
      ln -sfv ${libsigcxx}/bin/*.dll $out/bin/
 
@@ -79,7 +79,6 @@ stdenv.mkDerivation rec {
 
     SDL2
     SDL2_image
-    fmt
     gtest
     libpng
     libsigcxx

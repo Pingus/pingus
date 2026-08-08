@@ -20,7 +20,7 @@
 #include <sstream>
 
 #include <logmich/log.hpp>
-#include <fmt/ostream.h>
+#include <sstream>
 #include <sexp/util.hpp>
 #include <sexp/io.hpp>
 
@@ -58,10 +58,10 @@ SExprReaderDocumentImpl::error(ErrorHandler error_handler, sexp::Value const& sx
 {
   switch (error_handler) {
     case ErrorHandler::THROW:
-      throw ReaderError(fmt::format("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), fmt::streamed(sx), message));
+      throw ReaderError(std::format("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), prio::stream_str(sx), message));
 
     case ErrorHandler::LOG:
-      log_error("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), fmt::streamed(sx), message);
+      log_error("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), prio::stream_str(sx), message);
       break;
 
     case ErrorHandler::IGNORE:

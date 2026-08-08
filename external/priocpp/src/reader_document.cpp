@@ -56,7 +56,7 @@ ReaderDocument::from_file(Format format,
 {
   std::ifstream fin(filename);
   if (!fin) {
-    throw ReaderError(fmt::format("{}: failed to open: {}", fmt::streamed(filename), strerror(errno)));
+    throw ReaderError(std::format("{}: failed to open: {}", prio::stream_str(filename), strerror(errno)));
   } else {
     return from_stream(format, fin, error_handler, filename.string());
   }
@@ -86,7 +86,7 @@ ReaderDocument::from_stream(Format format,
       std::string errs;
       Json::Value root;
       if (!Json::parseFromStream(builder, stream, &root, &errs)) {
-        throw ReaderError(fmt::format("json parse error: {}", errs));
+        throw ReaderError(std::format("json parse error: {}", errs));
       }
       return ReaderDocument(std::make_unique<JsonReaderDocumentImpl>(std::move(root), error_handler, filename));
     }
@@ -98,7 +98,7 @@ ReaderDocument::from_stream(Format format,
         auto sx = sexp::Parser::from_stream(stream, sexp::Parser::USE_ARRAYS);
         return ReaderDocument(std::make_unique<SExprReaderDocumentImpl>(std::move(sx), error_handler, filename));
       } catch(std::exception const& err) {
-        std::throw_with_nested(ReaderError(fmt::format("{}: ReaderDocument::from_stream() failed", filename ?  *filename : "<unknown>")));
+        std::throw_with_nested(ReaderError(std::format("{}: ReaderDocument::from_stream() failed", filename ?  *filename : "<unknown>")));
       }
     }
 #endif

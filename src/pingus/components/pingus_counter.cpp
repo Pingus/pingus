@@ -40,12 +40,14 @@ PingusCounter::draw(DrawingContext& gc)
 
   World* world = server->get_world();
 
-  std::string text = fmt::format(fmt::runtime(_("Released:{:3d}/{:d}   Out:{:3d}   Saved:{:3d}/{:d}")),
-                                 world->get_pingus()->get_number_of_released(),
-                                 world->get_pingus()->get_number_of_allowed(),
-                                 world->get_pingus()->get_number_of_alive(),
-                                 world->get_pingus()->get_number_of_exited(),
-                                 server->get_plf().get_number_to_save());
+  std::string text = std::vformat(
+    std::string(_("Released:{:3d}/{:d}   Out:{:3d}   Saved:{:3d}/{:d}")),
+    std::make_format_args(
+      world->get_pingus()->get_number_of_released(),
+      world->get_pingus()->get_number_of_allowed(),
+      world->get_pingus()->get_number_of_alive(),
+      world->get_pingus()->get_number_of_exited(),
+      server->get_plf().get_number_to_save()));
 
   gc.print_center(font, Vector2i(gc.get_width()/2, -2), text);
 }

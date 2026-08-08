@@ -18,7 +18,7 @@
 
 #include <stdexcept>
 
-#include <fmt/format.h>
+#include <format>
 
 namespace pingus::input {
 
@@ -129,7 +129,7 @@ ControllerDescription::get_definition(std::string const& name) const
 {
   std::map<std::string, InputEventDefinition>::const_iterator i = str_to_event.find(name);
   if (i == str_to_event.end()) {
-    throw std::runtime_error(fmt::format("Unknown event str: {}", name));
+    throw std::runtime_error(std::format("Unknown event str: {}", name));
   }
 
   return i->second;

@@ -18,7 +18,7 @@
 
 #include <SDL_image.h>
 #include <stdexcept>
-#include <fmt/format.h>
+#include <format>
 
 #include <logmich/log.hpp>
 #include <geom/rect.hpp>
@@ -71,7 +71,7 @@ Surface::Surface(Pathname const& pathname) :
   SDL_Surface* surface = IMG_Load(pathname.get_sys_path().c_str());
   if (!surface)
   {
-    throw std::runtime_error(fmt::format("couldn't load {}\n  IMG_GetError: {}",
+    throw std::runtime_error(std::format("couldn't load {}\n  IMG_GetError: {}",
                                          pathname.get_sys_path(), IMG_GetError()));
   }
   else
@@ -376,7 +376,7 @@ Surface::mod(ResourceModifier::Enum modifier)
       return Blitter::rotate_270_flip(*this);
 
     default:
-      log_error("Surface: unhandled modifier: {}", fmt::streamed(modifier));
+      log_error("Surface: unhandled modifier: {}", (modifier));
       return *this;
   }
 }
@@ -515,7 +515,7 @@ Surface::is_indexed() const
 void
 Surface::print(std::ostream& out)
 {
-  out << fmt::format("Pointer: 0x{:p}\n"
+  out << std::format("Pointer: 0x{:p}\n"
                      "Rmask:   0x{:08x}\n"
                      "Gmask:   0x{:08x}\n"
                      "Bmask:   0x{:08x}\n"
@@ -535,7 +535,7 @@ Surface::print(std::ostream& out)
   Uint32 colorkey;
   if (SDL_GetColorKey(impl->surface, &colorkey) == 0)
   {
-    out << "Colorkey: " << fmt::format("0x{:08x}", colorkey) << std::endl;
+    out << "Colorkey: " << std::format("0x{:08x}", colorkey) << std::endl;
   }
   else
   {
@@ -557,7 +557,7 @@ Surface::print(std::ostream& out)
     SDL_LockSurface(impl->surface);
     Uint8* pixels = static_cast<Uint8*>(impl->surface->pixels);
     for(int i = 0; i < impl->surface->pitch * impl->surface->h; i += 4)
-      out << fmt::format("({:3d} {:3d} {:3d} {:3d}) ",
+      out << std::format("({:3d} {:3d} {:3d} {:3d}) ",
                          static_cast<int>(pixels[i+0]),
                          static_cast<int>(pixels[i+1]),
                          static_cast<int>(pixels[i+2]),

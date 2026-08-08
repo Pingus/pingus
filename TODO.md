@@ -49,6 +49,14 @@ land or scope changes.
 
 ## In progress / next
 
+### Dependencies
+
+- [x] Replace `{fmt}` with `std::format` / `std::vformat` (C++20) in Pingus,
+      logmich, and priocpp
+- [ ] Provide **glm** + **libsigc++-2** for Emscripten (`EXTRA_PREFIX_PATH`)
+      and confirm `find_package` / pkg-config under FIND_ROOT BOTH
+
+
 ### WASM (`.#pingus-wasm`)
 
 - [x] Strip SuperTux-only `EXPORTED_FUNCTIONS` (`_st_emscripten_*`) from the

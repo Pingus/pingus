@@ -17,6 +17,10 @@
 cmake_minimum_required(VERSION 3.15)
 project(pingus)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 include(mk/cmake/TinyCMMC.cmake)
 
 # Port / packaging options (used by mk/wasm, mk/r36s, distro builds).
@@ -144,7 +148,6 @@ else()
   endif()
 endif()
 
-find_package(fmt REQUIRED)
 find_package(glm REQUIRED)
 
 if(WIN32)
@@ -255,7 +258,6 @@ target_link_libraries(libpingus PUBLIC
   tinygettext
   strut::strut
   xdgcpp
-  fmt::fmt
   glm::glm
   ${PINGUS_SDL_LIBS}
   ${PINGUS_OPTIONAL_LIBS}

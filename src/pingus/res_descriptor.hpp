@@ -19,7 +19,7 @@
 
 #include "engine/display/resource_modifier.hpp"
 
-#include <fmt/format.h>
+#include <format>
 #include <sstream>
 
 namespace pingus {
@@ -47,7 +47,7 @@ std::ostream& operator<<(std::ostream& s, ResDescriptor const& desc);
 } // namespace pingus
 
 template<>
-struct fmt::formatter<pingus::ResDescriptor>
+struct std::formatter<pingus::ResDescriptor>
 {
   template<typename ParseContext>
   constexpr auto parse(ParseContext& ctx)
@@ -60,7 +60,7 @@ struct fmt::formatter<pingus::ResDescriptor>
   {
     std::ostringstream os;
     os << v;
-    return fmt::format_to(ctx.out(), os.str());
+    return std::format_to(ctx.out(), "{}", os.str());
   }
 };
 

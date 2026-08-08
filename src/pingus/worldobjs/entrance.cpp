@@ -120,7 +120,7 @@ Entrance::create_pingu()
         break;
 
       default:
-        log_error("warning direction is wrong: {}", fmt::streamed(direction));
+        log_error("warning direction is wrong: {}", static_cast<int>(direction));
         d.right();
         pingu->set_direction(d);
         break;

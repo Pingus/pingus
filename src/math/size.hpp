@@ -34,8 +34,6 @@
 #define HEADER_PINGUS_MATH_SIZE_HPP
 
 #include <iosfwd>
-#include <fmt/format.h>
-#include <sstream>
 
 #include <geom/size.hpp>
 

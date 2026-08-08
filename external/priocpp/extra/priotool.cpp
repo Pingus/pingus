@@ -15,7 +15,7 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include <fmt/format.h>
+#include <format>
 
 #include <prio/prio.hpp>
 
@@ -127,7 +127,7 @@ Options parse_args(int argc, char** argv)
       } else if (strcmp(argv[i], "--sexp") == 0) {
         opts.format = Format::SEXPR;
       } else {
-        throw std::runtime_error(fmt::format("invalid argument {}", argv[i]));
+        throw std::runtime_error(std::format("invalid argument {}", argv[i]));
       }
     } else {
       opts.files.emplace_back(argv[i]);

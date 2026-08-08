@@ -87,6 +87,17 @@ cmake_args=(
   -DSDL2_ROOT="$SDL_WASM_LIBS"
   -DEMSCRIPTEN_LINK_FLAGS="${LINK_FLAGS[*]} ${PRELOAD[*]}"
 )
+# Prebuilt glm / libsigc++ (and friends) live outside the emscripten sysroot.
+if [ -n "${EXTRA_PREFIX_PATH:-}" ]; then
+  cmake_args+=(
+    -DCMAKE_PREFIX_PATH="${EXTRA_PREFIX_PATH}"
+    -DCMAKE_FIND_ROOT_PATH="${EXTRA_PREFIX_PATH};${SDL_WASM_LIBS}"
+    -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=BOTH
+    -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH
+    -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH
+  )
+  echo "==> EXTRA_PREFIX_PATH=${EXTRA_PREFIX_PATH}"
+fi
 if [ -n "$PROJECT_VERSION_FULL" ]; then
   cmake_args+=(-DPROJECT_VERSION_FULL="$PROJECT_VERSION_FULL")
 fi

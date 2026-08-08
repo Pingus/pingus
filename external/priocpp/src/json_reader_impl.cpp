@@ -18,7 +18,7 @@
 
 #include <stdexcept>
 
-#include <fmt/ostream.h>
+#include <sstream>
 #include <json/writer.h>
 #include <logmich/log.hpp>
 
@@ -50,10 +50,10 @@ JsonReaderDocumentImpl::error(ErrorHandler error_handler, Json::Value const& jso
 {
   switch (error_handler) {
     case ErrorHandler::THROW:
-      throw ReaderError(fmt::format("{}: {}: {}", m_filename ? *m_filename : "<unknown>", fmt::streamed(json), message));
+      throw ReaderError(std::format("{}: {}: {}", m_filename ? *m_filename : "<unknown>", prio::stream_str(json), message));
 
     case ErrorHandler::LOG:
-      log_error("{}: {}: {}", m_filename ? *m_filename : "<unknown>", fmt::streamed(json), message);
+      log_error("{}: {}: {}", m_filename ? *m_filename : "<unknown>", prio::stream_str(json), message);
       break;
 
     case ErrorHandler::IGNORE:

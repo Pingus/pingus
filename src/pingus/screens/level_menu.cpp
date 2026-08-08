@@ -19,7 +19,7 @@
 #include <functional>
 #include <utility>
 
-#include <fmt/format.h>
+#include <format>
 #include <logmich/log.hpp>
 
 #include "engine/display/display.hpp"
@@ -185,8 +185,8 @@ public:
       gc.print_left(pingus::fonts::chalk_normal, Vector2i(list_rect.left() + 105, 15 + y), _(levelset->get_title()));
       gc.print_left(pingus::fonts::chalk_small,  Vector2i(list_rect.left() + 105, 40 + y), _(levelset->get_description()));
 
-      gc.print_right(pingus::fonts::chalk_normal, Vector2i(list_rect.right(), 15 + y), fmt::format("{} {}%", _("Solved:"), levelset->get_completion()));
-      gc.print_right(pingus::fonts::chalk_small,  Vector2i(list_rect.right(), 40 + y), fmt::format("{} {}", levelset->get_level_count(), _("levels")));
+      gc.print_right(pingus::fonts::chalk_normal, Vector2i(list_rect.right(), 15 + y), std::format("{} {}%", _("Solved:"), levelset->get_completion()));
+      gc.print_right(pingus::fonts::chalk_small,  Vector2i(list_rect.right(), 40 + y), std::format("{} {}", levelset->get_level_count(), _("levels")));
 
       y += item_height;
     }

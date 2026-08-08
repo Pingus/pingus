@@ -17,8 +17,6 @@
 #ifndef HEADER_PINGUS_MATH_VECTOR2I_HPP
 #define HEADER_PINGUS_MATH_VECTOR2I_HPP
 
-#include <fmt/format.h>
-#include <sstream>
 #include <geom/point.hpp>
 
 namespace pingus {
