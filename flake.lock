@@ -1,0 +1,364 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "libmodplug-win32": {
+      "inputs": {
+        "libmodplug_src": "libmodplug_src",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716834232,
+        "narHash": "sha256-ZnTt0ZFvCPSA6NcIzAku/LH4SqYmKnwhdTadk209bFY=",
+        "ref": "refs/heads/master",
+        "rev": "ca34343b3492192f977f06b529888ea55f184097",
+        "revCount": 5,
+        "type": "git",
+        "url": "https://github.com/grumnix/libmodplug-win32.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/grumnix/libmodplug-win32.git"
+      }
+    },
+    "libmodplug_src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1493040202,
+        "narHash": "sha256-jNHspgIcrv5AUEgq2MB4TSqbj//tTCXiOoSqYjShGkw=",
+        "type": "tarball",
+        "url": "https://downloads.sourceforge.net/project/modplug-xmms/libmodplug/0.8.9.0/libmodplug-0.8.9.0.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.sourceforge.net/project/modplug-xmms/libmodplug/0.8.9.0/libmodplug-0.8.9.0.tar.gz"
+      }
+    },
+    "libogg-win32": {
+      "inputs": {
+        "libogg_src": "libogg_src",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764251829,
+        "narHash": "sha256-CUq+HLy257tgKo9URjnjgCS1HyIQpPetU06gFr/1fQA=",
+        "ref": "refs/heads/master",
+        "rev": "a05787b0ad8f878cd44008fd0c4c99cb149c0066",
+        "revCount": 6,
+        "type": "git",
+        "url": "https://github.com/grumnix/libogg-win32.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/grumnix/libogg-win32.git"
+      }
+    },
+    "libogg_src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1622776890,
+        "narHash": "sha256-L8hFWoCh2VTdlsOq+cbP1eYAnciH70xlk1eSwr8YP5c=",
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.gz"
+      }
+    },
+    "libvorbis-win32": {
+      "inputs": {
+        "libogg": [
+          "libogg-win32"
+        ],
+        "libvorbis_src": "libvorbis_src",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764251884,
+        "narHash": "sha256-3jO1DR02WbHEtv6r809E/UvUFou2uXkT/8hkqmhK2Y4=",
+        "ref": "refs/heads/master",
+        "rev": "d698e14ec3fce00f85c111f74ad783bbda813a72",
+        "revCount": 7,
+        "type": "git",
+        "url": "https://github.com/grumnix/libvorbis-win32.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/grumnix/libvorbis-win32.git"
+      }
+    },
+    "libvorbis_src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1593843770,
+        "narHash": "sha256-xXty8sK0hmJX7jQu5+CDBslNVQ0+dZaUrbp/12xVmy0=",
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz"
+      }
+    },
+    "mpg123-win32": {
+      "inputs": {
+        "mpg123_src": "mpg123_src",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716728685,
+        "narHash": "sha256-+oyZIT88pcIuWUW1jw69KpxEjvqU1QDtF3VV6hiTVAo=",
+        "ref": "refs/heads/master",
+        "rev": "aead750a3614f02601f7e81f67751b9f64eeab07",
+        "revCount": 5,
+        "type": "git",
+        "url": "https://github.com/grumnix/mpg123-win32.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/grumnix/mpg123-win32.git"
+      }
+    },
+    "mpg123_src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1679225440,
+        "narHash": "sha256-OGSGPiIZbcBhovnX+rMquDECVT0myZDpJFxMYQMK4TM=",
+        "type": "tarball",
+        "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.31.3/mpg123-1.31.3.tar.bz2"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.sourceforge.net/project/mpg123/mpg123/1.31.3/mpg123-1.31.3.tar.bz2"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1775423009,
+        "narHash": "sha256-vPKLpjhIVWdDrfiUM8atW6YkIggCEKdSAlJPzzhkQlw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "68d8aa3d661f0e6bd5862291b5bb263b2a6595c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "openal-soft-win32": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "openal-soft_src": "openal-soft_src",
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763585892,
+        "narHash": "sha256-ADPqFbvM+Dy6OoW/Mk1E/0OM+IPyO6QC6Qd+FOsXQeg=",
+        "ref": "refs/heads/master",
+        "rev": "98996385d263cbafa77890bf7c1fbc7efdb9a2e6",
+        "revCount": 7,
+        "type": "git",
+        "url": "https://github.com/grumnix/openal-soft-win32.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/grumnix/openal-soft-win32.git"
+      }
+    },
+    "openal-soft_src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1743221304,
+        "narHash": "sha256-VQa3FD9NyvDv/+VbU+5lmV0LteiioJHpRkr1lnCn1g4=",
+        "owner": "kcat",
+        "repo": "openal-soft",
+        "rev": "dc7d7054a5b4f3bec1dc23a42fd616a0847af948",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kcat",
+        "ref": "1.24.3",
+        "repo": "openal-soft",
+        "type": "github"
+      }
+    },
+    "opus-win32": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "opus_src": "opus_src",
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716728603,
+        "narHash": "sha256-3+GUby3dHbQPdsBiGQlQ9XgNyZe1hORqbQpGUCzFm1E=",
+        "ref": "refs/heads/master",
+        "rev": "4530cd6280b2c239d8df717943fa0f63b1a3a650",
+        "revCount": 5,
+        "type": "git",
+        "url": "https://github.com/grumnix/opus-win32.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/grumnix/opus-win32.git"
+      }
+    },
+    "opus_src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1555106623,
+        "narHash": "sha256-VyHmKoRXCJ0shVfUn6cX13b0fAXIQk0Z5NLZIfy8Gh4=",
+        "type": "tarball",
+        "url": "https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz"
+      }
+    },
+    "opusfile-win32": {
+      "inputs": {
+        "libogg": [
+          "libogg-win32"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "opus": [
+          "opus-win32"
+        ],
+        "opusfile_src": "opusfile_src",
+        "tinycmmc": [
+          "tinycmmc"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716728646,
+        "narHash": "sha256-pCL8yrYE3EppKKrv8ORuCaWepm6eYmsYj3I1WoIxWDQ=",
+        "ref": "refs/heads/master",
+        "rev": "c19b24efe82fd596016d7805e9206466c0b5744e",
+        "revCount": 7,
+        "type": "git",
+        "url": "https://github.com/grumnix/opusfile-win32.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/grumnix/opusfile-win32.git"
+      }
+    },
+    "opusfile_src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1593226173,
+        "narHash": "sha256-UEoOyY9DM5lINTAHIfSRK5+o622pIK2ObQ00swIcM40=",
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/opus/opusfile-0.12.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://downloads.xiph.org/releases/opus/opusfile-0.12.tar.gz"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "libmodplug-win32": "libmodplug-win32",
+        "libogg-win32": "libogg-win32",
+        "libvorbis-win32": "libvorbis-win32",
+        "mpg123-win32": "mpg123-win32",
+        "nixpkgs": "nixpkgs",
+        "openal-soft-win32": "openal-soft-win32",
+        "opus-win32": "opus-win32",
+        "opusfile-win32": "opusfile-win32",
+        "tinycmmc": "tinycmmc"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "tinycmmc": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763256011,
+        "narHash": "sha256-CpQWAHdeLUYd28cT9heG05p6RX9WF7QslqNHoBi931E=",
+        "ref": "refs/heads/master",
+        "rev": "2e007ba059a4991c011a7193c9d7df28826c9adc",
+        "revCount": 64,
+        "type": "git",
+        "url": "https://github.com/grumbel/tinycmmc.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/grumbel/tinycmmc.git"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
