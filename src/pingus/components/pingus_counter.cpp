@@ -42,16 +42,18 @@ PingusCounter::draw(DrawingContext& gc)
 
   World* world = server->get_world();
 
-  // std::make_format_args requires lvalues; bind getters first.
+  // Runtime translated format string → std::vformat (not std::format,
+  // which requires a compile-time format string). make_format_args needs
+  // lvalues, so bind the counts first.
   int released = world->get_pingus()->get_number_of_released();
   int allowed  = world->get_pingus()->get_number_of_allowed();
   int alive    = world->get_pingus()->get_number_of_alive();
   int exited   = world->get_pingus()->get_number_of_exited();
   int to_save  = server->get_plf().get_number_to_save();
 
-  std::string text = std::format(
+  std::string text = std::vformat(
     std::string(_("Released:{:3d}/{:d}   Out:{:3d}   Saved:{:3d}/{:d}")),
-    released, allowed, alive, exited, to_save);
+    std::make_format_args(released, allowed, alive, exited, to_save));
 
   gc.print_center(font, Vector2i(gc.get_width()/2, -2), text);
 }
