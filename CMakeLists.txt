@@ -138,6 +138,9 @@ if(NOT PINGUS_ENABLE_SOUND)
 endif()
 if(PINGUS_USE_GLES)
   add_definitions(-DPINGUS_USE_GLES=1)
+else()
+  # Desktop GL 3.3 path: expose shader/VBO prototypes from system glext headers.
+  add_definitions(-DGL_GLEXT_PROTOTYPES=1)
 endif()
 
 if(BUILD_TESTS)
