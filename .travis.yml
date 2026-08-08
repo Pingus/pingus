@@ -1,0 +1,24 @@
+language: cpp
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    - boost-latest
+    packages:
+    - gcc-5
+    - g++-5
+    - libboost-filesystem1.55-dev
+    - libboost-system1.55-dev
+    - libboost-test1.55-dev
+
+before_script:
+    - mkdir build
+    - cd build
+    - cmake -DCMAKE_C_COMPILER=gcc-5 -DCMAKE_CXX_COMPILER=g++-5 ..
+
+script:
+    - make
+    - make test
+
+os: linux
