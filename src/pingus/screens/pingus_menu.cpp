@@ -75,17 +75,24 @@ PingusMenu::PingusMenu() :
     _("Levelsets"),
     _("..:: Play User Built levels ::.."));
 
+#ifndef PINGUS_EMSCRIPTEN
+  // Closing the browser tab ends the session; an in-game Exit is redundant.
   quit_button = gui_manager->create<MenuButton>(
     this, Vector2i(size_.width()/2,
                    size_.height()/2 + 120),
     _("Exit"),
     _("..:: Bye, bye ::.."));
+#endif
 
   logo = Sprite("core/misc/logo");
 
   create_background(Size(Display::get_width(), Display::get_height()));
 
+#ifdef PINGUS_EMSCRIPTEN
+  help = _("..:: F10: fps counter   ::   F12: screenshot ::..");
+#else
   help = _("..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::..");
+#endif
 
   pingus::sound::PingusSound::play_music("pingus-1.it");
 }
@@ -271,8 +278,9 @@ PingusMenu::resize(Size const& size_)
   options_button->set_pos(size.width()/2 + 125,
                           size.height()/2 + 50);
 
-  quit_button->set_pos(size.width()/2,
-                       size.height()/2 + 120);
+  if (quit_button)
+    quit_button->set_pos(size.width()/2,
+                         size.height()/2 + 120);
 }
 
 } // namespace pingus

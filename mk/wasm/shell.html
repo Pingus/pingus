@@ -101,14 +101,12 @@
 </head>
 <body>
   <div id="wrap">
-    <div id="canvas-slot" class="mode-native">
+    <div id="canvas-slot" class="mode-fit">
       <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
     </div>
     <div id="status">Loading…</div>
     <div id="progress"><div id="progress-bar"></div></div>
     <div class="toolbar toolbar-display">
-      <button type="button" id="btn-display-native" class="active" title="Original resolution">640×480</button>
-      <button type="button" id="btn-display-fit" title="Scale to fit the browser window">Fit window</button>
       <button type="button" id="btn-display-fullscreen" title="Browser fullscreen">Fullscreen</button>
       <button type="button" id="btn-pause" title="Freeze the game loop (tab hide also freezes)">Pause</button>
     </div>
@@ -252,39 +250,18 @@
     }
 
 
-    var stDisplayMode = 'native'; /* native | fit */
-
+    /* Canvas always tracks the layout box; Pingus resizes its framebuffer to match. */
     function stNotifyCanvasResize() {
       var c = document.getElementById('canvas');
       if (!c) return;
-      var w, h;
-      if (stDisplayMode === 'native' && !document.fullscreenElement && !document.webkitFullscreenElement) {
-        w = 640; h = 480;
-      } else {
-        /* Use CSS layout size in CSS pixels; SDL/WebGL letterboxes inside. */
-        var r = c.getBoundingClientRect();
-        w = Math.max(16, Math.round(r.width));
-        h = Math.max(16, Math.round(r.height));
-      }
+      var r = c.getBoundingClientRect();
+      var w = Math.max(16, Math.round(r.width));
+      var h = Math.max(16, Math.round(r.height));
       c.width = w;
       c.height = h;
       if (typeof Module !== 'undefined' && typeof Module._st_emscripten_canvas_resize === 'function') {
         try { Module._st_emscripten_canvas_resize(w, h); } catch (e) { console.warn(e); }
       }
-    }
-
-    function stSetDisplayMode(mode) {
-      stDisplayMode = mode;
-      var slot = document.getElementById('canvas-slot');
-      if (slot) {
-        slot.className = (mode === 'fit') ? 'mode-fit' : 'mode-native';
-      }
-      var bn = document.getElementById('btn-display-native');
-      var bf = document.getElementById('btn-display-fit');
-      if (bn) bn.className = (mode === 'native') ? 'active' : '';
-      if (bf) bf.className = (mode === 'fit') ? 'active' : '';
-      /* Defer so layout applies before measuring. */
-      setTimeout(stNotifyCanvasResize, 0);
     }
 
     function stToggleFullscreen() {
@@ -303,14 +280,7 @@
       var fs = document.fullscreenElement || document.webkitFullscreenElement;
       var btn = document.getElementById('btn-display-fullscreen');
       if (btn) btn.className = fs ? 'active' : '';
-      if (fs) {
-        /* While fullscreen, scale to the display; keep preferred mode for exit. */
-        var slot = document.getElementById('canvas-slot');
-        if (slot) slot.className = 'mode-fit';
-        setTimeout(stNotifyCanvasResize, 50);
-      } else {
-        stSetDisplayMode(stDisplayMode);
-      }
+      setTimeout(stNotifyCanvasResize, 50);
     }
 
 
@@ -380,19 +350,12 @@
     }
 
     function stEnableDisplayButtons() {
-      var bn = document.getElementById('btn-display-native');
-      var bf = document.getElementById('btn-display-fit');
       var bfs = document.getElementById('btn-display-fullscreen');
-      if (bn) bn.onclick = function() { stSetDisplayMode('native'); };
-      if (bf) bf.onclick = function() { stSetDisplayMode('fit'); };
       if (bfs) bfs.onclick = function() { stToggleFullscreen(); };
       document.addEventListener('fullscreenchange', stOnFullscreenChange);
       document.addEventListener('webkitfullscreenchange', stOnFullscreenChange);
-      window.addEventListener('resize', function() {
-        if (stDisplayMode === 'fit' || document.fullscreenElement || document.webkitFullscreenElement)
-          stNotifyCanvasResize();
-      });
-      stSetDisplayMode('native');
+      window.addEventListener('resize', stNotifyCanvasResize);
+      setTimeout(stNotifyCanvasResize, 0);
     }
 
     function stEnableBackupButtons() {
