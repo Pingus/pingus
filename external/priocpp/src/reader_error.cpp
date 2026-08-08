@@ -16,6 +16,7 @@
 
 #include "reader_error.hpp"
 
+#include <string>
 #include <utility>
 
 namespace prio {

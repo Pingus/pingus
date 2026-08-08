@@ -20,6 +20,7 @@
 #include <cstdint>
 #include <string>
 #include <vector>
+#include <format>
 #include <sstream>
 
 namespace pingus {
@@ -93,3 +94,15 @@ std::ostream& operator<< (std::ostream& os, Pathname const& p);
 #endif
 
 /* EOF */
+
+template<>
+struct std::formatter<pingus::Pathname>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+
+  auto format(pingus::Pathname const& p, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "{}", p.str());
+  }
+};
+
