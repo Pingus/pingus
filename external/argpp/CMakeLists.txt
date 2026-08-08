@@ -48,13 +48,15 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_library(argpp STATIC
   src/parser.cpp
   src/prettyprinter.cpp)
-# Public: <argpp/argpp.hpp> for consumers (in-tree and installed).
-# Private include/argpp: sources use #include "argpp.hpp".
+# Public BUILD_INTERFACE needs both roots:
+#   include/       → #include <argpp/argpp.hpp> (Pingus)
+#   include/argpp/ → #include <argpp.hpp> / "argpp.hpp" (argpp sources & tests)
+# Install layout is include/argpp/argpp.hpp, so INSTALL_INTERFACE is include/.
 target_include_directories(argpp PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/argpp>
   $<INSTALL_INTERFACE:include>)
 target_include_directories(argpp PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/argpp
   src/)
 target_compile_options(argpp PRIVATE ${WARNINGS_CXX_FLAGS})
 set_target_properties(argpp PROPERTIES PUBLIC_HEADER "include/argpp/argpp.hpp")
