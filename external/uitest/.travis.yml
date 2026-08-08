@@ -1,0 +1,68 @@
+# UITest - Simple testing framework for interactive tests
+# Copyright (C) 2015 Ingo Ruhnke <grumbel@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Build file for https://travis-ci.org/
+#
+# Configuration manual:
+# http://docs.travis-ci.com/user/build-configuration/
+#
+# Based on:
+# https://github.com/supertuxkart/stk-code/blob/master/.travis.yml
+# https://github.com/SuperTux/supertux/blob/master/.travis.yml
+
+language: cpp
+dist: trusty
+sudo: required
+
+compiler:
+  - gcc
+  - clang
+
+matrix:
+  fast_finish: true
+
+env:
+  matrix:
+    - BUILD_TYPE="Debug"
+    - BUILD_TYPE="Release"
+
+before_install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+  - if [ "$CXX" == "clang++" ]; then export CXX="clang++-4.0" CC="clang-4.0"; fi
+
+script:
+  # Clean from previous Travis build
+  - git clean -f
+  # Then build:
+  - mkdir "build-$BUILD_TYPE"
+  - cd "build-$BUILD_TYPE"
+  - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_EXAMPLES=ON -DBUILD_TESTS=ON -DWARNINGS=ON -DWERROR=ON
+  - make VERBOSE=1 -j3
+  - ./test_uitest
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise
+    packages:
+    - build-essential
+    - cmake
+    - clang-4.0
+    - g++-4.9
+    - libboost-dev
+
+# EOF #

@@ -1,0 +1,8 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/uitest-config-version.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/uitest-targets.cmake")
+
+check_required_components(uitest)
+
+# EOF #
