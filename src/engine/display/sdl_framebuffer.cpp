@@ -244,6 +244,17 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
     SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
 
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+    if (m_renderer == nullptr)
+    {
+      log_warn("SDL_RENDERER_ACCELERATED failed ({}), trying software", SDL_GetError());
+      m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_SOFTWARE);
+    }
+    if (m_renderer == nullptr)
+    {
+      std::ostringstream msg;
+      msg << "SDL_CreateRenderer failed: " << SDL_GetError();
+      throw std::runtime_error(msg.str());
+    }
   }
 }
 

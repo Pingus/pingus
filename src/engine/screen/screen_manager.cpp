@@ -16,6 +16,7 @@
 
 #include "engine/screen/screen_manager.hpp"
 
+#include <cstdio>
 #include <iostream>
 #include <utility>
 
@@ -113,12 +114,16 @@ ScreenManager::display()
   last_ticks = SDL_GetTicks();
 
 #ifdef PINGUS_EMSCRIPTEN
+  std::fprintf(stderr,
+    "[pingus] ScreenManager::display: screens=%zu last_ticks=%u — registering main loop\n",
+    screens.size(), last_ticks);
   // Browser-driven loop via requestAnimationFrame (fps=0). Avoids SDL_Delay
   // busy-waits that spin the tab at 100% CPU without ASYNCIFY.
   // simulate_infinite_loop=false: return to caller so we do not JS-throw/unwind
   // the C stack (that would run destructors for stack-allocated game state).
   // Application / managers are heap-allocated on Emscripten for this reason.
   emscripten_set_main_loop_arg(&ScreenManager::emscripten_main_loop, this, 0, false);
+  std::fprintf(stderr, "[pingus] ScreenManager::display: main loop registered, returning to JS\n");
 #else
   while (!screens.empty())
   {
@@ -134,6 +139,7 @@ ScreenManager::emscripten_main_loop(void* arg)
   ScreenManager* self = static_cast<ScreenManager*>(arg);
   if (self->screens.empty())
   {
+    std::fprintf(stderr, "[pingus] main loop: screen stack empty — cancelling\n");
     emscripten_cancel_main_loop();
     return;
   }
@@ -181,6 +187,25 @@ ScreenManager::run_one_frame()
   if (globals::software_cursor)
     cursor.update(previous_frame_time);
 
+#ifdef PINGUS_EMSCRIPTEN
+  {
+    static int frame_n = 0;
+    if (frame_n < 5) {
+      std::fprintf(stderr,
+        "[pingus] frame %d: dt=%.4f screens=%zu events=%zu\n",
+        frame_n, previous_frame_time, screens.size(), events.size());
+      ++frame_n;
+    }
+  }
+  // Never drop the frame on WASM: a long first dt (loading) would otherwise
+  // leave the canvas black until the next short frame.
+  if (previous_frame_time > 1.0f) {
+    if (globals::developer_mode)
+      log_warn("ScreenManager: clamping long frame ({} sec.)", previous_frame_time);
+    previous_frame_time = 1.0f / globals::desired_fps;
+  }
+  update(previous_frame_time, events);
+#else
   // previous frame took more than one second
   if (previous_frame_time > 1.0f)
   {
@@ -191,7 +216,6 @@ ScreenManager::run_one_frame()
   {
     update(previous_frame_time, events);
 
-#ifndef PINGUS_EMSCRIPTEN
     // Cap framerate on native builds. On Emscripten, requestAnimationFrame
     // already paces frames; SDL_Delay would busy-wait without ASYNCIFY.
     float current_frame_time = float(SDL_GetTicks() - last_ticks) / 1000.0f;
@@ -199,8 +223,8 @@ ScreenManager::run_one_frame()
       Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / globals::desired_fps) - current_frame_time));
       SDL_Delay(sleep_time);
     }
-#endif
   }
+#endif
 }
 
 void

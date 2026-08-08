@@ -565,6 +565,12 @@ PingusMain::run(int argc, char** argv)
 
     // init the display
     FramebufferType fbtype = FramebufferType::SDL;
+#ifdef PINGUS_EMSCRIPTEN
+    // WASM builds are linked with GLES2/WebGL (PINGUS_USE_GLES + FULL_ES2).
+    // Prefer the OpenGL framebuffer; SDL_Renderer can leave a black canvas
+    // depending on how the browser presents the emscripten main loop.
+    fbtype = FramebufferType::OPENGL;
+#endif
     if (cmd_options.framebuffer_type.is_set())
     {
       fbtype = cmd_options.framebuffer_type.get();
