@@ -21,7 +21,9 @@
 #include <logmich/log.hpp>
 
 #include "engine/sound/sound_dummy.hpp"
+#ifndef PINGUS_NO_SOUND
 #include "engine/sound/sound_real.hpp"
+#endif
 #include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
 
@@ -36,6 +38,7 @@ PingusSound::init(std::unique_ptr<PingusSoundImpl> s)
   {
     if (globals::sound_enabled || globals::music_enabled)
     {
+#ifndef PINGUS_NO_SOUND
       try {
         PingusSound::init(std::make_unique<PingusSoundReal>());
       } catch (std::exception const& err) {
@@ -43,6 +46,10 @@ PingusSound::init(std::unique_ptr<PingusSoundImpl> s)
         log_error("Sound will be disabled");
         PingusSound::init(std::make_unique<PingusSoundDummy>());
       }
+#else
+      log_info("Sound backend not built (PINGUS_NO_SOUND); using dummy");
+      PingusSound::init(std::make_unique<PingusSoundDummy>());
+#endif
     }
     else
     {

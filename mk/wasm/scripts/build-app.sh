@@ -78,10 +78,12 @@ cmake_args=(
   -S "$SRC_DIR"
   -B build
   -DCMAKE_BUILD_TYPE=Release
-  -DENABLE_SDL2=ON
-  -DENABLE_OPENGL=ON
-  -DENABLE_GLES2="$( [ "$ENABLE_GLES2" = 1 ] && echo ON || echo OFF )"
-  -DENABLE_SOUND="$( [ "$ENABLE_SOUND" = 1 ] && echo ON || echo OFF )"
+  -DBUILD_TESTS=OFF
+  -DBUILD_EXTRA=OFF
+  -DWARNINGS=OFF
+  -DWERROR=OFF
+  -DPINGUS_USE_GLES="$( [ "$ENABLE_GLES2" = 1 ] && echo ON || echo OFF )"
+  -DPINGUS_ENABLE_SOUND="$( [ "$ENABLE_SOUND" = 1 ] && echo ON || echo OFF )"
   -DDATA_PREFIX="/data"
   -DSDL2_ROOT="$SDL_WASM_LIBS"
   -DEMSCRIPTEN_LINK_FLAGS="${LINK_FLAGS[*]} ${PRELOAD[*]}"

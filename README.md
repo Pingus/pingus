@@ -69,10 +69,12 @@ Scaffolding adapted from SuperTux Milestone 1. These packages live under the
     nix build .#pingus-android           # APK (SDL layer + NDK)
     nix build .#pingus-wasm              # emscripten + preloaded data/
 
-**Status:** the Nix plumbing (SDL sysroots, toolchains, packaging) is in place.
-Pingus still needs engine work for GLES2 / Emscripten / full NDK linkage of
-`external/` libraries — expect configure or link failures until that lands.
-Prefer desktop `.#pingus` and Windows cross packages for day-to-day builds.
+**Status:** Nix packaging plus CMake hooks for Emscripten (`SDL2_ROOT`,
+`PINGUS_USE_GLES`, `PINGUS_ENABLE_SOUND`, html suffix / link flags) and R36S
+sysroot builds. WASM defaults to dummy audio (no wstsound). Full GLES2 /
+WebGL rendering and NDK builds of `external/` are still incomplete — expect
+compile errors in the OpenGL fixed-function path until that is ported.
+Prefer desktop `.#pingus` and Windows cross for day-to-day builds.
 
 See `mk/r36s/CROSSCOMPILE.md`, `mk/android/README.md`, `mk/wasm/README.md`.
 
