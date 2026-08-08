@@ -8,7 +8,7 @@
 , cmake
 
 , gtest
-, libpng
+
 , libsigcxx
 , makeWrapper
 , libGL
@@ -86,7 +86,6 @@ stdenv.mkDerivation rec {
     SDL2
     SDL2_image
     gtest
-    libpng
     libsigcxx
 
     argpp

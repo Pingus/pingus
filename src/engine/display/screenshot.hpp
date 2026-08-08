@@ -24,13 +24,13 @@
 
 namespace pingus {
 
-/** Simple class to get a screenshot and save it as pnm */
+/** Capture the framebuffer and write it as PNG via SDL2_image. */
 class Screenshot
 {
 public:
   static void save_screenshot(std::filesystem::path const& filename);
 
-  /** buffer must be RGBX and width*height*4 large */
+  /** buffer must be packed RGBX/RGBA (4 bytes/pixel, pitch in bytes). */
   static void save_png(std::filesystem::path const& filename, uint8_t const* buffer, int width, int height, int pitch);
 
 private:

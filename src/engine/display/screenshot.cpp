@@ -17,10 +17,8 @@
 #include "engine/display/screenshot.hpp"
 
 #include <filesystem>
-#include <memory>
-#include <assert.h>
-#include <png.h>
 
+#include <SDL_image.h>
 #include <logmich/log.hpp>
 
 #include "engine/display/display.hpp"
@@ -29,85 +27,51 @@
 
 namespace pingus {
 
-// Saves a screenshot to file, it return the filename the screenshot
-// was saved to.
 void
 Screenshot::save_screenshot(std::filesystem::path const& filename)
 {
   Surface screen = Display::get_framebuffer()->make_screenshot();
-  if (screen)
+  if (!screen)
   {
-    log_info("Screenshot: Saving screenshot to: {}", filename.string());
-    save_png(filename.string(), screen.get_data(), screen.get_width(), screen.get_height(), screen.get_pitch());
-    log_info("Screenshot: Screenshot is done.");
+    log_error("Screenshot: framebuffer returned an empty surface");
+    return;
   }
+
+  log_info("Screenshot: Saving screenshot to: {}", filename.string());
+  if (IMG_SavePNG(screen.get_surface(), filename.string().c_str()) != 0)
+  {
+    log_error("Screenshot: Couldn't write file: {}: {}", filename.string(), IMG_GetError());
+    return;
+  }
+  log_info("Screenshot: Screenshot is done.");
 }
 
 void
-Screenshot::save_png(std::filesystem::path const& filename, uint8_t const* buffer, int width, int height, int pitch)
+Screenshot::save_png(std::filesystem::path const& filename, uint8_t const* buffer,
+                     int width, int height, int pitch)
 {
-  FILE* fp;
-  png_structp png_ptr;
-  png_infop info_ptr;
+  // buffer is expected as RGBX / RGBA packed pixels (4 bytes per pixel).
+  SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(
+    const_cast<uint8_t*>(buffer), width, height, 32, pitch,
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+    0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
+#else
+    0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
+#endif
+  );
 
-  fp = fopen(filename.string().c_str(), "wb");
-  if (fp == nullptr)
+  if (!surface)
   {
-    perror(filename.string().c_str());
-    log_info("Screenshot: Couldn't write file: {}", filename.string());
+    log_error("Screenshot: SDL_CreateRGBSurfaceFrom failed: {}", SDL_GetError());
     return;
   }
 
-  png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, nullptr, nullptr, nullptr);
-  if (png_ptr == nullptr)
+  if (IMG_SavePNG(surface, filename.string().c_str()) != 0)
   {
-    fclose(fp);
-    return;
+    log_error("Screenshot: Couldn't write file: {}: {}", filename.string(), IMG_GetError());
   }
 
-  info_ptr = png_create_info_struct(png_ptr);
-  if (info_ptr == nullptr)
-  {
-    fclose(fp);
-    png_destroy_write_struct(&png_ptr, nullptr);
-    return;
-  }
-
-  if (setjmp(png_jmpbuf(png_ptr)))
-  {
-    // If we get here, we had a problem reading the file
-    fclose(fp);
-    png_destroy_write_struct(&png_ptr, &info_ptr);
-    return;
-  }
-
-  // set up the output control if you are using standard C streams
-  png_init_io(png_ptr, fp);
-
-  png_set_IHDR(png_ptr, info_ptr, static_cast<png_uint_32>(width), static_cast<png_uint_32>(height), 8,
-               PNG_COLOR_TYPE_RGB, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT,
-               PNG_FILTER_TYPE_DEFAULT);
-
-  png_write_info(png_ptr, info_ptr);
-  {
-    std::unique_ptr<uint8_t[]> row{ new uint8_t[static_cast<size_t>(width * 3)] };
-    for(size_t y = 0; y < static_cast<size_t>(height); ++y)
-    {
-      for(size_t x = 0; x < static_cast<size_t>(width); ++x)
-      {
-        row[3*x + 0] = (buffer + y * static_cast<size_t>(pitch))[4*x + 0];
-        row[3*x + 1] = (buffer + y * static_cast<size_t>(pitch))[4*x + 1];
-        row[3*x + 2] = (buffer + y * static_cast<size_t>(pitch))[4*x + 2];
-      }
-      png_write_row(png_ptr, row.get());
-    }
-  }
-  png_write_end(png_ptr, info_ptr);
-
-  // clean up after the write, and free any memory allocated
-  png_destroy_write_struct(&png_ptr, &info_ptr);
-
-  fclose(fp);
+  SDL_FreeSurface(surface);
 }
 
 } // namespace pingus
