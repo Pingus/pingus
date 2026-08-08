@@ -1,0 +1,18 @@
+---
+Checks: >
+  readability-*,
+  clang-*,
+  portability-*,
+  performance-*,
+  bugprone-*,
+  misc-*,
+  -misc-unused-parameters,
+  -clang-analyzer-security.FloatLoopCounter,
+  -readability-redundant-member-init,
+  -readability-else-after-return,
+  -readability-implicit-bool-conversion,
+  -readability-magic-numbers
+WarningsAsErrors: '*'
+HeaderFilterRegex: 'src/.*hpp'
+AnalyzeTemporaryDtors: true
+...
