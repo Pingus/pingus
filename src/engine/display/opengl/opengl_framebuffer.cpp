@@ -99,7 +99,7 @@ OpenGLFramebuffer::draw_arrays(GLenum mode, float const* interleaved, int vertex
 
     glEnableVertexAttribArray(static_cast<GLuint>(m_programs.textured_a_pos));
     glVertexAttribPointer(static_cast<GLuint>(m_programs.textured_a_pos), 2, GL_FLOAT, GL_FALSE,
-                          stride * sizeof(float), reinterpret_cast<void*>(0));
+                          stride * sizeof(float), nullptr);
     glEnableVertexAttribArray(static_cast<GLuint>(m_programs.textured_a_uv));
     glVertexAttribPointer(static_cast<GLuint>(m_programs.textured_a_uv), 2, GL_FLOAT, GL_FALSE,
                           stride * sizeof(float), reinterpret_cast<void*>(sizeof(float) * 2));
@@ -111,7 +111,7 @@ OpenGLFramebuffer::draw_arrays(GLenum mode, float const* interleaved, int vertex
 
     glEnableVertexAttribArray(static_cast<GLuint>(m_programs.solid_a_pos));
     glVertexAttribPointer(static_cast<GLuint>(m_programs.solid_a_pos), 2, GL_FLOAT, GL_FALSE,
-                          stride * sizeof(float), reinterpret_cast<void*>(0));
+                          stride * sizeof(float), nullptr);
   }
 
   glDrawArrays(mode, 0, vertex_count);

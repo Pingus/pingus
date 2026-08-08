@@ -6,8 +6,6 @@
 
 #include "engine/display/opengl/opengl_compat.hpp"
 
-#include <string>
-
 namespace pingus {
 
 /** Minimal GLSL program shared by GL 3.3 core and GLES2 (via #version). */
@@ -35,14 +33,27 @@ struct OpenGLPrograms
 {
   OpenGLProgram textured;
   OpenGLProgram solid;
-  GLint textured_u_mvp = -1;
-  GLint textured_u_tex = -1;
-  GLint textured_u_color = -1;
-  GLint textured_a_pos = -1;
-  GLint textured_a_uv = -1;
-  GLint solid_u_mvp = -1;
-  GLint solid_u_color = -1;
-  GLint solid_a_pos = -1;
+  GLint textured_u_mvp;
+  GLint textured_u_tex;
+  GLint textured_u_color;
+  GLint textured_a_pos;
+  GLint textured_a_uv;
+  GLint solid_u_mvp;
+  GLint solid_u_color;
+  GLint solid_a_pos;
+
+  OpenGLPrograms() :
+    textured(),
+    solid(),
+    textured_u_mvp(-1),
+    textured_u_tex(-1),
+    textured_u_color(-1),
+    textured_a_pos(-1),
+    textured_a_uv(-1),
+    solid_u_mvp(-1),
+    solid_u_color(-1),
+    solid_a_pos(-1)
+  {}
 
   void init();
 };
