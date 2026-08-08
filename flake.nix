@@ -303,7 +303,7 @@
                 appName = "pingus";
                 srcDir = ./.;
                 dataDir = wasmDataDir;
-                enableSound = true;
+                enableSound = false;  # wstsound path not ready for wasm
                 enableGles2 = true;
                 enableAsyncify = false;
                 versionFull = pingusVersion;
@@ -330,7 +330,7 @@
                   appName = "pingus";
                   srcDir = ./.;
                   dataDir = wasmDataDir;
-                  enableSound = true;
+                  enableSound = false;  # wstsound path not ready for wasm
                   enableGles2 = true;
                   enableAsyncify = false;
                   versionFull = pingusVersion;

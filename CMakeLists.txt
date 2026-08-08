@@ -67,20 +67,50 @@ else()
 endif()
 
 if(EMSCRIPTEN AND SDL2_ROOT)
-  # Static wasm SDL built by mk/wasm/scripts — avoid REQUIRED pkg-config when .pc is incomplete.
-  find_path(SDL2_INCLUDE_DIR SDL.h
-    HINTS "${SDL2_ROOT}/include" "${SDL2_ROOT}/include/SDL2"
-    PATH_SUFFIXES SDL2)
-  find_library(SDL2_LIBRARY SDL2 HINTS "${SDL2_ROOT}/lib")
-  find_library(SDL2_IMAGE_LIBRARY SDL2_image HINTS "${SDL2_ROOT}/lib")
-  if(NOT SDL2_INCLUDE_DIR OR NOT SDL2_LIBRARY)
-    message(FATAL_ERROR "EMSCRIPTEN build: SDL2 not found under SDL2_ROOT=${SDL2_ROOT}")
+  # Emscripten's toolchain sets FIND_ROOT_PATH_MODE_*=ONLY, so find_path /
+  # find_library ignore SDL2_ROOT outside the emscripten sysroot. Resolve paths
+  # explicitly instead.
+  set(_pingus_sdl2_h "")
+  if(EXISTS "${SDL2_ROOT}/include/SDL2/SDL.h")
+    set(_pingus_sdl2_h "${SDL2_ROOT}/include/SDL2/SDL.h")
+    set(SDL2_INCLUDE_DIR "${SDL2_ROOT}/include")
+  elseif(EXISTS "${SDL2_ROOT}/include/SDL.h")
+    set(_pingus_sdl2_h "${SDL2_ROOT}/include/SDL.h")
+    set(SDL2_INCLUDE_DIR "${SDL2_ROOT}/include")
   endif()
+
+  set(SDL2_LIBRARY "")
+  foreach(_cand libSDL2.a libSDL2-static.a)
+    if(EXISTS "${SDL2_ROOT}/lib/${_cand}")
+      set(SDL2_LIBRARY "${SDL2_ROOT}/lib/${_cand}")
+      break()
+    endif()
+  endforeach()
+
+  set(SDL2_IMAGE_LIBRARY "")
+  foreach(_cand libSDL2_image.a)
+    if(EXISTS "${SDL2_ROOT}/lib/${_cand}")
+      set(SDL2_IMAGE_LIBRARY "${SDL2_ROOT}/lib/${_cand}")
+      break()
+    endif()
+  endforeach()
+
+  if(NOT _pingus_sdl2_h OR NOT SDL2_LIBRARY)
+    message(FATAL_ERROR
+      "EMSCRIPTEN build: SDL2 not found under SDL2_ROOT=${SDL2_ROOT}\n"
+      "  expected include/SDL2/SDL.h (or include/SDL.h) and lib/libSDL2.a")
+  endif()
+
+  message(STATUS "Emscripten SDL2 include: ${SDL2_INCLUDE_DIR}")
+  message(STATUS "Emscripten SDL2 library: ${SDL2_LIBRARY}")
+  if(SDL2_IMAGE_LIBRARY)
+    message(STATUS "Emscripten SDL2_image: ${SDL2_IMAGE_LIBRARY}")
+  endif()
+
   add_library(pingus_sdl2 INTERFACE)
-  target_include_directories(pingus_sdl2 INTERFACE "${SDL2_INCLUDE_DIR}")
-  if(EXISTS "${SDL2_ROOT}/include/SDL2")
-    target_include_directories(pingus_sdl2 INTERFACE "${SDL2_ROOT}/include")
-  endif()
+  target_include_directories(pingus_sdl2 INTERFACE
+    "${SDL2_INCLUDE_DIR}"
+    "${SDL2_ROOT}/include")
   target_link_libraries(pingus_sdl2 INTERFACE "${SDL2_LIBRARY}")
   if(SDL2_IMAGE_LIBRARY)
     target_link_libraries(pingus_sdl2 INTERFACE "${SDL2_IMAGE_LIBRARY}")
