@@ -1,0 +1,19 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/wstsound-config-version.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/wstsound-targets.cmake")
+
+include(CMakeFindDependencyMacro)
+
+find_dependency(OpenAL REQUIRED)
+find_dependency(Opusfile REQUIRED)
+find_dependency(Opus REQUIRED)
+find_dependency(Ogg REQUIRED)
+find_dependency(Vorbisfile REQUIRED)
+find_dependency(MPG123 REQUIRED)
+find_dependency(ModPlug REQUIRED)
+find_dependency(Threads REQUIRED)
+
+check_required_components(wstsound)
+
+# EOF #
