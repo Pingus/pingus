@@ -48,7 +48,7 @@ EOF
     version = "2.12.1";
     src = pkgs.fetchurl {
       url = "mirror://gnome/sources/libsigc++/2.12/libsigc++-${version}.tar.xz";
-      hash = "sha256-T+DZtpS/Lg3ImPVyQUWZC1zi/bNMPYW5dKPkz8gEBUc=";
+      hash = "sha256-qdvuMjNR0Qm3ruB0qcuJyj57z4rY7e8YUfTPNZvVCEM=";
     };
     nativeBuildInputs = [ pkgs.emscripten pkgs.meson pkgs.ninja pkgs.pkg-config pkgs.python3 ];
     dontConfigure = true;
