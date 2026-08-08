@@ -17,6 +17,8 @@
 #include <iostream>
 #include <format>
 
+#include <cstring>
+
 #include <prio/prio.hpp>
 
 using namespace prio;
