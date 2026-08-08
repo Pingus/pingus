@@ -34,6 +34,10 @@
 #include "pingus/global_event.hpp"
 #include "pingus/globals.hpp"
 
+#ifdef PINGUS_EMSCRIPTEN
+#  include <emscripten.h>
+#endif
+
 namespace pingus {
 
 namespace {
@@ -87,7 +91,8 @@ ScreenManager::ScreenManager(pingus::input::Manager& arg_input_manager,
   screens(),
   mouse_pos(),
   record_input(false),
-  playback_input(false)
+  playback_input(false),
+  last_ticks(0)
 {
   assert(instance_ == nullptr);
   instance_ = this;
@@ -105,69 +110,93 @@ void
 ScreenManager::display()
 {
   show_software_cursor(globals::software_cursor);
+  last_ticks = SDL_GetTicks();
 
-  Uint32 last_ticks = SDL_GetTicks();
+#ifdef PINGUS_EMSCRIPTEN
+  // Browser-driven loop via requestAnimationFrame (fps=0). Avoids SDL_Delay
+  // busy-waits that spin the tab at 100% CPU without ASYNCIFY.
+  emscripten_set_main_loop_arg(&ScreenManager::emscripten_main_loop, this, 0, true);
+#else
+  while (!screens.empty())
+  {
+    run_one_frame();
+  }
+#endif
+}
+
+#ifdef PINGUS_EMSCRIPTEN
+void
+ScreenManager::emscripten_main_loop(void* arg)
+{
+  ScreenManager* self = static_cast<ScreenManager*>(arg);
+  if (self->screens.empty())
+  {
+    emscripten_cancel_main_loop();
+    return;
+  }
+  self->run_one_frame();
+}
+#endif
+
+void
+ScreenManager::run_one_frame()
+{
   float previous_frame_time;
   std::vector<pingus::input::Event> events;
 
-  while (!screens.empty())
+  // Get time and update pingus::input::Events
+  if (playback_input)
   {
-    events.clear();
+    // Get Time
+    read(std::cin, previous_frame_time);
 
-    // Get time and update pingus::input::Events
-    if (playback_input)
-    {
-      // Get Time
-      read(std::cin, previous_frame_time);
+    // Update InputManager so that SDL_QUIT and stuff can be
+    // handled, even if the basic events are taken from record
+    input_manager.update(previous_frame_time);
+    input_controller->clear_events();
+    read_events(std::cin, events);
+  }
+  else
+  {
+    // Get Time
+    Uint32 ticks = SDL_GetTicks();
+    previous_frame_time  = float(ticks - last_ticks)/1000.0f;
+    last_ticks = ticks;
 
-      // Update InputManager so that SDL_QUIT and stuff can be
-      // handled, even if the basic events are taken from record
-      input_manager.update(previous_frame_time);
-      input_controller->clear_events();
-      read_events(std::cin, events);
+    // Update InputManager and get Events
+    process_events();
+    input_manager.update(previous_frame_time);
+    input_controller->poll_events(events);
+  }
+
+  if (record_input)
+  {
+    write(std::cerr, previous_frame_time);
+    write_events(std::cerr, events);
+  }
+
+  if (globals::software_cursor)
+    cursor.update(previous_frame_time);
+
+  // previous frame took more than one second
+  if (previous_frame_time > 1.0f)
+  {
+    if (globals::developer_mode)
+      log_warn("ScreenManager: previous frame took longer than 1 second ({} sec.), ignoring and doing frameskip", previous_frame_time);
+  }
+  else
+  {
+    update(previous_frame_time, events);
+
+#ifndef PINGUS_EMSCRIPTEN
+    // Cap framerate on native builds. On Emscripten, requestAnimationFrame
+    // already paces frames; SDL_Delay would busy-wait without ASYNCIFY.
+    float current_frame_time = float(SDL_GetTicks() - last_ticks) / 1000.0f;
+    if (current_frame_time < 1.0f / globals::desired_fps) {
+      Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / globals::desired_fps) - current_frame_time));
+      SDL_Delay(sleep_time);
     }
-    else
-    {
-      // Get Time
-      Uint32 ticks = SDL_GetTicks();
-      previous_frame_time  = float(ticks - last_ticks)/1000.0f;
-      last_ticks = ticks;
-
-      // Update InputManager and get Events
-      process_events();
-      input_manager.update(previous_frame_time);
-      input_controller->poll_events(events);
-    }
-
-    if (record_input)
-    {
-      write(std::cerr, previous_frame_time);
-      write_events(std::cerr, events);
-    }
-
-    if (globals::software_cursor)
-      cursor.update(previous_frame_time);
-
-    // previous frame took more than one second
-    if (previous_frame_time > 1.0f)
-    {
-      if (globals::developer_mode)
-        log_warn("ScreenManager: previous frame took longer than 1 second ({} sec.), ignoring and doing frameskip", previous_frame_time);
-    }
-    else
-    {
-      update(previous_frame_time, events);
-
-      // cap the framerate at the desired value
-      // figure out how long this frame took
-      float current_frame_time = float(SDL_GetTicks() - last_ticks) / 1000.0f;
-      // idly delay if this frame didn't last long enough to
-      // achieve <desired_fps> frames per second
-      if (current_frame_time < 1.0f / globals::desired_fps) {
-        Uint32 sleep_time = static_cast<Uint32>(1000 *((1.0f / globals::desired_fps) - current_frame_time));
-        SDL_Delay(sleep_time);
-      }
-    }
+#endif
   }
 }
 
@@ -349,7 +378,14 @@ ScreenManager::fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_scree
   if (!old_screen.get() || !new_screen.get())
     return;
 
-  Uint32 last_ticks = SDL_GetTicks();
+#ifdef PINGUS_EMSCRIPTEN
+  // Nested blocking fade + SDL_Delay would freeze the browser main loop
+  // (and busy-wait without ASYNCIFY). Skip the animation; the next frame
+  // draws the new screen normally.
+  input_manager.refresh();
+  return;
+#else
+  Uint32 fade_start_ticks = SDL_GetTicks();
   float progress = 0.0f;
   Framebuffer& fb = *Display::get_framebuffer();
   while (progress <= 1.0f)
@@ -383,11 +419,12 @@ ScreenManager::fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_scree
     fb.flip();
     display_gc->clear();
 
-    progress = static_cast<float>(SDL_GetTicks() - last_ticks)/1000.0f * 2.0f;
+    progress = static_cast<float>(SDL_GetTicks() - fade_start_ticks)/1000.0f * 2.0f;
     SDL_Delay(10);
   }
 
   input_manager.refresh();
+#endif
 }
 
 void

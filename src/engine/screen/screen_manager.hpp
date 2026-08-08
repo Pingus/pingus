@@ -54,6 +54,9 @@ private:
   bool record_input;
   bool playback_input;
 
+  /** SDL ticks at the start of the previous frame (used for delta timing). */
+  unsigned int last_ticks;
+
 public:
   ScreenManager(pingus::input::Manager& input_manager,
                 pingus::input::ControllerPtr arg_input_controller);
@@ -87,8 +90,15 @@ public:
 private:
   void process_events();
 
+  /** Run a single frame (input, update, draw, optional delay). */
+  void run_one_frame();
+
   /** FadeOver test*/
   void fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_screen);
+
+#ifdef PINGUS_EMSCRIPTEN
+  static void emscripten_main_loop(void* arg);
+#endif
 
 public:
   static ScreenManager* instance();
