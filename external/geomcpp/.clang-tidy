@@ -1,0 +1,24 @@
+---
+Checks: >
+  readability-*,
+  clang-*,
+  portability-*,
+  performance-*,
+  bugprone-*,
+  misc-*,
+  modernize-use-override,
+  modernize-use-nullptr,
+  -clang-analyzer-security.FloatLoopCounter,
+  -misc-non-private-member-variables-in-classes,
+  -misc-unused-parameters,
+  -readability-else-after-return,
+  -readability-implicit-bool-conversion,
+  -readability-magic-numbers,
+  -readability-redundant-member-init,
+  -readability-uppercase-literal-suffix,
+  -readability-redundant-access-specifiers,
+  -readability-convert-member-functions-to-static,
+  -bugprone-branch-clone,
+WarningsAsErrors: '*'
+HeaderFilterRegex: '(src/.*hpp|include/.*hpp)'
+...
