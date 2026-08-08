@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Pingus @versionFull@</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      background: #0a0a12; color: #c8d0e0;
+      font-family: system-ui, sans-serif;
+      overflow: hidden;
+    }
+    #wrap {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100%; gap: 0.75rem;
+    }
+    canvas.emscripten {
+      display: block;
+      background: #000;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      max-width: 100vw; max-height: 80vh;
+      outline: none;
+    }
+    #status { font-size: 0.9rem; opacity: 0.85; min-height: 1.2em; }
+    #progress {
+      width: min(320px, 80vw); height: 6px;
+      background: #1a1a28; border-radius: 3px; overflow: hidden;
+    }
+    #progress > div {
+      height: 100%; width: 0%; background: #4af;
+      transition: width 0.15s ease-out;
+    }
+    #meta {
+      font-size: 0.75rem; opacity: 0.7; text-align: center;
+      line-height: 1.5; max-width: 90vw;
+    }
+    #meta a { color: #8cf; }
+    .toolbar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      justify-content: center; max-width: 90vw;
+    }
+    .toolbar button {
+      background: #1e2a40; color: #c8d0e0;
+      border: 1px solid #3a4a66; border-radius: 4px;
+      padding: 0.35rem 0.75rem; cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .toolbar button:hover { background: #2a3a55; }
+    .toolbar button:disabled { opacity: 0.4; cursor: default; }
+    .toolbar button.active { border-color: #4af; color: #fff; }
+    .toolbar input[type=file] { display: none; }
+    #canvas-slot {
+      display: flex; align-items: center; justify-content: center;
+      max-width: 100vw;
+    }
+    #canvas-slot.mode-native canvas {
+      width: 640px; height: 480px;
+      max-width: 100vw; max-height: 80vh;
+    }
+    #canvas-slot.mode-fit {
+      width: min(100vw, calc(80vh * 4 / 3));
+      height: min(80vh, calc(100vw * 3 / 4));
+    }
+    #canvas-slot.mode-fit canvas {
+      width: 100%; height: 100%;
+      max-width: none; max-height: none;
+    }
+    /* Fullscreen: hide page chrome so the 4:3 slot can use the full
+       viewport. Leaving the toolbar/meta visible made the flex column
+       taller than 100vh and cropped the canvas at the top. */
+    #wrap:fullscreen,
+    #wrap:-webkit-full-screen {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      gap: 0;
+      justify-content: center;
+      background: #000;
+    }
+    #wrap:fullscreen #status,
+    #wrap:fullscreen #progress,
+    #wrap:fullscreen .toolbar,
+    #wrap:fullscreen #meta,
+    #wrap:-webkit-full-screen #status,
+    #wrap:-webkit-full-screen #progress,
+    #wrap:-webkit-full-screen .toolbar,
+    #wrap:-webkit-full-screen #meta {
+      display: none !important;
+    }
+    #wrap:fullscreen #canvas-slot.mode-fit,
+    #wrap:-webkit-full-screen #canvas-slot.mode-fit {
+      width: min(100vw, calc(100vh * 4 / 3));
+      height: min(100vh, calc(100vw * 3 / 4));
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="canvas-slot" class="mode-native">
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+    </div>
+    <div id="status">Loading…</div>
+    <div id="progress"><div id="progress-bar"></div></div>
+    <div class="toolbar toolbar-display">
+      <button type="button" id="btn-display-native" class="active" title="Original resolution">640×480</button>
+      <button type="button" id="btn-display-fit" title="Scale to fit the browser window">Fit window</button>
+      <button type="button" id="btn-display-fullscreen" title="Browser fullscreen">Fullscreen</button>
+      <button type="button" id="btn-pause" title="Freeze the game loop (tab hide also freezes)">Pause</button>
+    </div>
+    <div class="toolbar toolbar-backup" title="Progress is stored in this browser (IndexedDB). Use these to back up or move to another machine.">
+      <button type="button" id="btn-download-backup" disabled>Download backup</button>
+      <button type="button" id="btn-upload-backup" disabled>Upload backup…</button>
+      <input type="file" id="file-upload-backup" accept=".json,application/json">
+    </div>
+    <div id="meta">
+      Pingus <strong>@versionFull@</strong><br>
+      <a href="@sourceUrl@" target="_blank" rel="noopener">Source</a>
+      ·
+      <a href="@revUrl@" target="_blank" rel="noopener">Revision @gitRev@</a>
+    </div>
+  </div>
+  <script type='text/javascript'>
+    var statusElement = document.getElementById('status');
+    var progressBar = document.getElementById('progress-bar');
+
+    /* User data root (matches setup.cpp emscripten_prepare_paths). */
+    var ST_USER_ROOT = '/home/web_user/.config/pingus';
+
+    function stBytesToBase64(u8) {
+      var CHUNK = 0x8000;
+      var s = '';
+      for (var i = 0; i < u8.length; i += CHUNK) {
+        s += String.fromCharCode.apply(null, u8.subarray(i, Math.min(i + CHUNK, u8.length)));
+      }
+      return btoa(s);
+    }
+
+    function stBase64ToBytes(b64) {
+      var s = atob(b64);
+      var u8 = new Uint8Array(s.length);
+      for (var i = 0; i < s.length; i++) u8[i] = s.charCodeAt(i);
+      return u8;
+    }
+
+    function stWalkFiles(path, root, out) {
+      var names;
+      try { names = FS.readdir(path); } catch (e) { return; }
+      for (var i = 0; i < names.length; i++) {
+        var n = names[i];
+        if (n === '.' || n === '..') continue;
+        var child = path + '/' + n;
+        var st;
+        try { st = FS.stat(child); } catch (e) { continue; }
+        if (FS.isDir(st.mode)) {
+          stWalkFiles(child, root, out);
+        } else if (FS.isFile(st.mode)) {
+          var data = FS.readFile(child, { encoding: 'binary' });
+          out[child.slice(root.length)] = stBytesToBase64(data);
+        }
+      }
+    }
+
+    function stEnsureDirs(filePath) {
+      var parts = filePath.split('/');
+      var cur = '';
+      for (var i = 0; i < parts.length - 1; i++) {
+        if (!parts[i]) continue;
+        cur += '/' + parts[i];
+        try { FS.mkdir(cur); } catch (e) {}
+      }
+    }
+
+    function stDownloadBackup() {
+      if (typeof FS === 'undefined') {
+        alert('File system not ready yet.');
+        return;
+      }
+      var files = {};
+      try {
+        stWalkFiles(ST_USER_ROOT, ST_USER_ROOT, files);
+      } catch (e) {
+        alert('Could not read saves: ' + e);
+        return;
+      }
+      var payload = JSON.stringify({
+        format: 'pingus-backup',
+        version: 1,
+        root: ST_USER_ROOT,
+        files: files
+      }, null, 2);
+      var blob = new Blob([payload], { type: 'application/json' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'pingus-backup.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function() { URL.revokeObjectURL(a.href); }, 1000);
+    }
+
+    function stUploadBackup(file) {
+      if (typeof FS === 'undefined') {
+        alert('File system not ready yet.');
+        return;
+      }
+      var reader = new FileReader();
+      reader.onload = function() {
+        try {
+          var obj = JSON.parse(reader.result);
+          if (!obj || obj.format !== 'pingus-backup' || !obj.files) {
+            alert('Not a Pingus backup file.');
+            return;
+          }
+          var keys = Object.keys(obj.files);
+          for (var i = 0; i < keys.length; i++) {
+            var rel = keys[i];
+            var abs = ST_USER_ROOT + (rel.charAt(0) === '/' ? rel : '/' + rel);
+            stEnsureDirs(abs);
+            FS.writeFile(abs, stBase64ToBytes(obj.files[rel]));
+          }
+          if (typeof FS.syncfs === 'function') {
+            FS.syncfs(false, function(err) {
+              if (err) console.error('syncfs after import:', err);
+              alert('Imported ' + keys.length + ' file(s). Reload the page to apply options and slot list.');
+            });
+          } else {
+            alert('Imported ' + keys.length + ' file(s). Reload the page to apply.');
+          }
+        } catch (e) {
+          alert('Import failed: ' + e);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+
+    var stDisplayMode = 'native'; /* native | fit */
+
+    function stNotifyCanvasResize() {
+      var c = document.getElementById('canvas');
+      if (!c) return;
+      var w, h;
+      if (stDisplayMode === 'native' && !document.fullscreenElement && !document.webkitFullscreenElement) {
+        w = 640; h = 480;
+      } else {
+        /* Use CSS layout size in CSS pixels; SDL/WebGL letterboxes inside. */
+        var r = c.getBoundingClientRect();
+        w = Math.max(16, Math.round(r.width));
+        h = Math.max(16, Math.round(r.height));
+      }
+      c.width = w;
+      c.height = h;
+      if (typeof Module !== 'undefined' && typeof Module._st_emscripten_canvas_resize === 'function') {
+        try { Module._st_emscripten_canvas_resize(w, h); } catch (e) { console.warn(e); }
+      }
+    }
+
+    function stSetDisplayMode(mode) {
+      stDisplayMode = mode;
+      var slot = document.getElementById('canvas-slot');
+      if (slot) {
+        slot.className = (mode === 'fit') ? 'mode-fit' : 'mode-native';
+      }
+      var bn = document.getElementById('btn-display-native');
+      var bf = document.getElementById('btn-display-fit');
+      if (bn) bn.className = (mode === 'native') ? 'active' : '';
+      if (bf) bf.className = (mode === 'fit') ? 'active' : '';
+      /* Defer so layout applies before measuring. */
+      setTimeout(stNotifyCanvasResize, 0);
+    }
+
+    function stToggleFullscreen() {
+      var wrap = document.getElementById('wrap');
+      var fs = document.fullscreenElement || document.webkitFullscreenElement;
+      if (!fs) {
+        var req = wrap.requestFullscreen || wrap.webkitRequestFullscreen;
+        if (req) req.call(wrap);
+      } else {
+        var exit = document.exitFullscreen || document.webkitExitFullscreen;
+        if (exit) exit.call(document);
+      }
+    }
+
+    function stOnFullscreenChange() {
+      var fs = document.fullscreenElement || document.webkitFullscreenElement;
+      var btn = document.getElementById('btn-display-fullscreen');
+      if (btn) btn.className = fs ? 'active' : '';
+      if (fs) {
+        /* While fullscreen, scale to the display; keep preferred mode for exit. */
+        var slot = document.getElementById('canvas-slot');
+        if (slot) slot.className = 'mode-fit';
+        setTimeout(stNotifyCanvasResize, 50);
+      } else {
+        stSetDisplayMode(stDisplayMode);
+      }
+    }
+
+
+    var stLoopPaused = false;
+    var stUserPaused = false; /* Pause button; visibility uses the same freeze */
+
+    function stSetLoopPaused(paused, fromUser) {
+      if (typeof Module === 'undefined') return;
+      if (paused === stLoopPaused) {
+        if (fromUser) stUserPaused = paused;
+        return;
+      }
+      try {
+        /* Emscripten 3+/5+: C API, not Module.pauseMainLoop runtime helpers. */
+        if (paused) {
+          if (typeof Module._emscripten_pause_main_loop === 'function')
+            Module._emscripten_pause_main_loop();
+          else if (typeof Module.ccall === 'function')
+            Module.ccall('emscripten_pause_main_loop', null, [], []);
+          else
+            throw new Error('emscripten_pause_main_loop not exported');
+        } else {
+          if (typeof Module._emscripten_resume_main_loop === 'function')
+            Module._emscripten_resume_main_loop();
+          else if (typeof Module.ccall === 'function')
+            Module.ccall('emscripten_resume_main_loop', null, [], []);
+          else
+            throw new Error('emscripten_resume_main_loop not exported');
+        }
+        /* SDL_mixer runs outside the main loop — pause/resume with it. */
+        try {
+          if (paused) {
+            if (typeof Module._st_emscripten_audio_pause === 'function')
+              Module._st_emscripten_audio_pause();
+            else if (typeof Module.ccall === 'function')
+              Module.ccall('st_emscripten_audio_pause', null, [], []);
+          } else {
+            if (typeof Module._st_emscripten_audio_resume === 'function')
+              Module._st_emscripten_audio_resume();
+            else if (typeof Module.ccall === 'function')
+              Module.ccall('st_emscripten_audio_resume', null, [], []);
+          }
+        } catch (ae) { console.warn('Pingus: audio pause failed', ae); }
+        stLoopPaused = paused;
+        if (fromUser) stUserPaused = paused;
+        var bp = document.getElementById('btn-pause');
+        if (bp) {
+          bp.textContent = stLoopPaused ? 'Resume' : 'Pause';
+          bp.className = stLoopPaused ? 'active' : '';
+        }
+      } catch (e) { console.warn('Pingus: main-loop pause failed', e); }
+    }
+
+    function stEnablePauseControls() {
+      var bp = document.getElementById('btn-pause');
+      if (bp) bp.onclick = function() {
+        stSetLoopPaused(!stLoopPaused, true);
+      };
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          stSetLoopPaused(true, false);
+        } else if (!stUserPaused) {
+          /* Only auto-resume if the user did not press Pause. */
+          stSetLoopPaused(false, false);
+        }
+      });
+    }
+
+    function stEnableDisplayButtons() {
+      var bn = document.getElementById('btn-display-native');
+      var bf = document.getElementById('btn-display-fit');
+      var bfs = document.getElementById('btn-display-fullscreen');
+      if (bn) bn.onclick = function() { stSetDisplayMode('native'); };
+      if (bf) bf.onclick = function() { stSetDisplayMode('fit'); };
+      if (bfs) bfs.onclick = function() { stToggleFullscreen(); };
+      document.addEventListener('fullscreenchange', stOnFullscreenChange);
+      document.addEventListener('webkitfullscreenchange', stOnFullscreenChange);
+      window.addEventListener('resize', function() {
+        if (stDisplayMode === 'fit' || document.fullscreenElement || document.webkitFullscreenElement)
+          stNotifyCanvasResize();
+      });
+      stSetDisplayMode('native');
+    }
+
+    function stEnableBackupButtons() {
+      var dl = document.getElementById('btn-download-backup');
+      var ul = document.getElementById('btn-upload-backup');
+      var fi = document.getElementById('file-upload-backup');
+      if (dl) dl.disabled = false;
+      if (ul) ul.disabled = false;
+      if (dl) dl.onclick = stDownloadBackup;
+      if (ul) ul.onclick = function() { fi && fi.click(); };
+      if (fi) fi.onchange = function() {
+        if (fi.files && fi.files[0]) stUploadBackup(fi.files[0]);
+        fi.value = '';
+      };
+    }
+
+    var Module = {
+      preRun: [],
+      postRun: [function() { stEnableDisplayButtons(); stEnablePauseControls(); stEnableBackupButtons(); }],
+      print: function(text) {
+        if (arguments.length > 1)
+          text = Array.prototype.slice.call(arguments).join(' ');
+        console.log(text);
+      },
+      printErr: function(text) {
+        if (arguments.length > 1)
+          text = Array.prototype.slice.call(arguments).join(' ');
+        console.error(text);
+      },
+      canvas: (function() {
+        var canvas = document.getElementById('canvas');
+        canvas.addEventListener('webglcontextlost', function(e) {
+          alert('WebGL context lost. Reload the page.');
+          e.preventDefault();
+        }, false);
+        return canvas;
+      })(),
+      setStatus: function(text) {
+        if (!Module.setStatus.last) Module.setStatus.last = { time: Date.now(), text: '' };
+        if (text === Module.setStatus.last.text) return;
+        var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+        var now = Date.now();
+        if (m && now - Module.setStatus.last.time < 30) return;
+        Module.setStatus.last.time = now;
+        Module.setStatus.last.text = text;
+        if (m) {
+          progressBar.style.width = (parseInt(m[2]) / parseInt(m[4]) * 100) + '%';
+          statusElement.innerHTML = m[1];
+        } else {
+          progressBar.style.width = text ? progressBar.style.width : '100%';
+          statusElement.innerHTML = text;
+          if (!text) document.getElementById('progress').style.display = 'none';
+        }
+      },
+      totalDependencies: 0,
+      monitorRunDependencies: function(left) {
+        this.totalDependencies = Math.max(this.totalDependencies, left);
+        Module.setStatus(left
+          ? 'Preparing… (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')'
+          : 'All downloads complete.');
+      }
+    };
+    Module.setStatus('Downloading…');
+    window.onerror = function(event) {
+      Module.setStatus('Exception thrown, see JavaScript console');
+      Module.setStatus = function(text) {
+        if (text) console.error('[post-exception status] ' + text);
+      };
+    };
+  </script>
+  {{{ SCRIPT }}}
+</body>
+</html>

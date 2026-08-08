@@ -11,9 +11,28 @@
 
     SDL2_image-win32.url = "git+https://github.com/grumnix/SDL2_image-win32.git";
     SDL2_image-win32.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Source tarballs for Android / wasm SDL stacks (same pattern as SuperTux M1).
+    sdl2-src = {
+      url = "https://github.com/libsdl-org/SDL/releases/download/release-2.30.3/SDL2-2.30.3.tar.gz";
+      flake = false;
+    };
+    sdl2-image-src = {
+      url = "https://github.com/libsdl-org/SDL_image/releases/download/release-2.8.2/SDL2_image-2.8.2.tar.gz";
+      flake = false;
+    };
+    sdl2-mixer-src = {
+      url = "https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.0/SDL2_mixer-2.8.0.tar.gz";
+      flake = false;
+    };
+    libxmp-src = {
+      url = "https://github.com/libxmp/libxmp/releases/download/libxmp-4.6.0/libxmp-4.6.0.tar.gz";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, SDL2-win32, SDL2_image-win32 }:
+  outputs = { self, nixpkgs, flake-utils, SDL2-win32, SDL2_image-win32
+            , sdl2-src, sdl2-image-src, sdl2-mixer-src, libxmp-src }:
     # Host systems only. Windows is a *target* via pkgsCross (SuperTux pattern).
     # x86_64-darwin is omitted: nixpkgs unstable (26.11+) dropped support.
     flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ] (system:
@@ -185,6 +204,145 @@
           pname = "pingus-win32-x86";
         };
 
+
+        # ---- Linux-only: Android + wasm + R36S (must not eval on Windows hosts) ----
+        versionBase = lib.strings.removeSuffix "\n" (builtins.readFile ./VERSION);
+        gitRev = "${self.shortRev or self.dirtyShortRev or "dirty"}";
+        pingusVersion = "${versionBase}+g${gitRev}";
+
+        linuxExtras =
+          if isWin || !(pkgs.stdenv.hostPlatform.isLinux) then { packages = { }; apps = { }; }
+          else
+          let
+            androidPkgs = import nixpkgs {
+              system = pkgs.stdenv.hostPlatform.system;
+              config.allowUnfree = true;
+              config.android_sdk.accept_license = true;
+            };
+            buildToolsVersion = "30.0.3";
+            packagePlatform = "22";
+            compilePlatform = "33";
+            ndkVersion = "23.1.7779620";
+            targetAbis = [ "armeabi-v7a" "arm64-v8a" ];
+            androidSdk = (androidPkgs.androidenv.composeAndroidPackages {
+              platformVersions = [ packagePlatform compilePlatform ];
+              buildToolsVersions = [ buildToolsVersion ];
+              includeNDK = true;
+              inherit ndkVersion;
+              includeEmulator = false;
+              includeSources = false;
+            }).androidsdk;
+
+            r36s = import ./nix/r36s.nix {
+              inherit (pkgs) lib stdenv stdenvNoCC fetchurl cmake pkg-config writeShellScript zip;
+              pkgsCross = pkgs.pkgsCross;
+            };
+            pingusR36s = r36s.mkPingusR36s {
+              src = lib.cleanSource ./.;
+              version = pingusVersion;
+              pname = "pingus-r36s";
+            };
+            pingusR36sPortMaster = r36s.mkPingusR36sPortMaster {
+              r36sPkg = pingusR36s;
+              version = pingusVersion;
+              pname = "pingus-r36s-portmaster";
+            };
+
+            android = import ./nix/android.nix {
+              pkgs = androidPkgs;
+              sdlSrc = sdl2-src;
+              sdlVersion = "2.30.3";
+              sdlMixerSrc = sdl2-mixer-src;
+              sdlMixerVersion = "2.8.0";
+              libxmpSrc = libxmp-src;
+              inherit androidSdk buildToolsVersion packagePlatform compilePlatform targetAbis;
+            };
+
+            wasm = import ./nix/wasm.nix {
+              inherit pkgs;
+              sdlSrc = sdl2-src;
+              sdlImageSrc = sdl2-image-src;
+              sdlMixerSrc = sdl2-mixer-src;
+              libxmpSrc = libxmp-src;
+              sdlVersion = "2.30.3";
+            };
+
+            wasmDataDir = if builtins.pathExists ./data then ./data else null;
+            gitDate =
+              if self ? lastModifiedDate then builtins.substring 0 8 self.lastModifiedDate
+              else "00000000";
+            androidApkName = "pingus-${gitDate}-${gitRev}.apk";
+            stbImageH = androidPkgs.fetchurl {
+              url = "https://raw.githubusercontent.com/nothings/stb/refs/heads/master/stb_image.h";
+              sha256 = "sha256-WUwv411JSItDgtv67I+YNm3vyoGdkWrJW+zz519CALM=";
+            };
+          in {
+            packages = {
+              arkos-sysroot = r36s.arkosSysroot;
+              pingus-r36s = pingusR36s;
+              pingus-r36s-portmaster = pingusR36sPortMaster;
+              pingus-r36s-portmaster-zip = r36s.mkPingusR36sPortMasterZip {
+                portMasterPkg = pingusR36sPortMaster;
+                version = pingusVersion;
+                pname = "pingus-r36s-portmaster-zip";
+              };
+              android-sdl-libs = android.sdlAndroidLibs;
+              pingus-android = android.mkApk {
+                appName = "pingus";
+                appDir = ./mk/android/app;
+                outApkName = androidApkName;
+                keystore = ./mk/android/keystore/debug.keystore;
+                gameSrcDir = ./src;
+                gameDataDir = ./data;
+                stbImageH = stbImageH;
+                gameVersion = pingusVersion;
+              };
+              wasm-sdl2 = wasm.sdl2WasmLibs;
+              wasm-sdl-libs = wasm.sdlWasmLibs;
+              pingus-wasm = wasm.mkApp {
+                appName = "pingus";
+                srcDir = ./.;
+                dataDir = wasmDataDir;
+                enableSound = true;
+                enableGles2 = true;
+                enableAsyncify = false;
+                versionFull = pingusVersion;
+                gitRev = gitRev;
+                sourceUrl = "https://github.com/Pingus/pingus";
+              };
+            };
+            apps = {
+              install-android-pingus = android.mkInstallApp {
+                pkg = android.mkApk {
+                  appName = "pingus";
+                  appDir = ./mk/android/app;
+                  outApkName = androidApkName;
+                  keystore = ./mk/android/keystore/debug.keystore;
+                  gameSrcDir = ./src;
+                  gameDataDir = ./data;
+                  stbImageH = stbImageH;
+                  gameVersion = pingusVersion;
+                };
+                apkFileName = androidApkName;
+              };
+              pingus-wasm = wasm.mkOpenBrowserApp {
+                pkg = wasm.mkApp {
+                  appName = "pingus";
+                  srcDir = ./.;
+                  dataDir = wasmDataDir;
+                  enableSound = true;
+                  enableGles2 = true;
+                  enableAsyncify = false;
+                  versionFull = pingusVersion;
+                  gitRev = gitRev;
+                  sourceUrl = "https://github.com/Pingus/pingus";
+                };
+                appName = "pingus";
+              };
+            };
+          };
+
+
         libsNative = mkLibs pkgs;
       in {
         packages = {
@@ -202,7 +360,7 @@
             strutcpp tinygettext uitest wstsound;
         } // lib.optionalAttrs (libsNative.xdgcpp != null) {
           xdgcpp = libsNative.xdgcpp;
-        };
+        } // linuxExtras.packages;
 
         apps = {
           default = {
@@ -215,7 +373,7 @@
             program = "${pingusNative}/bin/pingus";
             meta.description = "Pingus (native)";
           };
-        };
+        } // linuxExtras.apps;
       }
     );
 }

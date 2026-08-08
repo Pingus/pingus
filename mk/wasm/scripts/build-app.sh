@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+# Cross-compiles Pingus to wasm32 + HTML via emcmake.
+# Expects (set by nix/wasm.nix):
+#   APP_NAME         - binary/html basename (e.g. pingus)
+#   SRC_DIR          - repo root (contains CMakeLists.txt + src/)
+#   SDL_WASM_LIBS    - prebuilt SDL2 (+ image) prefix (include/ + lib/)
+#   ZLIB_WASM_LIBS   - prebuilt static zlib prefix (libz.a + zlib.h)
+#   DATA_DIR         - optional path to data/ for --preload-file (may be absent)
+#   ENABLE_SOUND     - 0|1 (default 0; needs libSDL2_mixer.a + libxmp.a in SDL_WASM_LIBS)
+#   ENABLE_GLES2     - 0|1 (default 1 — WebGL via GLES2 path)
+#   CMAKE_VERBOSE    - if 1, pass --verbose to cmake --build
+#   PROJECT_VERSION_FULL - e.g. 0.1.5-dev+gabc1234 (CMake PINGUS_VERSION)
+#   GIT_REV / SOURCE_URL - stamped into the HTML shell footer when present
+set -euo pipefail
+
+export EM_CACHE="${TMPDIR:-/tmp}/emcache"
+mkdir -p "$EM_CACHE"
+
+# Static zlib comes from flake output wasm-zlib-libs (see nix/wasm.nix).
+ZLIB_PREFIX="${ZLIB_WASM_LIBS:-}"
+if [ -n "$ZLIB_PREFIX" ] && [ -f "$ZLIB_PREFIX/lib/libz.a" ]; then
+  echo "==> using prebuilt wasm zlib: $ZLIB_PREFIX"
+else
+  echo "WARNING: ZLIB_WASM_LIBS unset or incomplete — configure may fail on zlib.h"
+  ZLIB_PREFIX=""
+fi
+
+APP_NAME="${APP_NAME:-pingus}"
+ENABLE_SOUND="${ENABLE_SOUND:-0}"
+ENABLE_GLES2="${ENABLE_GLES2:-1}"
+
+# ASYNCIFY: optional safety net for residual nested waits (fade/wait_for_event).
+# Main path uses emscripten_set_main_loop + st_frame_delay() no-ops.
+# Default OFF (ENABLE_ASYNCIFY=0); set enableAsyncify = true in mkApp if needed.
+LINK_FLAGS=(
+  "SHELL:-sALLOW_MEMORY_GROWTH=1"
+  "SHELL:-sFULL_ES2=1"
+  "SHELL:-sMIN_WEBGL_VERSION=1"
+  "SHELL:-sMAX_WEBGL_VERSION=2"
+  "SHELL:-sFORCE_FILESYSTEM=1"
+  "SHELL:-sEXIT_RUNTIME=0"
+  # IDBFS JS library (FS.mount(IDBFS, …) for config/saves). Without this,
+  # runtime logs "IDBFS is not defined" and persistence is a no-op.
+  "SHELL:-lidbfs.js"
+  # Canvas resize + C main-loop pause/resume for mk/wasm/shell.html. Comma list (no JS-array
+  # quotes) survives CMake separate_arguments(NATIVE_COMMAND).
+  "SHELL:-sEXPORTED_FUNCTIONS=_main,_st_emscripten_canvas_resize,_st_emscripten_canvas_native,_emscripten_pause_main_loop,_emscripten_resume_main_loop,_st_emscripten_audio_pause,_st_emscripten_audio_resume"
+  "SHELL:-sEXPORTED_RUNTIME_METHODS=ccall,cwrap,FS"
+)
+if [ "${ENABLE_ASYNCIFY:-0}" = 1 ]; then
+  LINK_FLAGS+=("SHELL:-sASYNCIFY=1" "SHELL:-sASYNCIFY_STACK_SIZE=1048576")
+  echo "==> ASYNCIFY enabled"
+else
+  echo "==> ASYNCIFY disabled (default; set enableAsyncify=true in mkApp if a path freezes)"
+fi
+
+if [ -n "${WASM_SHELL:-}" ] && [ -f "$WASM_SHELL" ]; then
+  LINK_FLAGS+=("--shell-file" "$WASM_SHELL")
+  echo "==> using HTML shell: $WASM_SHELL"
+fi
+
+PRELOAD=()
+if [ -n "${DATA_DIR:-}" ] && [ -d "$DATA_DIR" ]; then
+  # Mount game assets at /data in the virtual FS; runtime datadir = "/data".
+  PRELOAD+=("--preload-file" "${DATA_DIR}@/data")
+  echo "==> preloading data/ → /data"
+else
+  echo "==> no DATA_DIR — building without assets (title will fail at runtime)"
+fi
+
+PROJECT_VERSION_FULL="${PROJECT_VERSION_FULL:-}"
+if [ -z "$PROJECT_VERSION_FULL" ] && [ -f "$SRC_DIR/VERSION" ]; then
+  PROJECT_VERSION_FULL="$(head -1 "$SRC_DIR/VERSION" | tr -d '\r\n')"
+fi
+echo "==> PROJECT_VERSION_FULL=${PROJECT_VERSION_FULL:-"(unset)"}"
+
+cmake_args=(
+  -S "$SRC_DIR"
+  -B build
+  -DCMAKE_BUILD_TYPE=Release
+  -DENABLE_SDL2=ON
+  -DENABLE_OPENGL=ON
+  -DENABLE_GLES2="$( [ "$ENABLE_GLES2" = 1 ] && echo ON || echo OFF )"
+  -DENABLE_SOUND="$( [ "$ENABLE_SOUND" = 1 ] && echo ON || echo OFF )"
+  -DDATA_PREFIX="/data"
+  -DSDL2_ROOT="$SDL_WASM_LIBS"
+  -DEMSCRIPTEN_LINK_FLAGS="${LINK_FLAGS[*]} ${PRELOAD[*]}"
+)
+if [ -n "$PROJECT_VERSION_FULL" ]; then
+  cmake_args+=(-DPROJECT_VERSION_FULL="$PROJECT_VERSION_FULL")
+fi
+if [ -n "$ZLIB_PREFIX" ] && [ -d "$ZLIB_PREFIX" ]; then
+  cmake_args+=(-DZLIB_ROOT="$ZLIB_PREFIX")
+fi
+
+echo "==> emcmake configure ${APP_NAME}"
+emcmake cmake "${cmake_args[@]}"
+
+verbose=()
+if [ "${CMAKE_VERBOSE:-0}" = 1 ]; then
+  verbose=(--verbose)
+fi
+
+echo "==> cmake --build"
+cmake --build build --parallel "${NIX_BUILD_CORES:-${JOBS:-$(nproc)}}" "${verbose[@]}"
+
+# Emscripten names the outputs after the CMake target (pingus).
+out_base="build/${APP_NAME}"
+for ext in html js wasm data; do
+  if [ -f "${out_base}.${ext}" ]; then
+    cp "${out_base}.${ext}" .
+  fi
+done
+# Older emscripten sometimes writes .js next to a non-suffixed binary.
+if [ ! -f "${APP_NAME}.html" ] && [ -f "build/${APP_NAME}" ]; then
+  # May already be an html shell from SUFFIX.
+  ls -la build/ || true
+fi
+
+ls -la "${APP_NAME}".* 2>/dev/null || ls -la build/
+echo "==> wasm app build finished"

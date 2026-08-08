@@ -58,3 +58,21 @@ issue tracker at:
 
 * https://github.com/pingus/pingus/issues
 
+Ports (experimental)
+--------------------
+
+Scaffolding adapted from SuperTux Milestone 1. These packages live under the
+*host* system (e.g. `packages.x86_64-linux.…`):
+
+    nix build .#pingus-r36s              # R36S / ArkOS aarch64 (sysroot)
+    nix build .#pingus-r36s-portmaster   # PortMaster tree for /roms/ports
+    nix build .#pingus-android           # APK (SDL layer + NDK)
+    nix build .#pingus-wasm              # emscripten + preloaded data/
+
+**Status:** the Nix plumbing (SDL sysroots, toolchains, packaging) is in place.
+Pingus still needs engine work for GLES2 / Emscripten / full NDK linkage of
+`external/` libraries — expect configure or link failures until that lands.
+Prefer desktop `.#pingus` and Windows cross packages for day-to-day builds.
+
+See `mk/r36s/CROSSCOMPILE.md`, `mk/android/README.md`, `mk/wasm/README.md`.
+

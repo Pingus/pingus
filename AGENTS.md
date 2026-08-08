@@ -128,6 +128,11 @@ message** for the human (subject ≤ ~72 chars, body explaining why and what).
 Target for day-to-day development: **Linux**. Keep Windows and other
 platform code isolated.
 
+Experimental ports (WASM, Android, R36S) live under `mk/` + `nix/` and are
+wired as host-system flake packages (`pingus-wasm`, `pingus-android`,
+`pingus-r36s`). Treat them as work-in-progress until GLES2/Emscripten and
+NDK builds of `external/` are solid.
+
 ---
 
 ## Dependencies & Nix flake
