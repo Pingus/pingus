@@ -14,10 +14,10 @@ let
     mkdir -p $out/include $out/lib/cmake/glm
     cp -a ${pkgs.glm}/include/. $out/include/
     cat > $out/lib/cmake/glm/glmConfig.cmake <<'EOF'
-set(_glm_inc "${CMAKE_CURRENT_LIST_DIR}/../../../include")
+set(_glm_inc "''${CMAKE_CURRENT_LIST_DIR}/../../../include")
 if(NOT TARGET glm::glm)
   add_library(glm::glm INTERFACE IMPORTED)
-  set_target_properties(glm::glm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_glm_inc}")
+  set_target_properties(glm::glm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "''${_glm_inc}")
 endif()
 set(glm_FOUND TRUE)
 EOF
