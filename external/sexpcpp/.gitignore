@@ -1,0 +1,6 @@
+*~
+/build
+/build.*
+/old/
+/result
+/result-[0-9]

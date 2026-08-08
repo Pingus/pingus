@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   viewBox="0 0 48 48"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="/tmp/path3343.png"
+   inkscape:export-xdpi="480"
+   inkscape:export-ydpi="480">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="23.484911"
+     inkscape:cy="26.479278"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1280"
+     inkscape:window-height="978"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1004.3622)">
+    <path
+       inkscape:connector-curvature="0"
+       id="path3343"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:45px;line-height:125%;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 16.560552,1014.1152 0.04529,28.2154 3.306137,0 0,-10.2807 c 1.403976,2.038 3.713744,3.3061 6.204669,3.3061 4.257218,0 8.695594,-3.5779 8.695594,-11.1412 0,-7.2917 -4.302508,-10.5525 -8.378568,-10.5525 -2.672083,0 -5.163009,1.3587 -6.566985,3.6232 l 0,-3.1703 -3.306137,0 z m 8.650305,2.3098 c 1.811581,0 6.204668,0.951 6.204668,8.4691 0,6.5217 -4.257218,7.5634 -6.204668,7.5634 -1.947451,0 -3.940192,-0.9964 -4.755403,-2.8533 -0.588764,-1.4039 -0.588764,-3.1249 -0.588764,-6.1141 0,-1.721 0.09058,-2.9891 0.543474,-4.076 0.815212,-1.8569 2.717373,-2.9891 4.800693,-2.9891 z" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3345"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:45px;line-height:125%;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 32.287427,1009.127 c 6.914059,3.7189 11.313915,10.8425 11.313915,18.647 0,7.8569 -4.504614,15.19 -11.575811,18.9089 l 0.995206,3.1952 c 8.694953,-4.138 14.299531,-12.833 14.299531,-22.2612 0,-9.3235 -5.49982,-17.809 -14.037635,-21.7374 l -0.995206,3.2475 z" />
+    <path
+       d="m 16.088109,1009.127 c -6.9140589,3.7189 -11.3139148,10.8425 -11.3139148,18.647 0,7.8569 4.5046144,15.19 11.5758108,18.9089 l -0.995205,3.1952 c -8.6949532,-4.138 -14.2995316,-12.833 -14.2995316,-22.2612 0,-9.3235 5.49982,-17.809 14.0376346,-21.7374 l 0.995206,3.2475 z"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:45px;line-height:125%;font-family:Inconsolata;-inkscape-font-specification:'Inconsolata Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path3347"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

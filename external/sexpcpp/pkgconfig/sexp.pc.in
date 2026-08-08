@@ -1,0 +1,8 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+libdir=@CMAKE_INSTALL_FULL_LIBDIR@
+includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/@PROJECT_NAME@
+
+Name: sexp
+Version: @PROJECT_VERSION@
+Libs: -L${libdir} -lsexp
+Cflags: -I${includedir}
