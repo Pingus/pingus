@@ -34,9 +34,13 @@ ENABLE_GLES2="${ENABLE_GLES2:-1}"
 # Default OFF (ENABLE_ASYNCIFY=0); set enableAsyncify = true in mkApp if needed.
 LINK_FLAGS=(
   "SHELL:-sALLOW_MEMORY_GROWTH=1"
-  # TextDecoder rejects resizable ArrayBuffers (WASM memory growth on modern browsers).
-  # Fall back to pure-JS UTF-8 decoder to avoid black-screen startup crash.
-  "SHELL:-sTEXTDECODER=0"
+  # Emscripten 6.x defaults GROWABLE_ARRAYBUFFERS=1 so WASM memory is a resizable
+  # ArrayBuffer. TextDecoder.decode() rejects resizable buffers (black screen at
+  # startup via UTF8ArrayToString / faccessat). 6.0.2's getUnsharedTextDecoderView
+  # only handles SharedArrayBuffer, not resizable. Disable growable buffers so
+  # growth uses the classic detach-and-replace model (non-resizable AB).
+  # TEXTDECODER=0 is no longer allowed (must be 1 or 2).
+  "SHELL:-sGROWABLE_ARRAYBUFFERS=0"
   # Fixed-function OpenGL client (glOrtho, SDL_opengl.h) via Emscripten emulation.
   "SHELL:-sFULL_ES2=1"
   "SHELL:-sMIN_WEBGL_VERSION=1"
