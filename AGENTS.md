@@ -248,6 +248,15 @@ Successive bundles form one linear history: `… → tip₀ → bundle₁ → ti
 bundle₂ → tip₂ → …`. Do not produce a bundle that re-applies older work from
 under an already-applied tip unless the human explicitly requested a rollback.
 
+**Bundle filenames must be numbered.** Use a zero-padded three-digit prefix
+(`%03d`) so apply order is obvious, e.g.:
+
+    pingus-001-short-description.bundle
+    pingus-002-next-change.bundle
+
+Numbering is monotonic within the current handoff series. **Restart at
+`001`** when the human declares a new upstream/base commit.
+
 **Producer** (commits not yet on the consumer’s tip; base = last applied tip):
 
 ```sh

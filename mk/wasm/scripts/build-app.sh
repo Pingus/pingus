@@ -82,6 +82,7 @@ cmake_args=(
   -DWARNINGS=OFF
   -DWERROR=OFF
   -DPINGUS_USE_GLES="$( [ "$ENABLE_GLES2" = 1 ] && echo ON || echo OFF )"
+  -DPRIO_USE_JSONCPP=OFF
   -DPINGUS_ENABLE_SOUND="$( [ "$ENABLE_SOUND" = 1 ] && echo ON || echo OFF )"
   -DDATA_PREFIX="/data"
   -DSDL2_ROOT="$SDL_WASM_LIBS"
