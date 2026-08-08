@@ -37,7 +37,9 @@
 #  include <sys/types.h>
 #  include <unistd.h>
 #  include <errno.h>
-#  include <xdg.h>
+#  if !defined(PINGUS_EMSCRIPTEN) && !defined(ANDROID)
+#    include <xdg.h>
+#  endif
 #else /* _WIN32 */
 #  define NOGDI
 #  include <windows.h>
@@ -326,6 +328,10 @@ System::find_userdir()
   // if it does not, use $XDG_CONFIG_HOME, see:
   // http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
+#if defined(PINGUS_EMSCRIPTEN) || defined(ANDROID)
+  // Persistent IDBFS mount or app-private storage can be layered later.
+  return "/pingus-user/";
+#else
 #if 0
   // FIXME: insert code here to handle backward compatibilty with 0.7.x releases
   { // check for ~/.pingus/
@@ -342,6 +348,7 @@ System::find_userdir()
 #endif
 
   return (xdg::config().home() / "pingus-0.8/").string();
+#endif /* emscripten/android */
 #endif
 }
 

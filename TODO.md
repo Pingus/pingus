@@ -51,12 +51,12 @@ land or scope changes.
 
 ### WASM (`.#pingus-wasm`)
 
-- [ ] Strip SuperTux-only `EXPORTED_FUNCTIONS` (`_st_emscripten_*`) from the
+- [x] Strip SuperTux-only `EXPORTED_FUNCTIONS` (`_st_emscripten_*`) from the
       link line; keep `_main` + main-loop pause/resume only
-- [ ] Enable Emscripten **legacy GL emulation** (`-sLEGACY_GL_EMULATION`) so
+- [x] Enable Emscripten **legacy GL emulation** (`-sLEGACY_GL_EMULATION`) so
       fixed-function client (`glOrtho`, `SDL_opengl.h`) can target WebGL
-- [ ] Soften `mk/wasm/shell.html` when optional `_st_emscripten_*` symbols
-      are absent
+- [x] Soften `mk/wasm/shell.html` when optional `_st_emscripten_*` symbols
+      are absent (guards already present; exports no longer require them)
 - [ ] Get a full `emcmake` + link of `pingus` past compile/link errors
 - [ ] Runtime: main loop / filesystem (`data/` preload at `/data`), canvas
       resize, input
@@ -64,9 +64,9 @@ land or scope changes.
 
 ### Android (`.#pingus-android`)
 
-- [ ] Build/link `external/` (or prebuilt static libs) for each ABI — not only
-      `src/**/*.cpp`
-- [ ] GLES / EGL context creation path in the display backend
+- [x] Stage `external/*/include` into the NDK tree; exclude `sound_real.cpp`
+- [ ] Build/link `external/` static libs for each ABI — not only headers
+- [x] GLES context attributes in OpenGLFramebuffer when `PINGUS_USE_GLES`
 - [ ] Replace placeholder launcher icons with Pingus art
 - [ ] Validate APK install on a device/emulator
 
@@ -80,10 +80,12 @@ land or scope changes.
 
 ### Shared engine work (unblocks WASM + Android + ES devices)
 
-- [ ] Inventory fixed-function OpenGL usage under `src/engine/display/opengl/`
+- [x] Request ES 2.0 context via SDL when `PINGUS_USE_GLES` / Emscripten
+- [x] Compile-time `PINGUS_DEFAULT_DATADIR` from CMake `DATA_PREFIX` (wasm preload at `/data`)
+- [ ] Inventory remaining fixed-function OpenGL usage under `src/engine/display/opengl/`
 - [ ] Either: rely on Emscripten legacy GL emulation for wasm only, **or**
       implement a minimal GLES2/WebGL framebuffer path shared with Android
-- [ ] Document runtime data path (`DATA_PREFIX` / preload) for each port
+- [ ] Runtime verification of data path (`DATA_PREFIX` / preload) on each port
 
 ### Flake / packaging polish
 

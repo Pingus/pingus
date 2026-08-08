@@ -113,7 +113,15 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE,    8);
     SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32);
 
+#if defined(PINGUS_USE_GLES) || defined(PINGUS_EMSCRIPTEN)
+    // Request an ES 2.0 context (WebGL / Android / many embedded devices).
+    // Fixed-function calls rely on Emscripten LEGACY_GL_EMULATION when on wasm.
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+#else
     SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+#endif
 
     if ((false)) // anti-aliasing
     {
@@ -129,7 +137,14 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     {
       raise_error("Couldn't set video mode (" << size.width() << "x" << size.height() << "): " << SDL_GetError());
     }
-    SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
+    {
+      SDL_Surface* icon = IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str());
+      if (icon)
+      {
+        SDL_SetWindowIcon(m_window, icon);
+        SDL_FreeSurface(icon);
+      }
+    }
 
     m_glcontext = SDL_GL_CreateContext(m_window);
     if (!m_glcontext)

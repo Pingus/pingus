@@ -206,6 +206,11 @@ target_compile_options(libpingus PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
 target_compile_definitions(libpingus PUBLIC
   -DPROJECT_VERSION="${PROJECT_VERSION_FULL}"
   -DPROJECT_NAME="${PROJECT_NAME}")
+if(DATA_PREFIX)
+  target_compile_definitions(libpingus PUBLIC
+    -DPINGUS_DEFAULT_DATADIR="${DATA_PREFIX}")
+  message(STATUS "PINGUS_DEFAULT_DATADIR=${DATA_PREFIX}")
+endif()
 target_link_libraries(libpingus PUBLIC
   argpp::argpp
   geom::geom

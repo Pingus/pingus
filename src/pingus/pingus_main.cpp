@@ -469,7 +469,11 @@ PingusMain::init_path_finder()
       g_path_manager.set_path(resource_path);
     }
 #else
+#  if defined(PINGUS_DEFAULT_DATADIR)
+    g_path_manager.set_path(PINGUS_DEFAULT_DATADIR);
+#  else
     g_path_manager.set_path("data"); // assume game is run from source dir
+#  endif
 #endif
   }
 
