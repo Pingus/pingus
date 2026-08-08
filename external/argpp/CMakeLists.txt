@@ -49,7 +49,7 @@ add_library(argpp STATIC
   src/parser.cpp
   src/prettyprinter.cpp)
 target_include_directories(argpp PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/argpp/>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
 target_include_directories(argpp PRIVATE
   src/)
