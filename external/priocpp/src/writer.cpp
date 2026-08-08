@@ -23,6 +23,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include <utility>
 
 #ifdef PRIO_USE_JSONCPP
 #  include "json_writer_impl.hpp"

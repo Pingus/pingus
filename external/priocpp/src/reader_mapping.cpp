@@ -19,6 +19,7 @@
 #include "reader_collection.hpp"
 #include "reader_object.hpp"
 #include "reader_impl.hpp"
+#include <utility>
 
 namespace prio {
 

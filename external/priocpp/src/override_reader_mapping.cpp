@@ -21,6 +21,7 @@
 #include "reader_document.hpp"
 #include "reader_mapping.hpp"
 #include "reader_impl.hpp"
+#include <utility>
 
 namespace prio {
 
