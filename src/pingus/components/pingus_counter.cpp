@@ -16,6 +16,8 @@
 
 #include "pingus/components/pingus_counter.hpp"
 
+#include <format>
+
 #include "engine/display/drawing_context.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/gettext.h"
@@ -40,14 +42,16 @@ PingusCounter::draw(DrawingContext& gc)
 
   World* world = server->get_world();
 
-  std::string text = std::vformat(
+  // std::make_format_args requires lvalues; bind getters first.
+  int released = world->get_pingus()->get_number_of_released();
+  int allowed  = world->get_pingus()->get_number_of_allowed();
+  int alive    = world->get_pingus()->get_number_of_alive();
+  int exited   = world->get_pingus()->get_number_of_exited();
+  int to_save  = server->get_plf().get_number_to_save();
+
+  std::string text = std::format(
     std::string(_("Released:{:3d}/{:d}   Out:{:3d}   Saved:{:3d}/{:d}")),
-    std::make_format_args(
-      world->get_pingus()->get_number_of_released(),
-      world->get_pingus()->get_number_of_allowed(),
-      world->get_pingus()->get_number_of_alive(),
-      world->get_pingus()->get_number_of_exited(),
-      server->get_plf().get_number_to_save()));
+    released, allowed, alive, exited, to_save);
 
   gc.print_center(font, Vector2i(gc.get_width()/2, -2), text);
 }
