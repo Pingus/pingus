@@ -115,7 +115,10 @@ ScreenManager::display()
 #ifdef PINGUS_EMSCRIPTEN
   // Browser-driven loop via requestAnimationFrame (fps=0). Avoids SDL_Delay
   // busy-waits that spin the tab at 100% CPU without ASYNCIFY.
-  emscripten_set_main_loop_arg(&ScreenManager::emscripten_main_loop, this, 0, true);
+  // simulate_infinite_loop=false: return to caller so we do not JS-throw/unwind
+  // the C stack (that would run destructors for stack-allocated game state).
+  // Application / managers are heap-allocated on Emscripten for this reason.
+  emscripten_set_main_loop_arg(&ScreenManager::emscripten_main_loop, this, 0, false);
 #else
   while (!screens.empty())
   {

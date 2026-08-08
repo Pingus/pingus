@@ -528,8 +528,16 @@ PingusMain::print_greeting_message()
 void
 PingusMain::start_game ()
 {
+#ifdef PINGUS_EMSCRIPTEN
+  // ScreenManager::display() registers an emscripten main loop and returns.
+  // Stack-allocated Application would be destroyed while the browser still
+  // calls into ScreenManager each frame — keep it alive for the page lifetime.
+  Application* app = new Application(cmd_options);
+  app->run();
+#else
   Application app(cmd_options);
   app.run();
+#endif
 }
 
 int
@@ -581,6 +589,31 @@ PingusMain::run(int argc, char** argv)
       }
     }
 
+#ifdef PINGUS_EMSCRIPTEN
+    // Same lifetime issue as Application: main-loop unwind must not destroy
+    // singletons that the game still uses (SavegameManager / StatManager).
+    SDLSystem* system = new SDLSystem();
+    try
+    {
+      system->create_window(fbtype, screen_size, fullscreen, resizable);
+    }
+    catch(std::exception const& err)
+    {
+      if (fbtype == FramebufferType::SDL)
+      {
+        throw;
+      }
+      else
+      {
+        log_error("couldn't create window, falling back to SDL: {}", err.what());
+        system->create_window(FramebufferType::SDL, screen_size, fullscreen, resizable);
+        config_manager.set_renderer(FramebufferType::SDL);
+      }
+    }
+
+    new SavegameManager("savegames/savegames.scm");
+    new StatManager("savegames/variables.scm");
+#else
     SDLSystem system;
     try
     {
@@ -603,6 +636,7 @@ PingusMain::run(int argc, char** argv)
     // init other components
     SavegameManager savegame_manager("savegames/savegames.scm");
     StatManager stat_manager("savegames/variables.scm");
+#endif
 
     // FIXME: turn these into RAII
     Resource::init();
@@ -624,13 +658,22 @@ PingusMain::run(int argc, char** argv)
   }
   catch (...)
   {
+#ifdef PINGUS_EMSCRIPTEN
+    // Do not swallow Emscripten's main-loop control flow if it ever propagates.
+    throw;
+#else
     std::cout << _("Pingus: Unknown throw caught!") << std::endl;
+#endif
   }
 
+#ifndef PINGUS_EMSCRIPTEN
+  // On Emscripten, start_game() hands control to the browser main loop; tearing
+  // down resources here would race with frames still in flight.
   pingus::sound::PingusSound::deinit();
   pingus::fonts::deinit();
   WorldObjFactory::deinit();
   Resource::deinit();
+#endif
 
   return 0;
 }
