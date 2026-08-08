@@ -24,6 +24,25 @@ EOF
   '';
 
   # libsigc++ 2.x static for wasm (sigc++-2.0.pc).
+  # Meson refuses emcc as a "native" compiler — use an explicit cross file.
+  emscriptenCrossFile = pkgs.writeText "emscripten-cross.ini" ''
+    [binaries]
+    c = 'emcc'
+    cpp = 'em++'
+    ar = 'emar'
+    strip = 'emstrip'
+    pkg-config = 'pkg-config'
+
+    [host_machine]
+    system = 'emscripten'
+    cpu_family = 'wasm32'
+    cpu = 'wasm32'
+    endian = 'little'
+
+    [built-in options]
+    default_library = 'static'
+  '';
+
   sigcWasm = pkgs.stdenv.mkDerivation rec {
     pname = "libsigc++-wasm";
     version = "2.12.1";
@@ -38,13 +57,7 @@ EOF
       runHook preBuild
       export EM_CACHE="''${TMPDIR:-/tmp}/emcache"
       mkdir -p "$EM_CACHE"
-      export CC=emcc CXX=em++ AR=emar NM=emnm RANLIB=emranlib
-      meson setup build \
-        --prefix=$out \
-        --default-library=static \
-        -Dbuild-examples=false \
-        -Dbuild-tests=false \
-        -Dmaintainer-mode=false
+      meson setup build         --prefix=$out         --cross-file=${emscriptenCrossFile}         --default-library=static         -Dbuild-examples=false         -Dbuild-tests=false         -Dmaintainer-mode=false
       meson compile -C build
       runHook postBuild
     '';
