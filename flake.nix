@@ -15,7 +15,8 @@
 
   outputs = { self, nixpkgs, flake-utils, SDL2-win32, SDL2_image-win32 }:
     # Host systems only. Windows is a *target* via pkgsCross (SuperTux pattern).
-    flake-utils.lib.eachDefaultSystem (system:
+    # x86_64-darwin is omitted: nixpkgs unstable (26.11+) dropped support.
+    flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ] (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
         lib = nixpkgs.lib;
