@@ -136,6 +136,9 @@ if(NOT PINGUS_ENABLE_SOUND)
   add_definitions(-DPINGUS_NO_SOUND=1)
   message(STATUS "PINGUS_ENABLE_SOUND=OFF — dummy audio only")
 endif()
+if(PINGUS_USE_GLES)
+  add_definitions(-DPINGUS_USE_GLES=1)
+endif()
 
 if(BUILD_TESTS)
   # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose

@@ -53,8 +53,7 @@ land or scope changes.
 
 - [x] Strip SuperTux-only `EXPORTED_FUNCTIONS` (`_st_emscripten_*`) from the
       link line; keep `_main` + main-loop pause/resume only
-- [x] Enable Emscripten **legacy GL emulation** (`-sLEGACY_GL_EMULATION`) so
-      fixed-function client (`glOrtho`, `SDL_opengl.h`) can target WebGL
+- [x] ~~Legacy GL emulation~~ superseded by real GLES2 shaders (`FULL_ES2` only)
 - [x] Soften `mk/wasm/shell.html` when optional `_st_emscripten_*` symbols
       are absent (guards already present; exports no longer require them)
 - [ ] Get a full `emcmake` + link of `pingus` past compile/link errors
@@ -82,9 +81,10 @@ land or scope changes.
 
 - [x] Request ES 2.0 context via SDL when `PINGUS_USE_GLES` / Emscripten
 - [x] Compile-time `PINGUS_DEFAULT_DATADIR` from CMake `DATA_PREFIX` (wasm preload at `/data`)
-- [ ] Inventory remaining fixed-function OpenGL usage under `src/engine/display/opengl/`
-- [ ] Either: rely on Emscripten legacy GL emulation for wasm only, **or**
-      implement a minimal GLES2/WebGL framebuffer path shared with Android
+- [x] **Shader-based OpenGL path** shared by **OpenGL 3.3 Core** (desktop default)
+      and **OpenGL ES 2.0** (`PINGUS_USE_GLES` / Emscripten): `opengl_program.*`,
+      VBO draws, no fixed-function / no legacy GL emulation
+- [ ] Runtime verification on desktop GL 3.3, wasm GLES2, Android GLES2
 - [ ] Runtime verification of data path (`DATA_PREFIX` / preload) on each port
 
 ### Flake / packaging polish

@@ -36,7 +36,6 @@ LINK_FLAGS=(
   "SHELL:-sALLOW_MEMORY_GROWTH=1"
   # Fixed-function OpenGL client (glOrtho, SDL_opengl.h) via Emscripten emulation.
   "SHELL:-sFULL_ES2=1"
-  "SHELL:-sLEGACY_GL_EMULATION=1"
   "SHELL:-sMIN_WEBGL_VERSION=1"
   "SHELL:-sMAX_WEBGL_VERSION=2"
   "SHELL:-sFORCE_FILESYSTEM=1"

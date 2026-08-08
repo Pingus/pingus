@@ -5,23 +5,17 @@
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_OPENGL_OPENGL_FRAMEBUFFER_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_OPENGL_OPENGL_FRAMEBUFFER_HPP
 
-#include "engine/display/framebuffer.hpp"
+#include <memory>
+#include <vector>
 
-#include <geom/point.hpp>
-#include <geom/rect.hpp>
-#include <geom/size.hpp>
+#include <SDL.h>
+
+#include "engine/display/framebuffer.hpp"
+#include "engine/display/opengl/opengl_program.hpp"
 
 namespace pingus {
 
@@ -31,6 +25,19 @@ private:
   SDL_Window* m_window;
   SDL_GLContext m_glcontext;
   std::vector<geom::irect> cliprect_stack;
+
+  OpenGLPrograms m_programs;
+  float m_mvp[16];
+  int m_width;
+  int m_height;
+
+#if !PINGUS_GL_ES
+  GLuint m_vao;
+#endif
+  GLuint m_vbo;
+
+  void set_ortho(int width, int height);
+  void draw_arrays(GLenum mode, float const* interleaved, int vertex_count, bool textured);
 
 public:
   OpenGLFramebuffer();
