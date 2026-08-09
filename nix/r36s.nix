@@ -584,9 +584,9 @@ if [ ! -x "$BIN" ]; then BIN="$DIR/pingus"; fi
 # Without PortMaster control.txt, set SDL_GAMECONTROLLERCONFIG for GO-Super
 # or the pad stays joystick-only (see mk/r36s/CROSSCOMPILE.md).
 if [ -d "$DIR/libs" ]; then
-  export LD_LIBRARY_PATH="$DIR/libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+  export LD_LIBRARY_PATH="$DIR/libs''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 elif [ -d "$DIR/../lib/pingus" ]; then
-  export LD_LIBRARY_PATH="$DIR/../lib/pingus${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+  export LD_LIBRARY_PATH="$DIR/../lib/pingus''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 fi
 exec "$BIN" --renderer sdl --software-cursor --controller "$DIR/data/controller/r36s.scm" --fullscreen "$@"
 LAUNCH
@@ -724,7 +724,7 @@ export XDG_CONFIG_HOME="$CONFDIR"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 # Prefer bundled OpenAL Soft / libmodplug over any system copy.
 if [ -d "$GAMEDIR/libs" ]; then
-  export LD_LIBRARY_PATH="$GAMEDIR/libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+  export LD_LIBRARY_PATH="$GAMEDIR/libs''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 fi
 
 # Native aarch64 SDL2 gamecontroller input — no gptokeyb needed.
