@@ -127,7 +127,7 @@
                 };
           };
 
-        mkPingus = { pkgs', targetSystem, pname ? "pingus" }:
+        mkPingus = { pkgs', targetSystem, pname ? "pingus", useGLES2 ? false }:
           let
             libs = mkLibs pkgs';
             win = pkgs'.stdenv.hostPlatform.isWindows;
@@ -150,6 +150,9 @@
             mcfgthreads = if win then pkgs'.windows.mcfgthreads else null;
             libGL = if win then null else pkgs'.libGL;
             libGLU = if win then null else pkgs'.libGLU;
+            inherit useGLES2;
+            libglvnd = if win || !useGLES2 then null else pkgs'.libglvnd;
+            addDriverRunpath = if win || !useGLES2 then null else pkgs'.addDriverRunpath;
 
             SDL2 =
               if win then SDL2-win32.packages.${targetSystem}.default
@@ -162,6 +165,14 @@
         pingusNative = mkPingus {
           pkgs' = pkgs;
           targetSystem = system;
+        };
+
+        # Desktop GLES2 build for validating the Android/wasm GL path on Linux.
+        # Pattern matches SuperTux Milestone 1's supertux-milestone1-sdl2-gles2.
+        pingusGles2 = mkPingus {
+          pkgs' = pkgs;
+          targetSystem = system;
+          useGLES2 = true;
         };
 
         mkWinFlat = { game, pname }:
@@ -360,6 +371,7 @@
         packages = {
           default = pingusNative;
           pingus = pingusNative;
+          pingus-gles2 = pingusGles2;
         } // lib.optionalAttrs (!isWin) {
           pingus-win32-x64 = win64Package;
           pingus-win32-x86 = win32Package;
@@ -384,6 +396,11 @@
             type = "app";
             program = "${pingusNative}/bin/pingus";
             meta.description = "Pingus (native)";
+          };
+          pingus-gles2 = {
+            type = "app";
+            program = "${pingusGles2}/bin/pingus";
+            meta.description = "Pingus (native, OpenGL ES 2.0)";
           };
         } // linuxExtras.apps;
       }

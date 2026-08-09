@@ -647,9 +647,10 @@ PingusMain::run(int argc, char** argv)
 
     // init the display
     FramebufferType fbtype = FramebufferType::SDL;
-#if defined(__EMSCRIPTEN__) || defined(ANDROID)
-    // GLES2 builds (WASM + Android NDK) use the OpenGL framebuffer path.
-    // SDL_Renderer can leave a black canvas on some platforms.
+#if defined(__EMSCRIPTEN__) || defined(ANDROID) || defined(PINGUS_USE_GLES)
+    // GLES2 builds (WASM, Android NDK, desktop -DPINGUS_USE_GLES) use the
+    // OpenGL framebuffer path. SDL_Renderer can leave a black canvas on some
+    // platforms / drivers.
     fbtype = FramebufferType::OPENGL;
 #endif
     if (cmd_options.framebuffer_type.is_set())

@@ -26,13 +26,16 @@
 , uitest
 , wstsound
 , xdgcpp
+, useGLES2 ? false
+, libglvnd ? null
+, addDriverRunpath ? null
 }:
 
 let
   pingus_version = tinycmmc_lib.versionFromVERSION self;
 in
 stdenv.mkDerivation rec {
-  pname = "pingus";
+  pname = if useGLES2 then "pingus-gles2" else "pingus";
   version = pingus_version;
 
   src = lib.cleanSourceWith {
@@ -51,12 +54,14 @@ stdenv.mkDerivation rec {
     "-DBUILD_EXTRA=OFF"
     "-DBUILD_TESTS=OFF" # tests fail due to SDLmain vs GTest::Main
     "-DPROJECT_VERSION_FULL=${pingus_version}"
+    "-DPINGUS_USE_GLES=${if useGLES2 then "ON" else "OFF"}"
   ];
 
   nativeBuildInputs = [
     cmake
     pkg-config
-  ] ++ (lib.optional (!stdenv.hostPlatform.isWindows) makeWrapper);
+  ] ++ (lib.optional (!stdenv.hostPlatform.isWindows) makeWrapper)
+    ++ (lib.optional (useGLES2 && addDriverRunpath != null) addDriverRunpath);
 
   preConfigure = ''
     echo "$version" > VERSION
@@ -64,6 +69,9 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
   ''
+  + (lib.optionalString (useGLES2 && !stdenv.hostPlatform.isWindows && addDriverRunpath != null) ''
+     addDriverRunpath $out/bin/pingus
+  '')
   + (lib.optionalString stdenv.hostPlatform.isWindows ''
      mkdir -p $out/bin/
      find ${mcfgthreads} -iname "*.dll" -exec ln -sfv {} $out/bin/ \;
@@ -98,5 +106,6 @@ stdenv.mkDerivation rec {
     uitest
     wstsound
   ]
-  ++ lib.optional (!stdenv.hostPlatform.isWindows) xdgcpp;
+  ++ lib.optional (!stdenv.hostPlatform.isWindows) xdgcpp
+  ++ lib.optional (useGLES2 && libglvnd != null) libglvnd;
 }
