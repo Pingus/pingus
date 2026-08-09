@@ -34,6 +34,7 @@ cp -r "$APP_DIR/res" src/res
 
 # Game C++ sources next to the module Android.mk.
 cp -r "$GAME_SRC_DIR"/. src/jni/src/
+chmod -R u+rwX src/jni/src
 
 # Stage monorepo external/ headers + sources.
 # Under Nix, GAME_SRC_DIR is a filtered ./src store path — parent is NOT the
@@ -52,11 +53,15 @@ if [ -z "$EXTERNAL_DIR" ] || [ ! -d "$EXTERNAL_DIR" ]; then
 fi
 
 mkdir -p src/jni/external_includes
+# Nix store trees are often 0555/0444. cp -a preserves that and the next
+# package cannot create e.g. external_includes/geom → Permission denied.
+# Copy then force owner-writable on the staging tree.
 # Header-only / public includes (layout: include/<ns>/… → external_includes/<ns>/…)
 for name in argpp geomcpp logmich priocpp strutcpp sexpcpp tinygettext; do
   inc="$EXTERNAL_DIR/$name/include"
   if [ -d "$inc" ]; then
     cp -a "$inc"/. src/jni/external_includes/
+    chmod -R u+rwX src/jni/external_includes
   else
     echo "error: missing $inc" >&2
     exit 1
@@ -68,12 +73,12 @@ if [ -n "${GLM_INCLUDE_DIR:-}" ] && [ -d "$GLM_INCLUDE_DIR" ]; then
   if [ -d "$GLM_INCLUDE_DIR/glm" ]; then
     cp -a "$GLM_INCLUDE_DIR/glm" src/jni/external_includes/
   elif [ "$(basename "$GLM_INCLUDE_DIR")" = "glm" ]; then
-    mkdir -p src/jni/external_includes
     cp -a "$GLM_INCLUDE_DIR" src/jni/external_includes/
   else
     echo "error: GLM_INCLUDE_DIR=$GLM_INCLUDE_DIR does not look like glm headers" >&2
     exit 1
   fi
+  chmod -R u+rwX src/jni/external_includes
   echo "==> staged glm headers from $GLM_INCLUDE_DIR"
 else
   echo "error: GLM_INCLUDE_DIR is required for Android (geom → glm)" >&2
@@ -95,6 +100,7 @@ stage_lib_src() {
   # top-level sources + private headers (float.hpp, prettyprinter.hpp, …)
   find "$srcdir" -maxdepth 1 -name '*.cpp' -exec cp -a {} "src/jni/src/deps/$name/" \;
   find "$srcdir" -maxdepth 1 \( -name '*.hpp' -o -name '*.h' \) -exec cp -a {} "src/jni/src/deps/$name/" \;
+  chmod -R u+rwX "src/jni/src/deps/$name"
 }
 stage_lib_src argpp
 stage_lib_src logmich
