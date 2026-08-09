@@ -19,7 +19,7 @@
     libmodplug-win32.url = "git+https://github.com/grumnix/libmodplug-win32.git";
     libmodplug-win32.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Source tarballs for Android / wasm SDL stacks (same pattern as SuperTux M1).
+    # Source tarballs for Android / wasm SDL stacks (prebuilt port deps).
     sdl2-src = {
       url = "https://github.com/libsdl-org/SDL/releases/download/release-2.30.3/SDL2-2.30.3.tar.gz";
       flake = false;
@@ -41,7 +41,7 @@
   outputs = { self, nixpkgs, flake-utils, SDL2-win32, SDL2_image-win32
             , openal-soft-win32, libmodplug-win32
             , sdl2-src, sdl2-image-src, sdl2-mixer-src, libxmp-src }:
-    # Host systems only. Windows is a *target* via pkgsCross (SuperTux pattern).
+    # Host systems only. Windows is a *target* via pkgsCross.
     # x86_64-darwin is omitted: nixpkgs unstable (26.11+) dropped support.
     flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ] (system:
       let
@@ -186,7 +186,7 @@
         };
 
         # Desktop GLES2 build for validating the Android/wasm GL path on Linux.
-        # Pattern matches SuperTux Milestone 1's supertux-milestone1-sdl2-gles2.
+        # Named like other GLES2 embedded targets in the flake (r36s / wasm).
         pingusGles2 = mkPingus {
           pkgs' = pkgs;
           useGLES2 = true;
@@ -385,7 +385,7 @@
 
         libsNative = mkLibs pkgs;
 
-        # Wine runner (SuperTux Milestone 1 / helloworld-fireos pattern).
+        # Wine runner for Windows cross builds.
         # Defined in let so apps can reference it; must not be an outputs attr.
         mkWineApp = pkg: name: description:
           if isWin || !pkgs.stdenv.hostPlatform.isLinux then null

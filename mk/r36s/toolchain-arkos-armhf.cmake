@@ -4,7 +4,7 @@
 #   export ARKOS_SYSROOT=/path/to/armhf-rootfs
 #   cmake -S . -B build-r36s-hf \
 #     -DCMAKE_TOOLCHAIN_FILE=mk/r36s/toolchain-arkos-armhf.cmake \
-#     -DENABLE_SDL2=ON -DENABLE_GLES2=ON -DENABLE_SOUND=ON
+#     -DPINGUS_USE_GLES=ON -DPINGUS_ENABLE_SOUND=ON
 #
 # See mk/r36s/CROSSCOMPILE.md
 
@@ -44,7 +44,6 @@ set(ENV{PKG_CONFIG_PATH} "")
 set(CMAKE_C_FLAGS_INIT   "-march=armv7-a -mfpu=neon-vfpv4 -mfloat-abi=hard")
 set(CMAKE_CXX_FLAGS_INIT "-march=armv7-a -mfpu=neon-vfpv4 -mfloat-abi=hard")
 
-set(ENABLE_SDL2   ON  CACHE BOOL "SDL2 backend" FORCE)
-set(ENABLE_GLES2  ON  CACHE BOOL "OpenGL ES 2.0" FORCE)
-set(ENABLE_GP2X   OFF CACHE BOOL "GP2X defines" FORCE)
-set(ENABLE_RES320X240 OFF CACHE BOOL "320×240 layout" FORCE)
+set(PINGUS_USE_GLES      ON  CACHE BOOL "OpenGL ES 2.0 (Mali-G31 / KMSDRM)" FORCE)
+set(PINGUS_ENABLE_SOUND  ON  CACHE BOOL "wstsound audio" FORCE)
+set(PINGUS_NO_XDGCPP     ON  CACHE BOOL "No xdgcpp on embedded CFW" FORCE)

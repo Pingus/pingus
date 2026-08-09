@@ -3,15 +3,15 @@
 **Target hardware:** R36S handheld — Rockchip **RK3326** (4× Cortex-A35), **640×480** panel, Mali-G31 GPU.  
 **Typical firmware:** [ArkOS](https://github.com/christianhaitian/arkos) (and community R36S images / dArkOS). ArkOS is a **modified Ubuntu 19.10 (eoan)** userspace for Rockchip handhelds, with **both aarch64 and armhf** library trees.
 
-Game logical resolution is already **640×480** (`ST_SCREEN_W` / `ST_SCREEN_H`). Do **not** enable `RES320X240` / `ENABLE_GP2X` for this device.
+Pingus’s native resolution (**640×480**) matches the panel. Prefer windowed or fullscreen at that size; use `--renderer opengl` for GLES or `--renderer sdl` for the software path.
 
 | Setting | Value |
 |---------|--------|
-| Backend | **SDL2** (`ENABLE_SDL2=ON`) |
-| Renderer | **GLES2** (`ENABLE_GLES2=ON`) — Mali-G31 / libmali or Panfrost |
-| Sound | SDL2_mixer when available (`ENABLE_SOUND=ON`) |
+| Video | **SDL2** + **OpenGL ES 2** (`-DPINGUS_USE_GLES=ON`) — Mali-G31 / libmali or Mesa |
+| Sound | wstsound when available (`-DPINGUS_ENABLE_SOUND=ON`) |
+| XDG | often off on CFW (`-DPINGUS_NO_XDGCPP=ON`) |
 | ABI (preferred) | **aarch64-linux-gnu** |
-| ABI (PortMaster-style) | **arm-linux-gnueabihf** (optional second package) |
+| ABI (optional) | **arm-linux-gnueabihf** (PortMaster-style 32-bit) |
 
 ---
 
@@ -48,7 +48,7 @@ On a host with `aarch64-linux-gnu-gcc` (Debian/Ubuntu: `gcc-aarch64-linux-gnu`):
 sudo apt-get update
 sudo apt-get install --reinstall -y \
   libc6-dev linux-libc-dev libstdc++-9-dev \
-  libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev \
+  libsdl2-dev libsdl2-image-dev \
   libgles2-mesa-dev libegl1-mesa-dev libgbm-dev \
   zlib1g-dev libpng-dev pkg-config
 
@@ -62,109 +62,45 @@ Then:
 export ARKOS_SYSROOT=$HOME/arkos-sysroot-aarch64
 cmake -S . -B build-r36s \
   -DCMAKE_TOOLCHAIN_FILE=mk/r36s/toolchain-arkos-aarch64.cmake \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DENABLE_SDL2=ON -DENABLE_GLES2=ON -DENABLE_SOUND=ON \
-  -DDATA_PREFIX=./data
-cmake --build build-r36s -j$(nproc)
+  -DPINGUS_USE_GLES=ON -DPINGUS_ENABLE_SOUND=ON -DPINGUS_NO_XDGCPP=ON
+cmake --build build-r36s -j"$(nproc)"
 ```
 
-Copy `build-r36s/pingus` and the `data/` tree to the device (e.g. under `/roms/ports/pingus/`).
-
-### B. Debootstrap an old arm64 rootfs (no device required)
-
-Debian **Buster** (glibc 2.28) is a safe ABI floor and still has SDL2 in archives:
+### B. Debootstrap / chroot sysroot
 
 ```bash
-sudo ./mk/r36s/scripts/make-sysroot-debootstrap.sh /opt/arkos-sysroot-buster arm64
-export ARKOS_SYSROOT=/opt/arkos-sysroot-buster
-# same cmake line as above
+./mk/r36s/scripts/make-sysroot-debootstrap.sh $HOME/arkos-sysroot-aarch64
+# then same cmake as above
 ```
 
-Ubuntu **eoan** packages live on `old-releases.ubuntu.com` if you need a closer match; Buster is usually enough if you avoid brand-new symbols.
-
-### C. Build *on* the device
-
-ArkOS ships with incomplete `-dev` packages until reinstalled (see [r36s-programming](https://github.com/dov/r36s-programming)):
+### C. Nix flake (published ArkOS sysroot)
 
 ```bash
-sudo apt-get install --reinstall -y \
-  g++ cmake ninja-build pkg-config \
-  libc6-dev libstdc++-9-dev libsdl2-dev libsdl2-image-dev \
-  libsdl2-mixer-dev libgles2-mesa-dev zlib1g-dev
-cmake -S . -B build -DENABLE_SDL2=ON -DENABLE_GLES2=ON
-cmake --build build -j2
-```
-
-Slow (1 GB RAM) but guaranteed ABI match.
-
-### D. Nix flake + published ArkOS sysroot (preferred for device)
-
-```bash
-nix build .#arkos-sysroot              # unpacks the published tarball
-nix build .#pingus-r36s   # links against that sysroot
-```
-
-Sysroot URL (flake `fetchurl`):
-
-```text
-https://github.com/grumnix/arkos-sysroot/releases/download/v0.1/arkos-sysroot.tar.gz
-```
-
-If the hash in `nix/r36s.nix` is still a placeholder, the first build fails with
-the correct `sha256-…` — paste it into `arkosSysrootSrc.hash` and rebuild.
-
-The resulting binary uses the **sysroot’s glibc/SDL2/GLES**, not nixpkgs Mesa,
-so it should not look for `/run/opengl-driver`.
-
-### E. Nix flake (sysroot-linked — preferred for stock ArkOS)
-
-```bash
-nix build .#pingus-r36s
-# → result/bin/pingus (aarch64, SDL2+GLES2, ArkOS sysroot)
-
-# PortMaster-ready tree (launcher + data + metadata):
-nix build .#pingus-r36s-portmaster
-# → result/Pingus.sh , result/pingus/ , …
-#    cp -a result/* /roms/ports/
-
-# PortMaster autoinstall zip:
+nix build .#arkos-sysroot          # unpack-only derivation
+nix build .#pingus-r36s            # aarch64 binary + data
+nix build .#pingus-r36s-portmaster # PortMaster tree under result/
 nix build .#pingus-r36s-portmaster-zip
-# → result/pingus.zip  →  ports/PortMaster/autoinstall/
 ```
 
-The binary is linked against the **ArkOS sysroot** (not modern nixpkgs glibc), so it runs on stock ArkOS when device SDL2/GLES are present.
+The flake pins an **ArkOS sysroot tarball** URL in `nix/r36s.nix`. Replace the
+`localhost` placeholder with a real published URL (or override the `fetchurl`)
+before a clean CI/hydra build. Refresh the hash with
+`nix store prefetch-file <url>`.
 
 ---
 
-## Obtaining compatible libraries and headers
+## Toolchain files
 
-| Source | Pros | Cons |
-|--------|------|------|
-| **Device rsync** (`make-sysroot-from-device.sh`) | Exact SDL2/Mali/glibc as on hardware | Needs SSH + disk space |
-| **Debian Buster arm64 debootstrap** | Reproducible, no device | SDL may differ from ArkOS KMS build |
-| **Ubuntu 19.10 (eoan) ports** | Closest to ArkOS base | EOL; use old-releases mirrors |
-| **ArkOS build chroots** (wiki) | Matches maintainer workflow | Heavy (qemu-user + full chroot) |
-| **nixpkgs pkgsCross** | Pure flake, good for CI | glibc too new for stock ArkOS |
+| File | ABI |
+|------|-----|
+| `mk/r36s/toolchain-arkos-aarch64.cmake` | aarch64-linux-gnu |
+| `mk/r36s/toolchain-arkos-armhf.cmake` | arm-linux-gnueabihf |
 
-**Runtime deps on device (shared):** `libSDL2-2.0.so.0`, `libSDL2_image-2.0.so.0`, `libSDL2_mixer-2.0.so.0` (if sound), `libGLESv2`, `libEGL`, `libgbm`, `libdrm`, `libz`, `libpng` (often via SDL_image).
+Both require `ARKOS_SYSROOT` (env or `-DARKOS_SYSROOT=`). They default
+`PINGUS_USE_GLES`, `PINGUS_ENABLE_SOUND`, and `PINGUS_NO_XDGCPP` to ON; override
+on the cmake command line if needed.
 
-ArkOS maintains **custom SDL2** builds (DRM/KMS). Linking against stock Debian SDL2 headers is usually OK; at **run** time prefer the device’s `libSDL2.so`.
-
-**GPU:** Mali-G31 via proprietary **libmali** (GBM) or open **Panfrost**. GLES2 context creation goes through SDL2; ensure the image’s EGL/GLES stack is intact. No need for desktop GLU on this path.
-
----
-
-## CMake toolchain files
-
-| File | Triple |
-|------|--------|
-| `mk/r36s/toolchain-arkos-aarch64.cmake` | `aarch64-linux-gnu` |
-| `mk/r36s/toolchain-arkos-armhf.cmake` | `arm-linux-gnueabihf` |
-
-Both expect:
-
-- `ARKOS_SYSROOT` — absolute path to rootfs (or pass `-DARKOS_SYSROOT=…`)
-- Cross compilers on `PATH` (`aarch64-linux-gnu-gcc` / `arm-linux-gnueabihf-gcc`)
+Cross compilers must be on `PATH` (`aarch64-linux-gnu-gcc` / `arm-linux-gnueabihf-gcc`).
 
 ---
 
@@ -185,39 +121,31 @@ Manual layout:
 
 ```text
 /roms/ports/
-  Pingus.sh      # launcher (must source PortMaster control.txt)
+  Pingus.sh      # launcher (may source PortMaster control.txt)
   pingus/
-    pingus        # binary
-    data/                      # game data
+    pingus       # binary
+    data/        # game data
 ```
 
-### Controls (required)
+### Input
 
-The SDL2 build only accepts **SDL GameController** devices, not raw joysticks.
-The R36S built-in pad (**GO-Super Gamepad**, vendor `0x484b` / product `0x1100`)
-often appears as *joystick-only* unless a mapping is provided. Without one you get:
+Pingus uses the **SDL Joystick API** (not GameController). Face buttons and
+axes are the kernel’s raw indices; `SDL_GAMECONTROLLERCONFIG` does **not**
+remap them inside Pingus.
 
-```text
-Warning: Joystick(s) present but none have a gamecontroller mapping.
-```
+PortMaster launchers still export `SDL_GAMECONTROLLERCONFIG` (GO-Super mapping)
+for consistency with other ports and for any future GameController path.
+Select+Start exit is typically provided by **gptokeyb** / **oga_controls** in
+the launch script, not by Pingus itself.
 
-**PortMaster path (recommended):** the packaged launcher sources
-`control.txt` via `get_controls`, which sets `SDL_GAMECONTROLLERCONFIG` for
-the current CFW/device (including GO-Super on R36S).
-
-**Manual / SSH launch:** export a mapping before starting the binary, e.g.:
+Useful on-device checks:
 
 ```bash
-export SDL_GAMECONTROLLERCONFIG="190000004b4800000011000000010000,GO-Super Gamepad,a:b0,b:b1,back:b12,dpdown:b9,dpleft:b10,dpright:b11,dpup:b8,guide:b16,leftshoulder:b4,leftstick:b14,lefttrigger:b6,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b15,righttrigger:b7,rightx:a2,righty:a3,start:b13,x:b3,y:b2,platform:Linux,"
-./pingus --fullscreen -v
+# Prefer matching mali GBM EGL+GLES from one tree when mixing mesa/mali
+export LD_LIBRARY_PATH=/usr/local/lib/aarch64-linux-gnu:$LD_LIBRARY_PATH
+export SDL_VIDEODRIVER=KMSDRM
+./pingus --renderer opengl --geometry 640x480
 ```
-
-Confirm with `-v`: look for `[pad] … controller "GO-Super Gamepad"` (not
-`joystick-only`). Defaults: A jump, B run/fire, Start menu, D-pad/stick move.
-
-Do **not** rely on the system `gamecontrollerdb` alone when launching outside
-PortMaster — many ArkOS sessions only inject the mapping through PortMaster’s
-`control.txt`.
 
 ---
 
@@ -226,4 +154,3 @@ PortMaster — many ArkOS sessions only inject the mapping through PortMaster’
 - [ArkOS Building wiki](https://github.com/christianhaitian/ArkOS/wiki/Building) — Ubuntu 19.10 base, arm64/armhf chroots, Mali + SDL2 notes  
 - [dov/r36s-programming](https://github.com/dov/r36s-programming) — on-device C/SDL2 setup, 640×480 hardware notes  
 - [PortMaster packaging notes](https://github.com/christianhaitian/arkos/blob/main/ports/docs/packaging.md) — `libs/`, `SDL_GAMECONTROLLERCONFIG`, multi-device RK3326  
-- Game defaults: logical **640×480** backbuffer in `platform_sdl2.cpp` / `defines.h` (matches R36S panel)

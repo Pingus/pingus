@@ -24,10 +24,11 @@
 let
   arkosSysrootSrc = fetchurl {
     name = "arkos-sysroot.tar.gz";
-    # Published sysroot (glibc ~2.30 + SDL2/GLES + OpenAL Soft + libmodplug).
-    # After publishing a new tarball, refresh the hash:
+    # Placeholder URL for a published ArkOS aarch64 sysroot tarball
+    # (glibc ~2.30 + SDL2 + GLES/EGL + OpenAL Soft + libmodplug).
+    # Replace with a permanent host before CI/hydra; then:
     #   nix store prefetch-file <url>
-    # and paste the new sha256-… here.
+    # and paste the new sha256-… into `hash`.
     url = "http://localhost:8888/arkos-sysroot4.tar.gz";
     hash = "sha256-Sm1Xcy++M6LuOLXs9nOs7xIfuvzqAOledKnWH8H7+/g=";
   };
@@ -568,14 +569,14 @@ Deploy the binary + share/pingus data to the device.
 
 Controls (important)
 --------------------
-SDL2 only opens SDL GameController devices. The R36S GO-Super Gamepad is
-often joystick-only unless SDL_GAMECONTROLLERCONFIG is set.
+Pingus uses the SDL Joystick API (raw indices). PortMaster still exports
+SDL_GAMECONTROLLERCONFIG for other ports and for a future GameController path.
 
   Preferred: nix build .#pingus-r36s-portmaster
   and install under /roms/ports/ (launcher sources PortMaster control.txt).
 
-  Manual: export the GO-Super mapping, then run with -v and confirm
-  "[pad] … controller" (not "joystick-only"). See mk/r36s/CROSSCOMPILE.md.
+  Manual SSH runs need no mapping for basic joystick input. See
+  mk/r36s/CROSSCOMPILE.md for GLES env tips and exit-hotkey helpers..
 EOF_README
         cat > $out/share/pingus/pingus.sh << 'LAUNCH'
 #!/bin/bash
@@ -729,12 +730,12 @@ if [ -d "$GAMEDIR/libs" ]; then
   export LD_LIBRARY_PATH="$GAMEDIR/libs''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 fi
 
-# Native aarch64 SDL2 gamecontroller input — no gptokeyb needed.
+# Native aarch64 SDL2 joystick input; gptokeyb optional for exit hotkey.
 pm_platform_helper "$GAMEDIR/pingus" 2>/dev/null || true
 
 # Force on-device data + config dirs (do not use any baked-in install prefix).
-# SDL renderer: GLES path aborts on ArkOS/Mali; --renderer sdl works on R36S.
-# Software cursor + r36s.scm: no mouse, only SDL joystick / GameController.
+# Prefer --renderer opengl (GLES) on R36S; --renderer sdl is a software fallback.
+# Software cursor: no mouse; pad via SDL joystick.
 ./pingus \
   --datadir "$GAMEDIR/data" \
   --userdir "$CONFDIR" \
@@ -801,22 +802,17 @@ Native **aarch64** build linked against the ArkOS sysroot (SDL2 + GLES2).
 
 ### Controls (required)
 
-This build uses **SDL2 GameController** only. The R36S built-in **GO-Super
-Gamepad** does not expose a mapping by default when the binary is started
-outside PortMaster; you will see:
+Pingus reads the pad via the **SDL Joystick API** (raw button/axis indices).
+`SDL_GAMECONTROLLERCONFIG` is still exported by this launcher for consistency
+with other PortMaster ports; it does not remap Pingus’s joystick bindings.
 
-    Warning: Joystick(s) present but none have a gamecontroller mapping.
+**This PortMaster launcher** sources `control.txt` (`get_controls`). Prefer
+launching via EmulationStation **Ports** (or the `.sh` script). Select+Start
+exit is handled by gptokeyb/oga_controls when the launcher starts them — not
+by Pingus itself.
 
-**This PortMaster launcher** sources `control.txt` (`get_controls`) so
-`SDL_GAMECONTROLLERCONFIG` is set for the device. Launch via EmulationStation
-**Ports** (or the `.sh` script), not by running the binary alone over SSH
-without that env.
-
-If you must run the binary directly, export a GO-Super mapping first (see
-`mk/r36s/CROSSCOMPILE.md`) and use `-v` until the log shows
-`[pad] … controller "GO-Super Gamepad"`.
-
-In-game defaults: D-pad / left stick move, **A** jump, **B** run/fire, **Start** menu.
+In-game: D-pad / left stick move; face buttons follow the device’s joystick
+indices (see `mk/r36s/CROSSCOMPILE.md`).
 
 ### Credits
 
