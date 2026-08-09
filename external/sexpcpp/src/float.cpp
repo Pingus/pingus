@@ -18,9 +18,16 @@
 #include "float.hpp"
 
 #include <cassert>
-#include <charconv>
+#include <cstdio>
+#include <cstdlib>
 #include <limits>
 #include <sstream>
+
+// libc++ on Android NDK still lacks floating-point std::from_chars /
+// std::to_chars (integral overloads exist; float is deleted/unavailable).
+#if !defined(__ANDROID__)
+#  include <charconv>
+#endif
 
 namespace sexp {
 
@@ -34,8 +41,14 @@ float string2float(const std::string& text)
   }
 
   float result;
+#if defined(__ANDROID__)
+  char* end = nullptr;
+  result = std::strtof(start, &end);
+  assert(end != start);
+#else
   [[maybe_unused]] auto err = std::from_chars(start, text.data() + text.size(), result);
   assert(err.ec == std::errc());
+#endif
   return result;
 }
 
@@ -43,9 +56,15 @@ void float2string(std::ostream& os, float value)
 {
   constexpr size_t len = 32;
   char buffer[len];
+#if defined(__ANDROID__)
+  int n = std::snprintf(buffer, len, "%g", static_cast<double>(value));
+  assert(n > 0 && static_cast<size_t>(n) < len);
+  os.write(buffer, n);
+#else
   auto result = std::to_chars(buffer, buffer + len, value);
   assert(result.ec == std::errc());
   os.write(buffer, result.ptr - buffer);
+#endif
 }
 
 } // namespace sexp
