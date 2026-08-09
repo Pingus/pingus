@@ -472,11 +472,13 @@ let
           do
             if [ -e "$cand" ]; then OPENAL_LIB="$cand"; break; fi
           done
+          # Non-Emscripten wstsound includes <al.h>/<alext.h> (not <AL/al.h>),
+          # so OPENAL_INCLUDE_DIR must be the AL/ directory itself.
           for cand in \
-            "${arkosSysroot}/usr/include" \
-            "${arkosSysroot}/usr/include/aarch64-linux-gnu"
+            "${arkosSysroot}/usr/include/AL" \
+            "${arkosSysroot}/usr/include/aarch64-linux-gnu/AL"
           do
-            if [ -f "$cand/AL/al.h" ]; then OPENAL_INC="$cand"; break; fi
+            if [ -f "$cand/al.h" ]; then OPENAL_INC="$cand"; break; fi
           done
           if [ -z "$OPENAL_LIB" ] || [ -z "$OPENAL_INC" ]; then
             echo "arkos-sysroot: OpenAL required for enableSound but not found" >&2
