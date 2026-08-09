@@ -272,7 +272,9 @@ let
     src
   , version
   , pname ? "pingus-r36s"
-  , enableSound ? true
+  # ArkOS sysroot has no OpenAL; wstsound's find_package(OpenAL) fails.
+  # Keep OFF until OpenAL Soft is cross-built into the sysroot like Android.
+  , enableSound ? false
   }:
     let
       wrappers = mkWrappers arkosSysroot;
@@ -325,6 +327,8 @@ let
         "-DCMAKE_HAVE_LIBC_PTHREAD=1"
         "-DCMAKE_THREAD_LIBS_INIT=-pthread"
         "-DPTHREAD_LIBRARY=pthread"
+        # ArkOS sysroot lacks OpenAL; disable wstsound until Soft is packaged.
+        "-DPINGUS_ENABLE_SOUND=${if enableSound then "ON" else "OFF"}"
         # Relative data next to the binary on device (PortMaster layout).
         "-DPROJECT_VERSION_FULL=${version}"
       ];
