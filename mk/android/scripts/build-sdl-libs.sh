@@ -51,6 +51,17 @@ COMPILE_JAR="$ANDROID_HOME/platforms/android-$COMPILE_PLATFORM/android.jar"
 
 mkdir -p sdl-jni
 cp -r "$SDL_SRC" sdl-jni/SDL
+chmod -R u+rwX sdl-jni/SDL
+
+# NDK r26+ marks ALooper_pollAll unavailable (hard error). SDL 2.30.3 still
+# calls it in the Android sensor path; pollOnce is the supported replacement.
+# Semantics differ slightly under load, but timeout==0 polling is fine here.
+if grep -Rql 'ALooper_pollAll' sdl-jni/SDL 2>/dev/null; then
+  echo "==> patching ALooper_pollAll → ALooper_pollOnce for NDK 27"
+  grep -Rl 'ALooper_pollAll' sdl-jni/SDL | while read -r f; do
+    sed -i 's/ALooper_pollAll/ALooper_pollOnce/g' "$f"
+  done
+fi
 chmod -R u+w sdl-jni
 cp "$APPLICATION_MK" sdl-jni/Application.mk
 cp "$TOP_ANDROID_MK" sdl-jni/Android.mk
