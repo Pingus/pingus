@@ -8,7 +8,7 @@ ifeq ($(ENABLE_ANDROID_SOUND),1)
 include $(CLEAR_VARS)
 LOCAL_MODULE := openal
 LOCAL_SRC_FILES := ../audio/$(TARGET_ARCH_ABI)/lib/libopenal.a
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../audio/include
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../audio/include $(LOCAL_PATH)/../audio/include/AL
 include $(PREBUILT_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -62,7 +62,10 @@ LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/deps/wstsound
 
 ifeq ($(ENABLE_ANDROID_SOUND),1)
+# libmodplug: <libmodplug/modplug.h>  OpenAL Soft install: include/AL/*.h
+# Non-Emscripten wstsound uses <al.h>/<alc.h>/<alext.h> (not <AL/al.h>).
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../audio/include
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../audio/include/AL
 endif
 
 LOCAL_SHARED_LIBRARIES := SDL2

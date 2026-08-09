@@ -91,6 +91,15 @@ EOF
     -DCMAKE_INSTALL_PREFIX="$idir"
   cmake --build "$mbdir/build" -j"${NIX_BUILD_CORES:-$(nproc)}"
   cmake --install "$mbdir/build"
+  # Public API is <libmodplug/modplug.h>; copy if install put it at include root only.
+  if [ -f "$idir/include/modplug.h" ] && [ ! -f "$idir/include/libmodplug/modplug.h" ]; then
+    mkdir -p "$idir/include/libmodplug"
+    cp -a "$idir/include/modplug.h" "$idir/include/libmodplug/modplug.h"
+  fi
+  if [ -f "$MODPLUG_SRC/src/libmodplug/modplug.h" ]; then
+    mkdir -p "$idir/include/libmodplug"
+    cp -a "$MODPLUG_SRC/src/libmodplug/modplug.h" "$idir/include/libmodplug/modplug.h"
+  fi
 done
 
 echo "==> audio libs installed under $OUT_DIR/{abi}/"
