@@ -44,8 +44,8 @@ let
       APP_STL := c++_shared
       APP_ABI := ${targetAbisStr}
       APP_PLATFORM := android-${packagePlatform}
-      # Pingus + external/* use std::format (C++20). NDK 23 libc++ lacked <format>.
-      APP_CPPFLAGS := -std=c++20
+      # std::format / format_to / vformat (C++20). Needs a recent NDK libc++.
+      APP_CPPFLAGS := -std=c++20 -D_LIBCPP_ENABLE_EXPERIMENTAL=1
     '';
   };
 
