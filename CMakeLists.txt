@@ -68,9 +68,16 @@ if(PINGUS_USE_GLES OR EMSCRIPTEN)
     set(PINGUS_GL_LIBS OpenGL::GL)
   endif()
 else()
-  set(OpenGL_GL_PREFERENCE "LEGACY")
-  find_package(OpenGL REQUIRED)
-  set(PINGUS_GL_LIBS OpenGL::GL)
+  if(WIN32)
+    # MinGW/MSVC: link the system OpenGL import lib. find_package(OpenGL) is
+    # unreliable under pkgsCross.mingw* (empty/wrong OpenGL::GL → undefined
+    # gl* at link of the final .exe against static libpingus).
+    set(PINGUS_GL_LIBS opengl32)
+  else()
+    set(OpenGL_GL_PREFERENCE "LEGACY")
+    find_package(OpenGL REQUIRED)
+    set(PINGUS_GL_LIBS OpenGL::GL)
+  endif()
 endif()
 
 if(EMSCRIPTEN AND SDL2_ROOT)
@@ -307,6 +314,11 @@ add_executable(pingus ${PINGUS_MAIN_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_compile_options(pingus PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
 target_link_libraries(pingus libpingus)
+if(WIN32)
+  # Static libpingus does not always pull pkg-config INTERFACE libs through to
+  # the .exe under MinGW; re-state SDL + OpenGL on the executable.
+  target_link_libraries(pingus ${PINGUS_SDL_LIBS} ${PINGUS_GL_LIBS})
+endif()
 # Optional ABI shims when linking a newer compiler against an older libstdc++
 # (R36S / ArkOS sysroot).
 if(PINGUS_CXXABI_SHIM)
