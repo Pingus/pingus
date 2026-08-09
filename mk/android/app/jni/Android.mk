@@ -28,7 +28,10 @@ LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/../external_includes/wstsound \
 	$(LOCAL_PATH)/../external_includes/xdgcpp
 
-LOCAL_SHARED_LIBRARIES := SDL2 SDL2_image
+# SDL2_image is not a prebuilt here — IMG_* comes from img_stb_min.c
+# (compiled into this module via build-apk.sh). Prebuilt mk only ships
+# SDL2 + optional SDL2_mixer.
+LOCAL_SHARED_LIBRARIES := SDL2
 
 LOCAL_LDLIBS := -llog -landroid -lz -lGLESv2 -lEGL
 
