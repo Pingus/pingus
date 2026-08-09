@@ -68,14 +68,13 @@ if(EMSCRIPTEN)
 endif()
 
 if(EMSCRIPTEN)
-  # Emscripten ships OpenAL → Web Audio; no system OpenAL Soft.
-  # Headers live in the emscripten sysroot; link with -lopenal at the app.
-  find_path(OPENAL_INCLUDE_DIR AL/al.h
-    PATHS ENV EMSCRIPTEN ENV EM_CACHE
-    PATH_SUFFIXES system/include cache/sysroot/include include
-    REQUIRED)
+  # Emscripten ships OpenAL → Web Audio; headers are on the default
+  # em++ include path (sysroot). Do not find_path — the store path is
+  # not always visible via ENV EMSCRIPTEN during isolated builds.
+  set(OPENAL_INCLUDE_DIR "" CACHE PATH "OpenAL include (emscripten sysroot)")
   set(OPENAL_LIBRARY "openal" CACHE STRING "OpenAL link library name")
   set(OpenAL_FOUND TRUE)
+  message(STATUS "Emscripten OpenAL: using toolchain sysroot, link -lopenal")
 else()
   find_package(Threads REQUIRED)
   find_package(OpenAL REQUIRED)
@@ -152,7 +151,9 @@ if(WSTSOUND_WITH_EFX)
   target_compile_definitions(wstsound PUBLIC WSTSOUND_WITH_EFX=1)
 endif()
 
-target_include_directories(wstsound SYSTEM PUBLIC ${OPENAL_INCLUDE_DIR})
+if(OPENAL_INCLUDE_DIR)
+  target_include_directories(wstsound SYSTEM PUBLIC ${OPENAL_INCLUDE_DIR})
+endif()
 target_include_directories(wstsound PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
