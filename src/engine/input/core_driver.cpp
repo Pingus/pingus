@@ -34,6 +34,11 @@ public:
     x_axis(), y_axis(), speed_button(),
     speed(400.0f)
   {
+    // Handheld / stick-only: start at the centre of the pointer limits so the
+    // cursor is visible immediately (default pos is 0,0 top-left).
+    auto const lim = get_limits();
+    set_pos(geom::fpoint((lim.left() + lim.right()) * 0.5f,
+                         (lim.top() + lim.bottom()) * 0.5f));
   }
 
   ~AxisPointer() override

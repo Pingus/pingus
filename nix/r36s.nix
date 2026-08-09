@@ -470,7 +470,7 @@ BIN="$DIR/../bin/pingus"
 if [ ! -x "$BIN" ]; then BIN="$DIR/pingus"; fi
 # Without PortMaster control.txt, set SDL_GAMECONTROLLERCONFIG for GO-Super
 # or the pad stays joystick-only (see mk/r36s/CROSSCOMPILE.md).
-exec "$BIN" --renderer sdl --fullscreen "$@"
+exec "$BIN" --renderer sdl --software-cursor --controller "$DIR/data/controller/r36s.scm" --fullscreen "$@"
 LAUNCH
         chmod +x $out/share/pingus/pingus.sh
       '';
@@ -602,12 +602,14 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 pm_platform_helper "$GAMEDIR/pingus" 2>/dev/null || true
 
 # Force on-device data + config dirs (do not use any baked-in install prefix).
-# SDL renderer: default with -DPINGUS_USE_GLES is OpenGL/GLES, which currently
-# aborts on ArkOS/Mali; --renderer sdl is verified working on R36S.
+# SDL renderer: GLES path aborts on ArkOS/Mali; --renderer sdl works on R36S.
+# Software cursor + r36s.scm: no mouse, only SDL joystick / GameController.
 ./pingus \
   --datadir "$GAMEDIR/data" \
   --userdir "$CONFDIR" \
   --renderer sdl \
+  --software-cursor \
+  --controller "$GAMEDIR/data/controller/r36s.scm" \
   --fullscreen \
   "$@"
 pm_finish 2>/dev/null || true
