@@ -42,7 +42,7 @@
 #  include <sys/types.h>
 #  include <unistd.h>
 #  include <errno.h>
-#  if !defined(__EMSCRIPTEN__) && !defined(ANDROID)
+#  if !defined(__EMSCRIPTEN__) && !defined(ANDROID) && !defined(PINGUS_NO_XDGCPP)
 #    include <xdg.h>
 #  endif
 #else /* _WIN32 */
@@ -448,6 +448,16 @@ System::find_userdir()
     return std::string(internal) + "/pingus/";
   }
   raise_exception(std::runtime_error, "SDL_AndroidGetInternalStoragePath returned null");
+#elif defined(PINGUS_NO_XDGCPP)
+  // R36S / other embedded Linux without xdgcpp: XDG-ish path under $HOME.
+  if (char const* homedir = getenv("HOME"))
+  {
+    if (homedir[0] != '\0')
+    {
+      return std::string(homedir) + "/.config/pingus-0.8/";
+    }
+  }
+  raise_exception(std::runtime_error, "Environment variable $HOME not set, fix that and start again.");
 #else
 #if 0
   // FIXME: insert code here to handle backward compatibilty with 0.7.x releases
@@ -465,7 +475,7 @@ System::find_userdir()
 #endif
 
   return (xdg::config().home() / "pingus-0.8/").string();
-#endif /* emscripten/android */
+#endif /* emscripten/android/no-xdgcpp */
 #endif
 }
 

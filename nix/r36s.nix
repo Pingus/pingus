@@ -329,6 +329,8 @@ let
         "-DPTHREAD_LIBRARY=pthread"
         # ArkOS sysroot lacks OpenAL; disable wstsound until Soft is packaged.
         "-DPINGUS_ENABLE_SOUND=${if enableSound then "ON" else "OFF"}"
+        # No xdgcpp / jsoncpp in the published ArkOS sysroot (desktop helpers).
+        "-DPINGUS_NO_XDGCPP=ON"
         # Relative data next to the binary on device (PortMaster layout).
         "-DPROJECT_VERSION_FULL=${version}"
       ];

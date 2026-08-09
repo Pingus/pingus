@@ -31,6 +31,7 @@ if(NOT PROJECT_VERSION_FULL)
 endif()
 
 option(PINGUS_USE_GLES "Prefer OpenGL ES (Emscripten / some embedded)" OFF)
+option(PINGUS_NO_XDGCPP "Skip xdgcpp (embedded ports without XDG Base Dir)" OFF)
 if(EMSCRIPTEN)
   set(PINGUS_USE_GLES ON)
   message(STATUS "Emscripten: enabling PINGUS_USE_GLES")
@@ -186,6 +187,9 @@ else()
   # Desktop GL 3.3 path: expose shader/VBO prototypes from system glext headers.
   add_definitions(-DGL_GLEXT_PROTOTYPES=1)
 endif()
+if(PINGUS_NO_XDGCPP)
+  add_definitions(-DPINGUS_NO_XDGCPP=1)
+endif()
 
 if(BUILD_TESTS)
   # add 'make test' target, use 'make test ARGS="-V"' or 'ctest -V' for verbose
@@ -232,8 +236,8 @@ function(build_dependencies)
   tinycmmc_find_dependency(geom)
   tinycmmc_find_dependency(logmich)
   tinycmmc_find_dependency(sexp)
-  if(EMSCRIPTEN)
-    # jsoncpp is not in the emscripten sysroot; game data uses sexp/prio paths.
+  if(EMSCRIPTEN OR PINGUS_NO_XDGCPP)
+    # jsoncpp is not in the emscripten/ArkOS sysroots; game data uses sexp paths.
     set(PRIO_USE_JSONCPP OFF CACHE BOOL "" FORCE)
   endif()
   tinycmmc_find_dependency(prio)
@@ -244,7 +248,8 @@ function(build_dependencies)
     add_library(wstsound INTERFACE)
     add_library(wstsound::wstsound ALIAS wstsound)
   endif()
-  if(WIN32 OR EMSCRIPTEN OR ANDROID)
+  # Desktop XDG Base Dir helper; not needed on Windows/wasm/Android/R36S.
+  if(WIN32 OR EMSCRIPTEN OR ANDROID OR PINGUS_NO_XDGCPP)
     add_library(xdgcpp INTERFACE)
   else()
     tinycmmc_find_dependency(xdgcpp)
