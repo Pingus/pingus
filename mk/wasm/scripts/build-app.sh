@@ -36,6 +36,11 @@ LINK_FLAGS=(
   "SHELL:-sALLOW_MEMORY_GROWTH=1"
   # StreamSoundSource used to put 64KiB on the stack; keep headroom for other frames.
   "SHELL:-sSTACK_SIZE=1048576"
+  # Levelset loading uses try/catch around PingusLevel::load (multi-line
+  # description fields throw ReaderError). Without catch support, ___cxa_throw
+  # aborts the whole runtime when opening Levelsets.
+  "-fexceptions"
+  "SHELL:-sDISABLE_EXCEPTION_CATCHING=0"
   # Emscripten 6.x defaults GROWABLE_ARRAYBUFFERS=1 so WASM memory is a resizable
   # ArrayBuffer. TextDecoder.decode() rejects resizable buffers (black screen at
   # startup via UTF8ArrayToString / faccessat). 6.0.2's getUnsharedTextDecoderView

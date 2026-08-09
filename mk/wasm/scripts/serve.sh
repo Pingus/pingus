@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Serve a wasm build directory over HTTP and open a browser.
-# Env: APP_NAME (default: pingus), optional SUPERTUX_WASM_PORT (default 8765)
+# Env: APP_NAME (default: pingus), optional PINGUS_WASM_PORT (default 8765; was SUPERTUX_WASM_PORT)
 #      PINGUS_WASM_OPEN_QUERY — extra query string (e.g. verbose=1&debug=1)
 # Run from the package directory or set PKG to that path.
 set -euo pipefail
@@ -16,7 +16,7 @@ while [ "$#" -gt 0 ]; do
       echo "Usage: serve.sh [--debug] [--verbose]"
       echo "  --debug    open with ?debug=1  (Pingus -D / developer-mode)"
       echo "  --verbose  open with ?verbose=1 (Pingus -v)"
-      echo "Env: APP_NAME, PKG, SUPERTUX_WASM_PORT, PINGUS_WASM_OPEN_QUERY, BROWSER"
+      echo "Env: APP_NAME, PKG, PINGUS_WASM_PORT, PINGUS_WASM_OPEN_QUERY, BROWSER"
       exit 0
       ;;
     --) shift; break ;;
@@ -36,7 +36,7 @@ if [ -n "${PKG:-}" ]; then
 fi
 
 app_name="${APP_NAME:-pingus}"
-port="${SUPERTUX_WASM_PORT:-8765}"
+port="${PINGUS_WASM_PORT:-8765}"
 
 port_file=$(mktemp)
 server_pid=
@@ -64,7 +64,7 @@ try:
 except OSError as e:
     sys.stderr.write(
         "error: cannot bind 127.0.0.1:%s (%s)\n"
-        "       set SUPERTUX_WASM_PORT to a free port\n" % (port, e))
+        "       set PINGUS_WASM_PORT to a free port\n" % (port, e))
     sys.exit(1)
 open(port_file, "w").write(str(httpd.server_address[1]))
 httpd.serve_forever()

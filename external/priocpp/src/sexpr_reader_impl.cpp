@@ -199,7 +199,24 @@ SExprReaderMappingImpl::read(std::string_view key, float& value) const
 bool
 SExprReaderMappingImpl::read(std::string_view key, std::string& value) const
 {
-  GET_VALUE_MACRO("string", is_string, as_string);
+  // Scheme-style: adjacent string atoms in a form are concatenated.
+  // Many Pingus levels use:
+  //   (description "line one. " "line two.")
+  // get_subsection_item() rejected size>2 and threw under ErrorHandler::THROW,
+  // which aborts wasm builds that lack exception catching.
+  sexp::Value const* sub = get_subsection(key);
+  if (!sub || sub->as_array().size() < 2) {
+    return false;
+  }
+  value.clear();
+  for (size_t i = 1; i < sub->as_array().size(); ++i) {
+    if (!sub->as_array()[i].is_string()) {
+      m_doc.error(sub->as_array()[i], "expected string");
+      return false;
+    }
+    value += sub->as_array()[i].as_string();
+  }
+  return true;
 }
 
 #undef GET_VALUE_MACRO

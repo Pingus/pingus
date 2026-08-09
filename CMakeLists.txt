@@ -34,6 +34,8 @@ option(PINGUS_USE_GLES "Prefer OpenGL ES (Emscripten / some embedded)" OFF)
 if(EMSCRIPTEN)
   set(PINGUS_USE_GLES ON)
   message(STATUS "Emscripten: enabling PINGUS_USE_GLES")
+  # Needed for try/catch across libpingus + priocpp (level load ReaderError).
+  add_compile_options(-fexceptions)
 endif()
 
 # Optional prebuilt SDL prefix (wasm): pkg-config + find_path under SDL2_ROOT.
