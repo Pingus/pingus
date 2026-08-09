@@ -42,6 +42,7 @@ for abi in $TARGET_ABIS; do
     -DANDROID_STL=c++_shared \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="$idir" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DALSOFT_UTILS=OFF \
     -DALSOFT_EXAMPLES=OFF \
     -DALSOFT_TESTS=OFF \
@@ -77,6 +78,7 @@ EOF
     -DANDROID_PLATFORM="android-${PACKAGE_PLATFORM}" \
     -DANDROID_STL=c++_shared \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX="$idir"
   cmake --build "$mbdir/build" -j"${NIX_BUILD_CORES:-$(nproc)}"
   cmake --install "$mbdir/build"
