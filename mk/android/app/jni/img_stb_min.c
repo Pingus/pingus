@@ -56,6 +56,8 @@ static SDL_Surface *surface_from_rgba(unsigned char *data, int w, int h)
   return surf;
 }
 
+SDL_Surface *IMG_Load_RW(SDL_RWops *src, int freesrc);
+
 SDL_Surface *IMG_Load(const char *file)
 {
   /* On Android, fopen cannot see APK assets. SDL_RWFromFile uses AssetManager. */
