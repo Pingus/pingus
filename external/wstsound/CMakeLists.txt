@@ -211,6 +211,34 @@ if(BUILD_EXTRA)
   endforeach(SRC)
 endif()
 
+# Emit only the find_dependency() calls that match the codecs this
+# build actually linked. Consumers (e.g. Pingus MinGW) must not be forced
+# to provide Opus/Vorbis/mpg123 when wstsound was built without them.
+set(WSTSOUND_FIND_DEPENDENCY_CODE "")
+if(WSTSOUND_WITH_OPUS)
+  string(APPEND WSTSOUND_FIND_DEPENDENCY_CODE
+    "find_dependency(Opusfile REQUIRED)\n"
+    "find_dependency(Opus REQUIRED)\n"
+    "find_dependency(Ogg REQUIRED)\n")
+endif()
+if(WSTSOUND_WITH_VORBIS)
+  # Ogg may already be listed via the Opus block above.
+  if(NOT WSTSOUND_WITH_OPUS)
+    string(APPEND WSTSOUND_FIND_DEPENDENCY_CODE
+      "find_dependency(Ogg REQUIRED)\n")
+  endif()
+  string(APPEND WSTSOUND_FIND_DEPENDENCY_CODE
+    "find_dependency(Vorbisfile REQUIRED)\n")
+endif()
+if(WSTSOUND_WITH_MPG123)
+  string(APPEND WSTSOUND_FIND_DEPENDENCY_CODE
+    "find_dependency(MPG123 REQUIRED)\n")
+endif()
+if(WSTSOUND_WITH_MODPLUG)
+  string(APPEND WSTSOUND_FIND_DEPENDENCY_CODE
+    "find_dependency(ModPlug REQUIRED)\n")
+endif()
+
 include(ExportAndInstallLibrary)
 
 # EOF #
