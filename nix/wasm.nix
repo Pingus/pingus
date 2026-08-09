@@ -391,6 +391,7 @@ EOF
         -DWSTSOUND_WITH_EFX=OFF \
         -DMODPLUG_DIR="${modplugWasm}" \
         -DCMAKE_PREFIX_PATH="${modplugWasm}" \
+        -DTINYCMMC_MODULE_PATH="$TINYCMMC_MODULE_PATH" \
         -DCMAKE_MODULE_PATH="$TINYCMMC_MODULE_PATH"
       emmake make -j''${NIX_BUILD_CORES:-2}
       emmake make install
