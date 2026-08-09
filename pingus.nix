@@ -55,6 +55,9 @@ stdenv.mkDerivation rec {
     "-DBUILD_TESTS=OFF" # tests fail due to SDLmain vs GTest::Main
     "-DPROJECT_VERSION_FULL=${pingus_version}"
     "-DPINGUS_USE_GLES=${if useGLES2 then "ON" else "OFF"}"
+  ] ++ lib.optionals stdenv.hostPlatform.isWindows [
+    # No pkg-config sigc++-2.0 on MinGW in this flake; use Android header polyfill.
+    "-DPINGUS_SIGC_POLYFILL_DIR=${./mk/android/app/jni}"
   ];
 
   nativeBuildInputs = [
@@ -78,23 +81,14 @@ stdenv.mkDerivation rec {
      find ${stdenv.cc.cc} -iname "*.dll" -exec ln -sfv {} $out/bin/ \;
      ln -sfv ${SDL2}/bin/*.dll $out/bin/
      ln -sfv ${SDL2_image}/bin/*.dll $out/bin/
-     ln -sfv ${null}/bin/*.dll $out/bin/
-     ln -sfv ${gtest}/bin/*.dll $out/bin/
-     ln -sfv ${libsigcxx}/bin/*.dll $out/bin/
-
-     ln -sfv ${wstsound}/bin/*.dll $out/bin/
-     ln -sfv ${tinygettext}/bin/*.dll $out/bin/
-     ln -sfv ${priocpp}/bin/*.dll $out/bin/
+     ln -sfv ${wstsound}/bin/*.dll $out/bin/ || true
+     ln -sfv ${tinygettext}/bin/*.dll $out/bin/ || true
+     ln -sfv ${priocpp}/bin/*.dll $out/bin/ || true
    '');
 
   buildInputs = [
-    libGL
-    libGLU
-
     SDL2
     SDL2_image
-    gtest
-    libsigcxx
 
     argpp
     geomcpp
@@ -106,6 +100,12 @@ stdenv.mkDerivation rec {
     uitest
     wstsound
   ]
-  ++ lib.optional (!stdenv.hostPlatform.isWindows) xdgcpp
+  ++ lib.optionals (!stdenv.hostPlatform.isWindows) [
+    libGL
+    libGLU
+    gtest
+    libsigcxx
+    xdgcpp
+  ]
   ++ lib.optional (useGLES2 && libglvnd != null) libglvnd;
 }

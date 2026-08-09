@@ -12,6 +12,13 @@
     SDL2_image-win32.url = "git+https://github.com/grumnix/SDL2_image-win32.git";
     SDL2_image-win32.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Prebuilt MinGW OpenAL Soft + libmodplug (avoids nixpkgs openal → ffmpeg-headless).
+    openal-soft-win32.url = "git+https://github.com/grumnix/openal-soft-win32.git";
+    openal-soft-win32.inputs.nixpkgs.follows = "nixpkgs";
+
+    libmodplug-win32.url = "git+https://github.com/grumnix/libmodplug-win32.git";
+    libmodplug-win32.inputs.nixpkgs.follows = "nixpkgs";
+
     # Source tarballs for Android / wasm SDL stacks (same pattern as SuperTux M1).
     sdl2-src = {
       url = "https://github.com/libsdl-org/SDL/releases/download/release-2.30.3/SDL2-2.30.3.tar.gz";
@@ -32,6 +39,7 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, SDL2-win32, SDL2_image-win32
+            , openal-soft-win32, libmodplug-win32
             , sdl2-src, sdl2-image-src, sdl2-mixer-src, libxmp-src }:
     # Host systems only. Windows is a *target* via pkgsCross (SuperTux pattern).
     # x86_64-darwin is omitted: nixpkgs unstable (26.11+) dropped support.
@@ -106,13 +114,20 @@
               inherit tinycmmc;
             };
 
-            wstsound = call ./external/wstsound/wstsound.nix {
-              inherit tinycmmc;
-              mcfgthreads =
-                if pkgs'.stdenv.hostPlatform.isWindows
-                then pkgs'.windows.mcfgthreads
-                else null;
-            };
+            wstsound =
+              let
+                win = pkgs'.stdenv.hostPlatform.isWindows;
+                winSys = pkgs'.stdenv.hostPlatform.system; # x86_64-windows / i686-windows
+              in
+              call ./external/wstsound/wstsound.nix ({
+                inherit tinycmmc;
+                mcfgthreads =
+                  if win then pkgs'.windows.mcfgthreads else null;
+              } // (if win then {
+                # Official/prebuilt MinGW packages (not pkgsCross openal → ffmpeg).
+                openal = openal-soft-win32.packages.${winSys}.default;
+                libmodplug = libmodplug-win32.packages.${winSys}.default;
+              } else { }));
 
             xdgcpp =
               if pkgs'.stdenv.hostPlatform.isWindows then null
@@ -199,29 +214,17 @@
               .
           '';
 
-        # MinGW is a *target* only. Build on Linux (packages.''${system}.pingus-win32-*),
-        # never as packages.x86_64-windows — that hostPlatform breaks nixpkgs deps
-        # whose meta.platforms omit Windows (e.g. libmodplug).
-        # allowUnsupportedSystem lets those deps evaluate under the MinGW hostPlatform.
-        mingwW64Pkgs = import nixpkgs {
-          inherit system;
-          crossSystem = lib.systems.examples.mingwW64;
-          config.allowUnsupportedSystem = true;
-        };
-        mingw32Pkgs = import nixpkgs {
-          inherit system;
-          crossSystem = lib.systems.examples.mingw32;
-          config.allowUnsupportedSystem = true;
-        };
-
+        # MinGW target packages, hosted under packages.${system} (Linux), SuperTux-style.
+        # Sound uses openal-soft-win32 / libmodplug-win32 — not pkgsCross openal (ffmpeg).
         win64Game = if isWin then null else mkPingus {
-          pkgs' = mingwW64Pkgs;
+          pkgs' = pkgs.pkgsCross.mingwW64;
           targetSystem = "x86_64-windows";
         };
         win32Game = if isWin then null else mkPingus {
-          pkgs' = mingw32Pkgs;
+          pkgs' = pkgs.pkgsCross.mingw32;
           targetSystem = "i686-windows";
         };
+
 
         win64Package = if isWin then null else mkWinFlat {
           game = win64Game;
@@ -403,6 +406,33 @@
           xdgcpp = libsNative.xdgcpp;
         } // linuxExtras.packages;
 
+        # Wine runner (SuperTux Milestone 1 / helloworld-fireos pattern).
+        mkWineApp = pkg: name: description:
+          if isWin || !pkgs.stdenv.hostPlatform.isLinux then null
+          else {
+            type = "app";
+            program = toString (pkgs.writeShellScript name ''
+              set -euo pipefail
+              export WINEPREFIX=$(mktemp -d)
+              export WINEARCH=win64
+              export WINEDLLOVERRIDES="mscoree,mshtml="
+              export WINEDLLOVERRIDES="SDL2=n,$WINEDLLOVERRIDES"
+              trap 'rm -rf "$WINEPREFIX"' EXIT
+              ${pkgs.wineWow64Packages.stable}/bin/wineboot --init >/dev/null 2>&1 || true
+              cd ${pkg}
+              exe=
+              for c in pingus.exe *.exe; do
+                if [ -f "$c" ]; then exe="$c"; break; fi
+              done
+              if [ -z "$exe" ]; then
+                echo "error: no .exe found in ${pkg}" >&2
+                exit 1
+              fi
+              exec ${pkgs.wineWow64Packages.stable}/bin/wine "./$exe" "$@"
+            '');
+            meta.description = description;
+          };
+
         apps = {
           default = {
             type = "app";
@@ -419,6 +449,9 @@
             program = "${pingusGles2}/bin/pingus";
             meta.description = "Pingus (native, OpenGL ES 2.0)";
           };
+        } // lib.optionalAttrs (!isWin && pkgs.stdenv.hostPlatform.isLinux) {
+          pingus-win32-x64 = mkWineApp win64Package "pingus-win32-x64" "Pingus (MinGW x86_64) via Wine";
+          pingus-win32-x86 = mkWineApp win32Package "pingus-win32-x86" "Pingus (MinGW i686) via Wine";
         } // linuxExtras.apps;
       }
     );
