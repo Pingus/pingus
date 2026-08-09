@@ -594,8 +594,22 @@ PingusMain::print_greeting_message()
   std::cout << "fullscreen:              ";
   if (cmd_options.fullscreen.is_set() && cmd_options.fullscreen.get())
   {
-    std::cout << cmd_options.fullscreen_resolution.get().width() << "x"
-              << cmd_options.fullscreen_resolution.get().height() << std::endl;
+    // Prefer -R; fall back to -g so "0x0" is not printed when only --fullscreen is given.
+    if (cmd_options.fullscreen_resolution.is_set())
+    {
+      std::cout << cmd_options.fullscreen_resolution.get().width() << "x"
+                << cmd_options.fullscreen_resolution.get().height();
+    }
+    else if (cmd_options.geometry.is_set())
+    {
+      std::cout << cmd_options.geometry.get().width() << "x"
+                << cmd_options.geometry.get().height() << " (from --geometry)";
+    }
+    else
+    {
+      std::cout << "enabled (default size)";
+    }
+    std::cout << std::endl;
   }
   else
   {
@@ -669,21 +683,23 @@ PingusMain::run(int argc, char** argv)
     fullscreen = true;
     resizable = false;
 #else
-    if (fullscreen)
+    // -R sets fullscreen resolution; -g is used for windowed size and as a
+    // fallback when -f is given without -R (common on handhelds).
+    if (cmd_options.fullscreen_resolution.is_set())
     {
-      if (cmd_options.fullscreen_resolution.is_set())
-      {
-        screen_size = cmd_options.fullscreen_resolution.get();
-      }
+      screen_size = cmd_options.fullscreen_resolution.get();
     }
-    else
+    else if (cmd_options.geometry.is_set())
     {
-      if (cmd_options.geometry.is_set())
-      {
-        screen_size = cmd_options.geometry.get();
-      }
+      screen_size = cmd_options.geometry.get();
     }
 #endif
+    std::cerr << "PingusMain: creating window type="
+              << FramebufferType_to_string(fbtype)
+              << " size=" << screen_size.width() << "x" << screen_size.height()
+              << " fullscreen=" << (fullscreen ? "yes" : "no")
+              << " resizable=" << (resizable ? "yes" : "no")
+              << std::endl;
 
 #ifdef __EMSCRIPTEN__
     // Same lifetime issue as Application: main-loop unwind must not destroy
@@ -695,6 +711,7 @@ PingusMain::run(int argc, char** argv)
     }
     catch(std::exception const& err)
     {
+      std::cerr << "PingusMain: create_window failed: " << err.what() << std::endl;
       if (fbtype == FramebufferType::SDL)
       {
         throw;
@@ -702,6 +719,7 @@ PingusMain::run(int argc, char** argv)
       else
       {
         log_error("couldn't create window, falling back to SDL: {}", err.what());
+        std::cerr << "PingusMain: falling back to SDL renderer" << std::endl;
         system->create_window(FramebufferType::SDL, screen_size, fullscreen, resizable);
         config_manager.set_renderer(FramebufferType::SDL);
       }
@@ -717,6 +735,7 @@ PingusMain::run(int argc, char** argv)
     }
     catch(std::exception const& err)
     {
+      std::cerr << "PingusMain: create_window failed: " << err.what() << std::endl;
       if (fbtype == FramebufferType::SDL)
       {
         throw;
@@ -724,6 +743,7 @@ PingusMain::run(int argc, char** argv)
       else
       {
         log_error("couldn't create window, falling back to SDL: {}", err.what());
+        std::cerr << "PingusMain: falling back to SDL renderer" << std::endl;
         system.create_window(FramebufferType::SDL, screen_size, fullscreen, resizable);
         config_manager.set_renderer(FramebufferType::SDL);
       }

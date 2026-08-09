@@ -19,6 +19,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <sstream>
+#include <iostream>
 
 #include <geom/io.hpp>
 #include <logmich/log.hpp>
@@ -93,28 +94,49 @@ Display::create_window(FramebufferType framebuffer_type, geom::isize const& size
   assert(!s_framebuffer.get());
 
   log_info("{} {} {}", FramebufferType_to_string(framebuffer_type), (size), (fullscreen?"fullscreen":"window"));
+  // Always print to stderr so handheld/port builds show this without log level tweaks.
+  std::cerr << "Display::create_window: type=" << FramebufferType_to_string(framebuffer_type)
+            << " size=" << size.width() << "x" << size.height()
+            << " fullscreen=" << (fullscreen ? "yes" : "no")
+            << " resizable=" << (resizable ? "yes" : "no") << std::endl;
 
+  // Build into a local first so a failed set_video_mode does not leave a
+  // half-initialized framebuffer in s_framebuffer. The SDL fallback path in
+  // PingusMain::run() calls create_window again; without this reset the
+  // assert above aborts (seen on R36S/ArkOS when GLES context creation fails).
+  std::unique_ptr<Framebuffer> fb;
   switch (framebuffer_type)
   {
     case FramebufferType::OPENGL:
-      s_framebuffer = std::unique_ptr<Framebuffer>(new OpenGLFramebuffer());
-      s_framebuffer->set_video_mode(size, fullscreen, resizable);
+      fb = std::unique_ptr<Framebuffer>(new OpenGLFramebuffer());
       break;
 
     case FramebufferType::NULL_FRAMEBUFFER:
-      s_framebuffer = std::unique_ptr<Framebuffer>(new NullFramebuffer());
-      s_framebuffer->set_video_mode(size, fullscreen, resizable);
+      fb = std::unique_ptr<Framebuffer>(new NullFramebuffer());
       break;
 
     case FramebufferType::SDL:
-      s_framebuffer = std::unique_ptr<Framebuffer>(new SDLFramebuffer());
-      s_framebuffer->set_video_mode(size, fullscreen, resizable);
+      fb = std::unique_ptr<Framebuffer>(new SDLFramebuffer());
       break;
 
     default:
       assert(false && "Unknown framebuffer_type");
       break;
   }
+
+  try
+  {
+    fb->set_video_mode(size, fullscreen, resizable);
+  }
+  catch (...)
+  {
+    std::cerr << "Display::create_window: set_video_mode failed for "
+              << FramebufferType_to_string(framebuffer_type) << std::endl;
+    fb.reset();
+    throw;
+  }
+  s_framebuffer = std::move(fb);
+  std::cerr << "Display::create_window: ok" << std::endl;
 }
 
 void

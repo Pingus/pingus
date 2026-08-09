@@ -9,8 +9,10 @@
 #include <SDL_image.h>
 #include <algorithm>
 #include <cstring>
+#include <cstdlib>
 #include <memory>
 #include <sstream>
+#include <iostream>
 
 #include <logmich/log.hpp>
 
@@ -196,6 +198,12 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     flags |= SDL_WINDOW_RESIZABLE;
 #endif
 
+  std::cerr << "OpenGLFramebuffer: SDL_VIDEODRIVER="
+            << (std::getenv("SDL_VIDEODRIVER") ? std::getenv("SDL_VIDEODRIVER") : "(unset)")
+            << " requested=" << size.width() << "x" << size.height()
+            << " flags=0x" << std::hex << flags << std::dec
+            << " ES=" << PINGUS_GL_ES << std::endl;
+
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
   SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
   SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
@@ -206,19 +214,26 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+  std::cerr << "OpenGLFramebuffer: requesting GLES 2.0 context" << std::endl;
 #else
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
   SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+  std::cerr << "OpenGLFramebuffer: requesting OpenGL 3.3 core context" << std::endl;
 #endif
 
+  std::cerr << "OpenGLFramebuffer: SDL_CreateWindow..." << std::endl;
   m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
                               SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                               size.width(), size.height(),
                               flags);
   if (!m_window)
+  {
+    std::cerr << "OpenGLFramebuffer: SDL_CreateWindow FAILED: " << SDL_GetError() << std::endl;
     raise_error("Couldn't set video mode (" << size.width() << "x" << size.height() << "): " << SDL_GetError());
+  }
+  std::cerr << "OpenGLFramebuffer: window ok id=" << SDL_GetWindowID(m_window) << std::endl;
 
   {
     SDL_Surface* icon = IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str());
@@ -229,20 +244,27 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     }
   }
 
+  std::cerr << "OpenGLFramebuffer: SDL_GL_CreateContext..." << std::endl;
   m_glcontext = SDL_GL_CreateContext(m_window);
   if (!m_glcontext)
+  {
+    std::cerr << "OpenGLFramebuffer: SDL_GL_CreateContext FAILED: " << SDL_GetError() << std::endl;
     raise_error("couldn't create GL context: " << SDL_GetError());
+  }
+  std::cerr << "OpenGLFramebuffer: context ok" << std::endl;
 
 #if defined(_WIN32) && !PINGUS_GL_ES
   opengl_load_procs();
 #endif
 
+  std::cerr << "OpenGLFramebuffer: buffers/programs init..." << std::endl;
 #if !PINGUS_GL_ES
   glGenVertexArrays(1, &m_vao);
 #endif
   glGenBuffers(1, &m_vbo);
 
   m_programs.init();
+  std::cerr << "OpenGLFramebuffer: programs ready" << std::endl;
 
   glDisable(GL_DEPTH_TEST);
   glDisable(GL_CULL_FACE);
@@ -271,6 +293,13 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
              vendor ? vendor : "?",
              renderer ? renderer : "?",
              version ? version : "?");
+    std::cerr << "OpenGLFramebuffer: ready ES=" << PINGUS_GL_ES
+              << " requested=" << size.width() << "x" << size.height()
+              << " drawable=" << dw << "x" << dh
+              << " vendor='" << (vendor ? vendor : "?") << "'"
+              << " renderer='" << (renderer ? renderer : "?") << "'"
+              << " version='" << (version ? version : "?") << "'"
+              << std::endl;
   }
 }
 

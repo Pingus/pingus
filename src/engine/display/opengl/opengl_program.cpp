@@ -4,6 +4,7 @@
 #include "engine/display/opengl/opengl_program.hpp"
 
 #include <stdexcept>
+#include <iostream>
 #include <vector>
 
 #include <logmich/log.hpp>
@@ -29,6 +30,7 @@ GLuint compile_shader(GLenum type, char const* source)
     std::vector<char> log(static_cast<size_t>(len > 0 ? len : 1));
     glGetShaderInfoLog(shader, static_cast<GLsizei>(log.size()), nullptr, log.data());
     glDeleteShader(shader);
+    std::cerr << "OpenGL: shader compile failed: " << log.data() << std::endl;
     raise_exception(std::runtime_error, "Shader compile failed: " << log.data());
   }
   return shader;
@@ -145,6 +147,7 @@ OpenGLProgram::build(char const* vertex_src, char const* fragment_src)
     glGetProgramiv(m_id, GL_INFO_LOG_LENGTH, &len);
     std::vector<char> log(static_cast<size_t>(len > 0 ? len : 1));
     glGetProgramInfoLog(m_id, static_cast<GLsizei>(log.size()), nullptr, log.data());
+    std::cerr << "OpenGL: program link failed: " << log.data() << std::endl;
     raise_exception(std::runtime_error, "Program link failed: " << log.data());
   }
 }
