@@ -269,10 +269,11 @@ System::create_dir(std::string const& directory_)
     if(*end == '/') {
       directory.erase(end);
     }
-    log_info("System::create_dir: %1", directory);
-    if (!std::filesystem::create_directories(directory.c_str()))
+    log_info("System::create_dir: {}", directory);
+    std::error_code ec;
+    if (!std::filesystem::create_directories(directory, ec) && ec)
     {
-      raise_exception(std::runtime_error, "System::create_dir: " << directory << ": " << strerror(errno));
+      raise_exception(std::runtime_error, "System::create_dir: " << directory << ": " << ec.message());
     }
     else
     {
@@ -341,9 +342,18 @@ System::find_userdir()
   // if it does not, use $XDG_CONFIG_HOME, see:
   // http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
-#if defined(__EMSCRIPTEN__) || defined(ANDROID)
-  // Persistent IDBFS mount or app-private storage can be layered later.
+#if defined(__EMSCRIPTEN__)
+  // Persistent IDBFS mount can be layered later.
   return "/pingus-user/";
+#elif defined(ANDROID)
+  // App-private internal storage (writable). Root paths like /pingus-user/
+  // are not creatable on device and caused init_directories() to throw,
+  // which made SDL_main return immediately with no visible UI.
+  if (char const* internal = SDL_AndroidGetInternalStoragePath())
+  {
+    return std::string(internal) + "/pingus/";
+  }
+  raise_exception(std::runtime_error, "SDL_AndroidGetInternalStoragePath returned null");
 #else
 #if 0
   // FIXME: insert code here to handle backward compatibilty with 0.7.x releases

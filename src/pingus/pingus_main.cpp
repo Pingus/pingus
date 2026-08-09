@@ -20,6 +20,12 @@
 #include <iostream>
 #include <signal.h>
 
+#ifdef ANDROID
+#  include <android/log.h>
+#  include <ostream>
+#  include <streambuf>
+#endif
+
 #include <argpp/argpp.hpp>
 #include <logmich/log.hpp>
 #include <strut/from_string.hpp>
@@ -80,6 +86,64 @@ extern "C" {
 #include "pingus/worldobj_factory.hpp"
 
 namespace pingus {
+
+#ifdef ANDROID
+namespace {
+
+// logmich and std::cout do not reach logcat by default. Bridge them so
+// startup failures are visible when diagnosing device runs.
+class AndroidLogBuf : public std::streambuf
+{
+public:
+  explicit AndroidLogBuf(android_LogPriority prio) : m_prio(prio) {}
+
+protected:
+  int overflow(int c) override
+  {
+    if (c == traits_type::eof())
+      return traits_type::not_eof(c);
+    if (c == '\n')
+      flush_line();
+    else
+      m_line.push_back(static_cast<char>(c));
+    return c;
+  }
+
+  int sync() override
+  {
+    flush_line();
+    return 0;
+  }
+
+private:
+  void flush_line()
+  {
+    if (!m_line.empty())
+    {
+      __android_log_write(m_prio, "pingus", m_line.c_str());
+      m_line.clear();
+    }
+  }
+
+  android_LogPriority m_prio;
+  std::string m_line;
+};
+
+AndroidLogBuf g_android_cout_buf(ANDROID_LOG_INFO);
+AndroidLogBuf g_android_cerr_buf(ANDROID_LOG_ERROR);
+std::ostream g_android_cout(&g_android_cout_buf);
+std::ostream g_android_cerr(&g_android_cerr_buf);
+
+void android_log_bridge_init()
+{
+  std::cout.rdbuf(g_android_cout.rdbuf());
+  std::cerr.rdbuf(g_android_cerr.rdbuf());
+  // logmich::Logger writes to std::cerr by default — now logcat.
+}
+
+} // namespace
+#endif
+
 
 PingusMain::PingusMain() :
   cmd_options()
@@ -561,6 +625,9 @@ PingusMain::run(int argc, char** argv)
 #ifdef _WIN32
   win32_redirect_stdio();
 #endif
+#ifdef ANDROID
+  android_log_bridge_init();
+#endif
 
   logmich::set_log_level(logmich::LogLevel::WARNING);
 
@@ -580,10 +647,9 @@ PingusMain::run(int argc, char** argv)
 
     // init the display
     FramebufferType fbtype = FramebufferType::SDL;
-#ifdef __EMSCRIPTEN__
-    // WASM builds are linked with GLES2/WebGL (PINGUS_USE_GLES + FULL_ES2).
-    // Prefer the OpenGL framebuffer; SDL_Renderer can leave a black canvas
-    // depending on how the browser presents the emscripten main loop.
+#if defined(__EMSCRIPTEN__) || defined(ANDROID)
+    // GLES2 builds (WASM + Android NDK) use the OpenGL framebuffer path.
+    // SDL_Renderer can leave a black canvas on some platforms.
     fbtype = FramebufferType::OPENGL;
 #endif
     if (cmd_options.framebuffer_type.is_set())
