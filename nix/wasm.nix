@@ -314,6 +314,10 @@ EOF
       mkdir -p "$EM_CACHE"
       mkdir -p "$PWD/prefix"
       # Autotools + emconfigure: static only for linking into the game .wasm
+      # libmodplug 0.8.9 still uses the C++ `register` keyword; em++ defaults
+      # to C++17 where that is an error. Force C++14 for this ancient tree.
+      export CXXFLAGS="-std=gnu++14 -Wno-register ''${CXXFLAGS:-}"
+      export CFLAGS="-Wno-register ''${CFLAGS:-}"
       emconfigure ./configure \
         --prefix="$PWD/prefix" \
         --host=wasm32-unknown-emscripten \
