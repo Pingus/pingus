@@ -150,6 +150,13 @@ PingusMain::apply_args()
   if (options.disable_sound.is_set())
     globals::sound_enabled = !options.disable_sound.get();
 
+#ifdef PINGUS_NO_SOUND
+  // Compiled without a real audio backend (wasm / minimal). Keep the dummy
+  // PingusSoundImpl, but do not claim support is enabled.
+  globals::sound_enabled = false;
+  globals::music_enabled = false;
+#endif
+
   // Misc
   if (options.language.is_set())
     dictionary_manager.set_language(tinygettext::Language::from_name(options.language.get()));
@@ -504,12 +511,20 @@ PingusMain::print_greeting_message()
   if (globals::sound_enabled)
     std::cout << "sound support:           enabled" << std::endl;
   else
+#ifdef PINGUS_NO_SOUND
+    std::cout << "sound support:           disabled (no audio backend in this build)" << std::endl;
+#else
     std::cout << "sound support:           disabled" << std::endl;
+#endif
 
   if (globals::music_enabled)
     std::cout << "music support:           enabled" << std::endl;
   else
+#ifdef PINGUS_NO_SOUND
+    std::cout << "music support:           disabled (no audio backend in this build)" << std::endl;
+#else
     std::cout << "music support:           disabled" << std::endl;
+#endif
 
   std::cout << "fullscreen:              ";
   if (cmd_options.fullscreen.is_set() && cmd_options.fullscreen.get())
