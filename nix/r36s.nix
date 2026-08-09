@@ -172,6 +172,7 @@ let
       -isystem ${sysroot}/usr/include \
       -pthread \
       -fexceptions \
+      -DSEXP_NO_FLOAT_CHARCONV \
       -march=armv8-a \
       -mtune=cortex-a35 \
     '';
@@ -194,7 +195,8 @@ let
       -L${libgccLibTarget} \
       -static-libgcc \
       -Wl,-Bdynamic \
-      -pthread \
+      -l:libpthread.so.0 \
+      -lm \
       -Wl,-rpath-link,${libdir} \
       -Wl,-rpath-link,${sysroot}/usr/lib/aarch64-linux-gnu \
       -Wl,-rpath-link,${sysroot}/lib/aarch64-linux-gnu \
@@ -264,7 +266,9 @@ let
           -nostdlib++ \
           ${commonLink} \
           "$@" \
-          -Wl,--no-as-needed "$stdcpp" -Wl,--as-needed
+          -Wl,--no-as-needed "$stdcpp" \
+          -Wl,-Bdynamic -l:libpthread.so.0 -lm \
+          -Wl,--as-needed
       fi
     '';
   };
@@ -332,6 +336,8 @@ let
         "-DPINGUS_ENABLE_SOUND=${if enableSound then "ON" else "OFF"}"
         # No xdgcpp / jsoncpp in the published ArkOS sysroot (desktop helpers).
         "-DPINGUS_NO_XDGCPP=ON"
+        # GCC 15 headers vs ArkOS libstdc++: shim missing ABI symbols.
+        "-DPINGUS_CXXABI_SHIM=${../mk/r36s/cxxabi_shim.cpp}"
         # Relative data next to the binary on device (PortMaster layout).
         "-DPROJECT_VERSION_FULL=${version}"
       ];

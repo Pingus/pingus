@@ -23,9 +23,9 @@
 #include <limits>
 #include <sstream>
 
-// libc++ on Android NDK still lacks floating-point std::from_chars /
-// std::to_chars (integral overloads exist; float is deleted/unavailable).
-#if !defined(__ANDROID__)
+// Floating-point std::from_chars / std::to_chars are missing on Android
+// NDK libc++ and on older libstdc++ (ArkOS / R36S sysroot, GCC ~9 era).
+#if !defined(__ANDROID__) && !defined(SEXP_NO_FLOAT_CHARCONV)
 #  include <charconv>
 #endif
 
@@ -41,7 +41,7 @@ float string2float(const std::string& text)
   }
 
   float result;
-#if defined(__ANDROID__)
+#if defined(__ANDROID__) || defined(SEXP_NO_FLOAT_CHARCONV)
   char* end = nullptr;
   result = std::strtof(start, &end);
   assert(end != start);
@@ -56,7 +56,7 @@ void float2string(std::ostream& os, float value)
 {
   constexpr size_t len = 32;
   char buffer[len];
-#if defined(__ANDROID__)
+#if defined(__ANDROID__) || defined(SEXP_NO_FLOAT_CHARCONV)
   int n = std::snprintf(buffer, len, "%g", static_cast<double>(value));
   assert(n > 0 && static_cast<size_t>(n) < len);
   os.write(buffer, n);

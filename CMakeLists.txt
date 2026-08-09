@@ -307,6 +307,11 @@ add_executable(pingus ${PINGUS_MAIN_SOURCES_CXX})
 set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_compile_options(pingus PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
 target_link_libraries(pingus libpingus)
+# Optional ABI shims when linking a newer compiler against an older libstdc++
+# (R36S / ArkOS sysroot).
+if(PINGUS_CXXABI_SHIM)
+  target_sources(pingus PRIVATE "${PINGUS_CXXABI_SHIM}")
+endif()
 
 if(EMSCRIPTEN)
   # Produce pingus.html / .js / .wasm; link flags come from the wasm build script.
