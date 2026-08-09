@@ -43,7 +43,8 @@ public:
   static int  get_height();
   static geom::isize get_size();
 
-  static void create_window(FramebufferType framebuffer_type, geom::isize const& size, bool fullscreen, bool resizable);
+  /** @return true on success (does not throw on video-mode failure). */
+  static bool create_window(FramebufferType framebuffer_type, geom::isize const& size, bool fullscreen, bool resizable);
   static void set_video_mode(geom::isize const& size, bool fullscreen, bool resizable);
   static void resize(geom::isize const& size);
 

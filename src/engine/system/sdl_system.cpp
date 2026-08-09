@@ -43,10 +43,10 @@ SDLSystem::~SDLSystem()
 {
 }
 
-void
+bool
 SDLSystem::create_window(FramebufferType framebuffer_type, Size const& size, bool fullscreen, bool resizable)
 {
-  Display::create_window(framebuffer_type, size, fullscreen, resizable);
+  return Display::create_window(framebuffer_type, size, fullscreen, resizable);
 }
 
 } // namespace pingus

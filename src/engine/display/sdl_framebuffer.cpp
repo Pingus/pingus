@@ -18,6 +18,7 @@
 
 #include <SDL_image.h>
 #include <sstream>
+#include <iostream>
 
 #include <logmich/log.hpp>
 
@@ -193,7 +194,7 @@ SDLFramebuffer::get_size() const
   return geom::isize(w, h);
 }
 
-void
+bool
 SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool resizable)
 {
   if (m_window)
@@ -237,9 +238,8 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
                                 flags);
     if(m_window == nullptr)
     {
-      std::ostringstream msg;
-      msg << "Couldn't set video mode (" << size.width() << "x" << size.height() << "): " << SDL_GetError();
-      throw std::runtime_error(msg.str());
+      std::cerr << "SDLFramebuffer: SDL_CreateWindow failed: " << SDL_GetError() << std::endl;
+      return false;
     }
     SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
 
@@ -251,11 +251,11 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
     }
     if (m_renderer == nullptr)
     {
-      std::ostringstream msg;
-      msg << "SDL_CreateRenderer failed: " << SDL_GetError();
-      throw std::runtime_error(msg.str());
+      std::cerr << "SDLFramebuffer: SDL_CreateRenderer failed: " << SDL_GetError() << std::endl;
+      return false;
     }
   }
+  return true;
 }
 
 bool

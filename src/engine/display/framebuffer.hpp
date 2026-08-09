@@ -41,7 +41,8 @@ public:
 
   virtual Surface make_screenshot() const =0;
 
-  virtual void set_video_mode(geom::isize const& size, bool fullscreen, bool resizable) =0;
+  /** @return true on success. Must not throw on failure (R36S builds may lack working exceptions). */
+  virtual bool set_video_mode(geom::isize const& size, bool fullscreen, bool resizable) =0;
   virtual bool is_fullscreen() const =0;
   virtual bool is_resizable() const =0;
   virtual bool has_grab() const { return false; }

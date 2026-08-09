@@ -36,6 +36,7 @@
 #include "engine/input/manager.hpp"
 #include "engine/system/sdl_system.hpp"
 #include "engine/display/display.hpp"
+#include "util/raise_exception.hpp"
 #include "pingus/application.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/event_name.hpp"
@@ -705,48 +706,42 @@ PingusMain::run(int argc, char** argv)
     // Same lifetime issue as Application: main-loop unwind must not destroy
     // singletons that the game still uses (SavegameManager / StatManager).
     SDLSystem* system = new SDLSystem();
-    try
+    if (!system->create_window(fbtype, screen_size, fullscreen, resizable))
     {
-      system->create_window(fbtype, screen_size, fullscreen, resizable);
-    }
-    catch(std::exception const& err)
-    {
-      std::cerr << "PingusMain: create_window failed: " << err.what() << std::endl;
+      std::cerr << "PingusMain: create_window failed for "
+                << FramebufferType_to_string(fbtype) << std::endl;
       if (fbtype == FramebufferType::SDL)
       {
-        throw;
+        raise_error("couldn't create SDL window");
       }
-      else
+      log_error("couldn't create window, falling back to SDL");
+      std::cerr << "PingusMain: falling back to SDL renderer" << std::endl;
+      if (!system->create_window(FramebufferType::SDL, screen_size, fullscreen, resizable))
       {
-        log_error("couldn't create window, falling back to SDL: {}", err.what());
-        std::cerr << "PingusMain: falling back to SDL renderer" << std::endl;
-        system->create_window(FramebufferType::SDL, screen_size, fullscreen, resizable);
-        config_manager.set_renderer(FramebufferType::SDL);
+        raise_error("couldn't create SDL fallback window");
       }
+      config_manager.set_renderer(FramebufferType::SDL);
     }
 
     new SavegameManager("savegames/savegames.scm");
     new StatManager("savegames/variables.scm");
 #else
     SDLSystem system;
-    try
+    if (!system.create_window(fbtype, screen_size, fullscreen, resizable))
     {
-      system.create_window(fbtype, screen_size, fullscreen, resizable);
-    }
-    catch(std::exception const& err)
-    {
-      std::cerr << "PingusMain: create_window failed: " << err.what() << std::endl;
+      std::cerr << "PingusMain: create_window failed for "
+                << FramebufferType_to_string(fbtype) << std::endl;
       if (fbtype == FramebufferType::SDL)
       {
-        throw;
+        raise_error("couldn't create SDL window");
       }
-      else
+      log_error("couldn't create window, falling back to SDL");
+      std::cerr << "PingusMain: falling back to SDL renderer" << std::endl;
+      if (!system.create_window(FramebufferType::SDL, screen_size, fullscreen, resizable))
       {
-        log_error("couldn't create window, falling back to SDL: {}", err.what());
-        std::cerr << "PingusMain: falling back to SDL renderer" << std::endl;
-        system.create_window(FramebufferType::SDL, screen_size, fullscreen, resizable);
-        config_manager.set_renderer(FramebufferType::SDL);
+        raise_error("couldn't create SDL fallback window");
       }
+      config_manager.set_renderer(FramebufferType::SDL);
     }
 
 #ifdef ANDROID

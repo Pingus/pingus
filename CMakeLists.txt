@@ -65,6 +65,13 @@ if(PINGUS_USE_GLES OR EMSCRIPTEN)
     set(PINGUS_GL_LIBS ${PINGUS_GLESV2_LIB})
     if(PINGUS_EGL_LIB)
       list(APPEND PINGUS_GL_LIBS ${PINGUS_EGL_LIB})
+      message(STATUS "GLES: linking GLESv2 + EGL")
+    else()
+      message(WARNING
+        "PINGUS_USE_GLES: libGLESv2 found but libEGL was not. "
+        "SDL KMSDRM needs libEGL at runtime to create window surfaces "
+        "(ldd may still omit it if SDL dlopens it). Install a matching "
+        "libEGL next to libGLESv2 (e.g. mali or mesa).")
     endif()
   else()
     message(WARNING "PINGUS_USE_GLES set but GLESv2 not found; falling back to OpenGL")

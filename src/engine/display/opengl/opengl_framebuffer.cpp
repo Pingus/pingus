@@ -168,7 +168,7 @@ OpenGLFramebuffer::make_screenshot() const
   return screenshot;
 }
 
-void
+bool
 OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool resizable)
 {
   if (m_window)
@@ -182,7 +182,7 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     set_ortho(dw, dh);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    return;
+    return true;
   }
 
   // Log current SDL video backend (KMSDRM vs x11 vs wayland matters for EGL).
@@ -197,6 +197,32 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     for (int i = 0; i < n; ++i)
       std::cerr << " " << SDL_GetVideoDriver(i);
     std::cerr << std::endl;
+  }
+
+  // Probe libEGL: KMSDRM GLES needs it at runtime (SDL dlopens it). Not showing
+  // up in ldd is normal if the game only links GLESv2; missing on disk is not.
+  {
+    void* egl = nullptr;
+    egl = SDL_LoadObject("libEGL.so.1");
+    if (!egl)
+      egl = SDL_LoadObject("libEGL.so");
+    if (!egl)
+      egl = SDL_LoadObject("/usr/lib/aarch64-linux-gnu/libEGL.so.1");
+    if (!egl)
+      egl = SDL_LoadObject("/usr/local/lib/aarch64-linux-gnu/libEGL.so.1");
+    if (egl)
+    {
+      std::cerr << "OpenGLFramebuffer: libEGL probe: loaded" << std::endl;
+      SDL_UnloadObject(egl);
+    }
+    else
+    {
+      std::cerr << "OpenGLFramebuffer: libEGL probe: FAILED ("
+                << SDL_GetError()
+                << ") — install matching libEGL next to libGLESv2 "
+                   "(mali/mesa). EGL window surfaces will fail without it."
+                << std::endl;
+    }
   }
 
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -313,8 +339,9 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
 
   if (!m_window)
   {
-    raise_error("Couldn't set video mode (" << req_w << "x" << req_h
-                << "): " << last_error);
+    std::cerr << "OpenGLFramebuffer: all SDL_CreateWindow attempts failed: "
+              << last_error << std::endl;
+    return false;
   }
 
   {
@@ -331,7 +358,9 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   if (!m_glcontext)
   {
     std::cerr << "OpenGLFramebuffer: SDL_GL_CreateContext FAILED: " << SDL_GetError() << std::endl;
-    raise_error("couldn't create GL context: " << SDL_GetError());
+    SDL_DestroyWindow(m_window);
+    m_window = nullptr;
+    return false;
   }
   std::cerr << "OpenGLFramebuffer: context ok" << std::endl;
 
@@ -383,8 +412,8 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
               << " version='" << (version ? version : "?") << "'"
               << std::endl;
   }
+  return true;
 }
-
 
 bool
 OpenGLFramebuffer::is_fullscreen() const

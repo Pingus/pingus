@@ -88,7 +88,7 @@ Display::has_grab()
   return s_framebuffer->has_grab();
 }
 
-void
+bool
 Display::create_window(FramebufferType framebuffer_type, geom::isize const& size, bool fullscreen, bool resizable)
 {
   assert(!s_framebuffer.get());
@@ -124,19 +124,16 @@ Display::create_window(FramebufferType framebuffer_type, geom::isize const& size
       break;
   }
 
-  try
-  {
-    fb->set_video_mode(size, fullscreen, resizable);
-  }
-  catch (...)
+  if (!fb->set_video_mode(size, fullscreen, resizable))
   {
     std::cerr << "Display::create_window: set_video_mode failed for "
               << FramebufferType_to_string(framebuffer_type) << std::endl;
     fb.reset();
-    throw;
+    return false;
   }
   s_framebuffer = std::move(fb);
   std::cerr << "Display::create_window: ok" << std::endl;
+  return true;
 }
 
 void

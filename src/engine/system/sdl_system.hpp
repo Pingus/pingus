@@ -30,7 +30,7 @@ public:
   SDLSystem();
   ~SDLSystem();
 
-  void create_window(FramebufferType framebuffer_type, Size const& size, bool fullscreen, bool resizable);
+  bool create_window(FramebufferType framebuffer_type, Size const& size, bool fullscreen, bool resizable);
 
 private:
   SDLSystem(SDLSystem const&);

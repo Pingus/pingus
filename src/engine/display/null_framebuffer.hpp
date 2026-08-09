@@ -37,7 +37,7 @@ public:
 
   Surface make_screenshot() const override { return Surface(); }
 
-  void set_video_mode(geom::isize const& size, bool fullscreen, bool resizable) override;
+  bool set_video_mode(geom::isize const& size, bool fullscreen, bool resizable) override;
   bool is_fullscreen() const override;
   bool is_resizable() const override;
   void flip() override;

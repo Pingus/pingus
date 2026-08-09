@@ -54,7 +54,7 @@ NullFramebuffer::create_surface(Surface const& surface)
   return FramebufferSurface(new NullFramebufferSurfaceImpl(surface.get_size()));
 }
 
-void
+bool
 NullFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool resizable)
 {
   m_size = size;
@@ -64,6 +64,7 @@ NullFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool r
   log_info("size: {}x{} fullscreen: {} resizable: {}",
            m_size.width(), m_size.height(),
            m_fullscreen, m_resizable);
+  return true;
 }
 
 bool
