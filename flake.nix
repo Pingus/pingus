@@ -385,28 +385,9 @@
 
 
         libsNative = mkLibs pkgs;
-      in {
-        packages = {
-          default = pingusNative;
-          pingus = pingusNative;
-          pingus-gles2 = pingusGles2;
-        } // lib.optionalAttrs (!isWin) {
-          # Cross-built on this host (Linux/Darwin), labeled under packages.''${system}
-          # — not packages.x86_64-windows (wrong host vs target).
-          pingus-win32-x64 = win64Package;
-          pingus-win32-x86 = win32Package;
-          pingus-win32-x64-zip = mkWinZip win64Package "pingus";
-          pingus-win32-x86-zip = mkWinZip win32Package "pingus";
-        } // {
-          # Optional: individual external libs for debugging
-          inherit (libsNative)
-            tinycmmc argpp geomcpp logmich sexpcpp priocpp
-            strutcpp tinygettext uitest wstsound;
-        } // lib.optionalAttrs (libsNative.xdgcpp != null) {
-          xdgcpp = libsNative.xdgcpp;
-        } // linuxExtras.packages;
 
         # Wine runner (SuperTux Milestone 1 / helloworld-fireos pattern).
+        # Defined in let so apps can reference it; must not be an outputs attr.
         mkWineApp = pkg: name: description:
           if isWin || !pkgs.stdenv.hostPlatform.isLinux then null
           else {
@@ -432,6 +413,26 @@
             '');
             meta.description = description;
           };
+      in {
+        packages = {
+          default = pingusNative;
+          pingus = pingusNative;
+          pingus-gles2 = pingusGles2;
+        } // lib.optionalAttrs (!isWin) {
+          # Cross-built on this host (Linux/Darwin), labeled under packages.''${system}
+          # — not packages.x86_64-windows (wrong host vs target).
+          pingus-win32-x64 = win64Package;
+          pingus-win32-x86 = win32Package;
+          pingus-win32-x64-zip = mkWinZip win64Package "pingus";
+          pingus-win32-x86-zip = mkWinZip win32Package "pingus";
+        } // {
+          # Optional: individual external libs for debugging
+          inherit (libsNative)
+            tinycmmc argpp geomcpp logmich sexpcpp priocpp
+            strutcpp tinygettext uitest wstsound;
+        } // lib.optionalAttrs (libsNative.xdgcpp != null) {
+          xdgcpp = libsNative.xdgcpp;
+        } // linuxExtras.packages;
 
         apps = {
           default = {
