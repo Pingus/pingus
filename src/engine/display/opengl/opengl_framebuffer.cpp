@@ -233,6 +233,10 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   if (!m_glcontext)
     raise_error("couldn't create GL context: " << SDL_GetError());
 
+#if defined(_WIN32) && !PINGUS_GL_ES
+  opengl_load_procs();
+#endif
+
 #if !PINGUS_GL_ES
   glGenVertexArrays(1, &m_vao);
 #endif

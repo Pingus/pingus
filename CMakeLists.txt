@@ -190,8 +190,9 @@ if(NOT PINGUS_ENABLE_SOUND)
 endif()
 if(PINGUS_USE_GLES)
   add_definitions(-DPINGUS_USE_GLES=1)
-else()
+elseif(NOT WIN32)
   # Desktop GL 3.3 path: expose shader/VBO prototypes from system glext headers.
+  # Windows loads these via SDL_GL_GetProcAddress (opengl_wgl_load.cpp).
   add_definitions(-DGL_GLEXT_PROTOTYPES=1)
 endif()
 if(PINGUS_NO_XDGCPP)

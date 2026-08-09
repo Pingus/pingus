@@ -40,7 +40,7 @@ Screenshot::save_screenshot(std::filesystem::path const& filename)
   log_info("Screenshot: Saving screenshot to: {}", filename.string());
   if (IMG_SavePNG(screen.get_surface(), filename.string().c_str()) != 0)
   {
-    log_error("Screenshot: Couldn't write file: {}: {}", filename.string(), IMG_GetError());
+    log_error("Screenshot: Couldn't write file: {}: {}", filename.string(), SDL_GetError());
     return;
   }
   log_info("Screenshot: Screenshot is done.");
@@ -68,7 +68,7 @@ Screenshot::save_png(std::filesystem::path const& filename, uint8_t const* buffe
 
   if (IMG_SavePNG(surface, filename.string().c_str()) != 0)
   {
-    log_error("Screenshot: Couldn't write file: {}: {}", filename.string(), IMG_GetError());
+    log_error("Screenshot: Couldn't write file: {}: {}", filename.string(), SDL_GetError());
   }
 
   SDL_FreeSurface(surface);
