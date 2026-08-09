@@ -24,7 +24,8 @@
 let
   arkosSysrootSrc = fetchurl {
     name = "arkos-sysroot.tar.gz";
-    # Published sysroot (glibc ~2.30 + SDL2/GLES). If the hash drifts, run:
+    # Published sysroot (glibc ~2.30 + SDL2/GLES + OpenAL Soft + libmodplug).
+    # After publishing a new tarball, refresh the hash:
     #   nix store prefetch-file <url>
     # and paste the new sha256-… here.
     url = "https://github.com/grumnix/arkos-sysroot/releases/download/v0.1/arkos-sysroot.tar.gz";
@@ -37,7 +38,7 @@ let
 
   arkosSysroot = stdenvNoCC.mkDerivation {
     pname = "arkos-sysroot";
-    version = "0.1";
+    version = "0.1-openal";
     src = arkosSysrootSrc;
 
     # Unpack-only: aarch64 ELF + linker scripts must not be touched by the
@@ -290,13 +291,34 @@ let
           find "${sysroot}" -name 'libSDL2_image*' 2>/dev/null | head -20 >&2 || true
           exit 1
         fi
+        extra_audio=
+        for cand in \
+          "${libdir}/libopenal.so" \
+          "${libdir}/libopenal.so.1" \
+          "${sysroot}/usr/lib/libopenal.so" \
+          "${sysroot}/usr/lib/libopenal.so.1" \
+          "${sysroot}/usr/lib/aarch64-linux-gnu/libopenal.so" \
+          "${sysroot}/usr/lib/aarch64-linux-gnu/libopenal.so.1"
+        do
+          if [ -e "$cand" ]; then extra_audio="$extra_audio $cand"; break; fi
+        done
+        for cand in \
+          "${libdir}/libmodplug.so" \
+          "${libdir}/libmodplug.so.1" \
+          "${sysroot}/usr/lib/libmodplug.so" \
+          "${sysroot}/usr/lib/libmodplug.so.1" \
+          "${sysroot}/usr/lib/aarch64-linux-gnu/libmodplug.so" \
+          "${sysroot}/usr/lib/aarch64-linux-gnu/libmodplug.so.1"
+        do
+          if [ -e "$cand" ]; then extra_audio="$extra_audio $cand"; break; fi
+        done
         exec ${gcc}/bin/${targetPrefix}g++ \
           -B${crossCc.bintools}/bin \
           ${commonCompileCxx} \
           -nostdlib++ \
           ${commonLink} \
           "$@" \
-          -Wl,--no-as-needed "$stdcpp" "$sdl2image" "$sdl2" \
+          -Wl,--no-as-needed "$stdcpp" "$sdl2image" "$sdl2" $extra_audio \
           -Wl,-Bdynamic -l:libpthread.so.0 -lm \
           -Wl,--as-needed
       fi
@@ -307,9 +329,9 @@ let
     src
   , version
   , pname ? "pingus-r36s"
-  # ArkOS sysroot has no OpenAL; wstsound's find_package(OpenAL) fails.
-  # Keep OFF until OpenAL Soft is cross-built into the sysroot like Android.
-  , enableSound ? false
+  # Requires libopenal (+ optional libmodplug) in the published ArkOS sysroot.
+  # PortMaster ships copies under pingus/libs/ so stock images without apt work.
+  , enableSound ? true
   }:
     let
       wrappers = mkWrappers arkosSysroot;
@@ -362,8 +384,13 @@ let
         "-DCMAKE_HAVE_LIBC_PTHREAD=1"
         "-DCMAKE_THREAD_LIBS_INIT=-pthread"
         "-DPTHREAD_LIBRARY=pthread"
-        # ArkOS sysroot lacks OpenAL; disable wstsound until Soft is packaged.
         "-DPINGUS_ENABLE_SOUND=${if enableSound then "ON" else "OFF"}"
+        # Slim codec set (same as Android/wasm): WAV + modplug modules only.
+        "-DWSTSOUND_WITH_MPG123=OFF"
+        "-DWSTSOUND_WITH_VORBIS=OFF"
+        "-DWSTSOUND_WITH_OPUS=OFF"
+        "-DWSTSOUND_WITH_MODPLUG=${if enableSound then "ON" else "OFF"}"
+        "-DWSTSOUND_WITH_EFX=OFF"
         # No xdgcpp / jsoncpp in the published ArkOS sysroot (desktop helpers).
         "-DPINGUS_NO_XDGCPP=ON"
         # GCC 15 headers vs ArkOS libstdc++: shim missing ABI symbols.
@@ -432,15 +459,101 @@ let
             "-DPINGUS_EGL_LIB=$EGL_LIB"
           )
         fi
+
+        if [ "${if enableSound then "1" else "0"}" = "1" ]; then
+          OPENAL_LIB=
+          OPENAL_INC=
+          for cand in \
+            "${arkosSysroot}/usr/lib/aarch64-linux-gnu/libopenal.so" \
+            "${arkosSysroot}/usr/lib/libopenal.so" \
+            "${arkosSysroot}/lib/aarch64-linux-gnu/libopenal.so" \
+            "${arkosSysroot}/usr/lib/aarch64-linux-gnu/libopenal.so.1" \
+            "${arkosSysroot}/usr/lib/libopenal.so.1"
+          do
+            if [ -e "$cand" ]; then OPENAL_LIB="$cand"; break; fi
+          done
+          for cand in \
+            "${arkosSysroot}/usr/include" \
+            "${arkosSysroot}/usr/include/aarch64-linux-gnu"
+          do
+            if [ -f "$cand/AL/al.h" ]; then OPENAL_INC="$cand"; break; fi
+          done
+          if [ -z "$OPENAL_LIB" ] || [ -z "$OPENAL_INC" ]; then
+            echo "arkos-sysroot: OpenAL required for enableSound but not found" >&2
+            find "${arkosSysroot}" -name 'libopenal*' -o -name 'al.h' 2>/dev/null | head -30 >&2 || true
+            exit 1
+          fi
+          cmakeFlagsArray+=(
+            "-DOPENAL_LIBRARY=$OPENAL_LIB"
+            "-DOPENAL_INCLUDE_DIR=$OPENAL_INC"
+          )
+
+          MODPLUG_LIB=
+          MODPLUG_INC=
+          for cand in \
+            "${arkosSysroot}/usr/lib/aarch64-linux-gnu/libmodplug.so" \
+            "${arkosSysroot}/usr/lib/libmodplug.so" \
+            "${arkosSysroot}/lib/aarch64-linux-gnu/libmodplug.so" \
+            "${arkosSysroot}/usr/lib/aarch64-linux-gnu/libmodplug.so.1" \
+            "${arkosSysroot}/usr/lib/libmodplug.so.1"
+          do
+            if [ -e "$cand" ]; then MODPLUG_LIB="$cand"; break; fi
+          done
+          for cand in \
+            "${arkosSysroot}/usr/include" \
+            "${arkosSysroot}/usr/include/aarch64-linux-gnu"
+          do
+            if [ -f "$cand/libmodplug/modplug.h" ] || [ -f "$cand/modplug.h" ]; then
+              MODPLUG_INC="$cand"; break
+            fi
+          done
+          if [ -z "$MODPLUG_LIB" ] || [ -z "$MODPLUG_INC" ]; then
+            echo "arkos-sysroot: libmodplug required for enableSound but not found" >&2
+            find "${arkosSysroot}" -name 'libmodplug*' -o -name 'modplug.h' 2>/dev/null | head -30 >&2 || true
+            exit 1
+          fi
+          cmakeFlagsArray+=(
+            "-DMODPLUG_LIBRARY=$MODPLUG_LIB"
+            "-DMODPLUG_INCLUDE_DIRECTORY=$MODPLUG_INC"
+          )
+        fi
       '';
 
       postInstall = ''
-        mkdir -p $out/share/pingus
+        mkdir -p $out/share/pingus $out/lib/pingus
         # CMake may have installed data/ as non-writable; ensure we can add files.
         chmod -R u+w $out/share/pingus || true
         if [ -d "$src/data" ]; then
           cp -a "$src/data/." $out/share/pingus/ || true
           chmod -R u+w $out/share/pingus || true
+        fi
+
+        # Ship OpenAL Soft + libmodplug next to the port so stock ArkOS
+        # (without apt install) can load them via LD_LIBRARY_PATH.
+        if [ "${if enableSound then "1" else "0"}" = "1" ]; then
+          for pattern in libopenal.so* libmodplug.so*; do
+            found=
+            for dir in \
+              "${arkosSysroot}/usr/lib/aarch64-linux-gnu" \
+              "${arkosSysroot}/usr/lib" \
+              "${arkosSysroot}/lib/aarch64-linux-gnu" \
+              "${arkosSysroot}/lib"
+            do
+              for f in "$dir"/$pattern; do
+                if [ -e "$f" ]; then
+                  cp -a "$f" "$out/lib/pingus/"
+                  found=1
+                fi
+              done
+            done
+            if [ -z "$found" ]; then
+              echo "postInstall: missing $pattern in sysroot" >&2
+              exit 1
+            fi
+          done
+          # Prefer real .so files over broken relative symlinks in the copy.
+          chmod -R u+w "$out/lib/pingus" || true
+          ls -la "$out/lib/pingus" || true
         fi
         cat > $out/share/pingus/README-R36S.txt << EOF_README
 Pingus — R36S / ArkOS (sysroot-linked)
@@ -470,6 +583,11 @@ BIN="$DIR/../bin/pingus"
 if [ ! -x "$BIN" ]; then BIN="$DIR/pingus"; fi
 # Without PortMaster control.txt, set SDL_GAMECONTROLLERCONFIG for GO-Super
 # or the pad stays joystick-only (see mk/r36s/CROSSCOMPILE.md).
+if [ -d "$DIR/libs" ]; then
+  export LD_LIBRARY_PATH="$DIR/libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+elif [ -d "$DIR/../lib/pingus" ]; then
+  export LD_LIBRARY_PATH="$DIR/../lib/pingus${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+fi
 exec "$BIN" --renderer sdl --software-cursor --controller "$DIR/data/controller/r36s.scm" --fullscreen "$@"
 LAUNCH
         chmod +x $out/share/pingus/pingus.sh
@@ -526,6 +644,13 @@ LAUNCH
           ls -la "${r36sPkg}/bin" "${r36sPkg}/libexec" 2>/dev/null || true
           head -3 "${r36sPkg}/bin/pingus" 2>/dev/null || true
           exit 1
+        fi
+
+        # Bundled OpenAL / modplug (from r36s package, originally sysroot).
+        if [ -d "${r36sPkg}/lib/pingus" ]; then
+          mkdir -p "$gamedir/libs"
+          cp -a "${r36sPkg}/lib/pingus/." "$gamedir/libs/"
+          chmod -R u+w "$gamedir/libs" || true
         fi
 
         # Game data (CMake DATA_PREFIX was share/pingus).
@@ -597,6 +722,10 @@ fi
 export XDG_DATA_HOME="$CONFDIR"
 export XDG_CONFIG_HOME="$CONFDIR"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
+# Prefer bundled OpenAL Soft / libmodplug over any system copy.
+if [ -d "$GAMEDIR/libs" ]; then
+  export LD_LIBRARY_PATH="$GAMEDIR/libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+fi
 
 # Native aarch64 SDL2 gamecontroller input — no gptokeyb needed.
 pm_platform_helper "$GAMEDIR/pingus" 2>/dev/null || true
