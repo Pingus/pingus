@@ -32,7 +32,8 @@ namespace pingus {
 Options
 Options::from_file(Pathname const& filename)
 {
-  auto doc = prio::ReaderDocument::from_file(filename.get_sys_path());
+  auto doc = prio::ReaderDocument::from_string(
+    System::read_file(filename.get_sys_path()), prio::ErrorHandler::THROW, filename.str());
 
   if (doc.get_name() != "pingus-config")
   {

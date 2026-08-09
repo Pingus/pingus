@@ -16,6 +16,10 @@
 
 #include "util/system.hpp"
 
+#ifdef ANDROID
+#include <SDL.h>
+#endif
+
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
@@ -242,7 +246,16 @@ System::dirname (std::string const& filename)
 bool
 System::exist(std::string const& filename)
 {
+#ifdef ANDROID
+  // access()/fopen cannot see APK assets; SDL routes relative paths to AssetManager.
+  SDL_RWops* rw = SDL_RWFromFile(filename.c_str(), "rb");
+  if (!rw)
+    return false;
+  SDL_RWclose(rw);
+  return true;
+#else
   return !access(filename.c_str(), F_OK);
+#endif
 }
 
 void
@@ -504,11 +517,23 @@ System::checksum(Pathname const& pathname)
 std::string
 System::checksum(std::string const& filename)
 { // FIXME: Replace sys with SHA1 or MD5 or so
+  long int checksum = 0;
+
+#ifdef ANDROID
+  {
+    std::string data = read_file(filename);
+    if (data.empty() && !exist(filename))
+    {
+      log_error("System::checksum: Couldn't open file: {}", filename);
+      return "";
+    }
+    for (size_t i = 0; i < data.size(); ++i)
+      checksum = checksum * 17 + static_cast<unsigned char>(data[i]);
+  }
+#else
   FILE* in;
   size_t bytes_read;
   char buffer[4096];
-  long int checksum = 0;
-
   in = fopen(filename.c_str(), "r");
 
   if (!in)
@@ -532,6 +557,7 @@ System::checksum(std::string const& filename)
   while (bytes_read != 0);
 
   fclose (in);
+#endif
 
   std::ostringstream str;
   str << checksum;
@@ -771,5 +797,32 @@ System::write_file(std::string const& filename, std::string const& content)
 }
 
 } // namespace pingus
+
+std::string
+System::read_file(std::string const& filename)
+{
+#ifdef ANDROID
+  SDL_RWops* rw = SDL_RWFromFile(filename.c_str(), "rb");
+  if (!rw) {
+    raise_exception(std::runtime_error, "System::read_file: " << filename << ": " << SDL_GetError());
+  }
+  std::string out;
+  char chunk[4096];
+  size_t got;
+  while ((got = static_cast<size_t>(SDL_RWread(rw, chunk, 1, sizeof(chunk)))) > 0) {
+    out.append(chunk, got);
+  }
+  SDL_RWclose(rw);
+  return out;
+#else
+  std::ifstream in(filename, std::ios::binary);
+  if (!in) {
+    raise_exception(std::runtime_error, "System::read_file: couldn't open " << filename);
+  }
+  std::ostringstream ss;
+  ss << in.rdbuf();
+  return ss.str();
+#endif
+}
 
 /* EOF */

@@ -9,7 +9,43 @@
 #   APPLICATION_MK, TOP_ANDROID_MK
 set -euo pipefail
 
-NDK="$ANDROID_HOME/ndk-bundle"
+
+# Resolve NDK root: ndk-bundle (legacy) or ndk/<version> (current SDK layout).
+resolve_ndk() {
+  if [ -n "${ANDROID_NDK_HOME:-}" ] && [ -x "${ANDROID_NDK_HOME}/ndk-build" ]; then
+    printf '%s' "$ANDROID_NDK_HOME"
+    return
+  fi
+  if [ -z "${ANDROID_HOME:-}" ]; then
+    echo "error: ANDROID_HOME is not set" >&2
+    exit 1
+  fi
+  if [ -x "$ANDROID_HOME/ndk-bundle/ndk-build" ]; then
+    printf '%s' "$ANDROID_HOME/ndk-bundle"
+    return
+  fi
+  if [ -d "$ANDROID_HOME/ndk" ]; then
+    # Prefer ANDROID_NDK_VERSION when set; else newest directory that has ndk-build.
+    if [ -n "${ANDROID_NDK_VERSION:-}" ] && [ -x "$ANDROID_HOME/ndk/$ANDROID_NDK_VERSION/ndk-build" ]; then
+      printf '%s' "$ANDROID_HOME/ndk/$ANDROID_NDK_VERSION"
+      return
+    fi
+    newest=
+    for d in "$ANDROID_HOME/ndk"/*; do
+      [ -x "$d/ndk-build" ] || continue
+      newest=$d
+    done
+    if [ -n "$newest" ]; then
+      printf '%s' "$newest"
+      return
+    fi
+  fi
+  echo "error: no ndk-build under ANDROID_HOME=$ANDROID_HOME (tried ndk-bundle and ndk/*)" >&2
+  exit 1
+}
+
+NDK="$(resolve_ndk)"
+echo "==> NDK=$NDK"
 BT="$ANDROID_HOME/build-tools/$BUILD_TOOLS_VERSION"
 COMPILE_JAR="$ANDROID_HOME/platforms/android-$COMPILE_PLATFORM/android.jar"
 

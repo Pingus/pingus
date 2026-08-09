@@ -120,6 +120,10 @@ public:
   /** Write \a content to the given filename atomically */
   static void write_file(std::string const& filename, std::string const& content);
 
+  /** Read entire file into a string. On Android uses SDL_RWFromFile so APK
+      assets are visible; elsewhere uses the normal filesystem. */
+  static std::string read_file(std::string const& filename);
+
 private:
   System (System const&);
   System& operator= (System const&);

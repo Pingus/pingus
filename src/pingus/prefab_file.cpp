@@ -27,7 +27,8 @@ namespace pingus {
 PrefabFile
 PrefabFile::from_path(Pathname const& filename)
 {
-  auto doc = prio::ReaderDocument::from_file(filename.get_sys_path());
+  auto doc = prio::ReaderDocument::from_string(
+    System::read_file(filename.get_sys_path()), prio::ErrorHandler::THROW, filename.str());
   if (doc.get_name() != "pingus-prefab") {
     raise_exception(std::runtime_error, "Error: " << filename.str() << ": not a 'pingus-prefab' file");
   } else {

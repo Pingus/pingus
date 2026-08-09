@@ -25,6 +25,7 @@
 #include "pingus/globals.hpp"
 #include "pingus/savegame_manager.hpp"
 #include "util/raise_exception.hpp"
+#include "util/system.hpp"
 
 namespace pingus {
 
@@ -61,7 +62,8 @@ Levelset::from_directory(std::string const& title,
 std::unique_ptr<Levelset>
 Levelset::from_file(Pathname const& pathname)
 {
-  auto doc = ReaderDocument::from_file(pathname.get_sys_path());
+  auto doc = ReaderDocument::from_string(
+    System::read_file(pathname.get_sys_path()), prio::ErrorHandler::THROW, pathname.str());
   if (doc.get_name() != "pingus-levelset")
   {
     raise_exception(std::runtime_error, "Error: " << pathname.str() << ": not a 'pingus-levelset' file");

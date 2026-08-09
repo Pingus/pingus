@@ -22,6 +22,7 @@
 #include <prio/reader.hpp>
 
 #include "util/reader.hpp"
+#include "util/system.hpp"
 
 namespace pingus {
 
@@ -59,7 +60,8 @@ FontDescription::FontDescription(Pathname const& pathname_) :
   char_spacing     = 1.0f;
   vertical_spacing = 1.0f;
 
-  auto doc = prio::ReaderDocument::from_file(pathname.get_sys_path());
+  auto doc = prio::ReaderDocument::from_string(
+    System::read_file(pathname.get_sys_path()), prio::ErrorHandler::THROW, pathname.str());
 
   if (doc.get_root().get_name() != "pingus-font")
   {

@@ -58,8 +58,8 @@ static SDL_Surface *surface_from_rgba(unsigned char *data, int w, int h)
 
 SDL_Surface *IMG_Load(const char *file)
 {
-  int w = 0, h = 0, n = 0;
-  unsigned char *data;
+  /* On Android, fopen cannot see APK assets. SDL_RWFromFile uses AssetManager. */
+  SDL_RWops *rw;
 
   img_error[0] = '\0';
   if (!file) {
@@ -67,13 +67,12 @@ SDL_Surface *IMG_Load(const char *file)
     return NULL;
   }
 
-  data = stbi_load(file, &w, &h, &n, 4);
-  if (!data) {
-    const char *why = stbi_failure_reason();
-    set_err(why ? why : "stbi_load failed");
+  rw = SDL_RWFromFile(file, "rb");
+  if (!rw) {
+    set_err(SDL_GetError());
     return NULL;
   }
-  return surface_from_rgba(data, w, h);
+  return IMG_Load_RW(rw, 1);
 }
 
 SDL_Surface *IMG_Load_RW(SDL_RWops *src, int freesrc)

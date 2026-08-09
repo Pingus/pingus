@@ -20,13 +20,15 @@
 
 #include "math/origin.hpp"
 #include "util/reader.hpp"
+#include "util/system.hpp"
 
 namespace pingus {
 
 SpriteDescriptionPtr
 SpriteDescription::from_file(Pathname const& path)
 {
-  auto doc = prio::ReaderDocument::from_file(path.get_sys_path());
+  auto doc = prio::ReaderDocument::from_string(
+    System::read_file(path.get_sys_path()), prio::ErrorHandler::THROW, path.str());
   prio::ReaderMapping reader = doc.get_root().get_mapping();
 
   SpriteDescriptionPtr desc(new SpriteDescription);
