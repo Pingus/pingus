@@ -199,12 +199,27 @@
               .
           '';
 
+        # MinGW is a *target* only. Build on Linux (packages.''${system}.pingus-win32-*),
+        # never as packages.x86_64-windows — that hostPlatform breaks nixpkgs deps
+        # whose meta.platforms omit Windows (e.g. libmodplug).
+        # allowUnsupportedSystem lets those deps evaluate under the MinGW hostPlatform.
+        mingwW64Pkgs = import nixpkgs {
+          inherit system;
+          crossSystem = lib.systems.examples.mingwW64;
+          config.allowUnsupportedSystem = true;
+        };
+        mingw32Pkgs = import nixpkgs {
+          inherit system;
+          crossSystem = lib.systems.examples.mingw32;
+          config.allowUnsupportedSystem = true;
+        };
+
         win64Game = if isWin then null else mkPingus {
-          pkgs' = pkgs.pkgsCross.mingwW64;
+          pkgs' = mingwW64Pkgs;
           targetSystem = "x86_64-windows";
         };
         win32Game = if isWin then null else mkPingus {
-          pkgs' = pkgs.pkgsCross.mingw32;
+          pkgs' = mingw32Pkgs;
           targetSystem = "i686-windows";
         };
 
@@ -373,6 +388,8 @@
           pingus = pingusNative;
           pingus-gles2 = pingusGles2;
         } // lib.optionalAttrs (!isWin) {
+          # Cross-built on this host (Linux/Darwin), labeled under packages.''${system}
+          # — not packages.x86_64-windows (wrong host vs target).
           pingus-win32-x64 = win64Package;
           pingus-win32-x86 = win32Package;
           pingus-win32-x64-zip = mkWinZip win64Package "pingus";
