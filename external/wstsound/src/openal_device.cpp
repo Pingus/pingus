@@ -21,7 +21,9 @@
 #include <assert.h>
 #include <sstream>
 
-#include <AL/efx.h>
+#if defined(WSTSOUND_WITH_EFX)
+#  include <AL/efx.h>
+#endif
 
 #include "sound_error.hpp"
 
@@ -82,9 +84,13 @@ OpenALDevice::is_extension_present(std::string const& ext) const
 int
 OpenALDevice::max_auxiliary_sends() const
 {
+#if defined(WSTSOUND_WITH_EFX)
   ALint sends;
   alcGetIntegerv(m_device, ALC_MAX_AUXILIARY_SENDS, 1, &sends);
   return sends;
+#else
+  return 0;
+#endif
 }
 
 } // namespace wstsound
