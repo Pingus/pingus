@@ -63,10 +63,12 @@ file(GLOB MODPLUG_SRC_FILES "${MODPLUG_SRC}/src/*.cpp" "${MODPLUG_SRC}/src/*.c")
 add_library(modplug STATIC \${MODPLUG_SRC_FILES})
 target_include_directories(modplug PUBLIC "${MODPLUG_SRC}/src" "${MODPLUG_SRC}/src/libmodplug")
 target_compile_definitions(modplug PRIVATE MODPLUG_STATIC HAVE_STDINT_H HAVE_SINF)
-set_target_properties(modplug PROPERTIES CXX_STANDARD 14)
+# libmodplug 0.8.9 still uses the C++ `register` keyword; NDK defaults to
+# C++17 where that is an error (same fix as wasm emconfigure CXXFLAGS).
+set_target_properties(modplug PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED ON CXX_EXTENSIONS ON)
+target_compile_options(modplug PRIVATE -std=gnu++14 -Wno-register -Wno-deprecated-register)
 install(TARGETS modplug ARCHIVE DESTINATION lib)
 install(DIRECTORY "${MODPLUG_SRC}/src/libmodplug/" DESTINATION include/libmodplug FILES_MATCHING PATTERN "*.h")
-# Also install the traditional include/modplug.h if present
 if(EXISTS "${MODPLUG_SRC}/src/modplug.h")
   install(FILES "${MODPLUG_SRC}/src/modplug.h" DESTINATION include)
 endif()
@@ -79,6 +81,7 @@ EOF
     -DANDROID_STL=c++_shared \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_CXX_FLAGS="-std=gnu++14 -Wno-register -Wno-deprecated-register" \
     -DCMAKE_INSTALL_PREFIX="$idir"
   cmake --build "$mbdir/build" -j"${NIX_BUILD_CORES:-$(nproc)}"
   cmake --install "$mbdir/build"
