@@ -225,24 +225,69 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     }
   }
 
-  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-  SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
-  SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
-  SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
-  SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32);
+  // GL attribute sets to try. Mali/KMSDRM often rejects an over-specified config
+  // (we used to set RGB888 + BUFFER_SIZE=32 with no alpha — R+G+B != 32, and that
+  // mismatch is a known cause of "Could not create EGL window surface").
+  // Minimal ES2 (profile + version + doublebuffer only) matches typical working
+  // handheld SDL samples; richer configs are fallbacks.
+  struct GlAttrSet {
+    char const* name;
+    void (*apply)();
+  };
 
 #if PINGUS_GL_ES
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+  auto apply_es_minimal = []() {
+    SDL_GL_ResetAttributes();
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+  };
+  auto apply_es_rgb565 = []() {
+    SDL_GL_ResetAttributes();
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 5);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 6);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
+  };
+  auto apply_es_rgba8888 = []() {
+    SDL_GL_ResetAttributes();
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
+  };
+  GlAttrSet attr_sets[] = {
+    {"es2-minimal", apply_es_minimal},
+    {"es2-rgb565", apply_es_rgb565},
+    {"es2-rgba8888", apply_es_rgba8888},
+  };
   std::cerr << "OpenGLFramebuffer: requesting GLES 2.0 context" << std::endl;
 #else
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-  SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+  auto apply_gl33 = []() {
+    SDL_GL_ResetAttributes();
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+  };
+  GlAttrSet attr_sets[] = {
+    {"gl33-core", apply_gl33},
+  };
   std::cerr << "OpenGLFramebuffer: requesting OpenGL 3.3 core context" << std::endl;
 #endif
+  int const n_attr_sets = static_cast<int>(sizeof(attr_sets) / sizeof(attr_sets[0]));
 
   // Prefer native display size when the caller asked for fullscreen — exclusive
   // modes that do not match the panel (common on R36S 640x480 + KMSDRM) often
@@ -316,25 +361,36 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
 #endif
 
   std::string last_error;
-  for (int i = 0; i < n_attempts; ++i)
+  char const* ok_attr = nullptr;
+  char const* ok_attempt = nullptr;
+  for (int a = 0; a < n_attr_sets && !m_window; ++a)
   {
-    std::cerr << "OpenGLFramebuffer: SDL_CreateWindow try[" << attempts[i].name
-              << "] " << req_w << "x" << req_h
-              << " flags=0x" << std::hex << attempts[i].flags << std::dec
-              << std::endl;
-    m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
-                                SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                                req_w, req_h,
-                                attempts[i].flags);
-    if (m_window)
+    attr_sets[a].apply();
+    std::cerr << "OpenGLFramebuffer: GL attrs [" << attr_sets[a].name << "]" << std::endl;
+    for (int i = 0; i < n_attempts; ++i)
     {
-      std::cerr << "OpenGLFramebuffer: window ok id=" << SDL_GetWindowID(m_window)
-                << " via " << attempts[i].name << std::endl;
-      break;
+      SDL_ClearError();
+      std::cerr << "OpenGLFramebuffer: SDL_CreateWindow try[" << attr_sets[a].name
+                << "+" << attempts[i].name << "] " << req_w << "x" << req_h
+                << " flags=0x" << std::hex << attempts[i].flags << std::dec
+                << std::endl;
+      m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
+                                  SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                                  req_w, req_h,
+                                  attempts[i].flags);
+      if (m_window)
+      {
+        ok_attr = attr_sets[a].name;
+        ok_attempt = attempts[i].name;
+        std::cerr << "OpenGLFramebuffer: window ok id=" << SDL_GetWindowID(m_window)
+                  << " via " << ok_attr << "+" << ok_attempt << std::endl;
+        break;
+      }
+      last_error = SDL_GetError();
+      std::cerr << "OpenGLFramebuffer: SDL_CreateWindow FAILED ("
+                << attr_sets[a].name << "+" << attempts[i].name
+                << "): " << last_error << std::endl;
     }
-    last_error = SDL_GetError();
-    std::cerr << "OpenGLFramebuffer: SDL_CreateWindow FAILED (" << attempts[i].name
-              << "): " << last_error << std::endl;
   }
 
   if (!m_window)
