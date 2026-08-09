@@ -73,8 +73,10 @@ LOCAL_SHARED_LIBRARIES := SDL2
 LOCAL_LDLIBS := -llog -landroid -lz -lGLESv2 -lEGL
 
 ifeq ($(ENABLE_ANDROID_SOUND),1)
-LOCAL_STATIC_LIBRARIES := openal modplug
-# OpenAL Soft on Android uses OpenSL ES.
+# WHOLE_STATIC: OpenAL Soft registers backends via static constructors;
+# regular static linking drops them and alcOpenDevice fails silently.
+LOCAL_WHOLE_STATIC_LIBRARIES := openal
+LOCAL_STATIC_LIBRARIES := modplug
 LOCAL_LDLIBS += -lOpenSLES
 LOCAL_CFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_USE_GLES=1
 LOCAL_CPPFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_USE_GLES=1 -std=c++20 -D_LIBCPP_ENABLE_EXPERIMENTAL=1

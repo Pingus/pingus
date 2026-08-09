@@ -48,6 +48,10 @@ for abi in $TARGET_ABIS; do
     -DALSOFT_TESTS=OFF \
     -DALSOFT_INSTALL=ON \
     -DALSOFT_EMBED_HRTF_DATA=ON \
+    -DALSOFT_BACKEND_OPENSL=ON \
+    -DALSOFT_REQUIRE_OPENSL=ON \
+    -DALSOFT_BACKEND_WAVE=OFF \
+    -DALSOFT_BACKEND_NULL=OFF \
     -DLIBTYPE=STATIC
   cmake --build "$bdir" -j"${NIX_BUILD_CORES:-$(nproc)}"
   cmake --install "$bdir"

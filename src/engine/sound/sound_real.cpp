@@ -57,6 +57,14 @@ PingusSoundReal::PingusSoundReal() :
 #else
   m_sound_manager = std::make_unique<wstsound::SoundManager>();
 #endif
+  if (m_sound_manager->is_dummy())
+  {
+    log_error("OpenAL device init failed; audio is silent (dummy backend)");
+  }
+  else
+  {
+    log_info("OpenAL audio device ready");
+  }
 }
 
 PingusSoundReal::~PingusSoundReal()
