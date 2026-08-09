@@ -19,6 +19,7 @@
 #include <SDL_image.h>
 #include <sstream>
 #include <iostream>
+#include <string>
 
 #include <logmich/log.hpp>
 
@@ -218,42 +219,133 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
       }
       SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
     }
+    return true;
+  }
+
+  // Drop any GL attributes left by a failed OpenGLFramebuffer attempt so the
+  // KMSDRM backend does not keep treating this as an EGL/GLES window.
+  SDL_GL_ResetAttributes();
+  SDL_ClearError();
+
+  {
+    char const* driver = SDL_GetCurrentVideoDriver();
+    std::cerr << "SDLFramebuffer: driver=" << (driver ? driver : "(none)")
+              << " displays=" << SDL_GetNumVideoDisplays()
+              << " size=" << size.width() << "x" << size.height()
+              << " fullscreen=" << (fullscreen ? "yes" : "no") << std::endl;
+    SDL_DisplayMode desk;
+    if (SDL_GetDesktopDisplayMode(0, &desk) == 0)
+    {
+      std::cerr << "SDLFramebuffer: desktop " << desk.w << "x" << desk.h
+                << " @" << desk.refresh_rate << "Hz format=" << desk.format
+                << std::endl;
+    }
+  }
+
+  int req_w = size.width();
+  int req_h = size.height();
+  if (fullscreen)
+  {
+    SDL_DisplayMode mode;
+    if (SDL_GetDesktopDisplayMode(0, &mode) == 0 && mode.w > 0 && mode.h > 0)
+    {
+      req_w = mode.w;
+      req_h = mode.h;
+    }
+  }
+
+  struct Attempt { char const* name; Uint32 flags; };
+  Attempt attempts[4];
+  int n = 0;
+  if (fullscreen)
+  {
+    attempts[n++] = Attempt{"fullscreen-desktop", SDL_WINDOW_FULLSCREEN_DESKTOP};
+    attempts[n++] = Attempt{"fullscreen-exclusive", SDL_WINDOW_FULLSCREEN};
+  }
+  attempts[n++] = Attempt{"windowed",
+                          static_cast<Uint32>(resizable && !fullscreen ? SDL_WINDOW_RESIZABLE : 0)};
+  // Last resort: zero flags
+  attempts[n++] = Attempt{"minimal", 0};
+
+  std::string last_error;
+  for (int i = 0; i < n; ++i)
+  {
+    SDL_ClearError();
+    std::cerr << "SDLFramebuffer: SDL_CreateWindow try[" << attempts[i].name
+              << "] " << req_w << "x" << req_h
+              << " flags=0x" << std::hex << attempts[i].flags << std::dec
+              << std::endl;
+    m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
+                                SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                                req_w, req_h,
+                                attempts[i].flags);
+    if (m_window)
+    {
+      std::cerr << "SDLFramebuffer: window ok via " << attempts[i].name << std::endl;
+      break;
+    }
+    last_error = SDL_GetError();
+    if (last_error.empty())
+      last_error = "(SDL_GetError empty — possible DRM master / permission issue)";
+    std::cerr << "SDLFramebuffer: SDL_CreateWindow FAILED (" << attempts[i].name
+              << "): " << last_error << std::endl;
+  }
+
+  if (!m_window)
+  {
+    std::cerr << "SDLFramebuffer: all CreateWindow attempts failed: " << last_error
+              << "\n  Hint: on ArkOS/R36S leave EmulationStation fully, run from a TTY,"
+                 " and ensure /dev/dri/card0 is free (fuser -v /dev/dri/card0)."
+              << " Prefer matching mali GBM libs via LD_LIBRARY_PATH=/usr/local/lib/aarch64-linux-gnu"
+              << std::endl;
+    return false;
+  }
+
+  {
+    SDL_Surface* icon = IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str());
+    if (icon)
+    {
+      SDL_SetWindowIcon(m_window, icon);
+      SDL_FreeSurface(icon);
+    }
+  }
+
+  // Prefer software on KMSDRM handhelds — ACCELERATED often goes through EGL/GLES
+  // and can fail with the same "EGL window surface" error as the GL path.
+  SDL_ClearError();
+  char const* drv = SDL_GetCurrentVideoDriver();
+  bool prefer_sw = (drv && (std::string(drv) == "KMSDRM" || std::string(drv) == "kmsdrm"));
+  if (prefer_sw)
+  {
+    m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_SOFTWARE);
+    if (!m_renderer)
+    {
+      std::cerr << "SDLFramebuffer: SOFTWARE renderer failed (" << SDL_GetError()
+                << "), trying ACCELERATED" << std::endl;
+      m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+    }
   }
   else
   {
-    Uint32 flags = 0;
-
-    if (fullscreen)
-    {
-      flags |= SDL_WINDOW_FULLSCREEN;
-    }
-    else if (resizable)
-    {
-      flags |= SDL_WINDOW_RESIZABLE;
-    }
-
-    m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
-                                SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                                size.width(), size.height(),
-                                flags);
-    if(m_window == nullptr)
-    {
-      std::cerr << "SDLFramebuffer: SDL_CreateWindow failed: " << SDL_GetError() << std::endl;
-      return false;
-    }
-    SDL_SetWindowIcon(m_window, IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str()));
-
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
-    if (m_renderer == nullptr)
+    if (!m_renderer)
     {
       log_warn("SDL_RENDERER_ACCELERATED failed ({}), trying software", SDL_GetError());
       m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_SOFTWARE);
     }
-    if (m_renderer == nullptr)
-    {
-      std::cerr << "SDLFramebuffer: SDL_CreateRenderer failed: " << SDL_GetError() << std::endl;
-      return false;
-    }
+  }
+  if (!m_renderer)
+  {
+    std::cerr << "SDLFramebuffer: SDL_CreateRenderer failed: " << SDL_GetError() << std::endl;
+    SDL_DestroyWindow(m_window);
+    m_window = nullptr;
+    return false;
+  }
+
+  {
+    SDL_RendererInfo info;
+    if (SDL_GetRendererInfo(m_renderer, &info) == 0)
+      std::cerr << "SDLFramebuffer: renderer='" << info.name << "'" << std::endl;
   }
   return true;
 }

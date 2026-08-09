@@ -341,6 +341,9 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   {
     std::cerr << "OpenGLFramebuffer: all SDL_CreateWindow attempts failed: "
               << last_error << std::endl;
+    // So a subsequent SDLFramebuffer attempt is not treated as GLES/EGL.
+    SDL_GL_ResetAttributes();
+    SDL_ClearError();
     return false;
   }
 
