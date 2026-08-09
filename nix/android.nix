@@ -117,6 +117,11 @@ let
     keystore,
     # Pingus (and similar): C++ sources live outside appDir.
     gameSrcDir ? null,
+    # Repo external/ (geomcpp, priocpp, …). Required under Nix — GAME_SRC_DIR
+    # is only ./src and its parent is not the monorepo root.
+    gameExternalDir ? null,
+    # glm include parent (contains glm/); required by geomcpp.
+    glmIncludeDir ? null,
     # Optional SDL2_image source tree (stb backend compiled into libmain).
     sdl2ImageSrc ? null,
     # Optional game data directory packaged as APK assets.
@@ -145,7 +150,19 @@ let
         PINGUS_VERSION = gameVersion;
       } // pkgs.lib.optionalAttrs (gameSrcDir != null) {
         GAME_SRC_DIR = "${gameSrcDir}";
-      } // pkgs.lib.optionalAttrs (sdl2ImageSrc != null) {
+      } // (
+        if gameExternalDir == null then
+          throw "mkApk: gameExternalDir is required (repo external/ tree)"
+        else {
+          GAME_EXTERNAL_DIR = "${gameExternalDir}";
+        }
+      ) // (
+        if glmIncludeDir == null then
+          throw "mkApk: glmIncludeDir is required (geom → glm headers)"
+        else {
+          GLM_INCLUDE_DIR = "${glmIncludeDir}";
+        }
+      ) // pkgs.lib.optionalAttrs (sdl2ImageSrc != null) {
         SDL2_IMAGE_SRC = "${sdl2ImageSrc}";
       } // (
         if gameDataDir == null then

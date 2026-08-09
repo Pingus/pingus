@@ -295,6 +295,8 @@
                 outApkName = androidApkName;
                 keystore = ./mk/android/keystore/debug.keystore;
                 gameSrcDir = ./src;
+                gameExternalDir = ./external;
+                glmIncludeDir = "${androidPkgs.glm}/include";
                 gameDataDir = ./data;
                 stbImageH = stbImageH;
                 gameVersion = pingusVersion;
@@ -325,6 +327,8 @@
                   outApkName = androidApkName;
                   keystore = ./mk/android/keystore/debug.keystore;
                   gameSrcDir = ./src;
+                  gameExternalDir = ./external;
+                  glmIncludeDir = "${androidPkgs.glm}/include";
                   gameDataDir = ./data;
                   stbImageH = stbImageH;
                   gameVersion = pingusVersion;

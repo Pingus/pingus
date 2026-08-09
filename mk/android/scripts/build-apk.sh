@@ -35,18 +35,79 @@ cp -r "$APP_DIR/res" src/res
 # Game C++ sources next to the module Android.mk.
 cp -r "$GAME_SRC_DIR"/. src/jni/src/
 
-# Stage public headers from repo external/ (sources still need linking — TODO).
-REPO_ROOT="$(cd "$GAME_SRC_DIR/.." && pwd)"
-if [ -d "$REPO_ROOT/external" ]; then
-  mkdir -p src/jni/external_includes
-  for name in argpp geomcpp logmich priocpp strutcpp sexpcpp tinygettext uitest wstsound xdgcpp; do
-    inc="$REPO_ROOT/external/$name/include"
-    if [ -d "$inc" ]; then
-      cp -a "$inc"/. src/jni/external_includes/
-    fi
-  done
-  echo "==> staged external/ headers into jni/external_includes"
+# Stage monorepo external/ headers + sources.
+# Under Nix, GAME_SRC_DIR is a filtered ./src store path — parent is NOT the
+# repo. Pass GAME_EXTERNAL_DIR (flake: ./external) and optional GLM_INCLUDE_DIR.
+EXTERNAL_DIR="${GAME_EXTERNAL_DIR:-}"
+if [ -z "$EXTERNAL_DIR" ]; then
+  REPO_ROOT="$(cd "$GAME_SRC_DIR/.." && pwd)"
+  if [ -d "$REPO_ROOT/external" ]; then
+    EXTERNAL_DIR="$REPO_ROOT/external"
+  fi
 fi
+if [ -z "$EXTERNAL_DIR" ] || [ ! -d "$EXTERNAL_DIR" ]; then
+  echo "error: GAME_EXTERNAL_DIR must point at the repo external/ tree" >&2
+  echo "       (contains geomcpp/, priocpp/, sexpcpp/, logmich/, …)" >&2
+  exit 1
+fi
+
+mkdir -p src/jni/external_includes
+# Header-only / public includes (layout: include/<ns>/… → external_includes/<ns>/…)
+for name in argpp geomcpp logmich priocpp strutcpp sexpcpp tinygettext; do
+  inc="$EXTERNAL_DIR/$name/include"
+  if [ -d "$inc" ]; then
+    cp -a "$inc"/. src/jni/external_includes/
+  else
+    echo "error: missing $inc" >&2
+    exit 1
+  fi
+done
+# glm is header-only (geom depends on it).
+if [ -n "${GLM_INCLUDE_DIR:-}" ] && [ -d "$GLM_INCLUDE_DIR" ]; then
+  # Expect GLM_INCLUDE_DIR to contain glm/… (nixpkgs glm) or be the glm/ dir itself.
+  if [ -d "$GLM_INCLUDE_DIR/glm" ]; then
+    cp -a "$GLM_INCLUDE_DIR/glm" src/jni/external_includes/
+  elif [ "$(basename "$GLM_INCLUDE_DIR")" = "glm" ]; then
+    mkdir -p src/jni/external_includes
+    cp -a "$GLM_INCLUDE_DIR" src/jni/external_includes/
+  else
+    echo "error: GLM_INCLUDE_DIR=$GLM_INCLUDE_DIR does not look like glm headers" >&2
+    exit 1
+  fi
+  echo "==> staged glm headers from $GLM_INCLUDE_DIR"
+else
+  echo "error: GLM_INCLUDE_DIR is required for Android (geom → glm)" >&2
+  exit 1
+fi
+echo "==> staged external headers into jni/external_includes"
+
+# Compile external .cpp into libmain (ndk-build RWILDCARD under jni/src/).
+# Skip tests/benchmarks; skip priocpp JSON (no jsoncpp on Android).
+mkdir -p src/jni/src/deps
+stage_lib_src() {
+  local name="$1"
+  local srcdir="$EXTERNAL_DIR/$name/src"
+  if [ ! -d "$srcdir" ]; then
+    echo "warning: no sources for $name ($srcdir)" >&2
+    return 0
+  fi
+  mkdir -p "src/jni/src/deps/$name"
+  # top-level sources + private headers (float.hpp, prettyprinter.hpp, …)
+  find "$srcdir" -maxdepth 1 -name '*.cpp' -exec cp -a {} "src/jni/src/deps/$name/" \;
+  find "$srcdir" -maxdepth 1 \( -name '*.hpp' -o -name '*.h' \) -exec cp -a {} "src/jni/src/deps/$name/" \;
+}
+stage_lib_src argpp
+stage_lib_src logmich
+stage_lib_src sexpcpp
+stage_lib_src strutcpp
+stage_lib_src priocpp
+stage_lib_src tinygettext
+# Drop JSON backends (PRIO_USE_JSONCPP is off).
+rm -f src/jni/src/deps/priocpp/json_*.cpp \
+      src/jni/src/deps/priocpp/jsonpretty_*.cpp
+# strut layout.cpp needs a missing polygon.hpp; Pingus does not use Layout.
+rm -f src/jni/src/deps/strutcpp/layout.cpp
+echo "==> staged external sources into jni/src/deps/"
 
 # IMG_* shim + headers.
 cp "$APP_DIR/jni/img_stb_min.c" src/jni/src/img_stb_min.c

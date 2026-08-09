@@ -11,7 +11,11 @@ LOCAL_SRC_FILES += $(patsubst $(LOCAL_PATH)/%,%,$(wildcard $(LOCAL_PATH)/*.c))
 # Exclude desktop-only / optional backends when present under the tree.
 LOCAL_SRC_FILES := $(filter-out %/sound_real.cpp,$(LOCAL_SRC_FILES))
 LOCAL_SRC_FILES := $(filter-out %/win32/%,$(LOCAL_SRC_FILES))
+LOCAL_SRC_FILES := $(filter-out %/json_reader_impl.cpp %/json_writer_impl.cpp %/jsonpretty_writer_impl.cpp,$(LOCAL_SRC_FILES))
 
+# external_includes holds include/<ns>/… (geom/, prio/, sexp/, glm/, …).
+# Per-ns paths support #include "argpp.hpp" style used inside external sources.
+# deps/* hold private headers next to compiled .cpp (float.hpp, etc.).
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/../SDL/include \
 	$(LOCAL_PATH)/../SDL/include/SDL2 \
@@ -24,9 +28,12 @@ LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/../external_includes/strut \
 	$(LOCAL_PATH)/../external_includes/sexp \
 	$(LOCAL_PATH)/../external_includes/tinygettext \
-	$(LOCAL_PATH)/../external_includes/uitest \
-	$(LOCAL_PATH)/../external_includes/wstsound \
-	$(LOCAL_PATH)/../external_includes/xdgcpp
+	$(LOCAL_PATH)/deps/argpp \
+	$(LOCAL_PATH)/deps/logmich \
+	$(LOCAL_PATH)/deps/sexpcpp \
+	$(LOCAL_PATH)/deps/strutcpp \
+	$(LOCAL_PATH)/deps/priocpp \
+	$(LOCAL_PATH)/deps/tinygettext
 
 # SDL2_image is not a prebuilt here — IMG_* comes from img_stb_min.c
 # (compiled into this module via build-apk.sh). Prebuilt mk only ships
@@ -37,6 +44,9 @@ LOCAL_LDLIBS := -llog -landroid -lz -lGLESv2 -lEGL
 
 LOCAL_CFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_NO_SOUND=1 -DPINGUS_USE_GLES=1
 LOCAL_CPPFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_NO_SOUND=1 -DPINGUS_USE_GLES=1 -std=c++17
+# prio: sexpr only (no jsoncpp). tinygettext: avoid libiconv on Android.
+LOCAL_CFLAGS += -DPRIO_USE_SEXPCPP=1 -DTINYGETTEXT_UTF8_ONLY=1
+LOCAL_CPPFLAGS += -DPRIO_USE_SEXPCPP=1 -DTINYGETTEXT_UTF8_ONLY=1
 ifndef PINGUS_VERSION
 PINGUS_VERSION := 0.8.0-dev
 endif
