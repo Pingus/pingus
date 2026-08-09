@@ -28,12 +28,8 @@ SDLDriver::SDLDriver() :
   keyboard_binding(nullptr),
   joystick_handles()
 {
-  for (int i = 0; i < SDL_NUM_SCANCODES; ++i)
-  {
-    char const* key_name = SDL_GetScancodeName(static_cast<SDL_Scancode>(i));
-    // FIXME: Make the keynames somewhere user visible so that users can use them
-    log_debug("Key: '{}'", key_name);
-  }
+  // Scancode name dump removed: under --debug it spammed hundreds of
+  // "Key: '...'" lines at startup with no user-facing value.
 }
 
 SDLDriver::~SDLDriver()
