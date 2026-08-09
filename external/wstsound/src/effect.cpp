@@ -18,8 +18,8 @@
 
 #include "effect.hpp"
 
-#include <al.h>
-#include <efx.h>
+#include <AL/al.h>
+#include <AL/efx.h>
 
 namespace wstsound {
 

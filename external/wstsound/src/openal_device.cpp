@@ -21,7 +21,7 @@
 #include <assert.h>
 #include <sstream>
 
-#include <efx.h>
+#include <AL/efx.h>
 
 #include "sound_error.hpp"
 

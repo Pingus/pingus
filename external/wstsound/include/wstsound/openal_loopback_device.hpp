@@ -20,9 +20,9 @@
 #define HEADER_WSTSOUND_OPENAL_LOOPBACK_DEVICE_HPP
 
 #define AL_ALEXT_PROTOTYPES
-#include <al.h>
-#include <alc.h>
-#include <alext.h>
+#include <AL/al.h>
+#include <AL/alc.h>
+#include <AL/alext.h>
 
 #include "openal_device.hpp"
 

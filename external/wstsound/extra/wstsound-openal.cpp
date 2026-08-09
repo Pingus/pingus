@@ -18,7 +18,7 @@
 
 #include <iostream>
 
-#include <al.h>
+#include <AL/al.h>
 
 #include <wstsound/openal_system.hpp>
 #include <wstsound/openal_real_device.hpp>
