@@ -9,7 +9,7 @@ namespace sigc {
 class connection
 {
 public:
-  connection() = default;
+  connection() : disconnect_() {}
   explicit connection(std::function<void()> disconnect_fn)
     : disconnect_(std::move(disconnect_fn))
   {}

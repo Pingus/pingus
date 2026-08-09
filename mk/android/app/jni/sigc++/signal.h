@@ -20,6 +20,8 @@ class signal<R(Args...)>
 public:
   using slot_type = std::function<R(Args...)>;
 
+  signal() : slots_() {}
+
   connection connect(slot_type slot)
   {
     auto entry = std::make_shared<slot_type>(std::move(slot));
