@@ -796,8 +796,6 @@ System::write_file(std::string const& filename, std::string const& content)
 #endif
 }
 
-} // namespace pingus
-
 std::string
 System::read_file(std::string const& filename)
 {
@@ -824,5 +822,7 @@ System::read_file(std::string const& filename)
   return ss.str();
 #endif
 }
+
+} // namespace pingus
 
 /* EOF */
