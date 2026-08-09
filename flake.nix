@@ -117,7 +117,9 @@
             wstsound =
               let
                 win = pkgs'.stdenv.hostPlatform.isWindows;
-                winSys = pkgs'.stdenv.hostPlatform.system; # x86_64-windows / i686-windows
+                # Builder system (Linux); Win ABIs are package names, not flake systems.
+                winSuffix =
+                  if pkgs'.stdenv.hostPlatform.is32bit then "win32" else "win64";
               in
               call ./external/wstsound/wstsound.nix ({
                 inherit tinycmmc;
@@ -125,8 +127,8 @@
                   if win then pkgs'.windows.mcfgthreads else null;
               } // (if win then {
                 # Official/prebuilt MinGW packages (not pkgsCross openal → ffmpeg).
-                openal = openal-soft-win32.packages.${winSys}.default;
-                libmodplug = libmodplug-win32.packages.${winSys}.default;
+                openal = openal-soft-win32.packages.${system}."openal-soft-${winSuffix}";
+                libmodplug = libmodplug-win32.packages.${system}."libmodplug-${winSuffix}";
               } else { }));
 
             xdgcpp =
@@ -142,10 +144,12 @@
                 };
           };
 
-        mkPingus = { pkgs', targetSystem, pname ? "pingus", useGLES2 ? false }:
+        mkPingus = { pkgs', pname ? "pingus", useGLES2 ? false }:
           let
             libs = mkLibs pkgs';
             win = pkgs'.stdenv.hostPlatform.isWindows;
+            winSuffix =
+              if pkgs'.stdenv.hostPlatform.is32bit then "win32" else "win64";
           in
           pkgs'.callPackage ./pingus.nix {
             inherit self;
@@ -170,23 +174,21 @@
             addDriverRunpath = if win || !useGLES2 then null else pkgs'.addDriverRunpath;
 
             SDL2 =
-              if win then SDL2-win32.packages.${targetSystem}.default
+              if win then SDL2-win32.packages.${system}."SDL2-${winSuffix}"
               else pkgs'.SDL2;
             SDL2_image =
-              if win then SDL2_image-win32.packages.${targetSystem}.default
+              if win then SDL2_image-win32.packages.${system}."SDL2_image-${winSuffix}"
               else pkgs'.SDL2_image;
           };
 
         pingusNative = mkPingus {
           pkgs' = pkgs;
-          targetSystem = system;
         };
 
         # Desktop GLES2 build for validating the Android/wasm GL path on Linux.
         # Pattern matches SuperTux Milestone 1's supertux-milestone1-sdl2-gles2.
         pingusGles2 = mkPingus {
           pkgs' = pkgs;
-          targetSystem = system;
           useGLES2 = true;
         };
 
@@ -214,25 +216,22 @@
               .
           '';
 
-        # MinGW target packages, hosted under packages.${system} (Linux), SuperTux-style.
+        # MinGW target packages, hosted under packages.${system} (Linux builder).
         # Sound uses openal-soft-win32 / libmodplug-win32 — not pkgsCross openal (ffmpeg).
         win64Game = if isWin then null else mkPingus {
           pkgs' = pkgs.pkgsCross.mingwW64;
-          targetSystem = "x86_64-windows";
         };
         win32Game = if isWin then null else mkPingus {
           pkgs' = pkgs.pkgsCross.mingw32;
-          targetSystem = "i686-windows";
         };
-
 
         win64Package = if isWin then null else mkWinFlat {
           game = win64Game;
-          pname = "pingus-win32-x64";
+          pname = "pingus-win64";
         };
         win32Package = if isWin then null else mkWinFlat {
           game = win32Game;
-          pname = "pingus-win32-x86";
+          pname = "pingus-win32";
         };
 
 
@@ -419,12 +418,11 @@
           pingus = pingusNative;
           pingus-gles2 = pingusGles2;
         } // lib.optionalAttrs (!isWin) {
-          # Cross-built on this host (Linux/Darwin), labeled under packages.''${system}
-          # — not packages.x86_64-windows (wrong host vs target).
-          pingus-win32-x64 = win64Package;
-          pingus-win32-x86 = win32Package;
-          pingus-win32-x64-zip = mkWinZip win64Package "pingus";
-          pingus-win32-x86-zip = mkWinZip win32Package "pingus";
+          # Cross-built on this host; Windows is the run target, not the flake system.
+          pingus-win64 = win64Package;
+          pingus-win32 = win32Package;
+          pingus-win64-zip = mkWinZip win64Package "pingus";
+          pingus-win32-zip = mkWinZip win32Package "pingus";
         } // {
           # Optional: individual external libs for debugging
           inherit (libsNative)
@@ -451,8 +449,8 @@
             meta.description = "Pingus (native, OpenGL ES 2.0)";
           };
         } // lib.optionalAttrs (!isWin && pkgs.stdenv.hostPlatform.isLinux) {
-          pingus-win32-x64 = mkWineApp win64Package "pingus-win32-x64" "Pingus (MinGW x86_64) via Wine";
-          pingus-win32-x86 = mkWineApp win32Package "pingus-win32-x86" "Pingus (MinGW i686) via Wine";
+          pingus-win64 = mkWineApp win64Package "pingus-win64" "Pingus (MinGW x86_64) via Wine";
+          pingus-win32 = mkWineApp win32Package "pingus-win32" "Pingus (MinGW i686) via Wine";
         } // linuxExtras.apps;
       }
     );
