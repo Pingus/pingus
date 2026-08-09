@@ -14,6 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "util/reader.hpp"
 #include "application.hpp"
 
 #include <argpp/argpp.hpp>
@@ -147,7 +148,7 @@ Application::Application(CommandLineOptions const& cmd_options) :
     }
     else if (cmd_options.rest.get().ends_with(".story"))
     {
-      auto story_desc = ReaderDocument::from_file(cmd_options.rest.get());
+      auto story_desc = load_document(cmd_options.rest.get());
       m_screen_manager->push_screen(std::make_shared<StoryScreen>(story_desc.get_mapping()));
     }
     else if (cmd_options.rest.get().ends_with(".levelset"))

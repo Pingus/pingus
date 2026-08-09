@@ -19,6 +19,7 @@
 #include <stdexcept>
 
 #include "util/pathname.hpp"
+#include "util/reader.hpp"
 #include "util/raise_exception.hpp"
 
 using namespace pingus::worldmap;
@@ -78,7 +79,7 @@ PingusWorldmap::PingusWorldmap() :
 PingusWorldmap::PingusWorldmap(Pathname const& pathname) :
   impl(new PingusWorldmapImpl())
 {
-  impl->doc = ReaderDocument::from_file(pathname.get_sys_path());
+  impl->doc = load_document(pathname);
   parse_file(impl->doc.get_root());
 }
 
@@ -107,12 +108,12 @@ PingusWorldmap::parse_file(ReaderObject const& reader_object)
 
     if (reader.read("intro-story", intro_story))
     {
-      impl->intro_story = ReaderDocument::from_file(Pathname(intro_story, Pathname::DATA_PATH).get_sys_path());
+      impl->intro_story = load_document(Pathname(intro_story, Pathname::DATA_PATH));
     }
 
     if (reader.read("end-story", end_story))
     {
-      impl->end_story = ReaderDocument::from_file(Pathname(end_story, Pathname::DATA_PATH).get_sys_path());
+      impl->end_story = load_document(Pathname(end_story, Pathname::DATA_PATH));
     }
   }
 }

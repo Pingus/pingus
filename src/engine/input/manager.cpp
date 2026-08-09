@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "util/reader.hpp"
 #include "engine/input/manager.hpp"
 
 #include <stdexcept>
@@ -64,7 +65,7 @@ Manager::create_controller(std::filesystem::path const& filename)
 {
   ControllerPtr controller = std::make_unique<Controller>(m_desc);
 
-  auto doc = prio::ReaderDocument::from_file(filename);
+  auto doc = pingus::load_document(filename.string());
   if (doc.get_name() != "pingus-controller") {
     throw std::runtime_error(std::format("Controller: invalid config file '{}'", filename.string()));
   }

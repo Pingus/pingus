@@ -14,6 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#include "util/reader.hpp"
 #include "pingus/screens/pingus_menu.hpp"
 
 #include "editor/editor_screen.hpp"
@@ -127,7 +128,7 @@ PingusMenu::do_start(const std::string &filename)
   StatManager::instance()->get_bool("tutorial-startstory-seen", story_seen); // FIXME: Hardcoding tutorial is evil
   if (!story_seen)
   {
-    auto doc = ReaderDocument::from_file(Pathname("stories/tutorial_intro.story", Pathname::DATA_PATH).get_sys_path());
+    auto doc = load_document(Pathname("stories/tutorial_intro.story", Pathname::DATA_PATH));
     ScreenManager::instance()->push_screen(std::make_shared<StoryScreen>(doc.get_mapping()));
     StatManager::instance()->set_bool("tutorial-startstory-seen", true);
   }

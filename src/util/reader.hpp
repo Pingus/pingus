@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_UTIL_READER_HPP
 #define HEADER_PINGUS_UTIL_READER_HPP
 
+#include <string>
 #include <string_view>
 
 #include <geom/fwd.hpp>
@@ -34,6 +35,10 @@ class Colorf;
 class InVector2fZ;
 class Pathname;
 class ResDescriptor;
+
+/** Load a prio document via System::read_file (AssetManager-aware on Android). */
+ReaderDocument load_document(std::string const& filename);
+ReaderDocument load_document(Pathname const& pathname);
 
 } // namespace pingus
 

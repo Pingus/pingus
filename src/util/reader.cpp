@@ -20,6 +20,7 @@
 #include "math/vector2f.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "util/pathname.hpp"
+#include "util/system.hpp"
 
 using namespace pingus;
 
@@ -154,5 +155,23 @@ bool read_custom(prio::ReaderMapping const& map, std::string_view key, geom::ire
 }
 
 } // namespace prio
+
+
+namespace pingus {
+
+ReaderDocument
+load_document(std::string const& filename)
+{
+  return prio::ReaderDocument::from_string(
+    System::read_file(filename), prio::ErrorHandler::THROW, filename);
+}
+
+ReaderDocument
+load_document(Pathname const& pathname)
+{
+  return load_document(pathname.get_sys_path());
+}
+
+} // namespace pingus
 
 /* EOF */
