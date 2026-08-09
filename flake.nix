@@ -412,46 +412,75 @@
             '');
             meta.description = description;
           };
-      in {
-        packages = {
-          default = pingusNative;
-          pingus = pingusNative;
-          pingus-gles2 = pingusGles2;
-        } // lib.optionalAttrs (!isWin) {
-          # Cross-built on this host; Windows is the run target, not the flake system.
-          pingus-win64 = win64Package;
-          pingus-win32 = win32Package;
-          pingus-win64-zip = mkWinZip win64Package "pingus";
-          pingus-win32-zip = mkWinZip win32Package "pingus";
-        } // {
-          # Optional: individual external libs for debugging
-          inherit (libsNative)
-            tinycmmc argpp geomcpp logmich sexpcpp priocpp
-            strutcpp tinygettext uitest wstsound;
-        } // lib.optionalAttrs (libsNative.xdgcpp != null) {
-          xdgcpp = libsNative.xdgcpp;
-        } // linuxExtras.packages;
+      in
+      let
+        packages =
+          {
+            default = pingusNative;
+            pingus = pingusNative;
+            pingus-gles2 = pingusGles2;
+          }
+          // lib.optionalAttrs (!isWin) {
+            # Cross-built on this host; Windows is the run target, not the flake system.
+            pingus-win64 = win64Package;
+            pingus-win32 = win32Package;
+            pingus-win64-zip = mkWinZip win64Package "pingus";
+            pingus-win32-zip = mkWinZip win32Package "pingus";
+          }
+          // {
+            # Optional: individual external libs for debugging
+            inherit (libsNative)
+              tinycmmc argpp geomcpp logmich sexpcpp priocpp
+              strutcpp tinygettext uitest wstsound;
+          }
+          // lib.optionalAttrs (libsNative.xdgcpp != null) {
+            xdgcpp = libsNative.xdgcpp;
+          }
+          // linuxExtras.packages;
 
-        apps = {
-          default = {
-            type = "app";
-            program = "${pingusNative}/bin/pingus";
-            meta.description = "Pingus (native)";
-          };
-          pingus = {
-            type = "app";
-            program = "${pingusNative}/bin/pingus";
-            meta.description = "Pingus (native)";
-          };
-          pingus-gles2 = {
-            type = "app";
-            program = "${pingusGles2}/bin/pingus";
-            meta.description = "Pingus (native, OpenGL ES 2.0)";
-          };
-        } // lib.optionalAttrs (!isWin && pkgs.stdenv.hostPlatform.isLinux) {
-          pingus-win64 = mkWineApp win64Package "pingus-win64" "Pingus (MinGW x86_64) via Wine";
-          pingus-win32 = mkWineApp win32Package "pingus-win32" "Pingus (MinGW i686) via Wine";
-        } // linuxExtras.apps;
+        apps =
+          {
+            default = {
+              type = "app";
+              program = "${pingusNative}/bin/pingus";
+              meta.description = "Pingus (native)";
+            };
+            pingus = {
+              type = "app";
+              program = "${pingusNative}/bin/pingus";
+              meta.description = "Pingus (native)";
+            };
+            pingus-gles2 = {
+              type = "app";
+              program = "${pingusGles2}/bin/pingus";
+              meta.description = "Pingus (native, OpenGL ES 2.0)";
+            };
+          }
+          // lib.optionalAttrs (!isWin && pkgs.stdenv.hostPlatform.isLinux) {
+            pingus-win64 = mkWineApp win64Package "pingus-win64" "Pingus (MinGW x86_64) via Wine";
+            pingus-win32 = mkWineApp win32Package "pingus-win32" "Pingus (MinGW i686) via Wine";
+          }
+          // linuxExtras.apps;
+
+        # App names overlap packages (default/pingus/…); prefix so checks can hold both.
+        appChecks = lib.mapAttrs' (name: app:
+          lib.nameValuePair "app-${name}" (
+            pkgs.runCommand "check-app-${name}" {
+              meta.description = "flake check: apps.${name} program exists";
+            } ''
+              set -euo pipefail
+              if [ ! -e "${app.program}" ]; then
+                echo "apps.${name}: program missing: ${app.program}" >&2
+                exit 1
+              fi
+              touch "$out"
+            ''
+          )
+        ) apps;
+      in {
+        inherit packages apps;
+        # Build every package; verify every app's program path resolves.
+        checks = packages // appChecks;
       }
     );
 }
