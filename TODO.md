@@ -67,7 +67,59 @@ land or scope changes.
 - [ ] Get a full `emcmake` + link of `pingus` past compile/link errors
 - [ ] Runtime: main loop / filesystem (`data/` preload at `/data`), canvas
       resize, input
-- [ ] Optional: restore sound via SDL2_mixer wasm + a thin backend (long-term)
+- [ ] **wstsound on Emscripten OpenAL** (see section below) — not SDL2_mixer
+
+
+## WASM audio — wstsound on Emscripten OpenAL
+
+Goal: real SFX + module music in the browser without OpenAL Soft. Use
+**Emscripten’s OpenAL 1.1 → Web Audio** (`-lopenal`) and a slim codec set.
+
+### Asset formats in-tree (what we actually need)
+
+| Path | Formats | Decoder |
+|------|---------|---------|
+| `data/sounds/*.wav` | PCM WAV | in-tree `WavSoundFile` (no extra dep) |
+| `data/music/*.it`, one `.s3m` | Impulse Tracker / Scream Tracker | **libmodplug** |
+
+**Not required for Pingus data:** mpg123, libvorbis, opus. Keep those optional
+for desktop wstsound; **do not** pull them into the wasm closure unless a
+future asset needs them.
+
+### Approach
+
+1. **Codecs as separate flake outputs** (quick `nix build .#libmodplug-wasm`
+   without rebuilding the game):
+   - `libmodplug-wasm` — static libmodplug for `wasm32-emscripten`
+   - Later: optional `libogg-wasm` / `libvorbis-wasm` only if needed
+2. Sources: **fetch from the web** first (`fetchurl`). Vendor under
+   `external/` only if packaging becomes painful or upstream disappears.
+3. **wstsound wasm build**:
+   - Link Emscripten OpenAL (`-lopenal`), not OpenAL Soft
+   - CMake options to disable unused codecs (`WSTSOUND_WITH_MPG123=OFF`, etc.)
+   - Stub or `#ifdef __EMSCRIPTEN__` **EFX** (`alGenEffects` / effect slots) —
+     not available in Emscripten’s AL
+   - Avoid requiring pthreads
+4. **Pingus**: stop forcing `PINGUS_ENABLE_SOUND=OFF` on Emscripten once
+   wstsound-wasm links; keep autoplay / first-gesture behaviour in mind
+
+### Checklist
+
+- [ ] `libmodplug-wasm` flake package (static, emconfigure/emmake or cmake)
+- [ ] wstsound CMake: `WSTSOUND_WITH_{MODPLUG,VORBIS,OPUS,MPG123}` options;
+      default wasm profile = modplug + wav only
+- [ ] wstsound builds under emscripten against `-lopenal` (EFX stubbed)
+- [ ] `wstsound-wasm` flake output for isolated testing
+- [ ] Wire `.#pingus-wasm` with `enableSound=true` + preload music/sounds
+- [ ] Runtime: music + SFX after user gesture; greeting reflects real backend
+- [ ] (Optional) Detect `.s3m` magic in `SoundFile::from_stream` (SCRM) so
+      `gd-giirm.s3m` routes to ModPlug
+
+### Non-goals (for this track)
+
+- Porting **OpenAL Soft** itself to wasm
+- Shipping mpg123/vorbis/opus on wasm “just in case”
+- SDL2_mixer as the primary path (keep as a possible alternative only)
 
 ### Android (`.#pingus-android`)
 

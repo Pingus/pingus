@@ -23,12 +23,21 @@
 #include <sstream>
 #include <string.h>
 
-#include "modplug_sound_file.hpp"
-#include "mp3_sound_file.hpp"
-#include "ogg_sound_file.hpp"
-#include "opus_sound_file.hpp"
 #include "sound_error.hpp"
 #include "wav_sound_file.hpp"
+
+#if defined(WSTSOUND_WITH_MODPLUG)
+#  include "modplug_sound_file.hpp"
+#endif
+#if defined(WSTSOUND_WITH_MPG123)
+#  include "mp3_sound_file.hpp"
+#endif
+#if defined(WSTSOUND_WITH_VORBIS)
+#  include "ogg_sound_file.hpp"
+#endif
+#if defined(WSTSOUND_WITH_OPUS)
+#  include "opus_sound_file.hpp"
+#endif
 
 namespace wstsound {
 
@@ -47,17 +56,29 @@ SoundFile::from_stream(std::unique_ptr<std::istream> istream)
     // to tell OggVorbis and Opus appart
     if (strncmp(reinterpret_cast<char*>(magic), "RIFF", 4) == 0) {
       return std::make_unique<WavSoundFile>(std::move(istream));
+#if defined(WSTSOUND_WITH_MPG123)
     } else if ((magic[0] == 0xff && (magic[1] == 0xfb || magic[1] == 0xf3 || magic[1] == 0xf2)) ||
                (magic[0] == 0x49 && magic[1] == 0x44 && magic[2] == 0x33)) {
       return std::make_unique<MP3SoundFile>(std::move(istream));
+#endif
+#if defined(WSTSOUND_WITH_OPUS)
     } else if (strncmp(reinterpret_cast<char*>(magic), "OggS", 4) == 0 &&
                strncmp(reinterpret_cast<char*>(magic) + 28, "OpusHead", 8) == 0) {
       return std::make_unique<OpusSoundFile>(std::move(istream));
+#endif
+#if defined(WSTSOUND_WITH_VORBIS)
     } else if (strncmp(reinterpret_cast<char*>(magic), "OggS", 4) == 0 &&
                strncmp(reinterpret_cast<char*>(magic) + 29, "vorbis", 4) == 0) {
       return std::make_unique<OggSoundFile>(std::move(istream));
+#endif
+#if defined(WSTSOUND_WITH_MODPLUG)
     } else if (strncmp(reinterpret_cast<char*>(magic), "IMPM", 4) == 0) {
+      // Impulse Tracker (.it)
       return std::make_unique<ModplugSoundFile>(std::move(istream));
+    } else if (strncmp(reinterpret_cast<char*>(magic) + 44, "SCRM", 4) == 0) {
+      // Scream Tracker 3 (.s3m) — magic at offset 44
+      return std::make_unique<ModplugSoundFile>(std::move(istream));
+#endif
     } else {
       throw SoundError("Unknown file format");
     }

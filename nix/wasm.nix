@@ -292,6 +292,67 @@ EOF
   };
 
 
+
+  # --- Audio codecs for wstsound (wasm) ------------------------------------
+  # Pingus ships WAV SFX + .it/.s3m module music only. libmodplug covers the
+  # modules; WAV is decoded in-tree. Do not add mpg123/vorbis/opus here unless
+  # assets require them — keep packages separate for fast iteration:
+  #   nix build .#libmodplug-wasm
+
+  modplugWasm = pkgs.stdenv.mkDerivation rec {
+    pname = "libmodplug-wasm";
+    version = "0.8.9.0";
+    src = pkgs.fetchurl {
+      url = "https://downloads.sourceforge.net/project/modplug-xmms/libmodplug/${version}/libmodplug-${version}.tar.gz";
+      hash = "sha256-RXylpsF5ZW1mwBUFwNlfr66tQym526oPmX0Ao1CK2d4=";
+    };
+    nativeBuildInputs = [ pkgs.emscripten pkgs.python3 ];
+    dontConfigure = true;
+    buildPhase = ''
+      runHook preBuild
+      export EM_CACHE="''${TMPDIR:-/tmp}/emcache"
+      mkdir -p "$EM_CACHE"
+      mkdir -p "$PWD/prefix"
+      # Autotools + emconfigure: static only for linking into the game .wasm
+      emconfigure ./configure \
+        --prefix="$PWD/prefix" \
+        --host=wasm32-unknown-emscripten \
+        --disable-shared \
+        --enable-static \
+        --disable-dependency-tracking
+      emmake make -j''${NIX_BUILD_CORES:-2}
+      emmake make install
+      runHook postBuild
+    '';
+    installPhase = ''
+      runHook preInstall
+      mkdir -p $out
+      cp -a prefix/. $out/
+      # pkg-config for consumers
+      mkdir -p $out/lib/pkgconfig
+      if [ ! -f $out/lib/pkgconfig/libmodplug.pc ]; then
+        cat > $out/lib/pkgconfig/libmodplug.pc <<EOF
+prefix=$out
+exec_prefix=\''${prefix}
+libdir=\''${exec_prefix}/lib
+includedir=\''${prefix}/include
+
+Name: libmodplug
+Description: modplug module music decoder (wasm32-emscripten)
+Version: ${version}
+Libs: -L\''${libdir} -lmodplug
+Cflags: -I\''${includedir}
+EOF
+      fi
+      runHook postInstall
+    '';
+    meta = with pkgs.lib; {
+      description = "Static libmodplug for wasm32-emscripten (Pingus module music)";
+      license = licenses.publicDomain; # libmodplug historically public domain / BSD-like
+      platforms = platforms.linux;
+    };
+  };
+
   # HTML shell: template under mk/wasm/shell.html (@versionFull@ @gitRev@ @sourceUrl@ @revUrl@).
   mkWasmShell = { versionFull, gitRev, sourceUrl }:
     let
@@ -391,4 +452,5 @@ EOF
 in {
   inherit sdl2WasmLibs sdlWasmLibs zlibWasmLibs mkApp mkOpenBrowserApp;
   inherit sdl2Image sdl2Mixer;
+  inherit modplugWasm glmPrefix sigcWasm;
 }

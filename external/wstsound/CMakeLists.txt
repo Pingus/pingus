@@ -38,26 +38,84 @@ endif()
 message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
 list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
 
-# include(GetProjectVersion)
 include(GNUInstallDirs)
 include(ClangTidy)
 include(MaximumWarnings)
 
 option(BUILD_EXTRA "Build extra stuff" OFF)
 
-find_package(Threads REQUIRED)
-find_package(OpenAL REQUIRED)
-find_package(Opusfile REQUIRED)
-find_package(Opus REQUIRED)
-find_package(Ogg REQUIRED)
-find_package(Vorbisfile REQUIRED)
-find_package(MPG123 REQUIRED)
-find_package(ModPlug REQUIRED)
+# Codec / feature toggles. Desktop defaults keep the full set; Emscripten
+# defaults match Pingus in-tree assets (WAV + module music via ModPlug).
+option(WSTSOUND_WITH_MODPLUG "Decode module formats via libmodplug (.it/.s3m/…)" ON)
+option(WSTSOUND_WITH_VORBIS "Decode Ogg Vorbis" ON)
+option(WSTSOUND_WITH_OPUS "Decode Opus" ON)
+option(WSTSOUND_WITH_MPG123 "Decode MP3 via mpg123" ON)
+option(WSTSOUND_WITH_EFX "OpenAL EFX effects API (not on Emscripten OpenAL)" ON)
+
+if(EMSCRIPTEN)
+  set(WSTSOUND_WITH_MPG123 OFF CACHE BOOL "Decode MP3 via mpg123" FORCE)
+  set(WSTSOUND_WITH_VORBIS OFF CACHE BOOL "Decode Ogg Vorbis" FORCE)
+  set(WSTSOUND_WITH_OPUS OFF CACHE BOOL "Decode Opus" FORCE)
+  set(WSTSOUND_WITH_MODPLUG ON CACHE BOOL "Decode module formats via libmodplug" FORCE)
+  set(WSTSOUND_WITH_EFX OFF CACHE BOOL "OpenAL EFX effects API" FORCE)
+endif()
+
+if(EMSCRIPTEN)
+  # Emscripten ships OpenAL → Web Audio; no system OpenAL Soft.
+  # Headers live in the emscripten sysroot; link with -lopenal at the app.
+  find_path(OPENAL_INCLUDE_DIR AL/al.h
+    PATHS ENV EMSCRIPTEN ENV EM_CACHE
+    PATH_SUFFIXES system/include cache/sysroot/include include
+    REQUIRED)
+  set(OPENAL_LIBRARY "openal" CACHE STRING "OpenAL link library name")
+  set(OpenAL_FOUND TRUE)
+else()
+  find_package(Threads REQUIRED)
+  find_package(OpenAL REQUIRED)
+endif()
+
+set(WSTSOUND_CODEC_LIBS "")
+if(WSTSOUND_WITH_OPUS)
+  find_package(Opusfile REQUIRED)
+  find_package(Opus REQUIRED)
+  find_package(Ogg REQUIRED)
+  list(APPEND WSTSOUND_CODEC_LIBS Opus::opus Opusfile::opusfile Ogg::ogg)
+endif()
+if(WSTSOUND_WITH_VORBIS)
+  find_package(Ogg REQUIRED)
+  find_package(Vorbisfile REQUIRED)
+  list(APPEND WSTSOUND_CODEC_LIBS Ogg::ogg Vorbisfile::vorbisfile)
+endif()
+if(WSTSOUND_WITH_MPG123)
+  find_package(MPG123 REQUIRED)
+  list(APPEND WSTSOUND_CODEC_LIBS MPG123::mpg123)
+endif()
+if(WSTSOUND_WITH_MODPLUG)
+  find_package(ModPlug REQUIRED)
+  list(APPEND WSTSOUND_CODEC_LIBS ModPlug::modplug)
+endif()
 
 file(GLOB WSTSOUND_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   include/wstsound/*.hpp)
 file(GLOB WSTSOUND_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/*.cpp)
+
+if(NOT WSTSOUND_WITH_MODPLUG)
+  list(FILTER WSTSOUND_SOURCES EXCLUDE REGEX ".*/modplug_sound_file\\.cpp$")
+endif()
+if(NOT WSTSOUND_WITH_VORBIS)
+  list(FILTER WSTSOUND_SOURCES EXCLUDE REGEX ".*/ogg_sound_file\\.cpp$")
+endif()
+if(NOT WSTSOUND_WITH_OPUS)
+  list(FILTER WSTSOUND_SOURCES EXCLUDE REGEX ".*/opus_sound_file\\.cpp$")
+endif()
+if(NOT WSTSOUND_WITH_MPG123)
+  list(FILTER WSTSOUND_SOURCES EXCLUDE REGEX ".*/mp3_sound_file\\.cpp$")
+endif()
+if(NOT WSTSOUND_WITH_EFX)
+  list(FILTER WSTSOUND_SOURCES EXCLUDE REGEX ".*/effect(_slot)?\\.cpp$")
+endif()
+
 add_library(wstsound STATIC ${WSTSOUND_SOURCES})
 set_target_properties(wstsound PROPERTIES PUBLIC_HEADER "${WSTSOUND_HEADERS}")
 target_compile_options(wstsound PRIVATE ${WARNINGS_CXX_FLAGS})
@@ -65,26 +123,37 @@ set_target_properties(wstsound PROPERTIES
   CXX_STANDARD 20
   CXX_STANDARD_REQUIRED ON
   CXX_EXTENSIONS OFF)
+
+if(WSTSOUND_WITH_MODPLUG)
+  target_compile_definitions(wstsound PUBLIC WSTSOUND_WITH_MODPLUG=1)
+endif()
+if(WSTSOUND_WITH_VORBIS)
+  target_compile_definitions(wstsound PUBLIC WSTSOUND_WITH_VORBIS=1)
+endif()
+if(WSTSOUND_WITH_OPUS)
+  target_compile_definitions(wstsound PUBLIC WSTSOUND_WITH_OPUS=1)
+endif()
+if(WSTSOUND_WITH_MPG123)
+  target_compile_definitions(wstsound PUBLIC WSTSOUND_WITH_MPG123=1)
+endif()
+if(WSTSOUND_WITH_EFX)
+  target_compile_definitions(wstsound PUBLIC WSTSOUND_WITH_EFX=1)
+endif()
+
 target_include_directories(wstsound SYSTEM PUBLIC ${OPENAL_INCLUDE_DIR})
 target_include_directories(wstsound PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
   )
 target_include_directories(wstsound PRIVATE src/ include/wstsound/)
-target_link_libraries(wstsound PUBLIC
-  ${OPENAL_LIBRARY}
-  Ogg::ogg
-  Vorbisfile::vorbisfile
-  Opus::opus
-  Opusfile::opusfile
-  MPG123::mpg123
-  ModPlug::modplug
-  Threads::Threads)
+target_link_libraries(wstsound PUBLIC ${OPENAL_LIBRARY} ${WSTSOUND_CODEC_LIBS})
+if(NOT EMSCRIPTEN)
+  target_link_libraries(wstsound PUBLIC Threads::Threads)
+endif()
 
 if(BUILD_TESTS)
   find_package(GTest REQUIRED)
 
-  # build automatic tests
   file(GLOB TEST_WSTSOUND_SOURCES test/*_test.cpp)
   add_executable(test_wstsound ${TEST_WSTSOUND_SOURCES})
   target_include_directories(test_wstsound PUBLIC src/ include/wstsound/)

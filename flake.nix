@@ -301,6 +301,9 @@
               };
               wasm-sdl2 = wasm.sdl2WasmLibs;
               wasm-sdl-libs = wasm.sdlWasmLibs;
+              # Isolated audio deps for wstsound-on-wasm (build without the full game):
+              #   nix build .#libmodplug-wasm
+              libmodplug-wasm = wasm.modplugWasm;
               pingus-wasm = wasm.mkApp {
                 appName = "pingus";
                 srcDir = ./.;
