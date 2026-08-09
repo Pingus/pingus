@@ -203,7 +203,7 @@
             fi
           '';
 
-        mkWinZip = pkg: name:
+        mkWinZip = pkg: name: winsys:
           pkgs.runCommand name { } ''
             mkdir -p $out
             WORKDIR=$(mktemp -d)
@@ -212,7 +212,7 @@
             cd "$WORKDIR"
             ${pkgs.zip}/bin/zip \
               -r \
-              $out/${name}-${pingusNative.version}-${system}.zip \
+              $out/${name}-${pingusNative.version}-${winsys}.zip \
               .
           '';
 
@@ -424,8 +424,8 @@
             # Cross-built on this host; Windows is the run target, not the flake system.
             pingus-win64 = win64Package;
             pingus-win32 = win32Package;
-            pingus-win64-zip = mkWinZip win64Package "pingus";
-            pingus-win32-zip = mkWinZip win32Package "pingus";
+            pingus-win64-zip = mkWinZip win64Package "pingus" "win64";
+            pingus-win32-zip = mkWinZip win32Package "pingus" "win32";
           }
           // {
             # Optional: individual external libs for debugging
