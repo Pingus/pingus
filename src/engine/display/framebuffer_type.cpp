@@ -49,7 +49,7 @@ FramebufferType FramebufferType_from_string(std::string_view text)
   {
     return FramebufferType::NULL_FRAMEBUFFER;
   }
-  else if (text == "opengl")
+  else if (text == "opengl" || text == "opengles2" || text == "gles2" || text == "gles")
   {
     return FramebufferType::OPENGL;
   }
