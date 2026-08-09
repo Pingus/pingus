@@ -332,10 +332,10 @@ EOF
       runHook preInstall
       mkdir -p $out
       cp -a prefix/. $out/
-      # pkg-config for consumers
+      # Always rewrite .pc: autotools install embeds the build-time
+      # prefix (/build/.../prefix), which breaks consumers via pkg-config.
       mkdir -p $out/lib/pkgconfig
-      if [ ! -f $out/lib/pkgconfig/libmodplug.pc ]; then
-        cat > $out/lib/pkgconfig/libmodplug.pc <<EOF
+      cat > $out/lib/pkgconfig/libmodplug.pc <<EOF
 prefix=$out
 exec_prefix=\''${prefix}
 libdir=\''${exec_prefix}/lib
@@ -347,7 +347,6 @@ Version: ${version}
 Libs: -L\''${libdir} -lmodplug
 Cflags: -I\''${includedir}
 EOF
-      fi
       runHook postInstall
     '';
     meta = with pkgs.lib; {
