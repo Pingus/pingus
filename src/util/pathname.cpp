@@ -227,8 +227,26 @@ Pathname::opendir_recursive(std::vector<Pathname>& result) const
         auto lst = System::opendir_recursive(path);
         for(auto it = lst.begin(); it != lst.end(); ++it)
         {
-          Pathname sub_path(it->substr(p->size()+1), Pathname::DATA_PATH);
-          result.push_back(sub_path);
+          // With an empty datadir (Android assets root), *p is "" and
+          // substr(p->size()+1) wrongly drops the first character
+          // ("images/foo" → "mages/foo"), so the resource index stayed empty
+          // and the editor saw no groundpieces.
+          std::string relative;
+          if (p->empty())
+          {
+            relative = *it;
+          }
+          else if (it->size() > p->size() &&
+                   it->compare(0, p->size(), *p) == 0 &&
+                   (*it)[p->size()] == '/')
+          {
+            relative = it->substr(p->size() + 1);
+          }
+          else
+          {
+            relative = *it;
+          }
+          result.push_back(Pathname(relative, Pathname::DATA_PATH));
         }
       }
       break;
