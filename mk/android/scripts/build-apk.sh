@@ -179,7 +179,9 @@ fi
 ENABLE_ANDROID_SOUND=0
 if [ -n "${AUDIO_ANDROID_LIBS:-}" ] && [ -d "$AUDIO_ANDROID_LIBS" ]; then
   mkdir -p src/jni/audio
-  # Layout expected by Android.mk: jni/audio/<abi>/lib/*.a and include/
+  # Layout: jni/audio/<abi>/lib/*.a and shared jni/audio/include/
+  # Headers are identical per ABI; copy once and chmod writable (nix store is 0444).
+  headers_done=0
   for abi_dir in "$AUDIO_ANDROID_LIBS"/*; do
     [ -d "$abi_dir" ] || continue
     abi=$(basename "$abi_dir")
@@ -187,9 +189,12 @@ if [ -n "${AUDIO_ANDROID_LIBS:-}" ] && [ -d "$AUDIO_ANDROID_LIBS" ]; then
       armeabi-v7a|arm64-v8a|x86|x86_64)
         mkdir -p "src/jni/audio/$abi/lib"
         cp -a "$abi_dir"/lib/*.a "src/jni/audio/$abi/lib/" 2>/dev/null || true
-        if [ -d "$abi_dir/include" ]; then
+        chmod -R u+w "src/jni/audio/$abi/lib" 2>/dev/null || true
+        if [ "$headers_done" -eq 0 ] && [ -d "$abi_dir/include" ]; then
           mkdir -p src/jni/audio/include
           cp -a "$abi_dir/include/." src/jni/audio/include/
+          chmod -R u+rwX src/jni/audio/include
+          headers_done=1
         fi
         ;;
     esac

@@ -111,6 +111,10 @@ let
     dontUnpack = true;
     dontConfigure = true;
     dontUseCmakeConfigure = true;
+    # Outputs are Android ELF (armeabi-v7a / arm64); host patchelf/strip fail.
+    dontPatchELF = true;
+    dontStrip = true;
+    noAuditTmpdir = true;
     nativeBuildInputs = [ androidSdk pkgs.cmake pkgs.gnumake pkgs.python3 pkgs.gnutar pkgs.gzip ];
     env = {
       PACKAGE_PLATFORM = packagePlatform;
