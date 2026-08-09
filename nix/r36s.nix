@@ -315,6 +315,8 @@ let
         "-DBUILD_EXTRA=OFF"
         "-DWARNINGS=OFF"
         "-DWERROR=OFF"
+        # R36S is GLES2-only (Mali/Panfrost); desktop OpenGL is not in the sysroot.
+        "-DPINGUS_USE_GLES=ON"
         # Relative data next to the binary on device (PortMaster layout).
         "-DPROJECT_VERSION_FULL=${version}"
       ];
@@ -354,6 +356,31 @@ let
           "-DZLIB_INCLUDE_DIR=${arkosSysroot}/usr/include"
           "-DZLIB_LIBRARY=$ZLIB_LIB"
         )
+
+        # Explicit GLES/EGL from ArkOS sysroot (find_library can miss under ONLY mode).
+        GLESV2_LIB=
+        EGL_LIB=
+        for cand in           "${arkosSysroot}/usr/lib/aarch64-linux-gnu/libGLESv2.so"           "${arkosSysroot}/lib/aarch64-linux-gnu/libGLESv2.so"           "${arkosSysroot}/usr/lib/libGLESv2.so"
+        do
+          if [ -e "$cand" ]; then GLESV2_LIB="$cand"; break; fi
+        done
+        for cand in           "${arkosSysroot}/usr/lib/aarch64-linux-gnu/libEGL.so"           "${arkosSysroot}/lib/aarch64-linux-gnu/libEGL.so"           "${arkosSysroot}/usr/lib/libEGL.so"
+        do
+          if [ -e "$cand" ]; then EGL_LIB="$cand"; break; fi
+        done
+        if [ -z "$GLESV2_LIB" ]; then
+          echo "arkos-sysroot: no libGLESv2.so found" >&2
+          find "${arkosSysroot}" -name 'libGLESv2*' 2>/dev/null | head -20 >&2 || true
+          exit 1
+        fi
+        cmakeFlagsArray+=(
+          "-DPINGUS_GLESV2_LIB=$GLESV2_LIB"
+        )
+        if [ -n "$EGL_LIB" ]; then
+          cmakeFlagsArray+=(
+            "-DPINGUS_EGL_LIB=$EGL_LIB"
+          )
+        fi
       '';
 
       postInstall = ''
