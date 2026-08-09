@@ -47,7 +47,7 @@ EOF
   cp -a "$SDL_MIXER_SRC"/. mixer-jni/SDL2_mixer/
   chmod -R u+w mixer-jni
 
-  # Milestone 1 ships .mod/.xm — need libxmp under external/libxmp.
+  # Optional: libxmp for module music under external/libxmp (Pingus uses ModPlug on desktop/wasm).
   MOD_XMP=false
   if [ -n "${LIBXMP_SRC:-}" ] && [ -d "$LIBXMP_SRC" ]; then
     echo "Vendoring libxmp into SDL2_mixer/external/libxmp"

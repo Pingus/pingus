@@ -39,8 +39,10 @@ PINGUS_VERSION := 0.8.0-dev
 endif
 LOCAL_CFLAGS += -DPROJECT_VERSION=\"$(PINGUS_VERSION)\" -DPROJECT_NAME=\"pingus\"
 LOCAL_CPPFLAGS += -DPROJECT_VERSION=\"$(PINGUS_VERSION)\" -DPROJECT_NAME=\"pingus\"
-LOCAL_CFLAGS += -DDATA_PREFIX=\".\"
-LOCAL_CPPFLAGS += -DDATA_PREFIX=\".\"
+# AssetManager root holds images/, levels/, … (contents of data/).
+# PINGUS_DEFAULT_DATADIR is what pingus_main uses.
+LOCAL_CFLAGS += -DPINGUS_DEFAULT_DATADIR=\".\" -DDATA_PREFIX=\".\"
+LOCAL_CPPFLAGS += -DPINGUS_DEFAULT_DATADIR=\".\" -DDATA_PREFIX=\".\"
 
 LOCAL_CPP_FEATURES := exceptions rtti
 
