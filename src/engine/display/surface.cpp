@@ -72,7 +72,7 @@ Surface::Surface(Pathname const& pathname) :
   if (!surface)
   {
     throw std::runtime_error(std::format("couldn't load {}\n  IMG_GetError: {}",
-                                         pathname.get_sys_path(), IMG_GetError()));
+                                         pathname.get_sys_path(), SDL_GetError()));
   }
   else
   {

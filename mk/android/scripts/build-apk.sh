@@ -220,7 +220,7 @@ echo "==> staged Android sigc++ polyfill"
 
 # IMG_* shim + headers.
 cp "$APP_DIR/jni/img_stb_min.c" src/jni/src/img_stb_min.c
-cp "$APP_DIR/jni/SDL_image.h" src/jni/src/SDL_image.h
+cp "$APP_DIR/jni/android_SDL_image.h" src/jni/src/SDL_image.h
 if [ -n "${STB_IMAGE_H:-}" ] && [ -f "$STB_IMAGE_H" ]; then
   cp "$STB_IMAGE_H" src/jni/src/stb_image.h
 elif [ -f "$APP_DIR/jni/stb_image.h" ]; then
