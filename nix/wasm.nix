@@ -439,6 +439,16 @@ EOF
   }:
     let
       shell = mkWasmShell { inherit versionFull gitRev sourceUrl; };
+      # glm + sigc always; when sound is on, also expose static libmodplug so
+      # in-tree external/wstsound (via tinycmmc_find_dependency) can find it.
+      # wstsound itself is built from external/ as a subdirectory — not the
+      # isolated wstsound-wasm package — so OpenAL comes from the emscripten
+      # sysroot (-lopenal) and codec flags follow EMSCRIPTEN defaults in
+      # external/wstsound/CMakeLists.txt (modplug + wav only, EFX off).
+      prefixPath = "${glmPrefix}:${sigcWasm}"
+        + (if enableSound then ":${modplugWasm}" else "");
+      pkgConfigPath = "${sdlWasmLibs}/lib/pkgconfig"
+        + (if enableSound then ":${modplugWasm}/lib/pkgconfig" else "");
     in
     pkgs.stdenv.mkDerivation {
       pname = "${appName}-wasm";
@@ -453,24 +463,26 @@ EOF
         APP_NAME = appName;
         SRC_DIR = "${srcDir}";
         SDL_WASM_LIBS = sdlWasmLibs;
-        EXTRA_PREFIX_PATH = "${glmPrefix}:${sigcWasm}";
-        CMAKE_PREFIX_PATH = "${glmPrefix}:${sigcWasm}";
+        EXTRA_PREFIX_PATH = prefixPath;
+        CMAKE_PREFIX_PATH = prefixPath;
         ENABLE_SOUND = if enableSound then "1" else "0";
         ENABLE_GLES2 = if enableGles2 then "1" else "0";
         ENABLE_ASYNCIFY = if enableAsyncify then "1" else "0";
         PROJECT_VERSION_FULL = versionFull;
         WASM_SHELL = "${shell}";
-        PKG_CONFIG_PATH = "${sdlWasmLibs}/lib/pkgconfig";
+        PKG_CONFIG_PATH = pkgConfigPath;
         ZLIB_WASM_LIBS = zlibWasmLibs;
       } // pkgs.lib.optionalAttrs (dataDir != null) {
         DATA_DIR = "${dataDir}";
+      } // pkgs.lib.optionalAttrs enableSound {
+        MODPLUG_WASM_LIBS = "${modplugWasm}";
       };
 
       buildPhase = ''
         runHook preBuild
         # Emscripten + pkg-config stubs for our static libs.
         export EM_PKG_CONFIG_PATH="${sdlWasmLibs}/lib/pkgconfig"
-        export PKG_CONFIG_PATH="${sdlWasmLibs}/lib/pkgconfig''${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+        export PKG_CONFIG_PATH="${pkgConfigPath}''${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
         bash ${../mk/wasm/scripts/build-app.sh}
         runHook postBuild
       '';

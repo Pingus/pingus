@@ -309,7 +309,7 @@
                 appName = "pingus";
                 srcDir = ./.;
                 dataDir = wasmDataDir;
-                enableSound = false;  # wstsound path not ready for wasm
+                enableSound = true;  # Emscripten OpenAL + wstsound (modplug + wav)
                 enableGles2 = true;
                 enableAsyncify = false;
                 versionFull = pingusVersion;
@@ -336,7 +336,7 @@
                   appName = "pingus";
                   srcDir = ./.;
                   dataDir = wasmDataDir;
-                  enableSound = false;  # wstsound path not ready for wasm
+                  enableSound = true;  # Emscripten OpenAL + wstsound (modplug + wav)
                   enableGles2 = true;
                   enableAsyncify = false;
                   versionFull = pingusVersion;

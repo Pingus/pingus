@@ -150,9 +150,10 @@ if(WIN32)
   add_definitions(-D_WIN32_WINNT=0x0601)
 endif()
 
-option(PINGUS_ENABLE_SOUND "Build wstsound-backed audio (OFF for wasm/minimal)" ON)
+option(PINGUS_ENABLE_SOUND "Build wstsound-backed audio (use Emscripten OpenAL on wasm)" ON)
 if(EMSCRIPTEN)
-  set(PINGUS_ENABLE_SOUND OFF CACHE BOOL "Build wstsound-backed audio" FORCE)
+  # Sound is optional on wasm: enable via -DPINGUS_ENABLE_SOUND=ON once
+  # wstsound + libmodplug are on CMAKE_PREFIX_PATH (see nix/wasm.nix mkApp).
   add_definitions(-DPINGUS_EMSCRIPTEN=1)
   if(PINGUS_USE_GLES)
     add_definitions(-DPINGUS_USE_GLES=1)

@@ -6,7 +6,7 @@
 #   SDL_WASM_LIBS    - prebuilt SDL2 (+ image) prefix (include/ + lib/)
 #   ZLIB_WASM_LIBS   - prebuilt static zlib prefix (libz.a + zlib.h)
 #   DATA_DIR         - optional path to data/ for --preload-file (may be absent)
-#   ENABLE_SOUND     - 0|1 (default 0; needs libSDL2_mixer.a + libxmp.a in SDL_WASM_LIBS)
+#   ENABLE_SOUND     - 0|1 (default 0; ON → wstsound via Emscripten OpenAL + libmodplug)
 #   ENABLE_GLES2     - 0|1 (default 1 — WebGL via GLES2 path)
 #   CMAKE_VERBOSE    - if 1, pass --verbose to cmake --build
 #   PROJECT_VERSION_FULL - e.g. 0.1.5-dev+gabc1234 (CMake PINGUS_VERSION)
@@ -111,6 +111,21 @@ if [ -n "$PROJECT_VERSION_FULL" ]; then
 fi
 if [ -n "$ZLIB_PREFIX" ] && [ -d "$ZLIB_PREFIX" ]; then
   cmake_args+=(-DZLIB_ROOT="$ZLIB_PREFIX")
+fi
+if [ "$ENABLE_SOUND" = 1 ]; then
+  # Prebuilt libmodplug for the in-tree wstsound subdirectory build.
+  # Explicit paths avoid emscripten FIND_ROOT stripping host-store prefixes.
+  MODPLUG_PREFIX="${MODPLUG_WASM_LIBS:-}"
+  if [ -n "$MODPLUG_PREFIX" ] && [ -d "$MODPLUG_PREFIX" ]; then
+    cmake_args+=(
+      -DMODPLUG_DIR="$MODPLUG_PREFIX"
+      -DMODPLUG_INCLUDE_DIRECTORY="$MODPLUG_PREFIX/include"
+      -DMODPLUG_LIBRARY="$MODPLUG_PREFIX/lib/libmodplug.a"
+    )
+    echo "==> MODPLUG_WASM_LIBS=$MODPLUG_PREFIX"
+  else
+    echo "WARNING: ENABLE_SOUND=1 but MODPLUG_WASM_LIBS unset/incomplete — FindModPlug may fail"
+  fi
 fi
 
 echo "==> emcmake configure ${APP_NAME}"

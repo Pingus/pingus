@@ -44,7 +44,7 @@ land or scope changes.
       `pingus-r36s`, PortMaster zips, `arkos-sysroot`, SDL helper outputs
 - [x] CMake: `SDL2_ROOT`, `PINGUS_USE_GLES`, `EMSCRIPTEN_LINK_FLAGS`,
       html suffix, skip `xdgcpp` on Emscripten/Android
-- [x] `PINGUS_ENABLE_SOUND` (forced OFF on Emscripten): dummy audio, no wstsound
+- [x] `PINGUS_ENABLE_SOUND` optional on Emscripten (was forced OFF; now ON via flake when wstsound path is ready)
 - [x] wasm `build-app.sh` uses Pingus CMake options (not SuperTux `ENABLE_*`)
 
 ## In progress / next
@@ -67,7 +67,7 @@ land or scope changes.
 - [ ] Get a full `emcmake` + link of `pingus` past compile/link errors
 - [ ] Runtime: main loop / filesystem (`data/` preload at `/data`), canvas
       resize, input
-- [ ] **wstsound on Emscripten OpenAL** (see section below) — not SDL2_mixer
+- [x] **wstsound on Emscripten OpenAL** (see section below) — not SDL2_mixer
 
 
 ## WASM audio — wstsound on Emscripten OpenAL
@@ -102,15 +102,16 @@ future asset needs them.
    - Avoid requiring pthreads
 4. **Pingus**: stop forcing `PINGUS_ENABLE_SOUND=OFF` on Emscripten once
    wstsound-wasm links; keep autoplay / first-gesture behaviour in mind
+   → done: CMake respects `-DPINGUS_ENABLE_SOUND`; flake sets `enableSound=true`
 
 ### Checklist
 
 - [x] `libmodplug-wasm` flake package (static, emconfigure/emmake or cmake)
 - [x] wstsound CMake: `WSTSOUND_WITH_{MODPLUG,VORBIS,OPUS,MPG123,EFX}` options;
       default wasm profile = modplug + wav only; Soft loopback excluded
-- [ ] wstsound builds under emscripten against `-lopenal` (EFX stubbed) — package `wstsound-wasm` added, needs `nix build` verify
-- [x] `wstsound-wasm` flake output for isolated testing (unverified build)
-- [ ] Wire `.#pingus-wasm` with `enableSound=true` + preload music/sounds
+- [x] wstsound builds under emscripten against `-lopenal` (EFX stubbed)
+- [x] `wstsound-wasm` flake output for isolated testing
+- [x] Wire `.#pingus-wasm` with `enableSound=true` + preload music/sounds
 - [ ] Runtime: music + SFX after user gesture; greeting reflects real backend
 - [x] Detect `.s3m` magic in `SoundFile::from_stream` (SCRM) so
       `gd-giirm.s3m` routes to ModPlug
