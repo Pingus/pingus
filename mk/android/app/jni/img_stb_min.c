@@ -133,3 +133,13 @@ SDL_Surface *IMG_Load_RW(SDL_RWops *src, int freesrc)
   }
   return surface_from_rgba(data, w, h);
 }
+
+int IMG_SavePNG(SDL_Surface *surface, const char *file)
+{
+  (void)surface;
+  (void)file;
+  /* stb_image has no encoder; screenshots are best-effort on Android. */
+  set_err("IMG_SavePNG: not implemented in Android stb shim");
+  return -1;
+}
+

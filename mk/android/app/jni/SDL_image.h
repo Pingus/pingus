@@ -20,6 +20,7 @@ extern DECLSPEC void SDLCALL IMG_Quit(void);
 extern DECLSPEC SDL_Surface * SDLCALL IMG_Load(const char *file);
 extern DECLSPEC SDL_Surface * SDLCALL IMG_Load_RW(SDL_RWops *src, int freesrc);
 extern DECLSPEC const char * SDLCALL IMG_GetError(void);
+extern DECLSPEC int SDLCALL IMG_SavePNG(SDL_Surface *surface, const char *file);
 
 #ifdef __cplusplus
 }
