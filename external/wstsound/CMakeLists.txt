@@ -59,7 +59,8 @@ option(WSTSOUND_WITH_OPUS "Decode Opus" ON)
 option(WSTSOUND_WITH_MPG123 "Decode MP3 via mpg123" ON)
 option(WSTSOUND_WITH_EFX "OpenAL EFX effects API (not on Emscripten OpenAL)" ON)
 
-if(EMSCRIPTEN)
+# Mobile / wasm: stock Pingus data is WAV SFX + .it/.s3m modules only.
+if(EMSCRIPTEN OR ANDROID)
   set(WSTSOUND_WITH_MPG123 OFF CACHE BOOL "Decode MP3 via mpg123" FORCE)
   set(WSTSOUND_WITH_VORBIS OFF CACHE BOOL "Decode Ogg Vorbis" FORCE)
   set(WSTSOUND_WITH_OPUS OFF CACHE BOOL "Decode Opus" FORCE)

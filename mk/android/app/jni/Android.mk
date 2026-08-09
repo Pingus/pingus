@@ -39,6 +39,15 @@ LOCAL_C_INCLUDES := \
 # SDL2 + optional SDL2_mixer.
 LOCAL_SHARED_LIBRARIES := SDL2
 
+# Sound (wstsound + OpenAL Soft + libmodplug) is tracked in TODO.md.
+# Until those ABIs are prebuilt and linked here, keep the dummy backend:
+#   - PINGUS_NO_SOUND=1
+#   - sound_real.cpp filtered out of LOCAL_SRC_FILES
+# Planned:
+#   LOCAL_STATIC_LIBRARIES += openal modplug
+#   stage external/wstsound/src (wav + modplug only; no vorbis/opus/mpg123/efx)
+#   drop PINGUS_NO_SOUND and the sound_real.cpp filter
+
 LOCAL_LDLIBS := -llog -landroid -lz -lGLESv2 -lEGL
 
 LOCAL_CFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_NO_SOUND=1 -DPINGUS_USE_GLES=1

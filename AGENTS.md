@@ -32,6 +32,7 @@ Repository: https://github.com/Pingus/pingus
 Homepage: https://pingus.github.io/
 
 Port / flake progress checklist: **`TODO.md`** (keep it current).
+Active Android track: **wstsound + OpenAL Soft + libmodplug** (see TODO).
 
 ---
 
@@ -279,3 +280,11 @@ git pull changes.bundle HEAD
 That is the entire apply path. No `git fetch`, no `git cherry-pick`, no side
 branch. If `git pull` does not fast-forward, stop and ask for a correctly
 stacked bundle.
+
+**Handoff checklist (producer):**
+
+1. Tip is based on the **consumer’s current HEAD** (last applied bundle tip).
+2. Filename: `pingus-NNN-short-kebab-description.bundle` (`NNN` = next number).
+3. `git bundle create … <parent>..HEAD` then `git bundle verify …`.
+4. Handoff note states **required parent SHA** and **tip SHA**.
+5. Do not reuse numbers; restart at `001` only when the human sets a new base.

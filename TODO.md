@@ -124,11 +124,43 @@ future asset needs them.
 
 ### Android (`.#pingus-android`)
 
-- [x] Stage `external/*/include` into the NDK tree; exclude `sound_real.cpp`
-- [ ] Build/link `external/` static libs for each ABI — not only headers
+Runtime status (device / Fire tablet): menu, levels, levelsets, Options,
+translations, and editor groundpieces work after asset-index + empty-datadir
+fixes. Sound is still forced off (`PINGUS_NO_SOUND`).
+
+- [x] Stage `external/*/include` into the NDK tree; exclude `sound_real.cpp` (until sound lands)
 - [x] GLES context attributes in OpenGLFramebuffer when `PINGUS_USE_GLES`
-- [ ] Replace placeholder launcher icons with Pingus art
-- [ ] Validate APK install on a device/emulator
+- [x] Writable userdir via `SDL_AndroidGetInternalStoragePath`
+- [x] Asset I/O: `System::read_file` / `exist` via `SDL_RWFromFile`
+- [x] Load prio documents via `System::read_file` (`load_document`)
+- [x] Legacy `/images/...` sprite paths stripped for AssetManager
+- [x] GLES viewport synced to drawable size (1024×528 vs requested 1024×768)
+- [x] Pingus launcher icons (`mipmap-*/ic_launcher.png`)
+- [x] Translations: Android `FileSystem` for tinygettext + non-throwing `po/` scan
+- [x] `android-asset-index.txt` so `opendir` lists levelsets / prefabs / images
+- [x] Empty-datadir `opendir_recursive` path fix (editor groundpieces)
+- [x] Validate APK install on a device (Fire tablet / austin)
+- [ ] Build/link remaining `external/` static libs for each ABI where needed
+- [ ] **wstsound + OpenAL Soft + libmodplug** for real audio (see below)
+- [ ] Pause/resume audio on Activity lifecycle
+
+#### Android audio (wstsound) — next
+
+Parity with wasm: **wstsound → OpenAL**, codecs **modplug + wav** (no
+vorbis/opus/mpg123 required for stock data).
+
+- [ ] Cross-build **OpenAL Soft** for each `APP_ABI` (static or shared)
+- [ ] Cross-build **libmodplug** for each ABI
+- [ ] Compile **wstsound** into the NDK tree (same feature set as
+      `EMSCRIPTEN` in `external/wstsound/CMakeLists.txt`: modplug on, EFX off)
+- [ ] Asset-aware open for music/SFX (memory buffer from `System::read_file`
+      / `SDL_RWFromFile` — OpenAL does not see APK paths)
+- [ ] Drop `PINGUS_NO_SOUND`, stop filtering out `sound_real.cpp`, link
+      OpenAL + modplug + wstsound from `Android.mk`
+- [ ] Device test: menu music (`.it`) + SFX; background/pause behaviour
+
+Non-goals for this track: SDL2_mixer as primary path; full codec set;
+OpenAL EFX on mobile.
 
 ### R36S / ArkOS (`.#pingus-r36s`)
 
