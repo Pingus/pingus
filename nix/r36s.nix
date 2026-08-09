@@ -18,6 +18,7 @@
 , pkgsCross
 , writeShellScript
 , zip
+, glm  # header-only; not present in ArkOS sysroot
 }:
 
 let
@@ -317,6 +318,9 @@ let
         "-DWERROR=OFF"
         # R36S is GLES2-only (Mali/Panfrost); desktop OpenGL is not in the sysroot.
         "-DPINGUS_USE_GLES=ON"
+        # ArkOS sysroot has neither libsigc++ nor glm cmake config.
+        "-DPINGUS_SIGC_POLYFILL_DIR=${../mk/android/app/jni}"
+        "-DPINGUS_GLM_INCLUDE_DIR=${glm}/include"
         # Relative data next to the binary on device (PortMaster layout).
         "-DPROJECT_VERSION_FULL=${version}"
       ];

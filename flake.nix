@@ -249,7 +249,7 @@
             }).androidsdk;
 
             r36s = import ./nix/r36s.nix {
-              inherit (pkgs) lib stdenv stdenvNoCC fetchurl cmake pkg-config writeShellScript zip;
+              inherit (pkgs) lib stdenv stdenvNoCC fetchurl cmake pkg-config writeShellScript zip glm;
               pkgsCross = pkgs.pkgsCross;
             };
             pingusR36s = r36s.mkPingusR36s {

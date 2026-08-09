@@ -130,7 +130,11 @@ endif()
 
 # Optional / platform-variable deps
 set(PINGUS_OPTIONAL_LIBS "")
-if(NOT EMSCRIPTEN)
+# Header-only sigc++ subset (Android / R36S) when full libsigc++ is unavailable.
+if(PINGUS_SIGC_POLYFILL_DIR)
+  message(STATUS "Using sigc++ polyfill headers: ${PINGUS_SIGC_POLYFILL_DIR}")
+  include_directories("${PINGUS_SIGC_POLYFILL_DIR}")
+elseif(NOT EMSCRIPTEN)
   pkg_search_module(SIGCXX REQUIRED sigc++-2.0 IMPORTED_TARGET)
   list(APPEND PINGUS_OPTIONAL_LIBS PkgConfig::SIGCXX)
 else()
@@ -143,7 +147,18 @@ else()
   endif()
 endif()
 
-find_package(glm REQUIRED)
+# glm is header-only; allow explicit include dir for cross builds without
+# a cmake package config in the target sysroot (R36S / Android-style).
+if(PINGUS_GLM_INCLUDE_DIR)
+  message(STATUS "Using glm headers: ${PINGUS_GLM_INCLUDE_DIR}")
+  if(NOT TARGET glm::glm)
+    add_library(glm::glm INTERFACE IMPORTED)
+    set_target_properties(glm::glm PROPERTIES
+      INTERFACE_INCLUDE_DIRECTORIES "${PINGUS_GLM_INCLUDE_DIR}")
+  endif()
+else()
+  find_package(glm REQUIRED)
+endif()
 
 if(WIN32)
   # Fix for this issue:
