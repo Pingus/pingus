@@ -16,10 +16,96 @@
 
 #include "pingus/gettext.h"
 
-#include "tinygettext/unix_file_system.hpp"
-#include "tinygettext/dictionary_manager.hpp"
+#include <sstream>
+#include <utility>
 
-tinygettext::DictionaryManager dictionary_manager(std::make_unique<tinygettext::UnixFileSystem>());
+#include "tinygettext/dictionary_manager.hpp"
+#include "tinygettext/file_system.hpp"
+#include "tinygettext/unix_file_system.hpp"
+
+#ifdef ANDROID
+#  include "util/system.hpp"
+#endif
+
+namespace {
+
+#ifdef ANDROID
+
+/** AssetManager cannot be listed with directory_iterator / opendir.
+    Provide the known .po basenames and load file bodies via System::read_file. */
+class AndroidFileSystem : public tinygettext::FileSystem
+{
+public:
+  std::vector<std::string> open_directory(const std::string& /*pathname*/) override
+  {
+    // Keep in sync with data/po/*.po (excluding .pot).
+    return {
+    "ast.po",
+    "bg.po",
+    "ca.po",
+    "cs.po",
+    "da.po",
+    "de.po",
+    "eo.po",
+    "es.po",
+    "fi.po",
+    "fr.po",
+    "gd.po",
+    "gl.po",
+    "hu.po",
+    "it.po",
+    "ja.po",
+    "lt.po",
+    "nb.po",
+    "nl.po",
+    "nn.po",
+    "oc.po",
+    "pl.po",
+    "pt.po",
+    "pt_BR.po",
+    "ru.po",
+    "sq.po",
+    "sr.po",
+    "sv.po",
+    "th.po",
+    "tr.po",
+    "uk.po",
+    "zh_CN.po",
+    "zh_TW.po"
+    };
+  }
+
+  std::unique_ptr<std::istream> open_file(const std::string& filename) override
+  {
+    try
+    {
+      std::string body = pingus::System::read_file(filename);
+      return std::make_unique<std::istringstream>(std::move(body));
+    }
+    catch (std::exception const&)
+    {
+      return std::unique_ptr<std::istream>();
+    }
+  }
+};
+
+std::unique_ptr<tinygettext::FileSystem> make_file_system()
+{
+  return std::make_unique<AndroidFileSystem>();
+}
+
+#else
+
+std::unique_ptr<tinygettext::FileSystem> make_file_system()
+{
+  return std::make_unique<tinygettext::UnixFileSystem>();
+}
+
+#endif
+
+} // namespace
+
+tinygettext::DictionaryManager dictionary_manager(make_file_system());
 
 std::string _(std::string const& msg) {
   return dictionary_manager.get_dictionary().translate(msg);

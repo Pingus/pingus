@@ -40,9 +40,17 @@ std::vector<std::string>
 UnixFileSystem::open_directory(const std::string& pathname)
 {
   std::vector<std::string> files;
-  for(auto const& p : std::filesystem::directory_iterator(pathname))
+  try
   {
-    files.push_back(p.path().filename().string());
+    for(auto const& p : std::filesystem::directory_iterator(pathname))
+    {
+      files.push_back(p.path().filename().string());
+    }
+  }
+  catch (std::filesystem::filesystem_error const&)
+  {
+    // Missing directory (e.g. Android APK assets are not a real dir).
+    return {};
   }
   return files;
 }

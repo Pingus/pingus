@@ -122,7 +122,12 @@ System::opendir(std::string const& pathname)
 
   if (dp == nullptr)
   {
+#ifdef ANDROID
+    // APK assets are not real directories; callers treat empty as "no entries".
+    return dir_list;
+#else
     raise_exception(std::runtime_error, pathname << ": " << strerror(errno));
+#endif
   }
   else
   {
