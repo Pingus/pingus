@@ -514,9 +514,19 @@ LAUNCH
         gamedir="$root/${portDirName}"
         mkdir -p "$gamedir/data" "$gamedir/licenses" "$gamedir/conf"
 
-        # Binary from the R36S derivation
-        install -m755 "${r36sPkg}/bin/pingus" \
-          "$gamedir/pingus"
+        # Real ELF from libexec — not bin/pingus (CMake wrapper that embeds
+        # absolute /nix/store/.../libexec paths, which do not exist on device).
+        if [ -x "${r36sPkg}/libexec/pingus" ]; then
+          install -m755 "${r36sPkg}/libexec/pingus" "$gamedir/pingus"
+        elif [ -x "${r36sPkg}/bin/pingus" ] && ! head -c 2 "${r36sPkg}/bin/pingus" | grep -q '#!'; then
+          # bin/pingus is an ELF (not the CMake shell wrapper)
+          install -m755 "${r36sPkg}/bin/pingus" "$gamedir/pingus"
+        else
+          echo "portmaster: no ELF pingus binary under ${r36sPkg}" >&2
+          ls -la "${r36sPkg}/bin" "${r36sPkg}/libexec" 2>/dev/null || true
+          head -3 "${r36sPkg}/bin/pingus" 2>/dev/null || true
+          exit 1
+        fi
 
         # Game data (CMake DATA_PREFIX was share/pingus).
         # Store paths are mode 444/555; make writable so we can drop helpers.
