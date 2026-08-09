@@ -224,7 +224,8 @@
             buildToolsVersion = "30.0.3";
             packagePlatform = "22";
             compilePlatform = "33";
-            ndkVersion = "23.1.7779620";
+            # r23 libc++ has no <format>; r26.1 (clang 17) does.
+            ndkVersion = "26.1.10909125";
             targetAbis = [ "armeabi-v7a" "arm64-v8a" ];
             androidSdk = (androidPkgs.androidenv.composeAndroidPackages {
               platformVersions = [ packagePlatform compilePlatform ];
