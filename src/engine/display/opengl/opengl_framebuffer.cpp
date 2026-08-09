@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <memory>
 #include <sstream>
+#include <string>
 #include <iostream>
 
 #include <logmich/log.hpp>
@@ -184,25 +185,19 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     return;
   }
 
-  Uint32 flags = SDL_WINDOW_OPENGL;
-#ifdef ANDROID
-  // Single surface; windowed/resizable modes do not match the Java surface
-  // size and produce a shifted GLES viewport.
-  flags |= SDL_WINDOW_FULLSCREEN;
-  (void)fullscreen;
-  (void)resizable;
-#else
-  if (fullscreen)
-    flags |= SDL_WINDOW_FULLSCREEN;
-  else if (resizable)
-    flags |= SDL_WINDOW_RESIZABLE;
-#endif
-
-  std::cerr << "OpenGLFramebuffer: SDL_VIDEODRIVER="
-            << (std::getenv("SDL_VIDEODRIVER") ? std::getenv("SDL_VIDEODRIVER") : "(unset)")
-            << " requested=" << size.width() << "x" << size.height()
-            << " flags=0x" << std::hex << flags << std::dec
-            << " ES=" << PINGUS_GL_ES << std::endl;
+  // Log current SDL video backend (KMSDRM vs x11 vs wayland matters for EGL).
+  {
+    char const* driver = SDL_GetCurrentVideoDriver();
+    std::cerr << "OpenGLFramebuffer: SDL_VIDEODRIVER env="
+              << (std::getenv("SDL_VIDEODRIVER") ? std::getenv("SDL_VIDEODRIVER") : "(unset)")
+              << " current_driver=" << (driver ? driver : "(none)")
+              << std::endl;
+    int n = SDL_GetNumVideoDrivers();
+    std::cerr << "OpenGLFramebuffer: available video drivers:";
+    for (int i = 0; i < n; ++i)
+      std::cerr << " " << SDL_GetVideoDriver(i);
+    std::cerr << std::endl;
+  }
 
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
   SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
@@ -223,17 +218,104 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   std::cerr << "OpenGLFramebuffer: requesting OpenGL 3.3 core context" << std::endl;
 #endif
 
-  std::cerr << "OpenGLFramebuffer: SDL_CreateWindow..." << std::endl;
-  m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
-                              SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                              size.width(), size.height(),
-                              flags);
+  // Prefer native display size when the caller asked for fullscreen — exclusive
+  // modes that do not match the panel (common on R36S 640x480 + KMSDRM) often
+  // fail with "Could not create EGL window surface".
+  int req_w = size.width();
+  int req_h = size.height();
+  if (fullscreen)
+  {
+    SDL_DisplayMode mode;
+    if (SDL_GetDesktopDisplayMode(0, &mode) == 0 && mode.w > 0 && mode.h > 0)
+    {
+      std::cerr << "OpenGLFramebuffer: desktop mode " << mode.w << "x" << mode.h
+                << " @" << mode.refresh_rate << "Hz" << std::endl;
+      if (req_w != mode.w || req_h != mode.h)
+      {
+        std::cerr << "OpenGLFramebuffer: adjusting " << req_w << "x" << req_h
+                  << " -> desktop " << mode.w << "x" << mode.h << std::endl;
+        req_w = mode.w;
+        req_h = mode.h;
+      }
+    }
+    else
+    {
+      std::cerr << "OpenGLFramebuffer: SDL_GetDesktopDisplayMode failed: "
+                << SDL_GetError() << std::endl;
+    }
+  }
+
+  // Attempt order matters on embedded GLES (ArkOS/R36S, mali, KMSDRM):
+  // 1) FULLSCREEN_DESKTOP  2) exclusive FULLSCREEN  3) windowed
+  struct Attempt {
+    char const* name;
+    Uint32 flags;
+  };
+  Attempt attempts[3];
+  int n_attempts = 0;
+#ifdef ANDROID
+  attempts[n_attempts++] = Attempt{"android-fullscreen",
+                                   SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN};
+  (void)fullscreen;
+  (void)resizable;
+#else
+#  if PINGUS_GL_ES
+  if (fullscreen)
+  {
+    attempts[n_attempts++] = Attempt{"fullscreen-desktop",
+                                     SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP};
+    attempts[n_attempts++] = Attempt{"fullscreen-exclusive",
+                                     SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN};
+  }
+  attempts[n_attempts++] = Attempt{"windowed",
+                                   static_cast<Uint32>(
+                                     SDL_WINDOW_OPENGL |
+                                     (resizable && !fullscreen ? SDL_WINDOW_RESIZABLE : 0))};
+#  else
+  if (fullscreen)
+  {
+    attempts[n_attempts++] = Attempt{"fullscreen-exclusive",
+                                     SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN};
+    attempts[n_attempts++] = Attempt{"fullscreen-desktop",
+                                     SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP};
+  }
+  else
+  {
+    attempts[n_attempts++] = Attempt{"windowed",
+                                     static_cast<Uint32>(
+                                       SDL_WINDOW_OPENGL |
+                                       (resizable ? SDL_WINDOW_RESIZABLE : 0))};
+  }
+#  endif
+#endif
+
+  std::string last_error;
+  for (int i = 0; i < n_attempts; ++i)
+  {
+    std::cerr << "OpenGLFramebuffer: SDL_CreateWindow try[" << attempts[i].name
+              << "] " << req_w << "x" << req_h
+              << " flags=0x" << std::hex << attempts[i].flags << std::dec
+              << std::endl;
+    m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
+                                SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                                req_w, req_h,
+                                attempts[i].flags);
+    if (m_window)
+    {
+      std::cerr << "OpenGLFramebuffer: window ok id=" << SDL_GetWindowID(m_window)
+                << " via " << attempts[i].name << std::endl;
+      break;
+    }
+    last_error = SDL_GetError();
+    std::cerr << "OpenGLFramebuffer: SDL_CreateWindow FAILED (" << attempts[i].name
+              << "): " << last_error << std::endl;
+  }
+
   if (!m_window)
   {
-    std::cerr << "OpenGLFramebuffer: SDL_CreateWindow FAILED: " << SDL_GetError() << std::endl;
-    raise_error("Couldn't set video mode (" << size.width() << "x" << size.height() << "): " << SDL_GetError());
+    raise_error("Couldn't set video mode (" << req_w << "x" << req_h
+                << "): " << last_error);
   }
-  std::cerr << "OpenGLFramebuffer: window ok id=" << SDL_GetWindowID(m_window) << std::endl;
 
   {
     SDL_Surface* icon = IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str());
@@ -274,8 +356,8 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   // On Android (and high-DPI), the drawable size can differ from the
   // requested window size. Ortho/viewport must match the drawable or the
   // UI is vertically shifted/clipped (e.g. 1024x768 request vs 1024x528 surface).
-  int dw = size.width();
-  int dh = size.height();
+  int dw = req_w;
+  int dh = req_h;
   SDL_GL_GetDrawableSize(m_window, &dw, &dh);
   if (dw <= 0 || dh <= 0)
     SDL_GetWindowSize(m_window, &dw, &dh);
@@ -302,6 +384,7 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
               << std::endl;
   }
 }
+
 
 bool
 OpenGLFramebuffer::is_fullscreen() const

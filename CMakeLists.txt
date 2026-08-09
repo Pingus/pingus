@@ -35,7 +35,12 @@ option(PINGUS_NO_XDGCPP "Skip xdgcpp (embedded ports without XDG Base Dir)" OFF)
 if(EMSCRIPTEN)
   set(PINGUS_USE_GLES ON)
   message(STATUS "Emscripten: enabling PINGUS_USE_GLES")
-  # Needed for try/catch across libpingus + priocpp (level load ReaderError).
+endif()
+
+# C++ exceptions are required (raise_error, priocpp ReaderError, SDL fallback).
+# Without -fexceptions, throw becomes abort() — that was the bare "Aborted" on
+# R36S/ArkOS PortMaster builds after SDL_CreateWindow failed.
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
   add_compile_options(-fexceptions)
 endif()
 
