@@ -41,6 +41,10 @@ private:
 
   Pingu* current_pingu;
   bool mouse_scrolling;
+  /** True when scroll was started by primary (empty-area drag), not RMB. */
+  bool primary_scroll_drag;
+  /** Set after the first real pointer move — avoids (0,0) edge auto-scroll. */
+  bool mouse_pos_valid;
   int  scroll_speed;
 
   Vector2i scroll_center;
@@ -71,6 +75,7 @@ public:
   Pingu* current_pingu_find(Vector2f const& pos);
 
   void on_primary_button_press (int x, int y) override;
+  void on_primary_button_release (int x, int y) override;
   void on_secondary_button_press (int x, int y) override;
   void on_secondary_button_release (int x, int y) override;
   void on_pointer_move (int x, int y) override;

@@ -34,7 +34,9 @@
    (sdl:keyboard-button (key "A")))
 
   (escape-button
-   (sdl:keyboard-button (key "Escape")))
+   (sdl:keyboard-button (key "Escape"))
+   ;; Android hardware/software Back maps to SDLK_AC_BACK ("AC Back")
+   (sdl:keyboard-button (key "AC Back")))
 
   (action-up-button
    (sdl:mouse-button (button 4)))

@@ -31,7 +31,9 @@ Playfield::Playfield(Server* server_, GameSession* session_, Rect const& rect_) 
   server(server_),
   session(session_),
   current_pingu(nullptr),
-  mouse_scrolling(),
+  mouse_scrolling(false),
+  primary_scroll_drag(false),
+  mouse_pos_valid(false),
   scroll_speed(),
   scroll_center(),
   scene_context(new SceneContext(rect_)),
@@ -41,8 +43,6 @@ Playfield::Playfield(Server* server_, GameSession* session_, Rect const& rect_) 
   mouse_pos(),
   old_state_pos()
 {
-  mouse_scrolling    = false;
-
   state.set_limit(Rect(geom::ipoint(0, 0),
                        Size(server->get_world()->get_width(),
                             server->get_world()->get_height())));
@@ -74,7 +74,7 @@ Playfield::draw(DrawingContext& gc)
   gc.push_modelview();
   gc.translate(rect.left(), rect.top());
   // Draw the scrolling band
-  if (mouse_scrolling && !globals::drag_drop_scrolling)
+  if (mouse_scrolling && !globals::drag_drop_scrolling && !primary_scroll_drag)
   {
     gc.draw_line(mouse_pos, scroll_center - geom::ioffset(0, 15),
                  Color(0, 255, 0));
@@ -130,7 +130,8 @@ Playfield::update(float delta)
   }
   else
   {
-    if (globals::drag_drop_scrolling)
+    // Primary empty-area drag always uses 1:1 drag-drop; RMB may use band style.
+    if (globals::drag_drop_scrolling || primary_scroll_drag)
     {
       state.set_pos(old_state_pos.as_vec() + (scroll_center.as_vec() - mouse_pos.as_vec()));
     }
@@ -141,7 +142,10 @@ Playfield::update(float delta)
     }
   }
 
-  if (globals::auto_scrolling && (Display::is_fullscreen() || Display::has_grab()))
+  // mouse_pos defaults to (0,0); without a real move that forces continuous
+  // scroll to the top-left under fullscreen auto-scroll (common on Android).
+  if (globals::auto_scrolling && mouse_pos_valid
+      && (Display::is_fullscreen() || Display::has_grab()))
   {
     scroll_speed = static_cast<int>(800 * delta);
 
@@ -200,6 +204,28 @@ Playfield::on_primary_button_press(int x, int y)
     {
       server->send_pingu_action_event(current_pingu, session->get_action_name());
     }
+    else
+    {
+      // Empty area: drag to scroll (touch / no right-button platforms).
+      mouse_scrolling = true;
+      primary_scroll_drag = true;
+      scroll_center = Vector2i(x, y);
+      old_state_pos = state.get_pos();
+      mouse_pos = Vector2i(x, y);
+      mouse_pos_valid = true;
+    }
+  }
+}
+
+void
+Playfield::on_primary_button_release(int x, int y)
+{
+  (void)x;
+  (void)y;
+  if (primary_scroll_drag)
+  {
+    mouse_scrolling = false;
+    primary_scroll_drag = false;
   }
 }
 
@@ -210,9 +236,12 @@ Playfield::on_secondary_button_press(int x, int y)
   y -= rect.top();
 
   mouse_scrolling = true;
+  primary_scroll_drag = false;
   scroll_center = Vector2i(x, y);
 
   old_state_pos = state.get_pos();
+  mouse_pos = Vector2i(x, y);
+  mouse_pos_valid = true;
 }
 
 void
@@ -222,6 +251,7 @@ Playfield::on_secondary_button_release (int x, int y)
   // y -= rect.top();
 
   mouse_scrolling = false;
+  primary_scroll_drag = false;
 }
 
 void
@@ -232,6 +262,7 @@ Playfield::on_pointer_move (int x, int y)
 
   // FIXME: useless stuff, but currently the controller doesn't have a state
   mouse_pos = Vector2i(x, y);
+  mouse_pos_valid = true;
 
   if (globals::developer_mode)
   { // Some fun stuff that lets you draw directly on the level

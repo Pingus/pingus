@@ -27,8 +27,14 @@ bool        music_enabled           = true;
 bool        sound_enabled           = true;
 int         fast_forward_time_scale = 4;
 bool        developer_mode          = false;
+#ifdef ANDROID
+// Edge auto-scroll fights touch input; empty-area drag is the primary scroll UI.
+bool        auto_scrolling          = false;
+bool        drag_drop_scrolling     = true;
+#else
 bool        auto_scrolling          = true;
 bool        drag_drop_scrolling     = false;
+#endif
 int         tile_size               = 32;
 
 bool        draw_collision_map      = false;

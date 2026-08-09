@@ -143,7 +143,8 @@ void PingusMenu::do_edit()
 void
 PingusMenu::on_escape_press()
 {
-  //FIXME: get_manager()->show_exit_menu ();
+  // Hardware Back / Escape: leave the menu (same as Exit on desktop).
+  do_quit();
 }
 
 void
