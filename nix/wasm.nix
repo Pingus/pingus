@@ -518,7 +518,8 @@ EOF
       export PKG=${pkg}
       export APP_NAME=${appName}
       export PATH=${pkgs.python3}/bin:${pkgs.xdg-utils}/bin:$PATH
-      exec bash ${../mk/wasm/scripts/serve.sh}
+      # Forward nix run … -- --debug --verbose into serve.sh → URL query.
+      exec bash ${../mk/wasm/scripts/serve.sh} "$@"
     '');
     meta.description = description;
   };

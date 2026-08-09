@@ -5,6 +5,32 @@
 # Run from the package directory or set PKG to that path.
 set -euo pipefail
 
+# CLI flags (from: nix run .#pingus-wasm -- --debug --verbose)
+# Map to the same URL query keys shell.html already understands.
+cli_query=()
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --debug)   cli_query+=("debug=1"); shift ;;
+    --verbose|-v) cli_query+=("verbose=1"); shift ;;
+    --help|-h)
+      echo "Usage: serve.sh [--debug] [--verbose]"
+      echo "  --debug    open with ?debug=1  (Pingus -D / developer-mode)"
+      echo "  --verbose  open with ?verbose=1 (Pingus -v)"
+      echo "Env: APP_NAME, PKG, SUPERTUX_WASM_PORT, PINGUS_WASM_OPEN_QUERY, BROWSER"
+      exit 0
+      ;;
+    --) shift; break ;;
+    -*)
+      echo "error: unknown option: $1 (try --help)" >&2
+      exit 1
+      ;;
+    *)
+      echo "error: unexpected argument: $1 (try --help)" >&2
+      exit 1
+      ;;
+  esac
+done
+
 if [ -n "${PKG:-}" ]; then
   cd "$PKG"
 fi
@@ -60,14 +86,18 @@ if [ ! -f "$html" ]; then
 fi
 
 # Cache-bust query so the HTML document itself is a new URL even if a proxy
-# ignored Cache-Control. Optional PINGUS_WASM_OPEN_QUERY appends debug flags.
+# ignored Cache-Control. Optional PINGUS_WASM_OPEN_QUERY and --debug/--verbose
+# append flags (shell.html maps ?debug=1 → -D, ?verbose=1 → -v).
 bust=$(date +%s)
+parts=("v=${bust}")
 extra="${PINGUS_WASM_OPEN_QUERY:-}"
 if [ -n "$extra" ]; then
-  q="v=${bust}&${extra}"
-else
-  q="v=${bust}"
+  parts+=("$extra")
 fi
+if [ "${#cli_query[@]}" -gt 0 ]; then
+  parts+=("${cli_query[@]}")
+fi
+q=$(IFS='&'; echo "${parts[*]}")
 url="http://127.0.0.1:${port}/${html}?${q}"
 
 echo "Serving ${app_name} at $url  (Ctrl-C to stop)"
