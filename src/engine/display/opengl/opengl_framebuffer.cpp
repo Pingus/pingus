@@ -171,17 +171,30 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   if (m_window)
   {
     SDL_SetWindowSize(m_window, size.width(), size.height());
-    set_ortho(size.width(), size.height());
+    int dw = size.width();
+    int dh = size.height();
+    SDL_GL_GetDrawableSize(m_window, &dw, &dh);
+    if (dw <= 0 || dh <= 0)
+      SDL_GetWindowSize(m_window, &dw, &dh);
+    set_ortho(dw, dh);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     return;
   }
 
   Uint32 flags = SDL_WINDOW_OPENGL;
+#ifdef ANDROID
+  // Single surface; windowed/resizable modes do not match the Java surface
+  // size and produce a shifted GLES viewport.
+  flags |= SDL_WINDOW_FULLSCREEN;
+  (void)fullscreen;
+  (void)resizable;
+#else
   if (fullscreen)
     flags |= SDL_WINDOW_FULLSCREEN;
   else if (resizable)
     flags |= SDL_WINDOW_RESIZABLE;
+#endif
 
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
   SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
@@ -232,11 +245,20 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-  set_ortho(size.width(), size.height());
+  // On Android (and high-DPI), the drawable size can differ from the
+  // requested window size. Ortho/viewport must match the drawable or the
+  // UI is vertically shifted/clipped (e.g. 1024x768 request vs 1024x528 surface).
+  int dw = size.width();
+  int dh = size.height();
+  SDL_GL_GetDrawableSize(m_window, &dw, &dh);
+  if (dw <= 0 || dh <= 0)
+    SDL_GetWindowSize(m_window, &dw, &dh);
+  set_ortho(dw, dh);
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT);
 
-  log_info("OpenGL framebuffer ready (ES={} {}x{})", PINGUS_GL_ES, size.width(), size.height());
+  log_info("OpenGL framebuffer ready (ES={} requested={}x{} drawable={}x{})",
+           PINGUS_GL_ES, size.width(), size.height(), dw, dh);
 }
 
 bool
@@ -426,7 +448,10 @@ OpenGLFramebuffer::get_size() const
 {
   int w = 0;
   int h = 0;
-  SDL_GetWindowSize(m_window, &w, &h);
+  // Prefer drawable size so layout matches the GL viewport/ortho.
+  SDL_GL_GetDrawableSize(m_window, &w, &h);
+  if (w <= 0 || h <= 0)
+    SDL_GetWindowSize(m_window, &w, &h);
   return geom::isize(w, h);
 }
 

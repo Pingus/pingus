@@ -35,6 +35,7 @@
 #include "engine/input/driver_factory.hpp"
 #include "engine/input/manager.hpp"
 #include "engine/system/sdl_system.hpp"
+#include "engine/display/display.hpp"
 #include "pingus/application.hpp"
 #include "pingus/config_manager.hpp"
 #include "pingus/event_name.hpp"
@@ -662,6 +663,12 @@ PingusMain::run(int argc, char** argv)
     bool resizable  = cmd_options.resizable.is_set()  ? cmd_options.resizable.get()  : true;
 
     Size screen_size(1024, 768);
+#ifdef ANDROID
+    // Fullscreen is forced in OpenGLFramebuffer. Exact size is taken from
+    // the drawable after window creation (surface is often not 1024x768).
+    fullscreen = true;
+    resizable = false;
+#else
     if (fullscreen)
     {
       if (cmd_options.fullscreen_resolution.is_set())
@@ -676,6 +683,7 @@ PingusMain::run(int argc, char** argv)
         screen_size = cmd_options.geometry.get();
       }
     }
+#endif
 
 #ifdef __EMSCRIPTEN__
     // Same lifetime issue as Application: main-loop unwind must not destroy
@@ -720,6 +728,13 @@ PingusMain::run(int argc, char** argv)
         config_manager.set_renderer(FramebufferType::SDL);
       }
     }
+
+#ifdef ANDROID
+    {
+      Size actual = Display::get_size();
+      log_info("Android window/drawable size: {}x{}", actual.width(), actual.height());
+    }
+#endif
 
     // init other components
     SavegameManager savegame_manager("savegames/savegames.scm");
