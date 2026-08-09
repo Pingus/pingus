@@ -128,7 +128,8 @@ let
   # so -L order alone is ignored. We therefore:
   #   - compile with modern headers + _GLIBCXX_USE_CXX11_ABI=0 (old ABI)
   #   - -nostdlib++ so g++ does not force its libstdc++; link sysroot -lstdc++
-  #   - -static-libgcc (libgcc.a has no versioned GLIBC_2.3x deps)
+  #   - -static-libgcc (libgcc.a / libgcc_eh.a have no versioned GLIBC_2.3x deps)
+  #   - -fexceptions: Pingus/tinygettext/prio use try/catch (unlike SuperTux M1)
   #   - --allow-shlib-undefined for DT_NEEDED of sysroot libs (e.g. opusfile
   #     from SDL2_mixer) that exist on the device at runtime
   mkWrappers = sysroot: let
@@ -144,8 +145,8 @@ let
     libgccLib = "${gccLibOut}/lib";
     libgccLibTarget = "${gccLibOut}/${tp}/lib";
     # Compile-only flags (safe with -c). No -L/-B lib paths that pull Scrt1.o.
-    # -fno-exceptions: avoid GCC 15 libgcc_eh (_dl_find_object / GLIBC_2.35).
-    # Milestone 1 does not rely on C++ exceptions.
+    # -fexceptions: tinygettext / prio / Pingus use C++ exceptions; pair with
+    # -static-libgcc so libgcc_eh is not the shared GCC 15 copy (GLIBC_2.35).
     commonCompile = ''
       -nostdinc \
       --sysroot=${sysroot} \
@@ -154,7 +155,7 @@ let
       -isystem ${sysroot}/usr/include/aarch64-linux-gnu \
       -isystem ${sysroot}/usr/include \
       -pthread \
-      -fno-exceptions \
+      -fexceptions \
       -march=armv8-a \
       -mtune=cortex-a35 \
     '';
@@ -170,13 +171,13 @@ let
       -isystem ${sysroot}/usr/include/aarch64-linux-gnu \
       -isystem ${sysroot}/usr/include \
       -pthread \
-      -fno-exceptions \
+      -fexceptions \
       -march=armv8-a \
       -mtune=cortex-a35 \
     '';
-    # Link flags: sysroot first for libc/SDL; add modern gcc -L only so
-    # -shared-libgcc can find libgcc_s (stdc++ is still the absolute sysroot
-    # path in the cxx wrapper — not -lstdc++).
+    # Link flags: sysroot first for libc/SDL; add modern gcc -L so
+    # -static-libgcc can find libgcc.a / libgcc_eh.a (stdc++ is still the
+    # absolute sysroot path in the cxx wrapper — not -lstdc++).
     # Explicit dynamic linker so the binary runs on ArkOS (not /nix/store/.../ld).
     commonLink = ''
       --sysroot=${sysroot} \
@@ -191,7 +192,7 @@ let
       -L${libgccDir} \
       -L${libgccLib} \
       -L${libgccLibTarget} \
-      -shared-libgcc \
+      -static-libgcc \
       -Wl,-Bdynamic \
       -pthread \
       -Wl,-rpath-link,${libdir} \
