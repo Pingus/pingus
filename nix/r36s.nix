@@ -415,7 +415,7 @@ LAUNCH
   , title ? "Pingus"
   , scriptName ? "Pingus.sh"
   , portDirName ? "pingus"
-  , screenshotSrc ? ../pingus.png
+  , screenshotSrc ? ../data/icons/hicolor/128x128/apps/pingus.png
   }:
     stdenvNoCC.mkDerivation {
       inherit pname version;
