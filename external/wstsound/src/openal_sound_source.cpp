@@ -53,7 +53,17 @@ OpenALSoundSource::OpenALSoundSource(SoundChannel& channel) :
   // the caller won't handle an object in an invalid state thinking it's clean
   OpenALSystem::check_al_error("Couldn't create audio source: ");
 
+#ifdef __EMSCRIPTEN__
+  // Emscripten's OpenAL maps mono sources through Web Audio PannerNode when
+  // spatialized. That path has been a source of "null function" crashes for
+  // short SFX while stereo module streams (non-spatial) play fine. Keep
+  // sources non-spatial by default; callers can still set position if needed.
+  set_relative(true);
+  set_rolloff_factor(0.0f);
+  set_reference_distance(1.0f);
+#else
   set_reference_distance(128);
+#endif
 }
 
 OpenALSoundSource::~OpenALSoundSource()

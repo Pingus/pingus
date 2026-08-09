@@ -59,6 +59,11 @@ if [ "${ENABLE_ASYNCIFY:-0}" = 1 ]; then
 else
   echo "==> ASYNCIFY disabled (default; set enableAsyncify=true in mkApp if a path freezes)"
 fi
+if [ "$ENABLE_SOUND" = 1 ]; then
+  # Mandatory for Emscripten's OpenAL → Web Audio (see emscripten Audio docs).
+  LINK_FLAGS+=("-lopenal")
+  echo "==> linking -lopenal (wstsound)"
+fi
 
 if [ -n "${WASM_SHELL:-}" ] && [ -f "$WASM_SHELL" ]; then
   LINK_FLAGS+=("--shell-file" "$WASM_SHELL")
