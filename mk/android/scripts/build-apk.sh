@@ -165,7 +165,8 @@ if [ -d "$EXTERNAL_DIR/wstsound/src" ]; then
         src/jni/src/deps/wstsound/mp3_sound_file.cpp \
         src/jni/src/deps/wstsound/effect.cpp \
         src/jni/src/deps/wstsound/effect_slot.cpp \
-        src/jni/src/deps/wstsound/filter.cpp
+        src/jni/src/deps/wstsound/filter.cpp \
+        src/jni/src/deps/wstsound/procedural_sound_file.cpp
   # Public headers: include/wstsound/*.hpp
   if [ -d "$EXTERNAL_DIR/wstsound/include/wstsound" ]; then
     mkdir -p src/jni/external_includes/wstsound
