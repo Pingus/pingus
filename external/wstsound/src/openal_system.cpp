@@ -22,12 +22,20 @@
 #include <sstream>
 #include <iostream>
 
-#define AL_ALEXT_PROTOTYPES
-#include <alext.h>
+#ifdef __EMSCRIPTEN__
+#  include <AL/al.h>
+#  include <AL/alc.h>
+#  include <AL/alext.h>
+#else
+#  define AL_ALEXT_PROTOTYPES
+#  include <alext.h>
+#endif
 
 #include "openal_buffer.hpp"
 #include "openal_device.hpp"
-#include "openal_loopback_device.hpp"
+#ifndef __EMSCRIPTEN__
+#  include "openal_loopback_device.hpp"
+#endif
 #include "openal_real_device.hpp"
 #include "sound_error.hpp"
 #include "sound_file.hpp"
@@ -94,6 +102,7 @@ OpenALSystem::open_real_device()
   return real_device_ref;
 }
 
+#ifndef __EMSCRIPTEN__
 OpenALLoopbackDevice&
 OpenALSystem::open_loopback_device(int frequency, int channels)
 {
@@ -102,6 +111,7 @@ OpenALSystem::open_loopback_device(int frequency, int channels)
   m_device = std::move(loopback_device);
   return loopback_device_ref;
 }
+#endif
 
 OpenALBufferPtr
 OpenALSystem::create_buffer(ALenum format,

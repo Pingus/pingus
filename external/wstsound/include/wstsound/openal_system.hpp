@@ -46,7 +46,9 @@ public:
   ~OpenALSystem();
 
   OpenALRealDevice& open_real_device();
+#ifndef __EMSCRIPTEN__
   OpenALLoopbackDevice& open_loopback_device(int frequency = 44100, int channels = 2);
+#endif
 
   void print_openal_version(std::ostream& out);
   void check_alc_error(char const* message);

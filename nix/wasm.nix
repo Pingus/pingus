@@ -353,6 +353,59 @@ EOF
     };
   };
 
+
+  # Static wstsound for wasm: Emscripten OpenAL + modplug only.
+  #   nix build .#wstsound-wasm
+  wstsoundWasm = pkgs.stdenv.mkDerivation {
+    pname = "wstsound-wasm";
+    version = "0.3.0";
+    src = ../external/wstsound;
+    nativeBuildInputs = [ pkgs.emscripten pkgs.cmake pkgs.python3 pkgs.pkg-config ];
+    dontConfigure = true;
+    dontUseCmakeConfigure = true;
+    buildPhase = ''
+      runHook preBuild
+      export EM_CACHE="''${TMPDIR:-/tmp}/emcache"
+      mkdir -p "$EM_CACHE"
+      export PKG_CONFIG_PATH="${modplugWasm}/lib/pkgconfig''${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+      export CMAKE_PREFIX_PATH="${modplugWasm}"
+      # tinycmmc modules (FindModPlug, warnings, install helpers)
+      export TINYCMMC_MODULE_PATH="${../external/tinycmmc/modules}"
+      mkdir -p build prefix
+      pushd build
+      emcmake cmake .. \
+        -DCMAKE_INSTALL_PREFIX="$PWD/../prefix" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_TESTS=OFF \
+        -DBUILD_EXTRA=OFF \
+        -DWARNINGS=OFF \
+        -DWERROR=OFF \
+        -DWSTSOUND_WITH_MODPLUG=ON \
+        -DWSTSOUND_WITH_VORBIS=OFF \
+        -DWSTSOUND_WITH_OPUS=OFF \
+        -DWSTSOUND_WITH_MPG123=OFF \
+        -DWSTSOUND_WITH_EFX=OFF \
+        -DMODPLUG_DIR="${modplugWasm}" \
+        -DCMAKE_PREFIX_PATH="${modplugWasm}" \
+        -DCMAKE_MODULE_PATH="$TINYCMMC_MODULE_PATH"
+      emmake make -j''${NIX_BUILD_CORES:-2}
+      emmake make install
+      popd
+      runHook postBuild
+    '';
+    installPhase = ''
+      runHook preInstall
+      mkdir -p $out
+      cp -a prefix/. $out/
+      runHook postInstall
+    '';
+    meta = with pkgs.lib; {
+      description = "wstsound static library for wasm32-emscripten (OpenAL + ModPlug)";
+      license = licenses.gpl3Plus;
+      platforms = platforms.linux;
+    };
+  };
+
   # HTML shell: template under mk/wasm/shell.html (@versionFull@ @gitRev@ @sourceUrl@ @revUrl@).
   mkWasmShell = { versionFull, gitRev, sourceUrl }:
     let
@@ -452,5 +505,5 @@ EOF
 in {
   inherit sdl2WasmLibs sdlWasmLibs zlibWasmLibs mkApp mkOpenBrowserApp;
   inherit sdl2Image sdl2Mixer;
-  inherit modplugWasm glmPrefix sigcWasm;
+  inherit modplugWasm wstsoundWasm glmPrefix sigcWasm;
 }

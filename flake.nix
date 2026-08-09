@@ -304,6 +304,7 @@
               # Isolated audio deps for wstsound-on-wasm (build without the full game):
               #   nix build .#libmodplug-wasm
               libmodplug-wasm = wasm.modplugWasm;
+              wstsound-wasm = wasm.wstsoundWasm;
               pingus-wasm = wasm.mkApp {
                 appName = "pingus";
                 srcDir = ./.;

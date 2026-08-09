@@ -105,14 +105,14 @@ future asset needs them.
 
 ### Checklist
 
-- [ ] `libmodplug-wasm` flake package (static, emconfigure/emmake or cmake)
-- [ ] wstsound CMake: `WSTSOUND_WITH_{MODPLUG,VORBIS,OPUS,MPG123}` options;
-      default wasm profile = modplug + wav only
-- [ ] wstsound builds under emscripten against `-lopenal` (EFX stubbed)
-- [ ] `wstsound-wasm` flake output for isolated testing
+- [x] `libmodplug-wasm` flake package (static, emconfigure/emmake or cmake)
+- [x] wstsound CMake: `WSTSOUND_WITH_{MODPLUG,VORBIS,OPUS,MPG123,EFX}` options;
+      default wasm profile = modplug + wav only; Soft loopback excluded
+- [ ] wstsound builds under emscripten against `-lopenal` (EFX stubbed) — package `wstsound-wasm` added, needs `nix build` verify
+- [x] `wstsound-wasm` flake output for isolated testing (unverified build)
 - [ ] Wire `.#pingus-wasm` with `enableSound=true` + preload music/sounds
 - [ ] Runtime: music + SFX after user gesture; greeting reflects real backend
-- [ ] (Optional) Detect `.s3m` magic in `SoundFile::from_stream` (SCRM) so
+- [x] Detect `.s3m` magic in `SoundFile::from_stream` (SCRM) so
       `gd-giirm.s3m` routes to ModPlug
 
 ### Non-goals (for this track)

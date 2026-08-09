@@ -21,11 +21,19 @@
 #include <assert.h>
 #include <iostream>
 
-#define AL_ALEXT_PROTOTYPES
-#include <efx.h>
-
-#include "effect_slot.hpp"
-#include "filter.hpp"
+#ifdef __EMSCRIPTEN__
+#  include <AL/al.h>
+#  include <AL/alc.h>
+#else
+#  define AL_ALEXT_PROTOTYPES
+#  include <al.h>
+#  include <alc.h>
+#endif
+#if defined(WSTSOUND_WITH_EFX)
+#  include <efx.h>
+#  include "effect_slot.hpp"
+#  include "filter.hpp"
+#endif
 #include "sound_error.hpp"
 #include "sound_manager.hpp"
 
@@ -215,6 +223,7 @@ OpenALSoundSource::update(float delta)
   SoundSource::update(delta);
 }
 
+#if defined(WSTSOUND_WITH_EFX)
 void
 OpenALSoundSource::set_direct_filter(FilterPtr const& filter)
 {
@@ -241,6 +250,17 @@ OpenALSoundSource::set_effect_slot(EffectSlotPtr const& slot, FilterPtr const& f
              filter ? m_filter->handle() : AL_FILTER_NULL);
   OpenALSystem::warn_al_error("OpenALSoundSource::set_effect_slot: ");
 }
+#else
+void
+OpenALSoundSource::set_direct_filter(FilterPtr const&)
+{
+}
+
+void
+OpenALSoundSource::set_effect_slot(EffectSlotPtr const&, FilterPtr const&)
+{
+}
+#endif
 
 } // namespace wstsound
 

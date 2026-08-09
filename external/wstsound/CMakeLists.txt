@@ -114,6 +114,11 @@ if(NOT WSTSOUND_WITH_MPG123)
 endif()
 if(NOT WSTSOUND_WITH_EFX)
   list(FILTER WSTSOUND_SOURCES EXCLUDE REGEX ".*/effect(_slot)?\\.cpp$")
+  list(FILTER WSTSOUND_SOURCES EXCLUDE REGEX ".*/filter\\.cpp$")
+endif()
+if(EMSCRIPTEN)
+  # Soft-only loopback device API
+  list(FILTER WSTSOUND_SOURCES EXCLUDE REGEX ".*/openal_loopback_device\\.cpp$")
 endif()
 
 add_library(wstsound STATIC ${WSTSOUND_SOURCES})
