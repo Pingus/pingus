@@ -59,15 +59,16 @@ PingusSoundReal::real_play_sound(std::string const& name, float volume, float pa
       m_sound_volume > 0)
   {
     std::filesystem::path filename = g_path_manager.complete("sounds/" + name + ".wav");
-    wstsound::SoundSourcePtr source = m_sound_manager->sound().prepare(filename, wstsound::SoundSourceType::STREAM);
-    // if (!chunk)
-    // {
-    //   log_error("Can't open sound '{}' -- skipping\n  Mix_Error: {}", name, Mix_GetError());
-    //   return;
-    // }
+    // Short one-shot WAVs: STATIC (single buffer). STREAM was used previously
+    // and works for module music, but finishing a short stream queue has hit
+    // null-function crashes under Emscripten's OpenAL→WebAudio backend.
+    wstsound::SoundSourcePtr source = m_sound_manager->sound().prepare(
+      filename, wstsound::SoundSourceType::STATIC);
 
+    // 2D panning: listener-relative so (x,0,0) is left/right, not world units.
+    source->set_relative(true);
     source->set_position(panning, 0.0f, 0.0f);
-    source->set_gain(volume * m_music_volume * m_master_volume);
+    source->set_gain(volume * m_sound_volume * m_master_volume);
     source->play();
     m_sound_manager->manage(std::move(source));
   }
