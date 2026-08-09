@@ -528,7 +528,7 @@ PingusMain::print_greeting_message()
 void
 PingusMain::start_game ()
 {
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
   // ScreenManager::display() registers an emscripten main loop and returns.
   // Stack-allocated Application would be destroyed while the browser still
   // calls into ScreenManager each frame — keep it alive for the page lifetime.
@@ -565,7 +565,7 @@ PingusMain::run(int argc, char** argv)
 
     // init the display
     FramebufferType fbtype = FramebufferType::SDL;
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
     // WASM builds are linked with GLES2/WebGL (PINGUS_USE_GLES + FULL_ES2).
     // Prefer the OpenGL framebuffer; SDL_Renderer can leave a black canvas
     // depending on how the browser presents the emscripten main loop.
@@ -595,7 +595,7 @@ PingusMain::run(int argc, char** argv)
       }
     }
 
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
     // Same lifetime issue as Application: main-loop unwind must not destroy
     // singletons that the game still uses (SavegameManager / StatManager).
     SDLSystem* system = new SDLSystem();
@@ -664,7 +664,7 @@ PingusMain::run(int argc, char** argv)
   }
   catch (...)
   {
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
     // Do not swallow Emscripten's main-loop control flow if it ever propagates.
     throw;
 #else
@@ -672,7 +672,7 @@ PingusMain::run(int argc, char** argv)
 #endif
   }
 
-#ifndef PINGUS_EMSCRIPTEN
+#ifndef __EMSCRIPTEN__
   // On Emscripten, start_game() hands control to the browser main loop; tearing
   // down resources here would race with frames still in flight.
   pingus::sound::PingusSound::deinit();

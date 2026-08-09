@@ -35,7 +35,7 @@
 #include "pingus/global_event.hpp"
 #include "pingus/globals.hpp"
 
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
 #  include <emscripten.h>
 #endif
 
@@ -113,7 +113,7 @@ ScreenManager::display()
   show_software_cursor(globals::software_cursor);
   last_ticks = SDL_GetTicks();
 
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
   std::fprintf(stderr,
     "[pingus] ScreenManager::display: screens=%zu last_ticks=%u — registering main loop\n",
     screens.size(), last_ticks);
@@ -132,7 +132,7 @@ ScreenManager::display()
 #endif
 }
 
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
 void
 ScreenManager::emscripten_main_loop(void* arg)
 {
@@ -187,7 +187,7 @@ ScreenManager::run_one_frame()
   if (globals::software_cursor)
     cursor.update(previous_frame_time);
 
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
   {
     static int frame_n = 0;
     if (frame_n < 5) {
@@ -405,7 +405,7 @@ ScreenManager::fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_scree
   if (!old_screen.get() || !new_screen.get())
     return;
 
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
   // Nested blocking fade + SDL_Delay would freeze the browser main loop
   // (and busy-wait without ASYNCIFY). Skip the animation; the next frame
   // draws the new screen normally.

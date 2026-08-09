@@ -37,7 +37,7 @@
 #  include <sys/types.h>
 #  include <unistd.h>
 #  include <errno.h>
-#  if !defined(PINGUS_EMSCRIPTEN) && !defined(ANDROID)
+#  if !defined(__EMSCRIPTEN__) && !defined(ANDROID)
 #    include <xdg.h>
 #  endif
 #else /* _WIN32 */
@@ -328,7 +328,7 @@ System::find_userdir()
   // if it does not, use $XDG_CONFIG_HOME, see:
   // http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
-#if defined(PINGUS_EMSCRIPTEN) || defined(ANDROID)
+#if defined(__EMSCRIPTEN__) || defined(ANDROID)
   // Persistent IDBFS mount or app-private storage can be layered later.
   return "/pingus-user/";
 #else

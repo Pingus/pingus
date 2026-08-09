@@ -247,6 +247,17 @@ if(DATA_PREFIX)
     -DPINGUS_DEFAULT_DATADIR="${DATA_PREFIX}")
   message(STATUS "PINGUS_DEFAULT_DATADIR=${DATA_PREFIX}")
 endif()
+if(EMSCRIPTEN)
+  # Guaranteed on libpingus sources (add_definitions alone is easy to miss with
+  # some emcmake/Ninja generators).
+  target_compile_definitions(libpingus PUBLIC PINGUS_EMSCRIPTEN=1)
+  if(PINGUS_USE_GLES)
+    target_compile_definitions(libpingus PUBLIC PINGUS_USE_GLES=1)
+  endif()
+endif()
+if(NOT PINGUS_ENABLE_SOUND)
+  target_compile_definitions(libpingus PUBLIC PINGUS_NO_SOUND=1)
+endif()
 target_link_libraries(libpingus PUBLIC
   argpp::argpp
   geom::geom

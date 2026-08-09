@@ -75,7 +75,7 @@ PingusMenu::PingusMenu() :
     _("Levelsets"),
     _("..:: Play User Built levels ::.."));
 
-#ifndef PINGUS_EMSCRIPTEN
+#ifndef __EMSCRIPTEN__
   // Closing the browser tab ends the session; an in-game Exit is redundant.
   quit_button = gui_manager->create<MenuButton>(
     this, Vector2i(size_.width()/2,
@@ -88,7 +88,7 @@ PingusMenu::PingusMenu() :
 
   create_background(Size(Display::get_width(), Display::get_height()));
 
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
   help = _("..:: F10: fps counter   ::   F12: screenshot ::..");
 #else
   help = _("..:: Ctrl-g: mouse grab   ::   F10: fps counter   ::   F11: fullscreen   ::   F12: screenshot ::..");

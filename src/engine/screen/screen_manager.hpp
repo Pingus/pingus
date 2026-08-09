@@ -96,7 +96,7 @@ private:
   /** FadeOver test*/
   void fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_screen);
 
-#ifdef PINGUS_EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
   static void emscripten_main_loop(void* arg);
 #endif
 
