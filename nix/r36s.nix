@@ -267,7 +267,7 @@ let
           ${commonLink} \
           "$@" \
           -Wl,--no-as-needed "$stdcpp" \
-          -Wl,-Bdynamic -l:libpthread.so.0 -lm \
+          -Wl,-Bdynamic -l:libpthread.so.0 -lm -lSDL2_image -lSDL2 \
           -Wl,--as-needed
       fi
     '';
