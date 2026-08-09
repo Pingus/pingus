@@ -12,6 +12,8 @@
 #include <new>
 #include <system_error>
 
+#include <SDL.h>
+
 // ---------------------------------------------------------------------------
 // libgcc_eh (static) from GCC 15 references glibc 2.35's _dl_find_object.
 // Returning failure is enough for FDE lookup to fall back to other methods.
@@ -36,6 +38,13 @@ extern "C" int _dl_find_object(void* /*address*/, struct dl_find_object* /*resul
 extern "C" void __cxa_call_terminate(void*) noexcept
 {
   std::terminate();
+}
+
+// Some SDL2_image builds expose IMG_GetError only as a macro → SDL_GetError.
+// Older headers declare a real function; the .so then has no such symbol.
+extern "C" const char* IMG_GetError(void)
+{
+  return SDL_GetError();
 }
 
 namespace std {
