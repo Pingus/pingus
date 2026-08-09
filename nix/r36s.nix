@@ -260,14 +260,44 @@ let
           echo "aarch64-arkos-g++: no libstdc++ in sysroot" >&2
           exit 1
         fi
+        sdl2=
+        sdl2image=
+        for cand in \
+          "${libdir}/libSDL2-2.0.so" \
+          "${libdir}/libSDL2-2.0.so.0" \
+          "${libdir}/libSDL2.so" \
+          "${sysroot}/usr/lib/libSDL2-2.0.so.0" \
+          "${sysroot}/usr/lib/libSDL2.so"
+        do
+          if [ -e "$cand" ]; then sdl2="$cand"; break; fi
+        done
+        for cand in \
+          "${libdir}/libSDL2_image-2.0.so" \
+          "${libdir}/libSDL2_image-2.0.so.0" \
+          "${libdir}/libSDL2_image.so" \
+          "${sysroot}/usr/lib/libSDL2_image-2.0.so.0" \
+          "${sysroot}/usr/lib/libSDL2_image.so"
+        do
+          if [ -e "$cand" ]; then sdl2image="$cand"; break; fi
+        done
+        if [ -z "$sdl2" ]; then
+          echo "aarch64-arkos-g++: no libSDL2 in sysroot" >&2
+          find "${sysroot}" -name 'libSDL2*' 2>/dev/null | head -20 >&2 || true
+          exit 1
+        fi
+        if [ -z "$sdl2image" ]; then
+          echo "aarch64-arkos-g++: no libSDL2_image in sysroot" >&2
+          find "${sysroot}" -name 'libSDL2_image*' 2>/dev/null | head -20 >&2 || true
+          exit 1
+        fi
         exec ${gcc}/bin/${targetPrefix}g++ \
           -B${crossCc.bintools}/bin \
           ${commonCompileCxx} \
           -nostdlib++ \
           ${commonLink} \
           "$@" \
-          -Wl,--no-as-needed "$stdcpp" \
-          -Wl,-Bdynamic -l:libpthread.so.0 -lm -lSDL2_image -lSDL2 \
+          -Wl,--no-as-needed "$stdcpp" "$sdl2image" "$sdl2" \
+          -Wl,-Bdynamic -l:libpthread.so.0 -lm \
           -Wl,--as-needed
       fi
     '';

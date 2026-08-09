@@ -25,7 +25,6 @@ struct dl_find_object
   void* dlfo_eh_frame;
   void* dlfo_eh_dbase;
   void* dlfo_eh_count;
-  // Padding / future fields ignored by our callers on failure.
   void* dlfo_reserved[7];
 };
 
@@ -50,13 +49,14 @@ __throw_bad_array_new_length()
 namespace {
 
 to_chars_result
-snprintf_to_chars(char* first, char* last, char const* fmt, double value)
+snprintf_to_chars(char* first, char* last, char const* fmt, long double value) noexcept
 {
   if (first == nullptr || last == nullptr || first > last)
   {
     return {last, errc::value_too_large};
   }
-  auto const n = std::snprintf(first, static_cast<size_t>(last - first), fmt, value);
+  auto const n = std::snprintf(first, static_cast<size_t>(last - first), fmt,
+                               static_cast<double>(value));
   if (n < 0 || n >= static_cast<int>(last - first))
   {
     return {last, errc::value_too_large};
@@ -65,7 +65,7 @@ snprintf_to_chars(char* first, char* last, char const* fmt, double value)
 }
 
 char const*
-format_to_printf(chars_format fmt)
+format_to_printf(chars_format fmt) noexcept
 {
   switch (fmt)
   {
@@ -84,44 +84,70 @@ format_to_printf(chars_format fmt)
 } // namespace
 
 // Floating to_chars used by libstdc++ std::format; not in GCC ~9 libstdc++.
+// Signatures must match <charconv> (noexcept).
+
 to_chars_result
-to_chars(char* first, char* last, float value)
+to_chars(char* first, char* last, float value) noexcept
 {
-  return snprintf_to_chars(first, last, "%g", static_cast<double>(value));
+  return snprintf_to_chars(first, last, "%g", static_cast<long double>(value));
 }
 
 to_chars_result
-to_chars(char* first, char* last, double value)
+to_chars(char* first, char* last, double value) noexcept
+{
+  return snprintf_to_chars(first, last, "%g", static_cast<long double>(value));
+}
+
+to_chars_result
+to_chars(char* first, char* last, long double value) noexcept
 {
   return snprintf_to_chars(first, last, "%g", value);
 }
 
 to_chars_result
-to_chars(char* first, char* last, float value, chars_format fmt)
+to_chars(char* first, char* last, float value, chars_format fmt) noexcept
 {
-  return snprintf_to_chars(first, last, format_to_printf(fmt), static_cast<double>(value));
+  return snprintf_to_chars(first, last, format_to_printf(fmt),
+                           static_cast<long double>(value));
 }
 
 to_chars_result
-to_chars(char* first, char* last, double value, chars_format fmt)
+to_chars(char* first, char* last, double value, chars_format fmt) noexcept
+{
+  return snprintf_to_chars(first, last, format_to_printf(fmt),
+                           static_cast<long double>(value));
+}
+
+to_chars_result
+to_chars(char* first, char* last, long double value, chars_format fmt) noexcept
 {
   return snprintf_to_chars(first, last, format_to_printf(fmt), value);
 }
 
 to_chars_result
-to_chars(char* first, char* last, float value, chars_format fmt, int precision)
+to_chars(char* first, char* last, float value, chars_format fmt, int precision) noexcept
 {
   char buf[16];
-  // e.g. "%.6g"
   std::snprintf(buf, sizeof(buf), "%%.%d%c", precision,
                 (fmt == chars_format::scientific) ? 'e' :
                 (fmt == chars_format::fixed) ? 'f' :
                 (fmt == chars_format::hex) ? 'a' : 'g');
-  return snprintf_to_chars(first, last, buf, static_cast<double>(value));
+  return snprintf_to_chars(first, last, buf, static_cast<long double>(value));
 }
 
 to_chars_result
-to_chars(char* first, char* last, double value, chars_format fmt, int precision)
+to_chars(char* first, char* last, double value, chars_format fmt, int precision) noexcept
+{
+  char buf[16];
+  std::snprintf(buf, sizeof(buf), "%%.%d%c", precision,
+                (fmt == chars_format::scientific) ? 'e' :
+                (fmt == chars_format::fixed) ? 'f' :
+                (fmt == chars_format::hex) ? 'a' : 'g');
+  return snprintf_to_chars(first, last, buf, static_cast<long double>(value));
+}
+
+to_chars_result
+to_chars(char* first, char* last, long double value, chars_format fmt, int precision) noexcept
 {
   char buf[16];
   std::snprintf(buf, sizeof(buf), "%%.%d%c", precision,
