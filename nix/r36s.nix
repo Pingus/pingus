@@ -321,6 +321,10 @@ let
         # ArkOS sysroot has neither libsigc++ nor glm cmake config.
         "-DPINGUS_SIGC_POLYFILL_DIR=${../mk/android/app/jni}"
         "-DPINGUS_GLM_INCLUDE_DIR=${glm}/include"
+        # Forced cross-compiler cannot try_compile pthread; ArkOS glibc has it.
+        "-DCMAKE_HAVE_LIBC_PTHREAD=1"
+        "-DCMAKE_THREAD_LIBS_INIT=-pthread"
+        "-DPTHREAD_LIBRARY=pthread"
         # Relative data next to the binary on device (PortMaster layout).
         "-DPROJECT_VERSION_FULL=${version}"
       ];
