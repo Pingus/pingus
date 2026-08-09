@@ -44,7 +44,15 @@ SpriteDescription::from_file(Pathname const& path)
     log_error("'image' missing for {}", doc.get_root().get_name());
   }
 
-  desc->filename = Pathname(desc->filename.get_raw_path(), Pathname::DATA_PATH); // FIXME: Hack
+  {
+    // Historical .sprite files use paths like "/images/core/misc/start_ok.png".
+    // With an empty datadir (Android assets root) that becomes a filesystem
+    // absolute path which AssetManager cannot see. Strip the leading slash.
+    std::string raw = desc->filename.get_raw_path();
+    if (!raw.empty() && raw.front() == '/')
+      raw.erase(raw.begin());
+    desc->filename = Pathname(raw, Pathname::DATA_PATH);
+  }
   reader.read("array", desc->array);
   reader.read("position",   desc->frame_pos);
   reader.read("size",  desc->frame_size);

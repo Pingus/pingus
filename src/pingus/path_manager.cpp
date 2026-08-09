@@ -53,9 +53,14 @@ PathManager::set_path(std::string const& path)
 std::string
 PathManager::complete(std::string const& relative_path)
 {
+  // Treat "/images/..." as datadir-relative (legacy sprite paths).
+  std::string rel = relative_path;
+  if (!rel.empty() && rel.front() == '/')
+    rel.erase(rel.begin());
+
   for(auto it = m_paths.rbegin(); it != m_paths.rend(); ++it)
   {
-    std::string absolute_path = Pathname::join(*it, relative_path);
+    std::string absolute_path = Pathname::join(*it, rel);
     bool exist = System::exist(absolute_path);
 
     log_debug("{}: ", absolute_path, (exist ? "exist" : "missing"));
@@ -66,7 +71,7 @@ PathManager::complete(std::string const& relative_path)
     }
   }
 
-  return Pathname::join(m_base_path, relative_path);
+  return Pathname::join(m_base_path, rel);
 }
 
 } // namespace pingus

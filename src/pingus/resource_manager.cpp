@@ -81,16 +81,18 @@ ResourceManager::get_sprite_description_from_file(std::string const& resname)
   {
     SpriteDescriptionPtr desc = SpriteDescription::from_file(path);
 
-    // resolve relative filenames
-    if (!desc->filename.absolute())
+    // Resolve image path relative to the .sprite when needed.
+    // Legacy entries use "/images/..." — strip the slash and keep as datadir path.
     {
-      // path normalization is important here to allow overlay paths,
-      // as a path of the form "pingus/blocker/../blocker.png" would
-      // fail when "pingus/blocker/" is missing, even so
-      // "pingus/blocker.png" exists
-      desc->filename = Pathname(System::normalize_path(Pathname::join(System::dirname(filename),
-                                                                      desc->filename.get_raw_path())),
-                                Pathname::DATA_PATH);
+      std::string img = desc->filename.get_raw_path();
+      if (!img.empty() && img.front() == '/')
+        img.erase(img.begin());
+      if (img.find("images/") != 0)
+      {
+        // e.g. "blackboard.png" next to the .sprite file
+        img = System::normalize_path(Pathname::join(System::dirname(filename), img));
+      }
+      desc->filename = Pathname(img, Pathname::DATA_PATH);
     }
 
     return desc;
