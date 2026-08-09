@@ -105,8 +105,13 @@ let
   audioAndroidLibs = pkgs.stdenvNoCC.mkDerivation {
     pname = "pingus-android-audio-libs";
     version = "openal-1.23.1+modplug-0.8.9.0";
+    # Sources are tarballs referenced via env; unpack inside buildPhase.
+    # cmake is only used by build-audio-libs.sh — do not run the generic
+    # cmake configurePhase against an empty /build.
     dontUnpack = true;
-    nativeBuildInputs = [ androidSdk pkgs.cmake pkgs.gnumake pkgs.python3 ];
+    dontConfigure = true;
+    dontUseCmakeConfigure = true;
+    nativeBuildInputs = [ androidSdk pkgs.cmake pkgs.gnumake pkgs.python3 pkgs.gnutar pkgs.gzip ];
     env = {
       PACKAGE_PLATFORM = packagePlatform;
       OPENAL_SRC = "${openalSrc}";
@@ -115,10 +120,9 @@ let
     buildPhase = ''
       runHook preBuild
       export ANDROID_HOME=${androidSdk}/libexec/android-sdk
-      # Unpack modplug tarball to a stable path
       mkdir -p "$TMPDIR/modplug-src" "$TMPDIR/openal-src"
       tar -xzf "$MODPLUG_SRC" -C "$TMPDIR/modplug-src" --strip-components=1
-      tar -xzf "${openalSrc}" -C "$TMPDIR/openal-src" --strip-components=1
+      tar -xzf "$OPENAL_SRC" -C "$TMPDIR/openal-src" --strip-components=1
       export MODPLUG_SRC="$TMPDIR/modplug-src"
       export OPENAL_SRC="$TMPDIR/openal-src"
       export TARGET_ABIS=${pkgs.lib.escapeShellArg targetAbisStr}
@@ -131,7 +135,6 @@ let
       runHook preInstall
       mkdir -p $out
       cp -a audio-out/. $out/
-      # Flat layout: $out/<abi>/{lib,include}
       runHook postInstall
     '';
   };
