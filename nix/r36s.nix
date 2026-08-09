@@ -28,8 +28,8 @@ let
     # After publishing a new tarball, refresh the hash:
     #   nix store prefetch-file <url>
     # and paste the new sha256-… here.
-    url = "https://github.com/grumnix/arkos-sysroot/releases/download/v0.1/arkos-sysroot.tar.gz";
-    hash = "sha256-nIlMQ3P0uBrRQ9/k2x1s9DpdnF8iqA2wBLSB/20uXYg=";
+    url = "http://localhost:8888/arkos-sysroot4.tar.gz";
+    hash = "sha256-Sm1Xcy++M6LuOLXs9nOs7xIfuvzqAOledKnWH8H7+/g=";
   };
 
   # Allow hash to be overridden by the user who already fetched the tarball;
