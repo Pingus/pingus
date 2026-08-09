@@ -55,11 +55,17 @@ for abi in $TARGET_ABIS; do
   echo "==> libmodplug ($abi)"
   mbdir="$OUT_DIR/build-modplug-$abi"
   mkdir -p "$mbdir"
+  # Android libc already has setenv(); libmodplug's load_abc.cpp polyfill
+  # conflicts (static after non-static). ABC modules are unused by Pingus.
+  if [ -f "$MODPLUG_SRC/src/load_abc.cpp" ]; then
+    rm -f "$MODPLUG_SRC/src/load_abc.cpp"
+  fi
   # In-tree CMake for a static lib (autotools is awkward under NDK).
   cat > "$mbdir/CMakeLists.txt" <<EOF
 cmake_minimum_required(VERSION 3.15)
 project(modplug C CXX)
 file(GLOB MODPLUG_SRC_FILES "${MODPLUG_SRC}/src/*.cpp" "${MODPLUG_SRC}/src/*.c")
+list(FILTER MODPLUG_SRC_FILES EXCLUDE REGEX "load_abc\\.cpp$")
 add_library(modplug STATIC \${MODPLUG_SRC_FILES})
 target_include_directories(modplug PUBLIC "${MODPLUG_SRC}/src" "${MODPLUG_SRC}/src/libmodplug")
 target_compile_definitions(modplug PRIVATE MODPLUG_STATIC HAVE_STDINT_H HAVE_SINF)
