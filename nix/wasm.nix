@@ -390,7 +390,12 @@ EOF
         -DWSTSOUND_WITH_MPG123=OFF \
         -DWSTSOUND_WITH_EFX=OFF \
         -DMODPLUG_DIR="${modplugWasm}" \
+        -DMODPLUG_INCLUDE_DIRECTORY="${modplugWasm}/include" \
+        -DMODPLUG_LIBRARY="${modplugWasm}/lib/libmodplug.a" \
         -DCMAKE_PREFIX_PATH="${modplugWasm}" \
+        -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH \
+        -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH \
+        -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=BOTH \
         -DTINYCMMC_MODULE_PATH="$TINYCMMC_MODULE_PATH" \
         -DCMAKE_MODULE_PATH="$TINYCMMC_MODULE_PATH"
       emmake make -j''${NIX_BUILD_CORES:-2}
