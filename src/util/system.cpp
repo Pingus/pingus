@@ -21,6 +21,7 @@
 #endif
 
 #include <algorithm>
+#include <set>
 #include <filesystem>
 #include <fstream>
 #include <memory>
@@ -68,6 +69,60 @@ std::string System::userdir;
 std::string System::default_email;
 std::string System::default_username;
 
+
+#ifdef ANDROID
+namespace {
+
+/** Paths of every file under the APK assets/ tree (no leading "./").
+    Generated at package time as android-asset-index.txt. */
+std::vector<std::string> const& android_asset_index()
+{
+  static std::vector<std::string> index = [] {
+    std::vector<std::string> out;
+    try
+    {
+      std::string data = System::read_file("android-asset-index.txt");
+      std::string line;
+      for (char c : data)
+      {
+        if (c == '\n' || c == '\r')
+        {
+          if (!line.empty() && line[0] != '#')
+            out.push_back(line);
+          line.clear();
+        }
+        else
+        {
+          line.push_back(c);
+        }
+      }
+      if (!line.empty() && line[0] != '#')
+        out.push_back(line);
+    }
+    catch (std::exception const& err)
+    {
+      log_warn("android-asset-index.txt: {}", err.what());
+    }
+    log_info("Android asset index: {} entries", out.size());
+    return out;
+  }();
+  return index;
+}
+
+std::string android_normalize_dir_prefix(std::string pathname)
+{
+  // Empty datadir paths are relative asset paths ("levelsets", "images/…").
+  while (!pathname.empty() && pathname.front() == '/')
+    pathname.erase(pathname.begin());
+  if (!pathname.empty() && pathname.back() == '/')
+    pathname.pop_back();
+  return pathname;
+}
+
+} // namespace
+#endif
+
+
 System::DirectoryEntry::DirectoryEntry(std::string const& n, FileType t)
   : type (t), name (n)
 {
@@ -114,7 +169,46 @@ System::opendir(std::string const& pathname)
 {
   Directory dir_list;
 
-#ifndef WIN32
+#ifdef ANDROID
+  {
+    std::string prefix = android_normalize_dir_prefix(pathname);
+    std::string prefix_slash = prefix.empty() ? std::string() : prefix + "/";
+    std::set<std::string> seen_dirs;
+    std::set<std::string> seen_files;
+
+    for (std::string const& asset : android_asset_index())
+    {
+      if (!prefix.empty())
+      {
+        if (asset.size() <= prefix_slash.size() ||
+            asset.compare(0, prefix_slash.size(), prefix_slash) != 0)
+        {
+          continue;
+        }
+      }
+
+      std::string rest = prefix.empty() ? asset : asset.substr(prefix_slash.size());
+      if (rest.empty())
+        continue;
+
+      auto slash = rest.find('/');
+      if (slash == std::string::npos)
+      {
+        seen_files.insert(rest);
+      }
+      else
+      {
+        seen_dirs.insert(rest.substr(0, slash));
+      }
+    }
+
+    for (std::string const& d : seen_dirs)
+      dir_list.push_back(DirectoryEntry(d, DE_DIRECTORY));
+    for (std::string const& f : seen_files)
+      dir_list.push_back(DirectoryEntry(f, DE_FILE));
+    return dir_list;
+  }
+#elif !defined(WIN32)
   DIR* dp;
   dirent* de;
 
@@ -122,12 +216,7 @@ System::opendir(std::string const& pathname)
 
   if (dp == nullptr)
   {
-#ifdef ANDROID
-    // APK assets are not real directories; callers treat empty as "no entries".
-    return dir_list;
-#else
     raise_exception(std::runtime_error, pathname << ": " << strerror(errno));
-#endif
   }
   else
   {

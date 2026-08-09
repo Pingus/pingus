@@ -190,6 +190,13 @@ chmod -R u+rwX src
 ASSET_COUNT=$(find src/assets -type f | wc -l)
 ASSET_SIZE=$(du -sh src/assets | awk '{print $1}')
 echo "Packaging $ASSET_COUNT asset files ($ASSET_SIZE) from $GAME_DATA_DIR"
+
+# Flat list of asset paths so native code can "opendir" without AAssetManager_list.
+# Paths are relative to AssetManager root (same as SDL_RWFromFile).
+( cd src/assets && find . -type f ! -name 'android-asset-index.txt' | sed 's|^\./||' | sort > android-asset-index.txt )
+INDEX_COUNT=$(wc -l < src/assets/android-asset-index.txt | tr -d ' ')
+echo "Wrote android-asset-index.txt ($INDEX_COUNT paths)"
+
 if [ "$ASSET_COUNT" -lt 10 ]; then
   echo "error: asset tree looks empty (found $ASSET_COUNT files)" >&2
   ls -la src/assets >&2 || true
