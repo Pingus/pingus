@@ -19,6 +19,7 @@
 #include "stream_sound_source.hpp"
 
 #include <array>
+#include <vector>
 #include <iostream>
 #include <stdexcept>
 
@@ -197,7 +198,9 @@ StreamSoundSource::sec_to_sample(float sec) const
 void
 StreamSoundSource::fill_buffer_and_queue(ALuint buffer)
 {
-  std::array<char, STREAMFRAGMENTSIZE> bufferdata;
+  // Heap, not stack: STREAMFRAGMENTSIZE is 64KiB and Emscripten's default
+  // STACK_SIZE is often 64KiB — a stack array here OOBs at first music fill.
+  std::vector<char> bufferdata(STREAMFRAGMENTSIZE);
   size_t total_bytesread = 0;
 
   // fill buffer with data from m_sound_file

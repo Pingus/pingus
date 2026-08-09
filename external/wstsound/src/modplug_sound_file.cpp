@@ -18,6 +18,8 @@
 
 #include "modplug_sound_file.hpp"
 
+#include "sound_error.hpp"
+
 #include <iostream>
 #include <vector>
 
@@ -37,7 +39,15 @@ ModplugSoundFile::ModplugSoundFile(std::unique_ptr<std::istream> istream) :
   std::vector<char> buffer(file_size);
   m_istream->read(buffer.data(), buffer.size());
 
-  m_file = ModPlug_Load(buffer.data(), static_cast<int>(m_istream->gcount()));
+  int const nbytes = static_cast<int>(m_istream->gcount());
+  if (nbytes <= 0) {
+    throw SoundError("ModplugSoundFile: empty or unreadable stream");
+  }
+
+  m_file = ModPlug_Load(buffer.data(), nbytes);
+  if (!m_file) {
+    throw SoundError("ModplugSoundFile: ModPlug_Load failed");
+  }
 
   ModPlug_Settings settings;
   ModPlug_GetSettings(&settings);
