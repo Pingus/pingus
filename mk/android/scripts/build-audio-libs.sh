@@ -24,13 +24,48 @@ if [ ! -f "$TOOLCHAIN" ]; then
   echo "error: missing $TOOLCHAIN" >&2
   exit 1
 fi
+PREBUILT="$(ls -d "$NDK_ROOT"/toolchains/llvm/prebuilt/* 2>/dev/null | head -1)"
+if [ -z "$PREBUILT" ] || [ ! -d "$PREBUILT/sysroot" ]; then
+  echo "error: NDK llvm prebuilt/sysroot not found under $NDK_ROOT" >&2
+  exit 1
+fi
+SYSROOT="$PREBUILT/sysroot"
+OPENSL_INC="$SYSROOT/usr/include"
+if [ ! -f "$OPENSL_INC/SLES/OpenSLES.h" ]; then
+  echo "error: OpenSLES.h not under $OPENSL_INC/SLES" >&2
+  exit 1
+fi
 
 echo "==> NDK: $NDK_ROOT"
+echo "==> sysroot: $SYSROOT"
 echo "==> ABIs: $TARGET_ABIS"
 mkdir -p "$OUT_DIR"
 
 for abi in $TARGET_ABIS; do
   echo "==> OpenAL Soft ($abi)"
+  case "$abi" in
+    armeabi-v7a) opensl_triple="arm-linux-androideabi" ;;
+    arm64-v8a)   opensl_triple="aarch64-linux-android" ;;
+    x86)         opensl_triple="i686-linux-android" ;;
+    x86_64)      opensl_triple="x86_64-linux-android" ;;
+    *) echo "error: unknown ABI $abi" >&2; exit 1 ;;
+  esac
+  # Prefer API-level lib dir; fall back to generic.
+  OPENSL_LIB=""
+  for candidate in \
+      "$SYSROOT/usr/lib/$opensl_triple/${PACKAGE_PLATFORM}/libOpenSLES.so" \
+      "$SYSROOT/usr/lib/$opensl_triple/libOpenSLES.so" \
+      "$PREBUILT/sysroot/usr/lib/$opensl_triple/libOpenSLES.so"
+  do
+    if [ -f "$candidate" ]; then OPENSL_LIB="$candidate"; break; fi
+  done
+  if [ -z "$OPENSL_LIB" ]; then
+    echo "error: libOpenSLES.so not found for $abi" >&2
+    find "$SYSROOT/usr/lib" -name 'libOpenSLES.so' 2>/dev/null | head -10 >&2 || true
+    exit 1
+  fi
+  echo "    OpenSL: $OPENSL_LIB"
+
   bdir="$OUT_DIR/build-openal-$abi"
   idir="$OUT_DIR/$abi"
   mkdir -p "$idir"
@@ -43,6 +78,9 @@ for abi in $TARGET_ABIS; do
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="$idir" \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DOPENSL_INCLUDE_DIR="$OPENSL_INC" \
+    -DOPENSL_ANDROID_INCLUDE_DIR="$OPENSL_INC" \
+    -DOPENSL_LIBRARY="$OPENSL_LIB" \
     -DALSOFT_UTILS=OFF \
     -DALSOFT_EXAMPLES=OFF \
     -DALSOFT_TESTS=OFF \

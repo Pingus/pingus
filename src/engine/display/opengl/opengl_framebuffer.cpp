@@ -257,8 +257,17 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT);
 
-  log_info("OpenGL framebuffer ready (ES={} requested={}x{} drawable={}x{})",
-           PINGUS_GL_ES, size.width(), size.height(), dw, dh);
+  {
+    char const* vendor = reinterpret_cast<char const*>(glGetString(GL_VENDOR));
+    char const* renderer = reinterpret_cast<char const*>(glGetString(GL_RENDERER));
+    char const* version = reinterpret_cast<char const*>(glGetString(GL_VERSION));
+    log_info("OpenGL framebuffer ready (ES={} requested={}x{} drawable={}x{})",
+             PINGUS_GL_ES, size.width(), size.height(), dw, dh);
+    log_info("OpenGL: vendor='{}' renderer='{}' version='{}'",
+             vendor ? vendor : "?",
+             renderer ? renderer : "?",
+             version ? version : "?");
+  }
 }
 
 bool

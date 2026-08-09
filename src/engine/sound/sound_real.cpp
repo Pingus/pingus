@@ -121,11 +121,20 @@ PingusSoundReal::real_play_music(std::string const& filename, float volume, bool
       m_master_volume > 0 &&
       m_music_volume > 0)
   {
-    log_info("PingusSoundReal: Playing music: {}", filename);
+    log_info("PingusSoundReal: Playing music: {} (dummy={})",
+             filename, m_sound_manager->is_dummy());
 
     real_stop_music();
 
-    m_music_source = m_sound_manager->music().prepare(filename, wstsound::SoundSourceType::STREAM);
+    try
+    {
+      m_music_source = m_sound_manager->music().prepare(filename, wstsound::SoundSourceType::STREAM);
+    }
+    catch (std::exception const& err)
+    {
+      log_error("PingusSoundReal: music prepare failed: {}", err.what());
+      return;
+    }
     // if (!music_sample)
     // {
     //   log_error("Can't load music: {}' -- skipping\n  Mix_Error: {}", filename, Mix_GetError());
