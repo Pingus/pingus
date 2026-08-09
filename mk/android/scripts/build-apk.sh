@@ -121,6 +121,9 @@ else
   exit 1
 fi
 echo "==> staged external headers into jni/external_includes"
+# tinygettext ships a Windows dirent.h; if it sits on -I, <dirent.h> resolves
+# to it even on Android. Always drop the Windows shim from the stage tree.
+rm -f src/jni/external_includes/tinygettext/dirent.h
 
 # Compile external .cpp into libmain (ndk-build RWILDCARD under jni/src/).
 # Skip tests/benchmarks; skip priocpp JSON (no jsoncpp on Android).

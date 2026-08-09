@@ -27,7 +27,6 @@ LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/../external_includes/prio \
 	$(LOCAL_PATH)/../external_includes/strut \
 	$(LOCAL_PATH)/../external_includes/sexp \
-	$(LOCAL_PATH)/../external_includes/tinygettext \
 	$(LOCAL_PATH)/deps/argpp \
 	$(LOCAL_PATH)/deps/logmich \
 	$(LOCAL_PATH)/deps/sexpcpp \
