@@ -154,6 +154,58 @@ rm -f src/jni/src/deps/priocpp/json_*.cpp \
 rm -f src/jni/src/deps/strutcpp/layout.cpp
 echo "==> staged external sources into jni/src/deps/"
 
+# wstsound (wav + modplug only; match EMSCRIPTEN/ANDROID CMake defaults)
+if [ -d "$EXTERNAL_DIR/wstsound/src" ]; then
+  mkdir -p src/jni/src/deps/wstsound
+  find "$EXTERNAL_DIR/wstsound/src" -maxdepth 1 -name '*.cpp' -exec cp -a {} src/jni/src/deps/wstsound/ \;
+  find "$EXTERNAL_DIR/wstsound/src" -maxdepth 1 \( -name '*.hpp' -o -name '*.h' \) -exec cp -a {} src/jni/src/deps/wstsound/ \;
+  # Drop codecs / EFX not used on Android
+  rm -f src/jni/src/deps/wstsound/ogg_sound_file.cpp \
+        src/jni/src/deps/wstsound/opus_sound_file.cpp \
+        src/jni/src/deps/wstsound/mp3_sound_file.cpp \
+        src/jni/src/deps/wstsound/effect.cpp \
+        src/jni/src/deps/wstsound/effect_slot.cpp \
+        src/jni/src/deps/wstsound/filter.cpp
+  # Public headers: include/wstsound/*.hpp
+  if [ -d "$EXTERNAL_DIR/wstsound/include/wstsound" ]; then
+    mkdir -p src/jni/external_includes/wstsound
+    cp -a "$EXTERNAL_DIR/wstsound/include/wstsound/." src/jni/external_includes/wstsound/
+  fi
+  chmod -R u+rwX src/jni/src/deps/wstsound src/jni/external_includes/wstsound 2>/dev/null || true
+  echo "==> staged wstsound (wav+modplug) into jni/src/deps/wstsound"
+fi
+
+# Prebuilt OpenAL Soft + libmodplug (from nix audioAndroidLibs)
+ENABLE_ANDROID_SOUND=0
+if [ -n "${AUDIO_ANDROID_LIBS:-}" ] && [ -d "$AUDIO_ANDROID_LIBS" ]; then
+  mkdir -p src/jni/audio
+  # Layout expected by Android.mk: jni/audio/<abi>/lib/*.a and include/
+  for abi_dir in "$AUDIO_ANDROID_LIBS"/*; do
+    [ -d "$abi_dir" ] || continue
+    abi=$(basename "$abi_dir")
+    case "$abi" in
+      armeabi-v7a|arm64-v8a|x86|x86_64)
+        mkdir -p "src/jni/audio/$abi/lib"
+        cp -a "$abi_dir"/lib/*.a "src/jni/audio/$abi/lib/" 2>/dev/null || true
+        if [ -d "$abi_dir/include" ]; then
+          mkdir -p src/jni/audio/include
+          cp -a "$abi_dir/include/." src/jni/audio/include/
+        fi
+        ;;
+    esac
+  done
+  if ls src/jni/audio/*/lib/libopenal.a >/dev/null 2>&1 &&      ls src/jni/audio/*/lib/libmodplug.a >/dev/null 2>&1; then
+    ENABLE_ANDROID_SOUND=1
+    echo "==> staged OpenAL Soft + libmodplug prebuilts (sound enabled)"
+  else
+    echo "warning: AUDIO_ANDROID_LIBS set but openal/modplug .a missing — sound disabled" >&2
+    find src/jni/audio -type f 2>/dev/null | head -20 >&2 || true
+  fi
+else
+  echo "==> AUDIO_ANDROID_LIBS not set — building with PINGUS_NO_SOUND"
+fi
+export ENABLE_ANDROID_SOUND
+
 # Minimal sigc++ headers (Pingus Android polyfill — full libsigc++ not required).
 mkdir -p src/jni/external_includes/sigc++
 cp -a "$APP_DIR/jni/sigc++/." src/jni/external_includes/sigc++/
@@ -223,6 +275,7 @@ echo "==> PINGUS_VERSION=$PINGUS_VERSION"
   APP_BUILD_SCRIPT="$PWD/src/jni/Android.mk" \
   NDK_APPLICATION_MK="$PWD/src/jni/Application.mk" \
   PINGUS_VERSION="$PINGUS_VERSION" \
+  ENABLE_ANDROID_SOUND="${ENABLE_ANDROID_SOUND:-0}" \
   -j"${NIX_BUILD_CORES:-${JOBS:-$(nproc)}}"
 
 mkdir -p out

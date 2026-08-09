@@ -88,7 +88,55 @@ let
     '';
   };
 
-  # Prebuilt SDL2 + SDL2_mixer for the app's ndk-build tree.
+
+  # ---------------------------------------------------------------
+  # OpenAL Soft + libmodplug for wstsound (per APP_ABI).
+  # ---------------------------------------------------------------
+  openalSrc = pkgs.fetchurl {
+    url = "https://github.com/kcat/openal-soft/archive/refs/tags/1.23.1.tar.gz";
+    hash = "sha256-393zofYQWYU8Ylt7sD3oQztFXy95+JVIy8vV7co9Sko=";
+  };
+
+  modplugSrc = pkgs.fetchurl {
+    url = "https://downloads.sourceforge.net/project/modplug-xmms/libmodplug/0.8.9.0/libmodplug-0.8.9.0.tar.gz";
+    hash = "sha256-RXylpsF5ZW1mwBUFwNlfr66tQym526oPmX0Ao1CK2d4=";
+  };
+
+  audioAndroidLibs = pkgs.stdenvNoCC.mkDerivation {
+    pname = "pingus-android-audio-libs";
+    version = "openal-1.23.1+modplug-0.8.9.0";
+    dontUnpack = true;
+    nativeBuildInputs = [ androidSdk pkgs.cmake pkgs.gnumake pkgs.python3 ];
+    env = {
+      PACKAGE_PLATFORM = packagePlatform;
+      OPENAL_SRC = "${openalSrc}";
+      MODPLUG_SRC = "${modplugSrc}";
+    };
+    buildPhase = ''
+      runHook preBuild
+      export ANDROID_HOME=${androidSdk}/libexec/android-sdk
+      # Unpack modplug tarball to a stable path
+      mkdir -p "$TMPDIR/modplug-src" "$TMPDIR/openal-src"
+      tar -xzf "$MODPLUG_SRC" -C "$TMPDIR/modplug-src" --strip-components=1
+      tar -xzf "${openalSrc}" -C "$TMPDIR/openal-src" --strip-components=1
+      export MODPLUG_SRC="$TMPDIR/modplug-src"
+      export OPENAL_SRC="$TMPDIR/openal-src"
+      export TARGET_ABIS=${pkgs.lib.escapeShellArg targetAbisStr}
+      export PACKAGE_PLATFORM=${packagePlatform}
+      export OUT_DIR="$PWD/audio-out"
+      bash ${../mk/android/scripts/build-audio-libs.sh}
+      runHook postBuild
+    '';
+    installPhase = ''
+      runHook preInstall
+      mkdir -p $out
+      cp -a audio-out/. $out/
+      # Flat layout: $out/<abi>/{lib,include}
+      runHook postInstall
+    '';
+  };
+
+    # Prebuilt SDL2 + SDL2_mixer for the app's ndk-build tree.
   sdlPrebuiltAndroidMk = pkgs.writeTextFile {
     name = "SDL2-prebuilt-Android.mk";
     text = ''
@@ -148,6 +196,7 @@ let
         TOP_ANDROID_MK = topAndroidMk;
         SDL_PREBUILT_MK = sdlPrebuiltAndroidMk;
         SDL_ANDROID_LIBS = sdlAndroidLibs;
+        AUDIO_ANDROID_LIBS = audioAndroidLibs;
         KEYSTORE = "${keystore}";
         PINGUS_VERSION = gameVersion;
       } // pkgs.lib.optionalAttrs (gameSrcDir != null) {
@@ -198,5 +247,5 @@ let
     meta.description = description;
   };
 in {
-  inherit sdlAndroidLibs mkApk mkInstallApp;
+  inherit sdlAndroidLibs audioAndroidLibs mkApk mkInstallApp;
 }

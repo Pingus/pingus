@@ -141,23 +141,24 @@ fixes. Sound is still forced off (`PINGUS_NO_SOUND`).
 - [x] Empty-datadir `opendir_recursive` path fix (editor groundpieces)
 - [x] Validate APK install on a device (Fire tablet / austin)
 - [ ] Build/link remaining `external/` static libs for each ABI where needed
-- [ ] **wstsound + OpenAL Soft + libmodplug** for real audio (see below)
+- [~] **wstsound + OpenAL Soft + libmodplug** for real audio (wiring in; see below)
 - [ ] Pause/resume audio on Activity lifecycle
 
-#### Android audio (wstsound) — next
+#### Android audio (wstsound) — in progress
 
-Parity with wasm: **wstsound → OpenAL**, codecs **modplug + wav** (no
-vorbis/opus/mpg123 required for stock data).
+Parity with wasm: **wstsound → OpenAL**, codecs **modplug + wav**.
 
-- [ ] Cross-build **OpenAL Soft** for each `APP_ABI` (static or shared)
-- [ ] Cross-build **libmodplug** for each ABI
-- [ ] Compile **wstsound** into the NDK tree (same feature set as
-      `EMSCRIPTEN` in `external/wstsound/CMakeLists.txt`: modplug on, EFX off)
-- [ ] Asset-aware open for music/SFX (memory buffer from `System::read_file`
-      / `SDL_RWFromFile` — OpenAL does not see APK paths)
-- [ ] Drop `PINGUS_NO_SOUND`, stop filtering out `sound_real.cpp`, link
-      OpenAL + modplug + wstsound from `Android.mk`
-- [ ] Device test: menu music (`.it`) + SFX; background/pause behaviour
+- [x] Asset-aware open: `SoundManager` `OpenFunc` → `System::read_file` in
+      `sound_real.cpp` (`#ifdef ANDROID`)
+- [x] `mk/android/scripts/build-audio-libs.sh` — NDK CMake for OpenAL Soft
+      (static) + libmodplug per ABI
+- [x] `nix/android.nix` `audioAndroidLibs` + `AUDIO_ANDROID_LIBS` into APK build
+- [x] Stage wstsound (wav+modplug only) + prebuilt `.a` in `build-apk.sh`
+- [x] `Android.mk`: when `ENABLE_ANDROID_SOUND=1`, link openal+modplug,
+      compile `sound_real.cpp` + wstsound, `-lOpenSLES`; else keep dummy
+- [ ] First successful `nix build .#pingus-android` with audio libs (fix OpenAL
+      source hash if fetch fails)
+- [ ] Device test: menu music (`.it`) + SFX; pause on Activity lifecycle
 
 Non-goals for this track: SDL2_mixer as primary path; full codec set;
 OpenAL EFX on mobile.

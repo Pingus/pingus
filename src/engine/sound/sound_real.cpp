@@ -27,6 +27,8 @@
 #include "pingus/globals.hpp"
 #include "pingus/path_manager.hpp"
 #include "util/raise_exception.hpp"
+#include "util/system.hpp"
+#include <sstream>
 
 namespace pingus::sound {
 
@@ -37,7 +39,24 @@ PingusSoundReal::PingusSoundReal() :
   m_sound_volume(1.0f),
   m_master_volume(1.0f)
 {
+#ifdef ANDROID
+  // APK assets are not real files; feed wstsound via System::read_file.
+  m_sound_manager = std::make_unique<wstsound::SoundManager>(
+    [](std::filesystem::path const& path) -> std::unique_ptr<std::istream> {
+      try
+      {
+        std::string body = System::read_file(path.string());
+        return std::make_unique<std::istringstream>(std::move(body));
+      }
+      catch (std::exception const& err)
+      {
+        log_error("sound open {}: {}", path.string(), err.what());
+        return std::unique_ptr<std::istream>();
+      }
+    });
+#else
   m_sound_manager = std::make_unique<wstsound::SoundManager>();
+#endif
 }
 
 PingusSoundReal::~PingusSoundReal()
