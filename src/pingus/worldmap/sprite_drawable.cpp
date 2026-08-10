@@ -42,7 +42,7 @@ SpriteDrawable::SpriteDrawable(ReaderMapping const& reader) :
 }
 
 void
-SpriteDrawable::update(float delta)
+SpriteDrawable::update(float /* delta */)
 {
 }
 

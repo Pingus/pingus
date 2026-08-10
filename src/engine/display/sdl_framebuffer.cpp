@@ -181,7 +181,7 @@ SDLFramebuffer::flip()
 }
 
 void
-SDLFramebuffer::update_rects(std::vector<geom::irect> const& rects)
+SDLFramebuffer::update_rects(std::vector<geom::irect> const& /* rects */)
 {
   flip();
 }

@@ -56,7 +56,7 @@ WorldObj::update()
 }
 
 void
-WorldObj::draw_smallmap(SmallMap* smallmap)
+WorldObj::draw_smallmap(SmallMap* /* smallmap */)
 {
 }
 

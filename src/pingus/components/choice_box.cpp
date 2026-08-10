@@ -53,7 +53,7 @@ ChoiceBox::draw(DrawingContext& gc)
 }
 
 void
-ChoiceBox::on_primary_button_press(int x, int y)
+ChoiceBox::on_primary_button_press(int x, int /* y */)
 {
   if (!choices.empty())
   {

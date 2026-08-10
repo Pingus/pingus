@@ -186,7 +186,7 @@ WorldmapScreen::update (float delta)
 }
 
 void
-WorldmapScreen::draw_foreground(DrawingContext& gc)
+WorldmapScreen::draw_foreground(DrawingContext& /* gc */)
 {
 }
 

@@ -28,7 +28,7 @@
 
 namespace pingus {
 
-Pathname Pathname::tmpfile(std::string const& prefix)
+Pathname Pathname::tmpfile(std::string const& /* prefix */)
 {
   assert(false && "unimplemented");
   return Pathname();
@@ -142,7 +142,7 @@ Pathname::absolute() const
 }
 
 std::vector<Pathname>
-Pathname::opendir(std::string const& pattern) const
+Pathname::opendir(std::string const& /* pattern */) const
 {
   switch(get_type())
   {

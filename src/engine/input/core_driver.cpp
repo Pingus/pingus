@@ -214,13 +214,13 @@ private:
 };
 
 std::unique_ptr<Button>
-CoreDriver::create_button(prio::ReaderObject const& reader_object, Control* parent)
+CoreDriver::create_button(prio::ReaderObject const& /* reader_object */, Control* /* parent */)
 {
   return {};
 }
 
 std::unique_ptr<Axis>
-CoreDriver::create_axis(prio::ReaderObject const& reader_object, Control* parent)
+CoreDriver::create_axis(prio::ReaderObject const& /* reader_object */, Control* /* parent */)
 {
   return {};
 }
@@ -370,7 +370,7 @@ CoreDriver::create_pointer(prio::ReaderObject const& reader_object, Control* par
 }
 
 std::unique_ptr<Keyboard>
-CoreDriver::create_keyboard(prio::ReaderObject const& reader, Control* parent)
+CoreDriver::create_keyboard(prio::ReaderObject const& /* reader */, Control* /* parent */)
 {
   return {};
 }

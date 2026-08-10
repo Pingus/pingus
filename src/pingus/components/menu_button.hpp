@@ -61,7 +61,7 @@ public:
   void on_pointer_press();
   void on_pointer_release();
 
-  void on_primary_button_click (int x, int y) override { on_click(); }
+  void on_primary_button_click (int /* x */, int /* y */) override { on_click(); }
 
   virtual void on_click();
 

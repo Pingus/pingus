@@ -100,7 +100,7 @@ WorldObjRenderer::get_clip_rect() const
 void
 WorldObjRenderer::render_sprite(ResDescriptor const& desc,
                                 geom::fpoint const& pos,
-                                float z_index)
+                                float /* z_index */)
 {
   Surface surface = Resource::load_surface(desc);
 
@@ -113,7 +113,7 @@ WorldObjRenderer::render_sprite(ResDescriptor const& desc,
 void
 WorldObjRenderer::render_surface(ResDescriptor const& desc,
                                  geom::fpoint const& pos,
-                                 float z_index,
+                                 float /* z_index */,
                                  int repeat)
 {
   Surface surface = Resource::load_surface(desc);

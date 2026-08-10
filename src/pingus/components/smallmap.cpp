@@ -138,7 +138,7 @@ SmallMap::on_primary_button_press (int x, int y)
 }
 
 void
-SmallMap::on_primary_button_release(int x, int y)
+SmallMap::on_primary_button_release(int /* x */, int /* y */)
 {
   scroll_mode = false;
 }

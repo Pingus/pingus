@@ -245,7 +245,7 @@ Playfield::on_secondary_button_press(int x, int y)
 }
 
 void
-Playfield::on_secondary_button_release (int x, int y)
+Playfield::on_secondary_button_release (int /* x */, int /* y */)
 {
   // x -= rect.left();
   // y -= rect.top();

@@ -38,7 +38,7 @@ SDLDriver::~SDLDriver()
 }
 
 std::unique_ptr<Keyboard>
-SDLDriver::create_keyboard(prio::ReaderObject const& reader_object, Control* parent)
+SDLDriver::create_keyboard(prio::ReaderObject const& /* reader_object */, Control* parent)
 {
   auto keyboard = std::make_unique<Keyboard>(parent);
   keyboard_binding = keyboard.get();
@@ -214,7 +214,7 @@ SDLDriver::open_joystick(int device)
 }
 
 void
-SDLDriver::update(float delta)
+SDLDriver::update(float /* delta */)
 {
 }
 

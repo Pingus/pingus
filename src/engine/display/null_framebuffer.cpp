@@ -95,27 +95,27 @@ NullFramebuffer::pop_cliprect()
 }
 
 void
-NullFramebuffer::draw_surface(FramebufferSurface const& src, geom::ipoint const& pos)
+NullFramebuffer::draw_surface(FramebufferSurface const& /* src */, geom::ipoint const& /* pos */)
 {
 }
 
 void
-NullFramebuffer::draw_surface(FramebufferSurface const& src, geom::irect const& srcrect, geom::ipoint const& pos)
+NullFramebuffer::draw_surface(FramebufferSurface const& /* src */, geom::irect const& /* srcrect */, geom::ipoint const& /* pos */)
 {
 }
 
 void
-NullFramebuffer::draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Color const& color)
+NullFramebuffer::draw_line(geom::ipoint const& /* pos1 */, geom::ipoint const& /* pos2 */, Color const& /* color */)
 {
 }
 
 void
-NullFramebuffer::draw_rect(geom::irect const& rect, Color const& color)
+NullFramebuffer::draw_rect(geom::irect const& /* rect */, Color const& /* color */)
 {
 }
 
 void
-NullFramebuffer::fill_rect(geom::irect const& rect, Color const& color)
+NullFramebuffer::fill_rect(geom::irect const& /* rect */, Color const& /* color */)
 {
 }
 

@@ -81,7 +81,7 @@ ArmageddonButton::update (float delta)
 }
 
 void
-ArmageddonButton::on_primary_button_click (int x, int y)
+ArmageddonButton::on_primary_button_click (int /* x */, int /* y */)
 {
   if (pressed)
   {
@@ -123,13 +123,13 @@ ForwardButton::draw (DrawingContext& gc)
 }
 
 void
-ForwardButton::on_primary_button_press (int x, int y)
+ForwardButton::on_primary_button_press (int /* x */, int /* y */)
 {
   session->set_fast_forward(true);
 }
 
 void
-ForwardButton::on_primary_button_release (int x, int y)
+ForwardButton::on_primary_button_release (int /* x */, int /* y */)
 {
   session->set_fast_forward(false);
 }
@@ -166,7 +166,7 @@ PauseButton::draw (DrawingContext& gc)
 }
 
 void
-PauseButton::on_primary_button_click (int x, int y)
+PauseButton::on_primary_button_click (int /* x */, int /* y */)
 {
   session->set_pause(!session->get_pause());
 }

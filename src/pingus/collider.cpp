@@ -30,8 +30,8 @@ Collider::~Collider()
 {
 }
 
-bool Collider::operator() (World const* world, Vector2f const& current_pos,
-                            glm::vec2 const& step_vector) const
+bool Collider::operator() (World const* /* world */, Vector2f const& /* current_pos */,
+                           glm::vec2 const& /* step_vector */) const
 {
   return false;
 }

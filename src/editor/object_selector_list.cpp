@@ -99,7 +99,7 @@ ObjectSelectorList::draw(DrawingContext& parent_gc)
 }
 
 void
-ObjectSelectorList::on_primary_button_press (int x, int y)
+ObjectSelectorList::on_primary_button_press (int /* x */, int /* y */)
 {
   if (!set) return;
 
@@ -165,7 +165,7 @@ ObjectSelectorList::on_secondary_button_press (int x, int y)
 }
 
 void
-ObjectSelectorList::on_secondary_button_release (int x, int y)
+ObjectSelectorList::on_secondary_button_release (int /* x */, int /* y */)
 {
   if (!set) return;
 

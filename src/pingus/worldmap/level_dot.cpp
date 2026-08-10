@@ -101,7 +101,7 @@ LevelDot::draw_hover(DrawingContext& gc)
 }
 
 void
-LevelDot::update(float delta)
+LevelDot::update(float /* delta */)
 {
 }
 

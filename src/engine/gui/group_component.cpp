@@ -290,7 +290,7 @@ GroupComponent::grab(Component* comp)
 }
 
 void
-GroupComponent::ungrab(Component* comp)
+GroupComponent::ungrab(Component* /* comp */)
 {
   grabbed_comp = nullptr;
   Component::ungrab();

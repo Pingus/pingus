@@ -61,7 +61,7 @@ StoryDot::draw_hover(DrawingContext& gc)
 }
 
 void
-StoryDot::update(float delta)
+StoryDot::update(float /* delta */)
 {
 }
 

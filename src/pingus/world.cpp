@@ -244,7 +244,7 @@ World::get_gfx_map() const
 }
 
 void
-World::play_sound(std::string const& name, Vector2f const& pos, float volume)
+World::play_sound(std::string const& name, Vector2f const& /* pos */, float volume)
 {
   // FIXME: Stereo is for the moment disabled
   /*
@@ -289,7 +289,7 @@ float World::get_gravity() const
 }
 
 void
-World::put(int x, int y, Groundtype::GPType p)
+World::put(int /* x */, int /* y */, Groundtype::GPType /* p */)
 {
 }
 

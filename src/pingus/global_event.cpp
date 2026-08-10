@@ -172,7 +172,7 @@ GlobalEvent::on_button_press(SDL_KeyboardEvent const& event)
 }
 
 void
-GlobalEvent::on_button_release(SDL_KeyboardEvent const& event)
+GlobalEvent::on_button_release(SDL_KeyboardEvent const& /* event */)
 {
 }
 

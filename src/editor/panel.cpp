@@ -133,12 +133,12 @@ public:
     mouse_over = false;
   }
 
-  void on_primary_button_press (int x, int y) override
+  void on_primary_button_press (int /* x */, int /* y */) override
   {
     mouse_down = true;
   }
 
-  void on_primary_button_release (int x, int y) override
+  void on_primary_button_release (int /* x */, int /* y */) override
   {
     mouse_down = false;
     if (mouse_over && callback)

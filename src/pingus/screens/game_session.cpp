@@ -253,7 +253,7 @@ GameSession::process_scroll_event (pingus::input::ScrollEvent const& ev)
 }
 
 void
-GameSession::process_axis_event (pingus::input::AxisEvent const& event)
+GameSession::process_axis_event (pingus::input::AxisEvent const& /* event */)
 {
   // log_info("GameSession::process_axis_event ()");
 }
