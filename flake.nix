@@ -243,7 +243,7 @@
             compilePlatform = "33";
             # Need full std::format (format_to/vformat). r23: no <format>;
             # r26.1: header present but incomplete in practice; r27 is solid.
-            ndkVersion = "27.0.12077973";
+            ndkVersion = "29.0.14206865";
             targetAbis = [ "armeabi-v7a" "arm64-v8a" ];
             androidSdk = (androidPkgs.androidenv.composeAndroidPackages {
               platformVersions = [ packagePlatform compilePlatform ];
