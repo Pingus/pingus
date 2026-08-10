@@ -25,6 +25,7 @@ namespace pingus {
 template<class... Args>
 void print(std::FILE* stream, std::format_string<Args...> fmt, Args&&... args)
 {
+  // Qualify std:: to avoid ambiguity with pingus::print under ADL.
   std::print(stream, fmt, std::forward<Args>(args)...);
 }
 
@@ -38,6 +39,13 @@ template<class... Args>
 void println(std::format_string<Args...> fmt, Args&&... args)
 {
   std::println(fmt, std::forward<Args>(args)...);
+}
+
+template<class... Args>
+void print_err(std::format_string<Args...> fmt, Args&&... args)
+{
+  std::println(stderr, fmt, std::forward<Args>(args)...);
+  fflush(stderr);
 }
 
 #else // polyfill
@@ -63,15 +71,16 @@ void println(std::format_string<Args...> fmt, Args&&... args)
   println(stdout, fmt, std::forward<Args>(args)...);
 }
 
-#endif
-
-/** Diagnostic line on stderr (always flushed). Prefer over iostreams. */
 template<class... Args>
 void print_err(std::format_string<Args...> fmt, Args&&... args)
 {
-  println(stderr, fmt, std::forward<Args>(args)...);
+  auto s = std::format(fmt, std::forward<Args>(args)...);
+  s.push_back('\n');
+  fwrite(s.data(), 1, s.size(), stderr);
   fflush(stderr);
 }
+
+#endif
 
 } // namespace pingus
 
