@@ -304,7 +304,7 @@ private:
   void load_generic_surface();
 
   /** Write any additional properties to the file for this type */
-  virtual void write_extra_properties(Writer& fw) { }
+  virtual void write_extra_properties(Writer& /* fw */) { }
 
   /** Sets a position vector of where the sprite is located based
       on the "translation origin" specified in the sprite file. */

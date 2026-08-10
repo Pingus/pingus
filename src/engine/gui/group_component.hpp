@@ -49,7 +49,7 @@ public:
   ~GroupComponent() override;
 
   void draw(DrawingContext& gc) override;
-  virtual void draw_background(DrawingContext& gc) {}
+  virtual void draw_background(DrawingContext& /* gc */) {}
 
   void update(float delta) override;
 

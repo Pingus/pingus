@@ -133,45 +133,45 @@ public:
   /** Set the object's position */
   void set_pos(Vector2f const& p) override;
 
-  void set_pos_x(float x) override { }
+  void set_pos_x(float /* x */) override { }
   float get_pos_x() const override { return 0.0f; }
 
-  void set_pos_y(float y) override { }
+  void set_pos_y(float /* y */) override { }
   float get_pos_y() const override { return 0.0f; }
 
-  void set_z_index(float z) override { }
+  void set_z_index(float /* z */) override { }
   float z_index() const override { return 0.0f; }
 
   /** Original position of the objects before being dragged around */
   void set_orig_pos(Vector2f const& p) override { m_orig_pos = p; }
 
   /** Set the object's resource name */
-  void set_res_desc(ResDescriptor const& d) override { }
+  void set_res_desc(ResDescriptor const& /* d */) override { }
 
   /** Set the object's modifier */
-  void set_modifier(std::string const& m) override { }
+  void set_modifier(std::string const& /* m */) override { }
 
   /** Set the object's modifier */
-  void set_modifier(ResourceModifier::Enum modifier) override { }
+  void set_modifier(ResourceModifier::Enum /* modifier */) override { }
 
   ResourceModifier::Enum get_modifier() const override { return ResourceModifier::Enum::ROT0; }
 
   /** Set the object's section header name */
-  void set_section_name(std::string const& sn) override { }
+  void set_section_name(std::string const& /* sn */) override { }
 
   /** Set the object's type */
-  void set_type(std::string const& t) override { }
+  void set_type(std::string const& /* t */) override { }
 
-  void set_ground_type(std::string const& t) override { }
+  void set_ground_type(std::string const& /* t */) override { }
 
   /** Set the object's speed */
-  void set_speed(int s) override { }
+  void set_speed(int /* s */) override { }
 
   /** Set the objects release rate */
   void set_release_rate(int r) override;
 
   /** Set the object's parallax */
-  void set_parallax(float para) override { }
+  void set_parallax(float /* para */) override { }
 
   /** Set the object's repeat */
   void set_repeat(int w) override;
@@ -180,36 +180,36 @@ public:
   void set_owner(int owner) override;
 
   /** Set the object's scroll rate in the x direction */
-  void set_scroll_x(float s) override { }
+  void set_scroll_x(float /* s */) override { }
 
   /** Set the object's scroll rate in the y direction */
-  void set_scroll_y(float s) override { }
+  void set_scroll_y(float /* s */) override { }
 
   /** Set the objects stretch in the x direction value */
-  void set_stretch_x(const bool s) override { }
+  void set_stretch_x(const bool /* s */) override { }
 
   /** Set the objects stretch in the y direction value */
-  void set_stretch_y(bool s) override { }
+  void set_stretch_y(bool /* s */) override { }
 
   /** Set whether or not the object should maintain it's aspect ratio when stretched */
-  void set_keep_aspect(const bool a) override { }
+  void set_keep_aspect(const bool /* a */) override { }
 
   /** Set the objects color if applicable */
-  void set_color(Color const& c) override { }
+  void set_color(Color const& /* c */) override { }
 
   /** Set the object's parallax scroll multiplier in the x direction */
-  void set_para_x(float p) override { }
+  void set_para_x(float /* p */) override { }
 
   /** Set the object's parallax scroll multiplier in the y direction */
-  void set_para_y(float p) override { }
+  void set_para_y(float /* p */) override { }
 
   /** Set the object's direction if applicable */
   void set_direction(std::string const& d) override;
 
-  void set_id(std::string const& t) override { }
-  void set_target_id(std::string const& t) override { }
+  void set_id(std::string const& /* t */) override { }
+  void set_target_id(std::string const& /* t */) override { }
 
-  void set_height(int h) override { }
+  void set_height(int /* h */) override { }
 
   /** Write basic properties to the file for this type */
   void write_properties(Writer &fw) override;
@@ -221,7 +221,7 @@ public:
   bool is_at (int x, int y) override;
 
   /** Returns a number representing which attributes this object possesses */
-  unsigned int get_attributes(std::string const& obj_type) { return 0; }
+  unsigned int get_attributes(std::string const& /* obj_type */) { return 0; }
 
   Rect get_rect() const override;
 
@@ -229,9 +229,9 @@ public:
   int get_middle_stars() const override { return 0; }
   int get_large_stars() const override  { return 0; }
 
-  void set_small_stars(int n) override  {}
-  void set_middle_stars(int n) override {}
-  void set_large_stars(int n) override  {}
+  void set_small_stars(int /* n */) override  {}
+  void set_middle_stars(int /* n */) override {}
+  void set_large_stars(int /* n */) override  {}
 
   LevelObjPtr duplicate(Vector2i const& offset) const override;
 

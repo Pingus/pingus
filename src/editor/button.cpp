@@ -56,7 +56,7 @@ Button::draw (DrawingContext& gc)
 }
 
 void
-Button::update (float delta)
+Button::update (float /* delta */)
 {
 }
 
@@ -73,13 +73,13 @@ Button::on_pointer_leave()
 }
 
 void
-Button::on_primary_button_press (int x, int y)
+Button::on_primary_button_press (int /* x */, int /* y */)
 {
   mouse_down = true;
 }
 
 void
-Button::on_primary_button_release (int x, int y)
+Button::on_primary_button_release (int /* x */, int /* y */)
 {
   mouse_down = false;
   if (mouse_over)
