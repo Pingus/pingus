@@ -70,8 +70,8 @@ if(WARNINGS)
       -Wlogical-op
       -Wmissing-format-attribute
       -Wmissing-noreturn
-      -Wsuggest-attribute=noreturn
-      -Wunused-parameter
+      -Wno-suggest-attribute=noreturn
+      -Wno-unused-parameter
       -Wnon-virtual-dtor
       -Wold-style-cast
       -Woverloaded-virtual
@@ -102,7 +102,6 @@ if(WARNINGS)
       -Wno-sign-conversion
       -Wno-gnu-zero-variadic-macro-arguments
       -Wno-poison-system-directories
-      -Wno-reserved-identifier
       -Wno-documentation-unknown-command
       -Wno-inconsistent-missing-destructor-override
       -Wno-deprecated-dynamic-exception-spec

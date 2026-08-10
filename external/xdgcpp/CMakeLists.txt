@@ -1,6 +1,82 @@
 cmake_minimum_required(VERSION 3.6)
 project(xdgcpp VERSION 0.1.0)
 
+option(WARNINGS "Enable extra compiler warnings" OFF)
+option(WERROR "Treat warnings as errors" OFF)
+
+set(WARNINGS_CXX_FLAGS "")
+if(WERROR)
+  list(APPEND WARNINGS_CXX_FLAGS -Werror)
+endif()
+if(WARNINGS)
+  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra)
+  if(CMAKE_COMPILER_IS_GNUCXX)
+    list(APPEND WARNINGS_CXX_FLAGS
+      -Wcast-align
+      -Wcast-qual
+      -Wconversion
+      -Wctor-dtor-privacy
+      -Wdisabled-optimization
+      -Wdouble-promotion
+      -Weffc++
+      -Wformat=2
+      -Winit-self
+      -Winvalid-pch
+      -Wlogical-op
+      -Wmissing-format-attribute
+      -Wmissing-noreturn
+      -Wno-suggest-attribute=noreturn
+      -Wno-unused-parameter
+      -Wnon-virtual-dtor
+      -Wold-style-cast
+      -Woverloaded-virtual
+      -Wpacked
+      -Wredundant-decls
+      -Wshadow
+      -Wsign-promo
+      -Wstrict-null-sentinel
+      -Wsuggest-override
+      -Wunreachable-code
+      -Wzero-as-null-pointer-constant
+      -pedantic
+    )
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 8)
+      list(APPEND WARNINGS_CXX_FLAGS -Wint-in-bool-context)
+    endif()
+  elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    list(APPEND WARNINGS_CXX_FLAGS
+      -Weverything
+      -Wno-c++98-compat
+      -Wno-c++98-compat-pedantic
+      -Wno-float-equal
+      -Wno-padded
+      -Wno-weak-vtables
+      -Wno-disabled-macro-expansion
+      -Wno-documentation
+      -Wno-reserved-id-macro
+      -Wno-sign-conversion
+      -Wno-gnu-zero-variadic-macro-arguments
+      -Wno-poison-system-directories
+      -Wno-documentation-unknown-command
+      -Wno-inconsistent-missing-destructor-override
+      -Wno-deprecated-dynamic-exception-spec
+      -Wno-deprecated
+      -Wno-switch-enum
+      -Wno-covered-switch-default
+      -Wno-exit-time-destructors
+      -Wno-global-constructors
+      -Wno-duplicate-enum
+      -Wno-unused-parameter
+      -Wno-old-style-cast
+      -Wno-unreachable-code-break
+      -Wno-double-promotion
+      -Wno-unused-private-field
+      -Wno-unused-exception-parameter
+    )
+  endif()
+endif()
+
+
 include(GNUInstallDirs)
 
 set(XDG_BUILD_TESTS OFF CACHE BOOL "Toggles building of the xdg test suite")
@@ -8,6 +84,7 @@ set(XDG_BUILD_TESTS OFF CACHE BOOL "Toggles building of the xdg test suite")
 set(XDGCPP_VERSION ${PROJECT_VERSION})
 
 add_library(xdgcpp STATIC src/xdg.cpp)
+target_compile_options(xdgcpp PRIVATE ${WARNINGS_CXX_FLAGS})
 add_library(xdgcpp::xdgcpp ALIAS xdgcpp)
 set_property(TARGET xdgcpp PROPERTY CXX_STANDARD 17)
 set_target_properties(xdgcpp PROPERTIES PUBLIC_HEADER "include/xdg.h")

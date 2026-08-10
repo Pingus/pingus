@@ -12,6 +12,8 @@ stdenv.mkDerivation {
 
   cmakeFlags = [
     "-DTINYGETTEXT_UTF8_ONLY=ON"
+    "-DWARNINGS=ON"
+    "-DWERROR=ON"
   ];
 
   postFixup = ""

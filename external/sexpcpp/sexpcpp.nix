@@ -12,6 +12,8 @@ stdenv.mkDerivation {
 
   cmakeFlags = [
     "-DBUILD_TESTS=ON"
+    "-DWARNINGS=ON"
+    "-DWERROR=ON"
   ];
 
   doCheck = true;

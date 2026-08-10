@@ -14,8 +14,8 @@
 , withJsoncpp ? true
 , buildTests ? true
 , buildExtra ? true
-, enableWarnings ? false
-, enableWerror ? false
+, enableWarnings ? true
+, enableWerror ? true
 }:
 
 let

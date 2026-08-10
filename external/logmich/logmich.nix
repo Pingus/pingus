@@ -9,6 +9,11 @@ stdenv.mkDerivation {
 
   src = lib.cleanSource ./.;
 
+  cmakeFlags = [
+    "-DWARNINGS=ON"
+    "-DWERROR=ON"
+  ];
+
   nativeBuildInputs = [
     cmake
   ];
