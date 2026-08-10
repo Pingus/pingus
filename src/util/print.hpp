@@ -11,7 +11,7 @@
 
 // C++23 std::print / std::println when available; otherwise a small
 // std::format + fwrite polyfill (R36S / older libstdc++, etc.).
-#if defined(__cpp_lib_print) && __cpp_lib_print >= 202207L
+#if defined(__cpp_lib_print) && __cpp_lib_print >= 202207L && !defined(_WIN32)
 #  include <print>
 #  define PINGUS_HAS_STD_PRINT 1
 #else
