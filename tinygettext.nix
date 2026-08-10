@@ -2,8 +2,6 @@
 , lib
 , libiconv
 , cmake
-
-, tinycmmc
 }:
 
 stdenv.mkDerivation {
@@ -11,6 +9,10 @@ stdenv.mkDerivation {
   version = "0.2.0";
 
   src = lib.cleanSource ./.;
+
+  cmakeFlags = [
+    "-DTINYGETTEXT_UTF8_ONLY=ON"
+  ];
 
   postFixup = ""
   + (lib.optionalString stdenv.hostPlatform.isWindows ''
@@ -24,10 +26,6 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     cmake
-  ];
-
-  buildInputs = [
-    tinycmmc
   ];
 
   propagatedBuildInputs = [

@@ -3,12 +3,12 @@
 
 prefix=@CMAKE_INSTALL_PREFIX@
 exec_prefix=${prefix}
-libdir=${exec_prefix}/@LIB_SUBDIR@
-includedir=${prefix}/include
+libdir=@LIBDIR_FOR_PC_FILE@
+includedir=@INCLUDEDIR_FOR_PC_FILE@
 
 Name: @PROJECT_NAME@
 Description: tiny, minimal gettext replacement
-Version: @VERSION@
+Version: @PROJECT_VERSION@
 URL: https://github.com/tinygettext/tinygettext
 Requires:
 Libs: -L${libdir} -ltinygettext
