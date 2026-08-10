@@ -240,7 +240,8 @@ std::ostream& operator<<(std::ostream& os, origin origin)
 } // namespace geom
 
 
-// std::format support for clients after {fmt} removal
+
+// std::format support
 template<>
 struct std::formatter<geom::ipoint>
 {
