@@ -267,9 +267,6 @@ if(NOT PINGUS_ENABLE_SOUND)
 endif()
 
 function(build_dependencies)
-  set(BUILD_TESTS OFF)
-  set(TINYGETTEXT_WITH_SDL ON)
-
   # Prefer vendored external/<dir> when present (monorepo / flake source
   # tree). find_package is only for distro builds that strip external/.
   # Directory names match the repo/Nix package names (*cpp where applicable);
@@ -277,6 +274,14 @@ function(build_dependencies)
   #
   # Order matters: sexp + logmich before prio (priocpp links them and checks
   # TARGET …::…).
+  #
+  # Do not inherit Pingus -DWERROR=ON into the helpers: they are already
+  # built with their own strict flags in standalone Nix packages, and a
+  # few unused-parameter sites still trip -Werror when compiled in-tree.
+  set(BUILD_TESTS OFF CACHE BOOL "" FORCE)
+  set(WERROR OFF CACHE BOOL "" FORCE)
+  set(TINYGETTEXT_WITH_SDL ON CACHE BOOL "" FORCE)
+
   macro(_pingus_dep _pkg _dir)
     if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/${_dir}/CMakeLists.txt")
       message(STATUS "Using external/${_dir} for ${_pkg}")
