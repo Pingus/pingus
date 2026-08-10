@@ -58,6 +58,7 @@ option(WSTSOUND_WITH_VORBIS "Decode Ogg Vorbis" ON)
 option(WSTSOUND_WITH_OPUS "Decode Opus" ON)
 option(WSTSOUND_WITH_MPG123 "Decode MP3 via mpg123" ON)
 option(WSTSOUND_WITH_EFX "OpenAL EFX effects API (not on Emscripten OpenAL)" ON)
+option(WSTSOUND_WITH_LOOPBACK "OpenAL-soft loopback device (needs alext.h)" ON)
 
 # Mobile / wasm: stock Pingus data is WAV SFX + .it/.s3m modules only.
 if(EMSCRIPTEN OR ANDROID)
@@ -66,6 +67,10 @@ if(EMSCRIPTEN OR ANDROID)
   set(WSTSOUND_WITH_OPUS OFF CACHE BOOL "Decode Opus" FORCE)
   set(WSTSOUND_WITH_MODPLUG ON CACHE BOOL "Decode module formats via libmodplug" FORCE)
   set(WSTSOUND_WITH_EFX OFF CACHE BOOL "OpenAL EFX effects API" FORCE)
+endif()
+if(EMSCRIPTEN)
+  # Emscripten OpenAL has no alext.h / soft_loopback extension.
+  set(WSTSOUND_WITH_LOOPBACK OFF CACHE BOOL "OpenAL-soft loopback device" FORCE)
 endif()
 
 if(EMSCRIPTEN)
@@ -153,6 +158,9 @@ if(WSTSOUND_WITH_MPG123)
 endif()
 if(WSTSOUND_WITH_EFX)
   target_compile_definitions(wstsound PUBLIC WSTSOUND_WITH_EFX=1)
+endif()
+if(WSTSOUND_WITH_LOOPBACK)
+  target_compile_definitions(wstsound PUBLIC WSTSOUND_WITH_LOOPBACK=1)
 endif()
 
 if(OPENAL_INCLUDE_DIR)
