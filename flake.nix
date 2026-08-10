@@ -90,10 +90,14 @@
             sexpcpp = call ./external/sexpcpp/sexpcpp.nix { };
 
             priocpp = call ./external/priocpp/priocpp.nix {
-              inherit logmich tinycmmc;
+              self = selfFor ./external/priocpp;
+              inherit logmich;
               sexpcpp = sexpcpp;
               withSexpcpp = true;
               withJsoncpp = true;
+              # Standalone package tests need gtest; keep off for game dep builds.
+              buildTests = false;
+              buildExtra = false;
             };
 
             strutcpp = call ./external/strutcpp/strutcpp.nix { };
