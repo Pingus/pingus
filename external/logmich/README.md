@@ -2,21 +2,31 @@ logmich - A Trivial Logging Library
 ===================================
 
 logmich is a trivial logging library for C++. It lacks anything but
-the bare essentials and allows a `printf` like syntax for message
-formating.
+the bare essentials and formats messages with **C++20 `std::format`**
+(runtime format strings via `std::vformat`).
+
+Requires a C++20 compiler (or newer).
 
 Usage is as follows:
 
-    // Set the log level at which we want to log
-    logmich::set_log_level(logmich::kInfo);
+```cpp
+#include <logmich/log.hpp>
 
-    // output some log messages
-    log_error("error level log message, number %d", 5);
-    log_warn("warring level log message");
-    log_info("info level log message: %s", "filename.jpg");
-    log_debug("debug level log message [invisible]");
-    log_tmp("tmp level log message [invisible]");
+// Set the log level at which we want to log
+logmich::set_log_level(logmich::LogLevel::INFO);
 
-The format strings are handled by
-[boost-format](http://www.boost.org/doc/libs/1_57_0/libs/format/),
-thus the same rules as for boost-format apply for logmich.
+// output some log messages
+log_error("error level log message, number {}", 5);
+log_warn("warning level log message");
+log_info("info level log message: {}", "filename.jpg");
+log_debug("debug level log message [invisible]");
+log_trace("trace level log message [invisible]");
+```
+
+Format strings follow [`std::format`](https://en.cppreference.com/w/cpp/utility/format/format)
+rules (`{}` placeholders, not printf `%`).
+
+Types used as format arguments must be formattable with `std::format`
+(built-ins, strings, or a `std::formatter` specialization). Unlike the
+old `{fmt}` + `fmt/ostream.h` path, a type is **not** automatically
+formattable just because it has `operator<<`.

@@ -80,6 +80,8 @@ public:
   void append_format(LogLevel level, std::string_view file, int line, std::string_view fmt, Args&&... args)
   {
     try {
+      // std::vformat + make_format_args is C++20; avoids C++26-only
+      // std::runtime_format while still accepting runtime format strings.
       append(level, file, line, std::vformat(fmt, std::make_format_args(args...)));
     } catch (std::exception const& err) {
       std::cerr << "[LOG ERROR] " << file << ":" << line << ": " << err.what() << ": \"" << fmt << "\"" << std::endl;

@@ -19,18 +19,27 @@
 
 #include <logmich/log.hpp>
 
+#include <format>
 #include <ostream>
 
 namespace {
 
 struct custom {};
 
-std::ostream& operator<<(std::ostream& os, const custom& c)
-{
-  return os << "<custom-type>";
-}
+// std::format does not use operator<<; provide a formatter (fmt used to
+// pull this in via <fmt/ostream.h>).
 
 } // namespace
+
+template<>
+struct std::formatter<custom>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(custom const&, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "<custom-type>");
+  }
+};
 
 int main()
 {
