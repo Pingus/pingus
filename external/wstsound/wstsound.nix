@@ -1,6 +1,7 @@
 { stdenv
 , lib
 , cmake
+, pkg-config
 , gtest
 , mcfgthreads
 , libmodplug
@@ -46,6 +47,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     cmake
+    pkg-config
   ];
 
   buildInputs = [
