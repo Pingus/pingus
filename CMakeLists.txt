@@ -21,6 +21,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+include(GNUInstallDirs)
+
 # Version from VERSION file (Nix/postPatch may overwrite it).
 if(EXISTS "${CMAKE_SOURCE_DIR}/VERSION")
   file(STRINGS "${CMAKE_SOURCE_DIR}/VERSION" _pingus_version LIMIT_COUNT 1)
@@ -49,7 +51,8 @@ list(APPEND WARNINGS_CXX_FLAGS -Wno-unused-parameter)
 
 # Port / packaging options (used by mk/wasm, mk/r36s, distro builds).
 set(SDL2_ROOT "" CACHE PATH "Prebuilt SDL2 prefix (wasm static libs, optional)")
-set(DATA_PREFIX "" CACHE PATH "Runtime data directory (empty = compile-time default)")
+# Override install datadir baked into the binary (default: <prefix>/share/pingus).
+set(DATA_PREFIX "" CACHE PATH "Runtime data directory hardcoded as PINGUS_DEFAULT_DATADIR")
 if(NOT PROJECT_VERSION_FULL)
   set(PROJECT_VERSION_FULL "${PROJECT_VERSION}" CACHE STRING "Full version string" FORCE)
 endif()
@@ -334,10 +337,13 @@ target_compile_definitions(libpingus PUBLIC
   -DPROJECT_VERSION="${PROJECT_VERSION_FULL}"
   -DPROJECT_NAME="${PROJECT_NAME}")
 if(DATA_PREFIX)
-  target_compile_definitions(libpingus PUBLIC
-    -DPINGUS_DEFAULT_DATADIR="${DATA_PREFIX}")
-  message(STATUS "PINGUS_DEFAULT_DATADIR=${DATA_PREFIX}")
+  set(_pingus_default_datadir "${DATA_PREFIX}")
+else()
+  set(_pingus_default_datadir "${CMAKE_INSTALL_FULL_DATADIR}/${PROJECT_NAME}")
 endif()
+target_compile_definitions(libpingus PUBLIC
+  -DPINGUS_DEFAULT_DATADIR="${_pingus_default_datadir}")
+message(STATUS "PINGUS_DEFAULT_DATADIR=${_pingus_default_datadir}")
 if(EMSCRIPTEN)
   # Guaranteed on libpingus sources (add_definitions alone is easy to miss with
   # some emcmake/Ninja generators).
@@ -455,23 +461,10 @@ if(BUILD_TESTS)
     COMMAND desktop-file-validate pingus.desktop)
 endif(BUILD_TESTS)
 
-if(WIN32)
-  install(TARGETS pingus
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-else()
-  configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/pingus.sh.in
-    ${CMAKE_BINARY_DIR}/pingus.sh)
-
-  install(TARGETS pingus
-    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
-
-  install(FILES
-    ${CMAKE_BINARY_DIR}/pingus.sh
-    RENAME pingus
-    PERMISSIONS OWNER_EXECUTE OWNER_READ OWNER_WRITE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
-    DESTINATION ${CMAKE_INSTALL_BINDIR})
-endif()
+# Binary + data under the normal FHS prefix. Datadir is baked into the
+# binary as PINGUS_DEFAULT_DATADIR (overridable with --datadir).
+install(TARGETS pingus
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 install(DIRECTORY data/ DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}
   PATTERN "*~" EXCLUDE)
