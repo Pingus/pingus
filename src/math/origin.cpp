@@ -29,6 +29,8 @@
 
 #include <assert.h>
 
+#include <string>
+
 #include "math/origin.hpp"
 
 namespace pingus {
