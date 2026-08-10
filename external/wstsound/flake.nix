@@ -52,8 +52,6 @@
           wstsound = pkgs.callPackage ./wstsound.nix {
             stdenv = pkgs.stdenv;
 
-            tinycmmc = tinycmmc.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
             libmodplug = if pkgs.stdenv.hostPlatform.isWindows
                          then libmodplug-win32.packages.${pkgs.stdenv.hostPlatform.system}.default
                          else pkgs.libmodplug;

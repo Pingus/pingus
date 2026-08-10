@@ -17,30 +17,59 @@
 #    misrepresented as being the original software.
 # 3. This notice may not be removed or altered from any source distribution.
 
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.15)
 project(geom VERSION 0.0.0)
 
-include(mk/cmake/TinyCMMC.cmake)
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
 
-function(build_dependencies)
-  # Must guard find_package(glm) as otherwise error will result
-  if(NOT TARGET glm::glm)
-    find_package(glm REQUIRED)
-  endif()
-endfunction()
-build_dependencies()
+option(BUILD_TESTS "Build test cases" OFF)
+option(WARNINGS "Enable extra compiler warnings" OFF)
+option(WERROR "Treat warnings as errors" OFF)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+set(WARNINGS_CXX_FLAGS "")
+if(WERROR)
+  list(APPEND WARNINGS_CXX_FLAGS -Werror)
+endif()
+if(WARNINGS)
+  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra -Wpedantic)
+endif()
+
+if(NOT TARGET glm::glm)
+  find_package(glm REQUIRED)
+endif()
 
 file(GLOB GEOM_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   include/geom/*.hpp)
 
 add_library(geom INTERFACE)
+add_library(geom::geom ALIAS geom)
 target_include_directories(geom INTERFACE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 target_link_libraries(geom INTERFACE glm::glm)
 target_compile_definitions(geom INTERFACE -DGLM_ENABLE_EXPERIMENTAL)
-set_target_properties(geom PROPERTIES PUBLIC_HEADER
-  "${GEOM_HEADERS}")
+set_target_properties(geom PROPERTIES PUBLIC_HEADER "${GEOM_HEADERS}")
+
+if(BUILD_TESTS)
+  enable_testing()
+  find_package(GTest REQUIRED)
+
+  file(GLOB TEST_GEOM_SOURCES test/*_test.cpp)
+  add_executable(test_geom ${TEST_GEOM_SOURCES})
+  target_compile_options(test_geom PRIVATE ${WARNINGS_CXX_FLAGS})
+  target_link_libraries(test_geom
+    GTest::GTest
+    GTest::Main
+    geom::geom)
+  add_test(NAME test_geom
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMAND test_geom)
+endif()
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   configure_file(
@@ -49,27 +78,34 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     @ONLY)
   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/geom.pc"
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+
+  install(TARGETS geom
+    EXPORT geom
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/geom)
+
+  configure_package_config_file(
+    geom-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/geom-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/geom)
+
+  write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/geom-config-version.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMinorVersion)
+
+  export(EXPORT geom
+    NAMESPACE geom::
+    FILE ${CMAKE_CURRENT_BINARY_DIR}/geom-targets.cmake)
+
+  install(EXPORT geom
+    FILE geom-targets.cmake
+    NAMESPACE geom::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/geom)
+
+  install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/geom-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/geom-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/geom)
 endif()
-
-if(BUILD_TESTS)
-  enable_testing()
-  find_package(GTest REQUIRED)
-
-  # build automatic tests
-  file(GLOB TEST_GEOM_SOURCES test/*_test.cpp)
-  add_executable(test_geom ${TEST_GEOM_SOURCES})
-  target_compile_options(test_geom PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
-  target_link_libraries(test_geom
-    GTest::GTest
-    GTest::Main
-    geom)
-
-  set(ARGV "-V")
-  add_test(NAME test_geom
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMAND test_geom)
-endif()
-
-tinycmmc_export_and_install_library(geom)
 
 # EOF #

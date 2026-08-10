@@ -81,7 +81,6 @@
 
             geomcpp = call ./external/geomcpp/geomcpp.nix {
               self = selfFor ./external/geomcpp;
-              inherit tinycmmc tinycmmc_lib;
               glm = pkgs'.glm.overrideAttrs (_: { meta = { }; });
             };
 
@@ -114,7 +113,6 @@
                   if pkgs'.stdenv.hostPlatform.is32bit then "win32" else "win64";
               in
               call ./external/wstsound/wstsound.nix ({
-                inherit tinycmmc;
                 mcfgthreads =
                   if win then pkgs'.windows.mcfgthreads else null;
               } // (if win then {
@@ -153,7 +151,6 @@
             logmich = libs.logmich;
             priocpp = libs.priocpp;
             strutcpp = libs.strutcpp;
-            tinycmmc = libs.tinycmmc;
             tinygettext = libs.tinygettext;
             uitest = libs.uitest;
             wstsound = libs.wstsound;

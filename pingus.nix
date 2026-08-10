@@ -21,7 +21,7 @@
 , logmich
 , priocpp
 , strutcpp
-, tinycmmc
+
 , tinygettext
 , uitest
 , wstsound
@@ -94,7 +94,6 @@ stdenv.mkDerivation rec {
     logmich
     priocpp
     strutcpp
-    tinycmmc
     tinygettext
     uitest
     wstsound

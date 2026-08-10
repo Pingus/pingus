@@ -10,7 +10,7 @@
 , openal
 , opusfile
 , libopus
-, tinycmmc
+
 }:
 
 stdenv.mkDerivation {
@@ -49,7 +49,6 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = [
-    tinycmmc
     gtest
   ];
 

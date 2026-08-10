@@ -21,35 +21,25 @@ project(wstsound VERSION 0.3.0)
 # instead of the OpenAL framework that is missing effects support.
 set(CMAKE_FIND_FRAMEWORK "LAST")
 
-if(NOT tinycmmc_FOUND)
-  find_package(tinycmmc CONFIG QUIET)
-endif()
-if(tinycmmc_FOUND AND TINYCMMC_MODULE_PATH)
-  # use package
-elseif(TINYCMMC_MODULE_PATH AND EXISTS "${TINYCMMC_MODULE_PATH}/TinyCMMC.cmake")
-  # Caller passed -DTINYCMMC_MODULE_PATH=... (e.g. isolated wasm package)
-elseif(DEFINED ENV{TINYCMMC_MODULE_PATH} AND EXISTS "$ENV{TINYCMMC_MODULE_PATH}/TinyCMMC.cmake")
-  set(TINYCMMC_MODULE_PATH "$ENV{TINYCMMC_MODULE_PATH}")
-elseif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../tinycmmc/modules/TinyCMMC.cmake")
-  # monorepo: external/wstsound next to external/tinycmmc
-  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../tinycmmc/modules/")
-elseif(EXISTS "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/TinyCMMC.cmake")
-  set(TINYCMMC_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/")
-elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/TinyCMMC.cmake")
-  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/")
-elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/TinyCMMC.cmake")
-  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/")
-else()
-  message(FATAL_ERROR "tinycmmc modules not found (set TINYCMMC_MODULE_PATH)")
-endif()
-message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
-list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
-
 include(GNUInstallDirs)
-include(ClangTidy)
-include(MaximumWarnings)
+include(CMakePackageConfigHelpers)
 
+option(BUILD_TESTS "Build test cases" OFF)
 option(BUILD_EXTRA "Build extra stuff" OFF)
+option(WARNINGS "Enable extra compiler warnings" OFF)
+option(WERROR "Treat warnings as errors" OFF)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+set(WARNINGS_CXX_FLAGS "")
+if(WERROR)
+  list(APPEND WARNINGS_CXX_FLAGS -Werror)
+endif()
+if(WARNINGS)
+  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra -Wpedantic)
+endif()
 
 # Codec / feature toggles. Desktop defaults keep the full set; Emscripten
 # defaults match Pingus in-tree assets (WAV + module music via ModPlug).
@@ -137,6 +127,7 @@ if(EMSCRIPTEN)
 endif()
 
 add_library(wstsound STATIC ${WSTSOUND_SOURCES})
+add_library(wstsound::wstsound ALIAS wstsound)
 set_target_properties(wstsound PROPERTIES PUBLIC_HEADER "${WSTSOUND_HEADERS}")
 target_compile_options(wstsound PRIVATE ${WARNINGS_CXX_FLAGS})
 set_target_properties(wstsound PROPERTIES
@@ -249,6 +240,36 @@ if(WSTSOUND_WITH_MODPLUG)
     "find_dependency(ModPlug REQUIRED)\n")
 endif()
 
-include(ExportAndInstallLibrary)
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  install(TARGETS wstsound
+    EXPORT wstsound
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/wstsound)
+
+  configure_package_config_file(
+    wstsound-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/wstsound-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/wstsound)
+
+  write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/wstsound-config-version.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMinorVersion)
+
+  export(EXPORT wstsound
+    NAMESPACE wstsound::
+    FILE ${CMAKE_CURRENT_BINARY_DIR}/wstsound-targets.cmake)
+
+  install(EXPORT wstsound
+    FILE wstsound-targets.cmake
+    NAMESPACE wstsound::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/wstsound)
+
+  install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/wstsound-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/wstsound-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/wstsound)
+endif()
 
 # EOF #
