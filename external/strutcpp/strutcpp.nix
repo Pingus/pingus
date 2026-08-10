@@ -2,7 +2,6 @@
 , lib
 , cmake
 , gtest
-, tinycmmc
 }:
 
 stdenv.mkDerivation {
@@ -26,7 +25,6 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = [
-    tinycmmc
     gtest
   ];
 }

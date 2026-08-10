@@ -37,8 +37,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs",
-        "tinycmmc": "tinycmmc"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
@@ -53,29 +52,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "tinycmmc": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1763256011,
-        "narHash": "sha256-CpQWAHdeLUYd28cT9heG05p6RX9WF7QslqNHoBi931E=",
-        "owner": "grumbel",
-        "repo": "tinycmmc",
-        "rev": "2e007ba059a4991c011a7193c9d7df28826c9adc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "grumbel",
-        "repo": "tinycmmc",
         "type": "github"
       }
     }

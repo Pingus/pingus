@@ -40,17 +40,9 @@ std::vector<std::string>
 UnixFileSystem::open_directory(const std::string& pathname)
 {
   std::vector<std::string> files;
-  try
+  for(auto const& p : std::filesystem::directory_iterator(pathname))
   {
-    for(auto const& p : std::filesystem::directory_iterator(pathname))
-    {
-      files.push_back(p.path().filename().string());
-    }
-  }
-  catch (std::filesystem::filesystem_error const&)
-  {
-    // Missing directory (e.g. non-filesystem asset trees).
-    return {};
+    files.push_back(p.path().filename().string());
   }
   return files;
 }

@@ -1,7 +1,6 @@
 { stdenv
 , lib
 , cmake
-, tinycmmc
 }:
 
 stdenv.mkDerivation {
@@ -12,9 +11,5 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     cmake
-  ];
-
-  buildInputs = [
-    tinycmmc
   ];
 }

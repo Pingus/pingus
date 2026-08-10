@@ -17,33 +17,54 @@
 cmake_minimum_required(VERSION 3.10)
 project(logmich VERSION 0.2.0)
 
-# CMake modules
-set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/")
-find_package(tinycmmc CONFIG)
-message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
-list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
-
 include(GNUInstallDirs)
-include(ClangTidy)
-include(MaximumWarnings)
+include(CMakePackageConfigHelpers)
 
-# Build tinycmmc
-set(TINYCMMC_HEADERS
+option(BUILD_TESTS "Build tests" OFF)
+option(WARNINGS "Enable extra compiler warnings" OFF)
+option(WERROR "Treat warnings as errors" OFF)
+option(CLANG_TIDY "Enable clang-tidy" OFF)
+option(CLANG_TIDY_FIX "Apply clang-tidy fixes to source code" OFF)
+
+set(WARNINGS_CXX_FLAGS "")
+if(WERROR)
+  list(APPEND WARNINGS_CXX_FLAGS -Werror)
+endif()
+if(WARNINGS)
+  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra -Wpedantic)
+endif()
+
+if(CLANG_TIDY AND CMAKE_VERSION VERSION_GREATER_EQUAL 3.6)
+  find_program(CLANG_TIDY_EXE NAMES clang-tidy DOC "Path to clang-tidy executable")
+  if(NOT CLANG_TIDY_EXE)
+    message(FATAL_ERROR "clang-tidy not found.")
+  endif()
+  message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
+  if(CLANG_TIDY_FIX)
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}" "-fix")
+  else()
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
+  endif()
+endif()
+
+set(LOGMICH_HEADERS
   include/logmich/logger.hpp
   include/logmich/log.hpp)
 add_library(logmich STATIC
   src/logger.cpp
   src/log.cpp)
 set_target_properties(logmich PROPERTIES
-  PUBLIC_HEADER "${TINYCMMC_HEADERS}")
-set_target_properties(logmich PROPERTIES
+  PUBLIC_HEADER "${LOGMICH_HEADERS}"
   CXX_STANDARD 20
   CXX_STANDARD_REQUIRED ON
-  CXX_EXTENSIONS OFF)
+  CXX_EXTENSIONS OFF
+  EXPORT_NAME logmich)
 target_compile_options(logmich PUBLIC ${WARNINGS_CXX_FLAGS})
 target_include_directories(logmich PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
+
+add_library(logmich::logmich ALIAS logmich)
 
 if(BUILD_TESTS)
   add_executable(test_logmich test/test_logmich.cpp)
@@ -63,6 +84,34 @@ if(BUILD_TESTS)
     ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-include(ExportAndInstallLibrary)
+install(TARGETS logmich
+  EXPORT logmich
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/logmich)
+
+configure_package_config_file(
+  logmich-config.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/logmich-config.cmake
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/logmich)
+
+write_basic_package_version_file(
+  ${CMAKE_CURRENT_BINARY_DIR}/logmich-config-version.cmake
+  VERSION ${PROJECT_VERSION}
+  COMPATIBILITY SameMinorVersion)
+
+export(EXPORT logmich
+  NAMESPACE logmich::
+  FILE ${CMAKE_CURRENT_BINARY_DIR}/logmich-targets.cmake)
+
+install(EXPORT logmich
+  FILE logmich-targets.cmake
+  NAMESPACE logmich::
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/logmich)
+
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/logmich-config.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/logmich-config-version.cmake
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/logmich)
 
 # EOF #

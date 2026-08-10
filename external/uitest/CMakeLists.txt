@@ -17,7 +17,36 @@
 cmake_minimum_required(VERSION 3.10)
 project(uitest VERSION 0.0.0)
 
-include(mk/cmake/TinyCMMC.cmake)
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+
+option(BUILD_TESTS "Build tests" OFF)
+option(BUILD_EXAMPLES "Build examples" OFF)
+option(WARNINGS "Enable extra compiler warnings" OFF)
+option(WERROR "Treat warnings as errors" OFF)
+option(CLANG_TIDY "Enable clang-tidy" OFF)
+option(CLANG_TIDY_FIX "Apply clang-tidy fixes to source code" OFF)
+
+set(WARNINGS_CXX_FLAGS "")
+if(WERROR)
+  list(APPEND WARNINGS_CXX_FLAGS -Werror)
+endif()
+if(WARNINGS)
+  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra -Wpedantic)
+endif()
+
+if(CLANG_TIDY AND CMAKE_VERSION VERSION_GREATER_EQUAL 3.6)
+  find_program(CLANG_TIDY_EXE NAMES clang-tidy DOC "Path to clang-tidy executable")
+  if(NOT CLANG_TIDY_EXE)
+    message(FATAL_ERROR "clang-tidy not found.")
+  endif()
+  message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
+  if(CLANG_TIDY_FIX)
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}" "-fix")
+  else()
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
+  endif()
+endif()
 
 # build uitest
 add_library(uitest STATIC src/arg_info.cpp src/uitest.cpp)
@@ -41,6 +70,9 @@ target_compile_options(uitest_main PRIVATE ${WARNINGS_CXX_FLAGS})
 target_include_directories(uitest_main SYSTEM PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include/uitest>)
+
+add_library(uitest::uitest ALIAS uitest)
+add_library(uitest::uitest_main ALIAS uitest_main)
 
 # build examples
 if(BUILD_EXAMPLES)
@@ -70,40 +102,14 @@ if(BUILD_TESTS)
     COMMAND test_uitest)
 endif()
 
-# # Installation
-# install(TARGETS uitest_main uitest
-#   EXPORT uitest-targets
-#   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/uitest)
-
-# # CMake integration
-# add_library(uitest::uitest ALIAS uitest)
-# add_library(uitest:uitest_main ALIAS uitest_main)
-
-# configure_file(uitest-config.cmake.in
-#   "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/uitest-config.cmake" @ONLY)
-# install(FILES
-#   "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/uitest-config.cmake"
-#   DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/uitest/")
-# export(TARGETS uitest uitest_main
-#   FILE "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/uitest-targets.cmake")
-# export(PACKAGE uitest)
-# install(EXPORT uitest-targets
-#   DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/uitest/")
-
 install(TARGETS uitest uitest_main
   EXPORT uitest
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}")
 
-add_library(uitest::uitest ALIAS uitest)
-add_library(uitest:uitest_main ALIAS uitest_main)
-
-include(CMakePackageConfigHelpers)
 configure_package_config_file("${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake"
-  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}")
+  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 write_basic_package_version_file("${PROJECT_NAME}-config-version.cmake"
   VERSION "${PROJECT_VERSION}"
   COMPATIBILITY SameMinorVersion)
@@ -120,4 +126,3 @@ install(FILES
   DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 
 # EOF #
-

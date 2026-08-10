@@ -1,7 +1,6 @@
 { stdenv
 , lib
 , cmake
-, tinycmmc
 , gtest
 }:
 
@@ -13,8 +12,7 @@ stdenv.mkDerivation {
 
   cmakeFlags = [
     "-DBUILD_TESTS=ON"
-  ]
-  ++ (lib.optional (!stdenv.hostPlatform.isWindows) "-DUSE_CXX17=ON");
+  ];
 
   doCheck = true;
 
@@ -23,7 +21,6 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = [
-    tinycmmc
     gtest
   ];
 }

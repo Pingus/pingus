@@ -3,21 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
-
-    tinycmmc.url = "git+https://github.com/grumbel/tinycmmc.git";
-    tinycmmc.inputs.nixpkgs.follows = "nixpkgs";
-    tinycmmc.inputs.flake-utils.follows = "flake-utils";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, tinycmmc }:
-    tinycmmc.lib.eachSystemWithPkgs (pkgs:
-      {
+  outputs = { self, nixpkgs, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
         packages = rec {
           default = sexp-cpp;
-
-          sexp-cpp = pkgs.callPackage ./sexpcpp.nix {
-            tinycmmc = tinycmmc.packages.${pkgs.stdenv.hostPlatform.system}.default;
-          };
+          sexp-cpp = pkgs.callPackage ./sexpcpp.nix { };
         };
       }
     );

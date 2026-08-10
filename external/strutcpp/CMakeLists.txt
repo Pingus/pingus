@@ -14,29 +14,38 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.6)
 project(strut VERSION 0.0.0)
 
-if(NOT tinycmmc_FOUND)
-  find_package(tinycmmc CONFIG QUIET)
-endif()
-if(tinycmmc_FOUND AND TINYCMMC_MODULE_PATH)
-  # use package
-elseif(EXISTS "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/TinyCMMC.cmake")
-  set(TINYCMMC_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/")
-elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/TinyCMMC.cmake")
-  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/")
-elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/TinyCMMC.cmake")
-  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/")
-else()
-  message(FATAL_ERROR "tinycmmc modules not found")
-endif()
-message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
-list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
-
 include(GNUInstallDirs)
-include(MaximumWarnings)
-include(ClangTidy)
+include(CMakePackageConfigHelpers)
+
+option(BUILD_TESTS "Build tests" OFF)
+option(WARNINGS "Enable extra compiler warnings" OFF)
+option(WERROR "Treat warnings as errors" OFF)
+option(CLANG_TIDY "Enable clang-tidy" OFF)
+option(CLANG_TIDY_FIX "Apply clang-tidy fixes to source code" OFF)
+
+set(WARNINGS_CXX_FLAGS "")
+if(WERROR)
+  list(APPEND WARNINGS_CXX_FLAGS -Werror)
+endif()
+if(WARNINGS)
+  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra -Wpedantic)
+endif()
+
+if(CLANG_TIDY AND CMAKE_VERSION VERSION_GREATER_EQUAL 3.6)
+  find_program(CLANG_TIDY_EXE NAMES clang-tidy DOC "Path to clang-tidy executable")
+  if(NOT CLANG_TIDY_EXE)
+    message(FATAL_ERROR "clang-tidy not found.")
+  endif()
+  message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
+  if(CLANG_TIDY_FIX)
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}" "-fix")
+  else()
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
+  endif()
+endif()
 
 file(GLOB STRUT_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   include/strut/*.hpp)
@@ -48,12 +57,16 @@ add_library(strut STATIC ${STRUT_SOURCES})
 set_target_properties(strut PROPERTIES
   CXX_STANDARD 20
   CXX_STANDARD_REQUIRED ON
-  CXX_EXTENSIONS OFF)
+  CXX_EXTENSIONS OFF
+  PUBLIC_HEADER "${STRUT_HEADERS}"
+  EXPORT_NAME strut)
 target_include_directories(strut INTERFACE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>/)
+  $<INSTALL_INTERFACE:include>)
 target_include_directories(strut PRIVATE include/strut/)
-set_target_properties(strut PROPERTIES PUBLIC_HEADER "${STRUT_HEADERS}")
+target_compile_options(strut PRIVATE ${WARNINGS_CXX_FLAGS})
+
+add_library(strut::strut ALIAS strut)
 
 if(BUILD_TESTS)
   find_package(GTest REQUIRED)
@@ -76,6 +89,34 @@ if(BUILD_TESTS)
     COMMAND test_strut)
 endif()
 
-include(ExportAndInstallLibrary)
+install(TARGETS strut
+  EXPORT strut
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/strut)
+
+configure_package_config_file(
+  strut-config.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/strut-config.cmake
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
+
+write_basic_package_version_file(
+  ${CMAKE_CURRENT_BINARY_DIR}/strut-config-version.cmake
+  VERSION ${PROJECT_VERSION}
+  COMPATIBILITY SameMinorVersion)
+
+export(EXPORT strut
+  NAMESPACE strut::
+  FILE ${CMAKE_CURRENT_BINARY_DIR}/strut-targets.cmake)
+
+install(EXPORT strut
+  FILE strut-targets.cmake
+  NAMESPACE strut::
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
+
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/strut-config.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/strut-config-version.cmake
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
 
 # EOF #
