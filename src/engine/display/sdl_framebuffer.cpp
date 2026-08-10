@@ -23,6 +23,8 @@
 
 #include <logmich/log.hpp>
 
+#include "util/print.hpp"
+
 #include "engine/display/sdl_framebuffer_surface_impl.hpp"
 
 namespace pingus {
@@ -229,16 +231,14 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
 
   {
     char const* driver = SDL_GetCurrentVideoDriver();
-    std::cerr << "SDLFramebuffer: driver=" << (driver ? driver : "(none)")
-              << " displays=" << SDL_GetNumVideoDisplays()
-              << " size=" << size.width() << "x" << size.height()
-              << " fullscreen=" << (fullscreen ? "yes" : "no") << std::endl;
+    print_err("SDLFramebuffer: driver={} displays={} size={}x{} fullscreen={}",
+              driver ? driver : "(none)", SDL_GetNumVideoDisplays(),
+              size.width(), size.height(), fullscreen ? "yes" : "no");
     SDL_DisplayMode desk;
     if (SDL_GetDesktopDisplayMode(0, &desk) == 0)
     {
-      std::cerr << "SDLFramebuffer: desktop " << desk.w << "x" << desk.h
-                << " @" << desk.refresh_rate << "Hz format=" << desk.format
-                << std::endl;
+      print_err("SDLFramebuffer: desktop {}x{} @{}Hz format={}",
+                desk.w, desk.h, desk.refresh_rate, desk.format);
     }
   }
 
@@ -271,33 +271,48 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
   for (int i = 0; i < n; ++i)
   {
     SDL_ClearError();
-    std::cerr << "SDLFramebuffer: SDL_CreateWindow try[" << attempts[i].name
-              << "] " << req_w << "x" << req_h
-              << " flags=0x" << std::hex << attempts[i].flags << std::dec
-              << std::endl;
+    print_err("SDLFramebuffer: SDL_CreateWindow try[{}] {}x{} flags=0x{:x}",
+              attempts[i].name, req_w, req_h,
+              static_cast<unsigned>(attempts[i].flags));
     m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
                                 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                 req_w, req_h,
                                 attempts[i].flags);
     if (m_window)
     {
-      std::cerr << "SDLFramebuffer: window ok via " << attempts[i].name << std::endl;
+      print_err("SDLFramebuffer: window ok via {}", attempts[i].name);
       break;
     }
     last_error = SDL_GetError();
     if (last_error.empty())
       last_error = "(SDL_GetError empty — possible DRM master / permission issue)";
-    std::cerr << "SDLFramebuffer: SDL_CreateWindow FAILED (" << attempts[i].name
-              << "): " << last_error << std::endl;
+    print_err("SDLFramebuffer: SDL_CreateWindow FAILED ({}): {}",
+              attempts[i].name, last_error);
   }
 
   if (!m_window)
   {
-    std::cerr << "SDLFramebuffer: all CreateWindow attempts failed: " << last_error
-              << "\n  Hint: on ArkOS/R36S leave EmulationStation fully, run from a TTY,"
-                 " and ensure /dev/dri/card0 is free (fuser -v /dev/dri/card0)."
-              << " Prefer matching mali GBM libs via LD_LIBRARY_PATH=/usr/local/lib/aarch64-linux-gnu"
-              << std::endl;
+#ifdef ANDROID
+    if (last_error.find("Android only supports one window") != std::string::npos)
+    {
+      m_window = SDL_GetWindowFromID(1);
+      if (m_window)
+        print_err("SDLFramebuffer: reusing existing Android window id={}",
+                  SDL_GetWindowID(m_window));
+    }
+#endif
+    if (!m_window)
+    {
+      print_err("SDLFramebuffer: all CreateWindow attempts failed: {}", last_error);
+#ifndef ANDROID
+      print_err("  Hint: on ArkOS/R36S leave EmulationStation fully, run from a TTY, "
+                "and ensure /dev/dri/card0 is free (fuser -v /dev/dri/card0). "
+                "Prefer matching mali GBM libs via LD_LIBRARY_PATH=/usr/local/lib/aarch64-linux-gnu");
+#endif
+      return false;
+    }
+  }
+
     return false;
   }
 
@@ -320,8 +335,8 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_SOFTWARE);
     if (!m_renderer)
     {
-      std::cerr << "SDLFramebuffer: SOFTWARE renderer failed (" << SDL_GetError()
-                << "), trying ACCELERATED" << std::endl;
+      print_err("SDLFramebuffer: SOFTWARE renderer failed ({}), trying ACCELERATED",
+                SDL_GetError());
       m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
     }
   }
@@ -336,7 +351,7 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
   }
   if (!m_renderer)
   {
-    std::cerr << "SDLFramebuffer: SDL_CreateRenderer failed: " << SDL_GetError() << std::endl;
+    print_err("SDLFramebuffer: SDL_CreateRenderer failed: {}", SDL_GetError());
     SDL_DestroyWindow(m_window);
     m_window = nullptr;
     return false;
@@ -345,7 +360,7 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
   {
     SDL_RendererInfo info;
     if (SDL_GetRendererInfo(m_renderer, &info) == 0)
-      std::cerr << "SDLFramebuffer: renderer='" << info.name << "'" << std::endl;
+      print_err("SDLFramebuffer: renderer='{}'", info.name);
   }
   return true;
 }

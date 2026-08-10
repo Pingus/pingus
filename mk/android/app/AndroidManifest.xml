@@ -17,13 +17,21 @@
         android:icon="@mipmap/ic_launcher"
         android:allowBackup="false"
         android:hasCode="true">
+        <!--
+          singleTask: a second launcher tap brings this task to the foreground
+          instead of starting another process. SDL Android only supports one
+          window; a second instance hits "Android only supports one window".
+          exported is required for the MAIN/LAUNCHER filter on newer platforms.
+        -->
         <activity
             android:name="org.libsdl.app.SDLActivity"
             android:label="Pingus"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|uiMode"
             android:screenOrientation="landscape"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:alwaysRetainTaskState="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

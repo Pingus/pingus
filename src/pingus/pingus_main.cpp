@@ -45,6 +45,7 @@
 #include "pingus/screens/pingus_menu.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
 #include "util/system.hpp"
+#include "util/print.hpp"
 
 #if defined(__APPLE__)
 /* Can't use the include, some type names conflict.
@@ -92,8 +93,9 @@ namespace pingus {
 #ifdef ANDROID
 namespace {
 
-// logmich and std::cout do not reach logcat by default. Bridge them so
-// startup failures are visible when diagnosing device runs.
+// logmich still writes via std::cerr by default. Bridge iostreams so those
+// messages reach logcat. New diagnostics use print_err() → stderr (also
+// captured by logcat on modern Android).
 class AndroidLogBuf : public std::streambuf
 {
 public:
@@ -695,12 +697,10 @@ PingusMain::run(int argc, char** argv)
       screen_size = cmd_options.geometry.get();
     }
 #endif
-    std::cerr << "PingusMain: creating window type="
-              << FramebufferType_to_string(fbtype)
-              << " size=" << screen_size.width() << "x" << screen_size.height()
-              << " fullscreen=" << (fullscreen ? "yes" : "no")
-              << " resizable=" << (resizable ? "yes" : "no")
-              << std::endl;
+    print_err("PingusMain: creating window type={} size={}x{} fullscreen={} resizable={}",
+              FramebufferType_to_string(fbtype),
+              screen_size.width(), screen_size.height(),
+              fullscreen ? "yes" : "no", resizable ? "yes" : "no");
 
 #ifdef __EMSCRIPTEN__
     // Same lifetime issue as Application: main-loop unwind must not destroy
@@ -708,14 +708,14 @@ PingusMain::run(int argc, char** argv)
     SDLSystem* system = new SDLSystem();
     if (!system->create_window(fbtype, screen_size, fullscreen, resizable))
     {
-      std::cerr << "PingusMain: create_window failed for "
-                << FramebufferType_to_string(fbtype) << std::endl;
+      print_err("PingusMain: create_window failed for {}",
+                FramebufferType_to_string(fbtype));
       if (fbtype == FramebufferType::SDL)
       {
         raise_error("couldn't create SDL window");
       }
       log_error("couldn't create window, falling back to SDL");
-      std::cerr << "PingusMain: falling back to SDL renderer" << std::endl;
+      print_err("PingusMain: falling back to SDL renderer");
       if (!system->create_window(FramebufferType::SDL, screen_size, fullscreen, resizable))
       {
         raise_error("couldn't create SDL fallback window");
@@ -729,14 +729,14 @@ PingusMain::run(int argc, char** argv)
     SDLSystem system;
     if (!system.create_window(fbtype, screen_size, fullscreen, resizable))
     {
-      std::cerr << "PingusMain: create_window failed for "
-                << FramebufferType_to_string(fbtype) << std::endl;
+      print_err("PingusMain: create_window failed for {}",
+                FramebufferType_to_string(fbtype));
       if (fbtype == FramebufferType::SDL)
       {
         raise_error("couldn't create SDL window");
       }
       log_error("couldn't create window, falling back to SDL");
-      std::cerr << "PingusMain: falling back to SDL renderer" << std::endl;
+      print_err("PingusMain: falling back to SDL renderer");
       if (!system.create_window(FramebufferType::SDL, screen_size, fullscreen, resizable))
       {
         raise_error("couldn't create SDL fallback window");

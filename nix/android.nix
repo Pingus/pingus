@@ -44,8 +44,8 @@ let
       APP_STL := c++_shared
       APP_ABI := ${targetAbisStr}
       APP_PLATFORM := android-${packagePlatform}
-      # std::format / format_to / vformat (C++20). Needs a recent NDK libc++.
-      APP_CPPFLAGS := -std=c++20 -D_LIBCPP_ENABLE_EXPERIMENTAL=1
+      # C++23 (std::format, std::print when available). Needs a recent NDK libc++.
+      APP_CPPFLAGS := -std=c++23 -D_LIBCPP_ENABLE_EXPERIMENTAL=1
     '';
   };
 

@@ -17,6 +17,8 @@
 
 #include <logmich/log.hpp>
 
+#include "util/print.hpp"
+
 #include "engine/display/opengl/opengl_framebuffer_surface_impl.hpp"
 #include "math/color.hpp"
 #include "util/pathname.hpp"
@@ -188,15 +190,16 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   // Log current SDL video backend (KMSDRM vs x11 vs wayland matters for EGL).
   {
     char const* driver = SDL_GetCurrentVideoDriver();
-    std::cerr << "OpenGLFramebuffer: SDL_VIDEODRIVER env="
-              << (std::getenv("SDL_VIDEODRIVER") ? std::getenv("SDL_VIDEODRIVER") : "(unset)")
-              << " current_driver=" << (driver ? driver : "(none)")
-              << std::endl;
+    print_err("OpenGLFramebuffer: SDL_VIDEODRIVER env={} current_driver={}",
+              std::getenv("SDL_VIDEODRIVER") ? std::getenv("SDL_VIDEODRIVER") : "(unset)",
+              driver ? driver : "(none)");
     int n = SDL_GetNumVideoDrivers();
-    std::cerr << "OpenGLFramebuffer: available video drivers:";
-    for (int i = 0; i < n; ++i)
-      std::cerr << " " << SDL_GetVideoDriver(i);
-    std::cerr << std::endl;
+    std::string drivers;
+    for (int i = 0; i < n; ++i) {
+      drivers += ' ';
+      drivers += SDL_GetVideoDriver(i);
+    }
+    print_err("OpenGLFramebuffer: available video drivers:{}", drivers);
   }
 
   // Probe libEGL: KMSDRM GLES needs it at runtime (SDL dlopens it). Not showing
@@ -212,16 +215,14 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
       egl = SDL_LoadObject("/usr/local/lib/aarch64-linux-gnu/libEGL.so.1");
     if (egl)
     {
-      std::cerr << "OpenGLFramebuffer: libEGL probe: loaded" << std::endl;
+      print_err("OpenGLFramebuffer: libEGL probe: loaded");
       SDL_UnloadObject(egl);
     }
     else
     {
-      std::cerr << "OpenGLFramebuffer: libEGL probe: FAILED ("
-                << SDL_GetError()
-                << ") — install matching libEGL next to libGLESv2 "
-                   "(mali/mesa). EGL window surfaces will fail without it."
-                << std::endl;
+      print_err("OpenGLFramebuffer: libEGL probe: FAILED ({}) — install matching "
+                "libEGL next to libGLESv2 (mali/mesa). EGL window surfaces will fail without it.",
+                SDL_GetError());
     }
   }
 
@@ -269,7 +270,7 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     {"es2-rgb565", apply_es_rgb565},
     {"es2-rgba8888", apply_es_rgba8888},
   };
-  std::cerr << "OpenGLFramebuffer: requesting GLES 2.0 context" << std::endl;
+  print_err("OpenGLFramebuffer: requesting GLES 2.0 context");
 #else
   auto apply_gl33 = []() {
     SDL_GL_ResetAttributes();
@@ -285,7 +286,7 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   GlAttrSet attr_sets[] = {
     {"gl33-core", apply_gl33},
   };
-  std::cerr << "OpenGLFramebuffer: requesting OpenGL 3.3 core context" << std::endl;
+  print_err("OpenGLFramebuffer: requesting OpenGL 3.3 core context");
 #endif
   int const n_attr_sets = static_cast<int>(sizeof(attr_sets) / sizeof(attr_sets[0]));
 
@@ -299,20 +300,20 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     SDL_DisplayMode mode;
     if (SDL_GetDesktopDisplayMode(0, &mode) == 0 && mode.w > 0 && mode.h > 0)
     {
-      std::cerr << "OpenGLFramebuffer: desktop mode " << mode.w << "x" << mode.h
-                << " @" << mode.refresh_rate << "Hz" << std::endl;
+      print_err("OpenGLFramebuffer: desktop mode {}x{} @{}Hz",
+                mode.w, mode.h, mode.refresh_rate);
       if (req_w != mode.w || req_h != mode.h)
       {
-        std::cerr << "OpenGLFramebuffer: adjusting " << req_w << "x" << req_h
-                  << " -> desktop " << mode.w << "x" << mode.h << std::endl;
+        print_err("OpenGLFramebuffer: adjusting {}x{} -> desktop {}x{}",
+                  req_w, req_h, mode.w, mode.h);
         req_w = mode.w;
         req_h = mode.h;
       }
     }
     else
     {
-      std::cerr << "OpenGLFramebuffer: SDL_GetDesktopDisplayMode failed: "
-                << SDL_GetError() << std::endl;
+      print_err("OpenGLFramebuffer: SDL_GetDesktopDisplayMode failed: {}",
+                SDL_GetError());
     }
   }
 
@@ -361,19 +362,19 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
 #endif
 
   std::string last_error;
+  bool window_owned = true;
   char const* ok_attr = nullptr;
   char const* ok_attempt = nullptr;
   for (int a = 0; a < n_attr_sets && !m_window; ++a)
   {
     attr_sets[a].apply();
-    std::cerr << "OpenGLFramebuffer: GL attrs [" << attr_sets[a].name << "]" << std::endl;
+    print_err("OpenGLFramebuffer: GL attrs [{}]", attr_sets[a].name);
     for (int i = 0; i < n_attempts; ++i)
     {
       SDL_ClearError();
-      std::cerr << "OpenGLFramebuffer: SDL_CreateWindow try[" << attr_sets[a].name
-                << "+" << attempts[i].name << "] " << req_w << "x" << req_h
-                << " flags=0x" << std::hex << attempts[i].flags << std::dec
-                << std::endl;
+      print_err("OpenGLFramebuffer: SDL_CreateWindow try[{}+{}] {}x{} flags=0x{:x}",
+                attr_sets[a].name, attempts[i].name, req_w, req_h,
+                static_cast<unsigned>(attempts[i].flags));
       m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
                                   SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                   req_w, req_h,
@@ -382,25 +383,41 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
       {
         ok_attr = attr_sets[a].name;
         ok_attempt = attempts[i].name;
-        std::cerr << "OpenGLFramebuffer: window ok id=" << SDL_GetWindowID(m_window)
-                  << " via " << ok_attr << "+" << ok_attempt << std::endl;
+        print_err("OpenGLFramebuffer: window ok id={} via {}+{}",
+                  SDL_GetWindowID(m_window), ok_attr, ok_attempt);
         break;
       }
       last_error = SDL_GetError();
-      std::cerr << "OpenGLFramebuffer: SDL_CreateWindow FAILED ("
-                << attr_sets[a].name << "+" << attempts[i].name
-                << "): " << last_error << std::endl;
+      print_err("OpenGLFramebuffer: SDL_CreateWindow FAILED ({}+{}): {}",
+                attr_sets[a].name, attempts[i].name, last_error);
     }
   }
 
   if (!m_window)
   {
-    std::cerr << "OpenGLFramebuffer: all SDL_CreateWindow attempts failed: "
-              << last_error << std::endl;
-    // So a subsequent SDLFramebuffer attempt is not treated as GLES/EGL.
-    SDL_GL_ResetAttributes();
-    SDL_ClearError();
-    return false;
+#ifdef ANDROID
+    // Same process already owns the single Android window (e.g. main re-entered
+    // or a previous create left Android_Window set). Reuse it.
+    if (last_error.find("Android only supports one window") != std::string::npos)
+    {
+      m_window = SDL_GetWindowFromID(1);
+      if (m_window)
+      {
+        window_owned = false;
+        print_err("OpenGLFramebuffer: reusing existing Android window id={}",
+                  SDL_GetWindowID(m_window));
+      }
+    }
+#endif
+    if (!m_window)
+    {
+      print_err("OpenGLFramebuffer: all SDL_CreateWindow attempts failed: {}",
+                last_error);
+      // So a subsequent SDLFramebuffer attempt is not treated as GLES/EGL.
+      SDL_GL_ResetAttributes();
+      SDL_ClearError();
+      return false;
+    }
   }
 
   {
@@ -412,29 +429,30 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     }
   }
 
-  std::cerr << "OpenGLFramebuffer: SDL_GL_CreateContext..." << std::endl;
+  print_err("OpenGLFramebuffer: SDL_GL_CreateContext...");
   m_glcontext = SDL_GL_CreateContext(m_window);
   if (!m_glcontext)
   {
-    std::cerr << "OpenGLFramebuffer: SDL_GL_CreateContext FAILED: " << SDL_GetError() << std::endl;
-    SDL_DestroyWindow(m_window);
+    print_err("OpenGLFramebuffer: SDL_GL_CreateContext FAILED: {}", SDL_GetError());
+    if (window_owned)
+      SDL_DestroyWindow(m_window);
     m_window = nullptr;
     return false;
   }
-  std::cerr << "OpenGLFramebuffer: context ok" << std::endl;
+  print_err("OpenGLFramebuffer: context ok");
 
 #if defined(_WIN32) && !PINGUS_GL_ES
   opengl_load_procs();
 #endif
 
-  std::cerr << "OpenGLFramebuffer: buffers/programs init..." << std::endl;
+  print_err("OpenGLFramebuffer: buffers/programs init...");
 #if !PINGUS_GL_ES
   glGenVertexArrays(1, &m_vao);
 #endif
   glGenBuffers(1, &m_vbo);
 
   m_programs.init();
-  std::cerr << "OpenGLFramebuffer: programs ready" << std::endl;
+  print_err("OpenGLFramebuffer: programs ready");
 
   glDisable(GL_DEPTH_TEST);
   glDisable(GL_CULL_FACE);
@@ -463,13 +481,10 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
              vendor ? vendor : "?",
              renderer ? renderer : "?",
              version ? version : "?");
-    std::cerr << "OpenGLFramebuffer: ready ES=" << PINGUS_GL_ES
-              << " requested=" << size.width() << "x" << size.height()
-              << " drawable=" << dw << "x" << dh
-              << " vendor='" << (vendor ? vendor : "?") << "'"
-              << " renderer='" << (renderer ? renderer : "?") << "'"
-              << " version='" << (version ? version : "?") << "'"
-              << std::endl;
+    print_err("OpenGLFramebuffer: ready ES={} requested={}x{} drawable={}x{} "
+              "vendor='{}' renderer='{}' version='{}'",
+              PINGUS_GL_ES, size.width(), size.height(), dw, dh,
+              vendor ? vendor : "?", renderer ? renderer : "?", version ? version : "?");
   }
   return true;
 }

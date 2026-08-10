@@ -16,6 +16,8 @@
 
 #include "engine/display/display.hpp"
 
+#include "util/print.hpp"
+
 #include <stdexcept>
 #include <algorithm>
 #include <sstream>
@@ -95,10 +97,10 @@ Display::create_window(FramebufferType framebuffer_type, geom::isize const& size
 
   log_info("{} {} {}", FramebufferType_to_string(framebuffer_type), (size), (fullscreen?"fullscreen":"window"));
   // Always print to stderr so handheld/port builds show this without log level tweaks.
-  std::cerr << "Display::create_window: type=" << FramebufferType_to_string(framebuffer_type)
-            << " size=" << size.width() << "x" << size.height()
-            << " fullscreen=" << (fullscreen ? "yes" : "no")
-            << " resizable=" << (resizable ? "yes" : "no") << std::endl;
+  print_err("Display::create_window: type={} size={}x{} fullscreen={} resizable={}",
+            FramebufferType_to_string(framebuffer_type),
+            size.width(), size.height(),
+            fullscreen ? "yes" : "no", resizable ? "yes" : "no");
 
   // Build into a local first so a failed set_video_mode does not leave a
   // half-initialized framebuffer in s_framebuffer. The SDL fallback path in
@@ -126,13 +128,13 @@ Display::create_window(FramebufferType framebuffer_type, geom::isize const& size
 
   if (!fb->set_video_mode(size, fullscreen, resizable))
   {
-    std::cerr << "Display::create_window: set_video_mode failed for "
-              << FramebufferType_to_string(framebuffer_type) << std::endl;
+    print_err("Display::create_window: set_video_mode failed for {}",
+              FramebufferType_to_string(framebuffer_type));
     fb.reset();
     return false;
   }
   s_framebuffer = std::move(fb);
-  std::cerr << "Display::create_window: ok" << std::endl;
+  print_err("Display::create_window: ok");
   return true;
 }
 
