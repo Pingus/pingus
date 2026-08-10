@@ -44,6 +44,8 @@ endif()
 if(WARNINGS)
   list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra -Wpedantic)
 endif()
+# Unused parameters are common in overrides / stubs; never fail the build on them.
+list(APPEND WARNINGS_CXX_FLAGS -Wno-unused-parameter)
 
 # Port / packaging options (used by mk/wasm, mk/r36s, distro builds).
 set(SDL2_ROOT "" CACHE PATH "Prebuilt SDL2 prefix (wasm static libs, optional)")
