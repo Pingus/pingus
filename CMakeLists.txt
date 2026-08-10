@@ -270,24 +270,20 @@ function(build_dependencies)
   set(BUILD_TESTS OFF)
   set(TINYGETTEXT_WITH_SDL ON)
 
-  # Prefer system / Nix packages; otherwise use the vendored trees under
-  # external/. Directory names match the repo/Nix package names (*cpp where
-  # applicable); CMake package/target names remain the short forms
-  # (geom::geom, prio::prio, …).
+  # Prefer vendored external/<dir> when present (monorepo / flake source
+  # tree). find_package is only for distro builds that strip external/.
+  # Directory names match the repo/Nix package names (*cpp where applicable);
+  # CMake package/target names remain the short forms (geom::geom, …).
   #
   # Order matters: sexp + logmich before prio (priocpp links them and checks
   # TARGET …::…).
   macro(_pingus_dep _pkg _dir)
-    find_package(${_pkg} QUIET)
-    if(${_pkg}_FOUND)
-      message(STATUS "Found ${_pkg}: ${${_pkg}_DIR}")
-    else()
-      if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/${_dir}/CMakeLists.txt")
-        message(FATAL_ERROR
-          "Package ${_pkg} not found and external/${_dir} is missing.")
-      endif()
-      message(STATUS "Package ${_pkg} not found, using external/${_dir}")
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/${_dir}/CMakeLists.txt")
+      message(STATUS "Using external/${_dir} for ${_pkg}")
       add_subdirectory(external/${_dir} EXCLUDE_FROM_ALL)
+    else()
+      find_package(${_pkg} REQUIRED)
+      message(STATUS "Found ${_pkg}: ${${_pkg}_DIR}")
     endif()
   endmacro()
 
