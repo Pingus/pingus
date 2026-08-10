@@ -17,20 +17,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(argpp VERSION 1.0.0)
 
-if(NOT tinycmmc_FOUND)
-  find_package(tinycmmc CONFIG QUIET)
-endif()
-if(tinycmmc_FOUND AND TINYCMMC_MODULE_PATH)
-  # use package
-elseif(EXISTS "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/TinyCMMC.cmake")
-  set(TINYCMMC_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/")
-elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/TinyCMMC.cmake")
-  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/")
-elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/TinyCMMC.cmake")
-  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/")
-else()
-  message(FATAL_ERROR "tinycmmc modules not found")
-endif()
+set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/")
+find_package(tinycmmc CONFIG)
 message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
 list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
 
@@ -49,9 +37,8 @@ add_library(argpp STATIC
   src/parser.cpp
   src/prettyprinter.cpp)
 # Public BUILD_INTERFACE needs both roots:
-#   include/       → #include <argpp/argpp.hpp> (Pingus)
-#   include/argpp/ → #include <argpp.hpp> / "argpp.hpp" (argpp sources & tests)
-# Install layout is include/argpp/argpp.hpp, so INSTALL_INTERFACE is include/.
+#   include/       → #include <argpp/argpp.hpp>
+#   include/argpp/ → #include <argpp.hpp> / "argpp.hpp"
 target_include_directories(argpp PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/argpp>
