@@ -1,38 +1,42 @@
+# tinycmmc - Tiny CMake module collection
 # Copyright (C) 2022 Ingo Ruhnke <grumbel@gmail.com>
 #
-# This software is provided 'as-is', without any express or implied
-# warranty.  In no event will the authors be held liable for any damages
-# arising from the use of this software.
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-# Permission is granted to anyone to use this software for any purpose,
-# including commercial applications, and to alter it and redistribute it
-# freely, subject to the following restrictions:
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-# 1. The origin of this software must not be misrepresented; you must not
-#    claim that you wrote the original software. If you use this software
-#    in a product, an acknowledgment in the product documentation would be
-#    appreciated but is not required.
-# 2. Altered source versions must be plainly marked as such, and must not be
-#    misrepresented as being the original software.
-# 3. This notice may not be removed or altered from any source distribution.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Bootstrap file that is looking for where tinycmmc is installed
 
-find_package(tinycmmc CONFIG)
+find_package(tinycmmc CONFIG QUIET)
 if(tinycmmc_FOUND)
   message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
   list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
+elseif(TINYCMMC_MODULE_PATH AND EXISTS "${TINYCMMC_MODULE_PATH}/TinyCMMC.cmake")
+  # Caller passed -DTINYCMMC_MODULE_PATH=...
+  message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
+  list(APPEND CMAKE_MODULE_PATH "${TINYCMMC_MODULE_PATH}")
+elseif(EXISTS "${CMAKE_SOURCE_DIR}/external/tinycmmc/CMakeLists.txt")
+  # Monorepo / git-subtree layout (e.g. Pingus): shared external/tinycmmc
+  set(TINYCMMC_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/")
+  message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
+  list(APPEND CMAKE_MODULE_PATH "${TINYCMMC_MODULE_PATH}")
+elseif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/tinycmmc/CMakeLists.txt")
+  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/tinycmmc/modules/")
+  message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
+  list(APPEND CMAKE_MODULE_PATH "${TINYCMMC_MODULE_PATH}")
 else()
-  if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/tinycmmc/CMakeLists.txt")
-    message(FATAL_ERROR
-      "The git submodule \"external/tinycmmc\" could not be found. "
-      "To retrieve it, run:\n"
-      "    git submodule update --init --recursive\n")
-  else()
-    set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/external/tinycmmc/modules/")
-    message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
-    list(APPEND CMAKE_MODULE_PATH "${TINYCMMC_MODULE_PATH}")
-  endif()
+  message(FATAL_ERROR
+    "tinycmmc could not be found (no config package and no external/tinycmmc).\n"
+    "Vendored layout: top-level external/tinycmmc or per-project external/tinycmmc.")
 endif()
 
 include(TinyCMMC)
