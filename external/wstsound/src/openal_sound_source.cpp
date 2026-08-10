@@ -143,8 +143,9 @@ OpenALSoundSource::set_looping(bool looping)
 }
 
 void
-OpenALSoundSource::set_loop(int sample_beg, int sample_end)
+OpenALSoundSource::set_loop(int /* sample_beg */, int /* sample_end */)
 {
+  // Sample-range looping is only implemented for streaming sources.
   throw SoundError("OpenALSoundSource::set_loop() not supported for non-streaming sources");
 }
 
