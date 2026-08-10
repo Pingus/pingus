@@ -306,6 +306,11 @@ function(build_dependencies)
   _pingus_dep(argpp argpp)
   _pingus_dep(geom geomcpp)
   _pingus_dep(logmich logmich)
+  # sexpcpp: USE_CXX17 enables std::from_chars for float. Leave off on
+  # ArkOS/R36S (PINGUS_NO_XDGCPP) where libstdc++ may lack float from_chars.
+  if(NOT PINGUS_NO_XDGCPP)
+    set(USE_CXX17 ON CACHE BOOL "" FORCE)
+  endif()
   _pingus_dep(sexp sexpcpp)
   if(EMSCRIPTEN OR PINGUS_NO_XDGCPP)
     # jsoncpp is not in the emscripten/ArkOS sysroots; game data uses sexp paths.

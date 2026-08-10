@@ -26,19 +26,23 @@ option(WARNINGS "Enable extra compiler warnings" OFF)
 option(WERROR "Treat warnings as errors" OFF)
 option(CLANG_TIDY "Enable clang-tidy" OFF)
 option(CLANG_TIDY_FIX "Apply clang-tidy fixes to source code" OFF)
+option(USE_CXX17 "Use C++17 features" OFF)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(USE_CXX17)
+  # for std::from_chars()
+  add_definitions(-DSEXP_USE_CXX17)
+endif()
 
 set(WARNINGS_CXX_FLAGS "")
 if(WERROR)
   list(APPEND WARNINGS_CXX_FLAGS -Werror)
 endif()
 if(WARNINGS)
-  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra)
-  if(CMAKE_COMPILER_IS_GNUCXX)
-    list(APPEND WARNINGS_CXX_FLAGS
+  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra -Wpedantic
       -Wcast-align
       -Wcast-qual
       -Wconversion
@@ -52,7 +56,6 @@ if(WARNINGS)
       -Wlogical-op
       -Wmissing-format-attribute
       -Wmissing-noreturn
-      -Wno-suggest-attribute=noreturn
       -Wunused-parameter
       -Wnon-virtual-dtor
       -Wold-style-cast
@@ -65,42 +68,7 @@ if(WARNINGS)
       -Wsuggest-override
       -Wunreachable-code
       -Wzero-as-null-pointer-constant
-      -pedantic
     )
-    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 8)
-      list(APPEND WARNINGS_CXX_FLAGS -Wint-in-bool-context)
-    endif()
-  elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    list(APPEND WARNINGS_CXX_FLAGS
-      -Weverything
-      -Wno-c++98-compat
-      -Wno-c++98-compat-pedantic
-      -Wno-float-equal
-      -Wno-padded
-      -Wno-weak-vtables
-      -Wno-disabled-macro-expansion
-      -Wno-documentation
-      -Wno-reserved-id-macro
-      -Wno-sign-conversion
-      -Wno-gnu-zero-variadic-macro-arguments
-      -Wno-poison-system-directories
-      -Wno-documentation-unknown-command
-      -Wno-inconsistent-missing-destructor-override
-      -Wno-deprecated-dynamic-exception-spec
-      -Wno-deprecated
-      -Wno-switch-enum
-      -Wno-covered-switch-default
-      -Wno-exit-time-destructors
-      -Wno-global-constructors
-      -Wno-duplicate-enum
-      -Wno-unused-parameter
-      -Wno-old-style-cast
-      -Wno-unreachable-code-break
-      -Wno-double-promotion
-      -Wno-unused-private-field
-      -Wno-unused-exception-parameter
-    )
-  endif()
 endif()
 
 if(CLANG_TIDY AND CMAKE_VERSION VERSION_GREATER_EQUAL 3.6)
@@ -134,42 +102,38 @@ configure_file(
   "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/sexp.pc"
   @ONLY)
 
-# Packaging only when built as a standalone top-level project.
-if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/sexp.pc"
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/sexp.pc"
+  DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 
-  install(TARGETS sexp
-    EXPORT sexp
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sexp)
+install(TARGETS sexp
+  EXPORT sexp
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/sexp)
 
-  configure_package_config_file(
-    sexp-config.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/sexp-config.cmake
-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sexp)
+configure_package_config_file(
+  sexp-config.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/sexp-config.cmake
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sexp)
 
-  write_basic_package_version_file(
-    ${CMAKE_CURRENT_BINARY_DIR}/sexp-config-version.cmake
-    VERSION ${PROJECT_VERSION}
-    COMPATIBILITY SameMinorVersion)
+write_basic_package_version_file(
+  ${CMAKE_CURRENT_BINARY_DIR}/sexp-config-version.cmake
+  VERSION ${PROJECT_VERSION}
+  COMPATIBILITY SameMinorVersion)
 
-  export(EXPORT sexp
-    NAMESPACE sexp::
-    FILE ${CMAKE_CURRENT_BINARY_DIR}/sexp-targets.cmake)
+export(EXPORT sexp
+  NAMESPACE sexp::
+  FILE ${CMAKE_CURRENT_BINARY_DIR}/sexp-targets.cmake)
 
-  install(EXPORT sexp
-    FILE sexp-targets.cmake
-    NAMESPACE sexp::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sexp)
+install(EXPORT sexp
+  FILE sexp-targets.cmake
+  NAMESPACE sexp::
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sexp)
 
-  install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/sexp-config.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/sexp-config-version.cmake
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sexp)
-
-endif()
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/sexp-config.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/sexp-config-version.cmake
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/sexp)
 
 if(BUILD_TESTS)
   find_package(GTest REQUIRED)

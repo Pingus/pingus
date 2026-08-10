@@ -14,6 +14,7 @@ stdenv.mkDerivation {
     "-DBUILD_TESTS=ON"
     "-DWARNINGS=ON"
     "-DWERROR=ON"
+    # "-DUSE_CXX17=ON"
   ];
 
   doCheck = true;
