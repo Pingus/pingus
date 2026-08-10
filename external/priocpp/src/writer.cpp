@@ -24,6 +24,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <utility>
+#include <cstring>
 
 #ifdef PRIO_USE_JSONCPP
 #  include "json_writer_impl.hpp"

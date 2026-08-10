@@ -16,16 +16,12 @@
 
 #include "reader_document.hpp"
 
-#include <cerrno>
-#include <cstring>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
 #include <utility>
 
 #include <logmich/log.hpp>
-#include <format>
-#include "format_util.hpp"
 
 #ifdef PRIO_USE_JSONCPP
 #  include <json/reader.h>
@@ -42,6 +38,9 @@
 #include "reader_impl.hpp"
 #include "reader_mapping.hpp"
 #include "reader_object.hpp"
+#include <cstring>
+#include <format>
+#include "format_util.hpp"
 
 namespace prio {
 
@@ -60,7 +59,7 @@ ReaderDocument::from_file(Format format,
 {
   std::ifstream fin(filename);
   if (!fin) {
-    throw ReaderError(std::format("{}: failed to open: {}", prio::stream_str(filename), strerror(errno)));
+    throw ReaderError(std::format("{}: failed to open: {}", stream_str(filename), strerror(errno)));
   } else {
     return from_stream(format, fin, error_handler, filename.string());
   }

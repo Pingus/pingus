@@ -48,6 +48,7 @@ build_dependencies()
 set(PRIO_HEADERS
   include/prio/error_handler.hpp
   include/prio/format.hpp
+  include/prio/format_util.hpp
   include/prio/fwd.hpp
   include/prio/override_reader_mapping.hpp
   include/prio/prio.hpp

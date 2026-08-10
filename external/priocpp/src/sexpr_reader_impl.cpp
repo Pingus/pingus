@@ -20,9 +20,6 @@
 #include <sstream>
 
 #include <logmich/log.hpp>
-#include <format>
-#include "format_util.hpp"
-#include <sstream>
 #include <sexp/util.hpp>
 #include <sexp/io.hpp>
 
@@ -32,6 +29,8 @@
 #include "reader_mapping.hpp"
 #include "reader_object.hpp"
 #include <utility>
+#include <format>
+#include "format_util.hpp"
 
 namespace prio {
 
@@ -61,10 +60,10 @@ SExprReaderDocumentImpl::error(ErrorHandler error_handler, sexp::Value const& sx
 {
   switch (error_handler) {
     case ErrorHandler::THROW:
-      throw ReaderError(std::format("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), prio::stream_str(sx), message));
+      throw ReaderError(std::format("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), stream_str(sx), message));
 
     case ErrorHandler::LOG:
-      log_error("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), prio::stream_str(sx), message);
+      log_error("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), stream_str(sx), message);
       break;
 
     case ErrorHandler::IGNORE:
@@ -199,24 +198,7 @@ SExprReaderMappingImpl::read(std::string_view key, float& value) const
 bool
 SExprReaderMappingImpl::read(std::string_view key, std::string& value) const
 {
-  // Scheme-style: adjacent string atoms in a form are concatenated.
-  // Many Pingus levels use:
-  //   (description "line one. " "line two.")
-  // get_subsection_item() rejected size>2 and threw under ErrorHandler::THROW,
-  // which aborts wasm builds that lack exception catching.
-  sexp::Value const* sub = get_subsection(key);
-  if (!sub || sub->as_array().size() < 2) {
-    return false;
-  }
-  value.clear();
-  for (size_t i = 1; i < sub->as_array().size(); ++i) {
-    if (!sub->as_array()[i].is_string()) {
-      m_doc.error(sub->as_array()[i], "expected string");
-      return false;
-    }
-    value += sub->as_array()[i].as_string();
-  }
-  return true;
+  GET_VALUE_MACRO("string", is_string, as_string);
 }
 
 #undef GET_VALUE_MACRO

@@ -15,8 +15,6 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include "reader_error.hpp"
-
-#include <string>
 #include <utility>
 
 namespace prio {

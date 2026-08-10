@@ -15,11 +15,11 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include <iostream>
-#include <format>
-
-#include <cstring>
 
 #include <prio/prio.hpp>
+#include <utility>
+#include <cstring>
+#include <format>
 
 using namespace prio;
 

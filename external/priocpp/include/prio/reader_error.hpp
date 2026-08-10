@@ -18,7 +18,6 @@
 #define HEADER_PRIO_READER_ERROR_HPP
 
 #include <stdexcept>
-#include <string>
 
 namespace prio {
 

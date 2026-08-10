@@ -18,11 +18,8 @@
 
 #include <stdexcept>
 
-#include <sstream>
 #include <json/writer.h>
 #include <logmich/log.hpp>
-#include <format>
-#include "format_util.hpp"
 
 #include "reader_collection.hpp"
 #include "reader_error.hpp"
@@ -30,6 +27,8 @@
 #include "reader_mapping.hpp"
 #include "reader_object.hpp"
 #include <utility>
+#include <format>
+#include "format_util.hpp"
 
 namespace prio {
 
@@ -53,10 +52,10 @@ JsonReaderDocumentImpl::error(ErrorHandler error_handler, Json::Value const& jso
 {
   switch (error_handler) {
     case ErrorHandler::THROW:
-      throw ReaderError(std::format("{}: {}: {}", m_filename ? *m_filename : "<unknown>", prio::stream_str(json), message));
+      throw ReaderError(std::format("{}: {}: {}", m_filename ? *m_filename : "<unknown>", stream_str(json), message));
 
     case ErrorHandler::LOG:
-      log_error("{}: {}: {}", m_filename ? *m_filename : "<unknown>", prio::stream_str(json), message);
+      log_error("{}: {}: {}", m_filename ? *m_filename : "<unknown>", stream_str(json), message);
       break;
 
     case ErrorHandler::IGNORE:
