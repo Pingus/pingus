@@ -40,50 +40,50 @@ public:
   float get_duration() const override { return 0.0f; }
   int get_sample_duration() const override { return 0; }
 
-  void set_looping(bool looping) override {}
-  void set_loop(int sample_beg, int sample_end) override {}
+  void set_looping(bool /* looping */) override {}
+  void set_loop(int /* sample_beg */, int /* sample_end */) override {}
 
   /// Set volume (0.0 is silent, 1.0 is normal)
-  void  set_gain(float gain) override {}
+  void  set_gain(float /* gain */) override {}
   float get_gain() const override { return 1.0f; }
-  void set_pitch(float pitch) override {}
+  void set_pitch(float /* pitch */) override {}
 
-  void  seek_to(float sec) override {}
-  void  seek_to_sample(int sample) override {}
+  void  seek_to(float /* sec */) override {}
+  void  seek_to_sample(int /* sample */) override {}
 
   /** Return the current position in seconds */
   float get_pos() const override { return 0.0f; }
 
   int get_sample_pos() const override { return 0; }
 
-  void set_relative(bool relative) override {}
-  void set_position(float x, float y, float z) override {}
-  void set_velocity(float x, float y, float z) override {}
+  void set_relative(bool /* relative */) override {}
+  void set_position(float /* x */, float /* y */, float /* z */) override {}
+  void set_velocity(float /* x */, float /* y */, float /* z */) override {}
 
   /** Distances closer then reference distance will increase the gain
       (or keep it at 1.0f), while distances further away will lower it */
-  void set_reference_distance(float distance) override {}
+  void set_reference_distance(float /* distance */) override {}
 
   /** Higher factor will mean the sound gain lowers quicker with
       distance, while lower factor will reduce the lowering of gain,
       0.0f disables distance based reduction completly */
-  void set_rolloff_factor(float factor) override {}
+  void set_rolloff_factor(float /* factor */) override {}
 
-  void set_direct_filter(FilterPtr const& filter) override {}
-  void set_effect_slot(EffectSlotPtr const& slot, FilterPtr const& filter = {}) override {}
+  void set_direct_filter(FilterPtr const& /* filter */) override {}
+  void set_effect_slot(EffectSlotPtr const& /* slot */, FilterPtr const& /* filter */ = {}) override {}
 
   /** Needs to be called whenever the SoundChannels gain changes */
   void update_gain() const override {}
 
-  void update(float delta) override {
+  void update(float /* delta */) override {
     m_state = SourceState::Finished;
   }
 
-  float sample_to_sec(int sample) const override {
+  float sample_to_sec(int /* sample */) const override {
     return 0.0f;
   }
 
-  int sec_to_sample(float sec) const override {
+  int sec_to_sample(float /* sec */) const override {
     return 0;
   }
 
