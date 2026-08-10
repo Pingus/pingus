@@ -13,7 +13,7 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include "float.hpp"
 
@@ -35,7 +35,6 @@ float string2float(const std::string& text)
 {
   char const* start = text.data();
 
-  // A leading + (e.g. "+5") is not accepted by from_chars(), so skip it
   if (!text.empty() && text[0] == '+') {
     start += 1;
   }
