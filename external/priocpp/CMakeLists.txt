@@ -70,7 +70,7 @@ if(WARNINGS)
       -Wlogical-op
       -Wmissing-format-attribute
       -Wmissing-noreturn
-      -Wsuggest-attribute=noreturn
+      -Wno-suggest-attribute=noreturn
       -Wunused-parameter
       -Wnon-virtual-dtor
       -Wold-style-cast

@@ -40,7 +40,7 @@ public:
   SourceState get_state() const override;
 
   void set_looping(bool looping) override;
-  [[noreturn]] void set_loop(int sample_beg, int sample_end) override;
+  void set_loop(int sample_beg, int sample_end) override;
 
   /// Set volume (0.0 is silent, 1.0 is normal)
   void  set_gain(float gain) override;
