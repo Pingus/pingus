@@ -49,7 +49,7 @@ UnixFileSystem::open_directory(const std::string& pathname)
   }
   catch (std::filesystem::filesystem_error const&)
   {
-    // Missing directory (e.g. Android APK assets are not a real dir).
+    // Missing directory (e.g. non-filesystem asset trees).
     return {};
   }
   return files;
