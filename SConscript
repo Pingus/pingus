@@ -170,8 +170,10 @@ class Project:
     def configure_boost(self):
         if not self.conf.CheckHeader('boost/signals2.hpp', '<>', 'c++'):
             self.fatal_error += "  * library 'boost_signals2' not found\n"
-        if not self.conf.CheckLib('boost_system', '', '', 'c++'):
-            self.fatal_error += "  * library 'boost_system' not found\n"
+
+        # boost_system is last in boost 1.88, it's removed in boost 1.89
+        self.conf.CheckLib('boost_system', '', '', 'c++')
+
         if not self.conf.CheckLibWithHeader('boost_filesystem', 'boost/filesystem.hpp', 'c++'):
             self.fatal_error += "  * library 'boost_filesystem' not found\n"
 

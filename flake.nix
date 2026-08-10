@@ -2,7 +2,7 @@
   description = "A puzzle game with mechanics similar to Lemmings";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
     # FIXME: SCons in newer version seems bugged, ParseConfig() is not
@@ -17,7 +17,6 @@
     tinygettext.url = "github:tinygettext/tinygettext";
     tinygettext.inputs.nixpkgs.follows = "nixpkgs";
     tinygettext.inputs.flake-utils.follows = "flake-utils";
-    tinygettext.inputs.tinycmmc.follows = "tinycmmc";
 
     logmich.url = "github:logmich/logmich?ref=logmich-0.1.x";
     logmich.inputs.nixpkgs.follows = "nixpkgs";
@@ -64,6 +63,8 @@
               SDL_mixer
               libpng
               boost
+              libGL
+              libGLU
             ];
           };
         };

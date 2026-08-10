@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_COLLISION_MAP_HPP
 
 #include <memory>
+#include <cstdint>
 
 #include "engine/display/sprite.hpp"
 #include "pingus/groundtype.hpp"
