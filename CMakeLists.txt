@@ -17,14 +17,99 @@
 cmake_minimum_required(VERSION 3.6)
 project(strut VERSION 0.0.0)
 
-set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/")
-find_package(tinycmmc CONFIG)
-message(STATUS "tinycmmc module path: ${TINYCMMC_MODULE_PATH}")
-list(APPEND CMAKE_MODULE_PATH ${TINYCMMC_MODULE_PATH})
-
 include(GNUInstallDirs)
-include(MaximumWarnings)
-include(ClangTidy)
+include(CMakePackageConfigHelpers)
+
+option(BUILD_TESTS "Build tests" OFF)
+option(WARNINGS "Enable extra compiler warnings" OFF)
+option(WERROR "Treat warnings as errors" OFF)
+option(CLANG_TIDY "Enable clang-tidy" OFF)
+option(CLANG_TIDY_FIX "Apply clang-tidy fixes to source code" OFF)
+
+set(WARNINGS_CXX_FLAGS "")
+if(WERROR)
+  list(APPEND WARNINGS_CXX_FLAGS -Werror)
+endif()
+if(WARNINGS)
+  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra)
+  if(CMAKE_COMPILER_IS_GNUCXX)
+    list(APPEND WARNINGS_CXX_FLAGS
+      -Wcast-align
+      -Wcast-qual
+      -Wconversion
+      -Wctor-dtor-privacy
+      -Wdisabled-optimization
+      -Wdouble-promotion
+      -Weffc++
+      -Wformat=2
+      -Winit-self
+      -Winvalid-pch
+      -Wlogical-op
+      -Wmissing-format-attribute
+      -Wmissing-noreturn
+      -Wno-suggest-attribute=noreturn
+      -Wunused-parameter
+      -Wnon-virtual-dtor
+      -Wold-style-cast
+      -Woverloaded-virtual
+      -Wpacked
+      -Wredundant-decls
+      -Wshadow
+      -Wsign-promo
+      -Wstrict-null-sentinel
+      -Wsuggest-override
+      -Wunreachable-code
+      -Wzero-as-null-pointer-constant
+      -pedantic
+    )
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 8)
+      list(APPEND WARNINGS_CXX_FLAGS -Wint-in-bool-context)
+    endif()
+  elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    list(APPEND WARNINGS_CXX_FLAGS
+      -Weverything
+      -Wno-c++98-compat
+      -Wno-c++98-compat-pedantic
+      -Wno-float-equal
+      -Wno-padded
+      -Wno-weak-vtables
+      -Wno-disabled-macro-expansion
+      -Wno-documentation
+      -Wno-reserved-id-macro
+      -Wno-sign-conversion
+      -Wno-gnu-zero-variadic-macro-arguments
+      -Wno-poison-system-directories
+      -Wno-documentation-unknown-command
+      -Wno-inconsistent-missing-destructor-override
+      -Wno-deprecated-dynamic-exception-spec
+      -Wno-deprecated
+      -Wno-switch-enum
+      -Wno-covered-switch-default
+      -Wno-exit-time-destructors
+      -Wno-global-constructors
+      -Wno-duplicate-enum
+      -Wno-unused-parameter
+      -Wno-old-style-cast
+      -Wno-unreachable-code-break
+      -Wno-double-promotion
+      -Wno-unused-private-field
+      -Wno-unused-exception-parameter
+    )
+  endif()
+endif()
+
+if(CLANG_TIDY AND CMAKE_VERSION VERSION_GREATER_EQUAL 3.6)
+  find_program(CLANG_TIDY_EXE NAMES clang-tidy DOC "Path to clang-tidy executable")
+  if(NOT CLANG_TIDY_EXE)
+    message(FATAL_ERROR "clang-tidy not found.")
+  endif()
+  message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
+  if(CLANG_TIDY_FIX)
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}" "-fix")
+  else()
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
+  endif()
+endif()
 
 file(GLOB STRUT_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   include/strut/*.hpp)
@@ -36,12 +121,16 @@ add_library(strut STATIC ${STRUT_SOURCES})
 set_target_properties(strut PROPERTIES
   CXX_STANDARD 20
   CXX_STANDARD_REQUIRED ON
-  CXX_EXTENSIONS OFF)
+  CXX_EXTENSIONS OFF
+  PUBLIC_HEADER "${STRUT_HEADERS}"
+  EXPORT_NAME strut)
 target_include_directories(strut INTERFACE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>/)
+  $<INSTALL_INTERFACE:include>)
 target_include_directories(strut PRIVATE include/strut/)
-set_target_properties(strut PROPERTIES PUBLIC_HEADER "${STRUT_HEADERS}")
+target_compile_options(strut PRIVATE ${WARNINGS_CXX_FLAGS})
+
+add_library(strut::strut ALIAS strut)
 
 if(BUILD_TESTS)
   find_package(GTest REQUIRED)
@@ -64,6 +153,38 @@ if(BUILD_TESTS)
     COMMAND test_strut)
 endif()
 
-include(ExportAndInstallLibrary)
+# Packaging only when built as a standalone top-level project.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  install(TARGETS strut
+    EXPORT strut
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/strut)
+
+  configure_package_config_file(
+    strut-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/strut-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
+
+  write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/strut-config-version.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMinorVersion)
+
+  export(EXPORT strut
+    NAMESPACE strut::
+    FILE ${CMAKE_CURRENT_BINARY_DIR}/strut-targets.cmake)
+
+  install(EXPORT strut
+    FILE strut-targets.cmake
+    NAMESPACE strut::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
+
+  install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/strut-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/strut-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
+
+endif()
 
 # EOF #

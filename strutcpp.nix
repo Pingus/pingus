@@ -2,7 +2,6 @@
 , lib
 , cmake
 , gtest
-, tinycmmc
 }:
 
 stdenv.mkDerivation {
@@ -13,6 +12,8 @@ stdenv.mkDerivation {
 
   cmakeFlags = [
     "-DBUILD_TESTS=ON"
+    "-DWARNINGS=ON"
+    "-DWERROR=ON"
   ];
 
   doCheck = true;
@@ -26,7 +27,6 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = [
-    tinycmmc
     gtest
   ];
 }
