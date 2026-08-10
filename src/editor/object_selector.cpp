@@ -108,7 +108,7 @@ public:
       on_click();
   }
 
-  void update (float delta) override
+  void update (float /* delta */) override
   {
     sprite.update();
   }

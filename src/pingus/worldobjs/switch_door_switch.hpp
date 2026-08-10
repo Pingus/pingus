@@ -47,7 +47,7 @@ public:
 
   /// The switch and the door should stay above the pingus
   float z_index() const override { return 100; }
-  void set_z_index(float z_index) override { }
+  void set_z_index(float /* z_index */) override { }
   void set_pos(Vector2f const& p) override { switch_pos = p; }
   Vector2f get_pos() const override { return switch_pos; }
 

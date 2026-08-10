@@ -29,65 +29,65 @@ namespace BlitterImpl {
 
 struct transform_rot90
 {
-  static inline int get_col(int width, int height, int x, int y) { return height - y - 1; }
-  static inline int get_row(int width, int height, int x, int y) { return x; }
+  static inline int get_col(int /* width */, int /* height */, int /* x */, int /* y */) { return height - y - 1; }
+  static inline int get_row(int /* width */, int /* height */, int /* x */, int /* y */) { return x; }
 
-  static inline int get_width(int width, int height) { return height; }
-  static inline int get_height(int width, int height) { return width; }
+  static inline int get_width(int /* width */, int /* height */) { return height; }
+  static inline int get_height(int /* width */, int /* height */) { return width; }
 };
 
 struct transform_rot180
 {
-  static inline int get_col(int width, int height, int x, int y) { return width - x - 1; }
-  static inline int get_row(int width, int height, int x, int y) { return height - y - 1; }
+  static inline int get_col(int /* width */, int /* height */, int /* x */, int /* y */) { return width - x - 1; }
+  static inline int get_row(int /* width */, int /* height */, int /* x */, int /* y */) { return height - y - 1; }
 
-  static inline int get_width (int width, int height) { return width; }
-  static inline int get_height(int width, int height) { return height; }
+  static inline int get_width (int /* width */, int /* height */) { return width; }
+  static inline int get_height(int /* width */, int /* height */) { return height; }
 };
 
 struct transform_rot270
 {
-  static inline int get_col(int width, int height, int x, int y) { return y; }
-  static inline int get_row(int width, int height, int x, int y) { return width - x - 1; }
+  static inline int get_col(int /* width */, int /* height */, int /* x */, int /* y */) { return y; }
+  static inline int get_row(int /* width */, int /* height */, int /* x */, int /* y */) { return width - x - 1; }
 
-  static inline int get_width (int width, int height) { return height; }
-  static inline int get_height(int width, int height) { return width; }
+  static inline int get_width (int /* width */, int /* height */) { return height; }
+  static inline int get_height(int /* width */, int /* height */) { return width; }
 };
 
 struct transform_flip
 {
-  static inline int get_col(int width, int height, int x, int y) { return width - x - 1; }
-  static inline int get_row(int width, int height, int x, int y) { return y; }
+  static inline int get_col(int /* width */, int /* height */, int /* x */, int /* y */) { return width - x - 1; }
+  static inline int get_row(int /* width */, int /* height */, int /* x */, int /* y */) { return y; }
 
-  static inline int get_width (int width, int height) { return width; }
-  static inline int get_height(int width, int height) { return height; }
+  static inline int get_width (int /* width */, int /* height */) { return width; }
+  static inline int get_height(int /* width */, int /* height */) { return height; }
 };
 
 struct transform_rot90_flip
 {
-  static inline int get_col(int width, int height, int x, int y) { return y; }
-  static inline int get_row(int width, int height, int x, int y) { return x; }
+  static inline int get_col(int /* width */, int /* height */, int /* x */, int /* y */) { return y; }
+  static inline int get_row(int /* width */, int /* height */, int /* x */, int /* y */) { return x; }
 
-  static inline int get_width (int width, int height) { return height; }
-  static inline int get_height(int width, int height) { return width; }
+  static inline int get_width (int /* width */, int /* height */) { return height; }
+  static inline int get_height(int /* width */, int /* height */) { return width; }
 };
 
 struct transform_rot180_flip
 {
-  static inline int get_col(int width, int height, int x, int y) { return x; }
-  static inline int get_row(int width, int height, int x, int y) { return height - y - 1; }
+  static inline int get_col(int /* width */, int /* height */, int /* x */, int /* y */) { return x; }
+  static inline int get_row(int /* width */, int /* height */, int /* x */, int /* y */) { return height - y - 1; }
 
-  static inline int get_width (int width, int height) { return width; }
-  static inline int get_height(int width, int height) { return height; }
+  static inline int get_width (int /* width */, int /* height */) { return width; }
+  static inline int get_height(int /* width */, int /* height */) { return height; }
 };
 
 struct transform_rot270_flip
 {
-  static inline int get_col(int width, int height, int x, int y) { return height - y - 1; }
-  static inline int get_row(int width, int height, int x, int y) { return width - x - 1; }
+  static inline int get_col(int /* width */, int /* height */, int /* x */, int /* y */) { return height - y - 1; }
+  static inline int get_row(int /* width */, int /* height */, int /* x */, int /* y */) { return width - x - 1; }
 
-  static inline int get_width (int width, int height) { return height; }
-  static inline int get_height(int width, int height) { return width; }
+  static inline int get_width (int /* width */, int /* height */) { return height; }
+  static inline int get_height(int /* width */, int /* height */) { return width; }
 };
 
 template<class Transform>

@@ -43,7 +43,7 @@ public:
 
   ActionName::Enum get_type() const override { return ActionName::BOMBER; }
 
-  bool change_allowed (ActionName::Enum action) override { return false; }
+  bool change_allowed (ActionName::Enum /* action */) override { return false; }
 
   void draw (SceneContext& gc) override;
   void update() override;

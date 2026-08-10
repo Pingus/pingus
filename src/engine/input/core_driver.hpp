@@ -33,7 +33,7 @@ public:
   ~CoreDriver() override {}
 
   std::string get_name() const override { return "core"; }
-  void update(float delta) override {}
+  void update(float /* delta */) override {}
 
   std::unique_ptr<Button> create_button(prio::ReaderObject const& reader, Control* parent) override;
   std::unique_ptr<Axis> create_axis(prio::ReaderObject const& reader, Control* parent) override;

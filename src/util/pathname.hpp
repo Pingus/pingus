@@ -94,7 +94,7 @@ std::ostream& operator<< (std::ostream& os, Pathname const& p);
 template<>
 struct std::formatter<pingus::Pathname>
 {
-  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  constexpr auto parse(auto& /* ctx */) { return ctx.begin(); }
 
   auto format(pingus::Pathname const& p, auto& ctx) const
   {

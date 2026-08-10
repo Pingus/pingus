@@ -151,7 +151,7 @@ public:
             pos.y() <= y && pos.y() + 34 > y);
   }
 
-  void update (float delta) override
+  void update (float /* delta */) override
   {
     sprite.update();
   }
@@ -227,7 +227,7 @@ Panel::draw_background(DrawingContext& gc)
 }
 
 void
-Panel::update (float delta)
+Panel::update (float /* delta */)
 {
 
 }

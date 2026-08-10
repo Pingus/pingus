@@ -107,7 +107,7 @@ LevelProperties::draw_background(DrawingContext& gc)
 }
 
 void
-LevelProperties::update(float delta)
+LevelProperties::update(float /* delta */)
 {
 }
 

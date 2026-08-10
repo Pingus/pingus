@@ -37,7 +37,7 @@ public:
 
   void draw(DrawingContext& gc) override;
   void update_input(pingus::input::Event const& event) override;
-  void update(float delta) override {}
+  void update(float /* delta */) override {}
 
 private:
   FontTestScreen (FontTestScreen const&);

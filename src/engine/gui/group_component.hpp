@@ -59,8 +59,8 @@ public:
   void on_secondary_button_press(int x, int y) override;
   void on_secondary_button_release(int x, int y) override;
 
-  void on_primary_button_click(int x, int y) override {}
-  void on_secondary_button_click(int x, int y) override {}
+  void on_primary_button_click(int /* x */, int /* y */) override {}
+  void on_secondary_button_click(int /* x */, int /* y */) override {}
 
   void on_key_pressed(pingus::input::KeyboardEvent const& ev) override;
 

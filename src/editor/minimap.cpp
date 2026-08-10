@@ -99,7 +99,7 @@ Minimap::draw(DrawingContext& gc)
 }
 
 void
-Minimap::update (float delta)
+Minimap::update (float /* delta */)
 {
 
 }

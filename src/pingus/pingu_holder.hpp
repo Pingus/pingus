@@ -67,7 +67,7 @@ public:
       @return 50 */
   float z_index() const override;
   void set_z_index(float) override {}
-  void set_pos(Vector2f const& p) override { }
+  void set_pos(Vector2f const& /* p */) override { }
   Vector2f get_pos() const override { return Vector2f(); }
   /*@}*/
 

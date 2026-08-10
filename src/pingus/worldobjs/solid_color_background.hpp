@@ -32,8 +32,8 @@ public:
 
   // FIXME: Make z_position editable
   float z_index() const override { return -10; }
-  void set_z_index(float z_index) override {}
-  void set_pos(Vector2f const& p) override {}
+  void set_z_index(float /* z_index */) override {}
+  void set_pos(Vector2f const& /* p */) override {}
   Vector2f get_pos() const override { return Vector2f(); }
 
   void update() override {}

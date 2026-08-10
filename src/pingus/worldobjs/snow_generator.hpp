@@ -35,8 +35,8 @@ public:
   void draw(SceneContext&) override {}
   void update() override;
   float z_index() const override { return 1000; }
-  void set_z_index(float z_index) override {}
-  void set_pos(Vector2f const& p) override {}
+  void set_z_index(float /* z_index */) override {}
+  void set_pos(Vector2f const& /* p */) override {}
   Vector2f get_pos() const override { return Vector2f(); }
 
 private:

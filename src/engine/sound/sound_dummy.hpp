@@ -37,7 +37,7 @@ public:
 
   ~PingusSoundDummy() override { }
 
-  void update(float delta) override {}
+  void update(float /* delta */) override {}
 
   void real_play_sound (const std::string & filename, float volume, float panning) override;
   void real_play_music (const std::string & filename, float volume, bool loop) override;
