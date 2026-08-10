@@ -591,7 +591,7 @@ if [ -d "$DIR/libs" ]; then
 elif [ -d "$DIR/../lib/pingus" ]; then
   export LD_LIBRARY_PATH="$DIR/../lib/pingus''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 fi
-exec "$BIN" --renderer sdl --software-cursor --controller "$DIR/data/controller/r36s.scm" --fullscreen "$@"
+exec "$BIN" --software-cursor --controller "$DIR/data/controller/r36s.scm" --fullscreen "$@"
 LAUNCH
         chmod +x $out/share/pingus/pingus.sh
       '';
