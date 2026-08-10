@@ -54,8 +54,8 @@ if(WARNINGS)
       -Wlogical-op
       -Wmissing-format-attribute
       -Wmissing-noreturn
-      -Wno-suggest-attribute=noreturn
-      -Wno-unused-parameter
+      -Wsuggest-attribute=noreturn
+      -Wunused-parameter
       -Wnon-virtual-dtor
       -Wold-style-cast
       -Woverloaded-virtual
