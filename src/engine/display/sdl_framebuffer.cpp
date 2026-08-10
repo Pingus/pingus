@@ -313,9 +313,6 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
     }
   }
 
-    return false;
-  }
-
   {
     SDL_Surface* icon = IMG_Load(Pathname("images/icons/pingus.png", Pathname::DATA_PATH).get_sys_path().c_str());
     if (icon)
