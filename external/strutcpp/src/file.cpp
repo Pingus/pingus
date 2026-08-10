@@ -39,8 +39,8 @@ std::string readfile(std::filesystem::path const& filename)
     result.resize(result.size() + blocksize);
     fin.read(result.data() + bytes_read, blocksize);
     bytes_read += fin.gcount();
-    if (fin.gcount() < blocksize) {
-      result.resize(result.size() - blocksize + fin.gcount());
+    if (fin.gcount() < static_cast<std::streamsize>(blocksize)) {
+      result.resize(result.size() - blocksize + static_cast<size_t>(fin.gcount()));
     }
   }
   return result;
