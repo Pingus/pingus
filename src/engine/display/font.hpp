@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_FONT_HPP
 
 #include <memory>
-
+#include <cstdint>
 #include "math/rect.hpp"
 
 class FontImpl;
