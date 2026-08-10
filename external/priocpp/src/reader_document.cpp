@@ -20,6 +20,7 @@
 #include <fstream>
 #include <sstream>
 #include <utility>
+#include <exception>
 
 #include <logmich/log.hpp>
 
