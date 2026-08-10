@@ -275,12 +275,16 @@ function(build_dependencies)
   # Order matters: sexp + logmich before prio (priocpp links them and checks
   # TARGET …::…).
   #
-  # Do not inherit Pingus -DWERROR=ON into the helpers: they are already
-  # built with their own strict flags in standalone Nix packages, and a
-  # few unused-parameter sites still trip -Werror when compiled in-tree.
+  # Do not inherit Pingus warning/error flags into the helpers. The parent
+  # already put -Werror into WARNINGS_CXX_FLAGS; subdirs share that list
+  # even if WERROR is forced OFF. Clear the flag vars in this function
+  # scope so add_subdirectory sees a clean slate (helpers apply their own
+  # MaximumWarnings from their WERROR/WARNINGS options).
   set(BUILD_TESTS OFF CACHE BOOL "" FORCE)
   set(WERROR OFF CACHE BOOL "" FORCE)
   set(TINYGETTEXT_WITH_SDL ON CACHE BOOL "" FORCE)
+  set(WARNINGS_CXX_FLAGS "")
+  set(TINYCMMC_WARNINGS_CXX_FLAGS "")
 
   macro(_pingus_dep _pkg _dir)
     if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/${_dir}/CMakeLists.txt")
