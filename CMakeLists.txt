@@ -248,22 +248,41 @@ function(build_dependencies)
   set(BUILD_TESTS OFF)
   set(TINYGETTEXT_WITH_SDL ON)
 
-  # Order matters when using external/ via add_subdirectory: sexp + logmich
-  # before prio (priocpp links them and checks TARGET …::…).
-  tinycmmc_find_dependency(uitest)
-  tinycmmc_find_dependency(tinygettext)
-  tinycmmc_find_dependency(argpp)
-  tinycmmc_find_dependency(geom)
-  tinycmmc_find_dependency(logmich)
-  tinycmmc_find_dependency(sexp)
+  # Prefer system / Nix packages; otherwise use the vendored trees under
+  # external/. Directory names match the repo/Nix package names (*cpp where
+  # applicable); CMake package/target names remain the short forms
+  # (geom::geom, prio::prio, …).
+  #
+  # Order matters: sexp + logmich before prio (priocpp links them and checks
+  # TARGET …::…).
+  macro(_pingus_dep _pkg _dir)
+    find_package(${_pkg} QUIET)
+    if(${_pkg}_FOUND)
+      message(STATUS "Found ${_pkg}: ${${_pkg}_DIR}")
+    else()
+      if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/${_dir}/CMakeLists.txt")
+        message(FATAL_ERROR
+          "Package ${_pkg} not found and external/${_dir} is missing.")
+      endif()
+      message(STATUS "Package ${_pkg} not found, using external/${_dir}")
+      add_subdirectory(external/${_dir} EXCLUDE_FROM_ALL)
+    endif()
+  endmacro()
+
+  _pingus_dep(uitest uitest)
+  _pingus_dep(tinygettext tinygettext)
+  _pingus_dep(argpp argpp)
+  _pingus_dep(geom geomcpp)
+  _pingus_dep(logmich logmich)
+  _pingus_dep(sexp sexpcpp)
   if(EMSCRIPTEN OR PINGUS_NO_XDGCPP)
     # jsoncpp is not in the emscripten/ArkOS sysroots; game data uses sexp paths.
     set(PRIO_USE_JSONCPP OFF CACHE BOOL "" FORCE)
   endif()
-  tinycmmc_find_dependency(prio)
-  tinycmmc_find_dependency(strut)
+  _pingus_dep(prio priocpp)
+  _pingus_dep(strut strutcpp)
   if(PINGUS_ENABLE_SOUND)
-    tinycmmc_find_dependency(wstsound)
+    _pingus_dep(wstsound wstsound)
   else()
     add_library(wstsound INTERFACE)
     add_library(wstsound::wstsound ALIAS wstsound)
@@ -272,7 +291,7 @@ function(build_dependencies)
   if(WIN32 OR EMSCRIPTEN OR ANDROID OR PINGUS_NO_XDGCPP)
     add_library(xdgcpp INTERFACE)
   else()
-    tinycmmc_find_dependency(xdgcpp)
+    _pingus_dep(xdgcpp xdgcpp)
   endif()
 endfunction()
 build_dependencies()
