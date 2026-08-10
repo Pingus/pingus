@@ -77,9 +77,7 @@
               inherit tinycmmc_lib;
             };
 
-            argpp = call ./external/argpp/argpp.nix {
-              inherit tinycmmc;
-            };
+            argpp = call ./external/argpp/argpp.nix { };
 
             geomcpp = call ./external/geomcpp/geomcpp.nix {
               self = selfFor ./external/geomcpp;
@@ -87,13 +85,9 @@
               glm = pkgs'.glm.overrideAttrs (_: { meta = { }; });
             };
 
-            logmich = call ./external/logmich/logmich.nix {
-              inherit tinycmmc;
-            };
+            logmich = call ./external/logmich/logmich.nix { };
 
-            sexpcpp = call ./external/sexpcpp/sexpcpp.nix {
-              inherit tinycmmc;
-            };
+            sexpcpp = call ./external/sexpcpp/sexpcpp.nix { };
 
             priocpp = call ./external/priocpp/priocpp.nix {
               inherit logmich tinycmmc;
@@ -102,17 +96,11 @@
               withJsoncpp = true;
             };
 
-            strutcpp = call ./external/strutcpp/strutcpp.nix {
-              inherit tinycmmc;
-            };
+            strutcpp = call ./external/strutcpp/strutcpp.nix { };
 
-            tinygettext = call ./external/tinygettext/tinygettext.nix {
-              inherit tinycmmc;
-            };
+            tinygettext = call ./external/tinygettext/tinygettext.nix { };
 
-            uitest = call ./external/uitest/uitest.nix {
-              inherit tinycmmc;
-            };
+            uitest = call ./external/uitest/uitest.nix { };
 
             wstsound =
               let
