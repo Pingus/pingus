@@ -89,8 +89,19 @@ if(WIN32)
   target_compile_definitions(tinygettext PRIVATE _CRT_SECURE_NO_WARNINGS)
 endif()
 
-# pkg-config
-set(LIB_SUBDIR ${CMAKE_INSTALL_LIBDIR})
+# pkg-config (handle absolute CMAKE_INSTALL_*DIR, e.g. Nix)
+# See https://github.com/jtojnar/cmake-snips#concatenating-paths-when-building-pkg-config-files
+if(IS_ABSOLUTE "${CMAKE_INSTALL_LIBDIR}")
+  set(LIBDIR_FOR_PC_FILE "${CMAKE_INSTALL_LIBDIR}")
+else()
+  set(LIBDIR_FOR_PC_FILE "\${exec_prefix}/${CMAKE_INSTALL_LIBDIR}")
+endif()
+if(IS_ABSOLUTE "${CMAKE_INSTALL_INCLUDEDIR}")
+  set(INCLUDEDIR_FOR_PC_FILE "${CMAKE_INSTALL_INCLUDEDIR}")
+else()
+  set(INCLUDEDIR_FOR_PC_FILE "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}")
+endif()
+
 configure_file(tinygettext.pc.in tinygettext.pc @ONLY)
 
 install(TARGETS tinygettext

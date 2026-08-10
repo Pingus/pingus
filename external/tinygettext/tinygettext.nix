@@ -10,6 +10,10 @@ stdenv.mkDerivation {
 
   src = lib.cleanSource ./.;
 
+  cmakeFlags = [
+    "-DTINYGETTEXT_UTF8_ONLY=ON"
+  ];
+
   postFixup = ""
   + (lib.optionalString stdenv.hostPlatform.isWindows ''
     # This is rather ugly, but functional. Nix has a win-dll-link.sh
