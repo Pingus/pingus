@@ -276,7 +276,7 @@ JsonReaderMappingImpl::read(std::string_view key, ReaderObject& value) const
 void
 JsonReaderMappingImpl::error(std::string_view key, std::string_view message) const
 {
-  m_doc.error(m_json, message);
+  m_doc.error(m_json, std::format("{}: {}", key, message));
 }
 
 void

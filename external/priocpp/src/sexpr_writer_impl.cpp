@@ -64,6 +64,28 @@ SExprWriterImpl::indent() const
 }
 
 void
+SExprWriterImpl::write_comment(std::string_view text)
+{
+  // Emit each line as a Scheme-style line comment.
+  std::size_t begin = 0;
+  while (begin <= text.size()) {
+    std::size_t end = text.find('\n', begin);
+    if (end == std::string_view::npos) {
+      end = text.size();
+    }
+    (*out) << indent() << ";;";
+    if (end > begin) {
+      (*out) << " " << text.substr(begin, end - begin);
+    }
+    (*out) << "\n";
+    if (end == text.size()) {
+      break;
+    }
+    begin = end + 1;
+  }
+}
+
+void
 SExprWriterImpl::begin_mapping(std::string_view key)
 {
   if (level != 0) {

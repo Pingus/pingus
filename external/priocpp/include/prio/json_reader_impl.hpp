@@ -30,11 +30,13 @@ class JsonReaderDocumentImpl final : public ReaderDocumentImpl
 {
 public:
   JsonReaderDocumentImpl(Json::Value value, ErrorHandler error_handler, std::optional<std::string> filename);
+  JsonReaderDocumentImpl(JsonReaderDocumentImpl const&) = delete;
+  JsonReaderDocumentImpl& operator=(JsonReaderDocumentImpl const&) = delete;
 
   ReaderObject get_root() const override;
   std::optional<std::string> get_filename() const override { return m_filename; }
   void set_parent(ReaderDocument const* parent) override { m_parent = parent; }
-  ReaderDocument const& get_parent() const { assert(m_parent != nullptr); return *m_parent; }
+  ReaderDocument const& get_parent() const override { assert(m_parent != nullptr); return *m_parent; }
 
   void error(Json::Value const& json, std::string_view message) const;
   void error(ErrorHandler error_handler, Json::Value const& json, std::string_view message) const;

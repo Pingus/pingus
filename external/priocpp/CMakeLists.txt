@@ -14,13 +14,112 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
 project(prio)
 
-include(mk/cmake/TinyCMMC.cmake)
+# Source of truth: top-level VERSION file (e.g. "0.1.0-dev"), or
+# -DPROJECT_VERSION_FULL=... from the packaging (Nix flake appends +g<rev>).
+if(NOT DEFINED PROJECT_VERSION_FULL)
+  file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION" PROJECT_VERSION_FULL LIMIT_COUNT 1)
+endif()
 
+# PROJECT_VERSION is used by write_basic_package_version_file; keep it
+# free of the optional +g<rev> suffix that packaging may append.
+if(NOT DEFINED PROJECT_VERSION)
+  string(REGEX REPLACE "\\+g.*" "" PROJECT_VERSION "${PROJECT_VERSION_FULL}")
+endif()
+
+message(STATUS "Project Name: ${PROJECT_NAME}")
+message(STATUS "Project Version: ${PROJECT_VERSION}")
+message(STATUS "Project Version Full: ${PROJECT_VERSION_FULL}")
+
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+option(BUILD_TESTS "Build test cases" OFF)
+option(BUILD_EXTRA "Build extra tools (priotool)" OFF)
 option(PRIO_USE_JSONCPP "Enable support for jsoncpp" ON)
 option(PRIO_USE_SEXPCPP "Enable support for sexp-cpp" ON)
+option(WARNINGS "Enable extra compiler warnings" OFF)
+option(WERROR "Treat warnings as errors" OFF)
+
+# --- compiler warnings (inlined from former tinycmmc MaximumWarnings) ---
+set(WARNINGS_CXX_FLAGS "")
+if(WERROR)
+  list(APPEND WARNINGS_CXX_FLAGS -Werror)
+endif()
+if(WARNINGS)
+  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra)
+  if(CMAKE_COMPILER_IS_GNUCXX)
+    list(APPEND WARNINGS_CXX_FLAGS
+      -Wcast-align
+      -Wcast-qual
+      -Wconversion
+      -Wctor-dtor-privacy
+      -Wdisabled-optimization
+      -Wdouble-promotion
+      -Weffc++
+      -Wformat=2
+      -Winit-self
+      -Winvalid-pch
+      -Wlogical-op
+      -Wmissing-format-attribute
+      -Wmissing-noreturn
+      -Wsuggest-attribute=noreturn
+      -Wunused-parameter
+      -Wnon-virtual-dtor
+      -Wold-style-cast
+      -Woverloaded-virtual
+      -Wpacked
+      -Wredundant-decls
+      -Wshadow
+      -Wsign-promo
+      -Wstrict-null-sentinel
+      -Wsuggest-override
+      -Wunreachable-code
+      -Wzero-as-null-pointer-constant
+      -pedantic
+    )
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 8)
+      list(APPEND WARNINGS_CXX_FLAGS -Wint-in-bool-context)
+    endif()
+  elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    list(APPEND WARNINGS_CXX_FLAGS
+      -Weverything
+      -Wno-c++98-compat
+      -Wno-c++98-compat-pedantic
+      -Wno-float-equal
+      -Wno-padded
+      -Wno-weak-vtables
+      -Wno-disabled-macro-expansion
+      -Wno-documentation
+      -Wno-reserved-id-macro
+      -Wno-sign-conversion
+      -Wno-gnu-zero-variadic-macro-arguments
+      -Wno-poison-system-directories
+      -Wno-reserved-identifier
+      -Wno-documentation-unknown-command
+      -Wno-inconsistent-missing-destructor-override
+      -Wno-deprecated-dynamic-exception-spec
+      -Wno-deprecated
+      -Wno-switch-enum
+      -Wno-covered-switch-default
+      -Wno-exit-time-destructors
+      -Wno-global-constructors
+      -Wno-duplicate-enum
+      -Wno-unused-parameter
+      -Wno-old-style-cast
+      -Wno-unreachable-code-break
+      -Wno-double-promotion
+      -Wno-unused-private-field
+      -Wno-unused-exception-parameter
+    )
+  endif()
+endif()
 
 find_package(PkgConfig REQUIRED)
 
@@ -28,19 +127,33 @@ if(PRIO_USE_JSONCPP)
   pkg_search_module(JSONCPP REQUIRED jsoncpp IMPORTED_TARGET)
 endif()
 
+# Prefer system / find_package packages; fall back to external/ submodules
+# when present (kept for local development convenience).
 function(build_dependencies)
-  set(BUILD_TESTS OFF)
+  set(BUILD_TESTS OFF)  # do not recurse into dependency tests
 
   if(PRIO_USE_SEXPCPP)
     find_package(sexp QUIET)
     if(NOT TARGET sexp::sexp)
-      add_subdirectory(external/sexp-cpp/ EXCLUDE_FROM_ALL)
+      if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/sexp-cpp/CMakeLists.txt")
+        add_subdirectory(external/sexp-cpp EXCLUDE_FROM_ALL)
+      else()
+        message(FATAL_ERROR
+          "sexp not found via find_package and external/sexp-cpp is missing.\n"
+          "Install sexp-cpp or run: git submodule update --init --recursive")
+      endif()
     endif()
   endif()
 
-find_package(logmich QUIET)
+  find_package(logmich QUIET)
   if(NOT TARGET logmich::logmich)
-    add_subdirectory(external/logmich/ EXCLUDE_FROM_ALL)
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/logmich/CMakeLists.txt")
+      add_subdirectory(external/logmich EXCLUDE_FROM_ALL)
+    else()
+      message(FATAL_ERROR
+        "logmich not found via find_package and external/logmich is missing.\n"
+        "Install logmich or run: git submodule update --init --recursive")
+    endif()
   endif()
 endfunction()
 build_dependencies()
@@ -90,19 +203,24 @@ if(PRIO_USE_SEXPCPP)
 endif()
 
 add_library(prio STATIC ${PRIO_SOURCES})
+add_library(prio::prio ALIAS prio)
+
 set_target_properties(prio PROPERTIES
   CXX_STANDARD 20
   CXX_STANDARD_REQUIRED ON
-  CXX_EXTENSIONS OFF)
+  CXX_EXTENSIONS OFF
+  PUBLIC_HEADER "${PRIO_HEADERS}")
+
 target_compile_options(prio PRIVATE ${WARNINGS_CXX_FLAGS})
-target_include_directories(prio INTERFACE
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>)
-target_include_directories(prio PRIVATE src/ include/prio/)
-set_target_properties(prio PROPERTIES PUBLIC_HEADER "${PRIO_HEADERS}")
-target_link_libraries(prio PUBLIC
-  logmich::logmich
-)
+target_include_directories(prio
+  INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+  PRIVATE
+    src/
+    include/prio/)
+target_link_libraries(prio PUBLIC logmich::logmich)
+target_compile_definitions(prio PUBLIC "-DPRIO_VERSION=\"${PROJECT_VERSION_FULL}\"")
 
 if(PRIO_USE_SEXPCPP)
   target_link_libraries(prio PUBLIC sexp::sexp)
@@ -115,9 +233,7 @@ if(PRIO_USE_JSONCPP)
 endif()
 
 if(BUILD_TESTS)
-  if(NOT TARGET GTest)
-    find_package(GTest REQUIRED)
-  endif()
+  find_package(GTest REQUIRED)
 
   set(TEST_PRIO_SOURCES
     test/reader_test.cpp
@@ -158,19 +274,19 @@ if(BUILD_EXTRA)
   file(GLOB PRIO_EXTRA_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     extra/*.cpp)
   foreach(EXTRA_SOURCE ${PRIO_EXTRA_SOURCES_CXX})
-    string(REGEX REPLACE ".*/\([^/]*\).cpp" "\\1" EXTRA_EXE ${EXTRA_SOURCE})
+    get_filename_component(EXTRA_EXE ${EXTRA_SOURCE} NAME_WE)
     add_executable(${EXTRA_EXE} ${EXTRA_SOURCE})
     set_target_properties(${EXTRA_EXE} PROPERTIES
       CXX_STANDARD 20
       CXX_STANDARD_REQUIRED ON
-      CXX_EXTENSIONS OFF)
-    set_target_properties(${EXTRA_EXE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "extra/")
+      CXX_EXTENSIONS OFF
+      RUNTIME_OUTPUT_DIRECTORY "extra/")
     target_compile_options(${EXTRA_EXE} PRIVATE ${WARNINGS_CXX_FLAGS})
-    target_link_libraries(${EXTRA_EXE} prio)
+    target_link_libraries(${EXTRA_EXE} PRIVATE prio::prio)
 
     install(TARGETS ${EXTRA_EXE}
       RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-  endforeach(EXTRA_SOURCE)
+  endforeach()
 
   if(BUILD_TESTS)
     add_test(NAME priotool
@@ -179,6 +295,35 @@ if(BUILD_EXTRA)
   endif()
 endif()
 
-tinycmmc_export_and_install_library(prio)
+# --- install / export (inlined from former tinycmmc_export_and_install_library) ---
+install(TARGETS prio
+  EXPORT prio
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/prio)
+
+configure_package_config_file(
+  prio-config.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/prio-config.cmake
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/prio)
+
+write_basic_package_version_file(
+  ${CMAKE_CURRENT_BINARY_DIR}/prio-config-version.cmake
+  VERSION "${PROJECT_VERSION}"
+  COMPATIBILITY SameMinorVersion)
+
+export(EXPORT prio
+  NAMESPACE prio::
+  FILE ${CMAKE_CURRENT_BINARY_DIR}/prio-targets.cmake)
+
+install(EXPORT prio
+  FILE prio-targets.cmake
+  NAMESPACE prio::
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/prio)
+
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/prio-config-version.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/prio-config.cmake
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/prio)
 
 # EOF #

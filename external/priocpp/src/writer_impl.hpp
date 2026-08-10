@@ -54,6 +54,9 @@ public:
   virtual void write(std::string_view key, std::span<std::string const> values) = 0;
 
   virtual void write(std::string_view key, std::vector<bool> const& values) = 0;
+
+  /** Optional; formats that have no comment syntax (e.g. JSON) may ignore it. */
+  virtual void write_comment(std::string_view text) {}
 };
 
 } // namespace prio

@@ -14,12 +14,13 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#include <iostream>
-
-#include <prio/prio.hpp>
-#include <utility>
+#include <cstdlib>
 #include <cstring>
 #include <format>
+#include <iostream>
+#include <utility>
+
+#include <prio/prio.hpp>
 
 using namespace prio;
 
@@ -105,10 +106,11 @@ struct Options
 
 void print_usage(char const* arg0)
 {
-  std::cout << "Usage: " << arg0 << "[OPTION]... [FILE]...\n"
+  std::cout << "Usage: " << arg0 << " [OPTION]... [FILE]...\n"
             << "Little toy format converter\n"
             << "\n"
             << "  --help        Display this help text\n"
+            << "  --version     Display version information\n"
             << "  --json        Output pretty json\n"
             << "  --fastjson    Output fastjson\n"
             << "  --sexp        Output s-expressions\n";
@@ -122,6 +124,10 @@ Options parse_args(int argc, char** argv)
     if (argv[i][0] == '-' && strlen(argv[i]) > 1) {
       if (strcmp(argv[i], "--help") == 0) {
         print_usage(argv[0]);
+        exit(EXIT_SUCCESS);
+      } else if (strcmp(argv[i], "--version") == 0) {
+        std::cout << "priotool " << PRIO_VERSION << std::endl;
+        exit(EXIT_SUCCESS);
       } else if (strcmp(argv[i], "--json") == 0) {
         opts.format = Format::JSON;
       } else if (strcmp(argv[i], "--fastjson") == 0) {

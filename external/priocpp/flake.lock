@@ -18,21 +18,37 @@
         "type": "github"
       }
     },
+    "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "logmich": {
       "inputs": {
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "tinycmmc": [
-          "tinycmmc"
         ]
       },
       "locked": {
-        "lastModified": 1786347205,
-        "narHash": "sha256-znaLAXTUoCOpYYbZKlCignp8d3Hdyl7o2AC+FL8hVHI=",
+        "lastModified": 1786353585,
+        "narHash": "sha256-qYSiLxwWyce3dQpH9KYQ24DXFPREOVk32/ifh7LD5x8=",
         "ref": "refs/heads/master",
-        "rev": "303baecc8c1d3773360655a61d80faad89eb1560",
-        "revCount": 56,
+        "rev": "f9a98161ec95bc3b8fe106e79366d1fead813d86",
+        "revCount": 57,
         "type": "git",
         "url": "https://github.com/logmich/logmich.git"
       },
@@ -62,8 +78,7 @@
         "flake-utils": "flake-utils",
         "logmich": "logmich",
         "nixpkgs": "nixpkgs",
-        "sexpcpp": "sexpcpp",
-        "tinycmmc": "tinycmmc"
+        "sexpcpp": "sexpcpp"
       }
     },
     "sexpcpp": {
@@ -73,17 +88,14 @@
         ],
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "tinycmmc": [
-          "tinycmmc"
         ]
       },
       "locked": {
-        "lastModified": 1775758176,
-        "narHash": "sha256-H74KlewiOhyXDXZsbCmHU4n0YP0ZsRMdpL4WsRrqK80=",
+        "lastModified": 1786361350,
+        "narHash": "sha256-7EB3cF5e4Q5EbpyKunOJTdmtBF5nKv6yYdmsYfcvICw=",
         "ref": "refs/heads/master",
-        "rev": "af9455d4612f87f44ab7ec4c56ffdb1dbf6502e3",
-        "revCount": 336,
+        "rev": "e5a53c55ef2c439ff407e8271d522f6f4d59bd21",
+        "revCount": 340,
         "type": "git",
         "url": "https://github.com/lispparser/sexp-cpp.git"
       },
@@ -107,27 +119,19 @@
         "type": "github"
       }
     },
-    "tinycmmc": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
+    "systems_2": {
       "locked": {
-        "lastModified": 1786345348,
-        "narHash": "sha256-dpvTjt3Z8m9z6/KandNFY+QvREnEW+kEiL8YeW/IYGM=",
-        "ref": "refs/heads/master",
-        "rev": "50c49bf8a45f7c5ddb0c5f838a0fd6a00845a04d",
-        "revCount": 67,
-        "type": "git",
-        "url": "https://github.com/grumbel/tinycmmc.git"
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://github.com/grumbel/tinycmmc.git"
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
       }
     }
   },

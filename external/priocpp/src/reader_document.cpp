@@ -134,23 +134,29 @@ ReaderDocument::from_file(std::filesystem::path const& filename, ErrorHandler er
 std::vector<ReaderDocument>
 ReaderDocument::parse_many(const std::string& pathname)
 {
-#if 0
-  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(pathname.get_sys_path());
-  if (sexpr)
-  {
-    std::vector<Reader> sections;
-    for(size_t i = 0; i < sexpr->get_list_size(); ++i)
-    {
-      sections.push_back(Reader(std::make_unique<SExprReaderImpl>(sexpr->get_list_elem(i))));
-    }
+#ifdef PRIO_USE_SEXPCPP
+  std::ifstream fin(pathname);
+  if (!fin) {
+    throw ReaderError(std::format("{}: failed to open: {}", pathname, strerror(errno)));
+  }
 
-    return sections;
+  try {
+    auto values = sexp::Parser::from_stream_many(fin, sexp::Parser::USE_ARRAYS);
+    std::vector<ReaderDocument> docs;
+    docs.reserve(values.size());
+    for (auto& sx : values) {
+      docs.emplace_back(std::make_unique<SExprReaderDocumentImpl>(
+          std::move(sx), ErrorHandler::THROW, pathname));
+    }
+    return docs;
+  } catch (std::exception const&) {
+    std::throw_with_nested(ReaderError(std::format(
+        "{}: ReaderDocument::parse_many() failed", pathname)));
   }
-  else
+#else
+  throw ReaderError(std::format(
+      "{}: parse_many() requires sexp-cpp support", pathname));
 #endif
-  {
-    return std::vector<ReaderDocument>();
-  }
 }
 
 ReaderDocument:: ReaderDocument() :
