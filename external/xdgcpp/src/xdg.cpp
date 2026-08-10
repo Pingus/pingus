@@ -94,6 +94,11 @@ public:
     }
 
     BaseDirSpecification()
+        : data_(),
+          config_(),
+          state_(),
+          cache_(),
+          runtime_()
     {
     }
 
