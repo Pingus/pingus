@@ -16,7 +16,7 @@
 
 #include "prettyprinter.hpp"
 
-int main(int argc, char** argv)
+int main(int /* argc */, char** /* argv */)
 {
   argpp::PrettyPrinter printer(120);
 

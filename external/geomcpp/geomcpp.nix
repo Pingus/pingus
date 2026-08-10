@@ -8,7 +8,12 @@
 
 stdenv.mkDerivation {
   pname = "geomcpp";
-  version = lib.strings.removeSuffix "\n" (builtins.readFile ./VERSION);
+  version =
+    let
+      raw = lib.strings.removeSuffix "\n" (builtins.readFile ./VERSION);
+    in
+      if lib.hasPrefix "$Format" raw then "0.0.0"
+      else lib.removePrefix "v" raw;
 
   src = lib.cleanSource ./.;
 
