@@ -23,11 +23,9 @@
 
 #include "openal_buffer.hpp"
 #include "dummy_sound_source.hpp"
-#if defined(WSTSOUND_WITH_EFX)
 #include "effect.hpp"
 #include "effect_slot.hpp"
 #include "filter.hpp"
-#endif
 #include "openal_system.hpp"
 #include "sound_error.hpp"
 #include "sound_file.hpp"
@@ -213,7 +211,6 @@ SoundManager::update(float delta)
   }
 }
 
-#if defined(WSTSOUND_WITH_EFX)
 EffectSlotPtr
 SoundManager::create_effect_slot()
 {
@@ -231,25 +228,6 @@ SoundManager::create_filter(ALuint filter_type)
 {
   return std::make_shared<Filter>(filter_type);
 }
-#else
-EffectSlotPtr
-SoundManager::create_effect_slot()
-{
-  return {};
-}
-
-EffectPtr
-SoundManager::create_effect(ALuint)
-{
-  return {};
-}
-
-FilterPtr
-SoundManager::create_filter(ALuint)
-{
-  return {};
-}
-#endif
 
 } // namespace wstsound
 

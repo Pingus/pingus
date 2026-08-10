@@ -22,7 +22,7 @@
 #define AL_ALEXT_PROTOTYPES
 #include <AL/al.h>
 #include <AL/alc.h>
-#include <AL/alext.h>
+#include <alext.h>
 
 #include "openal_device.hpp"
 

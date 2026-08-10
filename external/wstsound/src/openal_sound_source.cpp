@@ -21,19 +21,11 @@
 #include <assert.h>
 #include <iostream>
 
-#ifdef __EMSCRIPTEN__
-#  include <AL/al.h>
-#  include <AL/alc.h>
-#else
-#  define AL_ALEXT_PROTOTYPES
-#  include <al.h>
-#  include <alc.h>
-#endif
-#if defined(WSTSOUND_WITH_EFX)
-#  include <efx.h>
-#  include "effect_slot.hpp"
-#  include "filter.hpp"
-#endif
+#define AL_ALEXT_PROTOTYPES
+#include <AL/efx.h>
+
+#include "effect_slot.hpp"
+#include "filter.hpp"
 #include "sound_error.hpp"
 #include "sound_manager.hpp"
 
@@ -53,17 +45,7 @@ OpenALSoundSource::OpenALSoundSource(SoundChannel& channel) :
   // the caller won't handle an object in an invalid state thinking it's clean
   OpenALSystem::check_al_error("Couldn't create audio source: ");
 
-#ifdef __EMSCRIPTEN__
-  // Emscripten's OpenAL maps mono sources through Web Audio PannerNode when
-  // spatialized. That path has been a source of "null function" crashes for
-  // short SFX while stereo module streams (non-spatial) play fine. Keep
-  // sources non-spatial by default; callers can still set position if needed.
-  set_relative(true);
-  set_rolloff_factor(0.0f);
-  set_reference_distance(1.0f);
-#else
   set_reference_distance(128);
-#endif
 }
 
 OpenALSoundSource::~OpenALSoundSource()
@@ -233,7 +215,6 @@ OpenALSoundSource::update(float delta)
   SoundSource::update(delta);
 }
 
-#if defined(WSTSOUND_WITH_EFX)
 void
 OpenALSoundSource::set_direct_filter(FilterPtr const& filter)
 {
@@ -260,17 +241,6 @@ OpenALSoundSource::set_effect_slot(EffectSlotPtr const& slot, FilterPtr const& f
              filter ? m_filter->handle() : AL_FILTER_NULL);
   OpenALSystem::warn_al_error("OpenALSoundSource::set_effect_slot: ");
 }
-#else
-void
-OpenALSoundSource::set_direct_filter(FilterPtr const&)
-{
-}
-
-void
-OpenALSoundSource::set_effect_slot(EffectSlotPtr const&, FilterPtr const&)
-{
-}
-#endif
 
 } // namespace wstsound
 

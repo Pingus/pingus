@@ -29,14 +29,14 @@ Listener::Listener(SoundManager& sound_manager) :
 void
 Listener::set_position(float x, float y, float z)
 {
-  if (m_sound_manager.is_dummy()) { return; }
+  if (!m_sound_manager.is_dummy()) { return; }
   alListener3f(AL_POSITION, x, y, z);
 }
 
 void
 Listener::set_velocity(float x, float y, float z)
 {
-  if (m_sound_manager.is_dummy()) { return; }
+  if (!m_sound_manager.is_dummy()) { return; }
   alListener3f(AL_VELOCITY, x, y, z);
 }
 
@@ -44,7 +44,7 @@ void
 Listener::set_orientation(float at_x, float at_y, float at_z,
                           float up_x, float up_y, float up_z)
 {
-  if (m_sound_manager.is_dummy()) { return; }
+  if (!m_sound_manager.is_dummy()) { return; }
   ALfloat orientation[] = { at_x, at_y, at_z, up_x, up_y, up_z };
   alListenerfv(AL_ORIENTATION, orientation);
 }
