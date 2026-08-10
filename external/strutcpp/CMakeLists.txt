@@ -89,34 +89,38 @@ if(BUILD_TESTS)
     COMMAND test_strut)
 endif()
 
-install(TARGETS strut
-  EXPORT strut
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/strut)
+# Packaging only when built as a standalone top-level project.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  install(TARGETS strut
+    EXPORT strut
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/strut)
 
-configure_package_config_file(
-  strut-config.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/strut-config.cmake
-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
+  configure_package_config_file(
+    strut-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/strut-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
 
-write_basic_package_version_file(
-  ${CMAKE_CURRENT_BINARY_DIR}/strut-config-version.cmake
-  VERSION ${PROJECT_VERSION}
-  COMPATIBILITY SameMinorVersion)
+  write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/strut-config-version.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMinorVersion)
 
-export(EXPORT strut
-  NAMESPACE strut::
-  FILE ${CMAKE_CURRENT_BINARY_DIR}/strut-targets.cmake)
+  export(EXPORT strut
+    NAMESPACE strut::
+    FILE ${CMAKE_CURRENT_BINARY_DIR}/strut-targets.cmake)
 
-install(EXPORT strut
-  FILE strut-targets.cmake
-  NAMESPACE strut::
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
+  install(EXPORT strut
+    FILE strut-targets.cmake
+    NAMESPACE strut::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
 
-install(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/strut-config.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/strut-config-version.cmake
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
+  install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/strut-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/strut-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/strut)
+
+endif()
 
 # EOF #

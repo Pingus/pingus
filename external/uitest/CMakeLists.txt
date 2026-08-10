@@ -102,27 +102,31 @@ if(BUILD_TESTS)
     COMMAND test_uitest)
 endif()
 
-install(TARGETS uitest uitest_main
-  EXPORT uitest
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}")
+# Packaging only when built as a standalone top-level project.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  install(TARGETS uitest uitest_main
+    EXPORT uitest
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}")
 
-configure_package_config_file("${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake"
-  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
-write_basic_package_version_file("${PROJECT_NAME}-config-version.cmake"
-  VERSION "${PROJECT_VERSION}"
-  COMPATIBILITY SameMinorVersion)
-export(EXPORT "${PROJECT_NAME}"
-  NAMESPACE "${PROJECT_NAME}::"
-  FILE "${PROJECT_NAME}-targets.cmake")
-install(EXPORT "${PROJECT_NAME}"
-  FILE "${PROJECT_NAME}-targets.cmake"
-  NAMESPACE "${PROJECT_NAME}::"
-  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
-install(FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"
-  "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
-  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+  configure_package_config_file("${PROJECT_NAME}-config.cmake.in" "${PROJECT_NAME}-config.cmake"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+  write_basic_package_version_file("${PROJECT_NAME}-config-version.cmake"
+    VERSION "${PROJECT_VERSION}"
+    COMPATIBILITY SameMinorVersion)
+  export(EXPORT "${PROJECT_NAME}"
+    NAMESPACE "${PROJECT_NAME}::"
+    FILE "${PROJECT_NAME}-targets.cmake")
+  install(EXPORT "${PROJECT_NAME}"
+    FILE "${PROJECT_NAME}-targets.cmake"
+    NAMESPACE "${PROJECT_NAME}::"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+  install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
+
+endif()
 
 # EOF #

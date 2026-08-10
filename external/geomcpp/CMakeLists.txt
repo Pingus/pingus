@@ -42,13 +42,14 @@ target_compile_definitions(geom INTERFACE -DGLM_ENABLE_EXPERIMENTAL)
 set_target_properties(geom PROPERTIES PUBLIC_HEADER
   "${GEOM_HEADERS}")
 
-configure_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/geom.pc.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/geom.pc"
-  @ONLY)
-
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/geom.pc"
-  DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/geom.pc.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/geom.pc"
+    @ONLY)
+  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/geom.pc"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+endif()
 
 if(BUILD_TESTS)
   enable_testing()

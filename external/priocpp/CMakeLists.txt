@@ -15,26 +15,27 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 cmake_minimum_required(VERSION 3.15)
-project(prio)
 
-# Source of truth: top-level VERSION file (e.g. "0.1.0-dev"), or
-# -DPROJECT_VERSION_FULL=... from the packaging (Nix flake appends +g<rev>).
-if(NOT DEFINED PROJECT_VERSION_FULL)
-  file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION" PROJECT_VERSION_FULL LIMIT_COUNT 1)
+# Read our own VERSION file before project() so PROJECT_VERSION is set
+# correctly even when embedded via add_subdirectory() from a parent that
+# has already defined version variables.  project(VERSION) only accepts
+# numeric components, so strip any -dev / +g… suffix for the VERSION argument.
+set(_prio_version_full "0.1.0")
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION")
+  file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION" _prio_version_full LIMIT_COUNT 1)
+  if(_prio_version_full STREQUAL "" OR _prio_version_full MATCHES "^\\$")
+    set(_prio_version_full "0.1.0")
+  endif()
+endif()
+string(REGEX REPLACE "[-+].*" "" _prio_version "${_prio_version_full}")
+if(_prio_version STREQUAL "")
+  set(_prio_version "0.1.0")
 endif()
 
-# PROJECT_VERSION is used by write_basic_package_version_file; keep it
-# free of the optional +g<rev> suffix that packaging may append.
-if(NOT DEFINED PROJECT_VERSION)
-  string(REGEX REPLACE "\\+g.*" "" PROJECT_VERSION "${PROJECT_VERSION_FULL}")
-endif()
+project(prio VERSION ${_prio_version})
 
 message(STATUS "Project Name: ${PROJECT_NAME}")
 message(STATUS "Project Version: ${PROJECT_VERSION}")
-message(STATUS "Project Version Full: ${PROJECT_VERSION_FULL}")
-
-include(GNUInstallDirs)
-include(CMakePackageConfigHelpers)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -220,7 +221,7 @@ target_include_directories(prio
     src/
     include/prio/)
 target_link_libraries(prio PUBLIC logmich::logmich)
-target_compile_definitions(prio PUBLIC "-DPRIO_VERSION=\"${PROJECT_VERSION_FULL}\"")
+target_compile_definitions(prio PUBLIC "-DPRIO_VERSION=\"${PROJECT_VERSION}\"")
 
 if(PRIO_USE_SEXPCPP)
   target_link_libraries(prio PUBLIC sexp::sexp)
@@ -284,8 +285,11 @@ if(BUILD_EXTRA)
     target_compile_options(${EXTRA_EXE} PRIVATE ${WARNINGS_CXX_FLAGS})
     target_link_libraries(${EXTRA_EXE} PRIVATE prio::prio)
 
-    install(TARGETS ${EXTRA_EXE}
-      RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+    if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+      include(GNUInstallDirs)
+      install(TARGETS ${EXTRA_EXE}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+    endif()
   endforeach()
 
   if(BUILD_TESTS)
@@ -295,35 +299,41 @@ if(BUILD_EXTRA)
   endif()
 endif()
 
-# --- install / export (inlined from former tinycmmc_export_and_install_library) ---
-install(TARGETS prio
-  EXPORT prio
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/prio)
+# Packaging only when built as a standalone top-level project.
+# When embedded via add_subdirectory() the parent only needs the target + alias.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  include(GNUInstallDirs)
+  include(CMakePackageConfigHelpers)
 
-configure_package_config_file(
-  prio-config.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/prio-config.cmake
-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/prio)
+  install(TARGETS prio
+    EXPORT prio
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/prio)
 
-write_basic_package_version_file(
-  ${CMAKE_CURRENT_BINARY_DIR}/prio-config-version.cmake
-  VERSION "${PROJECT_VERSION}"
-  COMPATIBILITY SameMinorVersion)
+  configure_package_config_file(
+    prio-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/prio-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/prio)
 
-export(EXPORT prio
-  NAMESPACE prio::
-  FILE ${CMAKE_CURRENT_BINARY_DIR}/prio-targets.cmake)
+  write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/prio-config-version.cmake
+    VERSION "${PROJECT_VERSION}"
+    COMPATIBILITY SameMinorVersion)
 
-install(EXPORT prio
-  FILE prio-targets.cmake
-  NAMESPACE prio::
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/prio)
+  export(EXPORT prio
+    NAMESPACE prio::
+    FILE ${CMAKE_CURRENT_BINARY_DIR}/prio-targets.cmake)
 
-install(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/prio-config-version.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/prio-config.cmake
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/prio)
+  install(EXPORT prio
+    FILE prio-targets.cmake
+    NAMESPACE prio::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/prio)
+
+  install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/prio-config-version.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/prio-config.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/prio)
+endif()
 
 # EOF #

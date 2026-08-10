@@ -23,8 +23,12 @@
 
 include(GetGitRevisionDescription)
 
+# Prefer the current project's source tree so version detection works when
+# the library is consumed via add_subdirectory() from a parent project.
 function(get_project_version _outputvar)
-  if(EXISTS "${CMAKE_SOURCE_DIR}/.git")
+  set(_root "${CMAKE_CURRENT_SOURCE_DIR}")
+
+  if(EXISTS "${_root}/.git")
     git_describe(GIT_REPO_VERSION "--tags" "--match" "v[0-9]*.[0-9]*.[0-9]*")
     string(REGEX REPLACE "^v([0-9].*)" "\\1" CLEANED_GIT_REPO_VERSION "${GIT_REPO_VERSION}")
 
@@ -33,20 +37,20 @@ function(get_project_version _outputvar)
     else()
       set(${_outputvar} "${GIT_REPO_VERSION}" PARENT_SCOPE)
     endif()
-  elseif(EXISTS "${CMAKE_SOURCE_DIR}/VERSION")
-    file(STRINGS "${CMAKE_SOURCE_DIR}/VERSION" PROJECT_VERSION)
+  elseif(EXISTS "${_root}/VERSION")
+    file(STRINGS "${_root}/VERSION" _ver)
 
-    if(PROJECT_VERSION MATCHES "^\\$")
+    if(_ver MATCHES "^\\$")
       # gitattribute $Format$ was not expanded
       set(${_outputvar} "unknown-version" PARENT_SCOPE)
     else()
       # strip leading 'v', in case VERSION is generated from "git describe"
-      string(REGEX REPLACE "^v(.*)" "\\1" PROJECT_VERSION "${PROJECT_VERSION}")
-      set(${_outputvar} "${PROJECT_VERSION}" PARENT_SCOPE)
+      string(REGEX REPLACE "^v(.*)" "\\1" _ver "${_ver}")
+      set(${_outputvar} "${_ver}" PARENT_SCOPE)
     endif()
   else()
-    # optain version from directory
-    get_filename_component(BASENAME "${CMAKE_SOURCE_DIR}" NAME)
+    # obtain version from directory name
+    get_filename_component(BASENAME "${_root}" NAME)
     string(REGEX REPLACE "^${PROJECT_NAME}[-_]v?(.*)" "\\1" DIRECTORY_VERSION "${BASENAME}")
     if(NOT "${DIRECTORY_VERSION}" STREQUAL "${BASENAME}")
       set(${_outputvar} "${DIRECTORY_VERSION}" PARENT_SCOPE)

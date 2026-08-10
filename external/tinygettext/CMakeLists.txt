@@ -104,38 +104,41 @@ endif()
 
 configure_file(tinygettext.pc.in tinygettext.pc @ONLY)
 
-install(TARGETS tinygettext
-  EXPORT tinygettext
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/tinygettext.pc
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+# Packaging only when built as a standalone top-level project.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  install(TARGETS tinygettext
+    EXPORT tinygettext
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/tinygettext.pc
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
-# CMake package config (replaces tinycmmc_export_and_install_library)
-configure_package_config_file(
-  tinygettext-config.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/tinygettext-config.cmake
-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/tinygettext)
+  # CMake package config (replaces tinycmmc_export_and_install_library)
+  configure_package_config_file(
+    tinygettext-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/tinygettext-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/tinygettext)
 
-write_basic_package_version_file(
-  ${CMAKE_CURRENT_BINARY_DIR}/tinygettext-config-version.cmake
-  VERSION ${PROJECT_VERSION}
-  COMPATIBILITY SameMinorVersion)
+  write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/tinygettext-config-version.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMinorVersion)
 
-export(EXPORT tinygettext
-  NAMESPACE tinygettext::
-  FILE ${CMAKE_CURRENT_BINARY_DIR}/tinygettext-targets.cmake)
+  export(EXPORT tinygettext
+    NAMESPACE tinygettext::
+    FILE ${CMAKE_CURRENT_BINARY_DIR}/tinygettext-targets.cmake)
 
-install(EXPORT tinygettext
-  FILE tinygettext-targets.cmake
-  NAMESPACE tinygettext::
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/tinygettext)
+  install(EXPORT tinygettext
+    FILE tinygettext-targets.cmake
+    NAMESPACE tinygettext::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/tinygettext)
 
-install(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/tinygettext-config.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/tinygettext-config-version.cmake
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/tinygettext)
+  install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/tinygettext-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/tinygettext-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/tinygettext)
+endif()
 
 if(BUILD_TESTS)
   foreach(TEST tinygettext_test po_parser_test)

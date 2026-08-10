@@ -19,32 +19,35 @@
 cmake_minimum_required(VERSION 3.10...4.1)
 project(tinycmmc VERSION 0.1.0)
 
-include(GNUInstallDirs)
-include(CMakePackageConfigHelpers)
+# Packaging only when built as a standalone top-level project.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  include(GNUInstallDirs)
+  include(CMakePackageConfigHelpers)
 
-set(TINYCMMC_MODULE_INSTALL_DIR "${CMAKE_INSTALL_FULL_DATADIR}/${PROJECT_NAME}/cmake/modules/")
-set(TINYCMMC_CONFIG_INSTALL_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/cmake/${PROJECT_NAME}/")
+  set(TINYCMMC_MODULE_INSTALL_DIR "${CMAKE_INSTALL_FULL_DATADIR}/${PROJECT_NAME}/cmake/modules/")
+  set(TINYCMMC_CONFIG_INSTALL_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/cmake/${PROJECT_NAME}/")
 
-install(DIRECTORY modules/
-  DESTINATION ${TINYCMMC_MODULE_INSTALL_DIR})
+  install(DIRECTORY modules/
+    DESTINATION ${TINYCMMC_MODULE_INSTALL_DIR})
 
-configure_package_config_file(
-  tinycmmcConfig.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/tinycmmcConfig.cmake
-  INSTALL_DESTINATION ${TINYCMMC_CONFIG_INSTALL_DIR}
-  PATH_VARS TINYCMMC_MODULE_INSTALL_DIR
-)
+  configure_package_config_file(
+    tinycmmcConfig.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/tinycmmcConfig.cmake
+    INSTALL_DESTINATION ${TINYCMMC_CONFIG_INSTALL_DIR}
+    PATH_VARS TINYCMMC_MODULE_INSTALL_DIR
+  )
 
-write_basic_package_version_file(
-  ${CMAKE_CURRENT_BINARY_DIR}/tinycmmcConfigVersion.cmake
-  VERSION "${PROJECT_VERSION}"
-  COMPATIBILITY AnyNewerVersion
-)
+  write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/tinycmmcConfigVersion.cmake
+    VERSION "${PROJECT_VERSION}"
+    COMPATIBILITY AnyNewerVersion
+  )
 
-install(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/tinycmmcConfig.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/tinycmmcConfigVersion.cmake
-  DESTINATION ${TINYCMMC_CONFIG_INSTALL_DIR}
-)
+  install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/tinycmmcConfig.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/tinycmmcConfigVersion.cmake
+    DESTINATION ${TINYCMMC_CONFIG_INSTALL_DIR}
+  )
+endif()
 
 # EOF #

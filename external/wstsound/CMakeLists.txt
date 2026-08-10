@@ -30,15 +30,15 @@ elseif(TINYCMMC_MODULE_PATH AND EXISTS "${TINYCMMC_MODULE_PATH}/TinyCMMC.cmake")
   # Caller passed -DTINYCMMC_MODULE_PATH=... (e.g. isolated wasm package)
 elseif(DEFINED ENV{TINYCMMC_MODULE_PATH} AND EXISTS "$ENV{TINYCMMC_MODULE_PATH}/TinyCMMC.cmake")
   set(TINYCMMC_MODULE_PATH "$ENV{TINYCMMC_MODULE_PATH}")
+elseif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../tinycmmc/modules/TinyCMMC.cmake")
+  # monorepo: external/wstsound next to external/tinycmmc
+  set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../tinycmmc/modules/")
 elseif(EXISTS "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/TinyCMMC.cmake")
   set(TINYCMMC_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/tinycmmc/modules/")
 elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/TinyCMMC.cmake")
   set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/tinycmmc/modules/")
 elseif(EXISTS "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/TinyCMMC.cmake")
   set(TINYCMMC_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/external/cmake-modules/modules/")
-elseif(EXISTS "${CMAKE_SOURCE_DIR}/../tinycmmc/modules/TinyCMMC.cmake")
-  # monorepo: external/wstsound next to external/tinycmmc
-  set(TINYCMMC_MODULE_PATH "${CMAKE_SOURCE_DIR}/../tinycmmc/modules/")
 else()
   message(FATAL_ERROR "tinycmmc modules not found (set TINYCMMC_MODULE_PATH)")
 endif()
@@ -214,8 +214,10 @@ if(BUILD_EXTRA)
       CXX_STANDARD 20
       CXX_STANDARD_REQUIRED ON
       CXX_EXTENSIONS OFF)
-    install(TARGETS ${SRC_BASENAME}
-      RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
+    if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+      install(TARGETS ${SRC_BASENAME}
+        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
+    endif()
   endforeach(SRC)
 endif()
 

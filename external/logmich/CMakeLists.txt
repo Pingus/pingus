@@ -84,34 +84,38 @@ if(BUILD_TESTS)
     ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-install(TARGETS logmich
-  EXPORT logmich
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/logmich)
+# Packaging only when built as a standalone top-level project.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  install(TARGETS logmich
+    EXPORT logmich
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/logmich)
 
-configure_package_config_file(
-  logmich-config.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/logmich-config.cmake
-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/logmich)
+  configure_package_config_file(
+    logmich-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/logmich-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/logmich)
 
-write_basic_package_version_file(
-  ${CMAKE_CURRENT_BINARY_DIR}/logmich-config-version.cmake
-  VERSION ${PROJECT_VERSION}
-  COMPATIBILITY SameMinorVersion)
+  write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/logmich-config-version.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMinorVersion)
 
-export(EXPORT logmich
-  NAMESPACE logmich::
-  FILE ${CMAKE_CURRENT_BINARY_DIR}/logmich-targets.cmake)
+  export(EXPORT logmich
+    NAMESPACE logmich::
+    FILE ${CMAKE_CURRENT_BINARY_DIR}/logmich-targets.cmake)
 
-install(EXPORT logmich
-  FILE logmich-targets.cmake
-  NAMESPACE logmich::
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/logmich)
+  install(EXPORT logmich
+    FILE logmich-targets.cmake
+    NAMESPACE logmich::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/logmich)
 
-install(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/logmich-config.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/logmich-config-version.cmake
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/logmich)
+  install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/logmich-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/logmich-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/logmich)
+
+endif()
 
 # EOF #

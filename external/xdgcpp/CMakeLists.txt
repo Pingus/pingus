@@ -8,6 +8,7 @@ set(XDG_BUILD_TESTS OFF CACHE BOOL "Toggles building of the xdg test suite")
 set(XDGCPP_VERSION ${PROJECT_VERSION})
 
 add_library(xdgcpp STATIC src/xdg.cpp)
+add_library(xdgcpp::xdgcpp ALIAS xdgcpp)
 set_property(TARGET xdgcpp PROPERTY CXX_STANDARD 17)
 set_target_properties(xdgcpp PROPERTIES PUBLIC_HEADER "include/xdg.h")
 target_include_directories(xdgcpp PUBLIC
@@ -37,29 +38,33 @@ if(XDG_BUILD_TESTS)
   add_test(xdgcpp_test xdgcpp_test)
 endif()
 
-install(TARGETS xdgcpp xdgcpp-info
-  EXPORT xdgcpp-targets
-  LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}"
-  PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}")
+# Packaging only when built as a standalone top-level project.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  install(TARGETS xdgcpp xdgcpp-info
+    EXPORT xdgcpp-targets
+    LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}"
+    PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}")
 
-# CMake integration
-configure_file(xdgcpp-config.cmake.in
-  "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/xdgcpp-config.cmake" @ONLY)
-install(FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/xdgcpp-config.cmake"
-  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/xdgcpp/")
-export(TARGETS xdgcpp
-  FILE "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/xdgcpp-targets.cmake")
-export(PACKAGE xdgcpp)
-install(EXPORT xdgcpp-targets
-  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/xdgcpp/")
+  # CMake integration
+  configure_file(xdgcpp-config.cmake.in
+    "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/xdgcpp-config.cmake" @ONLY)
+  install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/xdgcpp-config.cmake"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/xdgcpp/")
+  export(TARGETS xdgcpp
+    FILE "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/xdgcpp-targets.cmake")
+  export(PACKAGE xdgcpp)
+  install(EXPORT xdgcpp-targets
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/xdgcpp/")
 
-configure_file(
-  "${CMAKE_CURRENT_SOURCE_DIR}/pkgconfig/xdgcpp.pc.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/xdgcpp.pc"
-  @ONLY)
+  configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/pkgconfig/xdgcpp.pc.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/xdgcpp.pc"
+    @ONLY)
 
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/xdgcpp.pc"
-  DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/xdgcpp.pc"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+
+endif()
 
 # EOF #

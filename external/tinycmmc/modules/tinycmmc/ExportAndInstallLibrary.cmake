@@ -16,36 +16,50 @@
 #    misrepresented as being the original software.
 # 3. This notice may not be removed or altered from any source distribution.
 
+# Always expose a namespaced alias. Packaging (install/export/Config) runs
+# only when this project is the top-level CMake project so embedded use via
+# add_subdirectory() does not pollute the parent's install tree.
 macro(tinycmmc_export_and_install_library _NAME)
+  if(NOT TARGET ${_NAME}::${_NAME})
+    add_library(${_NAME}::${_NAME} ALIAS ${_NAME})
+  endif()
 
-  install(TARGETS "${_NAME}"
-    EXPORT "${_NAME}"
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${_NAME}")
+  if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    include(GNUInstallDirs)
+    include(CMakePackageConfigHelpers)
 
-  add_library(${_NAME}::${_NAME} ALIAS ${_NAME})
+    install(TARGETS "${_NAME}"
+      EXPORT "${_NAME}"
+      ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+      LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+      PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${_NAME}")
 
-  string(TOLOWER "${_NAME}" ${_NAME}_LOWERCASE)
+    string(TOLOWER "${_NAME}" ${_NAME}_LOWERCASE)
 
-  include(CMakePackageConfigHelpers)
-  configure_package_config_file("${${_NAME}_LOWERCASE}-config.cmake.in" "${${_NAME}_LOWERCASE}-config.cmake"
-    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/${_NAME}")
-  write_basic_package_version_file("${${_NAME}_LOWERCASE}-config-version.cmake"
-    VERSION "${PROJECT_VERSION}"
-    COMPATIBILITY SameMinorVersion)
-  export(EXPORT "${_NAME}"
-    NAMESPACE "${_NAME}::"
-    FILE "${${_NAME}_LOWERCASE}-targets.cmake")
-  install(EXPORT "${_NAME}"
-    FILE "${${_NAME}_LOWERCASE}-targets.cmake"
-    NAMESPACE "${_NAME}::"
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${_NAME}")
-  install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/${${_NAME}_LOWERCASE}-config-version.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/${${_NAME}_LOWERCASE}-config.cmake"
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${_NAME}")
+    configure_package_config_file(
+      "${${_NAME}_LOWERCASE}-config.cmake.in"
+      "${${_NAME}_LOWERCASE}-config.cmake"
+      INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${_NAME}")
 
+    write_basic_package_version_file(
+      "${${_NAME}_LOWERCASE}-config-version.cmake"
+      VERSION "${PROJECT_VERSION}"
+      COMPATIBILITY SameMinorVersion)
+
+    export(EXPORT "${_NAME}"
+      NAMESPACE "${_NAME}::"
+      FILE "${${_NAME}_LOWERCASE}-targets.cmake")
+
+    install(EXPORT "${_NAME}"
+      FILE "${${_NAME}_LOWERCASE}-targets.cmake"
+      NAMESPACE "${_NAME}::"
+      DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${_NAME}")
+
+    install(FILES
+      "${CMAKE_CURRENT_BINARY_DIR}/${${_NAME}_LOWERCASE}-config-version.cmake"
+      "${CMAKE_CURRENT_BINARY_DIR}/${${_NAME}_LOWERCASE}-config.cmake"
+      DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${_NAME}")
+  endif()
 endmacro()
 
 # EOF #

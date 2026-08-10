@@ -92,35 +92,39 @@ if(BUILD_TESTS)
   endforeach()
 endif()
 
-# Install & package config (replaces tinycmmc ExportAndInstallLibrary)
-install(TARGETS argpp
-  EXPORT argpp
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+# Packaging only when built as a standalone top-level project.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  # Install & package config (replaces tinycmmc ExportAndInstallLibrary)
+  install(TARGETS argpp
+    EXPORT argpp
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
 
-configure_package_config_file(
-  argpp-config.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/argpp-config.cmake
-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/argpp)
+  configure_package_config_file(
+    argpp-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/argpp-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/argpp)
 
-write_basic_package_version_file(
-  ${CMAKE_CURRENT_BINARY_DIR}/argpp-config-version.cmake
-  VERSION ${PROJECT_VERSION}
-  COMPATIBILITY SameMinorVersion)
+  write_basic_package_version_file(
+    ${CMAKE_CURRENT_BINARY_DIR}/argpp-config-version.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMinorVersion)
 
-export(EXPORT argpp
-  NAMESPACE argpp::
-  FILE ${CMAKE_CURRENT_BINARY_DIR}/argpp-targets.cmake)
+  export(EXPORT argpp
+    NAMESPACE argpp::
+    FILE ${CMAKE_CURRENT_BINARY_DIR}/argpp-targets.cmake)
 
-install(EXPORT argpp
-  FILE argpp-targets.cmake
-  NAMESPACE argpp::
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/argpp)
+  install(EXPORT argpp
+    FILE argpp-targets.cmake
+    NAMESPACE argpp::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/argpp)
 
-install(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/argpp-config.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/argpp-config-version.cmake
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/argpp)
+  install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/argpp-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/argpp-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/argpp)
+
+endif()
 
 # EOF #
