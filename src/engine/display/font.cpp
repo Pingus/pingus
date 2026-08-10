@@ -110,6 +110,21 @@ public:
     float dstx = float(x - offset.x());
     float dsty = float(y - offset.y());
 
+    // Batch consecutive glyphs that share a texture into one draw call.
+    // On GLES/Mali (R36S), one-draw-per-glyph made chalk-heavy menus unusable
+    // while the in-game view (few large surfaces) stayed fine.
+    std::vector<SurfaceBlit> blits;
+    blits.reserve(64);
+    int current_image = -1;
+
+    auto flush = [&]() {
+      if (blits.empty() || current_image < 0)
+        return;
+      fb.draw_surface_blits(framebuffer_surfaces[static_cast<size_t>(current_image)],
+                            blits.data(), blits.size());
+      blits.clear();
+    };
+
     strut::utf8::iterator i(text);
     while(i.next())
     {
@@ -118,8 +133,14 @@ public:
       if (unicode < glyphs.size() && glyphs[unicode])
       {
         GlyphDescription const& glyph = *glyphs[unicode];
-        fb.draw_surface(framebuffer_surfaces[static_cast<size_t>(glyph.image)],
-                        glyph.rect, geom::ipoint(static_cast<int>(dstx), static_cast<int>(dsty)) + geom::ioffset(glyph.offset.as_vec()));
+        if (glyph.image != current_image)
+        {
+          flush();
+          current_image = glyph.image;
+        }
+        geom::ipoint dest = geom::ipoint(static_cast<int>(dstx), static_cast<int>(dsty))
+                            + geom::ioffset(glyph.offset.as_vec());
+        blits.push_back(SurfaceBlit{glyph.rect, dest});
         dstx += static_cast<float>(glyph.advance) + char_spacing;
       }
       else
@@ -127,6 +148,7 @@ public:
         // Draw placeholder char and issue a warning
       }
     }
+    flush();
   }
 
   int get_height() const

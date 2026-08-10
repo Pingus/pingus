@@ -57,6 +57,8 @@ public:
 
   void draw_surface(FramebufferSurface const& src, geom::ipoint const& pos)  override;
   void draw_surface(FramebufferSurface const& src, geom::irect const& srcrect, geom::ipoint const& pos) override;
+  void draw_surface_blits(FramebufferSurface const& src,
+                          SurfaceBlit const* blits, std::size_t count) override;
 
   void draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Color const& color) override;
 

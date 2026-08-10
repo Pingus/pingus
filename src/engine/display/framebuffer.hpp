@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_ENGINE_DISPLAY_FRAMEBUFFER_HPP
 
 #include <SDL.h>
+#include <cstddef>
 #include <vector>
 
 #include <geom/point.hpp>
@@ -30,6 +31,13 @@
 namespace pingus {
 
 class Surface;
+
+/** One blit from a shared FramebufferSurface (src rect → dest top-left). */
+struct SurfaceBlit
+{
+  geom::irect  srcrect;
+  geom::ipoint pos;
+};
 
 class Framebuffer
 {
@@ -53,6 +61,14 @@ public:
 
   virtual void draw_surface(FramebufferSurface const& src, geom::ipoint const& pos) =0;
   virtual void draw_surface(FramebufferSurface const& src, geom::irect const& srcrect, geom::ipoint const& pos) =0;
+
+  /** Draw many subrects from the same surface. Default loops; GL batches into one draw. */
+  virtual void draw_surface_blits(FramebufferSurface const& src,
+                                  SurfaceBlit const* blits, std::size_t count)
+  {
+    for (std::size_t i = 0; i < count; ++i)
+      draw_surface(src, blits[i].srcrect, blits[i].pos);
+  }
 
   virtual void draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Color const& color) =0;
 

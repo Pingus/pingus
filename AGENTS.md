@@ -198,31 +198,36 @@ Repository: https://github.com/Pingus/pingus.git
 - Fix mistakes with **new commits** (or `git revert`) on top of the current tip,
   not by replacing earlier commits.
 
-### Commit author and AI attribution
+### Commit author and AI attribution (required)
 
-- **Author** (who owns the commit for `git blame`, GitHub, and bug reports):
-  the human maintainer — currently **Ingo Ruhnke <grumbel@gmail.com>**.
-  Agents must **not** use a placeholder or agent-only identity as `user.email`.
-- **AI assistance** is recorded with a standard Git trailer at the end of the
-  commit message body (not as the author):
+**Every** agent-created commit must set author **and** committer to the human
+maintainer. AI identity goes **only** in a message trailer.
 
-  ```
-  Co-authored-by: Grok <grok@x.ai>
-  ```
+| Field | Value |
+|-------|--------|
+| Author name | `Ingo Ruhnke` |
+| Author email | `grumbel@gmail.com` |
+| Trailer | `Co-authored-by: Grok <grok@x.ai>` |
 
-  Example:
+**Forbidden:** `agent@…`, `Pingus Agent`, `grok@x.ai` (or any AI address) as
+`user.name` / `user.email` / author / committer.
 
-  ```
-  engine: fix OpenGL context loss on window resize
+Use one-shot `-c` overrides so a machine global config cannot override this:
 
-  Recreate the GL state after SDL window events that invalidate the
-  context on some drivers.
+```sh
+git -c user.name='Ingo Ruhnke' -c user.email='grumbel@gmail.com' commit -m "$(cat <<'EOF'
+engine: fix OpenGL context loss on window resize
 
-  Co-authored-by: Grok <grok@x.ai>
-  ```
+Recreate the GL state after SDL window events that invalidate the
+context on some drivers.
 
-- Do not put `grok@x.ai` (or similar) in the author/committer email field so
-  automated mail and bug tooling stay aimed at a real person.
+Co-authored-by: Grok <grok@x.ai>
+EOF
+)"
+```
+
+`git log -1 --format='%an <%ae>%n%cn <%ce>%n%B'` must show Ingo as author and
+committer, and the Co-authored-by trailer in the body.
 
 ### Handoff: git bundle only
 

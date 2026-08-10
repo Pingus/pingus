@@ -558,28 +558,58 @@ OpenGLFramebuffer::draw_surface(FramebufferSurface const& src, geom::ipoint cons
 void
 OpenGLFramebuffer::draw_surface(FramebufferSurface const& src, geom::irect const& srcrect, geom::ipoint const& pos)
 {
-  OpenGLFramebufferSurfaceImpl const* texture = static_cast<OpenGLFramebufferSurfaceImpl*>(src.get_impl());
+  SurfaceBlit blit{srcrect, pos};
+  draw_surface_blits(src, &blit, 1);
+}
+
+void
+OpenGLFramebuffer::draw_surface_blits(FramebufferSurface const& src,
+                                      SurfaceBlit const* blits, std::size_t count)
+{
+  if (!blits || count == 0)
+    return;
+
+  OpenGLFramebufferSurfaceImpl const* texture =
+    static_cast<OpenGLFramebufferSurfaceImpl*>(src.get_impl());
   float tw = static_cast<float>(texture->get_texture_size().width());
   float th = static_cast<float>(texture->get_texture_size().height());
-  float u0 = static_cast<float>(srcrect.left()) / tw;
-  float v0 = static_cast<float>(srcrect.top()) / th;
-  float u1 = static_cast<float>(srcrect.right()) / tw;
-  float v1 = static_cast<float>(srcrect.bottom()) / th;
-  float x0 = static_cast<float>(pos.x());
-  float y0 = static_cast<float>(pos.y());
-  float x1 = static_cast<float>(pos.x() + srcrect.width());
-  float y1 = static_cast<float>(pos.y() + srcrect.height());
 
-  float verts[] = {
-    x0, y0, u0, v0,
-    x1, y0, u1, v0,
-    x1, y1, u1, v1,
-    x0, y1, u0, v1,
+  // Two triangles per blit (x,y,u,v interleaved) — one GL draw for the whole batch.
+  std::vector<float> verts;
+  verts.reserve(count * 6 * 4);
+
+  auto push_vert = [&](float x, float y, float u, float v) {
+    verts.push_back(x);
+    verts.push_back(y);
+    verts.push_back(u);
+    verts.push_back(v);
   };
+
+  for (std::size_t i = 0; i < count; ++i)
+  {
+    geom::irect const& srcrect = blits[i].srcrect;
+    geom::ipoint const& pos = blits[i].pos;
+    float u0 = static_cast<float>(srcrect.left()) / tw;
+    float v0 = static_cast<float>(srcrect.top()) / th;
+    float u1 = static_cast<float>(srcrect.right()) / tw;
+    float v1 = static_cast<float>(srcrect.bottom()) / th;
+    float x0 = static_cast<float>(pos.x());
+    float y0 = static_cast<float>(pos.y());
+    float x1 = static_cast<float>(pos.x() + srcrect.width());
+    float y1 = static_cast<float>(pos.y() + srcrect.height());
+
+    // tri 1: (0,0)-(1,0)-(1,1)  tri 2: (0,0)-(1,1)-(0,1)
+    push_vert(x0, y0, u0, v0);
+    push_vert(x1, y0, u1, v0);
+    push_vert(x1, y1, u1, v1);
+    push_vert(x0, y0, u0, v0);
+    push_vert(x1, y1, u1, v1);
+    push_vert(x0, y1, u0, v1);
+  }
 
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, texture->get_handle());
-  draw_arrays(GL_TRIANGLE_FAN, verts, 4, true);
+  draw_arrays(GL_TRIANGLES, verts.data(), static_cast<int>(count * 6), true);
   glBindTexture(GL_TEXTURE_2D, 0);
 }
 
