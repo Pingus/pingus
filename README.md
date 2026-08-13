@@ -77,4 +77,3 @@ compile errors in the OpenGL fixed-function path until that is ported.
 Prefer desktop `.#pingus` and Windows cross for day-to-day builds.
 
 See `mk/r36s/CROSSCOMPILE.md`, `mk/android/README.md`, `mk/wasm/README.md`.
-
