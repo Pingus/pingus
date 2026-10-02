@@ -60,7 +60,7 @@ private:
   std::vector<SnowParticle> particles;
 
 public:
-  SnowParticleHolder();
+  explicit SnowParticleHolder(World& world);
 
   void add_particle (int x, int y, bool colliding = false);
 

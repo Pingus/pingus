@@ -84,13 +84,13 @@ Digger::dig(bool final)
 {
   if (!final)
   {
-    WorldObj::get_world()->remove(digger_radius,
+    pingu->get_world()->remove(digger_radius,
                                   pingu->get_xi() - digger_radius.get_width() / 2,
                                   pingu->get_yi() - digger_radius.get_height() + 2);
   }
   else
   {
-    WorldObj::get_world()->remove(digger_radius_final,
+    pingu->get_world()->remove(digger_radius_final,
                                   pingu->get_xi() - digger_radius.get_width() / 2,
                                   pingu->get_yi() - digger_radius.get_height() + 2);
   }

@@ -53,19 +53,17 @@ World::World(PingusLevel const& plf) :
   rain_particle_holder(),
   smoke_particle_holder(),
   snow_particle_holder(),
-  pingus(new PinguHolder(plf)),
+  pingus(new PinguHolder(*this, plf)),
   colmap(gfx_map->get_colmap()),
   gravitational_acceleration(0.2f)
 {
-  WorldObj::set_world(this);
-
   log_debug("create particle holder");
 
   // These get deleted via the world_obj vector in the destructor
-  pingu_particle_holder = new pingus::particles::PinguParticleHolder();
-  rain_particle_holder  = new pingus::particles::RainParticleHolder();
-  smoke_particle_holder = new pingus::particles::SmokeParticleHolder();
-  snow_particle_holder  = new pingus::particles::SnowParticleHolder();
+  pingu_particle_holder = new pingus::particles::PinguParticleHolder(*this);
+  rain_particle_holder  = new pingus::particles::RainParticleHolder(*this);
+  smoke_particle_holder = new pingus::particles::SmokeParticleHolder(*this);
+  snow_particle_holder  = new pingus::particles::SnowParticleHolder(*this);
 
   world_obj.push_back(gfx_map);
 
@@ -220,8 +218,6 @@ World::~World()
 void
 World::draw (SceneContext& gc)
 {
-  WorldObj::set_world(this);
-
   gc.light().fill_screen(ambient_light);
 
   for (auto const& ref : object_order)
@@ -237,8 +233,6 @@ World::draw (SceneContext& gc)
 void
 World::draw_smallmap(SmallMap* smallmap)
 {
-  WorldObj::set_world(this);
-
   for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {
     (*obj)->draw_smallmap (smallmap);
@@ -250,8 +244,6 @@ World::draw_smallmap(SmallMap* smallmap)
 void
 World::update()
 {
-  WorldObj::set_world(this);
-
   game_time += 1;
 
   if (do_armageddon)

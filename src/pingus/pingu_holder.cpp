@@ -21,7 +21,8 @@
 
 namespace pingus {
 
-PinguHolder::PinguHolder(PingusLevel const& plf) :
+PinguHolder::PinguHolder(World& world_, PingusLevel const& plf) :
+  WorldObj(&world_),
   number_of_allowed(plf.get_number_of_pingus()),
   number_of_exited(0),
   all_pingus(),
@@ -43,7 +44,7 @@ PinguHolder::create_pingu (Vector2f const& pos, int owner_id)
   {
     // We use all_pingus.size() as pingu_id, so that id == array
     // index
-    Pingu* pingu = new Pingu(static_cast<unsigned int>(all_pingus.size()), pos, owner_id);
+    Pingu* pingu = new Pingu(*world, static_cast<unsigned int>(all_pingus.size()), pos, owner_id);
 
     // This list will deleted
     all_pingus.push_back (pingu);

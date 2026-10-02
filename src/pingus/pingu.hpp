@@ -43,6 +43,9 @@ public:
   enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
 
 private:
+  /** The World the pingu lives in */
+  World* m_world;
+
   /** The primary action which is currently in use */
   std::shared_ptr<PinguAction> action;
 
@@ -93,10 +96,12 @@ public:
       @param arg_id The uniq id of the pingu
       @param pos The start position of the pingu
       @param owner The owner id of the pingu (used for multiplayer) */
-  Pingu(unsigned int arg_id, Vector2f const& pos, int owner);
+  Pingu(World& world, unsigned int arg_id, Vector2f const& pos, int owner);
 
   /** Destruct the pingu... */
   ~Pingu();
+
+  World* get_world() const { return m_world; }
 
   /** Return the logical pingus position, this is the position which
       is used for collision detection to the ground (the pingus

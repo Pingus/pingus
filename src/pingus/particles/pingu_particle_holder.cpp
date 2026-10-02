@@ -34,7 +34,8 @@ PinguParticleHolder::PinguParticle::PinguParticle (int x, int y, Random& rng)
 {
 }
 
-PinguParticleHolder::PinguParticleHolder() :
+PinguParticleHolder::PinguParticleHolder(World& world_) :
+  WorldObj(&world_),
   surface("particles/pingu_explo"),
   particles()
 {
@@ -77,7 +78,7 @@ PinguParticleHolder::update()
     float tmp_y_add = 0.0f;
 
     // Simulated gravity
-    it->velocity.y += WorldObj::get_world()->get_gravity();
+    it->velocity.y += world->get_gravity();
 
     if (it->velocity.y > 0)
     {

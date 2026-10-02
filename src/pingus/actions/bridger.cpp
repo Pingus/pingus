@@ -204,14 +204,14 @@ Bridger::place_a_brick()
 
   if (pingu->direction.is_right())
   {
-    WorldObj::get_world()->put(brick_r,
+    pingu->get_world()->put(brick_r,
                                static_cast<int>(pingu->get_pos().x() + 10.0f - static_cast<float>(brick_r.get_width())),
                                static_cast<int>(pingu->get_pos().y()),
                                Groundtype::GP_BRIDGE);
   }
   else
   {
-    WorldObj::get_world()->put(brick_l,
+    pingu->get_world()->put(brick_l,
                                static_cast<int>(pingu->get_pos().x() - 10.0f),
                                static_cast<int>(pingu->get_pos().y()),
                                Groundtype::GP_BRIDGE);

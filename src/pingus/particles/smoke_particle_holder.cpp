@@ -32,8 +32,9 @@ SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x
   use_surf2 = rng.next_int(2);
 }
 
-SmokeParticleHolder::SmokeParticleHolder()
-  : surf1("particles/smoke"),
+SmokeParticleHolder::SmokeParticleHolder(World& world_) :
+  WorldObj(&world_),
+  surf1("particles/smoke"),
     surf2("particles/smoke2"),
     particles()
 {

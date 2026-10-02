@@ -38,18 +38,12 @@ class World;
 class WorldObj
 {
 protected:
-  /** The World all WorldObjects live in. */
-  static World*  world;
+  /** The World the object is part of, nullptr for objects that don't
+      need it */
+  World* world;
 
 public:
-  /** Set the world pointer for all world objects */
-  static void   set_world(World*);
-
-  /** Return the current active world */
-  static World* get_world() { return world; }
-
-public:
-  WorldObj();
+  explicit WorldObj(World* world_ = nullptr);
   virtual ~WorldObj();
 
   WorldObj(WorldObj const&) = delete;

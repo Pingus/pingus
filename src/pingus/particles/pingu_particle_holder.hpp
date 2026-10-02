@@ -50,7 +50,7 @@ private:
   std::vector<PinguParticle> particles;
 
 public:
-  PinguParticleHolder();
+  explicit PinguParticleHolder(World& world);
 
   void add_particle (int x, int y);
 

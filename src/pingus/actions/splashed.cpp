@@ -43,7 +43,7 @@ Splashed::update()
   if (!particle_thrown)
   {
     particle_thrown = true;
-    WorldObj::get_world()->play_sound("splash", pingu->get_pos());
+    pingu->get_world()->play_sound("splash", pingu->get_pos());
   }
 
   if (clock.is_finished())

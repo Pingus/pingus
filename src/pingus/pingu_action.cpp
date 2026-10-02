@@ -54,7 +54,7 @@ int
 PinguAction::rel_getpixel (int x, int y)
 {
   // FIXME: Inline me
-  return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pingu->get_x() + static_cast<float>((x * pingu->direction))),
+  return pingu->get_world()->get_colmap()->getpixel(static_cast<int>(pingu->get_x() + static_cast<float>((x * pingu->direction))),
                                                        static_cast<int>(pingu->get_y() - static_cast<float>(y)));
 }
 

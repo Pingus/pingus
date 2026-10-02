@@ -50,7 +50,7 @@ private:
   std::vector<SmokeParticle> particles;
 
 public:
-  SmokeParticleHolder();
+  explicit SmokeParticleHolder(World& world);
 
   void add_particle (float x, float y, float vel_x, float vel_y);
 

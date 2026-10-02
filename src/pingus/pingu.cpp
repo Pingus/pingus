@@ -56,7 +56,8 @@ using namespace pingus::actions;
 namespace pingus {
 
 // Init a pingu at the given position while falling
-Pingu::Pingu(unsigned int arg_id, Vector2f const& arg_pos, int owner) :
+Pingu::Pingu(World& world, unsigned int arg_id, Vector2f const& arg_pos, int owner) :
+  m_world(&world),
   action(),
   countdown_action(),
   wall_action(),
@@ -364,7 +365,7 @@ Pingu::draw(SceneContext& gc)
 int
 Pingu::rel_getpixel(int x, int y) const
 {
-  return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pos_x + static_cast<float>(x * direction)),
+  return m_world->get_colmap()->getpixel(static_cast<int>(pos_x + static_cast<float>(x * direction)),
                                                        static_cast<int>(pos_y - static_cast<float>(y)));
 }
 

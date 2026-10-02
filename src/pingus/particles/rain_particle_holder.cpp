@@ -36,7 +36,8 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y, Random& rng) :
   xy_mod = 1.0f + rng.next_float() * 3.0f;
 }
 
-RainParticleHolder::RainParticleHolder() :
+RainParticleHolder::RainParticleHolder(World& world_) :
+  WorldObj(&world_),
   rain1_surf("particles/rain1"),
   rain2_surf("particles/rain2"),
   rain_splash("particles/rain_splash"),
@@ -110,7 +111,7 @@ RainParticleHolder::draw (SceneContext& gc)
   for (std::vector<RainParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
   {
     // skip dead/invisible particles
-    if (!it->alive || it->pos.x > static_cast<float>(WorldObj::get_world()->get_width()))
+    if (!it->alive || it->pos.x > static_cast<float>(world->get_width()))
       continue;
 
     if (it->splash)

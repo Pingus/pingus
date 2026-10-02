@@ -18,15 +18,8 @@
 
 namespace pingus {
 
-World* WorldObj::world;
-
-void
-WorldObj::set_world(World* arg_world)
-{
-  world = arg_world;
-}
-
-WorldObj::WorldObj()
+WorldObj::WorldObj(World* world_) :
+  world(world_)
 {
 }
 

@@ -65,13 +65,13 @@ Faller::update()
     return;
 
   // Apply gravity
-  pingu->set_velocity(pingu->get_velocity() + glm::vec2(0.0f, WorldObj::get_world()->get_gravity()));
+  pingu->set_velocity(pingu->get_velocity() + glm::vec2(0.0f, pingu->get_world()->get_gravity()));
 
   glm::vec2 velocity = pingu->get_velocity();
   glm::vec2 move = velocity;
   bool collided;
 
-  movers::LinearMover mover(WorldObj::get_world(), pingu->get_pos());
+  movers::LinearMover mover(pingu->get_world(), pingu->get_pos());
 
   // Move the Pingu as far is it can go
   mover.update(move, colliders::PinguCollider(pingu_height));

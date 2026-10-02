@@ -40,7 +40,7 @@ Bomber::Bomber (Pingu* p) :
   sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/bomber/left");
   sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/bomber/right");
 
-  WorldObj::get_world()->play_sound("ohno", pingu->get_pos());
+  pingu->get_world()->play_sound("ohno", pingu->get_pos());
 }
 
 void
@@ -61,7 +61,7 @@ Bomber::update()
 {
   clock.update();
 
-  movers::LinearMover mover(WorldObj::get_world(), pingu->get_pos());
+  movers::LinearMover mover(pingu->get_world(), pingu->get_pos());
 
   glm::vec2 velocity = pingu->get_velocity();
 
@@ -87,7 +87,7 @@ Bomber::update()
   }
 
   if (clock.frame() > 9 && !sound_played) {
-    WorldObj::get_world()->play_sound("plop", pingu->get_pos());
+    pingu->get_world()->play_sound("plop", pingu->get_pos());
     sound_played = true;
   }
 
@@ -95,14 +95,14 @@ Bomber::update()
   if (clock.frame() > 12 && !particle_thrown)
   {
     particle_thrown = true;
-    WorldObj::get_world()->get_pingu_particle_holder()->add_particle(static_cast<int>(pingu->get_x()),
+    pingu->get_world()->get_pingu_particle_holder()->add_particle(static_cast<int>(pingu->get_x()),
                                                                      static_cast<int>(pingu->get_y()) - 5);
   }
 
   if (clock.frame() >= 13 && !colmap_exploded)
   {
     colmap_exploded = true;
-    WorldObj::get_world()->remove(bomber_radius,
+    pingu->get_world()->remove(bomber_radius,
                                   static_cast<int>(pingu->get_x()) - (bomber_radius.get_width()/2),
                                   static_cast<int>(pingu->get_y()) - 16 - (bomber_radius.get_width()/2));
   }

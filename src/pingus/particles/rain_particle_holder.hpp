@@ -55,7 +55,7 @@ private:
   std::vector<RainParticle> particles;
 
 public:
-  RainParticleHolder();
+  explicit RainParticleHolder(World& world);
 
   void add_particle(int x, int y);
 

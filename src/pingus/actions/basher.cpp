@@ -111,7 +111,7 @@ Basher::update()
 void
 Basher::bash()
 {
-  WorldObj::get_world()->remove(bash_radius,
+  pingu->get_world()->remove(bash_radius,
                                 pingu->get_xi() - bash_radius.get_width() / 2,
                                 pingu->get_yi() - bash_radius.get_height() + 1);
 }

@@ -87,7 +87,7 @@ Miner::mine(bool final)
     if (delay_count % 2 == 0)
     {
       // regular mine action
-      WorldObj::get_world()->remove(miner_radius,
+      pingu->get_world()->remove(miner_radius,
                                     pingu->get_xi() - (miner_radius.get_width() / 2) + pingu->direction,
                                     pingu->get_yi() - miner_radius.get_height() + 2);
     }
@@ -96,7 +96,7 @@ Miner::mine(bool final)
   {
     // the last mine action before switching to another action
     CollisionMask& radius = (pingu->direction == Direction::LEFT) ? miner_radius_left : miner_radius_right;
-    WorldObj::get_world()->remove(radius,
+    pingu->get_world()->remove(radius,
                                   pingu->get_xi() - (radius.get_width() / 2) + pingu->direction,
                                   pingu->get_yi() - radius.get_height() + 2);
   }

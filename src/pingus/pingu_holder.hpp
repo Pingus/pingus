@@ -51,7 +51,7 @@ private:
   std::list<Pingu*> pingus;
 
 public:
-  PinguHolder(PingusLevel const&);
+  PinguHolder(World& world, PingusLevel const&);
   ~PinguHolder() override;
 
   /*@{
