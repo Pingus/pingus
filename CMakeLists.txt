@@ -470,6 +470,15 @@ if(BUILD_TESTS)
   add_test(NAME test_pingus_desktop
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMAND desktop-file-validate pingus.desktop)
+
+  if(BUILD_EXTRA)
+    # Smoke test: run the tutorial levels through the simulation without
+    # a display, fails if a level does not load or the game crashes.
+    file(GLOB PINGUS_HEADLESS_LEVELS ${CMAKE_CURRENT_SOURCE_DIR}/data/levels/tutorial/*.pingus)
+    add_test(NAME test_pingus_headless
+      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+      COMMAND pingus-headless ${PINGUS_HEADLESS_LEVELS})
+  endif()
 endif(BUILD_TESTS)
 
 # Binary + data under the normal FHS prefix. Datadir is baked into the

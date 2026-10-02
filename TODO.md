@@ -213,7 +213,8 @@ find data -name '*.pingus-demo' -o -path 'data/levels/*.pingus' | sort \
          entrance, …); move to the rendering side with step 4
 2. Headless smoke test
    - [x] `extra/pingus-headless` (demos + levels with armageddon)
-   - [ ] Hook into ctest / CI
+   - [x] Hook into ctest (`test_pingus_headless`, tutorial levels)
+   - [ ] CI job
 3. [ ] Shared object schema (components per object type) used by
        `WorldObjFactory`, the editor factory and the properties panel;
        replaces the editor's `HAS_*` flags
