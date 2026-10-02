@@ -187,6 +187,50 @@ OpenAL EFX on mobile.
 - [ ] CI: `nix build .#pingus` + optional port smoke jobs
 - [ ] Consider vendoring Win32 SDL under `external/` later (optional)
 
+## ECS refactor (`ecs-refactor` branch)
+
+Goal: data-driven Entity Component System for world objects and pingus,
+with game logic separated from presentation. All work stays on the
+`ecs-refactor` branch until it is in good shape; `master` is left alone.
+Demo replay compatibility is not a constraint (the demos were never fully
+reliable).
+
+Regression check: `extra/pingus-headless` runs demos and levels without a
+display; diff its output before/after a change:
+
+```sh
+find data -name '*.pingus-demo' -o -path 'data/levels/*.pingus' | sort \
+  | xargs -d '\n' build/extra/pingus-headless > results.txt
+```
+
+1. Separate game logic from sprites
+   - [x] `AnimationClock`: animation timing from `.sprite` metadata
+   - [x] Actions use clocks instead of `Sprite` frame state
+   - [x] World objects use clocks instead of `Sprite` frame state
+   - [x] Seeded `Random` in `World` (`game_random`, `fx_random`) replaces
+         global `rand()` in world code
+   - [ ] Purely visual sprites still advance in `update()` (walker, exit,
+         entrance, …); move to the rendering side with step 4
+2. Headless smoke test
+   - [x] `extra/pingus-headless` (demos + levels with armageddon)
+   - [ ] Hook into ctest / CI
+3. [ ] Shared object schema (components per object type) used by
+       `WorldObjFactory`, the editor factory and the properties panel;
+       replaces the editor's `HAS_*` flags
+4. [ ] World objects as entities + systems, explicit system order, one
+       trigger-zone system; remove `WorldObj::world` static and factory
+       singletons
+5. [ ] (Optional) Pingus as entities with an action-state component
+
+Found along the way:
+
+- [ ] 57 levels fail to load: multi-string `(description "..." "...")`
+      is rejected with "invalid items in section"; 3 more have malformed
+      numbers/bools (`granit1`, `sno1-marcotte`, `real1`)
+- [ ] 87 demos reference levels that no longer exist
+- [ ] `traps/fake_exit` sprite loops, so `FakeExit` never resets its
+      `smashing` state
+
 ## Out of scope (for now)
 
 - GP2X / Wiz / Open2x (explicitly excluded)
