@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_ACTIONS_SPLASHED_HPP
 
 #include "engine/display/sprite.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
 
 namespace pingus::actions {
@@ -28,6 +29,7 @@ private:
   bool particle_thrown;
   bool sound_played;
   Sprite sprite;
+  AnimationClock clock;
 
 public:
   Splashed (Pingu*);

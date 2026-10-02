@@ -23,7 +23,8 @@ namespace pingus::actions {
 
 Drown::Drown (Pingu* p) :
   PinguAction(p),
-  sprite()
+  sprite(),
+  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/drownfall/left"))
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" +
                                        pingu->get_owner_str() + "/drownfall/left"));
@@ -34,14 +35,15 @@ Drown::Drown (Pingu* p) :
 void
 Drown::draw (SceneContext& gc)
 {
+  clock.apply_to(sprite[pingu->direction]);
   gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 void
 Drown::update()
 {
-  sprite[pingu->direction].update();
-  if (sprite[pingu->direction].is_finished())
+  clock.update();
+  if (clock.is_finished())
   {
     pingu->set_status(Pingu::PS_DEAD);
   }

@@ -27,15 +27,18 @@ Splashed::Splashed (Pingu* p) :
   PinguAction(p),
   particle_thrown(false),
   sound_played(false),
-  sprite()
+  sprite(),
+  clock()
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/splat");
+  std::string const res_name = "pingus/player" + pingu->get_owner_str() + "/splat";
+  sprite = Sprite(res_name);
+  clock = AnimationClock::from_sprite(res_name);
 }
 
 void
 Splashed::update()
 {
-  sprite.update();
+  clock.update();
 
   if (!particle_thrown)
   {
@@ -43,7 +46,7 @@ Splashed::update()
     WorldObj::get_world()->play_sound("splash", pingu->get_pos());
   }
 
-  if (sprite.is_finished())
+  if (clock.is_finished())
   {
     pingu->set_status(Pingu::PS_DEAD);
   }
@@ -52,6 +55,7 @@ Splashed::update()
 void
 Splashed::draw (SceneContext& gc)
 {
+  clock.apply_to(sprite);
   gc.color().draw(sprite, pingu->get_pos());
 }
 

@@ -23,7 +23,8 @@ namespace pingus::actions {
 
 LaserKill::LaserKill(Pingu* p) :
   PinguAction(p),
-  sprite()
+  sprite(),
+  clock(AnimationClock::from_sprite("other/laser_kill/left"))
 {
   sprite.load(Direction::LEFT,  Sprite("other/laser_kill/left"));
   sprite.load(Direction::RIGHT, Sprite("other/laser_kill/right"));
@@ -32,16 +33,17 @@ LaserKill::LaserKill(Pingu* p) :
 void
 LaserKill::draw (SceneContext& gc)
 {
+  clock.apply_to(sprite[pingu->direction]);
   gc.color().draw(sprite[pingu->direction], pingu->get_pos() + geom::foffset(0, 2));
 }
 
 void
 LaserKill::update()
 {
-  if (sprite[pingu->direction].is_finished())
+  if (clock.is_finished())
     pingu->set_status(Pingu::PS_DEAD);
   else
-    sprite[pingu->direction].update();
+    clock.update();
 }
 
 } // namespace pingus::actions

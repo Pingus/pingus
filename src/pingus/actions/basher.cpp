@@ -31,6 +31,7 @@ namespace pingus::actions {
 Basher::Basher (Pingu* p) :
   PinguAction(p),
   sprite(),
+  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/basher/left")),
   bash_radius("pingus/common/bash_radius_gfx", "pingus/common/bash_radius"),
   basher_c(0),
   first_bash(true),
@@ -53,13 +54,14 @@ Basher::Basher (Pingu* p) :
 void
 Basher::draw (SceneContext& gc)
 {
+  clock.apply_to(sprite[pingu->direction]);
   gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 void
 Basher::update()
 {
-  sprite[pingu->direction].update();
+  clock.update();
 
   ++basher_c;
   if (basher_c % 3 == 0)
@@ -98,9 +100,8 @@ Basher::update()
         if (basher_c % 2 == 0)
           bash();
       }
-      else if (static_cast<float>(sprite[pingu->direction].get_current_frame()) // FIXME: Game logic must be separate from Sprite
-               / static_cast<float>(sprite[pingu->direction].get_frame_count()) > 0.6f)
-      { // FIXME: EVIL! Engine must not relay on graphic
+      else if (clock.progress() > 0.6f)
+      {
         pingu->set_action(ActionName::WALKER);
       }
     }

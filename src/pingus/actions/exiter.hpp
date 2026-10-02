@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_EXITER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_EXITER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 
@@ -26,6 +27,7 @@ class Exiter : public PinguAction
 {
 private:
   StateSprite sprite;
+  AnimationClock clock;
   bool sound_played;
 
 public:

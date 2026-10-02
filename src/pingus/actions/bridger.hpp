@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_ACTIONS_BRIDGER_HPP
 
 #include "math/vector2f.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
@@ -34,6 +35,8 @@ private:
 private:
   StateSprite walk_sprite;
   StateSprite build_sprite;
+  AnimationClock walk_clock;
+  AnimationClock build_clock;
   CollisionMask brick_l;
   CollisionMask brick_r;
 

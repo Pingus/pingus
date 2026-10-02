@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_LASER_KILL_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_LASER_KILL_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 
@@ -28,6 +29,7 @@ class LaserKill : public PinguAction
 {
 private:
   StateSprite sprite;
+  AnimationClock clock;
 
 public:
   LaserKill (Pingu*);

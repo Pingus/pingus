@@ -25,6 +25,7 @@ namespace pingus::actions {
 Exiter::Exiter (Pingu* p) :
   PinguAction(p),
   sprite(),
+  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/exit/left")),
   sound_played(false)
 {
   sprite.load(Direction::LEFT,  Sprite("pingus/player" +
@@ -36,7 +37,7 @@ Exiter::Exiter (Pingu* p) :
 void
 Exiter::update()
 {
-  sprite[pingu->direction].update();
+  clock.update();
 
   if (!sound_played)
   {
@@ -44,7 +45,7 @@ Exiter::update()
     pingus::sound::PingusSound::play_sound("yipee");
   }
 
-  if (sprite[pingu->direction].is_finished())
+  if (clock.is_finished())
   {
     if (pingu->get_status() != Pingu::PS_EXITED)
     {
@@ -56,6 +57,7 @@ Exiter::update()
 void
 Exiter::draw (SceneContext& gc)
 {
+  clock.apply_to(sprite[pingu->direction]);
   gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 

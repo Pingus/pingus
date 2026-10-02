@@ -34,6 +34,7 @@ Bomber::Bomber (Pingu* p) :
   colmap_exploded(false),
   bomber_radius("other/bomber_radius_gfx", "other/bomber_radius"),
   sprite(),
+  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/bomber/left")),
   explo_surf(Sprite("pingus/player" + pingu->get_owner_str() + "/explo"))
 {
   sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/bomber/left");
@@ -45,19 +46,20 @@ Bomber::Bomber (Pingu* p) :
 void
 Bomber::draw (SceneContext& gc)
 {
-  if (sprite[pingu->direction].get_current_frame() >= 13 && !gfx_exploded)
+  if (clock.frame() >= 13 && !gfx_exploded)
   {
     gc.color().draw (explo_surf, Vector2f(pingu->get_x() - 32, pingu->get_y() - 48));
     gfx_exploded = true;
   }
 
+  clock.apply_to(sprite[pingu->direction]);
   gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 void
 Bomber::update()
 {
-  sprite.update();
+  clock.update();
 
   movers::LinearMover mover(WorldObj::get_world(), pingu->get_pos());
 
@@ -69,7 +71,7 @@ Bomber::update()
   pingu->set_pos(mover.get_pos());
 
   // If the Bomber hasn't 'exploded' yet and it has hit Water or Lava
-  if (sprite[pingu->direction].get_current_frame() <= 9 && (rel_getpixel(0, -1) == Groundtype::GP_WATER
+  if (clock.frame() <= 9 && (rel_getpixel(0, -1) == Groundtype::GP_WATER
                                                             || rel_getpixel(0, -1) == Groundtype::GP_LAVA))
   {
     pingu->set_action(ActionName::DROWN);
@@ -77,27 +79,27 @@ Bomber::update()
   }
 
   // If the Bomber hasn't 'exploded' yet and it has hit the ground too quickly
-  if (sprite[pingu->direction].get_current_frame() <= 9 && rel_getpixel(0, -1) != Groundtype::GP_NOTHING
+  if (clock.frame() <= 9 && rel_getpixel(0, -1) != Groundtype::GP_NOTHING
       && velocity.y > deadly_velocity)
   {
     pingu->set_action(ActionName::SPLASHED);
     return;
   }
 
-  if (sprite[pingu->direction].get_current_frame() > 9 && !sound_played) {
+  if (clock.frame() > 9 && !sound_played) {
     WorldObj::get_world()->play_sound("plop", pingu->get_pos());
     sound_played = true;
   }
 
   // Throwing particles
-  if (sprite[pingu->direction].get_current_frame() > 12 && !particle_thrown)
+  if (clock.frame() > 12 && !particle_thrown)
   {
     particle_thrown = true;
     WorldObj::get_world()->get_pingu_particle_holder()->add_particle(static_cast<int>(pingu->get_x()),
                                                                      static_cast<int>(pingu->get_y()) - 5);
   }
 
-  if (sprite[pingu->direction].get_current_frame() >= 13 && !colmap_exploded)
+  if (clock.frame() >= 13 && !colmap_exploded)
   {
     colmap_exploded = true;
     WorldObj::get_world()->remove(bomber_radius,
@@ -106,7 +108,7 @@ Bomber::update()
   }
 
   // The pingu explode
-  if (sprite[pingu->direction].is_finished())
+  if (clock.is_finished())
   {
     pingu->set_status(Pingu::PS_DEAD);
   }

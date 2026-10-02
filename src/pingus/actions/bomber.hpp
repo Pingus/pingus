@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_BOMBER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_BOMBER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
@@ -35,6 +36,7 @@ private:
 
   CollisionMask bomber_radius;
   StateSprite sprite;
+  AnimationClock clock;
 
   Sprite   explo_surf;
 

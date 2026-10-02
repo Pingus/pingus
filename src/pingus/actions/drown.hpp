@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_DROWN_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_DROWN_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
 
@@ -26,6 +27,7 @@ class Drown : public PinguAction
 {
 private:
   StateSprite sprite;
+  AnimationClock clock;
 
 public:
   Drown (Pingu* p);

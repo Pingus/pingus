@@ -17,6 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_BASHER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_BASHER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingu_action.hpp"
 #include "pingus/state_sprite.hpp"
@@ -27,6 +28,7 @@ class Basher : public PinguAction
 {
 private:
   StateSprite   sprite;
+  AnimationClock clock;
   CollisionMask bash_radius;
   int  basher_c;
   bool first_bash;
