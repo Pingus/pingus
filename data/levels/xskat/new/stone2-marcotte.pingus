@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "The wrong direction")
-    (description "Someone forgot to told the advanced group that rigth doesn't mean left. We "
-                 "just hope the will be able to do the trip before the sun rise.")
+    (description "Someone forgot to told the advanced group that rigth doesn't mean left. We just hope the will be able to do the trip before the sun rise.")
     (author "Etienne Marcotte <marcotte_moi@yahoo.com>")
     (number-of-pingus 5)
     (number-to-save 5)

@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Twinpeeks")
-    (description "The pingus encounter two mountainpeeks, one peek looks ordinary and one of "
-                 "the peeks looks strange, but to which one shall the pingus go ?")
+    (description "The pingus encounter two mountainpeeks, one peek looks ordinary and one of the peeks looks strange, but to which one shall the pingus go ?")
     (author "darune")
     (number-of-pingus 50)
     (number-to-save 20)

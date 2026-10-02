@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Have you seen something?")
-    (description "Hey, look there! No, wait, really, I think I saw something there. Don't run "
-                 "away! Wait a moment... oh, no, too late! ")
+    (description "Hey, look there! No, wait, really, I think I saw something there. Don't run away! Wait a moment... oh, no, too late! ")
     (author "Marcus Brinkmann <Marcus.Brinkmann@ruhr-uni-bochum.de>")
     (number-of-pingus 3)
     (number-to-save 1)

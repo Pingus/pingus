@@ -3,9 +3,7 @@
   (version 2)
   (head 
     (levelname "White pingus can't jump")
-    (description "The pingus come across three large rock formations. The pingus must somehow "
-                 "get past the one in the middle. A big rock also blocks the way just outside "
-                 "the entrance.")
+    (description "The pingus come across three large rock formations. The pingus must somehow get past the one in the middle. A big rock also blocks the way just outside the entrance.")
     (author "darune")
     (number-of-pingus 20)
     (number-to-save 15)

@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Under the guilotin")
-    (description "Find a way under the guilotin and at same time pass over the water, without "
-                 "getting too wet.")
+    (description "Find a way under the guilotin and at same time pass over the water, without getting too wet.")
     (author "Darune")
     (number-of-pingus 50)
     (number-to-save 44)

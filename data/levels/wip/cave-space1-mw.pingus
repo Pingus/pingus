@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Down to the Secret")
-    (description "The Pingus now are really approaching the secrets of the cave. Will they "
-                 "make their way to the last door, the way home?")
+    (description "The Pingus now are really approaching the secrets of the cave. Will they make their way to the last door, the way home?")
     (author "Michael Wand <mwand@gmx.de>")
     (number-of-pingus 50)
     (number-to-save 30)

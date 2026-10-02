@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Alone in the desert.")
-    (description "Just a demo of the nice dessert column. Also good bridger learning level. "
-                 "-Phlog")
+    (description "Just a demo of the nice dessert column. Also good bridger learning level. -Phlog")
     (author "Ingo Ruhnke <grumbel@gmail.com>")
     (number-of-pingus 100)
     (number-to-save 90)

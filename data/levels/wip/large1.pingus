@@ -3,9 +3,7 @@
   (version 2)
   (head 
     (levelname "Extreme Large...")
-    (description "This level will take around 200MB of RAM, better kill Pingus *NOW* or see "
-                 "of your Linux will get really really slow... You can also try the SysReq-Key "
-                 "if all fails (Alt-Gr Print K) ")
+    (description "This level will take around 200MB of RAM, better kill Pingus *NOW* or see of your Linux will get really really slow... You can also try the SysReq-Key if all fails (Alt-Gr Print K) ")
     (author )
     (number-of-pingus 100)
     (number-to-save 50)

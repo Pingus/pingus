@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Pingu Acceleration Labs II")
-    (description "Hint: Unlike in Lemmings, blockers can be revived by giving them another "
-                 "job. Good Luck! ")
+    (description "Hint: Unlike in Lemmings, blockers can be revived by giving them another job. Good Luck! ")
     (author "Craig Timpany <timpany@pingus.cx>")
     (number-of-pingus 100)
     (number-to-save 90)

@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Technique")
-    (description "In this room, all the technique of the cave is controlled. Can you blow up "
-                 "enough tubes to reach the exit?")
+    (description "In this room, all the technique of the cave is controlled. Can you blow up enough tubes to reach the exit?")
     (author "Michael Wand <mwand@gmx.de>")
     (number-of-pingus 50)
     (number-to-save 25)

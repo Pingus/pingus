@@ -2,7 +2,7 @@
 (pingus-level 
   (version 2)
   (head 
-    (levelname ""Crystal-Desert" Temple")
+    (levelname "Crystal-Desert Temple")
     (description "EditorDefaultValue: ...and a short description")
     (author "Pacho Ramos <pacho@condmat1.ciencias.uniovi.es>")
     (number-of-pingus 150)

@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "An unbalanced situation")
-    (description "Why should those who are already at the exit help save the others? Maybe "
-                 "they are too few...")
+    (description "Why should those who are already at the exit help save the others? Maybe they are too few...")
     (author "Etienne Marcotte <marcotte_moi@yahoo.com>")
     (number-of-pingus 30)
     (number-to-save 20)

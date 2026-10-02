@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "The Great Pyramid")
-    (description "The exit is buried deeply inside the pyramid. Beware of traps, illusions "
-                 "and maybe even ancient curses too...")
+    (description "The exit is buried deeply inside the pyramid. Beware of traps, illusions and maybe even ancient curses too...")
     (author "Ying-Wan Lam <yingwan.lam@yale.edu>")
     (number-of-pingus 40)
     (number-to-save 30)
