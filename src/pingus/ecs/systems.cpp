@@ -7,8 +7,10 @@
 #include "pingus/collision_map.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/ecs/components.hpp"
+#include "pingus/ecs/system_parts.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/world.hpp"
+#include "pingus/components/smallmap.hpp"
 
 namespace pingus::systems {
 
@@ -177,6 +179,8 @@ startup(World& world, ecs::Entity entity)
   if (auto* liquid = reg.try_get<Liquid>(entity)) {
     startup_liquid(world, transform, *liquid);
   }
+
+  startup_trap(world, entity);
 }
 
 void
@@ -184,6 +188,7 @@ update_objects(World& world)
 {
   ecs::Registry& reg = world.get_registry();
 
+  update_traps(world);
   update_surface_backgrounds(reg);
   update_starfields(world, reg);
   update_liquids(reg);
@@ -226,11 +231,16 @@ draw(World& world, SceneContext& gc, ecs::Entity entity)
   if (auto* render = reg.try_get<SpriteRender>(entity)) {
     gc.color().draw(render->sprite, transform.pos, render->use_z_index ? transform.z_index : 0.0f);
   }
+
+  draw_trap(world, gc, entity);
 }
 
 void
-draw_smallmap(World& /* world */, SmallMap& /* smallmap */)
+draw_smallmap(World& world, SmallMap& smallmap)
 {
+  world.get_registry().each<Transform, SmallmapSymbol>([&](ecs::Entity, Transform& transform, SmallmapSymbol& symbol) {
+    smallmap.draw_sprite(symbol.sprite, transform.pos);
+  });
 }
 
 } // namespace pingus::systems

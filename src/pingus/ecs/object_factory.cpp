@@ -138,6 +138,48 @@ void build_starfield_background(World& world, ecs::Registry& reg, ecs::Entity e,
   }
 }
 
+void build_spike(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<TriggerZone>(e, 16.0f - 5.0f, 0.0f, 16.0f + 5.0f, 32.0f);
+  reg.emplace<Spike>(e, Sprite("traps/spike"), AnimationClock::from_sprite("traps/spike"));
+}
+
+void build_fake_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<TriggerZone>(e, -7.0f, -56.0f, 8.0f, 0.0f);
+  reg.emplace<FakeExit>(e, Sprite("traps/fake_exit"), AnimationClock::from_sprite("traps/fake_exit"));
+  reg.emplace<SmallmapSymbol>(e, Sprite("core/misc/smallmap_exit"));
+}
+
+void build_guillotine(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<TriggerZone>(e, 38.0f, 90.0f, 42.0f, 98.0f);
+  Guillotine& guillotine = reg.emplace<Guillotine>(e,
+                                                   Sprite("traps/guillotinekill/left"),
+                                                   Sprite("traps/guillotinekill/right"),
+                                                   Sprite("traps/guillotineidle"),
+                                                   AnimationClock::from_sprite("traps/guillotinekill/left"),
+                                                   AnimationClock::from_sprite("traps/guillotineidle"));
+  guillotine.kill_clock.set_loop(false);
+  guillotine.idle_clock.set_loop(true);
+}
+
+void build_hammer(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<Hammer>(e, Sprite("traps/hammer"), AnimationClock::from_sprite("traps/hammer").frame_count());
+}
+
+void build_laser_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<TriggerZone>(e, 34.0f, 43.0f, 34.0f + 10.0f, 43.0f + 20.0f);
+  reg.emplace<LaserExit>(e, Sprite("traps/laser_exit"), AnimationClock::from_sprite("traps/laser_exit"));
+}
+
+void build_smasher(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<Smasher>(e, Sprite("traps/smasher"));
+}
+
 std::map<std::string, Builder> const& get_builders()
 {
   static std::map<std::string, Builder> const builders = {
@@ -147,6 +189,12 @@ std::map<std::string, Builder> const& get_builders()
     {"solidcolor-background", build_solidcolor_background},
     {"surface-background", build_surface_background},
     {"starfield-background", build_starfield_background},
+    {"spike", build_spike},
+    {"fake_exit", build_fake_exit},
+    {"guillotine", build_guillotine},
+    {"hammer", build_hammer},
+    {"laser_exit", build_laser_exit},
+    {"smasher", build_smasher},
   };
   return builders;
 }

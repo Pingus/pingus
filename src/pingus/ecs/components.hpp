@@ -10,6 +10,8 @@
 #include "engine/display/sprite.hpp"
 #include "math/color.hpp"
 #include "math/vector2f.hpp"
+#include "pingus/animation_clock.hpp"
+#include "pingus/direction.hpp"
 #include "pingus/groundtype.hpp"
 #include "pingus/res_descriptor.hpp"
 
@@ -90,6 +92,78 @@ struct Star
 struct StarfieldBackground
 {
   std::vector<Star> stars;
+};
+
+/** Rectangle relative to the entity's position. A pingu is inside when
+    its position lies strictly within, see pingus_in_zone(). */
+struct TriggerZone
+{
+  float x1;
+  float y1;
+  float x2;
+  float y2;
+};
+
+/** Symbol drawn for the entity on the small map */
+struct SmallmapSymbol
+{
+  Sprite sprite;
+};
+
+/** Spikes come out when a pingu walks into the TriggerZone and kill the
+    pingus close by at frame 3 */
+struct Spike
+{
+  Sprite sprite;
+  AnimationClock clock;
+  bool killing = false;
+};
+
+/** Looks like an exit, smashes pingus in the TriggerZone */
+struct FakeExit
+{
+  Sprite sprite;
+  AnimationClock clock;
+  bool smashing = false;
+};
+
+/** Kills one pingu in the TriggerZone, then animates the kill in the
+    pingu's direction */
+struct Guillotine
+{
+  Sprite sprite_kill_left;
+  Sprite sprite_kill_right;
+  Sprite sprite_idle;
+  AnimationClock kill_clock;
+  AnimationClock idle_clock;
+  Direction direction = {};
+  bool killing = false;
+};
+
+/** Swings down and up continuously, splashes pingus below at the bottom */
+struct Hammer
+{
+  Sprite sprite;
+  int frame_count;
+  bool down = true;
+  int count = 0;
+};
+
+/** Zaps a pingu in the TriggerZone */
+struct LaserExit
+{
+  Sprite sprite;
+  AnimationClock clock;
+  bool killing = false;
+};
+
+/** Smashes down when a pingu walks under it, splashing everything below */
+struct Smasher
+{
+  Sprite sprite;
+  bool smashing = false;
+  bool downwards = false;
+  int count = 0;
 };
 
 } // namespace pingus::components
