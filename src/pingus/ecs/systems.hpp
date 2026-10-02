@@ -37,10 +37,12 @@ bool is_solid_background(ObjectData const& data);
     resolve links between objects, ... */
 void startup(World& world, ecs::Entity entity);
 
-/** Per tick logic that runs before the pingus are updated */
+/** Per tick logic that runs before the pingus are updated: objects at or
+    below the pingus' z-index and all purely decorative animation */
 void update_objects(World& world);
 
-/** Per tick logic that runs after the pingus are updated */
+/** Per tick logic that runs after the pingus are updated: objects above
+    the pingus' z-index */
 void update_after_pingus(World& world);
 
 void draw(World& world, SceneContext& gc, ecs::Entity entity);

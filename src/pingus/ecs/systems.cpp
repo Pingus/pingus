@@ -5,12 +5,12 @@
 
 #include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
+#include "pingus/components/smallmap.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/ecs/components.hpp"
 #include "pingus/ecs/system_parts.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/world.hpp"
-#include "pingus/components/smallmap.hpp"
 
 namespace pingus::systems {
 
