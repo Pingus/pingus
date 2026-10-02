@@ -26,6 +26,7 @@ namespace pingus::worldobjs {
 
 FakeExit::FakeExit(ReaderMapping const& reader) :
   surface("traps/fake_exit"),
+  clock(AnimationClock::from_sprite("traps/fake_exit")),
   smallmap_symbol("core/misc/smallmap_exit"),
   pos(),
   m_z_index(0.0f),
@@ -44,6 +45,7 @@ FakeExit::z_index() const
 void
 FakeExit::draw (SceneContext& gc)
 {
+  clock.apply_to(surface);
   gc.color().draw (surface, pos);
 }
 
@@ -55,13 +57,13 @@ FakeExit::update()
     catch_pingu(*pingu);
 
   if (smashing)
-    surface.update();
+    clock.update();
 }
 
 void
 FakeExit::catch_pingu (Pingu* pingu)
 {
-  if (surface.is_finished())
+  if (clock.is_finished())
     smashing = false;
 
   if (   pingu->get_pos().x() > pos.x() - 7  && pingu->get_pos().x() < pos.x() + 8
@@ -71,11 +73,11 @@ FakeExit::catch_pingu (Pingu* pingu)
     {
       if (!smashing)
       {
-        surface.restart();
+        clock.restart();
         smashing = true;
       }
 
-      if (surface.get_current_frame() == 4)
+      if (clock.frame() == 4)
         pingu->set_action(ActionName::SPLASHED);
     }
   }

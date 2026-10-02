@@ -60,7 +60,6 @@ Smasher::update()
 
   if (smashing)
   {
-    sprite.set_frame(count);
 
     if (downwards)
     {
@@ -122,6 +121,7 @@ Smasher::on_startup()
 void
 Smasher::draw (SceneContext& gc)
 {
+  sprite.set_frame(count);
   gc.color().draw(sprite, pos);
 }
 

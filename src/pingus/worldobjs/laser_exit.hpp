@@ -19,6 +19,7 @@
 
 #include "engine/display/sprite.hpp"
 #include "math/vector2f.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/worldobj.hpp"
 #include "fwd.hpp"
 
@@ -28,6 +29,7 @@ class LaserExit : public WorldObj
 {
 private:
   Sprite   surface;
+  AnimationClock clock;
   Vector2f pos;
   float m_z_index;
 

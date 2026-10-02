@@ -25,6 +25,7 @@ namespace pingus::worldobjs {
 
 Spike::Spike (ReaderMapping const& reader) :
   surface("traps/spike"),
+  clock(AnimationClock::from_sprite("traps/spike")),
   pos(),
   m_z_index(0.0f),
   killing(false)
@@ -43,6 +44,7 @@ void
 Spike::draw (SceneContext& gc)
 {
   if (killing) {
+    clock.apply_to(surface);
     gc.color().draw (surface, pos);
   } else {
     // do nothing
@@ -53,13 +55,13 @@ void
 Spike::update()
 {
   if (killing)
-    surface.update();
+    clock.update();
 
   PinguHolder* holder = world->get_pingus();
   for (PinguIter pingu = holder->begin(); pingu != holder->end(); ++pingu)
     catch_pingu(*pingu);
 
-  if (surface.get_current_frame() == surface.get_frame_count() - 1)
+  if (clock.frame() == clock.frame_count() - 1)
     killing = false;
 }
 
@@ -70,11 +72,11 @@ Spike::catch_pingu (Pingu* pingu)
     if ( pingu->get_pos().x() > pos.x() + 16 - 5 && pingu->get_pos().x() < pos.x() + 16 + 5
          && pingu->get_pos().y() > pos.y()          && pingu->get_pos().y() < pos.y() + 32)
     {
-      surface.restart();
+      clock.restart();
       killing = true;
     }
   } else {
-    if (surface.get_current_frame() == 3
+    if (clock.frame() == 3
         && pingu->get_pos().x() > pos.x()  +16 - 12 && pingu->get_pos().x() < pos.x() + 16 + 12
         && pingu->get_pos().y() > pos.y()          && pingu->get_pos().y() < pos.y() + 32)
     {

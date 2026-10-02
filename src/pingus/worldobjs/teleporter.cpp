@@ -30,6 +30,7 @@ Teleporter::Teleporter(ReaderMapping const& reader) :
   pos(),
   m_z_index(0.0f),
   sprite("worldobjs/teleporter"),
+  clock(AnimationClock::from_sprite("worldobjs/teleporter")),
   target_id(),
   target()
 {
@@ -47,6 +48,7 @@ Teleporter::z_index() const
 void
 Teleporter::draw (SceneContext& gc)
 {
+  clock.apply_to(sprite);
   gc.color().draw(sprite, pos);
 }
 
@@ -69,7 +71,7 @@ Teleporter::on_startup()
 void
 Teleporter::update()
 {
-  sprite.update();
+  clock.update();
 
   if (target)
   {
@@ -81,7 +83,7 @@ Teleporter::update()
       {
         (*pingu)->set_pos(target->get_pos().x(), target->get_pos().y());
         target->teleporter_used();
-        sprite.restart();
+        clock.restart();
       }
     }
   }

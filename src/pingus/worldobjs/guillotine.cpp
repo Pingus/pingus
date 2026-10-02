@@ -27,6 +27,8 @@ Guillotine::Guillotine(ReaderMapping const& reader) :
   sprite_kill_right("traps/guillotinekill/right"),
   sprite_kill_left("traps/guillotinekill/left"),
   sprite_idle("traps/guillotineidle"),
+  kill_clock(AnimationClock::from_sprite("traps/guillotinekill/left")),
+  idle_clock(AnimationClock::from_sprite("traps/guillotineidle")),
   pos(),
   m_z_index(0.0f),
   direction(),
@@ -35,20 +37,19 @@ Guillotine::Guillotine(ReaderMapping const& reader) :
   InVector2fZ in_vec{pos, m_z_index};
   reader.read("position", in_vec);
 
-  sprite_kill_right.set_play_loop(false);
-  sprite_kill_left.set_play_loop(false);
-  sprite_idle.set_play_loop(true);
+  kill_clock.set_loop(false);
+  idle_clock.set_loop(true);
 }
 
 void
 Guillotine::draw (SceneContext& gc)
 {
   if (killing) {
-    if (direction.is_left())
-      gc.color().draw (sprite_kill_left, pos);
-    else
-      gc.color().draw (sprite_kill_right, pos);
+    Sprite& sprite = direction.is_left() ? sprite_kill_left : sprite_kill_right;
+    kill_clock.apply_to(sprite);
+    gc.color().draw (sprite, pos);
   } else {
+    idle_clock.apply_to(sprite_idle);
     gc.color().draw (sprite_idle, pos);
   }
 }
@@ -62,8 +63,7 @@ Guillotine::z_index() const
 void
 Guillotine::update()
 {
-  // Only have to check one sprite because they update simultaneously
-  if (sprite_kill_left.is_finished())
+  if (kill_clock.is_finished())
     killing = false;
 
   PinguHolder* holder = world->get_pingus();
@@ -71,14 +71,12 @@ Guillotine::update()
     catch_pingu(*pingu);
 
   if (killing) {
-    // Update both sprites so they finish at the same time.
-    sprite_kill_left.update();
-    sprite_kill_right.update();
+    kill_clock.update();
     // FIXME: Should be a different sound
-    if (sprite_kill_left.get_current_frame() == 7)
+    if (kill_clock.frame() == 7)
       WorldObj::get_world()->play_sound("splash", pos);
   } else {
-    sprite_idle.update();
+    idle_clock.update();
   }
 }
 
@@ -93,8 +91,7 @@ Guillotine::catch_pingu (Pingu* pingu)
       killing = true;
       pingu->set_status(Pingu::PS_DEAD);
       direction = pingu->direction;
-      sprite_kill_left.restart();
-      sprite_kill_right.restart();
+      kill_clock.restart();
     }
   }
 }

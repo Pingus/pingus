@@ -24,7 +24,8 @@ TeleporterTarget::TeleporterTarget(ReaderMapping const& reader) :
   WorldObj(reader),
   pos(),
   m_z_index(0.0f),
-  sprite("worldobjs/teleportertarget")
+  sprite("worldobjs/teleportertarget"),
+  clock(AnimationClock::from_sprite("worldobjs/teleportertarget"))
 {
   InVector2fZ in_vec{pos, m_z_index};
   reader.read("position", in_vec);
@@ -39,19 +40,20 @@ TeleporterTarget::z_index() const
 void
 TeleporterTarget::draw (SceneContext& gc)
 {
+  clock.apply_to(sprite);
   gc.color().draw(sprite, pos);
 }
 
 void
 TeleporterTarget::update()
 {
-  sprite.update();
+  clock.update();
 }
 
 void
 TeleporterTarget::teleporter_used()
 {
-  sprite.restart();
+  clock.restart();
 }
 
 } // namespace pingus::worldobjs

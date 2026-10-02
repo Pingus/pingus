@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_FAKE_EXIT_HPP
 
 #include "math/vector2f.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/worldobj.hpp"
 #include "fwd.hpp"
 
@@ -30,6 +31,7 @@ class FakeExit : public WorldObj
 {
 private:
   Sprite   surface;
+  AnimationClock clock;
   Sprite   smallmap_symbol;
 
   Vector2f pos;

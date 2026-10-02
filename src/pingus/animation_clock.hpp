@@ -50,6 +50,7 @@ public:
   /** True when a non-looping animation reached its end */
   bool is_finished() const { return m_finished; }
   bool is_looping() const { return m_loop; }
+  void set_loop(bool loop) { m_loop = loop; }
 
   /** Set the sprite to show the clock's current frame */
   void apply_to(Sprite& sprite) const;

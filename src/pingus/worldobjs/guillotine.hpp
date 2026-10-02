@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_GUILLOTINE_HPP
 
 #include "math/vector2f.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/worldobj.hpp"
 #include "fwd.hpp"
@@ -30,6 +31,8 @@ private:
   Sprite    sprite_kill_right;
   Sprite    sprite_kill_left;
   Sprite    sprite_idle;
+  AnimationClock kill_clock;
+  AnimationClock idle_clock;
   Vector2f  pos;
   float m_z_index;
   Direction direction;

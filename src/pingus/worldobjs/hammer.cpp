@@ -17,6 +17,7 @@
 #include "pingus/worldobjs/hammer.hpp"
 
 #include "engine/display/scene_context.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
 #include "pingus/world.hpp"
@@ -25,6 +26,7 @@ namespace pingus::worldobjs {
 
 Hammer::Hammer(ReaderMapping const& reader) :
   sprite("traps/hammer"),
+  m_frame_count(AnimationClock::from_sprite("traps/hammer").frame_count()),
   pos(),
   m_z_index(0.0f),
   m_down(true),
@@ -43,6 +45,7 @@ Hammer::z_index() const
 void
 Hammer::draw(SceneContext& gc)
 {
+  sprite.set_frame(m_count);
   gc.color().draw(sprite, pos);
 }
 
@@ -52,9 +55,8 @@ Hammer::update()
   if (m_down)
   {
     m_count += 1;
-    sprite.set_frame(m_count);
 
-    if (m_count == sprite.get_frame_count()-1)
+    if (m_count == m_frame_count - 1)
     {
       PinguHolder* holder = world->get_pingus();
 
@@ -75,7 +77,6 @@ Hammer::update()
   else
   {
     m_count -= 1;
-    sprite.set_frame(m_count);
     if (m_count == 0)
     {
       m_down = true;

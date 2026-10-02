@@ -18,6 +18,7 @@
 #define HEADER_PINGUS_PINGUS_WORLDOBJS_TELEPORTER_HPP
 
 #include "math/vector2f.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/worldobj.hpp"
 
 namespace pingus::worldobjs {
@@ -30,6 +31,7 @@ private:
   Vector2f pos;
   float m_z_index;
   Sprite sprite;
+  AnimationClock clock;
   std::string target_id;
   TeleporterTarget* target;
 

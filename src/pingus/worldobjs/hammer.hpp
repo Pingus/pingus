@@ -26,6 +26,7 @@ class Hammer : public WorldObj
 {
 private:
   Sprite sprite;
+  int m_frame_count;
   Vector2f pos;
   float m_z_index;
   bool m_down;

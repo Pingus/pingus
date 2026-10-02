@@ -25,6 +25,7 @@ namespace pingus::worldobjs {
 
 LaserExit::LaserExit(ReaderMapping const& reader) :
   surface("traps/laser_exit"),
+  clock(AnimationClock::from_sprite("traps/laser_exit")),
   pos(),
   m_z_index(0.0f),
   killing(false)
@@ -42,6 +43,7 @@ LaserExit::z_index() const
 void
 LaserExit::draw (SceneContext& gc)
 {
+  clock.apply_to(surface);
   gc.color().draw (surface, pos);
 }
 
@@ -55,11 +57,11 @@ LaserExit::update()
   }
 
   if (killing) {
-    if (surface.is_finished()) {
-      surface.restart();
+    if (clock.is_finished()) {
+      clock.restart();
       killing = false;
     } else {
-      surface.update();
+      clock.update();
     }
   }
 }
