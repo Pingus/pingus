@@ -9,7 +9,6 @@
 namespace pingus {
 
 class ObjectData;
-class ObjectTypeDef;
 class SceneContext;
 class SmallMap;
 class World;
@@ -24,9 +23,6 @@ class World;
     the remaining non-entity world objects (ground, pingus, particles). */
 namespace pingus::systems {
 
-/** True if objects of this type are created as entities by create_object() */
-bool is_entity_type(ObjectTypeDef const& type);
-
 /** The z-index the object is sorted and drawn with. Usually the one from
     the level file, but some types always use a fixed one. */
 float object_z_index(ObjectData const& data);
@@ -34,8 +30,8 @@ float object_z_index(ObjectData const& data);
 /** Create the entity and its components for a level object */
 ecs::Entity create_object(World& world, ObjectData const& data);
 
-/** True if the entity covers the whole screen */
-bool is_solid_background(World& world, ecs::Entity entity);
+/** True if the object covers the whole screen */
+bool is_solid_background(ObjectData const& data);
 
 /** One time setup once all objects exist: draw into the collision map,
     resolve links between objects, ... */

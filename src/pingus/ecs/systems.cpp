@@ -159,12 +159,6 @@ void draw_liquid(SceneContext& gc, Transform const& transform, Liquid const& liq
 
 } // namespace
 
-bool
-is_solid_background(World& world, ecs::Entity entity)
-{
-  return world.get_registry().has<SolidBackground>(entity);
-}
-
 void
 startup(World& world, ecs::Entity entity)
 {

@@ -26,16 +26,8 @@ WorldObj::set_world(World* arg_world)
   world = arg_world;
 }
 
-WorldObj::WorldObj(ReaderMapping const& reader) :
-  id()
+WorldObj::WorldObj()
 {
-  reader.read("id", id);
-}
-
-WorldObj::WorldObj() :
-  id()
-{
-  // z_pos = 0;
 }
 
 WorldObj::~WorldObj()
@@ -58,12 +50,6 @@ WorldObj::update()
 void
 WorldObj::draw_smallmap(SmallMap* /* smallmap */)
 {
-}
-
-bool
-WorldObj::is_solid_background() const
-{
-  return false;
 }
 
 } // namespace pingus

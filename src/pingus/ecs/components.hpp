@@ -61,9 +61,6 @@ struct Liquid
   int width;
 };
 
-/** Covers the whole screen, levels without one get a default background */
-struct SolidBackground {};
-
 struct SolidColorBackground
 {
   Color color;

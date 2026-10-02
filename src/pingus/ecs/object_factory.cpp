@@ -44,7 +44,6 @@ void build_liquid(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& d
 void build_solidcolor_background(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
 {
   reg.emplace<SolidColorBackground>(e, data.get<Color>("colori"));
-  reg.emplace<SolidBackground>(e);
 }
 
 Sprite create_surface_background_sprite(World& world, ObjectData const& data)
@@ -112,7 +111,6 @@ void build_surface_background(World& world, ecs::Registry& reg, ecs::Entity e, O
   reg.emplace<SurfaceBackground>(e, create_surface_background_sprite(world, data),
                                  data.get<float>("para-x"), data.get<float>("para-y"),
                                  data.get<float>("scroll-x"), data.get<float>("scroll-y"));
-  reg.emplace<SolidBackground>(e);
 }
 
 Star create_star(World& world, char const* sprite_name)
@@ -338,9 +336,10 @@ object_z_index(ObjectData const& data)
 }
 
 bool
-is_entity_type(ObjectTypeDef const& type)
+is_solid_background(ObjectData const& data)
 {
-  return get_builders().contains(type.name);
+  std::string const& name = data.type().name;
+  return name == "surface-background" || name == "solidcolor-background";
 }
 
 ecs::Entity

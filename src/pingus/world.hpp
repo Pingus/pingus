@@ -97,10 +97,6 @@ public:
   World(PingusLevel const& level);
   virtual ~World();
 
-  /** Add an object to the world, obj needs to be new'ed the World
-      make sure that it will get deleted */
-  void add_object (WorldObj* obj);
-
   /** Draw the world onto the given SceneContext */
   void    draw (SceneContext& gc);
 
@@ -131,8 +127,6 @@ public:
   void put(CollisionMask const&, int x, int y, Groundtype::GPType);
 
   void remove(CollisionMask const&, int x, int y);
-
-  WorldObj* get_worldobj(std::string const& id);
 
   ecs::Registry& get_registry() { return registry; }
 

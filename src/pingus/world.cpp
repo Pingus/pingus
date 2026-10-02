@@ -37,7 +37,6 @@
 #include "pingus/object_schema.hpp"
 #include "pingus/pingus_level.hpp"
 #include "pingus/prefab_file.hpp"
-#include "pingus/worldobj_factory.hpp"
 
 namespace pingus {
 
@@ -76,12 +75,6 @@ World::World(PingusLevel const& plf) :
   world_obj.push_back(snow_particle_holder);
 
   init_worldobjs(plf);
-}
-
-void
-World::add_object (WorldObj* obj)
-{
-  world_obj.push_back(obj);
 }
 
 namespace {
@@ -154,26 +147,17 @@ World::init_worldobjs(PingusLevel const& plf)
                               Vector2f const& offset, float z_offset)
   {
     ObjectTypeDef const* type = ObjectSchema::instance().find(name);
-    if (type && systems::is_entity_type(*type))
+    if (!type)
     {
-      ObjectData data = ObjectData::from_reader(*type, name, mapping);
-      data.set_pos(data.get_pos() + geom::foffset(offset.x(), offset.y()));
-      data.set_z_index(data.get_z_index() + z_offset);
-      float const z_index = systems::object_z_index(data);
-      pending.push_back(PendingObject{z_index, nullptr, std::move(data)});
+      log_error("unknown object type: '{}'", name);
+      return;
     }
-    else
-    {
-      for (WorldObj* obj : WorldObjFactory::instance().create(name, mapping))
-      {
-        if (obj)
-        {
-          obj->set_pos(obj->get_pos() + geom::foffset(offset.x(), offset.y()));
-          obj->set_z_index(obj->z_index() + z_offset);
-          pending.push_back(PendingObject{obj->z_index(), obj, {}});
-        }
-      }
-    }
+
+    ObjectData data = ObjectData::from_reader(*type, name, mapping);
+    data.set_pos(data.get_pos() + geom::foffset(offset.x(), offset.y()));
+    data.set_z_index(data.get_z_index() + z_offset);
+    float const z_index = systems::object_z_index(data);
+    pending.push_back(PendingObject{z_index, nullptr, std::move(data)});
   };
 
   for (auto const& reader_object : plf.get_objects().get_objects()) {
@@ -183,12 +167,7 @@ World::init_worldobjs(PingusLevel const& plf)
   // insert a dummy background in case the user didn't provide one
   bool const has_solid_background =
     std::any_of(pending.begin(), pending.end(), [](PendingObject const& p) {
-      if (p.obj) {
-        return p.obj->is_solid_background();
-      } else {
-        std::string const& name = p.data->type().name;
-        return name == "surface-background" || name == "solidcolor-background";
-      }
+      return p.data && systems::is_solid_background(*p.data);
     });
   if (!has_solid_background)
   {
@@ -419,17 +398,6 @@ World::remove(CollisionMask const& mask, int x, int y)
 {
   gfx_map->remove(mask.get_surface(), x, y);
   colmap->remove(mask, x, y);
-}
-
-WorldObj*
-World::get_worldobj(std::string const& id)
-{
-  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-  {
-    if ((*obj)->get_id() == id)
-      return *obj;
-  }
-  return nullptr;
 }
 
 Vector2i

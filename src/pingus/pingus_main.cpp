@@ -86,7 +86,6 @@ extern "C" {
 #include "pingus/screens/start_screen.hpp"
 #include "pingus/screens/story_screen.hpp"
 #include "pingus/stat_manager.hpp"
-#include "pingus/worldobj_factory.hpp"
 
 namespace pingus {
 
@@ -789,7 +788,6 @@ PingusMain::run(int argc, char** argv)
   // down resources here would race with frames still in flight.
   pingus::sound::PingusSound::deinit();
   pingus::fonts::deinit();
-  WorldObjFactory::deinit();
   Resource::deinit();
 #endif
 

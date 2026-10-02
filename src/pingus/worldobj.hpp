@@ -29,10 +29,11 @@ class SceneContext;
 class SmallMap;
 class World;
 
-/** All objects that act in the world should be derived from this
- *  class, it provides access to all the important data from the world.
- *  Each world object has a $z$-position which indicates the depth of the
- *  object. By default, all world objects live on the same depth.
+/** Base class of the parts of the World that are not level object
+ *  entities: the ground, the pingus and the particle systems. Level
+ *  objects (traps, exits, backgrounds, ...) are entities, see
+ *  pingus/ecs/. Each world object has a z-position which indicates the
+ *  depth of the object.
  */
 class WorldObj
 {
@@ -47,21 +48,12 @@ public:
   /** Return the current active world */
   static World* get_world() { return world; }
 
-private:
-  std::string id;
-
 public:
-  /** Creates a new WorldObj*/
   WorldObj();
-  WorldObj(ReaderMapping const& reader);
-
-  WorldObj (WorldObj const&) : id() {}
-  WorldObj& operator= (WorldObj const&) { return *this; }
-
-  /** Destroys a world object */
   virtual ~WorldObj();
 
-  std::string get_id() const { return id; }
+  WorldObj(WorldObj const&) = delete;
+  WorldObj& operator=(WorldObj const&) = delete;
 
   /** Returns the $z$-position of this object. */
   virtual float z_index() const =0;
@@ -78,19 +70,10 @@ public:
       stuff onto the gfx map or do other manipulations to the World */
   virtual void on_startup();
 
-  /** @return true if this WorldObj is empty and doesn't have an
-      update() or draw() function, but only a on_startup() one. The
-      World can so decide which objects need to stay active and which
-      one can get purged after calling on_startup() */
-  virtual bool purge_after_startup() { return false; }
-
   /** The update function is called once a game loop, the delta
    * specifies how much time is passed since the last update
    * delta = 1.0 means that one second of realtime has passed. */
   virtual void update();
-
-  /** Returns true if the object covers the whole screen */
-  virtual bool is_solid_background() const;
 };
 
 } // namespace pingus

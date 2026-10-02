@@ -45,7 +45,6 @@
 #include "pingus/screens/story_screen.hpp"
 #include "pingus/stat_manager.hpp"
 #include "pingus/worldmap/worldmap_screen.hpp"
-#include "pingus/worldobj_factory.hpp"
 #include "tinygettext/dictionary_manager.hpp"
 #include "tinygettext/log.hpp"
 

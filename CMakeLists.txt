@@ -264,7 +264,6 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/pingus/particles/*.cpp
   src/pingus/screens/*.cpp
   src/pingus/worldmap/*.cpp
-  src/pingus/worldobjs/*.cpp
   src/util/*.cpp
   )
 
