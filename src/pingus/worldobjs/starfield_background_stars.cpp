@@ -42,10 +42,12 @@ StarfieldBackgroundStars::StarfieldBackgroundStars (Type type) :
       break;
   }
 
-  x_pos = float(rand() % WorldObj::get_world()->get_width());
-  y_pos = float(rand() % WorldObj::get_world()->get_height());
+  Random& rng = WorldObj::get_world()->get_fx_random();
 
-  x_add = static_cast<float>(rand() % 5) + 1.0f;
+  x_pos = float(rng.next_int(WorldObj::get_world()->get_width()));
+  y_pos = float(rng.next_int(WorldObj::get_world()->get_height()));
+
+  x_add = static_cast<float>(rng.next_int(5)) + 1.0f;
   y_add = 0.0f;
 }
 
@@ -58,7 +60,7 @@ StarfieldBackgroundStars::update()
   if (x_pos > static_cast<float>(WorldObj::get_world()->get_width()))
   {
     x_pos = float(-globals::tile_size);
-    y_pos = float(rand() % WorldObj::get_world()->get_height());
+    y_pos = float(WorldObj::get_world()->get_fx_random().next_int(WorldObj::get_world()->get_height()));
   }
 }
 

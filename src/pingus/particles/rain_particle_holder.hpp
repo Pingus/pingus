@@ -25,6 +25,10 @@
 
 class GraphicContext;
 
+namespace pingus {
+class Random;
+} // namespace pingus
+
 namespace pingus::particles {
 
 class RainParticleHolder : public WorldObj
@@ -40,7 +44,7 @@ class RainParticleHolder : public WorldObj
     // a modificator for x and y pos
     float xy_mod;
 
-    RainParticle(int x, int y);
+    RainParticle(int x, int y, Random& rng);
   };
 
 private:

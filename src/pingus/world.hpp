@@ -20,6 +20,7 @@
 #include <string>
 #include <vector>
 
+#include "math/random.hpp"
 #include "math/vector2i.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/groundtype.hpp"
@@ -50,6 +51,15 @@ private:
   /** FIXME: ugly hack to iterate over all pingus and make bombers out
       of them, should use pingus_id instead */
   unsigned int armageddon_count;
+
+  /** Random numbers for decisions that affect gameplay, seeded from the
+      level so a run is reproducible */
+  Random game_random;
+
+  /** Random numbers for purely visual effects (particles, weather,
+      stars). Kept separate from game_random so that presentation
+      changes, or not drawing at all, never alter gameplay. */
+  Random fx_random;
 
   std::vector<WorldObj*> world_obj;
 
@@ -119,6 +129,9 @@ public:
 
   /** @return A pointer to the worlds snow particle holder */
   pingus::particles::SnowParticleHolder* get_snow_particle_holder() { return snow_particle_holder; }
+
+  Random& get_game_random() { return game_random; }
+  Random& get_fx_random() { return fx_random; }
 
   /** @return true if the world is currently doing an armageddon */
   bool check_armageddon() const { return do_armageddon; }

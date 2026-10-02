@@ -35,20 +35,22 @@ SnowGenerator::~SnowGenerator()
 void
 SnowGenerator::update()
 {
+  Random& rng = world->get_fx_random();
+
   for(int i = 0; static_cast<float>(i) < std::floor(intensity); ++i)
   {
-    if (rand() % 3 != 0)
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -globals::tile_size, false);
+    if (rng.next_int(3) != 0)
+      world->get_snow_particle_holder()->add_particle(rng.next_int(world->get_width()), -globals::tile_size, false);
     else
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -globals::tile_size, true);
+      world->get_snow_particle_holder()->add_particle(rng.next_int(world->get_width()), -globals::tile_size, true);
   }
 
-  if ((intensity - static_cast<float>(static_cast<int>(intensity))) > Math::frand())
+  if ((intensity - static_cast<float>(static_cast<int>(intensity))) > rng.next_float())
   {
-    if (rand() % 3 != 0)
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -globals::tile_size, false);
+    if (rng.next_int(3) != 0)
+      world->get_snow_particle_holder()->add_particle(rng.next_int(world->get_width()), -globals::tile_size, false);
     else
-      world->get_snow_particle_holder()->add_particle(rand() % world->get_width(), -globals::tile_size, true);
+      world->get_snow_particle_holder()->add_particle(rng.next_int(world->get_width()), -globals::tile_size, true);
   }
 }
 

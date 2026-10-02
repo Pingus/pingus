@@ -25,6 +25,10 @@
 
 class SceneContext;
 
+namespace pingus {
+class Random;
+} // namespace pingus
+
 namespace pingus::particles {
 
 class PinguParticleHolder : public WorldObj
@@ -38,7 +42,7 @@ class PinguParticleHolder : public WorldObj
     /// The velocity of the particle
     glm::vec2 velocity;
 
-    PinguParticle (int x, int y);
+    PinguParticle (int x, int y, Random& rng);
   };
 
 private:

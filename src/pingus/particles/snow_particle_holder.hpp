@@ -26,6 +26,10 @@
 
 class SceneContext;
 
+namespace pingus {
+class Random;
+} // namespace pingus
+
 namespace pingus::particles {
 
 class SnowParticleHolder : public WorldObj
@@ -40,7 +44,7 @@ private:
     Vector2f     pos;
     glm::vec2    velocity;
 
-    SnowParticle(int x, int y, bool colliding_);
+    SnowParticle(int x, int y, bool colliding_, Random& rng);
   };
 
   friend struct SnowParticle;

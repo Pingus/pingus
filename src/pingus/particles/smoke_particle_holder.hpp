@@ -25,6 +25,10 @@
 
 class SceneContext;
 
+namespace pingus {
+class Random;
+} // namespace pingus
+
 namespace pingus::particles {
 
 class SmokeParticleHolder : public WorldObj
@@ -36,7 +40,7 @@ class SmokeParticleHolder : public WorldObj
     Vector2f pos;
     glm::vec2 velocity;
 
-    SmokeParticle(float x, float y, float vel_x, float vel_y);
+    SmokeParticle(float x, float y, float vel_x, float vel_y, Random& rng);
   };
 
 private:

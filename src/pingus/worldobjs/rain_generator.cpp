@@ -54,7 +54,7 @@ RainGenerator::draw (SceneContext& gc)
 void
 RainGenerator::update()
 {
-  if (waiter_count < 0.0f && rand() % 150 == 0)
+  if (waiter_count < 0.0f && world->get_fx_random().next_int(150) == 0)
   {
     log_info("Doing thunder");
     do_thunder = true;
@@ -69,7 +69,7 @@ RainGenerator::update()
   waiter_count -= 20.0f * 0.025f;
 
   for (int i=0; i < 16; ++i)
-    world->get_rain_particle_holder()->add_particle(rand() % (world->get_width() * 2), -32);
+    world->get_rain_particle_holder()->add_particle(world->get_fx_random().next_int(world->get_width() * 2), -32);
 }
 
 } // namespace pingus::worldobjs
