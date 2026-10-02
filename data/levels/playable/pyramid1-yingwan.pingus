@@ -157,8 +157,7 @@
       (position 103 332 0)
       (speed -1)
       (parallax 1))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 887 355 5)
       (surface 
         (image "exits/desert")

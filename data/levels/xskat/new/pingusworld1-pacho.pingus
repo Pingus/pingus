@@ -293,8 +293,7 @@
         (image "groundpieces/solid/industrial/steel3")
         (modifier "ROT0"))
       (position 191 2991 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 301.96 2994.7 0)
       (surface 
         (image "exits/ice2")

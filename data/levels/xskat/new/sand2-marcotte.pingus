@@ -26,8 +26,7 @@
       (position 270 454 0))
     (solidcolor-background 
       (color 0.8 0.8 1 1))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 421.204 554.309 0)
       (surface 
         (image "exits/desert")

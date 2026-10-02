@@ -90,15 +90,13 @@
       (direction "left")
       (release-rate 25)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 469 215 0)
       (surface 
         (image "exits/sweetexit")
         (modifier "ROT0"))
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 118 346 0)
       (surface 
         (image "exits/sortie_anim")

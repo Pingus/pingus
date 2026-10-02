@@ -563,8 +563,7 @@
         (image "groundpieces/solid/misc/metalplate_horiz")
         (modifier "ROT90"))
       (position 163 891 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 415 1162 0)
       (surface 
         (image "exits/mud")

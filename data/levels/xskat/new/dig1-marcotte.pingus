@@ -1047,8 +1047,7 @@
         (image "groundpieces/transparent/misc/flower")
         (modifier "ROT0"))
       (position 2037 696 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 2049 783 0)
       (surface 
         (image "exits/mud")

@@ -275,8 +275,7 @@
       (direction "misc")
       (release-rate 25)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1349 451 0)
       (surface 
         (image "exits/stone")

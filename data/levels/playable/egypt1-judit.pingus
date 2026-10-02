@@ -979,8 +979,7 @@
         (image "groundpieces/transparent/misc/weed1")
         (modifier "ROT0"))
       (position 573 337 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 428 229 0)
       (surface 
         (image "exits/stone")

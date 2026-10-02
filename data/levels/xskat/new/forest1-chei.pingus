@@ -62,8 +62,7 @@
         (image "groundpieces/ground/misc/green1")
         (modifier "ROT0"))
       (position 638 532 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1065 448 0)
       (surface 
         (image "exits/ordina")

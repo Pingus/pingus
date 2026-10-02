@@ -54,8 +54,7 @@
       (position 365 469 -100))
     (spike 
       (position 342 512 -100))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 328 375 -50)
       (surface 
         (image "exits/stone")

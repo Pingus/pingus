@@ -289,8 +289,7 @@
         (image "groundpieces/transparent/misc/moos1")
         (modifier "ROT0"))
       (position 770 247 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 236 210 0)
       (surface 
         (image "exits/stone")

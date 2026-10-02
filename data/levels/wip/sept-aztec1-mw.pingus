@@ -255,8 +255,7 @@
       (position 390 454 -50)
       (repeat 5)
       (speed 10))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1038 386 0)
       (surface 
         (image "exits/desert")

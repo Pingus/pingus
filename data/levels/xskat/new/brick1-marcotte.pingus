@@ -37,8 +37,7 @@
       (direction "right")
       (release-rate 250)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 606.854 573.961 0)
       (surface 
         (image "exits/industrial")

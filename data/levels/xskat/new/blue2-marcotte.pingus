@@ -33,8 +33,7 @@
       (stretch-y #t)
       (keep-aspect #t)
       (position -257 2 -150))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 106 430 0)
       (surface 
         (image "exits/crystal")

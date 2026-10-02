@@ -249,8 +249,7 @@
         (image "groundpieces/ground/crystal/horiz")
         (modifier "ROT180FLIP"))
       (position 293 714 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 393.898 736.021 0)
       (surface 
         (image "exits/crystal")

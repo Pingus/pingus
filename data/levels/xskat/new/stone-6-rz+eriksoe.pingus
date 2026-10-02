@@ -127,8 +127,7 @@
         (image "groundpieces/ground/misc/grey_stone6")
         (modifier "ROT0"))
       (position 444 363 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 778 851 0)
       (surface 
         (image "exits/stone")

@@ -620,8 +620,7 @@
         (image "groundpieces/ground/penguinworld/penguinworld")
         (modifier "ROT0"))
       (position 350 320 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 696 528 0)
       (surface 
         (image "exits/pwexit")

@@ -488,8 +488,7 @@
         (image "groundpieces/transparent/foliage/grass15")
         (modifier "ROT0"))
       (position 889 1036 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 626 988 0)
       (surface 
         (image "exits/stone")

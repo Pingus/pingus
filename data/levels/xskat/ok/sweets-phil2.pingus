@@ -255,8 +255,7 @@
       (direction "left")
       (release-rate 25)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 685 192 0)
       (surface 
         (image "exits/sweetexit")

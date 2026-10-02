@@ -255,8 +255,7 @@
         (image "groundpieces/solid/rock/granit2")
         (modifier "ROT0"))
       (position 109 298 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 187 300 0)
       (surface 
         (image "exits/stone")

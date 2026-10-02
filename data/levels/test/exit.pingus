@@ -36,8 +36,7 @@
         (image "groundpieces/ground/desert/bigprickpiece")
         (modifier "ROT0"))
       (position 302 380 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 715 381 0)
       (surface 
         (image "exits/stone")

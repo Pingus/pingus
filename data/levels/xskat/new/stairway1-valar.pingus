@@ -77,8 +77,7 @@
         (image "groundpieces/solid/crystal/rectsolid")
         (modifier "ROT0"))
       (position 608 223 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 676 223 0)
       (surface 
         (image "exits/crystal")

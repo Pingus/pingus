@@ -44,8 +44,7 @@
       (stretch-y #t)
       (keep-aspect #f)
       (position 0 0 -250))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 69 232 0)
       (surface 
         (image "exits/stone")

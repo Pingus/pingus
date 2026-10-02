@@ -43,8 +43,7 @@
         (image "groundpieces/ground/snow/cabin_winter")
         (modifier "ROT0"))
       (position 383 201 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 84 294 0)
       (surface 
         (image "exits/ice2")

@@ -43,8 +43,7 @@
         (image "groundpieces/ground/crystal/hexcrystal")
         (modifier "ROT90"))
       (position 147 705 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 305.816 242.959 0)
       (surface 
         (image "exits/crystal")

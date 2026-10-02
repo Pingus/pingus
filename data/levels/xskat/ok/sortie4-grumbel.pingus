@@ -31,8 +31,7 @@
       (stretch-x #f)
       (stretch-y #f)
       (position 197 41 -150))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 634 214 -50)
       (surface 
         (image "exits/sortie")

@@ -1806,8 +1806,7 @@
       (direction "left")
       (release-rate 25)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 769 574 0)
       (surface 
         (image "groundpieces/ground/sortie/plate_forme_left")

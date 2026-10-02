@@ -2304,15 +2304,13 @@
       (direction "left")
       (release-rate 25)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1841 1046 0)
       (surface 
         (image "exits/stone")
         (modifier "ROT0"))
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 2682 1198 0)
       (surface 
         (image "exits/stone")

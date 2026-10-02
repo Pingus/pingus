@@ -50,8 +50,7 @@
         (image "groundpieces/ground/misc/column_flat_right")
         (modifier "ROT0"))
       (position 1225 299 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1287 593 0)
       (surface 
         (image "exits/stone")

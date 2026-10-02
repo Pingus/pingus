@@ -177,8 +177,7 @@
         (image "groundpieces/ground/misc/bpiece9")
         (modifier "ROT0"))
       (position 283 499 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 396 206 0)
       (surface 
         (image "exits/stone")

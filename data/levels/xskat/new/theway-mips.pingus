@@ -153,8 +153,7 @@
         (image "groundpieces/solid/industrial/greybri1")
         (modifier "ROT0"))
       (position 324 612 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1148.6 611.6 0)
       (surface 
         (image "exits/stone")

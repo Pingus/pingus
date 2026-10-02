@@ -152,8 +152,7 @@
         (image "exits/sortie")
         (modifier "ROT0"))
       (position 625 673 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1119 482 0)
       (surface 
         (image "exits/sortie_anim")

@@ -871,8 +871,7 @@
         (image "groundpieces/ground/misc/stoneblock3")
         (modifier "ROT0"))
       (position -11 913 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 132 1040 0)
       (surface 
         (image "exits/desert")
@@ -1256,8 +1255,7 @@
         (image "groundpieces/ground/misc/grey_stone6")
         (modifier "ROT0"))
       (position 2144 1481 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 2101 974 0)
       (surface 
         (image "exits/stone")

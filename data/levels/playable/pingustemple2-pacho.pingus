@@ -315,8 +315,7 @@
         (image "groundpieces/ground/desert/middleprickpiece")
         (modifier "ROT0"))
       (position -126 906 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 637.328 455.096 0)
       (surface 
         (image "exits/mud")
