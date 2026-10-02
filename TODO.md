@@ -203,34 +203,53 @@ find data -name '*.pingus-demo' -o -path 'data/levels/*.pingus' | sort \
   | xargs -d '\n' build/extra/pingus-headless > results.txt
 ```
 
+Architecture and how-tos: `doc/ecs.md`. Renderings can be compared as
+well (`pingus-headless -s DIR -T TICKS`).
+
 1. Separate game logic from sprites
    - [x] `AnimationClock`: animation timing from `.sprite` metadata
    - [x] Actions use clocks instead of `Sprite` frame state
    - [x] World objects use clocks instead of `Sprite` frame state
    - [x] Seeded `Random` in `World` (`game_random`, `fx_random`) replaces
          global `rand()` in world code
-   - [ ] Purely visual sprites still advance in `update()` (walker, exit,
-         entrance, …); move to the rendering side with step 4
+   - [ ] Pingu actions still advance purely visual sprites in `update()`
+         (walker, faller, …); level objects do this in dedicated
+         animation steps of the systems
 2. Headless smoke test
-   - [x] `extra/pingus-headless` (demos + levels with armageddon)
+   - [x] `extra/pingus-headless` (demos + levels with armageddon,
+         offscreen screenshots)
    - [x] Hook into ctest (`test_pingus_headless`, tutorial levels)
    - [ ] CI job
-3. [ ] Shared object schema (components per object type) used by
-       `WorldObjFactory`, the editor factory and the properties panel;
-       replaces the editor's `HAS_*` flags
-4. [ ] World objects as entities + systems, explicit system order, one
-       trigger-zone system; remove `WorldObj::world` static and factory
-       singletons
+3. Shared object schema
+   - [x] `ObjectSchema` / `ObjectData` describe all level object types
+   - [x] Editor reads, writes and derives its `HAS_*` flags from it
+   - [ ] Editor property panel generated from the schema instead of the
+         `HAS_*` flags
+   - [ ] `WorldObjRenderer` (`pingus-level2png`) still has its own
+         per-type code
+   - [ ] (Maybe) move the type definitions into a data file
+4. World objects as entities + systems
+   - [x] `ecs::Registry`, components, systems for all 22 object types
+   - [x] `TriggerZone`, `Owner`, `ObjectId`, `SmallmapSymbol` shared
+         components
+   - [x] `WorldObj` level object classes and `WorldObjFactory` removed
+   - [x] Global `WorldObj::world` replaced by explicit references
+   - [ ] Update order keeps the old z-based phases (before/after the
+         pingus); a single fixed system order would be simpler but
+         changes level timing
 5. [ ] (Optional) Pingus as entities with an action-state component
 
 Found along the way:
 
-- [ ] 57 levels fail to load: multi-string `(description "..." "...")`
-      is rejected with "invalid items in section"; 3 more have malformed
-      numbers/bools (`granit1`, `sno1-marcotte`, `real1`)
+- [x] 44 levels failed to load because of syntax errors (multi-string
+      descriptions, malformed numbers/bools, unescaped quotes); fixed
+- [x] Editor dropped old `(color ...)` values and snow `intensity` on
+      save; fixed by the schema
 - [ ] 87 demos reference levels that no longer exist
 - [ ] `traps/fake_exit` sprite loops, so `FakeExit` never resets its
       `smashing` state
+- [ ] Build: an `LD_LIBRARY_PATH` pointing at system libraries built
+      against a newer glibc breaks linking in `nix develop`; unset it
 
 ## Out of scope (for now)
 

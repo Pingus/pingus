@@ -1,3 +1,17 @@
+Pingus 0.8.0 (unreleased)
+=========================
+* level objects are now entities with components and systems, described
+  by a shared object schema used by the game and the editor (see
+  doc/ecs.md)
+* editor: levels using the old '(color ...)' property no longer lose
+  their color on save, snow intensity is kept, missing properties get
+  the game's defaults, duplicated objects keep their z-index
+* fixed 44 levels that failed to load because of syntax errors
+* new tool extra/pingus-headless runs demos and levels without a
+  display and can render them offscreen to PNG, used for regression
+  testing
+
+
 Pingus 0.7.6 (24/Dec/2011)
 ==========================
 * added new SVG icons for Pingus
