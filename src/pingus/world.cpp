@@ -17,6 +17,8 @@
 #include "pingus/world.hpp"
 
 #include <algorithm>
+#include <functional>
+#include <optional>
 
 #include <logmich/log.hpp>
 
@@ -30,7 +32,10 @@
 #include "pingus/particles/snow_particle_holder.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
+#include "pingus/ecs/systems.hpp"
+#include "pingus/object_schema.hpp"
 #include "pingus/pingus_level.hpp"
+#include "pingus/prefab_file.hpp"
 #include "pingus/worldobj_factory.hpp"
 #include "pingus/worldobjs/entrance.hpp"
 
@@ -79,50 +84,150 @@ World::add_object (WorldObj* obj)
   world_obj.push_back(obj);
 }
 
+namespace {
+
+/** Called for each level object after expanding groups and prefabs, with
+    the offset of the prefab the object is part of */
+using LevelObjectCallback = std::function<void (std::string const& name, ReaderMapping const& mapping,
+                                                Vector2f const& offset, float z_offset)>;
+
+void expand_level_object(std::string const& name, ReaderMapping const& mapping,
+                         Vector2f const& offset, float z_offset,
+                         LevelObjectCallback const& out)
+{
+  if (name == "group")
+  {
+    ReaderCollection collection;
+    mapping.read("objects", collection);
+    for (auto const& obj : collection.get_objects()) {
+      expand_level_object(obj.get_name(), obj.get_mapping(), offset, z_offset, out);
+    }
+  }
+  else if (name == "prefab")
+  {
+    std::string prefab_name;
+    mapping.read("name", prefab_name);
+
+    Vector2f pos;
+    float z_index = 0.0f;
+    InVector2fZ in_vec{pos, z_index};
+    mapping.read("position", in_vec);
+
+    ReaderMapping overrides;
+    mapping.read("overrides", overrides);
+
+    PrefabFile prefab = PrefabFile::from_resource(prefab_name);
+    for (auto const& obj : prefab.get_objects().get_objects())
+    {
+      expand_level_object(obj.get_name(), make_override_mapping(obj.get_mapping(), overrides),
+                          offset + geom::foffset(pos.x(), pos.y()), z_offset + z_index, out);
+    }
+  }
+  else
+  {
+    out(name, mapping, offset, z_offset);
+  }
+}
+
+} // namespace
+
 void
 World::init_worldobjs(PingusLevel const& plf)
 {
-  for (auto const& reader_object : plf.get_objects().get_objects())
+  // Objects are collected first and only turned into entities after
+  // sorting, so that entity creation order, and thus system iteration
+  // order, follows the z-order like the old WorldObj update order did.
+  struct PendingObject
   {
-    std::vector<WorldObj*> objs = WorldObjFactory::instance().create(reader_object);
-    for(auto obj = objs.begin(); obj != objs.end(); ++obj)
+    float z_index;
+    WorldObj* obj;
+    std::optional<ObjectData> data;
+  };
+
+  std::vector<PendingObject> pending;
+  for (WorldObj* obj : world_obj) {
+    pending.push_back(PendingObject{obj->z_index(), obj, {}});
+  }
+  world_obj.clear();
+
+  auto add_level_object = [&](std::string const& name, ReaderMapping const& mapping,
+                              Vector2f const& offset, float z_offset)
+  {
+    ObjectTypeDef const* type = ObjectSchema::instance().find(name);
+    if (type && systems::is_entity_type(*type))
     {
-      if (*obj)
+      ObjectData data = ObjectData::from_reader(*type, name, mapping);
+      data.set_pos(data.get_pos() + geom::foffset(offset.x(), offset.y()));
+      data.set_z_index(data.get_z_index() + z_offset);
+      float const z_index = data.get_z_index();
+      pending.push_back(PendingObject{z_index, nullptr, std::move(data)});
+    }
+    else
+    {
+      for (WorldObj* obj : WorldObjFactory::instance().create(name, mapping))
       {
-        add_object(*obj);
+        if (obj)
+        {
+          obj->set_pos(obj->get_pos() + geom::foffset(offset.x(), offset.y()));
+          obj->set_z_index(obj->z_index() + z_offset);
+          pending.push_back(PendingObject{obj->z_index(), obj, {}});
+        }
       }
     }
+  };
+
+  for (auto const& reader_object : plf.get_objects().get_objects()) {
+    expand_level_object(reader_object.get_name(), reader_object.get_mapping(), Vector2f(), 0.0f, add_level_object);
   }
 
-  {
-    // insert a dummy background in case the user didn't provide one
-    if (std::none_of(world_obj.begin(), world_obj.end(),
-                     [](WorldObj* obj) { return obj->is_solid_background(); }))
-    {
-      auto doc = ReaderDocument::from_string("(solidcolor-background "
-                                             "  (position 0 0 -1000) "
-                                             "  (colori 127 0 127 255))");
-      auto objs = WorldObjFactory::instance().create(doc.get_root());
-      for(auto obj = objs.begin(); obj != objs.end(); ++obj)
-      {
-        add_object(*obj);
+  // insert a dummy background in case the user didn't provide one
+  bool const has_solid_background =
+    std::any_of(pending.begin(), pending.end(), [](PendingObject const& p) {
+      if (p.obj) {
+        return p.obj->is_solid_background();
+      } else {
+        std::string const& name = p.data->type().name;
+        return name == "surface-background" || name == "solidcolor-background";
       }
-    }
+    });
+  if (!has_solid_background)
+  {
+    auto doc = ReaderDocument::from_string("(solidcolor-background "
+                                           "  (position 0 0 -1000) "
+                                           "  (colori 127 0 127 255))");
+    add_level_object(doc.get_root().get_name(), doc.get_root().get_mapping(), Vector2f(), 0.0f);
   }
 
-  world_obj.push_back(pingus);
+  pending.push_back(PendingObject{pingus->z_index(), pingus, {}});
 
-  std::stable_sort(world_obj.begin(), world_obj.end(),
-                   [](WorldObj* lhs, WorldObj* rhs)
+  std::stable_sort(pending.begin(), pending.end(),
+                   [](PendingObject const& lhs, PendingObject const& rhs)
                    {
-                     return lhs->z_index() < rhs->z_index();
+                     return lhs.z_index < rhs.z_index;
                    });
+
+  for (auto& p : pending)
+  {
+    if (p.obj)
+    {
+      world_obj.push_back(p.obj);
+      object_order.push_back(ObjectRef{p.obj, ecs::null_entity});
+    }
+    else
+    {
+      object_order.push_back(ObjectRef{nullptr, systems::create_object(*this, *p.data)});
+    }
+  }
 
   // Drawing all world objs to the colmap, gfx, or what ever the
   // objects want to do
-  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+  for (auto const& ref : object_order)
   {
-    (*obj)->on_startup();
+    if (ref.obj) {
+      ref.obj->on_startup();
+    } else {
+      systems::startup(*this, ref.entity);
+    }
   }
 }
 
@@ -140,9 +245,13 @@ World::draw (SceneContext& gc)
 
   gc.light().fill_screen(ambient_light);
 
-  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+  for (auto const& ref : object_order)
   {
-    (*obj)->draw(gc);
+    if (ref.obj) {
+      ref.obj->draw(gc);
+    } else {
+      systems::draw(*this, gc, ref.entity);
+    }
   }
 }
 
@@ -155,6 +264,8 @@ World::draw_smallmap(SmallMap* smallmap)
   {
     (*obj)->draw_smallmap (smallmap);
   }
+
+  systems::draw_smallmap(*this, *smallmap);
 }
 
 void
@@ -187,16 +298,17 @@ World::update()
     }
   }
 
-  // Let all pingus move and
-  // Let the pingus catch each other and
-  // Let the traps catch the pingus and
-  // Let the exit catch the pingus
+  // Traps, exits and other level objects react to the pingus
+  systems::update_objects(*this);
+
+  // Let all pingus move and catch each other, update the particles
   for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {
-    // catch_pingu() is now done in relevant update() if WorldObj
-    // needs to catch pingus.
     (*obj)->update();
   }
+
+  // Release new pingus
+  systems::update_after_pingus(*this);
 }
 
 PinguHolder*

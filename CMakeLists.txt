@@ -259,6 +259,7 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/pingus/actions/*.cpp
   src/pingus/colliders/*.cpp
   src/pingus/components/*.cpp
+  src/pingus/ecs/*.cpp
   src/pingus/movers/*.cpp
   src/pingus/particles/*.cpp
   src/pingus/screens/*.cpp

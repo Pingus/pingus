@@ -20,6 +20,7 @@
 #include <string>
 #include <vector>
 
+#include "ecs/registry.hpp"
 #include "math/random.hpp"
 #include "math/vector2i.hpp"
 #include "pingus/collision_mask.hpp"
@@ -61,7 +62,22 @@ private:
       changes, or not drawing at all, never alter gameplay. */
   Random fx_random;
 
+  /** Remaining non-entity objects (ground, pingus, particles, ...), in
+      update order */
   std::vector<WorldObj*> world_obj;
+
+  /** Level objects that are entities, see pingus/ecs/ */
+  ecs::Registry registry;
+
+  /** Entry of the combined z-sorted list of WorldObjs and entities */
+  struct ObjectRef
+  {
+    WorldObj* obj;
+    ecs::Entity entity;
+  };
+
+  /** All objects in z-order, used for startup and drawing */
+  std::vector<ObjectRef> object_order;
 
   pingus::particles::PinguParticleHolder* pingu_particle_holder;
   pingus::particles::RainParticleHolder*  rain_particle_holder;
@@ -117,6 +133,8 @@ public:
   void remove(CollisionMask const&, int x, int y);
 
   WorldObj* get_worldobj(std::string const& id);
+
+  ecs::Registry& get_registry() { return registry; }
 
   /** @return A pointer to the worlds pingu particle holder */
   pingus::particles::PinguParticleHolder* get_pingu_particle_holder() { return pingu_particle_holder; }
