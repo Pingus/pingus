@@ -4,13 +4,16 @@
 #ifndef HEADER_PINGUS_PINGUS_ECS_COMPONENTS_HPP
 #define HEADER_PINGUS_PINGUS_ECS_COMPONENTS_HPP
 
+#include <memory>
 #include <string>
 #include <vector>
 
+#include "ecs/registry.hpp"
 #include "engine/display/sprite.hpp"
 #include "math/color.hpp"
 #include "math/vector2f.hpp"
 #include "pingus/animation_clock.hpp"
+#include "pingus/collision_mask.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/groundtype.hpp"
 #include "pingus/res_descriptor.hpp"
@@ -164,6 +167,95 @@ struct Smasher
   bool smashing = false;
   bool downwards = false;
   int count = 0;
+};
+
+/** Player the object belongs to, in multiplayer levels */
+struct Owner
+{
+  int owner_id;
+};
+
+/** Name other objects refer to the entity by ("id" in level files) */
+struct ObjectId
+{
+  std::string id;
+};
+
+/** Releases the pingus of its owner */
+struct Entrance
+{
+  enum class Direction { LEFT, MISC, RIGHT };
+
+  Direction direction;
+  int release_rate;
+  int last_release;
+
+  /** For Direction::MISC, alternate between right (first) and left */
+  bool last_was_right = false;
+};
+
+/** Lets pingus of its owner in the TriggerZone exit */
+struct Exit
+{
+  ResDescriptor desc;
+  Sprite sprite;
+  Sprite flag;
+};
+
+/** Moves pingus in the TriggerZone to its target */
+struct Teleporter
+{
+  Sprite sprite;
+  AnimationClock clock;
+  std::string target_id;
+  ecs::Entity target = ecs::null_entity;
+};
+
+struct TeleporterTarget
+{
+  Sprite sprite;
+  AnimationClock clock;
+};
+
+/** Solid ground that melts while pingus walk on it */
+struct IceBlock
+{
+  Sprite sprite;
+  std::shared_ptr<CollisionMask> cmap;
+  float thickness = 1.0f;
+  bool finished = false;
+  int last_contact = 0;
+};
+
+/** Moves pingus in the TriggerZone to the left */
+struct ConveyorBelt
+{
+  Sprite left;
+  Sprite middle;
+  Sprite right;
+  int width;
+  float speed;
+};
+
+/** Door that opens when its switch is triggered */
+struct SwitchDoor
+{
+  Sprite box;
+  Sprite tile;
+  std::shared_ptr<CollisionMask> box_cmap;
+  std::shared_ptr<CollisionMask> tile_cmap;
+  int height;
+  int current_height;
+  bool opening = false;
+};
+
+/** Opens the door with the given id when a pingu enters the TriggerZone */
+struct SwitchDoorSwitch
+{
+  Sprite sprite;
+  std::string target_id;
+  ecs::Entity door = ecs::null_entity;
+  bool triggered = false;
 };
 
 } // namespace pingus::components

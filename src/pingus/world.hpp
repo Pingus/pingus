@@ -173,7 +173,7 @@ public:
   float get_gravity() const;
 
   /** Returns the start pos for the given player */
-  Vector2i get_start_pos(int player_id) const;
+  Vector2i get_start_pos(int player_id);
 
 private:
   World (World const&);

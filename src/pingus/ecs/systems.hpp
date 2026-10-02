@@ -27,6 +27,10 @@ namespace pingus::systems {
 /** True if objects of this type are created as entities by create_object() */
 bool is_entity_type(ObjectTypeDef const& type);
 
+/** The z-index the object is sorted and drawn with. Usually the one from
+    the level file, but some types always use a fixed one. */
+float object_z_index(ObjectData const& data);
+
 /** Create the entity and its components for a level object */
 ecs::Entity create_object(World& world, ObjectData const& data);
 

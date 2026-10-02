@@ -6,6 +6,8 @@
 #include <functional>
 #include <map>
 
+#include <logmich/log.hpp>
+
 #include "pingus/ecs/components.hpp"
 #include "pingus/object_schema.hpp"
 #include "pingus/resource.hpp"
@@ -180,6 +182,103 @@ void build_smasher(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
   reg.emplace<Smasher>(e, Sprite("traps/smasher"));
 }
 
+/** Owner ids are limited to the four players */
+int clamp_owner_id(int owner_id)
+{
+  return (owner_id < 0 || owner_id > 3) ? 0 : owner_id;
+}
+
+void build_entrance(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  std::string const& direction_str = data.get<std::string>("direction");
+  Entrance::Direction direction = Entrance::Direction::MISC;
+  if (direction_str == "left") {
+    direction = Entrance::Direction::LEFT;
+  } else if (direction_str == "right") {
+    direction = Entrance::Direction::RIGHT;
+  } else if (direction_str != "misc") {
+    log_error("unknown direction: '{}'", direction_str);
+  }
+
+  int const release_rate = data.get<int>("release-rate");
+  // wait ~2sec at startup to allow a 'lets go' sound
+  int const last_release = 150 - release_rate;
+
+  reg.emplace<Owner>(e, clamp_owner_id(data.get<int>("owner-id")));
+  reg.emplace<Entrance>(e, direction, release_rate, last_release);
+  reg.emplace<SmallmapSymbol>(e, Sprite("core/misc/smallmap_entrance"));
+}
+
+void build_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  int const owner_id = clamp_owner_id(data.get<int>("owner-id"));
+  ResDescriptor const& desc = data.get<ResDescriptor>("surface");
+
+  reg.emplace<Owner>(e, owner_id);
+  reg.emplace<TriggerZone>(e, -1.0f, -5.0f, 1.0f, 5.0f);
+  reg.emplace<Exit>(e, desc, Sprite(desc), Sprite("core/misc/flag" + std::to_string(owner_id)));
+  reg.emplace<SmallmapSymbol>(e, Sprite("core/misc/smallmap_exit"));
+}
+
+void build_teleporter(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  reg.emplace<TriggerZone>(e, -3.0f, -52.0f, 3.0f, 0.0f);
+  reg.emplace<Teleporter>(e, Sprite("worldobjs/teleporter"),
+                          AnimationClock::from_sprite("worldobjs/teleporter"),
+                          data.get<std::string>("target-id"));
+}
+
+void build_teleporter_target(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  reg.emplace<ObjectId>(e, data.get<std::string>("id"));
+  reg.emplace<TeleporterTarget>(e, Sprite("worldobjs/teleportertarget"),
+                                AnimationClock::from_sprite("worldobjs/teleportertarget"));
+}
+
+void build_ice_block(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  // "repeat" is part of the level format, but only a single block was
+  // ever implemented
+  auto cmap = std::make_shared<CollisionMask>("worldobjs/iceblock_cmap");
+  reg.emplace<TriggerZone>(e, 0.0f, -4.0f,
+                           static_cast<float>(cmap->get_width()),
+                           static_cast<float>(cmap->get_height()));
+  reg.emplace<IceBlock>(e, Sprite("worldobjs/iceblock"), cmap);
+}
+
+void build_conveyor_belt(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  int const width = data.get<int>("repeat");
+  reg.emplace<TriggerZone>(e, 0.0f, -2.0f, 15.0f * static_cast<float>(width + 2), 10.0f);
+  reg.emplace<ConveyorBelt>(e,
+                            Sprite("worldobjs/conveyorbelt_left"),
+                            Sprite("worldobjs/conveyorbelt_middle"),
+                            Sprite("worldobjs/conveyorbelt_right"),
+                            width,
+                            static_cast<float>(data.get<int>("speed")));
+}
+
+void build_switch_door(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  int const height = data.get<int>("height");
+  reg.emplace<ObjectId>(e, data.get<std::string>("id"));
+  reg.emplace<SwitchDoor>(e,
+                          Sprite("worldobjs/switchdoor_box"),
+                          Sprite("worldobjs/switchdoor_tile"),
+                          std::make_shared<CollisionMask>("worldobjs/switchdoor_box"),
+                          std::make_shared<CollisionMask>("worldobjs/switchdoor_tile_cmap"),
+                          height, height);
+}
+
+void build_switch(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  Sprite sprite("worldobjs/switchdoor_switch");
+  reg.emplace<TriggerZone>(e, 0.0f, 0.0f,
+                           static_cast<float>(sprite.get_width()),
+                           static_cast<float>(sprite.get_height()));
+  reg.emplace<SwitchDoorSwitch>(e, sprite, data.get<std::string>("target-id"));
+}
+
 std::map<std::string, Builder> const& get_builders()
 {
   static std::map<std::string, Builder> const builders = {
@@ -195,11 +294,36 @@ std::map<std::string, Builder> const& get_builders()
     {"hammer", build_hammer},
     {"laser_exit", build_laser_exit},
     {"smasher", build_smasher},
+    {"entrance", build_entrance},
+    {"exit", build_exit},
+    {"teleporter", build_teleporter},
+    {"teleporter-target", build_teleporter_target},
+    {"iceblock", build_ice_block},
+    {"conveyorbelt", build_conveyor_belt},
+    {"switchdoor-door", build_switch_door},
+    {"switchdoor-switch", build_switch},
   };
   return builders;
 }
 
 } // namespace
+
+float
+object_z_index(ObjectData const& data)
+{
+  // These types never used the z-index from the level file
+  static std::map<std::string, float> const fixed_z_index = {
+    {"solidcolor-background", -10.0f},
+    {"starfield-background", -10.0f},
+    {"snow-generator", 1000.0f},
+    {"rain-generator", 1000.0f},
+    {"switchdoor-door", 100.0f},
+    {"switchdoor-switch", 100.0f},
+  };
+
+  auto it = fixed_z_index.find(data.type().name);
+  return it != fixed_z_index.end() ? it->second : data.get_z_index();
+}
 
 bool
 is_entity_type(ObjectTypeDef const& type)
@@ -217,7 +341,7 @@ create_object(World& world, ObjectData const& data)
 
   ecs::Registry& reg = world.get_registry();
   ecs::Entity const entity = reg.create();
-  reg.emplace<Transform>(entity, data.get_pos(), data.get_z_index());
+  reg.emplace<Transform>(entity, data.get_pos(), object_z_index(data));
   it->second(world, reg, entity, data);
   return entity;
 }

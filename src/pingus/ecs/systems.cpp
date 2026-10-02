@@ -181,6 +181,7 @@ startup(World& world, ecs::Entity entity)
   }
 
   startup_trap(world, entity);
+  startup_level_object(world, entity);
 }
 
 void
@@ -188,7 +189,8 @@ update_objects(World& world)
 {
   ecs::Registry& reg = world.get_registry();
 
-  update_traps(world);
+  update_traps(world, Phase::BEFORE_PINGUS);
+  update_level_objects(world, Phase::BEFORE_PINGUS);
   update_surface_backgrounds(reg);
   update_starfields(world, reg);
   update_liquids(reg);
@@ -196,8 +198,10 @@ update_objects(World& world)
 }
 
 void
-update_after_pingus(World& /* world */)
+update_after_pingus(World& world)
 {
+  update_traps(world, Phase::AFTER_PINGUS);
+  update_level_objects(world, Phase::AFTER_PINGUS);
 }
 
 void
@@ -233,6 +237,7 @@ draw(World& world, SceneContext& gc, ecs::Entity entity)
   }
 
   draw_trap(world, gc, entity);
+  draw_level_object(world, gc, entity);
 }
 
 void

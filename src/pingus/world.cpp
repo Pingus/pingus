@@ -32,12 +32,12 @@
 #include "pingus/particles/snow_particle_holder.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
+#include "pingus/ecs/components.hpp"
 #include "pingus/ecs/systems.hpp"
 #include "pingus/object_schema.hpp"
 #include "pingus/pingus_level.hpp"
 #include "pingus/prefab_file.hpp"
 #include "pingus/worldobj_factory.hpp"
-#include "pingus/worldobjs/entrance.hpp"
 
 namespace pingus {
 
@@ -159,7 +159,7 @@ World::init_worldobjs(PingusLevel const& plf)
       ObjectData data = ObjectData::from_reader(*type, name, mapping);
       data.set_pos(data.get_pos() + geom::foffset(offset.x(), offset.y()));
       data.set_z_index(data.get_z_index() + z_offset);
-      float const z_index = data.get_z_index();
+      float const z_index = systems::object_z_index(data);
       pending.push_back(PendingObject{z_index, nullptr, std::move(data)});
     }
     else
@@ -433,21 +433,20 @@ World::get_worldobj(std::string const& id)
 }
 
 Vector2i
-World::get_start_pos(int player_id) const
+World::get_start_pos(int player_id)
 {
   // FIXME: Workaround for lack of start-pos
   Vector2i pos;
   int num_entrances = 0;
-  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-  {
-    pingus::worldobjs::Entrance* entrance = dynamic_cast<pingus::worldobjs::Entrance*>(*obj);
-    if (entrance && entrance->get_owner_id() == player_id)
-    {
-      pos += geom::ioffset(static_cast<int>(entrance->get_pos().x()),
-                           static_cast<int>(entrance->get_pos().y()));
-      num_entrances += 1;
-    }
-  }
+  registry.each<components::Transform, components::Owner, components::Entrance>(
+    [&](ecs::Entity, components::Transform& transform, components::Owner& owner, components::Entrance&) {
+      if (owner.owner_id == player_id)
+      {
+        pos += geom::ioffset(static_cast<int>(transform.pos.x()),
+                             static_cast<int>(transform.pos.y()));
+        num_entrances += 1;
+      }
+    });
 
   if (num_entrances > 0)
   {
