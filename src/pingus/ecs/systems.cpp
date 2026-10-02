@@ -191,6 +191,7 @@ update_objects(World& world)
 
   update_traps(world, Phase::BEFORE_PINGUS);
   update_level_objects(world, Phase::BEFORE_PINGUS);
+  update_weather(world, Phase::BEFORE_PINGUS);
   update_surface_backgrounds(reg);
   update_starfields(world, reg);
   update_liquids(reg);
@@ -202,6 +203,7 @@ update_after_pingus(World& world)
 {
   update_traps(world, Phase::AFTER_PINGUS);
   update_level_objects(world, Phase::AFTER_PINGUS);
+  update_weather(world, Phase::AFTER_PINGUS);
 }
 
 void
@@ -238,6 +240,7 @@ draw(World& world, SceneContext& gc, ecs::Entity entity)
 
   draw_trap(world, gc, entity);
   draw_level_object(world, gc, entity);
+  draw_weather(world, gc, entity);
 }
 
 void

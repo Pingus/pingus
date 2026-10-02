@@ -279,6 +279,16 @@ void build_switch(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& d
   reg.emplace<SwitchDoorSwitch>(e, sprite, data.get<std::string>("target-id"));
 }
 
+void build_snow_generator(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  reg.emplace<SnowGenerator>(e, data.get<float>("intensity"));
+}
+
+void build_rain_generator(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<RainGenerator>(e);
+}
+
 std::map<std::string, Builder> const& get_builders()
 {
   static std::map<std::string, Builder> const builders = {
@@ -302,6 +312,8 @@ std::map<std::string, Builder> const& get_builders()
     {"conveyorbelt", build_conveyor_belt},
     {"switchdoor-door", build_switch_door},
     {"switchdoor-switch", build_switch},
+    {"snow-generator", build_snow_generator},
+    {"rain-generator", build_rain_generator},
   };
   return builders;
 }

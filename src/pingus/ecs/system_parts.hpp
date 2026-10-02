@@ -50,6 +50,10 @@ void update_traps(World& world, Phase phase);
 void startup_trap(World& world, ecs::Entity entity);
 void draw_trap(World& world, SceneContext& gc, ecs::Entity entity);
 
+// weather.cpp
+void update_weather(World& world, Phase phase);
+void draw_weather(World& world, SceneContext& gc, ecs::Entity entity);
+
 // objects.cpp
 void update_level_objects(World& world, Phase phase);
 void startup_level_object(World& world, ecs::Entity entity);

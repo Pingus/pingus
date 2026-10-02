@@ -258,6 +258,20 @@ struct SwitchDoorSwitch
   bool triggered = false;
 };
 
+/** Adds snow particles, intensity is the number of flakes per tick */
+struct SnowGenerator
+{
+  float intensity;
+};
+
+/** Adds rain particles and the occasional thunder flash */
+struct RainGenerator
+{
+  bool do_thunder = false;
+  float thunder_count = 0.0f;
+  float waiter_count = 0.0f;
+};
+
 } // namespace pingus::components
 
 #endif
