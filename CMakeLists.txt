@@ -285,8 +285,14 @@ function(build_dependencies)
   # even if WERROR is forced OFF. Clear the flag vars in this function
   # scope so add_subdirectory sees a clean slate (helpers apply their own
   # MaximumWarnings from their WERROR/WARNINGS options).
-  set(BUILD_TESTS OFF CACHE BOOL "" FORCE)
-  set(WERROR OFF CACHE BOOL "" FORCE)
+  #
+  # BUILD_TESTS and WERROR are set as function-scoped normal variables, not
+  # cache entries: forcing the cache would also switch off Pingus' own
+  # tests and -Werror on every reconfigure. CMP0077 makes the helpers'
+  # option() calls honor the normal variable.
+  set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+  set(BUILD_TESTS OFF)
+  set(WERROR OFF)
   set(TINYGETTEXT_WITH_SDL ON CACHE BOOL "" FORCE)
   set(WARNINGS_CXX_FLAGS "")
   set(TINYCMMC_WARNINGS_CXX_FLAGS "")
