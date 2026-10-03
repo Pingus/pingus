@@ -77,10 +77,18 @@ GenericLevelObj::init_sprite()
 }
 
 void
+GenericLevelObj::set_property(std::string_view name, PropertyValue const& value)
+{
+  if (data.has(name)) {
+    data.set_value(name, value);
+  }
+}
+
+void
 GenericLevelObj::set_res_desc(ResDescriptor const& d)
 {
   desc = d;
-  set_if("surface", d);
+  set_property("surface", d);
   refresh_sprite();
 }
 
@@ -94,13 +102,13 @@ GenericLevelObj::draw(DrawingContext& gc)
   if (name == "surface-background")
   {
     gc.draw(sprite, pos, z);
-    gc.draw_fillrect(get_rect(), get_color(), z);
+    gc.draw_fillrect(get_rect(), get_or("colori", Color(0, 0, 0, 0)), z);
   }
   else if (has_sprite())
   {
     if (data.has("repeat"))
     {
-      int const repeat = get_repeat();
+      int const repeat = get_or("repeat", 0);
       for(int x = static_cast<int>(pos.x()); x < static_cast<int>(pos.x()) + sprite.get_width() * repeat; x += sprite.get_width())
       {
         gc.draw(sprite, Vector2f(static_cast<float>(x), pos.y()), z);
@@ -108,7 +116,7 @@ GenericLevelObj::draw(DrawingContext& gc)
     }
     else if (name == "solidcolor-background")
     {
-      gc.draw_fillrect(get_rect(), get_color(), z);
+      gc.draw_fillrect(get_rect(), get_or("colori", Color(0, 0, 0, 0)), z);
       gc.draw(sprite, pos);
     }
     else
@@ -169,7 +177,7 @@ GenericLevelObj::set_modifier(ResourceModifier::Enum modifier)
   if (data.type().editor_can_rotate)
   {
     desc.modifier = modifier;
-    set_if("surface", desc);
+    set_property("surface", desc);
     refresh_sprite();
   }
 }
@@ -190,7 +198,7 @@ Rect
 GenericLevelObj::get_rect() const
 {
   Vector2f const pos = data.get_pos();
-  int const width = data.has("repeat") ? sprite.get_width() * get_repeat() : sprite.get_width();
+  int const width = data.has("repeat") ? sprite.get_width() * get_or("repeat", 0) : sprite.get_width();
   return Rect(geom::ipoint(static_cast<int>(pos.x()), static_cast<int>(pos.y())).as_vec() - sprite.get_offset().as_vec(),
               Size(width, sprite.get_height()));
 }

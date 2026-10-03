@@ -16,6 +16,8 @@
 
 #include "editor/group_level_obj.hpp"
 
+#include <stdexcept>
+
 #include <logmich/log.hpp>
 
 #include "pingus/prefab_file.hpp"
@@ -104,25 +106,25 @@ GroupLevelObj::set_overrides(ReaderMapping const& reader)
 {
   if (reader.read("repeat", m_repeat))
   {
-    set_repeat(m_repeat);
+    set_property("repeat", m_repeat);
     m_overrides |= OVERRIDE_REPEAT;
   }
 
   if (reader.read("owner-id", m_owner_id))
   {
-    set_owner(m_owner_id);
+    set_property("owner-id", m_owner_id);
     m_overrides |= OVERRIDE_OWNER;
   }
 
   if (reader.read("release-rate", m_release_rate))
   {
-    set_release_rate(m_release_rate);
+    set_property("release-rate", m_release_rate);
     m_overrides |= OVERRIDE_RELEASE_RATE;
   }
 
   if (reader.read("direction",  m_direction))
   {
-    set_direction(m_direction);
+    set_property("direction", m_direction);
     m_overrides |= OVERRIDE_DIRECTION;
   }
 }
@@ -220,47 +222,54 @@ GroupLevelObj::is_at(int x, int y)
   return false;
 }
 
-void
-GroupLevelObj::set_release_rate(int r)
+ObjectTypeDef const&
+GroupLevelObj::overrides_type()
 {
-  m_release_rate = r;
+  static ObjectTypeDef const type = [] {
+    ObjectSchema const& schema = ObjectSchema::instance();
+    ObjectTypeDef t{"prefab", {}, {}};
+    t.properties.push_back(*schema.find("liquid")->find_property("repeat"));
+    t.properties.push_back(*schema.find("entrance")->find_property("owner-id"));
+    t.properties.push_back(*schema.find("entrance")->find_property("release-rate"));
+    t.properties.push_back(*schema.find("entrance")->find_property("direction"));
+    return t;
+  }();
+  return type;
+}
 
-  for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
-  {
-    (*it)->set_release_rate(m_release_rate);
+PropertyValue
+GroupLevelObj::get_property(std::string_view name) const
+{
+  if (name == "repeat") {
+    return m_repeat;
+  } else if (name == "owner-id") {
+    return m_owner_id;
+  } else if (name == "release-rate") {
+    return m_release_rate;
+  } else if (name == "direction") {
+    return m_direction;
+  } else {
+    throw std::runtime_error("GroupLevelObj: no property '" + std::string(name) + "'");
   }
 }
 
 void
-GroupLevelObj::set_owner(int owner)
+GroupLevelObj::set_property(std::string_view name, PropertyValue const& value)
 {
-  m_owner_id = owner;
-
-  for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
-  {
-    (*it)->set_owner(m_owner_id);
+  if (name == "repeat") {
+    m_repeat = std::get<int>(value);
+  } else if (name == "owner-id") {
+    m_owner_id = std::get<int>(value);
+  } else if (name == "release-rate") {
+    m_release_rate = std::get<int>(value);
+  } else if (name == "direction") {
+    m_direction = std::get<std::string>(value);
+  } else {
+    return;
   }
-}
 
-void
-GroupLevelObj::set_direction(std::string const& direction)
-{
-  m_direction = direction;
-
-  for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
-  {
-    (*it)->set_direction(m_direction);
-  }
-}
-
-void
-GroupLevelObj::set_repeat(int repeat)
-{
-  m_repeat = repeat;
-
-  for(auto it = m_objects.begin(); it != m_objects.end(); ++it)
-  {
-    (*it)->set_repeat(m_repeat);
+  for (auto& obj : m_objects) {
+    obj->set_property(name, value);
   }
 }
 

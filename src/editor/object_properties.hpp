@@ -104,7 +104,7 @@ private:
   PropertyWidgets create_property_widgets(PropertyDef const& prop);
 
   /** Show the property's widgets with the value from 'data' */
-  void show_property(PropertyWidgets& widgets, ObjectData const& data);
+  void show_property(PropertyWidgets& widgets, LevelObj const& data);
 
   /** Set the property on all selected objects */
   void set_property(std::string const& name, PropertyValue const& value);

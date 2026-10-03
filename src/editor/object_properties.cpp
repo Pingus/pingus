@@ -39,47 +39,6 @@ namespace {
 Rect const label_rect(10, 0, 80, 20);
 Rect const box_rect(80, 0, 190, 20);
 
-/** Pseudo object type for prefab groups, which have no ObjectData but
-    can override these properties of their objects */
-ObjectTypeDef const& prefab_overrides_type()
-{
-  static ObjectTypeDef const type = [] {
-    ObjectSchema const& schema = ObjectSchema::instance();
-    ObjectTypeDef t{"prefab", {}, {}};
-    t.properties.push_back(*schema.find("liquid")->find_property("repeat"));
-    t.properties.push_back(*schema.find("entrance")->find_property("owner-id"));
-    t.properties.push_back(*schema.find("entrance")->find_property("release-rate"));
-    t.properties.push_back(*schema.find("entrance")->find_property("direction"));
-    return t;
-  }();
-  return type;
-}
-
-/** Collect the overridden properties of a prefab group into an ObjectData */
-ObjectData prefab_overrides_data(LevelObj& obj)
-{
-  ObjectData data(prefab_overrides_type());
-  data.set("repeat", obj.get_repeat());
-  data.set("owner-id", obj.get_owner());
-  data.set("release-rate", obj.get_release_rate());
-  data.set("direction", obj.get_direction());
-  return data;
-}
-
-/** Apply a prefab override through the LevelObj setters */
-void set_prefab_override(LevelObj& obj, std::string const& name, PropertyValue const& value)
-{
-  if (name == "repeat") {
-    obj.set_repeat(std::get<int>(value));
-  } else if (name == "owner-id") {
-    obj.set_owner(std::get<int>(value));
-  } else if (name == "release-rate") {
-    obj.set_release_rate(std::get<int>(value));
-  } else if (name == "direction") {
-    obj.set_direction(std::get<std::string>(value));
-  }
-}
-
 std::string label_text(PropertyDef const& prop)
 {
   return prop.label.empty() ? prop.name + ":" : _(prop.label);
@@ -202,11 +161,12 @@ ObjectProperties::create_property_widgets(PropertyDef const& prop)
           uint8_t const component = static_cast<uint8_t>(std::clamp(strut::from_string<int>(str), 0, 255));
           for (auto const& obj : objects)
           {
-            Color color = obj->get_color();
-            uint8_t* channels[] = { &color.r, &color.g, &color.b, &color.a };
-            *channels[i] = component;
-            if (ObjectData* data = obj->get_object_data(); data && data->has(name)) {
-              data->set(name, color);
+            if (obj->has_property(name))
+            {
+              Color color = obj->get<Color>(name);
+              uint8_t* channels[] = { &color.r, &color.g, &color.b, &color.a };
+              *channels[i] = component;
+              obj->set(name, color);
             }
           }
         });
@@ -253,7 +213,7 @@ ObjectProperties::get_property_widgets(ObjectTypeDef const& type)
 }
 
 void
-ObjectProperties::show_property(PropertyWidgets& widgets, ObjectData const& data)
+ObjectProperties::show_property(PropertyWidgets& widgets, LevelObj const& data)
 {
   PropertyDef const& prop = *widgets.prop;
 
@@ -322,21 +282,11 @@ ObjectProperties::set_object(LevelObjPtr const& obj)
 
   if (obj)
   {
-    if (ObjectData* data = obj->get_object_data())
+    // groups only have the prefab overrides they set
+    for (auto& widgets : get_property_widgets(obj->get_type_def()))
     {
-      for (auto& widgets : get_property_widgets(data->type())) {
-        show_property(widgets, *data);
-      }
-    }
-    else
-    {
-      // prefab group: only the overrides it has
-      ObjectData const overrides = prefab_overrides_data(*obj);
-      for (auto& widgets : get_property_widgets(prefab_overrides_type()))
-      {
-        if (obj->has_property(widgets.prop->name)) {
-          show_property(widgets, overrides);
-        }
+      if (obj->has_property(widgets.prop->name)) {
+        show_property(widgets, *obj);
       }
     }
 
@@ -348,8 +298,7 @@ ObjectProperties::set_object(LevelObjPtr const& obj)
     pos_z_inputbox->set_text(strut::to_string(obj->z_index()));
     place(pos_z_label, pos_z_inputbox);
 
-    ObjectData* data = obj->get_object_data();
-    if (data && data->type().editor_can_rotate)
+    if (obj->get_type_def().editor_can_rotate)
     {
       y_pos += 4;
       place(flip_horizontal_button);
@@ -371,18 +320,8 @@ ObjectProperties::set_object(LevelObjPtr const& obj)
 void
 ObjectProperties::set_property(std::string const& name, PropertyValue const& value)
 {
-  for (auto const& obj : objects)
-  {
-    if (ObjectData* data = obj->get_object_data())
-    {
-      if (data->has(name)) {
-        data->set_value(name, value);
-      }
-    }
-    else if (obj->has_property(name))
-    {
-      set_prefab_override(*obj, name, value);
-    }
+  for (auto const& obj : objects) {
+    obj->set_property(name, value);
   }
 }
 

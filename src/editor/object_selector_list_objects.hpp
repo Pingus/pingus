@@ -39,7 +39,7 @@ struct Groundpiece : public ObjectSelectorList::Object
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("groundpiece");
     obj->set_pos(Vector2f(pos));
     obj->set_res_desc(desc);
-    obj->set_ground_type(type);
+    obj->set("type", type);
     return obj;
   }
 };
@@ -53,12 +53,11 @@ struct Entrance : public ObjectSelectorList::Object
 
   LevelObjPtr create(Vector2i const& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("entrance");
-    obj->set_type("generic");
     obj->set_pos(Vector2f(pos));
     obj->set_z_index(110);
-    obj->set_direction("misc");
-    obj->set_release_rate(150);
-    obj->set_owner(0);
+    obj->set("direction", std::string("misc"));
+    obj->set("release-rate", 150);
+    obj->set("owner-id", 0);
     return obj;
   }
 };
@@ -118,10 +117,10 @@ struct SurfaceBackground : public ObjectSelectorList::Object
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("surface-background");
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
     obj->set_z_index(-1000.0f); // FIXME: Hack, z-pos handling is messed up
-    obj->set_para_x(0.5f);
-    obj->set_para_y(0.5f);
-    obj->set_scroll_x(0.0f);
-    obj->set_scroll_y(0.0f);
+    obj->set("para-x", 0.5f);
+    obj->set("para-y", 0.5f);
+    obj->set("scroll-x", 0.0f);
+    obj->set("scroll-y", 0.0f);
     obj->set_res_desc(desc);
     // obj->set_para();
 
@@ -140,7 +139,7 @@ struct SolidColorBackground : public ObjectSelectorList::Object
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("solidcolor-background");
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
     obj->set_z_index(-1000.0f); // FIXME: Hack, z-pos handling is messed up
-    obj->set_color(Color(255, 0, 255));
+    obj->set("colori", Color(255, 0, 255));
     return obj;
   }
 };
@@ -157,9 +156,9 @@ struct StarfieldBackground : public ObjectSelectorList::Object
     // FIXME: Hack, z-pos handling is messed up
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
     obj->set_z_index(-1000.0f);
-    obj->set_small_stars(500);
-    obj->set_middle_stars(250);
-    obj->set_large_stars(125);
+    obj->set("small-stars", 500);
+    obj->set("middle-stars", 250);
+    obj->set("large-stars", 125);
     return obj;
   }
 };
@@ -178,7 +177,7 @@ struct Liquid : public ObjectSelectorList::Object
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("liquid");
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
     obj->set_res_desc(desc);
-    obj->set_repeat(1);
+    obj->set("repeat", 1);
     return obj;
   }
 };
@@ -305,7 +304,7 @@ struct Teleporter : public ObjectSelectorList::Object
   LevelObjPtr create(Vector2i const& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("teleporter");
     obj->set_pos(Vector2f(pos));
-    obj->set_target_id("");
+    obj->set("target-id", std::string());
     return obj;
   }
 };
@@ -320,7 +319,7 @@ struct TeleporterTarget : public ObjectSelectorList::Object
   LevelObjPtr create(Vector2i const& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("teleporter-target");
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
-    obj->set_id("id" + strut::to_string(rand()));
+    obj->set("id", "id" + strut::to_string(rand()));
     return obj;
   }
 };
@@ -335,7 +334,7 @@ struct IceBlock : public ObjectSelectorList::Object
   LevelObjPtr create(Vector2i const& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("iceblock");
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
-    obj->set_repeat(1);
+    obj->set("repeat", 1);
     return obj;
   }
 };
@@ -350,7 +349,7 @@ struct Conveyorbelt : public ObjectSelectorList::Object
   LevelObjPtr create(Vector2i const& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("conveyorbelt");
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
-    obj->set_repeat(1);
+    obj->set("repeat", 1);
     return obj;
   }
 };
@@ -365,8 +364,7 @@ struct SwitchDoorSwitch : public ObjectSelectorList::Object
   LevelObjPtr create(Vector2i const& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("switchdoor-switch");
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
-    obj->set_height(15);
-    obj->set_target_id("");
+    obj->set("target-id", std::string());
     return obj;
   }
 };
@@ -381,8 +379,7 @@ struct SwitchDoorDoor : public ObjectSelectorList::Object
   LevelObjPtr create(Vector2i const& pos) override {
     LevelObjPtr obj = std::make_shared<GenericLevelObj>("switchdoor-door");
     obj->set_pos(Vector2f(static_cast<float>(pos.x()), static_cast<float>(pos.y())));
-    obj->set_repeat(1);
-    obj->set_id("id" + strut::to_string(rand()));
+    obj->set("id", "id" + strut::to_string(rand()));
     return obj;
   }
 };

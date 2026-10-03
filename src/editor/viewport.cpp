@@ -454,11 +454,11 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       {
         if ((*it)->has_property("repeat"))
         {
-          (*it)->set_repeat((*it)->get_repeat() + 1);
+          (*it)->set("repeat", (*it)->get<int>("repeat") + 1);
         }
         else if ((*it)->has_property("height"))
         {
-          (*it)->set_height((*it)->get_height() + 1);
+          (*it)->set("height", (*it)->get<int>("height") + 1);
         }
       }
       selection_changed(selection);
@@ -469,16 +469,16 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       {
         if ((*it)->has_property("repeat"))
         {
-          if ((*it)->get_repeat() > 1)
+          if ((*it)->get<int>("repeat") > 1)
           {
-            (*it)->set_repeat((*it)->get_repeat() - 1);
+            (*it)->set("repeat", (*it)->get<int>("repeat") - 1);
           }
         }
         else if ((*it)->has_property("height"))
         {
-          if ((*it)->get_height() > 1)
+          if ((*it)->get<int>("height") > 1)
           {
-            (*it)->set_height((*it)->get_height() - 1);
+            (*it)->set("height", (*it)->get<int>("height") - 1);
           }
         }
       }
