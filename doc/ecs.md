@@ -1,8 +1,8 @@
-# Level objects: schema, entities and systems
+# Level objects and pingus: schema, entities and systems
 
 Level objects (groundpieces, traps, exits, backgrounds, …) are described
-by a shared schema and live in the game as entities with components.
-Their behavior is implemented by systems. This replaced the old
+by a shared schema and live in the game as entities with components, as
+do the pingus. Their behavior is implemented by systems. This replaced the old
 `WorldObj` class hierarchy (`src/pingus/worldobjs/`) and
 `WorldObjFactory`.
 
@@ -14,14 +14,28 @@ Their behavior is implemented by systems. This replaced the old
 | Entity registry | `src/ecs/registry.hpp` | Generic, header-only entity/component storage |
 | Components | `src/pingus/ecs/components.hpp` | Plain data structs, namespace `pingus::components` |
 | Entity factory | `src/pingus/ecs/object_factory.cpp` | `ObjectData` → entity with components |
-| Systems | `src/pingus/ecs/{systems,traps,objects,weather}.cpp` | Startup, per tick update, drawing |
+| Systems | `src/pingus/ecs/{systems,traps,objects,weather,pingus}.cpp` | Startup, per tick update, drawing |
 | Animation timing | `src/pingus/animation_clock.{hpp,cpp}` | Sprite timing for game logic, without images |
 
 (`src/pingus/components/` holds GUI widgets and is unrelated.)
 
-The ground map, the pingus (`PinguHolder`) and the particle systems are
-not entities. They are still `WorldObj`s, each with an explicit pointer
-to their `World`.
+The ground map and the particle systems are not entities. They are
+still `WorldObj`s, each with an explicit pointer to their `World`.
+
+## Pingus
+
+Each pingu is an entity with `Transform` (position), `PinguState` (id,
+owner, status, direction, velocity), `PinguBehavior` (the action state
+machine) and, while it is alive and in the level, `ActivePingu`. The
+`Pingu` component holds no state of its own: it is the interface the 22
+actions, the GUI and the server use, and reads and writes the other
+components. Actions are still classes (`src/pingus/actions/`) held by
+`PinguBehavior`.
+
+`PinguHolder` creates pingu entities, finds them by id, counts released,
+exited and killed pingus, and iterates the active ones (`for_each()`).
+`systems::update_pingus()` runs the actions and deactivates dead and
+exited pingus; `systems::draw_pingus()` draws them at depth 50.
 
 ## Object schema
 
@@ -38,9 +52,11 @@ the values the game uses when a property is missing.
 
 To add a property, add it to the type in `ObjectSchema::ObjectSchema()`
 and read it with `data.get<T>("name")` in the type's entity builder. The
-editor loads and saves it automatically. It only shows a widget for it
-if the property maps to one of the `HAS_*` flags in
-`generic_level_obj.cpp`.
+editor loads and saves it automatically, and its property panel
+(`ObjectProperties`) creates a widget for it from the property type:
+an inputbox for numbers and strings, a combobox for strings with
+`choices`, a checkbox for booleans, four inputboxes for colors. `label`
+sets the panel label, `hidden` keeps a property out of the panel.
 
 ## Registry
 
@@ -82,7 +98,8 @@ before the conversion.
 ```
 World::update()
   systems::update_spawners()   entrances release pingus
-  WorldObj::update() for each  ground, pingus, particles
+  systems::update_pingus()     pingus act and move
+  WorldObj::update() for each  ground, particles
   systems::update_objects()    traps, exits, teleporters, conveyor belts,
                                switch doors, ice blocks, weather,
                                backgrounds, decorative animation
@@ -137,7 +154,9 @@ covering all object types, against the previous step.
 
 ## Possible next steps
 
-- Pingus as entities, with the action state machine as a component.
 - Move the object type definitions from C++ into a data file.
-- Let the editor build its property panel from the schema instead of the
-  `HAS_*` flags.
+- Turn the pingu actions from classes into data plus per action systems.
+- Ground map and particle systems as entities or plain world services
+  instead of `WorldObj`s.
+- Remove the typed per property accessors from the editor's `LevelObj`
+  in favor of `get_object_data()`.

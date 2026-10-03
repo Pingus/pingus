@@ -223,8 +223,8 @@ well (`pingus-headless -s DIR -T TICKS`).
 3. Shared object schema
    - [x] `ObjectSchema` / `ObjectData` describe all level object types
    - [x] Editor reads, writes and derives its `HAS_*` flags from it
-   - [ ] Editor property panel generated from the schema instead of the
-         `HAS_*` flags
+   - [x] Editor property panel generated from the schema, `HAS_*` flags
+         removed
    - [ ] `WorldObjRenderer` (`pingus-level2png`) still has its own
          per-type code
    - [ ] (Maybe) move the type definitions into a data file
@@ -236,7 +236,11 @@ well (`pingus-headless -s DIR -T TICKS`).
    - [x] Global `WorldObj::world` replaced by explicit references
    - [x] Fixed system order (spawners, pingus, objects) instead of the
          old z-based update order
-5. [ ] (Optional) Pingus as entities with an action-state component
+5. Pingus as entities
+   - [x] `Transform`, `PinguState`, `PinguBehavior`, `ActivePingu`
+         components, `Pingu` as interface component, `PinguHolder` no
+         longer a `WorldObj`, systems in `pingus/ecs/pingus.cpp`
+   - [ ] (Maybe) actions as data + systems instead of classes
 
 Found along the way:
 
