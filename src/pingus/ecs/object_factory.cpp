@@ -147,7 +147,10 @@ void build_spike(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 void build_fake_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
   reg.emplace<TriggerZone>(e, -7.0f, -56.0f, 8.0f, 0.0f);
-  reg.emplace<FakeExit>(e, Sprite("traps/fake_exit"), AnimationClock::from_sprite("traps/fake_exit"));
+  FakeExit& fake_exit = reg.emplace<FakeExit>(e, Sprite("traps/fake_exit"), AnimationClock::from_sprite("traps/fake_exit"));
+  // traps/fake_exit.sprite is marked looping, but the trap smashes once per
+  // trigger; with a looping clock it never reset and kept smashing forever
+  fake_exit.clock.set_loop(false);
   reg.emplace<SmallmapSymbol>(e, Sprite("core/misc/smallmap_exit"));
 }
 

@@ -62,11 +62,6 @@ void update_fake_exits(World& world, ecs::Registry& reg, Phase phase)
     }
 
     for_each_pingu(world, [&](Pingu& pingu) {
-      // traps/fake_exit is a looping sprite, so this never triggers
-      if (fake_exit.clock.is_finished()) {
-        fake_exit.smashing = false;
-      }
-
       if (in_zone(pingu, transform, zone) &&
           pingu.get_action() != ActionName::SPLASHED)
       {
@@ -82,8 +77,16 @@ void update_fake_exits(World& world, ecs::Registry& reg, Phase phase)
       }
     });
 
-    if (fake_exit.smashing) {
+    if (fake_exit.smashing)
+    {
       fake_exit.clock.update();
+
+      // One smash per trigger, then back to the idle frame
+      if (fake_exit.clock.is_finished())
+      {
+        fake_exit.smashing = false;
+        fake_exit.clock.restart();
+      }
     }
   });
 }
