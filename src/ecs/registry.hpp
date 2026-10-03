@@ -4,6 +4,7 @@
 #ifndef HEADER_PINGUS_ECS_REGISTRY_HPP
 #define HEADER_PINGUS_ECS_REGISTRY_HPP
 
+#include <algorithm>
 #include <cassert>
 #include <cstdint>
 #include <deque>
@@ -27,16 +28,39 @@ inline constexpr uint32_t to_index(Entity entity) { return static_cast<uint32_t>
     Components are plain structs, at most one of each type per entity.
     Storage is a per-type std::deque indexed by entity id, so references
     to components stay valid when components are added to other
-    entities, but not when the entity itself is destroyed. The game has
-    at most a few hundred entities, so simplicity and deterministic
+    entities, but not when the entity itself is destroyed. Each pool also
+    keeps the sorted ids of the entities that have the component, so
+    each() only visits candidates of its smallest pool. The game has a
+    few thousand entities at most, so simplicity and deterministic
     iteration order win over memory use. */
 class Registry
 {
 private:
   struct PoolBase
   {
+    /** Sorted ids of the entities that have the component */
+    std::vector<uint32_t> ids;
+
+    PoolBase() : ids() {}
     virtual ~PoolBase() {}
     virtual void remove(uint32_t index) = 0;
+
+    void add_id(uint32_t index)
+    {
+      // entities are usually created in order, so this is an append
+      auto it = std::lower_bound(ids.begin(), ids.end(), index);
+      if (it == ids.end() || *it != index) {
+        ids.insert(it, index);
+      }
+    }
+
+    void remove_id(uint32_t index)
+    {
+      auto it = std::lower_bound(ids.begin(), ids.end(), index);
+      if (it != ids.end() && *it == index) {
+        ids.erase(it);
+      }
+    }
   };
 
   template<typename T>
@@ -48,8 +72,9 @@ private:
 
     void remove(uint32_t index) override
     {
-      if (index < items.size()) {
+      if (index < items.size() && items[index]) {
         items[index].reset();
+        remove_id(index);
       }
     }
 
@@ -147,6 +172,7 @@ public:
       pool.items.resize(index + 1);
     }
     pool.items[index].emplace(T{std::forward<Args>(args)...});
+    pool.add_id(index);
     return *pool.items[index];
   }
 
@@ -186,16 +212,31 @@ public:
   template<typename... Ts, typename Func>
   void each(Func&& func)
   {
-    for (uint32_t index = 0; index < m_alive.size(); ++index)
+    // walk the ids of the smallest pool involved
+    PoolBase* pools[] = { get_pool<Ts>()... };
+    PoolBase* smallest = nullptr;
+    for (PoolBase* pool : pools)
     {
-      if (!m_alive[index]) {
-        continue;
+      if (!pool) {
+        return; // no entity has this component
       }
+      if (!smallest || pool->ids.size() < smallest->ids.size()) {
+        smallest = pool;
+      }
+    }
 
+    // Look up the next id after the previous one on each step, so that
+    // entities and components may be added or removed by func
+    std::vector<uint32_t> const& ids = smallest->ids;
+    auto it = ids.begin();
+    while (it != ids.end())
+    {
+      uint32_t const index = *it;
       Entity const entity{index};
-      if ((has<Ts>(entity) && ...)) {
+      if (m_alive[index] && (has<Ts>(entity) && ...)) {
         func(entity, get<Ts>(entity)...);
       }
+      it = std::upper_bound(ids.begin(), ids.end(), index);
     }
   }
 
