@@ -121,6 +121,15 @@ Application::Application(CommandLineOptions const& cmd_options) :
 
     m_screen_manager->push_screen(editor);
   }
+  else if (cmd_options.sprite_view.is_set() && cmd_options.sprite_view.get())
+  { // Sprite / animset viewer (optional starting file)
+    if (cmd_options.rest.is_set()) {
+      Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
+      m_screen_manager->push_screen(std::make_shared<SpriteViewerScreen>(filename));
+    } else {
+      m_screen_manager->push_screen(std::make_shared<SpriteViewerScreen>());
+    }
+  }
   else if (cmd_options.rest.is_set())
   { // just start the map that was passed on the command line
     if (cmd_options.rest.get().ends_with(".pingus-demo"))

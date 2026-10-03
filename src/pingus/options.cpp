@@ -237,6 +237,7 @@ CommandLineOptions::merge(CommandLineOptions const& rhs)
   rest.merge(rhs.rest);
   list_languages.merge(rhs.list_languages);
   editor.merge(rhs.editor);
+  sprite_view.merge(rhs.sprite_view);
   no_config_file.merge(rhs.no_config_file);
 }
 

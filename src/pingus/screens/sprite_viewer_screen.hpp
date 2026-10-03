@@ -19,21 +19,24 @@
 
 namespace pingus {
 
-/** Preview a .sprite or .animset file from the command line:
+/** Preview .sprite / .animset assets:
 
-      pingus path/to/file.sprite
+      pingus --sprite-view
+      pingus --sprite-view path/to/file.sprite
       pingus path/to/file.animset
 
-    Shows the same frames the game would draw (via Sprite / AnimationSet
-    loaders). For animsets: up/down select animation, left/right switch
-    direction, space pauses, '.' steps one frame while paused, R reloads
-    the file, O toggles the offset crosshair, Escape exits. Overlay shows
-    name, frame, timing and loop; a crosshair marks the draw anchor;
-    effect steps are marked and fire (sound, overlay sprites, simple
-    particles). */
+    Shows the same frames the game would draw. Catalog keys ([ ] or
+    PageUp/PageDown) cycle every .sprite under images/ and every
+    .animset under animsets/. Within an animset: up/down select
+    animation, left/right direction, space pause, '.' step when paused,
+    R reload, O offset crosshair, Escape exit. */
 class SpriteViewerScreen : public Screen
 {
 public:
+  /** Browse the full datadir catalog, starting at the first entry. */
+  SpriteViewerScreen();
+
+  /** Open a specific file; still builds the datadir catalog for browsing. */
   explicit SpriteViewerScreen(Pathname const& file);
 
   void draw(DrawingContext& gc) override;
@@ -73,6 +76,8 @@ private:
     {}
   };
 
+  void build_catalog(Pathname const& start_file);
+  void select_file(int index);
   void reload();
   void load_sprite_file();
   void load_animset_file();
@@ -86,6 +91,9 @@ private:
   Sprite load_sprite_by_name(std::string const& res_name);
   void draw_crosshair(DrawingContext& gc, int x, int y);
   void draw_hud(DrawingContext& gc);
+
+  std::vector<Pathname> m_catalog;
+  int m_file_index;
 
   Pathname m_file;
   Mode m_mode;

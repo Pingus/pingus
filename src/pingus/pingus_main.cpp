@@ -301,7 +301,9 @@ PingusMain::parse_args(int argc, char** argv)
 
   argp.add_group("Editor Options:")
     .add_option('e', "editor", "",
-                _("Loads the level editor"));
+                _("Loads the level editor"))
+    .add_option(370, {}, "sprite-view", "",
+                _("Open the sprite / animset viewer (optional FILE)"));
 
   argp.add_group(_("Directory Options:"))
     .add_option('d', "datadir", _("DIR"),
@@ -353,6 +355,10 @@ PingusMain::parse_args(int argc, char** argv)
 
       case 'e': // -e, --editor
         cmd_options.editor.set(true);
+        break;
+
+      case 370: // --sprite-view
+        cmd_options.sprite_view.set(true);
         break;
 
       case 't': // -t, --set-speed

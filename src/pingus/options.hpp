@@ -145,12 +145,14 @@ struct CommandLineOptions : public Options
   // Modes
   Value<bool> list_languages;
   Value<bool> editor;
+  Value<bool> sprite_view;
   Value<bool> no_config_file;
 
   CommandLineOptions() :
     rest(),
     list_languages(),
     editor(),
+    sprite_view(),
     no_config_file()
   {}
 

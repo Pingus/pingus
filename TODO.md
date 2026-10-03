@@ -275,6 +275,8 @@ Found along the way:
 
 - [x] `SpriteViewerScreen` for `.sprite` and `.animset` files via
       `pingus path/to/file.{sprite,animset}` (dispatch in `application.cpp`)
+- [x] `pingus --sprite-view` opens the viewer without a file; optional FILE
+- [x] Catalog browse: `[`/`]` or PageUp/PageDown cycle all datadir sprites/animsets
 - [x] Animset: up/down select animation, left/right direction, space pause,
       `.`/`n` step when paused, R reload, Esc quit
 - [x] HUD: name, frame, timing, loop; crosshair at draw anchor; effect-step

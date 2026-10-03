@@ -38,10 +38,17 @@ std::string effect_label(Effect const& effect)
 
 } // namespace
 
+SpriteViewerScreen::SpriteViewerScreen() :
+  SpriteViewerScreen(Pathname())
+{
+}
+
 SpriteViewerScreen::SpriteViewerScreen(Pathname const& file) :
   Screen(Display::get_size()),
-  m_file(file),
-  m_mode(file.get_raw_path().ends_with(".animset") ? Mode::Animset : Mode::Sprite),
+  m_catalog(),
+  m_file_index(0),
+  m_file(),
+  m_mode(Mode::Sprite),
   m_sprite(),
   m_clock(),
   m_paused(false),
@@ -57,6 +64,72 @@ SpriteViewerScreen::SpriteViewerScreen(Pathname const& file) :
   m_tick_accum(0.0f)
 {
   m_direction.right();
+  build_catalog(file);
+  if (!m_catalog.empty()) {
+    select_file(m_file_index);
+  } else if (!file.empty()) {
+    m_file = file;
+    m_mode = file.has_extension(".animset") ? Mode::Animset : Mode::Sprite;
+    reload();
+  } else {
+    log_error("sprite viewer: no .sprite or .animset files found under images/ or animsets/");
+  }
+}
+
+void
+SpriteViewerScreen::build_catalog(Pathname const& start_file)
+{
+  m_catalog.clear();
+
+  for (auto const& p : Pathname("images", Pathname::DATA_PATH).opendir_recursive()) {
+    if (p.has_extension(".sprite")) {
+      m_catalog.push_back(p);
+    }
+  }
+  for (auto const& p : Pathname("animsets", Pathname::DATA_PATH).opendir_recursive()) {
+    if (p.has_extension(".animset")) {
+      m_catalog.push_back(p);
+    }
+  }
+  std::sort(m_catalog.begin(), m_catalog.end());
+
+  m_file_index = 0;
+  if (start_file.empty() || m_catalog.empty()) {
+    return;
+  }
+
+  // Prefer an exact catalog match (sys path or raw path).
+  for (int i = 0; i < static_cast<int>(m_catalog.size()); ++i) {
+    Pathname const& c = m_catalog[static_cast<size_t>(i)];
+    if (c == start_file
+        || c.get_sys_path() == start_file.get_sys_path()
+        || c.get_raw_path() == start_file.get_raw_path()) {
+      m_file_index = i;
+      return;
+    }
+  }
+
+  // External / non-datadir file: keep it browsable at the front of the list.
+  m_catalog.insert(m_catalog.begin(), start_file);
+  m_file_index = 0;
+}
+
+void
+SpriteViewerScreen::select_file(int index)
+{
+  if (m_catalog.empty()) {
+    return;
+  }
+  int const n = static_cast<int>(m_catalog.size());
+  if (index < 0) {
+    index = n - 1;
+  } else if (index >= n) {
+    index = 0;
+  }
+  m_file_index = index;
+  m_file = m_catalog[static_cast<size_t>(m_file_index)];
+  m_mode = m_file.has_extension(".animset") ? Mode::Animset : Mode::Sprite;
+  m_anim_index = 0;
   reload();
 }
 
@@ -328,7 +401,13 @@ SpriteViewerScreen::draw_hud(DrawingContext& gc)
     lines.push_back(std::move(text));
   };
 
-  add(m_file.get_raw_path());
+  if (!m_catalog.empty()) {
+    add("File: " + strut::to_string(m_file_index + 1) + "/"
+        + strut::to_string(static_cast<int>(m_catalog.size()))
+        + "  " + m_file.get_raw_path());
+  } else {
+    add(m_file.empty() ? std::string("(no file)") : m_file.get_raw_path());
+  }
   add(std::string("Mode: ") + (m_mode == Mode::Animset ? "animset" : "sprite")
       + (m_paused ? "  [PAUSED]" : ""));
 
@@ -395,7 +474,7 @@ SpriteViewerScreen::draw_hud(DrawingContext& gc)
   }
 
   std::string const help =
-    "Space pause  . step  R reload  O offset  Left/Right dir  Up/Down anim  Esc quit";
+    "[ ] file  Space pause  . step  R reload  O offset  Left/Right dir  Up/Down anim  Esc quit";
   int const help_w = static_cast<int>(font.get_width(help)) + pad * 2 + 4;
   int const help_y = size.height() - font.get_height() - 8;
   gc.draw_fillrect(geom::irect(x - pad, help_y - pad,
@@ -482,6 +561,16 @@ SpriteViewerScreen::update_input(pingus::input::Event const& event)
 
     case SDLK_o:
       m_show_offset = !m_show_offset;
+      break;
+
+    case SDLK_LEFTBRACKET:
+    case SDLK_PAGEUP:
+      select_file(m_file_index - 1);
+      break;
+
+    case SDLK_RIGHTBRACKET:
+    case SDLK_PAGEDOWN:
+      select_file(m_file_index + 1);
       break;
 
     case SDLK_SPACE:
