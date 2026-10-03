@@ -17,7 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_BOARDER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_BOARDER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
+#include "pingus/pingu_action_view.hpp"
 #include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
@@ -26,16 +28,17 @@ namespace pingus::actions {
     forward. */
 class Boarder : public PinguAction
 {
+  friend class BoarderView;
+
 private:
   float x_pos;
   float speed;
-  StateSprite sprite;
+  DirectionalAnimationClock clock;
 public:
   Boarder (Pingu* p);
 
   ActionName::Enum get_type() const override { return ActionName::BOARDER; }
 
-  void  draw (SceneContext& gc) override;
   void  update() override;
 
 private:
@@ -43,6 +46,18 @@ private:
 
   Boarder (Boarder const&);
   Boarder& operator= (Boarder const&);
+};
+
+class BoarderView : public PinguActionView
+{
+private:
+  Boarder const& action;
+  StateSprite sprite;
+
+public:
+  BoarderView(Pingu& pingu, Boarder const& action);
+
+  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

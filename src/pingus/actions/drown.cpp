@@ -23,20 +23,23 @@ namespace pingus::actions {
 
 Drown::Drown (Pingu* p) :
   PinguAction(p),
-  sprite(),
   clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/drownfall/left"))
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/drownfall/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/drownfall/right"));
+}
+
+DrownView::DrownView(Pingu& pingu, Drown const& action_) :
+  action(action_),
+  sprite()
+{
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/drownfall/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/drownfall/right");
 }
 
 void
-Drown::draw (SceneContext& gc)
+DrownView::draw(SceneContext& gc, Pingu& pingu)
 {
-  clock.apply_to(sprite[pingu->direction()]);
-  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
+  action.clock.apply_to(sprite[pingu.direction()]);
+  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
 }
 
 void

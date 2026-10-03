@@ -27,15 +27,10 @@ namespace pingus::actions {
 
 Walker::Walker (Pingu* p) :
   PinguAction(p),
-  walker(),
-  floaterlayer()
+  walker_clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/walker/left",
+                                                       "pingus/player" + pingu->get_owner_str() + "/walker/right")),
+  floaterlayer_clock(DirectionalAnimationClock::from_sprites("other/floaterlayer/left", "other/floaterlayer/right"))
 {
-  walker.load(Direction::LEFT, "pingus/player" + pingu->get_owner_str() + "/walker/left");
-  walker.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/walker/right");
-
-  floaterlayer.load(Direction::LEFT,  "other/floaterlayer/left");
-  floaterlayer.load(Direction::RIGHT, "other/floaterlayer/right");
-
   // Reset the velocity
   pingu->set_velocity(glm::vec2(0, 0));
 }
@@ -44,8 +39,8 @@ void
 Walker::update()
 {
   // update the sprite
-  walker[pingu->direction()].update(0.033f);
-  floaterlayer[pingu->direction()].update(0.033f);
+  walker_clock[pingu->direction()].update();
+  floaterlayer_clock[pingu->direction()].update();
 
   Vector2f last_pos = pingu->get_pos();
 
@@ -203,14 +198,28 @@ Walker::update()
   */
 }
 
-void
-Walker::draw (SceneContext& gc)
+WalkerView::WalkerView(Pingu& pingu, Walker const& action_) :
+  action(action_),
+  walker(),
+  floaterlayer()
 {
-  gc.color().draw(walker[pingu->direction()], pingu->get_pos());
+  walker.load(Direction::LEFT, "pingus/player" + pingu.get_owner_str() + "/walker/left");
+  walker.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/walker/right");
+  floaterlayer.load(Direction::LEFT,  "other/floaterlayer/left");
+  floaterlayer.load(Direction::RIGHT, "other/floaterlayer/right");
+}
 
-  if (pingu->get_fall_action() && pingu->get_fall_action()->get_type() == ActionName::FLOATER)
+void
+WalkerView::draw(SceneContext& gc, Pingu& pingu)
+{
+  Direction const& dir = pingu.direction();
+  action.walker_clock[dir].apply_to(walker[dir]);
+  gc.color().draw(walker[dir], pingu.get_pos());
+
+  if (pingu.get_fall_action() && pingu.get_fall_action()->get_type() == ActionName::FLOATER)
   {
-    gc.color().draw(floaterlayer[pingu->direction()], pingu->get_pos());
+    action.floaterlayer_clock[dir].apply_to(floaterlayer[dir]);
+    gc.color().draw(floaterlayer[dir], pingu.get_pos());
   }
 }
 

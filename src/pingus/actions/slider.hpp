@@ -17,27 +17,42 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_SLIDER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_SLIDER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
+#include "pingus/pingu_action_view.hpp"
 #include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Slider : public PinguAction
 {
+  friend class SliderView;
+
 private:
-  StateSprite sprite;
+  DirectionalAnimationClock clock;
   float  speed;
 public:
   Slider (Pingu* p);
 
   ActionName::Enum get_type() const override { return ActionName::SLIDER; }
 
-  void draw (SceneContext& gc) override;
   void update() override;
 
 private:
   Slider (Slider const&);
   Slider& operator= (Slider const&);
+};
+
+class SliderView : public PinguActionView
+{
+private:
+  Slider const& action;
+  StateSprite sprite;
+
+public:
+  SliderView(Pingu& pingu, Slider const& action);
+
+  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

@@ -24,14 +24,9 @@ namespace pingus::actions {
 
 Exiter::Exiter (Pingu* p) :
   PinguAction(p),
-  sprite(),
   clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/exit/left")),
   sound_played(false)
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/exit/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/exit/right"));
 }
 
 void
@@ -54,11 +49,19 @@ Exiter::update()
   }
 }
 
-void
-Exiter::draw (SceneContext& gc)
+ExiterView::ExiterView(Pingu& pingu, Exiter const& action_) :
+  action(action_),
+  sprite()
 {
-  clock.apply_to(sprite[pingu->direction()]);
-  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/exit/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/exit/right");
+}
+
+void
+ExiterView::draw(SceneContext& gc, Pingu& pingu)
+{
+  action.clock.apply_to(sprite[pingu.direction()]);
+  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
 }
 
 } // namespace pingus::actions

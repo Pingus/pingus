@@ -30,19 +30,16 @@ Miner::Miner (Pingu* p) :
   miner_radius("pingus/common/miner_radius_gfx", "pingus/common/miner_radius"),
   miner_radius_left("pingus/common/miner_radius_left_gfx", "pingus/common/miner_radius_left"),
   miner_radius_right("pingus/common/miner_radius_right_gfx", "pingus/common/miner_radius_right"),
-  sprite(),
+  clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/miner/left",
+                                                "pingus/player" + pingu->get_owner_str() + "/miner/right")),
   delay_count(0)
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/miner/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/miner/right"));
 }
 
 void
 Miner::update()
 {
-  sprite[pingu->direction()].update();
+  clock[pingu->direction()].update();
 
   delay_count += 1;
 
@@ -101,10 +98,19 @@ Miner::mine(bool final)
   }
 }
 
-void
-Miner::draw (SceneContext& gc)
+MinerView::MinerView(Pingu& pingu, Miner const& action_) :
+  action(action_),
+  sprite()
 {
-  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/miner/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/miner/right");
+}
+
+void
+MinerView::draw(SceneContext& gc, Pingu& pingu)
+{
+  action.clock[pingu.direction()].apply_to(sprite[pingu.direction()]);
+  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
 }
 
 } // namespace pingus::actions

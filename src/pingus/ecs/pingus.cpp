@@ -5,6 +5,12 @@
 
 #include "pingus/ecs/system_parts.hpp"
 
+#include <cstdio>
+
+#include "engine/display/scene_context.hpp"
+#include "pingus/fonts.hpp"
+#include "pingus/pingu_action.hpp"
+
 namespace pingus::systems {
 
 using namespace pingus::components;
@@ -23,6 +29,34 @@ update_pingus(World& world)
   });
 }
 
+namespace {
+
+void draw_pingu(World& world, SceneContext& gc, Pingu& pingu)
+{
+  PinguView& view = world.get_registry().get<PinguView>(pingu.get_entity());
+
+  std::shared_ptr<PinguAction> action = pingu.get_current_action();
+  if (view.action != action)
+  {
+    view.view = create_action_view(pingu, *action);
+    view.action = std::move(action);
+  }
+
+  view.view->draw(gc, pingu);
+
+  if (pingu.get_action_time() != -1)
+  {
+    // FIXME: some people preffer a 5-0 or a 9-0 countdown, not sure
+    // FIXME: about that got used to the 50-0 countdown [counting is
+    // FIXME: in ticks, should probally be in seconds]
+    char str[16];
+    snprintf(str, 16, "%d", pingu.get_action_time() / 3);
+    gc.color().print_center(pingus::fonts::chalk_normal, Vector2i(pingu.get_xi(), pingu.get_yi() - 48), str);
+  }
+}
+
+} // namespace
+
 void
 draw_pingus(World& world, SceneContext& gc)
 {
@@ -32,13 +66,13 @@ draw_pingus(World& world, SceneContext& gc)
   // something are easier to spot
   holder.for_each([&](Pingu& pingu) {
     if (pingu.get_action() == ActionName::WALKER) {
-      pingu.draw(gc);
+      draw_pingu(world, gc, pingu);
     }
   });
 
   holder.for_each([&](Pingu& pingu) {
     if (pingu.get_action() != ActionName::WALKER) {
-      pingu.draw(gc);
+      draw_pingu(world, gc, pingu);
     }
   });
 }

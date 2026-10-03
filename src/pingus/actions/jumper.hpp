@@ -17,27 +17,41 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_JUMPER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_JUMPER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
+#include "pingus/pingu_action_view.hpp"
 #include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Jumper : public PinguAction
 {
+  friend class JumperView;
+
 private:
-  StateSprite sprite;
 
 public:
   Jumper(Pingu*);
 
   ActionName::Enum get_type() const override { return ActionName::JUMPER; }
 
-  void  draw (SceneContext& gc) override;
   void  update() override;
 
 private:
   Jumper (Jumper const&);
   Jumper& operator= (Jumper const&);
+};
+
+class JumperView : public PinguActionView
+{
+private:
+  Jumper const& action;
+  StateSprite sprite;
+
+public:
+  JumperView(Pingu& pingu, Jumper const& action);
+
+  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

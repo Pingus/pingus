@@ -20,15 +20,17 @@
 #include "engine/display/sprite.hpp"
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
+#include "pingus/pingu_action_view.hpp"
 
 namespace pingus::actions {
 
 class Splashed : public PinguAction
 {
+  friend class SplashedView;
+
 private:
   bool particle_thrown;
   bool sound_played;
-  Sprite sprite;
   AnimationClock clock;
 
 public:
@@ -36,7 +38,6 @@ public:
 
   ActionName::Enum get_type() const override { return ActionName::SPLASHED; }
 
-  void draw (SceneContext& gc) override;
   void update() override;
 
   bool catchable() override { return false; }
@@ -45,6 +46,18 @@ public:
 private:
   Splashed (Splashed const&);
   Splashed& operator= (Splashed const&);
+};
+
+class SplashedView : public PinguActionView
+{
+private:
+  Splashed const& action;
+  Sprite sprite;
+
+public:
+  SplashedView(Pingu& pingu, Splashed const& action);
+
+  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

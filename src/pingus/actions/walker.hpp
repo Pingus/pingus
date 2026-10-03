@@ -17,23 +17,26 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_WALKER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_WALKER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
+#include "pingus/pingu_action_view.hpp"
 #include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Walker : public PinguAction
 {
+  friend class WalkerView;
+
 private:
-  StateSprite walker;
-  StateSprite floaterlayer;
+  DirectionalAnimationClock walker_clock;
+  DirectionalAnimationClock floaterlayer_clock;
 
   enum { max_steps = 5 }; // max nr. of pixels that pingu can walk up/down
 
 public:
   Walker (Pingu*);
 
-  void draw (SceneContext& gc) override;
   void update() override;
 
   ActionName::Enum get_type() const override { return ActionName::WALKER; }
@@ -41,6 +44,19 @@ public:
 private:
   Walker (Walker const&);
   Walker& operator= (Walker const&);
+};
+
+class WalkerView : public PinguActionView
+{
+private:
+  Walker const& action;
+  StateSprite walker;
+  StateSprite floaterlayer;
+
+public:
+  WalkerView(Pingu& pingu, Walker const& action);
+
+  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

@@ -19,14 +19,16 @@
 
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
+#include "pingus/pingu_action_view.hpp"
 #include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Exiter : public PinguAction
 {
+  friend class ExiterView;
+
 private:
-  StateSprite sprite;
   AnimationClock clock;
   bool sound_played;
 
@@ -35,12 +37,23 @@ public:
   void init(void);
   ActionName::Enum get_type() const override { return ActionName::EXITER; }
 
-  void draw (SceneContext& gc) override;
   void update() override;
 
 private:
   Exiter (Exiter const&);
   Exiter& operator= (Exiter const&);
+};
+
+class ExiterView : public PinguActionView
+{
+private:
+  Exiter const& action;
+  StateSprite sprite;
+
+public:
+  ExiterView(Pingu& pingu, Exiter const& action);
+
+  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

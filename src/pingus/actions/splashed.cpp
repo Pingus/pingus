@@ -26,11 +26,9 @@ Splashed::Splashed (Pingu* p) :
   PinguAction(p),
   particle_thrown(false),
   sound_played(false),
-  sprite(),
   clock()
 {
   std::string const res_name = "pingus/player" + pingu->get_owner_str() + "/splat";
-  sprite = Sprite(res_name);
   clock = AnimationClock::from_sprite(res_name);
 }
 
@@ -51,11 +49,17 @@ Splashed::update()
   }
 }
 
-void
-Splashed::draw (SceneContext& gc)
+SplashedView::SplashedView(Pingu& pingu, Splashed const& action_) :
+  action(action_),
+  sprite("pingus/player" + pingu.get_owner_str() + "/splat")
 {
-  clock.apply_to(sprite);
-  gc.color().draw(sprite, pingu->get_pos());
+}
+
+void
+SplashedView::draw(SceneContext& gc, Pingu& pingu)
+{
+  action.clock.apply_to(sprite);
+  gc.color().draw(sprite, pingu.get_pos());
 }
 
 } // namespace pingus::actions

@@ -21,9 +21,7 @@
 
 #include <logmich/log.hpp>
 
-#include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
-#include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/world.hpp"
 #include "pingus/ecs/components.hpp"
@@ -393,23 +391,16 @@ Pingu::update()
   action->update();
 }
 
-// Draws the pingu on the screen with the given offset
-void
-Pingu::draw(SceneContext& gc)
+std::shared_ptr<PinguAction>
+Pingu::get_current_action() const
 {
-  PinguBehavior& b = behavior();
+  return behavior().action;
+}
 
-  b.action->draw(gc);
-
-  if (b.action_time != -1)
-  {
-    // FIXME: some people preffer a 5-0 or a 9-0 countdown, not sure
-    // FIXME: about that got used to the 50-0 countdown [counting is
-    // FIXME: in ticks, should probally be in seconds]
-    char str[16];
-    snprintf(str, 16, "%d", b.action_time/3);
-    gc.color().print_center(pingus::fonts::chalk_normal, Vector2i(get_xi(), get_yi() - 48), str);
-  }
+int
+Pingu::get_action_time() const
+{
+  return behavior().action_time;
 }
 
 int

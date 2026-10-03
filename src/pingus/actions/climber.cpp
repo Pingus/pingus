@@ -24,14 +24,9 @@ namespace pingus::actions {
 
 Climber::Climber (Pingu* p) :
   PinguAction(p),
-  sprite(),
-  sprite_width(),
-  sprite_height()
+  clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/climber/left",
+                                                "pingus/player" + pingu->get_owner_str() + "/climber/right"))
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/climber/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/climber/right"));
 }
 
 Vector2f
@@ -50,7 +45,7 @@ Climber::get_center_pos() const
 void
 Climber::update()
 {
-  sprite[pingu->direction()].update();
+  clock[pingu->direction()].update();
 
   // If above is free
   if (   rel_getpixel(0, 1) == Groundtype::GP_NOTHING
@@ -92,10 +87,19 @@ Climber::update()
   }
 }
 
-void
-Climber::draw (SceneContext& gc)
+ClimberView::ClimberView(Pingu& pingu, Climber const& action_) :
+  action(action_),
+  sprite()
 {
-  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/climber/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/climber/right");
+}
+
+void
+ClimberView::draw(SceneContext& gc, Pingu& pingu)
+{
+  action.clock[pingu.direction()].apply_to(sprite[pingu.direction()]);
+  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
 }
 
 bool

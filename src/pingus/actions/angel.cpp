@@ -26,14 +26,14 @@ Angel::Angel (Pingu* p)
   : PinguAction(p),
     counter(0.0),
     x_pos(pingu->get_x()),
-    sprite(Sprite("pingus/player" + pingu->get_owner_str() + "/angel"))
+    clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/angel"))
 {
 }
 
 void
 Angel::update()
 {
-  sprite.update();
+  clock.update();
 
   counter += static_cast<float>(globals::game_speed);
   pingu->set_pos(x_pos + 20 * std::sin(counter * 3.0f), pingu->get_y() - 50.0f * 0.025f);
@@ -43,10 +43,17 @@ Angel::update()
     pingu->set_status (Pingu::PS_DEAD);
 }
 
-void
-Angel::draw (SceneContext& gc)
+AngelView::AngelView(Pingu& pingu, Angel const& action_) :
+  action(action_),
+  sprite("pingus/player" + pingu.get_owner_str() + "/angel")
 {
-  gc.color().draw (sprite, pingu->get_pos());
+}
+
+void
+AngelView::draw(SceneContext& gc, Pingu& pingu)
+{
+  action.clock.apply_to(sprite);
+  gc.color().draw(sprite, pingu.get_pos());
 }
 
 } // namespace pingus::actions

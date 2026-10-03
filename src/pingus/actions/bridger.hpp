@@ -21,20 +21,21 @@
 #include "pingus/animation_clock.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingu_action.hpp"
+#include "pingus/pingu_action_view.hpp"
 #include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Bridger : public PinguAction
 {
+  friend class BridgerView;
+
 private:
   enum Mode { B_WALKING, B_BUILDING } mode;
   enum { MAX_BRICKS = 15 };
   enum { brick_length = 16 };
 
 private:
-  StateSprite walk_sprite;
-  StateSprite build_sprite;
   AnimationClock walk_clock;
   AnimationClock build_clock;
   CollisionMask brick_l;
@@ -57,8 +58,6 @@ public:
   void   update_build();
   void   update_walk();
 
-  void   draw (SceneContext& gc) override;
-
   bool   way_is_free();
   bool   brick_placement_allowed (void);
   void   place_a_brick();
@@ -67,6 +66,19 @@ public:
 private:
   Bridger (Bridger const&);
   Bridger& operator= (Bridger const&);
+};
+
+class BridgerView : public PinguActionView
+{
+private:
+  Bridger const& action;
+  StateSprite walk_sprite;
+  StateSprite build_sprite;
+
+public:
+  BridgerView(Pingu& pingu, Bridger const& action);
+
+  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

@@ -27,16 +27,15 @@ Digger::Digger(Pingu* p) :
   PinguAction(p),
   digger_radius("pingus/common/digger_radius_gfx", "pingus/common/digger_radius"),
   digger_radius_final("pingus/common/digger_radius_final_gfx", "pingus/common/digger_radius_final_gfx"),
-  sprite(),
+  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/digger/left")),
   delay_count(0)
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/digger/left");
 }
 
 void
 Digger::update()
 {
-  sprite.update();
+  clock.update();
 
   delay_count += 1;
 
@@ -96,10 +95,17 @@ Digger::dig(bool final)
   pingu->set_pos(pingu->get_xi(), pingu->get_yi() + 1);
 }
 
-void
-Digger::draw(SceneContext& gc)
+DiggerView::DiggerView(Pingu& pingu, Digger const& action_) :
+  action(action_),
+  sprite("pingus/player" + pingu.get_owner_str() + "/digger/left")
 {
-  gc.color().draw(sprite, pingu->get_pos());
+}
+
+void
+DiggerView::draw(SceneContext& gc, Pingu& pingu)
+{
+  action.clock.apply_to(sprite);
+  gc.color().draw(sprite, pingu.get_pos());
 }
 
 } // namespace pingus::actions

@@ -173,7 +173,11 @@ public:
   /** Returns true if the pingu needs to catch another pingu */
   bool need_catch();
 
-  void draw (SceneContext& gc);
+  /** The action currently in control */
+  std::shared_ptr<PinguAction> get_current_action() const;
+
+  /** Ticks until the countdown action (bomber) takes over, -1 for none */
+  int get_action_time() const;
   void apply_force(glm::vec2 const&);
 
   void update();

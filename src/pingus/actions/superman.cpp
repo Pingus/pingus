@@ -25,14 +25,14 @@ Superman::Superman (Pingu* p)
   : PinguAction(p),
     counter(0.0f),
     x_pos(pingu->get_x()),
-    sprite(Sprite("pingus/player" + pingu->get_owner_str() + "/superman"))
+    clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/superman"))
 {
 }
 
 void
 Superman::update()
 {
-  sprite.update();
+  clock.update();
   counter += 0.025f;
   pingu->set_pos(pingu->get_x() + 40.0f * 0.025f, pingu->get_y() - 200.0f * 0.025f);
 
@@ -40,10 +40,17 @@ Superman::update()
     pingu->set_status(Pingu::PS_DEAD);
 }
 
-void
-Superman::draw (SceneContext& gc)
+SupermanView::SupermanView(Pingu& pingu, Superman const& action_) :
+  action(action_),
+  sprite("pingus/player" + pingu.get_owner_str() + "/superman")
 {
-  gc.color().draw(sprite, pingu->get_pos());
+}
+
+void
+SupermanView::draw(SceneContext& gc, Pingu& pingu)
+{
+  action.clock.apply_to(sprite);
+  gc.color().draw(sprite, pingu.get_pos());
 }
 
 } // namespace pingus::actions

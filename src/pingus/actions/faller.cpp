@@ -27,19 +27,11 @@ namespace pingus::actions {
 
 Faller::Faller (Pingu* p) :
   PinguAction(p),
-  faller(),
-  tumbler()
+  faller_clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/faller/left",
+                                                       "pingus/player" + pingu->get_owner_str() + "/faller/right")),
+  tumbler_clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/tumbler/left",
+                                                        "pingus/player" + pingu->get_owner_str() + "/tumbler/right"))
 {
-  faller.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/faller/left"));
-  faller.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/faller/right"));
-
-  tumbler.load(Direction::LEFT,  Sprite("pingus/player" +
-                                        pingu->get_owner_str() + "/tumbler/left"));
-  tumbler.load(Direction::RIGHT, Sprite("pingus/player" +
-                                        pingu->get_owner_str() + "/tumbler/right"));
-
   // FIXME: add sprites for jumping here: if x_vel > y_vel, use them
 }
 
@@ -50,11 +42,11 @@ Faller::update()
 {
   if (is_tumbling())
   {
-    tumbler[pingu->direction()].update();
+    tumbler_clock[pingu->direction()].update();
   }
   else
   {
-    faller[pingu->direction()].update();
+    faller_clock[pingu->direction()].update();
   }
 
   // FIXME: This should be triggered at a later point, when close to
@@ -137,13 +129,27 @@ Faller::update()
   }
 }
 
-void
-Faller::draw (SceneContext& gc)
+FallerView::FallerView(Pingu& pingu, Faller const& action_) :
+  action(action_),
+  faller(),
+  tumbler()
 {
-  if (is_tumbling()) {
-    gc.color().draw(tumbler[pingu->direction()], pingu->get_pos());
+  faller.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/faller/left");
+  faller.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/faller/right");
+  tumbler.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/tumbler/left");
+  tumbler.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/tumbler/right");
+}
+
+void
+FallerView::draw(SceneContext& gc, Pingu& pingu)
+{
+  Direction const& dir = pingu.direction();
+  if (action.is_tumbling()) {
+    action.tumbler_clock[dir].apply_to(tumbler[dir]);
+    gc.color().draw(tumbler[dir], pingu.get_pos());
   } else {
-    gc.color().draw(faller[pingu->direction()], pingu->get_pos());
+    action.faller_clock[dir].apply_to(faller[dir]);
+    gc.color().draw(faller[dir], pingu.get_pos());
   }
 }
 

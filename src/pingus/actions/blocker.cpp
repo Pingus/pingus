@@ -25,10 +25,8 @@ namespace pingus::actions {
 
 Blocker::Blocker(Pingu* p) :
   PinguAction(p),
-  sprite()
+  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/blocker/left"))
 {
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/blocker/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/blocker/right");
 
   if (   rel_getpixel(0,-1)  ==  Groundtype::GP_NOTHING
          && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
@@ -57,13 +55,22 @@ Blocker::update()
       catch_pingu(&other);
     });
   }
-  sprite.update();
+  clock.update();
+}
+
+BlockerView::BlockerView(Pingu& pingu, Blocker const& action_) :
+  action(action_),
+  sprite()
+{
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/blocker/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/blocker/right");
 }
 
 void
-Blocker::draw (SceneContext& gc)
+BlockerView::draw(SceneContext& gc, Pingu& pingu)
 {
-  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
+  action.clock.apply_to(sprite[pingu.direction()]);
+  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
 }
 
 bool

@@ -26,15 +26,14 @@ Floater::Floater(Pingu* p) :
   PinguAction(p),
   falling_depth(0),
   step(0),
-  sprite()
+  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/floater/left"))
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/floater/left");
 }
 
 void
 Floater::update()
 {
-  sprite.update();
+  clock.update();
 
   pingu->set_velocity(glm::vec2(0.0f, 1.0f));
 
@@ -53,10 +52,17 @@ Floater::update()
   }
 }
 
-void
-Floater::draw (SceneContext& gc)
+FloaterView::FloaterView(Pingu& pingu, Floater const& action_) :
+  action(action_),
+  sprite("pingus/player" + pingu.get_owner_str() + "/floater/left")
 {
-  gc.color().draw(sprite, pingu->get_pos());
+}
+
+void
+FloaterView::draw(SceneContext& gc, Pingu& pingu)
+{
+  action.clock.apply_to(sprite);
+  gc.color().draw(sprite, pingu.get_pos());
 }
 
 bool

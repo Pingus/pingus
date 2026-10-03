@@ -23,18 +23,23 @@ namespace pingus::actions {
 
 LaserKill::LaserKill(Pingu* p) :
   PinguAction(p),
-  sprite(),
   clock(AnimationClock::from_sprite("other/laser_kill/left"))
 {
-  sprite.load(Direction::LEFT,  Sprite("other/laser_kill/left"));
-  sprite.load(Direction::RIGHT, Sprite("other/laser_kill/right"));
+}
+
+LaserKillView::LaserKillView(Pingu& /* pingu */, LaserKill const& action_) :
+  action(action_),
+  sprite()
+{
+  sprite.load(Direction::LEFT,  "other/laser_kill/left");
+  sprite.load(Direction::RIGHT, "other/laser_kill/right");
 }
 
 void
-LaserKill::draw (SceneContext& gc)
+LaserKillView::draw(SceneContext& gc, Pingu& pingu)
 {
-  clock.apply_to(sprite[pingu->direction()]);
-  gc.color().draw(sprite[pingu->direction()], pingu->get_pos() + geom::foffset(0, 2));
+  action.clock.apply_to(sprite[pingu.direction()]);
+  gc.color().draw(sprite[pingu.direction()], pingu.get_pos() + geom::foffset(0, 2));
 }
 
 void

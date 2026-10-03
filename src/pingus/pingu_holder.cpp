@@ -51,6 +51,7 @@ PinguHolder::create_pingu(Vector2f const& pos, int owner_id)
   reg.emplace<components::PinguState>(entity, static_cast<unsigned int>(pingus.size()), owner_id);
   reg.emplace<components::PinguBehavior>(entity);
   reg.emplace<components::ActivePingu>(entity);
+  reg.emplace<components::PinguView>(entity);
   Pingu& pingu = reg.emplace<Pingu>(entity, world, entity);
   pingu.init();
 

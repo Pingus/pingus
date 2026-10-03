@@ -19,16 +19,20 @@
 
 #include "pingus/collision_mask.hpp"
 #include "engine/display/sprite.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
+#include "pingus/pingu_action_view.hpp"
 
 namespace pingus::actions {
 
 class Digger : public PinguAction
 {
+  friend class DiggerView;
+
 private:
   CollisionMask digger_radius;
   CollisionMask digger_radius_final;
-  Sprite sprite;
+  AnimationClock clock;
   int delay_count;
 
 public:
@@ -39,12 +43,23 @@ public:
   bool have_something_to_dig();
   void dig(bool final);
 
-  void draw(SceneContext& gc) override;
   void update() override;
 
 private:
   Digger (Digger const&);
   Digger& operator= (Digger const&);
+};
+
+class DiggerView : public PinguActionView
+{
+private:
+  Digger const& action;
+  Sprite sprite;
+
+public:
+  DiggerView(Pingu& pingu, Digger const& action);
+
+  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

@@ -32,9 +32,9 @@ enum ActionType
 };
 
 /** This class provides an abstract interface for pingu actions. It is
-    used to inherit classes which represent the actions. The actions
-    are stored in a seperate library, have a look in actions/ for some
-    examples. */
+    used to inherit classes which represent the actions, see actions/.
+    An action holds game state only; how a pingu doing the action looks
+    is up to its PinguActionView. */
 class PinguAction
 {
 protected:
@@ -62,9 +62,6 @@ public:
 
   /// The "AI" of the pingu.
   virtual void update() = 0;
-
-  /** Draws the action */
-  virtual void draw (SceneContext& gc) =0;
 
   virtual Vector2f get_center_pos() const;
 

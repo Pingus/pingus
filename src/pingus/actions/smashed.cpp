@@ -24,19 +24,23 @@ namespace pingus::actions {
 Smashed::Smashed (Pingu* p) :
   PinguAction(p),
   sound_played(false),
-  sprite(),
   clock()
 {
   std::string const res_name = "pingus/player" + pingu->get_owner_str() + "/bomber";
-  sprite = Sprite(res_name);
   clock = AnimationClock::from_sprite(res_name);
 }
 
-void
-Smashed::draw (SceneContext& gc)
+SmashedView::SmashedView(Pingu& pingu, Smashed const& action_) :
+  action(action_),
+  sprite("pingus/player" + pingu.get_owner_str() + "/bomber")
 {
-  clock.apply_to(sprite);
-  gc.color().draw(sprite, pingu->get_pos());
+}
+
+void
+SmashedView::draw(SceneContext& gc, Pingu& pingu)
+{
+  action.clock.apply_to(sprite);
+  gc.color().draw(sprite, pingu.get_pos());
 }
 
 void

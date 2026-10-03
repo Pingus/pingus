@@ -30,30 +30,34 @@ Bomber::Bomber (Pingu* p) :
   PinguAction(p),
   particle_thrown(false),
   sound_played(false),
-  gfx_exploded(false),
   colmap_exploded(false),
   bomber_radius("other/bomber_radius_gfx", "other/bomber_radius"),
-  sprite(),
-  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/bomber/left")),
-  explo_surf(Sprite("pingus/player" + pingu->get_owner_str() + "/explo"))
+  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/bomber/left"))
 {
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/bomber/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/bomber/right");
-
   pingu->get_world()->play_sound("ohno", pingu->get_pos());
 }
 
-void
-Bomber::draw (SceneContext& gc)
+BomberView::BomberView(Pingu& pingu, Bomber const& action_) :
+  action(action_),
+  sprite(),
+  explo_surf("pingus/player" + pingu.get_owner_str() + "/explo"),
+  gfx_exploded(false)
 {
-  if (clock.frame() >= 13 && !gfx_exploded)
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/bomber/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/bomber/right");
+}
+
+void
+BomberView::draw(SceneContext& gc, Pingu& pingu)
+{
+  if (action.clock.frame() >= 13 && !gfx_exploded)
   {
-    gc.color().draw (explo_surf, Vector2f(pingu->get_x() - 32, pingu->get_y() - 48));
+    gc.color().draw (explo_surf, Vector2f(pingu.get_x() - 32, pingu.get_y() - 48));
     gfx_exploded = true;
   }
 
-  clock.apply_to(sprite[pingu->direction()]);
-  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
+  action.clock.apply_to(sprite[pingu.direction()]);
+  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
 }
 
 void

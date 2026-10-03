@@ -25,18 +25,15 @@ Boarder::Boarder (Pingu* p) :
   PinguAction(p),
   x_pos(pingu->get_x()),
   speed(0.0),
-  sprite()
+  clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/boarder/left",
+                                                "pingus/player" + pingu->get_owner_str() + "/boarder/right"))
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/boarder/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/boarder/right"));
 }
 
 void
 Boarder::update()
 {
-  sprite[pingu->direction()].update();
+  clock[pingu->direction()].update();
 
   if (on_ground())
   {
@@ -76,10 +73,19 @@ Boarder::update()
   }
 }
 
-void
-Boarder::draw (SceneContext& gc)
+BoarderView::BoarderView(Pingu& pingu, Boarder const& action_) :
+  action(action_),
+  sprite()
 {
-  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/boarder/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/boarder/right");
+}
+
+void
+BoarderView::draw(SceneContext& gc, Pingu& pingu)
+{
+  action.clock[pingu.direction()].apply_to(sprite[pingu.direction()]);
+  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
 }
 
 bool

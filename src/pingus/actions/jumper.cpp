@@ -22,19 +22,22 @@
 namespace pingus::actions {
 
 Jumper::Jumper (Pingu* p) :
-  PinguAction(p),
+  PinguAction(p)
+{
+}
+
+JumperView::JumperView(Pingu& pingu, Jumper const& action_) :
+  action(action_),
   sprite()
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/jumper/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/jumper/right"));
+  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/jumper/left");
+  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/jumper/right");
 }
 
 void
-Jumper::draw (SceneContext& gc)
+JumperView::draw(SceneContext& gc, Pingu& pingu)
 {
-  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
+  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
 }
 
 void

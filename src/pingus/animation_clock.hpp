@@ -6,6 +6,8 @@
 
 #include <string>
 
+#include "pingus/direction.hpp"
+
 namespace pingus {
 
 class Sprite;
@@ -62,6 +64,29 @@ private:
   bool m_finished;
   int m_frame;
   int m_tick_count;
+};
+
+/** Separate clocks for the left and right variant of a sprite, for
+    animations that only advance in the direction the pingu is facing */
+class DirectionalAnimationClock
+{
+public:
+  static DirectionalAnimationClock from_sprites(std::string const& left, std::string const& right)
+  {
+    return DirectionalAnimationClock(AnimationClock::from_sprite(left), AnimationClock::from_sprite(right));
+  }
+
+public:
+  DirectionalAnimationClock(AnimationClock left, AnimationClock right) :
+    m_left(left), m_right(right)
+  {}
+
+  AnimationClock& operator[](Direction const& dir) { return dir.is_left() ? m_left : m_right; }
+  AnimationClock const& operator[](Direction const& dir) const { return dir.is_left() ? m_left : m_right; }
+
+private:
+  AnimationClock m_left;
+  AnimationClock m_right;
 };
 
 } // namespace pingus

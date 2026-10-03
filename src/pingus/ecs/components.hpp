@@ -19,6 +19,7 @@
 #include "pingus/direction.hpp"
 #include "pingus/groundtype.hpp"
 #include "pingus/pingu.hpp"
+#include "pingus/pingu_action_view.hpp"
 #include "pingus/res_descriptor.hpp"
 
 /** Components of the level object and pingu entities. Components are
@@ -312,6 +313,15 @@ struct PinguBehavior
 /** Pingus that are alive and in the level, removed once a pingu died or
     exited */
 struct ActivePingu {};
+
+/** How the pingu is drawn: the view for its current action, recreated by
+    the drawing system when the action changes */
+struct PinguView
+{
+  /** The action the view was created for, kept alive with the view */
+  std::shared_ptr<PinguAction> action = {};
+  std::unique_ptr<PinguActionView> view = {};
+};
 
 } // namespace pingus::components
 
