@@ -223,8 +223,9 @@ well (`pingus-headless -s DIR -T TICKS`).
    - [x] Declarative effects (sound, particles, overlay at a step) in
          the animation sets; bomber, exiter, splashed, guillotine and
          smasher use them
-   - [ ] Remaining level objects (exit, liquid, conveyor belt, ...) still
-         draw their sprites in code
+   - [x] Ice blocks, switch doors and conveyor belts use animation sets
+   - [ ] Liquid width in the collision map depends on the width of the
+         level's surface sprite (game data from art)
 2. Headless smoke test
    - [x] `extra/pingus-headless` (demos + levels with armageddon,
          offscreen screenshots)

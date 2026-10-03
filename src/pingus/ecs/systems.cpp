@@ -173,21 +173,30 @@ void draw_liquid(SceneContext& gc, Transform const& transform, Liquid const& liq
 
 } // namespace
 
-void
-draw_animation(SceneContext& gc, AnimationSet const& set, std::map<std::string, Sprite>& sprites,
-               std::string_view animation, Direction const& direction,
-               int frame, int frame_count, Vector2f const& pos, Vector2f const& offset)
+Sprite&
+animation_sprite(AnimationSet const& set, std::map<std::string, Sprite>& sprites,
+                 std::string_view animation, Direction const& direction)
 {
-  AnimationDef const& def = set.get_animation(animation);
-  std::string const& sprite_name = def.sprite_name(direction);
+  std::string const& sprite_name = set.get_animation(animation).sprite_name(direction);
 
   auto it = sprites.find(sprite_name);
   if (it == sprites.end()) {
     it = sprites.emplace(sprite_name, Sprite(sprite_name)).first;
   }
+  return it->second;
+}
 
-  it->second.set_frame(AnimationClock::map_frame(frame, frame_count, it->second.get_frame_count()));
-  gc.color().draw(it->second, pos + geom::foffset(def.offset.x() + offset.x(), def.offset.y() + offset.y()));
+void
+draw_animation(SceneContext& gc, AnimationSet const& set, std::map<std::string, Sprite>& sprites,
+               std::string_view animation, Direction const& direction,
+               int frame, int frame_count, Vector2f const& pos, Vector2f const& offset,
+               float z_index)
+{
+  AnimationDef const& def = set.get_animation(animation);
+  Sprite& sprite = animation_sprite(set, sprites, animation, direction);
+
+  sprite.set_frame(AnimationClock::map_frame(frame, frame_count, sprite.get_frame_count()));
+  gc.color().draw(sprite, pos + geom::foffset(def.offset.x() + offset.x(), def.offset.y() + offset.y()), z_index);
 }
 
 void

@@ -197,9 +197,7 @@ void startup_conveyor_belt(World& world, Transform const& transform, ConveyorBel
 void update_conveyor_belts(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, TriggerZone, ConveyorBelt>([&](ecs::Entity, Transform& transform, TriggerZone& zone, ConveyorBelt& belt) {
-    belt.left.update();
-    belt.middle.update();
-    belt.right.update();
+    belt.clock.update();
 
     for_each_pingu(world, [&](Pingu& pingu) {
       if (in_zone(pingu, transform, zone)) {
@@ -209,22 +207,21 @@ void update_conveyor_belts(World& world, ecs::Registry& reg)
   });
 }
 
-void draw_conveyor_belt(SceneContext& gc, Transform const& transform, ConveyorBelt const& belt)
+void draw_conveyor_belt(SceneContext& gc, Transform const& transform, ConveyorBelt const& belt, AnimationSetRender& render)
 {
-  Vector2f const& pos = transform.pos;
-  float const left_width = static_cast<float>(belt.left.get_width());
-  float const middle_width = static_cast<float>(belt.middle.get_width());
+  Direction const dir;
+  int const frame = belt.clock.frame();
+  float const left_width = static_cast<float>(animation_sprite(*render.set, render.sprites, "left", dir).get_width());
+  float const middle_width = static_cast<float>(animation_sprite(*render.set, render.sprites, "middle", dir).get_width());
 
-  gc.color().draw(belt.left, pos);
+  draw_animation(gc, *render.set, render.sprites, "left", dir, frame, 0, transform.pos, Vector2f());
   for (int i = 0; i < belt.width; ++i)
   {
-    gc.color().draw(belt.middle,
-                    Vector2f(pos.x() + left_width + static_cast<float>(i) * middle_width, pos.y()),
-                    transform.z_index);
+    draw_animation(gc, *render.set, render.sprites, "middle", dir, frame, 0, transform.pos,
+                   Vector2f(left_width + static_cast<float>(i) * middle_width, 0.0f), transform.z_index);
   }
-  gc.color().draw(belt.right,
-                  Vector2f(pos.x() + left_width + static_cast<float>(belt.width) * middle_width, pos.y()),
-                  transform.z_index);
+  draw_animation(gc, *render.set, render.sprites, "right", dir, frame, 0, transform.pos,
+                 Vector2f(left_width + static_cast<float>(belt.width) * middle_width, 0.0f), transform.z_index);
 }
 
 // Switch door
@@ -288,14 +285,17 @@ void update_switch_doors(World& world, ecs::Registry& reg)
   });
 }
 
-void draw_switch_door(SceneContext& gc, Transform const& transform, SwitchDoor const& door)
+void draw_switch_door(SceneContext& gc, Transform const& transform, SwitchDoor const& door, AnimationSetRender& render)
 {
-  gc.color().draw(door.box, transform.pos);
+  Direction const dir;
+  int const box_height = animation_sprite(*render.set, render.sprites, "box", dir).get_height();
+  int const tile_height = animation_sprite(*render.set, render.sprites, "tile", dir).get_height();
+
+  draw_animation(gc, *render.set, render.sprites, "box", dir, 0, 0, transform.pos, Vector2f());
   for (int i = 0; i < door.current_height; ++i)
   {
-    gc.color().draw(door.tile,
-                    Vector2f(transform.pos.x(),
-                             transform.pos.y() + static_cast<float>(i * door.tile.get_height() + door.box.get_height())));
+    draw_animation(gc, *render.set, render.sprites, "tile", dir, 0, 0, transform.pos,
+                   Vector2f(0.0f, static_cast<float>(i * tile_height + box_height)));
   }
 }
 
@@ -317,6 +317,9 @@ update_level_objects(World& world)
   update_switch_doors(world, reg);
   update_ice_blocks(world, reg);
 
+  reg.each<IceBlock, AnimatedSprite>([](ecs::Entity, IceBlock& ice, AnimatedSprite& anim) {
+    anim.visible = !ice.finished;
+  });
   reg.each<Teleporter, AnimatedSprite>([](ecs::Entity, Teleporter& teleporter, AnimatedSprite& anim) {
     anim.frame = teleporter.clock.frame();
   });
@@ -371,24 +374,14 @@ draw_level_object(World& world, SceneContext& gc, ecs::Entity entity)
     gc.color().draw(exit->flag, transform.pos + geom::foffset(40, 0));
   }
 
-  if (auto* ice = reg.try_get<IceBlock>(entity))
-  {
-    if (!ice->finished) {
-      gc.color().draw(ice->sprite, transform.pos);
-    }
-  }
-
   if (auto* belt = reg.try_get<ConveyorBelt>(entity)) {
-    draw_conveyor_belt(gc, transform, *belt);
+    draw_conveyor_belt(gc, transform, *belt, reg.get<AnimationSetRender>(entity));
   }
 
   if (auto* door = reg.try_get<SwitchDoor>(entity)) {
-    draw_switch_door(gc, transform, *door);
+    draw_switch_door(gc, transform, *door, reg.get<AnimationSetRender>(entity));
   }
 
-  if (auto* sw = reg.try_get<SwitchDoorSwitch>(entity)) {
-    gc.color().draw(sw->sprite, transform.pos);
-  }
 }
 
 } // namespace pingus::systems

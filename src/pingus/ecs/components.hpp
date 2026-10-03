@@ -49,6 +49,16 @@ struct SpriteRender
     animations that game logic never looks at */
 struct LoopingSprite {};
 
+/** Animation set of an object whose drawing code places several
+    animations itself (tiled conveyor belts and doors) */
+struct AnimationSetRender
+{
+  std::shared_ptr<AnimationSet const> set;
+
+  /** Sprites loaded by the render system, by animation and direction */
+  std::map<std::string, Sprite> sprites = {};
+};
+
 /** Which effects of an animation were fired, see update_effects() */
 struct EffectState
 {
@@ -250,7 +260,6 @@ struct TeleporterTarget
 /** Solid ground that melts while pingus walk on it */
 struct IceBlock
 {
-  Sprite sprite;
   std::shared_ptr<CollisionMask> cmap;
   float thickness = 1.0f;
   bool finished = false;
@@ -260,18 +269,16 @@ struct IceBlock
 /** Moves pingus in the TriggerZone to the left */
 struct ConveyorBelt
 {
-  Sprite left;
-  Sprite middle;
-  Sprite right;
   int width;
   float speed;
+
+  /** Visual animation of the belt, follows the art */
+  AnimationClock clock;
 };
 
 /** Door that opens when its switch is triggered */
 struct SwitchDoor
 {
-  Sprite box;
-  Sprite tile;
   std::shared_ptr<CollisionMask> box_cmap;
   std::shared_ptr<CollisionMask> tile_cmap;
   int height;
@@ -282,7 +289,6 @@ struct SwitchDoor
 /** Opens the door with the given id when a pingu enters the TriggerZone */
 struct SwitchDoorSwitch
 {
-  Sprite sprite;
   std::string target_id;
   ecs::Entity door = ecs::null_entity;
   bool triggered = false;

@@ -1,0 +1,5 @@
+(pingus-animset
+  (animations
+    (left (sprite "worldobjs/conveyorbelt_left"))
+    (middle (sprite "worldobjs/conveyorbelt_middle"))
+    (right (sprite "worldobjs/conveyorbelt_right"))))

@@ -140,8 +140,12 @@ an optional loop override:
 The `AnimatedSprite` component refers to a set and holds the requested
 animation, direction, frame and visibility. Game systems only set those
 (the traps in `update_trap_animations()`), the render system loads the
-sprites and draws them. The traps, teleporters and pingus use animation
-sets, so their look can be changed without touching code.
+sprites and draws them. Objects that place several animations themselves
+(conveyor belts, switch doors) use the `AnimationSetRender` component
+and `draw_animation()`. The traps, teleporters, ice blocks, switch doors,
+conveyor belts and pingus use animation sets, so their look can be
+changed without touching code. Objects whose look is chosen in the level
+file (exits, liquids, hotspots, backgrounds) draw that surface directly.
 
 ### Effects
 

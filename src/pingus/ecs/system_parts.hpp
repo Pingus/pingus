@@ -36,7 +36,13 @@ void for_each_pingu(World& world, Func&& func)
     animation's frames. */
 void draw_animation(SceneContext& gc, AnimationSet const& set, std::map<std::string, Sprite>& sprites,
                     std::string_view animation, Direction const& direction,
-                    int frame, int frame_count, Vector2f const& pos, Vector2f const& offset);
+                    int frame, int frame_count, Vector2f const& pos, Vector2f const& offset,
+                    float z_index = 0.0f);
+
+/** The sprite of the animation for the direction, loaded into 'sprites'
+    if needed */
+Sprite& animation_sprite(AnimationSet const& set, std::map<std::string, Sprite>& sprites,
+                         std::string_view animation, Direction const& direction);
 
 // traps.cpp
 void update_traps(World& world);

@@ -1,0 +1,3 @@
+(pingus-animset
+  (animations
+    (switch (sprite "worldobjs/switchdoor_switch"))))

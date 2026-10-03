@@ -95,7 +95,9 @@ TEST(AnimationSetTest, game_data_animation_sets_load)
   g_path_manager.set_path("data/");
   for (auto const& name : {"pingus/player0", "pingus/player1", "pingus/player2", "pingus/player3",
                            "traps/spike", "traps/fake_exit", "traps/guillotine", "traps/laser_exit",
-                           "traps/hammer", "traps/smasher", "worldobjs/teleporter", "worldobjs/teleporter-target"})
+                           "traps/hammer", "traps/smasher", "worldobjs/teleporter", "worldobjs/teleporter-target",
+                           "worldobjs/iceblock", "worldobjs/conveyorbelt", "worldobjs/switchdoor-door",
+                           "worldobjs/switchdoor-switch"})
   {
     EXPECT_NO_THROW(AnimationSet::get(name)) << name;
   }

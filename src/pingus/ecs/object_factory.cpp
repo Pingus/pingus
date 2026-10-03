@@ -257,28 +257,26 @@ void build_ice_block(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const
   reg.emplace<TriggerZone>(e, 0.0f, -4.0f,
                            static_cast<float>(cmap->get_width()),
                            static_cast<float>(cmap->get_height()));
-  reg.emplace<IceBlock>(e, Sprite("worldobjs/iceblock"), cmap);
+  add_animated_sprite(reg, e, "worldobjs/iceblock", "block");
+  reg.emplace<IceBlock>(e, cmap);
 }
 
 void build_conveyor_belt(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
 {
   int const width = data.get<int>("repeat");
   reg.emplace<TriggerZone>(e, 0.0f, -2.0f, 15.0f * static_cast<float>(width + 2), 10.0f);
-  reg.emplace<ConveyorBelt>(e,
-                            Sprite("worldobjs/conveyorbelt_left"),
-                            Sprite("worldobjs/conveyorbelt_middle"),
-                            Sprite("worldobjs/conveyorbelt_right"),
-                            width,
-                            static_cast<float>(data.get<int>("speed")));
+  auto set = AnimationSet::get("worldobjs/conveyorbelt");
+  reg.emplace<AnimationSetRender>(e, set);
+  reg.emplace<ConveyorBelt>(e, width, static_cast<float>(data.get<int>("speed")),
+                            set->get_animation("middle").make_clock());
 }
 
 void build_switch_door(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
 {
   int const height = data.get<int>("height");
   reg.emplace<ObjectId>(e, data.get<std::string>("id"));
+  reg.emplace<AnimationSetRender>(e, AnimationSet::get("worldobjs/switchdoor-door"));
   reg.emplace<SwitchDoor>(e,
-                          Sprite("worldobjs/switchdoor_box"),
-                          Sprite("worldobjs/switchdoor_tile"),
                           std::make_shared<CollisionMask>("worldobjs/switchdoor_box"),
                           std::make_shared<CollisionMask>("worldobjs/switchdoor_tile_cmap"),
                           height, height);
@@ -288,7 +286,8 @@ void build_switch(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& d
 {
   // Game data: pingus passing the 15x40 area of the switch trigger it
   reg.emplace<TriggerZone>(e, 0.0f, 0.0f, 15.0f, 40.0f);
-  reg.emplace<SwitchDoorSwitch>(e, Sprite("worldobjs/switchdoor_switch"), data.get<std::string>("target-id"));
+  add_animated_sprite(reg, e, "worldobjs/switchdoor-switch", "switch");
+  reg.emplace<SwitchDoorSwitch>(e, data.get<std::string>("target-id"));
 }
 
 void build_snow_generator(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
