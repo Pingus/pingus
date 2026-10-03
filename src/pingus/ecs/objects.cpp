@@ -40,10 +40,11 @@ ecs::Entity find_by_id(ecs::Registry& reg, std::string const& id)
 
 void startup_exit(World& world, Transform const& transform, Exit const& exit)
 {
+  // the exit's surface is anchored at its bottom center
   CollisionMask mask(exit.desc);
   world.get_colmap()->remove(mask,
-                             static_cast<int>(transform.pos.x()) - exit.sprite.get_width()/2,
-                             static_cast<int>(transform.pos.y()) - exit.sprite.get_height());
+                             static_cast<int>(transform.pos.x()) - mask.get_width()/2,
+                             static_cast<int>(transform.pos.y()) - mask.get_height());
 }
 
 void update_exits(World& world, ecs::Registry& reg)
@@ -238,7 +239,7 @@ void put_door(World& world, Transform const& transform, SwitchDoor const& door, 
   for (int i = 0; i < door.height; ++i)
   {
     world.get_colmap()->put(*door.tile_cmap, x,
-                            y + i * door.tile.get_height() + door.box.get_height(),
+                            y + i * door.tile_cmap->get_height() + door.box_cmap->get_height(),
                             type);
   }
 }

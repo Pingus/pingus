@@ -286,11 +286,9 @@ void build_switch_door(World&, ecs::Registry& reg, ecs::Entity e, ObjectData con
 
 void build_switch(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
 {
-  Sprite sprite("worldobjs/switchdoor_switch");
-  reg.emplace<TriggerZone>(e, 0.0f, 0.0f,
-                           static_cast<float>(sprite.get_width()),
-                           static_cast<float>(sprite.get_height()));
-  reg.emplace<SwitchDoorSwitch>(e, sprite, data.get<std::string>("target-id"));
+  // Game data: pingus passing the 15x40 area of the switch trigger it
+  reg.emplace<TriggerZone>(e, 0.0f, 0.0f, 15.0f, 40.0f);
+  reg.emplace<SwitchDoorSwitch>(e, Sprite("worldobjs/switchdoor_switch"), data.get<std::string>("target-id"));
 }
 
 void build_snow_generator(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
