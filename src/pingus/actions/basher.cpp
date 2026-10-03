@@ -54,8 +54,8 @@ Basher::Basher (Pingu* p) :
 void
 Basher::draw (SceneContext& gc)
 {
-  clock.apply_to(sprite[pingu->direction]);
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  clock.apply_to(sprite[pingu->direction()]);
+  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
 }
 
 void
@@ -90,7 +90,7 @@ Basher::update()
       {
         // Change direction and let walk code walk forward/up to get out.
         pingus::sound::PingusSound::play_sound("chink");
-        pingu->direction.change();
+        pingu->direction().change();
         pingu->set_action(ActionName::WALKER);
       }
       else if (have_something_to_dig())
@@ -139,7 +139,7 @@ Basher::walk_forward()
   {
     // Note that Pingu::set_pos() is the 'reverse' of the y co-ords of
     // rel_getpixel()
-    pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
+    pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction()),
                    pingu->get_y() - static_cast<float>(y_inc));
   }
 

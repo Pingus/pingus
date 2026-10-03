@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+#include <glm/glm.hpp>
+
 #include "ecs/registry.hpp"
 #include "engine/display/sprite.hpp"
 #include "math/color.hpp"
@@ -16,10 +18,11 @@
 #include "pingus/collision_mask.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/groundtype.hpp"
+#include "pingus/pingu.hpp"
 #include "pingus/res_descriptor.hpp"
 
-/** Components of level object entities. Components are plain data, the
-    behavior lives in the systems (see systems.hpp). */
+/** Components of the level object and pingu entities. Components are
+    plain data, the behavior lives in the systems (see systems.hpp). */
 namespace pingus::components {
 
 /** Position and drawing depth of an object in the world */
@@ -268,6 +271,47 @@ struct RainGenerator
   float thunder_count = 0.0f;
   float waiter_count = 0.0f;
 };
+
+// Pingus, see Pingu and PinguHolder
+
+/** Identity and physical state of a pingu, its position is in the
+    entity's Transform */
+struct PinguState
+{
+  /** Unique id, used to refer to the pingu in demo files */
+  unsigned int id;
+
+  /** Player the pingu belongs to, in multiplayer levels */
+  int owner_id;
+
+  Pingu::PinguStatus status = Pingu::PS_ALIVE;
+  Direction direction = {};
+  glm::vec2 velocity = {0.0f, 0.0f};
+};
+
+/** The pingu's action state machine */
+struct PinguBehavior
+{
+  /** The action currently in control */
+  std::shared_ptr<PinguAction> action = {};
+
+  /** Action taking over once action_time reaches 0 (bomber) */
+  std::shared_ptr<PinguAction> countdown_action = {};
+
+  /** Actions taking over when the pingu hits a wall or starts falling */
+  std::shared_ptr<PinguAction> wall_action = {};
+  std::shared_ptr<PinguAction> fall_action = {};
+
+  /** Type of the action before the current one */
+  ActionName::Enum previous_action = ActionName::FALLER;
+
+  /** Ticks until countdown_action is triggered, -1 for none */
+  int action_time = -1;
+};
+
+/** Pingus that are alive and in the level, removed once a pingu died or
+    exited */
+struct ActivePingu {};
 
 } // namespace pingus::components
 

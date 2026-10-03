@@ -34,7 +34,7 @@ Jumper::Jumper (Pingu* p) :
 void
 Jumper::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
 }
 
 void
@@ -42,13 +42,13 @@ Jumper::update()
 {
   // if climber, do a wall-jump, else just jump forward
   if ((pingu->get_previous_action() == ActionName::CLIMBER))
-    pingu->direction.change();
+    pingu->direction().change();
 
-  if (pingu->direction.is_left())
+  if (pingu->direction().is_left())
   {
     pingu->set_velocity(pingu->get_velocity() + glm::vec2(-4.58f, -4.58f));
   }
-  else // if (pingu->direction.is_right())
+  else // if (pingu->direction().is_right())
   {
     pingu->set_velocity(pingu->get_velocity() + glm::vec2(4.58f, -4.58f));
   }

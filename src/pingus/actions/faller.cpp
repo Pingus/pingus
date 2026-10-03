@@ -51,11 +51,11 @@ Faller::update()
 {
   if (is_tumbling())
   {
-    tumbler[pingu->direction].update();
+    tumbler[pingu->direction()].update();
   }
   else
   {
-    faller[pingu->direction].update();
+    faller[pingu->direction()].update();
   }
 
   // FIXME: This should be triggered at a later point, when close to
@@ -96,9 +96,9 @@ Faller::update()
       // previously have been facing in the opposite direction of its
       // velocity because of an explosion.
       if (velocity.x > 0.0f)
-        pingu->direction.right();
+        pingu->direction().right();
       else
-        pingu->direction.left();
+        pingu->direction().left();
 
       pingu->set_velocity(velocity);
     }
@@ -142,9 +142,9 @@ void
 Faller::draw (SceneContext& gc)
 {
   if (is_tumbling()) {
-    gc.color().draw(tumbler[pingu->direction], pingu->get_pos());
+    gc.color().draw(tumbler[pingu->direction()], pingu->get_pos());
   } else {
-    gc.color().draw(faller[pingu->direction], pingu->get_pos());
+    gc.color().draw(faller[pingu->direction()], pingu->get_pos());
   }
 }
 

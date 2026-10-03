@@ -57,8 +57,8 @@ Exiter::update()
 void
 Exiter::draw (SceneContext& gc)
 {
-  clock.apply_to(sprite[pingu->direction]);
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  clock.apply_to(sprite[pingu->direction()]);
+  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
 }
 
 } // namespace pingus::actions

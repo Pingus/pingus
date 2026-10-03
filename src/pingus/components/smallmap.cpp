@@ -72,16 +72,14 @@ SmallMap::draw(DrawingContext& gc)
   server->get_world()->draw_smallmap(this);
 
   // Draw Pingus
-  PinguHolder* pingus = world->get_pingus();
-  for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
-  {
-    int x = static_cast<int>(static_cast<float>(rect.left()) + ((*i)->get_x() * static_cast<float>(rect.width())
+  world->get_pingus()->for_each([&](Pingu& pingu) {
+    int x = static_cast<int>(static_cast<float>(rect.left()) + (pingu.get_x() * static_cast<float>(rect.width())
                                                               / static_cast<float>(world->get_width())));
-    int y = static_cast<int>(static_cast<float>(rect.top())  + ((*i)->get_y() * static_cast<float>(rect.height())
+    int y = static_cast<int>(static_cast<float>(rect.top())  + (pingu.get_y() * static_cast<float>(rect.height())
                                                               / static_cast<float>(world->get_height())));
 
     gc.draw_line(Vector2i(x, y), Vector2i(x, y-2), Color(255, 255, 0));
-  }
+  });
 
   gc_ptr = nullptr;
 }

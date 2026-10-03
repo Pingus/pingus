@@ -95,7 +95,7 @@ void update_guillotines(World& world, ecs::Registry& reg)
       {
         guillotine.killing = true;
         pingu.set_status(Pingu::PS_DEAD);
-        guillotine.direction = pingu.direction;
+        guillotine.direction = pingu.direction();
         guillotine.kill_clock.restart();
       }
     });
@@ -181,10 +181,10 @@ void update_smashers(World& world, ecs::Registry& reg)
 
     // Activate the smasher if a Pingu is under it
     for_each_pingu(world, [&](Pingu& pingu) {
-      if (((pingu.direction.is_left() &&
+      if (((pingu.direction().is_left() &&
             pingu.get_pos().x() > pos.x() + 65 &&
             pingu.get_pos().x() < pos.x() + 85) ||
-           (pingu.direction.is_right() &&
+           (pingu.direction().is_right() &&
             pingu.get_pos().x() > pos.x() + 190 &&
             pingu.get_pos().x() < pos.x() + 210)) &&
           pingu.get_action() != ActionName::SPLASHED &&

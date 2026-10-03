@@ -264,16 +264,13 @@ void update_switch_doors(World& world, ecs::Registry& reg)
       return;
     }
 
-    PinguHolder* holder = world.get_pingus();
-    for (PinguIter it = holder->begin(); it != holder->end(); ++it)
-    {
-      if (in_zone(**it, transform, zone))
+    for_each_pingu(world, [&](Pingu& pingu) {
+      if (!sw.triggered && in_zone(pingu, transform, zone))
       {
         sw.triggered = true;
         reg.get<SwitchDoor>(sw.door).opening = true;
-        break;
       }
-    }
+    });
   });
 
   reg.each<Transform, SwitchDoor>([&](ecs::Entity, Transform& transform, SwitchDoor& door) {

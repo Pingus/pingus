@@ -52,8 +52,8 @@ Bomber::draw (SceneContext& gc)
     gfx_exploded = true;
   }
 
-  clock.apply_to(sprite[pingu->direction]);
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  clock.apply_to(sprite[pingu->direction()]);
+  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
 }
 
 void

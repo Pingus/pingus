@@ -36,7 +36,7 @@ Boarder::Boarder (Pingu* p) :
 void
 Boarder::update()
 {
-  sprite[pingu->direction].update();
+  sprite[pingu->direction()].update();
 
   if (on_ground())
   {
@@ -47,7 +47,7 @@ Boarder::update()
     }
 
     // Incremental update so that we don't skip pixels
-    Vector2f new_pos(pingu->get_pos().x() + static_cast<float>(pingu->direction) * speed,
+    Vector2f new_pos(pingu->get_pos().x() + static_cast<float>(pingu->direction()) * speed,
                      pingu->get_pos().y());
 
     while (new_pos.x() != pingu->get_pos().x())
@@ -59,11 +59,11 @@ Boarder::update()
       if (pingu->rel_getpixel (1, 0))
       {
         // Hit a wall
-        pingu->set_pos(old_pos); // + (pingu->direction * 10);
+        pingu->set_pos(old_pos); // + (pingu->direction() * 10);
         ////pingu->pos.y = 10;
 
-        pingu->apply_force(glm::vec2(speed * static_cast<float>(pingu->direction) * 0.5f,
-                                     -speed * static_cast<float>(abs(pingu->direction)) * 0.5f));
+        pingu->apply_force(glm::vec2(speed * static_cast<float>(pingu->direction()) * 0.5f,
+                                     -speed * static_cast<float>(abs(pingu->direction())) * 0.5f));
         pingu->set_action(ActionName::WALKER);
         return;
       }
@@ -71,7 +71,7 @@ Boarder::update()
   }
   else
   {
-    pingu->apply_force (glm::vec2(speed * static_cast<float>(pingu->direction), 0));
+    pingu->apply_force (glm::vec2(speed * static_cast<float>(pingu->direction()), 0));
     pingu->set_action(ActionName::WALKER);
   }
 }
@@ -79,7 +79,7 @@ Boarder::update()
 void
 Boarder::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
 }
 
 bool

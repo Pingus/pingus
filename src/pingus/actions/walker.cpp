@@ -44,8 +44,8 @@ void
 Walker::update()
 {
   // update the sprite
-  walker[pingu->direction].update(0.033f);
-  floaterlayer[pingu->direction].update(0.033f);
+  walker[pingu->direction()].update(0.033f);
+  floaterlayer[pingu->direction()].update(0.033f);
 
   Vector2f last_pos = pingu->get_pos();
 
@@ -66,7 +66,7 @@ Walker::update()
 
   if (rel_getpixel(1, 0) == Groundtype::GP_OUTOFSCREEN)
   {
-    pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction));
+    pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction()));
     return;
   }
 
@@ -110,7 +110,7 @@ Walker::update()
   {
     // simple, stupid, but working bridge code
     // FIXME: We don't check if we 'drift' into a solid ground block
-    pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
+    pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction()),
                    pingu->get_y() - 1.0f); // pingus 'float' through bridges
   }
   else
@@ -144,7 +144,7 @@ Walker::update()
     if (found_next_step)
     {
       // pos.y has a reversed co-system to rel_getpixel()?
-      pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
+      pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction()),
                      pingu->get_y() - static_cast<float>(possible_y_step));
     }
     else
@@ -159,12 +159,12 @@ Walker::update()
         }
 
         // No persitent action found, so change the direction
-        pingu->direction.change();
+        pingu->direction().change();
       }
       else
       {
         // We take the step, so that we are in the air
-        pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction));
+        pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction()));
         // We reached a cliff
         pingu->set_action(ActionName::FALLER);
         return;
@@ -181,7 +181,7 @@ Walker::update()
 
     //if the new position causes a head collision, we are already
     //stuck in a wall, so lets go back to the old position
-    pingu->direction.change();
+    pingu->direction().change();
     pingu->set_pos(last_pos);
     return;
   }
@@ -206,11 +206,11 @@ Walker::update()
 void
 Walker::draw (SceneContext& gc)
 {
-  gc.color().draw(walker[pingu->direction], pingu->get_pos());
+  gc.color().draw(walker[pingu->direction()], pingu->get_pos());
 
   if (pingu->get_fall_action() && pingu->get_fall_action()->get_type() == ActionName::FLOATER)
   {
-    gc.color().draw(floaterlayer[pingu->direction], pingu->get_pos());
+    gc.color().draw(floaterlayer[pingu->direction()], pingu->get_pos());
   }
 }
 

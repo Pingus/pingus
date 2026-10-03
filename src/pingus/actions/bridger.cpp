@@ -72,14 +72,14 @@ Bridger::draw(SceneContext& gc)
   switch (mode)
   {
     case B_BUILDING:
-      build_clock.apply_to(build_sprite[pingu->direction]);
-      gc.color().draw(build_sprite[pingu->direction], Vector2f(pingu->get_pos().x() - static_cast<float>(x_offset * pingu->direction),
+      build_clock.apply_to(build_sprite[pingu->direction()]);
+      gc.color().draw(build_sprite[pingu->direction()], Vector2f(pingu->get_pos().x() - static_cast<float>(x_offset * pingu->direction()),
                                                                pingu->get_pos().y() + static_cast<float>(y_offset)));
       break;
 
     case B_WALKING:
-      walk_clock.apply_to(walk_sprite[pingu->direction]);
-      gc.color().draw(walk_sprite[pingu->direction], Vector2f(pingu->get_pos().x() - static_cast<float>(x_offset * pingu->direction),
+      walk_clock.apply_to(walk_sprite[pingu->direction()]);
+      gc.color().draw(walk_sprite[pingu->direction()], Vector2f(pingu->get_pos().x() - static_cast<float>(x_offset * pingu->direction()),
                                                               pingu->get_pos().y() + static_cast<float>(y_offset)));
       break;
   }
@@ -114,7 +114,7 @@ Bridger::update_walk()
     }
     else // We reached a wall...
     {
-      pingu->direction.change();
+      pingu->direction().change();
       pingu->set_action (ActionName::WALKER);
       return;
     }
@@ -140,7 +140,7 @@ Bridger::update_build()
         place_a_brick();
       else
       {
-        pingu->direction.change();
+        pingu->direction().change();
         pingu->set_action (ActionName::WALKER);
         return;
       }
@@ -202,7 +202,7 @@ Bridger::place_a_brick()
   if (bricks < 4)
     pingus::sound::PingusSound::play_sound("ting");
 
-  if (pingu->direction.is_right())
+  if (pingu->direction().is_right())
   {
     pingu->get_world()->put(brick_r,
                                static_cast<int>(pingu->get_pos().x() + 10.0f - static_cast<float>(brick_r.get_width())),
@@ -221,7 +221,7 @@ Bridger::place_a_brick()
 void
 Bridger::walk_one_step_up()
 {
-  pingu->set_pos(pingu->get_pos().x() + (4.0f * static_cast<float>(pingu->direction)),
+  pingu->set_pos(pingu->get_pos().x() + (4.0f * static_cast<float>(pingu->direction())),
                  pingu->get_pos().y() - 2);
 }
 

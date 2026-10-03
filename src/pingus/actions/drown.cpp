@@ -35,8 +35,8 @@ Drown::Drown (Pingu* p) :
 void
 Drown::draw (SceneContext& gc)
 {
-  clock.apply_to(sprite[pingu->direction]);
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  clock.apply_to(sprite[pingu->direction()]);
+  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
 }
 
 void

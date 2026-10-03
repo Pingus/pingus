@@ -135,6 +135,7 @@ World::init_worldobjs(PingusLevel const& plf)
     float z_index;
     WorldObj* obj;
     std::optional<ObjectData> data;
+    bool is_pingus = false;
   };
 
   std::vector<PendingObject> pending;
@@ -177,7 +178,8 @@ World::init_worldobjs(PingusLevel const& plf)
     add_level_object(doc.get_root().get_name(), doc.get_root().get_mapping(), Vector2f(), 0.0f);
   }
 
-  pending.push_back(PendingObject{pingus->z_index(), pingus, {}});
+  // the pingus are drawn at depth 50
+  pending.push_back(PendingObject{50.0f, nullptr, {}, true});
 
   std::stable_sort(pending.begin(), pending.end(),
                    [](PendingObject const& lhs, PendingObject const& rhs)
@@ -187,7 +189,11 @@ World::init_worldobjs(PingusLevel const& plf)
 
   for (auto& p : pending)
   {
-    if (p.obj)
+    if (p.is_pingus)
+    {
+      object_order.push_back(ObjectRef{nullptr, ecs::null_entity, true});
+    }
+    else if (p.obj)
     {
       world_obj.push_back(p.obj);
       object_order.push_back(ObjectRef{p.obj, ecs::null_entity});
@@ -204,7 +210,7 @@ World::init_worldobjs(PingusLevel const& plf)
   {
     if (ref.obj) {
       ref.obj->on_startup();
-    } else {
+    } else if (!ref.is_pingus) {
       systems::startup(*this, ref.entity);
     }
   }
@@ -215,6 +221,7 @@ World::~World()
   for (auto it = world_obj.begin(); it != world_obj.end(); ++it) {
     delete *it;
   }
+  delete pingus;
 }
 
 void
@@ -224,7 +231,9 @@ World::draw (SceneContext& gc)
 
   for (auto const& ref : object_order)
   {
-    if (ref.obj) {
+    if (ref.is_pingus) {
+      systems::draw_pingus(*this, gc);
+    } else if (ref.obj) {
       ref.obj->draw(gc);
     } else {
       systems::draw(*this, gc, ref.entity);
@@ -274,7 +283,10 @@ World::update()
   // Release new pingus
   systems::update_spawners(*this);
 
-  // Let all pingus move and catch each other, update the particles
+  // Let all pingus move and catch each other
+  systems::update_pingus(*this);
+
+  // Update the particles
   for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
   {
     (*obj)->update();
@@ -356,16 +368,16 @@ World::get_pingu (Vector2f const& pos)
   Pingu* current_pingu = nullptr;
   float distance = -1.0;
 
-  for (PinguIter i = pingus->begin(); i != pingus->end(); ++i) {
-    if ((*i)->is_over(pos.x(), pos.y()))
+  pingus->for_each([&](Pingu& pingu) {
+    if (pingu.is_over(pos.x(), pos.y()))
     {
-      if (distance == -1.0f || distance >= (*i)->dist(pos.x(), pos.y()))
+      if (distance == -1.0f || distance >= pingu.dist(pos.x(), pos.y()))
       {
-        current_pingu = (*i);
-        distance = (*i)->dist(pos.x(), pos.y());
+        current_pingu = &pingu;
+        distance = pingu.dist(pos.x(), pos.y());
       }
     }
-  }
+  });
 
   return current_pingu;
 }

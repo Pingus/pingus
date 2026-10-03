@@ -43,7 +43,7 @@ Miner::Miner (Pingu* p) :
 void
 Miner::update()
 {
-  sprite[pingu->direction].update();
+  sprite[pingu->direction()].update();
 
   delay_count += 1;
 
@@ -65,7 +65,7 @@ Miner::update()
       mine(true);
 
       // stop pingu from walking further into the solid.
-      pingu->direction.change();
+      pingu->direction().change();
 
       pingu->set_action(ActionName::WALKER);
     }
@@ -73,7 +73,7 @@ Miner::update()
     {
       // mine and walk forward
       mine(false);
-      pingu->set_pos(pingu->get_xi() + pingu->direction,
+      pingu->set_pos(pingu->get_xi() + pingu->direction(),
                      pingu->get_yi() + 1);
     }
   }
@@ -88,16 +88,16 @@ Miner::mine(bool final)
     {
       // regular mine action
       pingu->get_world()->remove(miner_radius,
-                                    pingu->get_xi() - (miner_radius.get_width() / 2) + pingu->direction,
+                                    pingu->get_xi() - (miner_radius.get_width() / 2) + pingu->direction(),
                                     pingu->get_yi() - miner_radius.get_height() + 2);
     }
   }
   else
   {
     // the last mine action before switching to another action
-    CollisionMask& radius = (pingu->direction == Direction::LEFT) ? miner_radius_left : miner_radius_right;
+    CollisionMask& radius = (pingu->direction() == Direction::LEFT) ? miner_radius_left : miner_radius_right;
     pingu->get_world()->remove(radius,
-                                  pingu->get_xi() - (radius.get_width() / 2) + pingu->direction,
+                                  pingu->get_xi() - (radius.get_width() / 2) + pingu->direction(),
                                   pingu->get_yi() - radius.get_height() + 2);
   }
 }
@@ -105,7 +105,7 @@ Miner::mine(bool final)
 void
 Miner::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
 }
 
 } // namespace pingus::actions

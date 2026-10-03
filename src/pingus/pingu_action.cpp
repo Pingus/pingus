@@ -54,7 +54,7 @@ int
 PinguAction::rel_getpixel (int x, int y)
 {
   // FIXME: Inline me
-  return pingu->get_world()->get_colmap()->getpixel(static_cast<int>(pingu->get_x() + static_cast<float>((x * pingu->direction))),
+  return pingu->get_world()->get_colmap()->getpixel(static_cast<int>(pingu->get_x() + static_cast<float>((x * pingu->direction()))),
                                                        static_cast<int>(pingu->get_y() - static_cast<float>(y)));
 }
 
@@ -145,7 +145,7 @@ PinguAction::move_with_forces()
       // Make the Pingu bounce off the wall
       velocity.x = -velocity.x / 3.0f;
       pingu->set_velocity(velocity);
-      pingu->direction.change();
+      pingu->direction().change();
       return;
     }
   }
@@ -207,13 +207,13 @@ PinguAction::move_with_forces()
 
         pingu->set_velocity(resultant_force);
 
-        pingu->direction.change();
+        pingu->direction().change();
       }
       else
       {
         // Move the Pingu left
-        pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction));
-        force_counter.x -= static_cast<float>(pingu->direction);
+        pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction()));
+        force_counter.x -= static_cast<float>(pingu->direction());
       }
     }
 

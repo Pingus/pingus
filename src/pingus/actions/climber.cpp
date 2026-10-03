@@ -37,7 +37,7 @@ Climber::Climber (Pingu* p) :
 Vector2f
 Climber::get_center_pos() const
 {
-  if (pingu->direction.is_left())
+  if (pingu->direction().is_left())
   {
     return pingu->get_pos() + geom::foffset(16, 0);
   }
@@ -50,7 +50,7 @@ Climber::get_center_pos() const
 void
 Climber::update()
 {
-  sprite[pingu->direction].update();
+  sprite[pingu->direction()].update();
 
   // If above is free
   if (   rel_getpixel(0, 1) == Groundtype::GP_NOTHING
@@ -68,16 +68,16 @@ Climber::update()
       //  log_info("Climber failed, no more wall");
 
       // If Pingu able to get to new position without head collision
-      if (!head_collision_on_walk(pingu->direction, 1))
+      if (!head_collision_on_walk(pingu->direction(), 1))
       {
         // Get ready to walk
-        pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
+        pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction()),
                        pingu->get_y() - 1.0f);
       }
       else
       {
         // Get ready to fall
-        pingu->direction.change();
+        pingu->direction().change();
       }
 
       // Finish climbing.
@@ -87,7 +87,7 @@ Climber::update()
   else
   {
     //    log_info("Climber failed, falling down");
-    pingu->direction.change();
+    pingu->direction().change();
     pingu->set_action(ActionName::WALKER);
   }
 }
@@ -95,7 +95,7 @@ Climber::update()
 void
 Climber::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
 }
 
 bool

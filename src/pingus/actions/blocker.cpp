@@ -53,12 +53,9 @@ Blocker::update()
   }
   else
   {
-    // FIXME: PinguHolder iterations should be handled otherwise
-    PinguHolder* pingus = pingu->get_world()->get_pingus();
-    for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
-    {
-      catch_pingu(*i);
-    }
+    pingu->get_world()->get_pingus()->for_each([this](Pingu& other) {
+      catch_pingu(&other);
+    });
   }
   sprite.update();
 }
@@ -66,7 +63,7 @@ Blocker::update()
 void
 Blocker::draw (SceneContext& gc)
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  gc.color().draw(sprite[pingu->direction()], pingu->get_pos());
 }
 
 bool
@@ -87,9 +84,9 @@ Blocker::catch_pingu(Pingu* target)
       )
     {
       if (target->get_x() > pingu->get_x()) {
-        target->direction.right();
+        target->direction().right();
       } else {
-        target->direction.left();
+        target->direction().left();
       }
     }
   }

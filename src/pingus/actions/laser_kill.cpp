@@ -33,8 +33,8 @@ LaserKill::LaserKill(Pingu* p) :
 void
 LaserKill::draw (SceneContext& gc)
 {
-  clock.apply_to(sprite[pingu->direction]);
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos() + geom::foffset(0, 2));
+  clock.apply_to(sprite[pingu->direction()]);
+  gc.color().draw(sprite[pingu->direction()], pingu->get_pos() + geom::foffset(0, 2));
 }
 
 void

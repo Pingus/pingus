@@ -40,6 +40,13 @@ void startup(World& world, ecs::Entity entity);
 /** Release new pingus, runs before the pingus move */
 void update_spawners(World& world);
 
+/** Let the pingus act and move, removes dead and exited pingus from the
+    active ones */
+void update_pingus(World& world);
+
+/** Draw all active pingus */
+void draw_pingus(World& world, SceneContext& gc);
+
 /** Traps, exits and other objects reacting to the pingus, weather and
     decorative animation; runs after the pingus moved */
 void update_objects(World& world);

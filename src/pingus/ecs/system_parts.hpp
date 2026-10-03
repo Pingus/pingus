@@ -26,10 +26,7 @@ inline bool in_zone(Pingu const& pingu, components::Transform const& transform, 
 template<typename Func>
 void for_each_pingu(World& world, Func&& func)
 {
-  PinguHolder* holder = world.get_pingus();
-  for (PinguIter it = holder->begin(); it != holder->end(); ++it) {
-    func(**it);
-  }
+  world.get_pingus()->for_each(std::forward<Func>(func));
 }
 
 // traps.cpp
