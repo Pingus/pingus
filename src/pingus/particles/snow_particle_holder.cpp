@@ -53,7 +53,7 @@ SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_, R
 }
 
 SnowParticleHolder::SnowParticleHolder(World& world_) :
-  WorldObj(&world_),
+  world(&world_),
   snow1("particles/snow1"),
   snow2("particles/snow2"),
   snow3("particles/snow3"),

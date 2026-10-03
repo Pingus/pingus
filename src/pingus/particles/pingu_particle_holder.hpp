@@ -21,18 +21,22 @@
 
 #include "engine/display/sprite.hpp"
 #include "math/vector2f.hpp"
-#include "pingus/worldobj.hpp"
 
 class SceneContext;
 
 namespace pingus {
 class Random;
+class SceneContext;
+class World;
 } // namespace pingus
 
 namespace pingus::particles {
 
-class PinguParticleHolder : public WorldObj
+class PinguParticleHolder
 {
+private:
+  World* world;
+
   struct PinguParticle {
     int  livetime;
     bool use_frame2;
@@ -54,16 +58,12 @@ public:
 
   void add_particle (int x, int y);
 
-  void set_z_index(float /* z_index */) override {}
-  float z_index() const override { return 1000.0f; }
-  void set_pos(Vector2f const& /* p */) override { }
-  Vector2f get_pos() const override { return Vector2f(); }
 
   /// Let the particle move
-  void update() override;
+  void update();
 
   /// Draw the particle with the correct zoom resize
-  void draw (SceneContext& gc) override;
+  void draw (SceneContext& gc);
 
 private:
   PinguParticleHolder (PinguParticleHolder const&);

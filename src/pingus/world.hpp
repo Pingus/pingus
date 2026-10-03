@@ -62,23 +62,25 @@ private:
       changes, or not drawing at all, never alter gameplay. */
   Random fx_random;
 
-  /** Remaining non-entity objects (ground, particles), in update order */
-  std::vector<WorldObj*> world_obj;
-
   /** Level objects and pingus are entities, see pingus/ecs/ */
   ecs::Registry registry;
 
-  /** Entry of the combined z-sorted list of WorldObjs and entities */
-  struct ObjectRef
-  {
-    WorldObj* obj;
-    ecs::Entity entity;
-
-    /** Marks the depth at which all pingus are drawn */
-    bool is_pingus = false;
+  /** What an entry of object_order stands for */
+  enum class Layer {
+    ENTITY,     /**< a level object entity */
+    GROUND,     /**< the ground map */
+    PINGUS,     /**< all pingus */
+    PARTICLES   /**< all particle systems */
   };
 
-  /** All objects in z-order, used for startup and drawing */
+  struct ObjectRef
+  {
+    Layer layer;
+    ecs::Entity entity;
+  };
+
+  /** Level objects, ground, pingus and particles in z-order, used for
+      startup and drawing */
   std::vector<ObjectRef> object_order;
 
   pingus::particles::PinguParticleHolder* pingu_particle_holder;

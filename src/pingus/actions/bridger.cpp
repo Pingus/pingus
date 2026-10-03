@@ -23,7 +23,6 @@
 #include "pingus/gettext.h"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
-#include "pingus/worldobj.hpp"
 
 namespace pingus::actions {
 

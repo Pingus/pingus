@@ -35,7 +35,7 @@ PinguParticleHolder::PinguParticle::PinguParticle (int x, int y, Random& rng)
 }
 
 PinguParticleHolder::PinguParticleHolder(World& world_) :
-  WorldObj(&world_),
+  world(&world_),
   surface("particles/pingu_explo"),
   particles()
 {

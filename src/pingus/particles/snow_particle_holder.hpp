@@ -22,18 +22,22 @@
 #include "engine/display/sprite.hpp"
 #include "math/vector2f.hpp"
 #include "pingus/collision_mask.hpp"
-#include "pingus/worldobj.hpp"
 
 class SceneContext;
 
 namespace pingus {
 class Random;
+class SceneContext;
+class World;
 } // namespace pingus
 
 namespace pingus::particles {
 
-class SnowParticleHolder : public WorldObj
+class SnowParticleHolder
 {
+private:
+  World* world;
+
 private:
   enum ParticleType { Snow1, Snow2, Snow3, Snow4, Snow5 };
 
@@ -64,16 +68,12 @@ public:
 
   void add_particle (int x, int y, bool colliding = false);
 
-  void set_z_index(float /* z_index */) override {}
-  float z_index() const override { return 1000.0f; }
-  void set_pos(Vector2f const& /* p */) override {}
-  Vector2f get_pos() const override { return Vector2f(); }
 
   /// Let the particle move
-  void update() override;
+  void update();
 
   /// Draw the particle with the correct zoom resize
-  void draw (SceneContext& gc) override;
+  void draw (SceneContext& gc);
 
 private:
   SnowParticleHolder (SnowParticleHolder const&);

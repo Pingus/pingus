@@ -33,7 +33,7 @@ SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x
 }
 
 SmokeParticleHolder::SmokeParticleHolder(World& world_) :
-  WorldObj(&world_),
+  world(&world_),
   surf1("particles/smoke"),
     surf2("particles/smoke2"),
     particles()

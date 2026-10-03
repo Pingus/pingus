@@ -37,7 +37,7 @@ RainParticleHolder::RainParticle::RainParticle(int x, int y, Random& rng) :
 }
 
 RainParticleHolder::RainParticleHolder(World& world_) :
-  WorldObj(&world_),
+  world(&world_),
   rain1_surf("particles/rain1"),
   rain2_surf("particles/rain2"),
   rain_splash("particles/rain_splash"),
