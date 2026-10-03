@@ -224,6 +224,9 @@ well (`pingus-headless -s DIR -T TICKS`).
          the animation sets; bomber, exiter, splashed, guillotine and
          smasher use them
    - [x] Ice blocks, switch doors and conveyor belts use animation sets
+   - [x] Pingu sprites defined inline in the player animation sets, the
+         action button icons in gui/action-buttons; 147 .sprite files
+         removed
    - [ ] Liquid width in the collision map depends on the width of the
          level's surface sprite (game data from art)
 2. Headless smoke test

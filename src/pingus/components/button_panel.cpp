@@ -18,14 +18,35 @@
 
 #include <algorithm>
 
+#include <logmich/log.hpp>
 #include <strut/to_string.hpp>
 
 #include "engine/display/drawing_context.hpp"
+#include "pingus/animation_set.hpp"
 #include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/server.hpp"
 
 namespace pingus {
+
+namespace {
+
+/** The icon of an action button, from data/animsets/gui/action-buttons.animset */
+Sprite action_icon(ActionName::Enum action)
+{
+  auto icons = AnimationSet::get("gui/action-buttons");
+  std::string const name = ActionName::to_string(action);
+  if (AnimationDef const* def = icons->find(name)) {
+    Direction dir;
+    dir.right();
+    return def->make_sprite(dir);
+  } else {
+    log_error("no action button icon for '{}'", name);
+    return Sprite(name);
+  }
+}
+
+} // namespace
 
 ButtonPanel::ButtonPanel(Server* s, Vector2i const& pos) :
   RectComponent(Rect()),
@@ -51,7 +72,7 @@ ButtonPanel::ButtonPanel(Server* s, Vector2i const& pos) :
   {
     ActionButton button;
     button.name   = actions[i];
-    button.sprite = Sprite("pingus/player0/" + ActionName::to_string(button.name) + "/right");
+    button.sprite = action_icon(button.name);
     button.sprite.set_hotspot(Origin::CENTER, 0, 0);
     button.sprite.set_play_loop(true);
     buttons.push_back(button);

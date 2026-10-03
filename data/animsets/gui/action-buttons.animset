@@ -1,0 +1,17 @@
+;; Icons of the action buttons in the game's button panel
+(pingus-animset
+  (animations
+    (basher (frames (image "images/pingus/player0/basher.png") (offset 0 1) (origin "bottom_center") (position 0 32) (speed 100) (loop #t) (array 12 1) (size 32 32)))
+    (blocker (frames (image "images/pingus/player0/blocker.png") (offset 0 1) (origin "bottom_center") (speed 150) (loop #t) (array 18 1) (size 32 32)))
+    (boarder (frames (image "images/pingus/player0/boarder.png") (position 0 30) (size 30 30)))
+    (bomber (frames (image "images/pingus/player0/bomber.png") (offset 0 2) (origin "bottom_center") (speed 60) (loop #f) (array 16 1) (size 32 32)))
+    (bridger (frames (image "images/pingus/player0/bridger.png") (offset 0 2) (origin "bottom_center") (position 0 32) (speed 66) (loop #f) (array 15 1) (size 32 32)))
+    (climber (frames (image "images/pingus/player0/climber.png") (offset 1 0) (origin "center_right") (position 0 32) (speed 100) (loop #t) (array 8 1) (size 32 32)))
+    (digger (frames (image "images/pingus/player0/digger.png") (offset 0 2) (origin "bottom_center") (speed 100) (loop #t) (array 14 1) (size 32 32)))
+    (faller (frames (image "images/pingus/player0/faller.png") (offset 0 2) (origin "bottom_center") (speed 30) (loop #t) (array 8 1) (size 32 32)))
+    (floater (frames (image "images/pingus/player0/floater.png") (offset 0 2) (origin "bottom_center") (speed 100) (loop #t) (array 8 1) (size 32 32)))
+    (jumper (frames (image "images/pingus/player0/faller.png") (offset 0 2) (origin "bottom_center") (speed 100) (loop #t) (array 8 1) (size 32 32)))
+    (miner (frames (image "images/pingus/player0/miner.png") (offset 0 2) (origin "bottom_center") (position 0 32) (speed 100) (loop #t) (array 12 1) (size 32 32)))
+    (slider (frames (image "images/pingus/player0/slider.png") (offset 0 2) (origin "bottom_center") (position 0 15) (size 32 15)))
+    (waiter (frames (image "images/pingus/player0/waiter.png") (offset 0 2) (origin "bottom_center") (speed 100) (loop #t) (array 6 1) (size 32 32)))
+    (walker (frames (image "images/pingus/player0/walker.png") (offset 0 2) (origin "bottom_center") (position 0 32) (speed 80) (loop #t) (array 8 1) (size 32 32)))))

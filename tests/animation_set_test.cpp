@@ -152,7 +152,7 @@ TEST(AnimationSetTest, game_data_animation_sets_load)
                            "traps/spike", "traps/fake_exit", "traps/guillotine", "traps/laser_exit",
                            "traps/hammer", "traps/smasher", "worldobjs/teleporter", "worldobjs/teleporter-target",
                            "worldobjs/iceblock", "worldobjs/conveyorbelt", "worldobjs/switchdoor-door",
-                           "worldobjs/switchdoor-switch"})
+                           "worldobjs/switchdoor-switch", "gui/action-buttons"})
   {
     EXPECT_NO_THROW(AnimationSet::get(name)) << name;
   }
