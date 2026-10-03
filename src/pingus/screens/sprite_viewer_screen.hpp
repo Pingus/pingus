@@ -48,6 +48,13 @@ private:
     Vector2f pos;
     Vector2f velocity;
     int livetime;
+
+    ViewerParticle() :
+      sprite(),
+      pos(),
+      velocity(),
+      livetime(0)
+    {}
   };
 
   struct OverlayPlayback
@@ -56,6 +63,13 @@ private:
     Vector2f offset;
     AnimationClock clock;
     Sprite sprite;
+
+    OverlayPlayback() :
+      animation(),
+      offset(),
+      clock(),
+      sprite()
+    {}
   };
 
   void reload();
@@ -77,19 +91,19 @@ private:
 
   Sprite m_sprite;
   AnimationClock m_clock;
-  bool m_paused = false;
+  bool m_paused;
 
   AnimationSet m_animset;
-  int m_anim_index = 0;
+  int m_anim_index;
   Direction m_direction;
   std::map<std::string, Sprite> m_sprites;
-  int m_last_effect_step = -1;
+  int m_last_effect_step;
 
   std::vector<OverlayPlayback> m_overlays;
   std::vector<ViewerParticle> m_particles;
   Random m_rng;
 
-  float m_tick_accum = 0.0f;
+  float m_tick_accum;
 
   SpriteViewerScreen(SpriteViewerScreen const&) = delete;
   SpriteViewerScreen& operator=(SpriteViewerScreen const&) = delete;

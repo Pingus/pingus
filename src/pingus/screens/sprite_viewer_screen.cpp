@@ -42,8 +42,18 @@ SpriteViewerScreen::SpriteViewerScreen(Pathname const& file) :
   Screen(Display::get_size()),
   m_file(file),
   m_mode(file.get_raw_path().ends_with(".animset") ? Mode::Animset : Mode::Sprite),
+  m_sprite(),
+  m_clock(),
+  m_paused(false),
+  m_animset(),
+  m_anim_index(0),
   m_direction(),
-  m_rng(1)
+  m_sprites(),
+  m_last_effect_step(-1),
+  m_overlays(),
+  m_particles(),
+  m_rng(1),
+  m_tick_accum(0.0f)
 {
   m_direction.right();
   reload();
