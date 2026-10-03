@@ -19,15 +19,11 @@
 
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Blocker : public PinguAction
 {
-  friend class BlockerView;
-
 private:
   AnimationClock clock;
 
@@ -37,6 +33,7 @@ public:
   ActionName::Enum get_type() const override { return ActionName::BLOCKER; }
 
   void  update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   bool  standing_on_ground();
@@ -44,18 +41,6 @@ private:
 
   Blocker (Blocker const&);
   Blocker& operator= (Blocker const&);
-};
-
-class BlockerView : public PinguActionView
-{
-private:
-  Blocker const& action;
-  StateSprite sprite;
-
-public:
-  BlockerView(Pingu& pingu, Blocker const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

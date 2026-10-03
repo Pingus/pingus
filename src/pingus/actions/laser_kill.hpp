@@ -19,8 +19,6 @@
 
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
@@ -28,8 +26,6 @@ namespace pingus::actions {
     pingu to 'burn-away' */
 class LaserKill : public PinguAction
 {
-  friend class LaserKillView;
-
 private:
   AnimationClock clock;
 
@@ -40,24 +36,13 @@ public:
   void init (void);
 
   void update() override;
+  void get_look(PinguLook& look) const override;
 
   bool catchable() override { return false; }
 
 private:
   LaserKill (LaserKill const&);
   LaserKill& operator= (LaserKill const&);
-};
-
-class LaserKillView : public PinguActionView
-{
-private:
-  LaserKill const& action;
-  StateSprite sprite;
-
-public:
-  LaserKillView(Pingu& pingu, LaserKill const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

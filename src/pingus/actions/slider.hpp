@@ -19,15 +19,11 @@
 
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Slider : public PinguAction
 {
-  friend class SliderView;
-
 private:
   DirectionalAnimationClock clock;
   float  speed;
@@ -37,22 +33,11 @@ public:
   ActionName::Enum get_type() const override { return ActionName::SLIDER; }
 
   void update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   Slider (Slider const&);
   Slider& operator= (Slider const&);
-};
-
-class SliderView : public PinguActionView
-{
-private:
-  Slider const& action;
-  StateSprite sprite;
-
-public:
-  SliderView(Pingu& pingu, Slider const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

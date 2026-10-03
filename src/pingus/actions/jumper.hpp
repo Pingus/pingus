@@ -19,15 +19,11 @@
 
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Jumper : public PinguAction
 {
-  friend class JumperView;
-
 private:
 
 public:
@@ -36,22 +32,11 @@ public:
   ActionName::Enum get_type() const override { return ActionName::JUMPER; }
 
   void  update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   Jumper (Jumper const&);
   Jumper& operator= (Jumper const&);
-};
-
-class JumperView : public PinguActionView
-{
-private:
-  Jumper const& action;
-  StateSprite sprite;
-
-public:
-  JumperView(Pingu& pingu, Jumper const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

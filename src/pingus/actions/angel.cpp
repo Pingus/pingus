@@ -43,17 +43,10 @@ Angel::update()
     pingu->set_status (Pingu::PS_DEAD);
 }
 
-AngelView::AngelView(Pingu& pingu, Angel const& action_) :
-  action(action_),
-  sprite("pingus/player" + pingu.get_owner_str() + "/angel")
-{
-}
-
 void
-AngelView::draw(SceneContext& gc, Pingu& pingu)
+Angel::get_look(PinguLook& look) const
 {
-  action.clock.apply_to(sprite);
-  gc.color().draw(sprite, pingu.get_pos());
+  look.add("angel", clock.frame());
 }
 
 } // namespace pingus::actions

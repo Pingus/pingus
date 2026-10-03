@@ -98,19 +98,10 @@ Miner::mine(bool final)
   }
 }
 
-MinerView::MinerView(Pingu& pingu, Miner const& action_) :
-  action(action_),
-  sprite()
-{
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/miner/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/miner/right");
-}
-
 void
-MinerView::draw(SceneContext& gc, Pingu& pingu)
+Miner::get_look(PinguLook& look) const
 {
-  action.clock[pingu.direction()].apply_to(sprite[pingu.direction()]);
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
+  look.add("miner", clock[pingu->direction()].frame());
 }
 
 } // namespace pingus::actions

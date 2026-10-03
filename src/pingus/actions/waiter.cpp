@@ -42,17 +42,10 @@ Waiter::update()
   countdown -= 0.025f;
 }
 
-WaiterView::WaiterView(Pingu& pingu, Waiter const& action_) :
-  action(action_),
-  sprite("pingus/player" + pingu.get_owner_str() + "/waiter/left")
-{
-}
-
 void
-WaiterView::draw(SceneContext& gc, Pingu& pingu)
+Waiter::get_look(PinguLook& look) const
 {
-  action.clock.apply_to(sprite);
-  gc.color().draw(sprite, pingu.get_pos());
+  look.add("waiter", clock.frame());
 }
 
 } // namespace pingus::actions

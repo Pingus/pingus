@@ -27,21 +27,6 @@ LaserKill::LaserKill(Pingu* p) :
 {
 }
 
-LaserKillView::LaserKillView(Pingu& /* pingu */, LaserKill const& action_) :
-  action(action_),
-  sprite()
-{
-  sprite.load(Direction::LEFT,  "other/laser_kill/left");
-  sprite.load(Direction::RIGHT, "other/laser_kill/right");
-}
-
-void
-LaserKillView::draw(SceneContext& gc, Pingu& pingu)
-{
-  action.clock.apply_to(sprite[pingu.direction()]);
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos() + geom::foffset(0, 2));
-}
-
 void
 LaserKill::update()
 {
@@ -49,6 +34,12 @@ LaserKill::update()
     pingu->set_status(Pingu::PS_DEAD);
   else
     clock.update();
+}
+
+void
+LaserKill::get_look(PinguLook& look) const
+{
+  look.add("laserkill", clock.frame());
 }
 
 } // namespace pingus::actions

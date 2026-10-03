@@ -40,17 +40,10 @@ Superman::update()
     pingu->set_status(Pingu::PS_DEAD);
 }
 
-SupermanView::SupermanView(Pingu& pingu, Superman const& action_) :
-  action(action_),
-  sprite("pingus/player" + pingu.get_owner_str() + "/superman")
-{
-}
-
 void
-SupermanView::draw(SceneContext& gc, Pingu& pingu)
+Superman::get_look(PinguLook& look) const
 {
-  action.clock.apply_to(sprite);
-  gc.color().draw(sprite, pingu.get_pos());
+  look.add("superman", clock.frame());
 }
 
 } // namespace pingus::actions

@@ -26,20 +26,6 @@ Jumper::Jumper (Pingu* p) :
 {
 }
 
-JumperView::JumperView(Pingu& pingu, Jumper const& action_) :
-  action(action_),
-  sprite()
-{
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/jumper/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/jumper/right");
-}
-
-void
-JumperView::draw(SceneContext& gc, Pingu& pingu)
-{
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
-}
-
 void
 Jumper::update()
 {
@@ -60,6 +46,12 @@ Jumper::update()
   pingu->set_y(pingu->get_y() - 1);
 
   pingu->set_action (ActionName::FALLER);
+}
+
+void
+Jumper::get_look(PinguLook& look) const
+{
+  look.add("jumper", 0);
 }
 
 } // namespace pingus::actions

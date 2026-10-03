@@ -21,7 +21,7 @@
 #include "pingus/direction.hpp"
 #include "pingus/groundtype.hpp"
 #include "pingus/pingu.hpp"
-#include "pingus/pingu_action_view.hpp"
+#include "pingus/pingu_action.hpp"
 #include "pingus/res_descriptor.hpp"
 
 /** Components of the level object and pingu entities. Components are
@@ -321,13 +321,20 @@ struct PinguBehavior
     exited */
 struct ActivePingu {};
 
-/** How the pingu is drawn: the view for its current action, recreated by
-    the drawing system when the action changes */
+/** Drawing state of a pingu, used by draw_pingus(): the owner's
+    animation set, the loaded sprites and which "once" layers of the
+    current action's look were already shown */
 struct PinguView
 {
-  /** The action the view was created for, kept alive with the view */
+  std::shared_ptr<AnimationSet const> set = {};
+  std::map<std::string, Sprite> sprites = {};
+
+  /** The action shown_once belongs to */
   std::shared_ptr<PinguAction> action = {};
-  std::unique_ptr<PinguActionView> view = {};
+  std::vector<std::string> shown_once = {};
+
+  /** Reused for PinguAction::get_look() */
+  PinguLook look = {};
 };
 
 } // namespace pingus::components

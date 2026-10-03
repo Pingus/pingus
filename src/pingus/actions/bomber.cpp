@@ -37,29 +37,6 @@ Bomber::Bomber (Pingu* p) :
   pingu->get_world()->play_sound("ohno", pingu->get_pos());
 }
 
-BomberView::BomberView(Pingu& pingu, Bomber const& action_) :
-  action(action_),
-  sprite(),
-  explo_surf("pingus/player" + pingu.get_owner_str() + "/explo"),
-  gfx_exploded(false)
-{
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/bomber/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/bomber/right");
-}
-
-void
-BomberView::draw(SceneContext& gc, Pingu& pingu)
-{
-  if (action.clock.frame() >= 13 && !gfx_exploded)
-  {
-    gc.color().draw (explo_surf, Vector2f(pingu.get_x() - 32, pingu.get_y() - 48));
-    gfx_exploded = true;
-  }
-
-  action.clock.apply_to(sprite[pingu.direction()]);
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
-}
-
 void
 Bomber::update()
 {
@@ -116,6 +93,16 @@ Bomber::update()
   {
     pingu->set_status(Pingu::PS_DEAD);
   }
+}
+
+void
+Bomber::get_look(PinguLook& look) const
+{
+  if (clock.frame() >= 13) {
+    // the explosion flash, shown once
+    look.add("explosion", 0, Vector2f(-32, -48), true);
+  }
+  look.add("bomber", clock.frame());
 }
 
 } // namespace pingus::actions

@@ -19,15 +19,11 @@
 
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Drown : public PinguAction
 {
-  friend class DrownView;
-
 private:
   AnimationClock clock;
 
@@ -37,24 +33,13 @@ public:
   ActionName::Enum get_type() const override { return ActionName::DROWN; }
 
   void update() override;
+  void get_look(PinguLook& look) const override;
 
   bool catchable() override { return false; }
 
 private:
   Drown (Drown const&);
   Drown& operator= (Drown const&);
-};
-
-class DrownView : public PinguActionView
-{
-private:
-  Drown const& action;
-  StateSprite sprite;
-
-public:
-  DrownView(Pingu& pingu, Drown const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

@@ -19,8 +19,6 @@
 
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
@@ -28,8 +26,6 @@ namespace pingus::actions {
     forward. */
 class Boarder : public PinguAction
 {
-  friend class BoarderView;
-
 private:
   float x_pos;
   float speed;
@@ -40,24 +36,13 @@ public:
   ActionName::Enum get_type() const override { return ActionName::BOARDER; }
 
   void  update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   bool on_ground();
 
   Boarder (Boarder const&);
   Boarder& operator= (Boarder const&);
-};
-
-class BoarderView : public PinguActionView
-{
-private:
-  Boarder const& action;
-  StateSprite sprite;
-
-public:
-  BoarderView(Pingu& pingu, Boarder const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

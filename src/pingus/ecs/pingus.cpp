@@ -5,6 +5,7 @@
 
 #include "pingus/ecs/system_parts.hpp"
 
+#include <algorithm>
 #include <cstdio>
 
 #include "engine/display/scene_context.hpp"
@@ -35,14 +36,43 @@ void draw_pingu(World& world, SceneContext& gc, Pingu& pingu)
 {
   PinguView& view = world.get_registry().get<PinguView>(pingu.get_entity());
 
+  if (!view.set) {
+    view.set = AnimationSet::get("pingus/player" + pingu.get_owner_str());
+  }
+
   std::shared_ptr<PinguAction> action = pingu.get_current_action();
   if (view.action != action)
   {
-    view.view = create_action_view(pingu, *action);
     view.action = std::move(action);
+    view.shown_once.clear();
   }
 
-  view.view->draw(gc, pingu);
+  view.look.layers.clear();
+  view.action->get_look(view.look);
+
+  for (auto const& layer : view.look.layers)
+  {
+    if (layer.once)
+    {
+      std::string const name(layer.animation);
+      if (std::find(view.shown_once.begin(), view.shown_once.end(), name) != view.shown_once.end()) {
+        continue;
+      }
+      view.shown_once.push_back(name);
+    }
+
+    AnimationDef const& def = view.set->get_animation(layer.animation);
+    std::string const& sprite_name = def.sprite_name(pingu.direction());
+
+    auto it = view.sprites.find(sprite_name);
+    if (it == view.sprites.end()) {
+      it = view.sprites.emplace(sprite_name, Sprite(sprite_name)).first;
+    }
+
+    it->second.set_frame(layer.frame);
+    geom::foffset const offset(def.offset.x() + layer.offset.x(), def.offset.y() + layer.offset.y());
+    gc.color().draw(it->second, pingu.get_pos() + offset);
+  }
 
   if (pingu.get_action_time() != -1)
   {

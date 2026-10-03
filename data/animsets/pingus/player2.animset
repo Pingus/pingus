@@ -1,0 +1,30 @@
+;; Animations of the pingus of player 2, requested by the pingu actions
+(pingus-animset
+  (animations
+    (angel (sprite "pingus/player2/angel"))
+    (basher (left "pingus/player2/basher/left") (right "pingus/player2/basher/right"))
+    (blocker (left "pingus/player2/blocker/left") (right "pingus/player2/blocker/right"))
+    (boarder (left "pingus/player2/boarder/left") (right "pingus/player2/boarder/right"))
+    (bomber (left "pingus/player2/bomber/left") (right "pingus/player2/bomber/right"))
+    (bridger (left "pingus/player2/bridger/left") (right "pingus/player2/bridger/right"))
+    (bridger-walk (left "pingus/player2/bridger_walk/left") (right "pingus/player2/bridger_walk/right"))
+    (climber (left "pingus/player2/climber/left") (right "pingus/player2/climber/right"))
+    (digger (sprite "pingus/player2/digger/left"))
+    (drown (left "pingus/player2/drownfall/left") (right "pingus/player2/drownfall/right"))
+    (exit (left "pingus/player2/exit/left") (right "pingus/player2/exit/right"))
+    (faller (left "pingus/player2/faller/left") (right "pingus/player2/faller/right"))
+    (tumbler (left "pingus/player2/tumbler/left") (right "pingus/player2/tumbler/right"))
+    (floater (sprite "pingus/player2/floater/left"))
+    (jumper (left "pingus/player2/jumper/left") (right "pingus/player2/jumper/right"))
+    (laserkill (left "other/laser_kill/left") (right "other/laser_kill/right") (offset 0 2))
+    (miner (left "pingus/player2/miner/left") (right "pingus/player2/miner/right"))
+    (slider (left "pingus/player2/slider/left") (right "pingus/player2/slider/right") (offset 0 -2))
+    ;; FIXME: this is the whole bomber sprite sheet as one image, the
+    ;; smashed action is currently unused
+    (smashed (sprite "pingus/player2/bomber"))
+    (splashed (sprite "pingus/player2/splat"))
+    (superman (sprite "pingus/player2/superman"))
+    (waiter (sprite "pingus/player2/waiter/left"))
+    (walker (left "pingus/player2/walker/left") (right "pingus/player2/walker/right"))
+    (floater-layer (left "other/floaterlayer/left") (right "other/floaterlayer/right"))
+    (explosion (sprite "pingus/player2/explo"))))

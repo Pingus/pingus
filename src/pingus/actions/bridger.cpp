@@ -39,51 +39,6 @@ Bridger::Bridger (Pingu* p) :
 {
 }
 
-BridgerView::BridgerView(Pingu& pingu, Bridger const& action_) :
-  action(action_),
-  walk_sprite(),
-  build_sprite()
-{
-  walk_sprite.load (Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/bridger_walk/left");
-  walk_sprite.load (Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/bridger_walk/right");
-  build_sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/bridger/left");
-  build_sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/bridger/right");
-}
-
-void
-BridgerView::draw(SceneContext& gc, Pingu& pingu)
-{
-  int x_offset = 6;
-  int y_offset = 4;
-
-  if (action.bricks == Bridger::MAX_BRICKS) {
-    x_offset = -4;
-    y_offset = 0;
-
-  } else if (action.bricks == Bridger::MAX_BRICKS - 1) {
-    x_offset = 0;
-    y_offset = 1;
-  } else if (action.bricks == Bridger::MAX_BRICKS - 2) {
-    x_offset = 3;
-    y_offset = 2;
-  }
-
-  switch (action.mode)
-  {
-    case Bridger::B_BUILDING:
-      action.build_clock.apply_to(build_sprite[pingu.direction()]);
-      gc.color().draw(build_sprite[pingu.direction()], Vector2f(pingu.get_pos().x() - static_cast<float>(x_offset * pingu.direction()),
-                                                               pingu.get_pos().y() + static_cast<float>(y_offset)));
-      break;
-
-    case Bridger::B_WALKING:
-      action.walk_clock.apply_to(walk_sprite[pingu.direction()]);
-      gc.color().draw(walk_sprite[pingu.direction()], Vector2f(pingu.get_pos().x() - static_cast<float>(x_offset * pingu.direction()),
-                                                              pingu.get_pos().y() + static_cast<float>(y_offset)));
-      break;
-  }
-}
-
 void
 Bridger::update()
 {
@@ -228,6 +183,37 @@ std::string
 Bridger::get_name() const
 {
   return name;
+}
+
+void
+Bridger::get_look(PinguLook& look) const
+{
+  int x_offset = 6;
+  int y_offset = 4;
+
+  if (bricks == MAX_BRICKS) {
+    x_offset = -4;
+    y_offset = 0;
+  } else if (bricks == MAX_BRICKS - 1) {
+    x_offset = 0;
+    y_offset = 1;
+  } else if (bricks == MAX_BRICKS - 2) {
+    x_offset = 3;
+    y_offset = 2;
+  }
+
+  Vector2f const offset(-static_cast<float>(x_offset * pingu->direction()), static_cast<float>(y_offset));
+
+  switch (mode)
+  {
+    case B_BUILDING:
+      look.add("bridger", build_clock.frame(), offset);
+      break;
+
+    case B_WALKING:
+      look.add("bridger-walk", walk_clock.frame(), offset);
+      break;
+  }
 }
 
 } // namespace pingus::actions

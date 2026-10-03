@@ -52,23 +52,16 @@ Floater::update()
   }
 }
 
-FloaterView::FloaterView(Pingu& pingu, Floater const& action_) :
-  action(action_),
-  sprite("pingus/player" + pingu.get_owner_str() + "/floater/left")
-{
-}
-
-void
-FloaterView::draw(SceneContext& gc, Pingu& pingu)
-{
-  action.clock.apply_to(sprite);
-  gc.color().draw(sprite, pingu.get_pos());
-}
-
 bool
 Floater::change_allowed(ActionName::Enum action)
 {
   return action == ActionName::BOMBER;
+}
+
+void
+Floater::get_look(PinguLook& look) const
+{
+  look.add("floater", clock.frame());
 }
 
 } // namespace pingus::actions

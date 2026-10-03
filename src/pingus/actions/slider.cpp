@@ -65,19 +65,10 @@ Slider::update()
   }
 }
 
-SliderView::SliderView(Pingu& pingu, Slider const& action_) :
-  action(action_),
-  sprite()
-{
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/slider/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/slider/right");
-}
-
 void
-SliderView::draw(SceneContext& gc, Pingu& pingu)
+Slider::get_look(PinguLook& look) const
 {
-  action.clock[pingu.direction()].apply_to(sprite[pingu.direction()]);
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos() + geom::foffset(0, -2));
+  look.add("slider", clock[pingu->direction()].frame());
 }
 
 } // namespace pingus::actions

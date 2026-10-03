@@ -21,15 +21,11 @@
 #include "pingus/animation_clock.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Bridger : public PinguAction
 {
-  friend class BridgerView;
-
 private:
   enum Mode { B_WALKING, B_BUILDING } mode;
   enum { MAX_BRICKS = 15 };
@@ -55,6 +51,7 @@ public:
   ActionName::Enum get_type() const override { return ActionName::BRIDGER; }
 
   void   update() override;
+  void get_look(PinguLook& look) const override;
   void   update_build();
   void   update_walk();
 
@@ -66,19 +63,6 @@ public:
 private:
   Bridger (Bridger const&);
   Bridger& operator= (Bridger const&);
-};
-
-class BridgerView : public PinguActionView
-{
-private:
-  Bridger const& action;
-  StateSprite walk_sprite;
-  StateSprite build_sprite;
-
-public:
-  BridgerView(Pingu& pingu, Bridger const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

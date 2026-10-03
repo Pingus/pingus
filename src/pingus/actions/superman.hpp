@@ -17,17 +17,13 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_SUPERMAN_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_SUPERMAN_HPP
 
-#include "engine/display/sprite.hpp"
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
 
 namespace pingus::actions {
 
 class Superman : public PinguAction
 {
-  friend class SupermanView;
-
 private:
   float counter;
   float x_pos;
@@ -39,22 +35,11 @@ public:
   ActionName::Enum get_type() const override { return ActionName::SUPERMAN; }
 
   void update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   Superman (Superman const&);
   Superman& operator= (Superman const&);
-};
-
-class SupermanView : public PinguActionView
-{
-private:
-  Superman const& action;
-  Sprite sprite;
-
-public:
-  SupermanView(Pingu& pingu, Superman const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

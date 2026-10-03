@@ -30,19 +30,6 @@ Smashed::Smashed (Pingu* p) :
   clock = AnimationClock::from_sprite(res_name);
 }
 
-SmashedView::SmashedView(Pingu& pingu, Smashed const& action_) :
-  action(action_),
-  sprite("pingus/player" + pingu.get_owner_str() + "/bomber")
-{
-}
-
-void
-SmashedView::draw(SceneContext& gc, Pingu& pingu)
-{
-  action.clock.apply_to(sprite);
-  gc.color().draw(sprite, pingu.get_pos());
-}
-
 void
 Smashed::update()
 {
@@ -50,6 +37,12 @@ Smashed::update()
   //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
   if (clock.is_finished())
     pingu->set_status(Pingu::PS_DEAD);
+}
+
+void
+Smashed::get_look(PinguLook& look) const
+{
+  look.add("smashed", clock.frame());
 }
 
 } // namespace pingus::actions

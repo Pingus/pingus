@@ -73,25 +73,16 @@ Boarder::update()
   }
 }
 
-BoarderView::BoarderView(Pingu& pingu, Boarder const& action_) :
-  action(action_),
-  sprite()
-{
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/boarder/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/boarder/right");
-}
-
-void
-BoarderView::draw(SceneContext& gc, Pingu& pingu)
-{
-  action.clock[pingu.direction()].apply_to(sprite[pingu.direction()]);
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
-}
-
 bool
 Boarder::on_ground()
 {
   return pingu->rel_getpixel (0, -1) || pingu->rel_getpixel (0, -2);
+}
+
+void
+Boarder::get_look(PinguLook& look) const
+{
+  look.add("boarder", clock[pingu->direction()].frame());
 }
 
 } // namespace pingus::actions

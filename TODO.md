@@ -212,7 +212,19 @@ well (`pingus-headless -s DIR -T TICKS`).
    - [x] World objects use clocks instead of `Sprite` frame state
    - [x] Seeded `Random` in `World` (`game_random`, `fx_random`) replaces
          global `rand()` in world code
-   - [x] Pingu actions hold no sprites, `PinguActionView`s draw them
+   - [x] Pingu actions hold no sprites, they describe their look
+         (`get_look()`) as animations of the player's animation set
+6. Data-driven visuals
+   - [x] Animation sets (`data/animsets/`), `AnimatedSprite` component;
+         traps, teleporters and pingus use them
+   - [ ] Game timing still comes from the sprite metadata (e.g. the
+         bridger lays its brick at sprite frame 7); move it into game
+         data so new art can't change gameplay
+   - [ ] Declarative effects (particles, sound, flash at given frames),
+         a fixed set of effect types with parameters in data, no
+         scripting
+   - [ ] Remaining level objects (exit, liquid, conveyor belt, ...) still
+         draw their sprites in code
 2. Headless smoke test
    - [x] `extra/pingus-headless` (demos + levels with armageddon,
          offscreen screenshots)
@@ -250,6 +262,8 @@ Found along the way:
 - [x] Editor dropped old `(color ...)` values and snow `intensity` on
       save; fixed by the schema
 - [ ] 87 demos reference levels that no longer exist
+- [ ] The (unused) smashed action shows `pingus/playerN/bomber`, which is
+      the whole bomber sprite sheet as one image
 - [x] Fake exit smashed forever after the first trigger (looping
       sprite); fixed
 - [ ] Build: an `LD_LIBRARY_PATH` pointing at system libraries built

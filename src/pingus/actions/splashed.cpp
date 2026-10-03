@@ -49,17 +49,10 @@ Splashed::update()
   }
 }
 
-SplashedView::SplashedView(Pingu& pingu, Splashed const& action_) :
-  action(action_),
-  sprite("pingus/player" + pingu.get_owner_str() + "/splat")
-{
-}
-
 void
-SplashedView::draw(SceneContext& gc, Pingu& pingu)
+Splashed::get_look(PinguLook& look) const
 {
-  action.clock.apply_to(sprite);
-  gc.color().draw(sprite, pingu.get_pos());
+  look.add("splashed", clock.frame());
 }
 
 } // namespace pingus::actions

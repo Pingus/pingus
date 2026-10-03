@@ -20,15 +20,11 @@
 #include "pingus/collision_mask.hpp"
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Miner : public PinguAction
 {
-  friend class MinerView;
-
 private:
   CollisionMask miner_radius;
   CollisionMask miner_radius_left;
@@ -44,6 +40,7 @@ public:
   ActionName::Enum get_type() const override { return ActionName::MINER; }
 
   void update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   void mine(bool final);
@@ -51,18 +48,6 @@ private:
 private:
   Miner (Miner const&);
   Miner& operator= (Miner const&);
-};
-
-class MinerView : public PinguActionView
-{
-private:
-  Miner const& action;
-  StateSprite sprite;
-
-public:
-  MinerView(Pingu& pingu, Miner const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

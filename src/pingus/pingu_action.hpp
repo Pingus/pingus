@@ -17,6 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 #define HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 
+#include <string_view>
+#include <vector>
+
 #include "math/vector2f.hpp"
 #include "pingus/action_name.hpp"
 #include "fwd.hpp"
@@ -31,10 +34,35 @@ enum ActionType
   COUNTDOWN_TRIGGERED
 };
 
+/** What a pingu doing an action looks like at the moment: animations of
+    the owner's animation set (data/animsets/pingus/playerN.animset),
+    drawn in order at the pingu's position */
+struct PinguLook
+{
+  struct Layer
+  {
+    std::string_view animation;
+    int frame = 0;
+
+    /** Added to the pingu's position and the animation's own offset */
+    Vector2f offset = {};
+
+    /** Only shown the first time it is requested for the current action */
+    bool once = false;
+  };
+
+  std::vector<Layer> layers = {};
+
+  void add(std::string_view animation, int frame, Vector2f offset = {}, bool once = false)
+  {
+    layers.push_back(Layer{animation, frame, offset, once});
+  }
+};
+
 /** This class provides an abstract interface for pingu actions. It is
     used to inherit classes which represent the actions, see actions/.
-    An action holds game state only; how a pingu doing the action looks
-    is up to its PinguActionView. */
+    An action holds game state only and describes its look through
+    get_look(), it never touches sprites. */
 class PinguAction
 {
 protected:
@@ -62,6 +90,9 @@ public:
 
   /// The "AI" of the pingu.
   virtual void update() = 0;
+
+  /** Describe what the pingu looks like right now */
+  virtual void get_look(PinguLook& look) const = 0;
 
   virtual Vector2f get_center_pos() const;
 

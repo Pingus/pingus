@@ -95,17 +95,10 @@ Digger::dig(bool final)
   pingu->set_pos(pingu->get_xi(), pingu->get_yi() + 1);
 }
 
-DiggerView::DiggerView(Pingu& pingu, Digger const& action_) :
-  action(action_),
-  sprite("pingus/player" + pingu.get_owner_str() + "/digger/left")
-{
-}
-
 void
-DiggerView::draw(SceneContext& gc, Pingu& pingu)
+Digger::get_look(PinguLook& look) const
 {
-  action.clock.apply_to(sprite);
-  gc.color().draw(sprite, pingu.get_pos());
+  look.add("digger", clock.frame());
 }
 
 } // namespace pingus::actions

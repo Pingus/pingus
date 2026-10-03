@@ -17,17 +17,13 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_ANGEL_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_ANGEL_HPP
 
-#include "engine/display/sprite.hpp"
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
 
 namespace pingus::actions {
 
 class Angel : public PinguAction
 {
-  friend class AngelView;
-
 private:
   float counter;
   float x_pos;
@@ -39,22 +35,11 @@ public:
   ActionName::Enum get_type() const override { return ActionName::ANGEL; }
 
   void  update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   Angel (Angel const&);
   Angel& operator= (Angel const&);
-};
-
-class AngelView : public PinguActionView
-{
-private:
-  Angel const& action;
-  Sprite sprite;
-
-public:
-  AngelView(Pingu& pingu, Angel const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

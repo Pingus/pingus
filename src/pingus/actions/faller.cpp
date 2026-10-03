@@ -129,30 +129,6 @@ Faller::update()
   }
 }
 
-FallerView::FallerView(Pingu& pingu, Faller const& action_) :
-  action(action_),
-  faller(),
-  tumbler()
-{
-  faller.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/faller/left");
-  faller.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/faller/right");
-  tumbler.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/tumbler/left");
-  tumbler.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/tumbler/right");
-}
-
-void
-FallerView::draw(SceneContext& gc, Pingu& pingu)
-{
-  Direction const& dir = pingu.direction();
-  if (action.is_tumbling()) {
-    action.tumbler_clock[dir].apply_to(tumbler[dir]);
-    gc.color().draw(tumbler[dir], pingu.get_pos());
-  } else {
-    action.faller_clock[dir].apply_to(faller[dir]);
-    gc.color().draw(faller[dir], pingu.get_pos());
-  }
-}
-
 bool
 Faller::is_tumbling() const
 {
@@ -168,6 +144,16 @@ Faller::change_allowed (ActionName::Enum new_action)
     new_action == ActionName::FLOATER ||
     new_action == ActionName::CLIMBER ||
     new_action == ActionName::BOMBER;
+}
+
+void
+Faller::get_look(PinguLook& look) const
+{
+  if (is_tumbling()) {
+    look.add("tumbler", tumbler_clock[pingu->direction()].frame());
+  } else {
+    look.add("faller", faller_clock[pingu->direction()].frame());
+  }
 }
 
 } // namespace pingus::actions

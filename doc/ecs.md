@@ -33,11 +33,14 @@ actions, the GUI and the server use, and reads and writes the other
 components. Actions are still classes (`src/pingus/actions/`) held by
 `PinguBehavior`. They hold game state only: all animation timing is in
 `AnimationClock`s (`DirectionalAnimationClock` for animations that only
-advance in the facing direction). Each action has a `PinguActionView`
-(`WalkerView`, …) with its sprites, which takes the frames from the
-action's clocks. The `PinguView` component holds the view for the
-pingu's current action; `systems::draw_pingus()` creates it when the
-action changes, so the simulation alone never loads action sprites.
+advance in the facing direction). An action describes what the pingu
+looks like through `get_look()`: a list of layers, each an animation of
+the owner's animation set (`data/animsets/pingus/playerN.animset`) with
+a frame and an optional offset, e.g. the walker's `walker` plus the
+`floater-layer` overlay, or the bomber's `explosion` flash marked as
+shown once. `systems::draw_pingus()` draws the looks, keeping the loaded
+sprites in the `PinguView` component, so the simulation alone never
+loads pingu sprites.
 
 `PinguHolder` creates pingu entities, finds them by id, counts released,
 exited and killed pingus, and iterates the active ones (`for_each()`).
@@ -137,8 +140,8 @@ an optional loop override:
 The `AnimatedSprite` component refers to a set and holds the requested
 animation, direction, frame and visibility. Game systems only set those
 (the traps in `update_trap_animations()`), the render system loads the
-sprites and draws them. The traps and teleporters use animation sets so
-far, so their look can be changed without touching code.
+sprites and draws them. The traps, teleporters and pingus use animation
+sets, so their look can be changed without touching code.
 
 ## Game logic and presentation
 

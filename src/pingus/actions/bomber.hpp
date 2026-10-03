@@ -20,8 +20,6 @@
 #include "pingus/animation_clock.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
@@ -29,8 +27,6 @@ namespace pingus::actions {
     Pingu leaves a hole inside the ground. */
 class Bomber : public PinguAction
 {
-  friend class BomberView;
-
 private:
   bool particle_thrown;
   bool sound_played;
@@ -47,26 +43,11 @@ public:
   bool change_allowed (ActionName::Enum /* action */) override { return false; }
 
   void update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   Bomber (Bomber const&);
   Bomber& operator= (Bomber const&);
-};
-
-class BomberView : public PinguActionView
-{
-private:
-  Bomber const& action;
-  StateSprite sprite;
-  Sprite explo_surf;
-
-  /** The explosion flash is shown for a single frame */
-  bool gfx_exploded;
-
-public:
-  BomberView(Pingu& pingu, Bomber const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions

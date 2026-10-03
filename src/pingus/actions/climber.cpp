@@ -87,21 +87,6 @@ Climber::update()
   }
 }
 
-ClimberView::ClimberView(Pingu& pingu, Climber const& action_) :
-  action(action_),
-  sprite()
-{
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/climber/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/climber/right");
-}
-
-void
-ClimberView::draw(SceneContext& gc, Pingu& pingu)
-{
-  action.clock[pingu.direction()].apply_to(sprite[pingu.direction()]);
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
-}
-
 bool
 Climber::change_allowed(ActionName::Enum new_action)
 {
@@ -109,6 +94,12 @@ Climber::change_allowed(ActionName::Enum new_action)
     (new_action == ActionName::FLOATER) ||
     (new_action == ActionName::BOMBER) ||
     (new_action == ActionName::JUMPER);
+}
+
+void
+Climber::get_look(PinguLook& look) const
+{
+  look.add("climber", clock[pingu->direction()].frame());
 }
 
 } // namespace pingus::actions

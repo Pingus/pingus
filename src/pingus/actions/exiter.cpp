@@ -49,19 +49,10 @@ Exiter::update()
   }
 }
 
-ExiterView::ExiterView(Pingu& pingu, Exiter const& action_) :
-  action(action_),
-  sprite()
-{
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/exit/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/exit/right");
-}
-
 void
-ExiterView::draw(SceneContext& gc, Pingu& pingu)
+Exiter::get_look(PinguLook& look) const
 {
-  action.clock.apply_to(sprite[pingu.direction()]);
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
+  look.add("exit", clock.frame());
 }
 
 } // namespace pingus::actions

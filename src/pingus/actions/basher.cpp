@@ -37,27 +37,11 @@ Basher::Basher (Pingu* p) :
 {
   assert(bash_radius.get_width() % 2 == 0);
 
-
   bash_reach = bash_radius.get_width();
 
   // Start a bash even so the action will stops instantly after the
   // first bash
   bash();
-}
-
-BasherView::BasherView(Pingu& pingu, Basher const& action_) :
-  action(action_),
-  sprite()
-{
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/basher/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/basher/right");
-}
-
-void
-BasherView::draw(SceneContext& gc, Pingu& pingu)
-{
-  action.clock.apply_to(sprite[pingu.direction()]);
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
 }
 
 void
@@ -173,6 +157,12 @@ Basher::have_something_to_dig()
 
     return false;
   }
+}
+
+void
+Basher::get_look(PinguLook& look) const
+{
+  look.add("basher", clock.frame());
 }
 
 } // namespace pingus::actions

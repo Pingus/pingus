@@ -58,21 +58,6 @@ Blocker::update()
   clock.update();
 }
 
-BlockerView::BlockerView(Pingu& pingu, Blocker const& action_) :
-  action(action_),
-  sprite()
-{
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/blocker/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/blocker/right");
-}
-
-void
-BlockerView::draw(SceneContext& gc, Pingu& pingu)
-{
-  action.clock.apply_to(sprite[pingu.direction()]);
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
-}
-
 bool
 Blocker::standing_on_ground()
 {
@@ -97,6 +82,12 @@ Blocker::catch_pingu(Pingu* target)
       }
     }
   }
+}
+
+void
+Blocker::get_look(PinguLook& look) const
+{
+  look.add("blocker", clock.frame());
 }
 
 } // namespace pingus::actions

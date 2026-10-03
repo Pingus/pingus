@@ -198,28 +198,13 @@ Walker::update()
   */
 }
 
-WalkerView::WalkerView(Pingu& pingu, Walker const& action_) :
-  action(action_),
-  walker(),
-  floaterlayer()
-{
-  walker.load(Direction::LEFT, "pingus/player" + pingu.get_owner_str() + "/walker/left");
-  walker.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/walker/right");
-  floaterlayer.load(Direction::LEFT,  "other/floaterlayer/left");
-  floaterlayer.load(Direction::RIGHT, "other/floaterlayer/right");
-}
-
 void
-WalkerView::draw(SceneContext& gc, Pingu& pingu)
+Walker::get_look(PinguLook& look) const
 {
-  Direction const& dir = pingu.direction();
-  action.walker_clock[dir].apply_to(walker[dir]);
-  gc.color().draw(walker[dir], pingu.get_pos());
+  look.add("walker", walker_clock[pingu->direction()].frame());
 
-  if (pingu.get_fall_action() && pingu.get_fall_action()->get_type() == ActionName::FLOATER)
-  {
-    action.floaterlayer_clock[dir].apply_to(floaterlayer[dir]);
-    gc.color().draw(floaterlayer[dir], pingu.get_pos());
+  if (pingu->get_fall_action() && pingu->get_fall_action()->get_type() == ActionName::FLOATER) {
+    look.add("floater-layer", floaterlayer_clock[pingu->direction()].frame());
   }
 }
 

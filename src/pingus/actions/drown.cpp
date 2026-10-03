@@ -27,21 +27,6 @@ Drown::Drown (Pingu* p) :
 {
 }
 
-DrownView::DrownView(Pingu& pingu, Drown const& action_) :
-  action(action_),
-  sprite()
-{
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu.get_owner_str() + "/drownfall/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu.get_owner_str() + "/drownfall/right");
-}
-
-void
-DrownView::draw(SceneContext& gc, Pingu& pingu)
-{
-  action.clock.apply_to(sprite[pingu.direction()]);
-  gc.color().draw(sprite[pingu.direction()], pingu.get_pos());
-}
-
 void
 Drown::update()
 {
@@ -50,6 +35,12 @@ Drown::update()
   {
     pingu->set_status(Pingu::PS_DEAD);
   }
+}
+
+void
+Drown::get_look(PinguLook& look) const
+{
+  look.add("drown", clock.frame());
 }
 
 } // namespace pingus::actions

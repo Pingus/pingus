@@ -19,15 +19,11 @@
 
 #include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/pingu_action_view.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Walker : public PinguAction
 {
-  friend class WalkerView;
-
 private:
   DirectionalAnimationClock walker_clock;
   DirectionalAnimationClock floaterlayer_clock;
@@ -38,25 +34,13 @@ public:
   Walker (Pingu*);
 
   void update() override;
+  void get_look(PinguLook& look) const override;
 
   ActionName::Enum get_type() const override { return ActionName::WALKER; }
 
 private:
   Walker (Walker const&);
   Walker& operator= (Walker const&);
-};
-
-class WalkerView : public PinguActionView
-{
-private:
-  Walker const& action;
-  StateSprite walker;
-  StateSprite floaterlayer;
-
-public:
-  WalkerView(Pingu& pingu, Walker const& action);
-
-  void draw(SceneContext& gc, Pingu& pingu) override;
 };
 
 } // namespace pingus::actions
