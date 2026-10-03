@@ -137,6 +137,22 @@ an optional loop override:
           (loop #f))))
 ```
 
+Instead of naming sprite resources, an animation can define its sprite
+inline with the same keys as a `.sprite` file: `frames` for both
+directions, `left-frames` / `right-frames` to add or override fields
+for one direction (typically the row of the sprite sheet). Image paths
+starting with `images/` are relative to the data directory. The pingu
+animation sets and `gui/action-buttons` define their sprites inline;
+sprites also used elsewhere (traps in the editor, ...) stay `.sprite`
+resources.
+
+```scheme
+(walker (frames (image "images/pingus/player0/walker.png")
+                (origin "bottom_center") (offset 0 2)
+                (speed 80) (loop #t) (array 8 1) (size 32 32))
+        (right-frames (position 0 32)))
+```
+
 The `AnimatedSprite` component refers to a set and holds the requested
 animation, direction, frame and visibility. Game systems only set those
 (the traps in `update_trap_animations()`), the render system loads the

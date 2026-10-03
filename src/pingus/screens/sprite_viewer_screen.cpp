@@ -190,6 +190,24 @@ SpriteViewerScreen::load_sprite_by_name(std::string const& res_name)
   return Sprite(res_name);
 }
 
+Sprite
+SpriteViewerScreen::load_animation_sprite(AnimationDef const& def, Direction const& dir)
+{
+  if (SpriteDescription const* desc = def.frames(dir)) {
+    return Sprite(*desc);
+  }
+  return load_sprite_by_name(def.sprite_name(dir));
+}
+
+AnimationClock
+SpriteViewerScreen::animation_clock(AnimationDef const& def, Direction const& dir)
+{
+  if (SpriteDescription const* desc = def.frames(dir)) {
+    return AnimationClock::from_description(*desc);
+  }
+  return AnimationClock::from_sprite(def.sprite_name(dir));
+}
+
 void
 SpriteViewerScreen::select_animation(int index)
 {
@@ -223,10 +241,10 @@ SpriteViewerScreen::restart_playback()
   std::string const& sprite_name = def.sprite_name(m_direction);
   auto it = m_sprites.find(sprite_name);
   if (it == m_sprites.end()) {
-    it = m_sprites.emplace(sprite_name, load_sprite_by_name(sprite_name)).first;
+    it = m_sprites.emplace(sprite_name, load_animation_sprite(def, m_direction)).first;
   }
   m_sprite = it->second;
-  m_clock = AnimationClock::from_sprite(sprite_name);
+  m_clock = animation_clock(def, m_direction);
   if (def.loop) {
     m_clock.set_loop(*def.loop);
   }
@@ -315,9 +333,8 @@ SpriteViewerScreen::fire_effect(Effect const& effect)
     OverlayPlayback play;
     play.animation = overlay->animation;
     play.offset = overlay->offset;
-    std::string const& sprite_name = odef->sprite_name(m_direction);
-    play.sprite = load_sprite_by_name(sprite_name);
-    play.clock = AnimationClock::from_sprite(sprite_name);
+    play.sprite = load_animation_sprite(*odef, m_direction);
+    play.clock = animation_clock(*odef, m_direction);
     if (odef->loop) {
       play.clock.set_loop(*odef->loop);
     } else {

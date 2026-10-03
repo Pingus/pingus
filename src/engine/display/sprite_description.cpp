@@ -29,45 +29,58 @@ SpriteDescription::from_file(Pathname const& path)
 {
   auto doc = prio::ReaderDocument::from_string(
     System::read_file(path.get_sys_path()), prio::ErrorHandler::THROW, path.str());
-  prio::ReaderMapping reader = doc.get_root().get_mapping();
 
-  SpriteDescriptionPtr desc(new SpriteDescription);
-
-  reader.read("speed", desc->speed);
-  reader.read("loop", desc->loop);
-  reader.read("offset", desc->offset);
-
-  reader.read("origin", desc->origin, string2origin);
-
-  if (!reader.read("image", desc->filename))
-  {
-    log_error("'image' missing for {}", doc.get_root().get_name());
+  SpriteDescriptionPtr desc = from_mapping(doc.get_root().get_mapping(), path);
+  if (desc->filename.empty()) {
+    log_error("'image' missing for {}", path.str());
   }
-  else
+  return desc;
+}
+
+SpriteDescriptionPtr
+SpriteDescription::from_mapping(prio::ReaderMapping const& reader, Pathname const& context)
+{
+  SpriteDescriptionPtr desc(new SpriteDescription);
+  desc->read(reader, context);
+  return desc;
+}
+
+void
+SpriteDescription::read(prio::ReaderMapping const& reader, Pathname const& context)
+{
+  reader.read("speed", speed);
+  reader.read("loop", loop);
+  reader.read("offset", offset);
+
+  reader.read("origin", origin, string2origin);
+
+  Pathname image;
+  if (reader.read("image", image))
   {
     // Resolve the image path the same way ResourceManager used to:
     // - historical entries "/images/..." → strip leading slash (datadir-relative)
-    // - bare names like "conveyorbelt_left.png" → relative to the .sprite file
-    // - paths already under "images/" stay as-is
-    std::string img = desc->filename.get_raw_path();
+    // - paths under "images/" are relative to the data directory
+    // - bare names like "conveyorbelt_left.png" → relative to the file the
+    //   definition comes from, with that file's Pathname type, so sprites
+    //   opened from disk (e.g. the sprite viewer) find images next to them
+    std::string img = image.get_raw_path();
     if (!img.empty() && img.front() == '/')
       img.erase(img.begin());
 
-    if (img.find("images/") != 0)
+    if (img.find("images/") == 0)
     {
-      img = System::normalize_path(
-        Pathname::join(System::dirname(path.get_raw_path()), img));
+      filename = Pathname(img, Pathname::DATA_PATH);
     }
-
-    // Keep the Pathname type of the .sprite so SYSTEM_PATH opens (e.g. the
-    // sprite viewer) still resolve images next to the file on disk.
-    desc->filename = Pathname(img, path.get_type());
+    else
+    {
+      img = System::normalize_path(Pathname::join(System::dirname(context.get_raw_path()), img));
+      filename = Pathname(img, context.get_type());
+    }
   }
-  reader.read("array", desc->array);
-  reader.read("position",   desc->frame_pos);
-  reader.read("size",  desc->frame_size);
 
-  return desc;
+  reader.read("array", array);
+  reader.read("position", frame_pos);
+  reader.read("size", frame_size);
 }
 
 } // namespace pingus

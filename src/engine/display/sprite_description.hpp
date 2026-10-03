@@ -38,6 +38,15 @@ class SpriteDescription
 public:
   static SpriteDescriptionPtr from_file(Pathname const& path);
 
+  /** Read a sprite definition from a mapping with the keys of a .sprite
+      file. 'context' is the file the mapping comes from, image paths that
+      don't start with "images/" are relative to it. */
+  static SpriteDescriptionPtr from_mapping(prio::ReaderMapping const& reader, Pathname const& context);
+
+  /** Override the fields present in 'reader', e.g. the frame position of
+      the right facing variant of an inline sprite definition */
+  void read(prio::ReaderMapping const& reader, Pathname const& context);
+
 public:
   Pathname    filename;
   geom::ipoint    offset;

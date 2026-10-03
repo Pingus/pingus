@@ -88,6 +88,61 @@ TEST(AnimationSetTest, invalid_effects)
   EXPECT_THROW(load("(particles (at-step 1) (kind \"fire\"))"), std::runtime_error); // unknown kind
 }
 
+TEST(AnimationSetTest, inline_frames)
+{
+  ReaderDocument doc = ReaderDocument::from_string(
+    "(pingus-animset"
+    "  (animations"
+    "    (walker (frames (image \"images/pingus/player0/walker.png\") (origin \"bottom_center\")"
+    "                    (offset 0 2) (speed 80) (loop #t) (array 8 1) (size 32 32))"
+    "            (right-frames (position 0 32))"
+    "            (offset 1 -1))))");
+  AnimationSet set = AnimationSet::from_reader(doc.get_root());
+  AnimationDef const& walker = set.get_animation("walker");
+
+  Direction left;
+  left.left();
+  Direction right;
+  right.right();
+
+  ASSERT_NE(walker.frames(left), nullptr);
+  ASSERT_NE(walker.frames(right), nullptr);
+  SpriteDescription const& l = *walker.frames(left);
+  SpriteDescription const& r = *walker.frames(right);
+
+  // shared fields from 'frames'
+  EXPECT_EQ(l.filename.get_raw_path(), "images/pingus/player0/walker.png");
+  EXPECT_EQ(l.filename.get_type(), Pathname::DATA_PATH);
+  EXPECT_EQ(l.speed, 80);
+  EXPECT_EQ(l.array, geom::isize(8, 1));
+  EXPECT_EQ(r.speed, 80);
+  EXPECT_EQ(r.offset, geom::ipoint(0, 2));
+
+  // 'right-frames' only changes the right variant
+  EXPECT_EQ(l.frame_pos, geom::ipoint(0, 0));
+  EXPECT_EQ(r.frame_pos, geom::ipoint(0, 32));
+
+  // the animation's own offset is separate from the sprite offset
+  EXPECT_EQ(walker.offset, Vector2f(1, -1));
+
+  AnimationClock clock = walker.make_clock();
+  EXPECT_EQ(clock.frame_count(), 8);
+}
+
+TEST(AnimationSetTest, invalid_inline_frames)
+{
+  auto load = [](std::string const& anim) {
+    ReaderDocument doc = ReaderDocument::from_string("(pingus-animset (animations " + anim + "))");
+    return AnimationSet::from_reader(doc.get_root());
+  };
+  // only one direction without shared 'frames'
+  EXPECT_THROW(load("(a (left-frames (image \"images/a.png\")))"), std::runtime_error);
+  // no image
+  EXPECT_THROW(load("(a (frames (speed 100)))"), std::runtime_error);
+  // both directions defined separately is fine
+  EXPECT_NO_THROW(load("(a (left-frames (image \"images/a.png\")) (right-frames (image \"images/b.png\")))"));
+}
+
 TEST(AnimationSetTest, game_data_animation_sets_load)
 {
   // all animation sets shipped with the game must parse, needs the data

@@ -71,10 +71,20 @@ EffectTrigger read_effect(std::string const& animation, ReaderObject const& read
 
 } // namespace
 
+Sprite
+AnimationDef::make_sprite(Direction const& dir) const
+{
+  if (SpriteDescription const* desc = frames(dir)) {
+    return Sprite(*desc);
+  } else {
+    return Sprite(sprite_name(dir));
+  }
+}
+
 AnimationClock
 AnimationDef::make_clock() const
 {
-  AnimationClock clock = AnimationClock::from_sprite(left);
+  AnimationClock clock = left_frames ? AnimationClock::from_description(*left_frames) : AnimationClock::from_sprite(left);
   if (loop) {
     clock.set_loop(*loop);
   }
@@ -84,8 +94,8 @@ AnimationDef::make_clock() const
 DirectionalAnimationClock
 AnimationDef::make_directional_clock() const
 {
-  AnimationClock left_clock = AnimationClock::from_sprite(left);
-  AnimationClock right_clock = AnimationClock::from_sprite(right);
+  AnimationClock left_clock = left_frames ? AnimationClock::from_description(*left_frames) : AnimationClock::from_sprite(left);
+  AnimationClock right_clock = right_frames ? AnimationClock::from_description(*right_frames) : AnimationClock::from_sprite(right);
   if (loop) {
     left_clock.set_loop(*loop);
     right_clock.set_loop(*loop);
@@ -110,7 +120,7 @@ AnimationSet::get(std::string const& name)
     throw std::runtime_error(path.str() + ": not a pingus-animset file");
   }
 
-  auto set = std::make_shared<AnimationSet const>(from_reader(doc.get_root()));
+  auto set = std::make_shared<AnimationSet const>(from_reader(doc.get_root(), path));
   cache.emplace(name, set);
   return set;
 }
@@ -122,11 +132,11 @@ AnimationSet::from_file(Pathname const& path)
   if (doc.get_root().get_name() != "pingus-animset") {
     throw std::runtime_error(path.str() + ": not a pingus-animset file");
   }
-  return from_reader(doc.get_root());
+  return from_reader(doc.get_root(), path);
 }
 
 AnimationSet
-AnimationSet::from_reader(ReaderObject const& reader)
+AnimationSet::from_reader(ReaderObject const& reader, Pathname const& context)
 {
   AnimationSet set;
 
@@ -140,14 +150,48 @@ AnimationSet::from_reader(ReaderObject const& reader)
     anim.name = item.get_name();
 
     std::string sprite;
-    if (mapping.read("sprite", sprite))
+    ReaderMapping frames;
+    ReaderMapping left_frames;
+    ReaderMapping right_frames;
+    bool const has_frames = mapping.read("frames", frames);
+    bool const has_left_frames = mapping.read("left-frames", left_frames);
+    bool const has_right_frames = mapping.read("right-frames", right_frames);
+
+    if (has_frames || has_left_frames || has_right_frames)
+    {
+      // Inline definition: 'frames' for both directions, 'left-frames' and
+      // 'right-frames' add to or override it
+      if (!has_frames && !(has_left_frames && has_right_frames)) {
+        throw std::runtime_error("animation '" + anim.name + "' needs 'frames' or 'left-frames' and 'right-frames'");
+      }
+
+      auto make_frames = [&](bool has_dir, ReaderMapping const& dir_frames) {
+        auto desc = std::make_shared<SpriteDescription>();
+        if (has_frames) {
+          desc->read(frames, context);
+        }
+        if (has_dir) {
+          desc->read(dir_frames, context);
+        }
+        if (desc->filename.empty()) {
+          throw std::runtime_error("animation '" + anim.name + "': inline frames need an 'image'");
+        }
+        return desc;
+      };
+
+      anim.left_frames = make_frames(has_left_frames, left_frames);
+      anim.right_frames = make_frames(has_right_frames, right_frames);
+      anim.left = context.get_raw_path() + ":" + anim.name + "/left";
+      anim.right = context.get_raw_path() + ":" + anim.name + "/right";
+    }
+    else if (mapping.read("sprite", sprite))
     {
       anim.left = sprite;
       anim.right = sprite;
     }
     else if (!mapping.read("left", anim.left) || !mapping.read("right", anim.right))
     {
-      throw std::runtime_error("animation '" + anim.name + "' needs 'sprite' or 'left' and 'right'");
+      throw std::runtime_error("animation '" + anim.name + "' needs 'sprite', 'left' and 'right', or 'frames'");
     }
 
     anim.offset = read_vector(mapping, "offset");

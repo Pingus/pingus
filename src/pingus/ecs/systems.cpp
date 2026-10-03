@@ -177,11 +177,12 @@ Sprite&
 animation_sprite(AnimationSet const& set, std::map<std::string, Sprite>& sprites,
                  std::string_view animation, Direction const& direction)
 {
-  std::string const& sprite_name = set.get_animation(animation).sprite_name(direction);
+  AnimationDef const& def = set.get_animation(animation);
+  std::string const& sprite_name = def.sprite_name(direction);
 
   auto it = sprites.find(sprite_name);
   if (it == sprites.end()) {
-    it = sprites.emplace(sprite_name, Sprite(sprite_name)).first;
+    it = sprites.emplace(sprite_name, def.make_sprite(direction)).first;
   }
   return it->second;
 }

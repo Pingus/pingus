@@ -11,6 +11,8 @@
 #include <variant>
 #include <vector>
 
+#include "engine/display/sprite.hpp"
+#include "engine/display/sprite_description.hpp"
 #include "math/vector2f.hpp"
 #include "pingus/animation_clock.hpp"
 #include "pingus/direction.hpp"
@@ -62,9 +64,15 @@ struct AnimationDef
   std::string name = {};
 
   /** Sprite resources for the two directions, the same for animations
-      without a direction */
+      without a direction. For inline sprite definitions an identifier for
+      messages and caches. */
   std::string left = {};
   std::string right = {};
+
+  /** Inline sprite definitions ('frames', 'left-frames', 'right-frames'),
+      nullptr when the animation refers to sprite resources */
+  SpriteDescriptionPtr left_frames = {};
+  SpriteDescriptionPtr right_frames = {};
 
   /** Added to the position the animation is drawn at */
   Vector2f offset = {};
@@ -75,6 +83,16 @@ struct AnimationDef
   std::vector<EffectTrigger> effects = {};
 
   std::string const& sprite_name(Direction const& dir) const { return dir.is_left() ? left : right; }
+
+  /** The inline sprite definition for the direction, nullptr if the
+      animation refers to a sprite resource */
+  SpriteDescription const* frames(Direction const& dir) const
+  {
+    return (dir.is_left() ? left_frames : right_frames).get();
+  }
+
+  /** Create the sprite for the direction */
+  Sprite make_sprite(Direction const& dir) const;
 
   /** A clock with the animation's timing, from the sprite metadata */
   AnimationClock make_clock() const;
@@ -92,6 +110,11 @@ struct AnimationDef
         (animations
           (idle
             (sprite "traps/guillotineidle"))      ; both directions
+          (walker                                 ; inline sprite definition,
+            (frames                               ; same keys as a .sprite file
+              (image "images/pingus/player0/walker.png")
+              (speed 80) (array 8 1) (size 32 32))
+            (right-frames (position 0 32)))       ; right facing variant
           (kill
             (left "traps/guillotinekill/left")
             (right "traps/guillotinekill/right")
@@ -117,7 +140,9 @@ public:
       Used by the asset viewer for reload; throws on error. */
   static AnimationSet from_file(Pathname const& path);
 
-  static AnimationSet from_reader(ReaderObject const& reader);
+  /** 'context' is the file the set comes from, inline image paths that
+      don't start with "images/" are relative to it */
+  static AnimationSet from_reader(ReaderObject const& reader, Pathname const& context = Pathname());
 
 public:
   AnimationSet();

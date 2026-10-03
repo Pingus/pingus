@@ -89,6 +89,11 @@ private:
   void update_overlays();
   void update_particles();
   Sprite load_sprite_by_name(std::string const& res_name);
+
+  /** Sprite and clock of an animation, from its inline definition or its
+      sprite resource */
+  Sprite load_animation_sprite(AnimationDef const& def, Direction const& dir);
+  AnimationClock animation_clock(AnimationDef const& def, Direction const& dir);
   void draw_crosshair(DrawingContext& gc, int x, int y);
   void draw_hud(DrawingContext& gc);
 
