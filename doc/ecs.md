@@ -31,7 +31,13 @@ machine) and, while it is alive and in the level, `ActivePingu`. The
 `Pingu` component holds no state of its own: it is the interface the 22
 actions, the GUI and the server use, and reads and writes the other
 components. Actions are still classes (`src/pingus/actions/`) held by
-`PinguBehavior`.
+`PinguBehavior`. They hold game state only: all animation timing is in
+`AnimationClock`s (`DirectionalAnimationClock` for animations that only
+advance in the facing direction). Each action has a `PinguActionView`
+(`WalkerView`, …) with its sprites, which takes the frames from the
+action's clocks. The `PinguView` component holds the view for the
+pingu's current action; `systems::draw_pingus()` creates it when the
+action changes, so the simulation alone never loads action sprites.
 
 `PinguHolder` creates pingu entities, finds them by id, counts released,
 exited and killed pingus, and iterates the active ones (`for_each()`).
@@ -158,5 +164,3 @@ covering all object types, against the previous step.
 
 - Move the object type definitions from C++ into a data file.
 - Turn the pingu actions from classes into data plus per action systems.
-- Move the sprites out of the pingu actions into a render component, so
-  actions are pure game logic.

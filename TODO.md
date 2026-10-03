@@ -212,9 +212,7 @@ well (`pingus-headless -s DIR -T TICKS`).
    - [x] World objects use clocks instead of `Sprite` frame state
    - [x] Seeded `Random` in `World` (`game_random`, `fx_random`) replaces
          global `rand()` in world code
-   - [ ] Pingu actions still advance purely visual sprites in `update()`
-         (walker, faller, …); level objects do this in dedicated
-         animation steps of the systems
+   - [x] Pingu actions hold no sprites, `PinguActionView`s draw them
 2. Headless smoke test
    - [x] `extra/pingus-headless` (demos + levels with armageddon,
          offscreen screenshots)
