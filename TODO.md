@@ -234,6 +234,9 @@ well (`pingus-headless -s DIR -T TICKS`).
          components
    - [x] `WorldObj` level object classes and `WorldObjFactory` removed
    - [x] Global `WorldObj::world` replaced by explicit references
+   - [x] Ground map and particles are plain services, `WorldObj` removed
+   - [x] Editor accesses properties by name, typed `LevelObj` accessors
+         removed
    - [x] Fixed system order (spawners, pingus, objects) instead of the
          old z-based update order
 5. Pingus as entities

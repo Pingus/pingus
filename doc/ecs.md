@@ -19,8 +19,9 @@ do the pingus. Their behavior is implemented by systems. This replaced the old
 
 (`src/pingus/components/` holds GUI widgets and is unrelated.)
 
-The ground map and the particle systems are not entities. They are
-still `WorldObj`s, each with an explicit pointer to their `World`.
+The ground map (`GroundMap`) and the particle systems
+(`src/pingus/particles/`) are not entities but plain services owned by
+`World`, which updates and draws them explicitly.
 
 ## Pingus
 
@@ -52,7 +53,8 @@ the values the game uses when a property is missing.
 
 To add a property, add it to the type in `ObjectSchema::ObjectSchema()`
 and read it with `data.get<T>("name")` in the type's entity builder. The
-editor loads and saves it automatically, and its property panel
+editor accesses properties by name (`LevelObj::get_property()` /
+`set_property()`), loads and saves them automatically, and its property panel
 (`ObjectProperties`) creates a widget for it from the property type:
 an inputbox for numbers and strings, a combobox for strings with
 `choices`, a checkbox for booleans, four inputboxes for colors. `label`
@@ -79,18 +81,18 @@ iteration order matter more than cache layout.
 1. Expands `group` and `prefab` objects (applying prefab overrides and
    offsets).
 2. Reads every object into an `ObjectData` through the schema.
-3. Sorts all objects, together with the remaining `WorldObj`s, by
-   z-index (stable). `systems::object_z_index()` applies the types that
+3. Sorts all objects, together with markers for the ground (z 0), the
+   pingus (z 50) and the particles (z 1000), by z-index (stable). `systems::object_z_index()` applies the types that
    always used a fixed z (backgrounds, weather, switch doors).
-4. Creates the entities in that order, so the system iteration order is
-   the old z-sorted update order.
+4. Creates the entities in that order, so systems iterate them in
+   z-order.
 5. Runs startup per object in z-order: groundpieces draw themselves into
    the ground and collision map (and are destroyed afterwards), exits
    cut their shape out of it, teleporters and switches resolve their
    targets by `ObjectId`.
 
-`World::object_order` keeps the combined z-sorted list of `WorldObj`s and
-entities. Drawing walks this list too, so the draw order is the same as
+`World::object_order` keeps this combined z-sorted list of entities and
+layer markers. Drawing walks it too, so the draw order is the same as
 before the conversion.
 
 ## Per tick update
@@ -99,7 +101,7 @@ before the conversion.
 World::update()
   systems::update_spawners()   entrances release pingus
   systems::update_pingus()     pingus act and move
-  WorldObj::update() for each  ground, particles
+  particle systems update
   systems::update_objects()    traps, exits, teleporters, conveyor belts,
                                switch doors, ice blocks, weather,
                                backgrounds, decorative animation
@@ -156,7 +158,5 @@ covering all object types, against the previous step.
 
 - Move the object type definitions from C++ into a data file.
 - Turn the pingu actions from classes into data plus per action systems.
-- Ground map and particle systems as entities or plain world services
-  instead of `WorldObj`s.
-- Remove the typed per property accessors from the editor's `LevelObj`
-  in favor of `get_object_data()`.
+- Move the sprites out of the pingu actions into a render component, so
+  actions are pure game logic.
