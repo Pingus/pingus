@@ -246,6 +246,45 @@ void update_smashers(World& world, ecs::Registry& reg)
   });
 }
 
+/** Show the traps' state through their AnimatedSprite */
+void update_trap_animations(ecs::Registry& reg)
+{
+  reg.each<Spike, AnimatedSprite>([](ecs::Entity, Spike& spike, AnimatedSprite& anim) {
+    anim.frame = spike.clock.frame();
+    anim.visible = spike.killing;
+  });
+
+  reg.each<FakeExit, AnimatedSprite>([](ecs::Entity, FakeExit& fake_exit, AnimatedSprite& anim) {
+    anim.frame = fake_exit.clock.frame();
+  });
+
+  reg.each<Guillotine, AnimatedSprite>([](ecs::Entity, Guillotine& guillotine, AnimatedSprite& anim) {
+    if (guillotine.killing)
+    {
+      anim.animation = "kill";
+      anim.direction = guillotine.direction;
+      anim.frame = guillotine.kill_clock.frame();
+    }
+    else
+    {
+      anim.animation = "idle";
+      anim.frame = guillotine.idle_clock.frame();
+    }
+  });
+
+  reg.each<Hammer, AnimatedSprite>([](ecs::Entity, Hammer& hammer, AnimatedSprite& anim) {
+    anim.frame = hammer.count;
+  });
+
+  reg.each<LaserExit, AnimatedSprite>([](ecs::Entity, LaserExit& laser, AnimatedSprite& anim) {
+    anim.frame = laser.clock.frame();
+  });
+
+  reg.each<Smasher, AnimatedSprite>([](ecs::Entity, Smasher& smasher, AnimatedSprite& anim) {
+    anim.frame = smasher.count;
+  });
+}
+
 } // namespace
 
 void
@@ -258,6 +297,7 @@ update_traps(World& world)
   update_hammers(world, reg);
   update_laser_exits(world, reg);
   update_smashers(world, reg);
+  update_trap_animations(reg);
 }
 
 void
@@ -272,61 +312,6 @@ startup_trap(World& world, ecs::Entity entity)
               static_cast<int>(transform.pos.x()),
               static_cast<int>(transform.pos.y()),
               Groundtype::GP_SOLID);
-  }
-}
-
-void
-draw_trap(World& world, SceneContext& gc, ecs::Entity entity)
-{
-  ecs::Registry& reg = world.get_registry();
-  Transform const& transform = reg.get<Transform>(entity);
-
-  if (auto* spike = reg.try_get<Spike>(entity))
-  {
-    if (spike->killing)
-    {
-      spike->clock.apply_to(spike->sprite);
-      gc.color().draw(spike->sprite, transform.pos);
-    }
-  }
-
-  if (auto* fake_exit = reg.try_get<FakeExit>(entity))
-  {
-    fake_exit->clock.apply_to(fake_exit->sprite);
-    gc.color().draw(fake_exit->sprite, transform.pos);
-  }
-
-  if (auto* guillotine = reg.try_get<Guillotine>(entity))
-  {
-    if (guillotine->killing)
-    {
-      Sprite& sprite = guillotine->direction.is_left() ? guillotine->sprite_kill_left : guillotine->sprite_kill_right;
-      guillotine->kill_clock.apply_to(sprite);
-      gc.color().draw(sprite, transform.pos);
-    }
-    else
-    {
-      guillotine->idle_clock.apply_to(guillotine->sprite_idle);
-      gc.color().draw(guillotine->sprite_idle, transform.pos);
-    }
-  }
-
-  if (auto* hammer = reg.try_get<Hammer>(entity))
-  {
-    hammer->sprite.set_frame(hammer->count);
-    gc.color().draw(hammer->sprite, transform.pos);
-  }
-
-  if (auto* laser = reg.try_get<LaserExit>(entity))
-  {
-    laser->clock.apply_to(laser->sprite);
-    gc.color().draw(laser->sprite, transform.pos);
-  }
-
-  if (auto* smasher = reg.try_get<Smasher>(entity))
-  {
-    smasher->sprite.set_frame(smasher->count);
-    gc.color().draw(smasher->sprite, transform.pos);
   }
 }
 

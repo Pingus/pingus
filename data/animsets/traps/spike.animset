@@ -1,0 +1,3 @@
+(pingus-animset
+  (animations
+    (active (sprite "traps/spike"))))

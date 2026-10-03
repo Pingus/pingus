@@ -315,6 +315,13 @@ update_level_objects(World& world)
   update_conveyor_belts(world, reg);
   update_switch_doors(world, reg);
   update_ice_blocks(world, reg);
+
+  reg.each<Teleporter, AnimatedSprite>([](ecs::Entity, Teleporter& teleporter, AnimatedSprite& anim) {
+    anim.frame = teleporter.clock.frame();
+  });
+  reg.each<TeleporterTarget, AnimatedSprite>([](ecs::Entity, TeleporterTarget& target, AnimatedSprite& anim) {
+    anim.frame = target.clock.frame();
+  });
 }
 
 void
@@ -361,18 +368,6 @@ draw_level_object(World& world, SceneContext& gc, ecs::Entity entity)
   {
     gc.color().draw(exit->sprite, transform.pos);
     gc.color().draw(exit->flag, transform.pos + geom::foffset(40, 0));
-  }
-
-  if (auto* teleporter = reg.try_get<Teleporter>(entity))
-  {
-    teleporter->clock.apply_to(teleporter->sprite);
-    gc.color().draw(teleporter->sprite, transform.pos);
-  }
-
-  if (auto* target = reg.try_get<TeleporterTarget>(entity))
-  {
-    target->clock.apply_to(target->sprite);
-    gc.color().draw(target->sprite, transform.pos);
   }
 
   if (auto* ice = reg.try_get<IceBlock>(entity))

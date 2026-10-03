@@ -118,6 +118,28 @@ Objects react to the positions the pingus moved to in the same tick.
 relative to the pingus. This was replaced by the fixed order above,
 which shifted level timing by a tick in some levels.)
 
+## Animation sets
+
+An animation set (`data/animsets/NAME.animset`, loaded by
+`AnimationSet::get()`) lists the named animations an object can show,
+each with left and right sprite resources, an optional draw offset and
+an optional loop override:
+
+```scheme
+(pingus-animset
+  (animations
+    (idle (sprite "traps/guillotineidle") (loop #t))
+    (kill (left "traps/guillotinekill/left")
+          (right "traps/guillotinekill/right")
+          (loop #f))))
+```
+
+The `AnimatedSprite` component refers to a set and holds the requested
+animation, direction, frame and visibility. Game systems only set those
+(the traps in `update_trap_animations()`), the render system loads the
+sprites and draws them. The traps and teleporters use animation sets so
+far, so their look can be changed without touching code.
+
 ## Game logic and presentation
 
 Game logic never reads sprite state. Objects and pingu actions that time

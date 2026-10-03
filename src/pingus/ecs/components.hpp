@@ -4,6 +4,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ECS_COMPONENTS_HPP
 #define HEADER_PINGUS_PINGUS_ECS_COMPONENTS_HPP
 
+#include <map>
 #include <memory>
 #include <string>
 #include <vector>
@@ -15,6 +16,7 @@
 #include "math/color.hpp"
 #include "math/vector2f.hpp"
 #include "pingus/animation_clock.hpp"
+#include "pingus/animation_set.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/groundtype.hpp"
@@ -45,7 +47,22 @@ struct SpriteRender
 
 /** Advance the SpriteRender animation every tick, for purely decorative
     animations that game logic never looks at */
-struct AnimatedSprite {};
+struct LoopingSprite {};
+
+/** Shows one animation of an AnimationSet at the entity's position. Game
+    logic only picks the animation, direction and frame; the render
+    system loads and draws the sprites. */
+struct AnimatedSprite
+{
+  std::shared_ptr<AnimationSet const> set;
+  std::string animation;
+  Direction direction = {};
+  int frame = 0;
+  bool visible = true;
+
+  /** Sprites loaded by the render system, by animation and direction */
+  std::map<std::string, Sprite> sprites = {};
+};
 
 /** Drawn into the ground and collision map at startup, the entity is
     destroyed afterwards */
@@ -118,7 +135,6 @@ struct SmallmapSymbol
     pingus close by at frame 3 */
 struct Spike
 {
-  Sprite sprite;
   AnimationClock clock;
   bool killing = false;
 };
@@ -126,7 +142,6 @@ struct Spike
 /** Looks like an exit, smashes pingus in the TriggerZone */
 struct FakeExit
 {
-  Sprite sprite;
   AnimationClock clock;
   bool smashing = false;
 };
@@ -135,9 +150,6 @@ struct FakeExit
     pingu's direction */
 struct Guillotine
 {
-  Sprite sprite_kill_left;
-  Sprite sprite_kill_right;
-  Sprite sprite_idle;
   AnimationClock kill_clock;
   AnimationClock idle_clock;
   Direction direction = {};
@@ -147,7 +159,6 @@ struct Guillotine
 /** Swings down and up continuously, splashes pingus below at the bottom */
 struct Hammer
 {
-  Sprite sprite;
   int frame_count;
   bool down = true;
   int count = 0;
@@ -156,7 +167,6 @@ struct Hammer
 /** Zaps a pingu in the TriggerZone */
 struct LaserExit
 {
-  Sprite sprite;
   AnimationClock clock;
   bool killing = false;
 };
@@ -164,7 +174,6 @@ struct LaserExit
 /** Smashes down when a pingu walks under it, splashing everything below */
 struct Smasher
 {
-  Sprite sprite;
   bool smashing = false;
   bool downwards = false;
   int count = 0;
@@ -206,7 +215,6 @@ struct Exit
 /** Moves pingus in the TriggerZone to its target */
 struct Teleporter
 {
-  Sprite sprite;
   AnimationClock clock;
   std::string target_id;
   ecs::Entity target = ecs::null_entity;
@@ -214,7 +222,6 @@ struct Teleporter
 
 struct TeleporterTarget
 {
-  Sprite sprite;
   AnimationClock clock;
 };
 

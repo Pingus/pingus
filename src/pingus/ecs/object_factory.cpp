@@ -31,7 +31,7 @@ void build_hotspot(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& 
 {
   // "parallax" is read but was never implemented for drawing
   reg.emplace<SpriteRender>(e, Sprite(data.get<ResDescriptor>("surface")), true);
-  reg.emplace<AnimatedSprite>(e);
+  reg.emplace<LoopingSprite>(e);
 }
 
 void build_liquid(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
@@ -138,16 +138,27 @@ void build_starfield_background(World& world, ecs::Registry& reg, ecs::Entity e,
   }
 }
 
+/** Add an AnimatedSprite showing 'animation' of the named animation set */
+std::shared_ptr<AnimationSet const> add_animated_sprite(ecs::Registry& reg, ecs::Entity e, std::string const& set_name,
+                                                        std::string const& animation, bool visible = true)
+{
+  auto set = AnimationSet::get(set_name);
+  reg.emplace<AnimatedSprite>(e, set, animation, Direction(), 0, visible);
+  return set;
+}
+
 void build_spike(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
+  auto const anims = add_animated_sprite(reg, e, "traps/spike", "active", false);
   reg.emplace<TriggerZone>(e, 16.0f - 5.0f, 0.0f, 16.0f + 5.0f, 32.0f);
-  reg.emplace<Spike>(e, Sprite("traps/spike"), AnimationClock::from_sprite("traps/spike"));
+  reg.emplace<Spike>(e, anims->get_animation("active").make_clock());
 }
 
 void build_fake_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
   reg.emplace<TriggerZone>(e, -7.0f, -56.0f, 8.0f, 0.0f);
-  FakeExit& fake_exit = reg.emplace<FakeExit>(e, Sprite("traps/fake_exit"), AnimationClock::from_sprite("traps/fake_exit"));
+  auto const anims = add_animated_sprite(reg, e, "traps/fake_exit", "smash");
+  FakeExit& fake_exit = reg.emplace<FakeExit>(e, anims->get_animation("smash").make_clock());
   // traps/fake_exit.sprite is marked looping, but the trap smashes once per
   // trigger; with a looping clock it never reset and kept smashing forever
   fake_exit.clock.set_loop(false);
@@ -157,30 +168,29 @@ void build_fake_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const
 void build_guillotine(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
   reg.emplace<TriggerZone>(e, 38.0f, 90.0f, 42.0f, 98.0f);
-  Guillotine& guillotine = reg.emplace<Guillotine>(e,
-                                                   Sprite("traps/guillotinekill/left"),
-                                                   Sprite("traps/guillotinekill/right"),
-                                                   Sprite("traps/guillotineidle"),
-                                                   AnimationClock::from_sprite("traps/guillotinekill/left"),
-                                                   AnimationClock::from_sprite("traps/guillotineidle"));
-  guillotine.kill_clock.set_loop(false);
-  guillotine.idle_clock.set_loop(true);
+  auto const anims = add_animated_sprite(reg, e, "traps/guillotine", "idle");
+  reg.emplace<Guillotine>(e,
+                          anims->get_animation("kill").make_clock(),
+                          anims->get_animation("idle").make_clock());
 }
 
 void build_hammer(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
-  reg.emplace<Hammer>(e, Sprite("traps/hammer"), AnimationClock::from_sprite("traps/hammer").frame_count());
+  auto const anims = add_animated_sprite(reg, e, "traps/hammer", "swing");
+  reg.emplace<Hammer>(e, anims->get_animation("swing").make_clock().frame_count());
 }
 
 void build_laser_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
   reg.emplace<TriggerZone>(e, 34.0f, 43.0f, 34.0f + 10.0f, 43.0f + 20.0f);
-  reg.emplace<LaserExit>(e, Sprite("traps/laser_exit"), AnimationClock::from_sprite("traps/laser_exit"));
+  auto const anims = add_animated_sprite(reg, e, "traps/laser_exit", "zap");
+  reg.emplace<LaserExit>(e, anims->get_animation("zap").make_clock());
 }
 
 void build_smasher(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
-  reg.emplace<Smasher>(e, Sprite("traps/smasher"));
+  add_animated_sprite(reg, e, "traps/smasher", "smash");
+  reg.emplace<Smasher>(e);
 }
 
 /** Owner ids are limited to the four players */
@@ -224,16 +234,15 @@ void build_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& dat
 void build_teleporter(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
 {
   reg.emplace<TriggerZone>(e, -3.0f, -52.0f, 3.0f, 0.0f);
-  reg.emplace<Teleporter>(e, Sprite("worldobjs/teleporter"),
-                          AnimationClock::from_sprite("worldobjs/teleporter"),
-                          data.get<std::string>("target-id"));
+  auto const anims = add_animated_sprite(reg, e, "worldobjs/teleporter", "teleport");
+  reg.emplace<Teleporter>(e, anims->get_animation("teleport").make_clock(), data.get<std::string>("target-id"));
 }
 
 void build_teleporter_target(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
 {
   reg.emplace<ObjectId>(e, data.get<std::string>("id"));
-  reg.emplace<TeleporterTarget>(e, Sprite("worldobjs/teleportertarget"),
-                                AnimationClock::from_sprite("worldobjs/teleportertarget"));
+  auto const anims = add_animated_sprite(reg, e, "worldobjs/teleporter-target", "arrive");
+  reg.emplace<TeleporterTarget>(e, anims->get_animation("arrive").make_clock());
 }
 
 void build_ice_block(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)

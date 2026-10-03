@@ -32,7 +32,6 @@ void for_each_pingu(World& world, Func&& func)
 // traps.cpp
 void update_traps(World& world);
 void startup_trap(World& world, ecs::Entity entity);
-void draw_trap(World& world, SceneContext& gc, ecs::Entity entity);
 
 // weather.cpp
 void update_weather(World& world);

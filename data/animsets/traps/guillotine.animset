@@ -1,0 +1,7 @@
+(pingus-animset
+  (animations
+    (idle (sprite "traps/guillotineidle")
+          (loop #t))
+    (kill (left "traps/guillotinekill/left")
+          (right "traps/guillotinekill/right")
+          (loop #f))))

@@ -54,7 +54,7 @@ void startup_liquid(World& world, Transform const& transform, Liquid const& liqu
 
 void update_animated_sprites(ecs::Registry& reg)
 {
-  reg.each<SpriteRender, AnimatedSprite>([](ecs::Entity, SpriteRender& render, AnimatedSprite&) {
+  reg.each<SpriteRender, LoopingSprite>([](ecs::Entity, SpriteRender& render, LoopingSprite&) {
     render.sprite.update();
   });
 }
@@ -149,6 +149,24 @@ void draw_surface_background(World& world, SceneContext& gc, Transform const& tr
   }
 }
 
+void draw_animated_sprite(SceneContext& gc, Transform const& transform, AnimatedSprite& anim)
+{
+  if (!anim.visible) {
+    return;
+  }
+
+  AnimationDef const& def = anim.set->get_animation(anim.animation);
+  std::string const& sprite_name = def.sprite_name(anim.direction);
+
+  auto it = anim.sprites.find(sprite_name);
+  if (it == anim.sprites.end()) {
+    it = anim.sprites.emplace(sprite_name, Sprite(sprite_name)).first;
+  }
+
+  it->second.set_frame(anim.frame);
+  gc.color().draw(it->second, transform.pos + geom::foffset(def.offset.x(), def.offset.y()));
+}
+
 void draw_liquid(SceneContext& gc, Transform const& transform, Liquid const& liquid)
 {
   int const x0 = static_cast<int>(transform.pos.x());
@@ -230,7 +248,9 @@ draw(World& world, SceneContext& gc, ecs::Entity entity)
     gc.color().draw(render->sprite, transform.pos, render->use_z_index ? transform.z_index : 0.0f);
   }
 
-  draw_trap(world, gc, entity);
+  if (auto* anim = reg.try_get<AnimatedSprite>(entity)) {
+    draw_animated_sprite(gc, transform, *anim);
+  }
   draw_level_object(world, gc, entity);
   draw_weather(world, gc, entity);
 }
