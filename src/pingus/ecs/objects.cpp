@@ -46,13 +46,9 @@ void startup_exit(World& world, Transform const& transform, Exit const& exit)
                              static_cast<int>(transform.pos.y()) - exit.sprite.get_height());
 }
 
-void update_exits(World& world, ecs::Registry& reg, Phase phase)
+void update_exits(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, TriggerZone, Owner, Exit>([&](ecs::Entity, Transform& transform, TriggerZone& zone, Owner& owner, Exit& exit) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     exit.sprite.update();
 
     for_each_pingu(world, [&](Pingu& pingu) {
@@ -70,13 +66,9 @@ void update_exits(World& world, ecs::Registry& reg, Phase phase)
 
 // Entrance
 
-void update_entrances(World& world, ecs::Registry& reg, Phase phase)
+void update_entrances(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, Owner, Entrance>([&](ecs::Entity, Transform& transform, Owner& owner, Entrance& entrance) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     if (entrance.last_release + entrance.release_rate >= world.get_time()) {
       return;
     }
@@ -132,19 +124,13 @@ void startup_teleporter(World& world, Teleporter& teleporter)
   }
 }
 
-void update_teleporters(World& world, ecs::Registry& reg, Phase phase)
+void update_teleporters(World& world, ecs::Registry& reg)
 {
-  reg.each<Transform, TeleporterTarget>([&](ecs::Entity, Transform& transform, TeleporterTarget& target) {
-    if (in_phase(world, transform, phase)) {
-      target.clock.update();
-    }
+  reg.each<TeleporterTarget>([](ecs::Entity, TeleporterTarget& target) {
+    target.clock.update();
   });
 
   reg.each<Transform, TriggerZone, Teleporter>([&](ecs::Entity, Transform& transform, TriggerZone& zone, Teleporter& teleporter) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     teleporter.clock.update();
 
     if (teleporter.target == ecs::null_entity) {
@@ -167,13 +153,9 @@ void update_teleporters(World& world, ecs::Registry& reg, Phase phase)
 
 // Ice block
 
-void update_ice_blocks(World& world, ecs::Registry& reg, Phase phase)
+void update_ice_blocks(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, TriggerZone, IceBlock>([&](ecs::Entity, Transform& transform, TriggerZone& zone, IceBlock& ice) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     if (ice.finished) {
       return;
     }
@@ -211,13 +193,9 @@ void startup_conveyor_belt(World& world, Transform const& transform, ConveyorBel
   }
 }
 
-void update_conveyor_belts(World& world, ecs::Registry& reg, Phase phase)
+void update_conveyor_belts(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, TriggerZone, ConveyorBelt>([&](ecs::Entity, Transform& transform, TriggerZone& zone, ConveyorBelt& belt) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     belt.left.update();
     belt.middle.update();
     belt.right.update();
@@ -279,13 +257,9 @@ void startup_switch(World& world, SwitchDoorSwitch& sw)
   }
 }
 
-void update_switch_doors(World& world, ecs::Registry& reg, Phase phase)
+void update_switch_doors(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, TriggerZone, SwitchDoorSwitch>([&](ecs::Entity, Transform& transform, TriggerZone& zone, SwitchDoorSwitch& sw) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     if (sw.triggered || sw.door == ecs::null_entity) {
       return;
     }
@@ -303,10 +277,6 @@ void update_switch_doors(World& world, ecs::Registry& reg, Phase phase)
   });
 
   reg.each<Transform, SwitchDoor>([&](ecs::Entity, Transform& transform, SwitchDoor& door) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     if (door.current_height > 0 && door.opening)
     {
       --door.current_height;
@@ -334,15 +304,20 @@ void draw_switch_door(SceneContext& gc, Transform const& transform, SwitchDoor c
 } // namespace
 
 void
-update_level_objects(World& world, Phase phase)
+update_entrances(World& world)
+{
+  update_entrances(world, world.get_registry());
+}
+
+void
+update_level_objects(World& world)
 {
   ecs::Registry& reg = world.get_registry();
-  update_entrances(world, reg, phase);
-  update_exits(world, reg, phase);
-  update_teleporters(world, reg, phase);
-  update_conveyor_belts(world, reg, phase);
-  update_switch_doors(world, reg, phase);
-  update_ice_blocks(world, reg, phase);
+  update_exits(world, reg);
+  update_teleporters(world, reg);
+  update_conveyor_belts(world, reg);
+  update_switch_doors(world, reg);
+  update_ice_blocks(world, reg);
 }
 
 void

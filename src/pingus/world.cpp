@@ -271,8 +271,8 @@ World::update()
     }
   }
 
-  // Traps, exits and other level objects react to the pingus
-  systems::update_objects(*this);
+  // Release new pingus
+  systems::update_spawners(*this);
 
   // Let all pingus move and catch each other, update the particles
   for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
@@ -280,8 +280,8 @@ World::update()
     (*obj)->update();
   }
 
-  // Release new pingus
-  systems::update_after_pingus(*this);
+  // Traps, exits and other level objects react to the pingus
+  systems::update_objects(*this);
 }
 
 PinguHolder*

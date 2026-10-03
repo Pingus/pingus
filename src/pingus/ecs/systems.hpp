@@ -17,8 +17,8 @@ class World;
 
 /** Systems operating on the level object entities of a World.
 
-    Per tick World::update() runs update_objects() before the pingus
-    move and update_after_pingus() afterwards. Startup and drawing are
+    Per tick World::update() runs update_spawners(), then lets the pingus
+    move, then runs update_objects(). Startup and drawing are
     done per entity, since they have to be interleaved in z-order with
     the remaining non-entity world objects (ground, pingus, particles). */
 namespace pingus::systems {
@@ -37,13 +37,12 @@ bool is_solid_background(ObjectData const& data);
     resolve links between objects, ... */
 void startup(World& world, ecs::Entity entity);
 
-/** Per tick logic that runs before the pingus are updated: objects at or
-    below the pingus' z-index and all purely decorative animation */
-void update_objects(World& world);
+/** Release new pingus, runs before the pingus move */
+void update_spawners(World& world);
 
-/** Per tick logic that runs after the pingus are updated: objects above
-    the pingus' z-index */
-void update_after_pingus(World& world);
+/** Traps, exits and other objects reacting to the pingus, weather and
+    decorative animation; runs after the pingus moved */
+void update_objects(World& world);
 
 void draw(World& world, SceneContext& gc, ecs::Entity entity);
 void draw_smallmap(World& world, SmallMap& smallmap);

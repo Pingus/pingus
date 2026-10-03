@@ -27,13 +27,9 @@ void add_snow_flake(World& world, Random& rng)
   world.get_snow_particle_holder()->add_particle(rng.next_int(world.get_width()), -globals::tile_size, colliding);
 }
 
-void update_snow_generators(World& world, ecs::Registry& reg, Phase phase)
+void update_snow_generators(World& world, ecs::Registry& reg)
 {
-  reg.each<Transform, SnowGenerator>([&](ecs::Entity, Transform& transform, SnowGenerator& snow) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
+  reg.each<SnowGenerator>([&](ecs::Entity, SnowGenerator& snow) {
     Random& rng = world.get_fx_random();
 
     for (int i = 0; static_cast<float>(i) < std::floor(snow.intensity); ++i) {
@@ -47,13 +43,9 @@ void update_snow_generators(World& world, ecs::Registry& reg, Phase phase)
   });
 }
 
-void update_rain_generators(World& world, ecs::Registry& reg, Phase phase)
+void update_rain_generators(World& world, ecs::Registry& reg)
 {
-  reg.each<Transform, RainGenerator>([&](ecs::Entity, Transform& transform, RainGenerator& rain) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
+  reg.each<RainGenerator>([&](ecs::Entity, RainGenerator& rain) {
     Random& rng = world.get_fx_random();
 
     if (rain.waiter_count < 0.0f && rng.next_int(150) == 0)
@@ -80,11 +72,11 @@ void update_rain_generators(World& world, ecs::Registry& reg, Phase phase)
 } // namespace
 
 void
-update_weather(World& world, Phase phase)
+update_weather(World& world)
 {
   ecs::Registry& reg = world.get_registry();
-  update_snow_generators(world, reg, phase);
-  update_rain_generators(world, reg, phase);
+  update_snow_generators(world, reg);
+  update_rain_generators(world, reg);
 }
 
 void

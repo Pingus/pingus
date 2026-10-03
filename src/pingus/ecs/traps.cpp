@@ -20,13 +20,9 @@ namespace {
 /** Area in which pingus get killed once the spikes are out */
 TriggerZone const spike_kill_zone{16.0f - 12.0f, 0.0f, 16.0f + 12.0f, 32.0f};
 
-void update_spikes(World& world, ecs::Registry& reg, Phase phase)
+void update_spikes(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, TriggerZone, Spike>([&](ecs::Entity, Transform& transform, TriggerZone& zone, Spike& spike) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     if (spike.killing) {
       spike.clock.update();
     }
@@ -54,13 +50,9 @@ void update_spikes(World& world, ecs::Registry& reg, Phase phase)
   });
 }
 
-void update_fake_exits(World& world, ecs::Registry& reg, Phase phase)
+void update_fake_exits(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, TriggerZone, FakeExit>([&](ecs::Entity, Transform& transform, TriggerZone& zone, FakeExit& fake_exit) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     for_each_pingu(world, [&](Pingu& pingu) {
       if (in_zone(pingu, transform, zone) &&
           pingu.get_action() != ActionName::SPLASHED)
@@ -91,13 +83,9 @@ void update_fake_exits(World& world, ecs::Registry& reg, Phase phase)
   });
 }
 
-void update_guillotines(World& world, ecs::Registry& reg, Phase phase)
+void update_guillotines(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, TriggerZone, Guillotine>([&](ecs::Entity, Transform& transform, TriggerZone& zone, Guillotine& guillotine) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     if (guillotine.kill_clock.is_finished()) {
       guillotine.killing = false;
     }
@@ -127,13 +115,9 @@ void update_guillotines(World& world, ecs::Registry& reg, Phase phase)
   });
 }
 
-void update_hammers(World& world, ecs::Registry& reg, Phase phase)
+void update_hammers(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, Hammer>([&](ecs::Entity, Transform& transform, Hammer& hammer) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     Vector2f const& pos = transform.pos;
 
     if (hammer.down)
@@ -162,13 +146,9 @@ void update_hammers(World& world, ecs::Registry& reg, Phase phase)
   });
 }
 
-void update_laser_exits(World& world, ecs::Registry& reg, Phase phase)
+void update_laser_exits(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, TriggerZone, LaserExit>([&](ecs::Entity, Transform& transform, TriggerZone& zone, LaserExit& laser) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     for_each_pingu(world, [&](Pingu& pingu) {
       if (!laser.killing &&
           in_zone(pingu, transform, zone) &&
@@ -194,13 +174,9 @@ void update_laser_exits(World& world, ecs::Registry& reg, Phase phase)
   });
 }
 
-void update_smashers(World& world, ecs::Registry& reg, Phase phase)
+void update_smashers(World& world, ecs::Registry& reg)
 {
   reg.each<Transform, Smasher>([&](ecs::Entity, Transform& transform, Smasher& smasher) {
-    if (!in_phase(world, transform, phase)) {
-      return;
-    }
-
     Vector2f const& pos = transform.pos;
 
     // Activate the smasher if a Pingu is under it
@@ -273,15 +249,15 @@ void update_smashers(World& world, ecs::Registry& reg, Phase phase)
 } // namespace
 
 void
-update_traps(World& world, Phase phase)
+update_traps(World& world)
 {
   ecs::Registry& reg = world.get_registry();
-  update_spikes(world, reg, phase);
-  update_fake_exits(world, reg, phase);
-  update_guillotines(world, reg, phase);
-  update_hammers(world, reg, phase);
-  update_laser_exits(world, reg, phase);
-  update_smashers(world, reg, phase);
+  update_spikes(world, reg);
+  update_fake_exits(world, reg);
+  update_guillotines(world, reg);
+  update_hammers(world, reg);
+  update_laser_exits(world, reg);
+  update_smashers(world, reg);
 }
 
 void

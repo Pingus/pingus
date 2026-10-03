@@ -234,9 +234,8 @@ well (`pingus-headless -s DIR -T TICKS`).
          components
    - [x] `WorldObj` level object classes and `WorldObjFactory` removed
    - [x] Global `WorldObj::world` replaced by explicit references
-   - [ ] Update order keeps the old z-based phases (before/after the
-         pingus); a single fixed system order would be simpler but
-         changes level timing
+   - [x] Fixed system order (spawners, pingus, objects) instead of the
+         old z-based update order
 5. [ ] (Optional) Pingus as entities with an action-state component
 
 Found along the way:
@@ -246,8 +245,8 @@ Found along the way:
 - [x] Editor dropped old `(color ...)` values and snow `intensity` on
       save; fixed by the schema
 - [ ] 87 demos reference levels that no longer exist
-- [ ] `traps/fake_exit` sprite loops, so `FakeExit` never resets its
-      `smashing` state
+- [x] Fake exit smashed forever after the first trigger (looping
+      sprite); fixed
 - [ ] Build: an `LD_LIBRARY_PATH` pointing at system libraries built
       against a newer glibc breaks linking in `nix develop`; unset it
 

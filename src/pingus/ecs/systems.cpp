@@ -179,25 +179,23 @@ startup(World& world, ecs::Entity entity)
 }
 
 void
+update_spawners(World& world)
+{
+  update_entrances(world);
+}
+
+void
 update_objects(World& world)
 {
   ecs::Registry& reg = world.get_registry();
 
-  update_traps(world, Phase::BEFORE_PINGUS);
-  update_level_objects(world, Phase::BEFORE_PINGUS);
-  update_weather(world, Phase::BEFORE_PINGUS);
+  update_traps(world);
+  update_level_objects(world);
+  update_weather(world);
   update_surface_backgrounds(reg);
   update_starfields(world, reg);
   update_liquids(reg);
   update_animated_sprites(reg);
-}
-
-void
-update_after_pingus(World& world)
-{
-  update_traps(world, Phase::AFTER_PINGUS);
-  update_level_objects(world, Phase::AFTER_PINGUS);
-  update_weather(world, Phase::AFTER_PINGUS);
 }
 
 void

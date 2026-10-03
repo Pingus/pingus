@@ -81,20 +81,17 @@ before the conversion.
 
 ```
 World::update()
-  systems::update_objects()       objects at or below the pingus' z (50)
-  WorldObj::update() for each     ground, pingus, particles
-  systems::update_after_pingus()  objects above the pingus' z
+  systems::update_spawners()   entrances release pingus
+  WorldObj::update() for each  ground, pingus, particles
+  systems::update_objects()    traps, exits, teleporters, conveyor belts,
+                               switch doors, ice blocks, weather,
+                               backgrounds, decorative animation
 ```
 
-The two phases keep the old z-sorted `WorldObj` update order, which the
-level timing depends on. For example, entrances at z 0 release pingus
-before the pingus move, and switch doors (fixed z 100) update after
-them. See `Phase` in `system_parts.hpp`.
-
-Within a phase the systems run per object type: traps, then entrances,
-exits, teleporters, conveyor belts, switch doors, ice blocks, then
-weather. Purely decorative updates (backgrounds, liquids, animated
-sprites) run once per tick, in the first phase.
+Objects react to the positions the pingus moved to in the same tick.
+(Before the conversion the update order followed the objects' z-index
+relative to the pingus. This was replaced by the fixed order above,
+which shifted level timing by a tick in some levels.)
 
 ## Game logic and presentation
 
@@ -144,5 +141,3 @@ covering all object types, against the previous step.
 - Move the object type definitions from C++ into a data file.
 - Let the editor build its property panel from the schema instead of the
   `HAS_*` flags.
-- Simplify the two-phase update into one fixed system order, as a
-  deliberate gameplay timing change.
