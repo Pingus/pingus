@@ -466,10 +466,191 @@
             ''
           )
         ) apps;
+
+        # ── nix develop helpers ──────────────────────────────────────────
+        # Real PATH scripts (writeShellScriptBin), not shellHook functions, so
+        # `nix develop -c pingus-run` works. Pattern follows biltoo: out-of-tree
+        # cmake/ninja, Debug by default, build-before-run, gdb auto-run.
+        pingusDevPreamble = ''
+          set -euo pipefail
+          if [ -z "''${PINGUS_SOURCE:-}" ]; then
+            echo "$0: PINGUS_SOURCE is not set (enter the shell with: nix develop)" >&2
+            exit 1
+          fi
+          if [ ! -f "$PINGUS_SOURCE/CMakeLists.txt" ]; then
+            echo "$0: PINGUS_SOURCE does not look like a Pingus tree: $PINGUS_SOURCE" >&2
+            exit 1
+          fi
+          PINGUS_BUILD_DIR="''${PINGUS_BUILD_DIR:-/tmp/pingus-build}"
+
+          # Canonical path for cache comparisons (strip trailing /; resolve . / ..).
+          _pingus_canon_path() {
+            local p="$1"
+            p="''${p%/}"
+            if [ -d "$p" ]; then
+              ( cd "$p" && pwd )
+            else
+              printf '%s\n' "$p"
+            fi
+          }
+        '';
+
+        pingusConfigure = pkgs.writeShellScriptBin "pingus-configure" (
+          pingusDevPreamble
+          + ''
+            _ccache_args=()
+            if command -v ccache >/dev/null 2>&1; then
+              _ccache_args+=(
+                -DCMAKE_C_COMPILER_LAUNCHER=ccache
+                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+              )
+            fi
+            # Point the baked-in default datadir at the live source tree so the
+            # unwrapped binary finds levels/gfx without --datadir every time.
+            cmake -S "$PINGUS_SOURCE" -B "$PINGUS_BUILD_DIR" -G Ninja \
+              -DCMAKE_BUILD_TYPE="''${CMAKE_BUILD_TYPE:-Debug}" \
+              -DWARNINGS=ON \
+              -DWERROR=ON \
+              -DBUILD_EXTRA=OFF \
+              -DBUILD_TESTS=OFF \
+              -DDATA_PREFIX="$PINGUS_SOURCE/data" \
+              "''${_ccache_args[@]}"
+          ''
+        );
+
+        pingusBuild = pkgs.writeShellScriptBin "pingus-build" (
+          pingusDevPreamble
+          + ''
+            if [ ! -f "$PINGUS_BUILD_DIR/build.ninja" ] && [ ! -f "$PINGUS_BUILD_DIR/Makefile" ]; then
+              pingus-configure || exit 1
+            fi
+
+            # CMake bakes CMAKE_HOME_DIRECTORY into the cache. If the source tree
+            # moved (new clone path, or leftover cache from another machine),
+            # rebuilds would compile against a missing or stale tree until someone
+            # reconfigures. Detect mismatch and reconfigure once.
+            cache="$PINGUS_BUILD_DIR/CMakeCache.txt"
+            if [ -f "$cache" ]; then
+              cached="$(sed -n 's/^CMAKE_HOME_DIRECTORY:INTERNAL=//p' "$cache" | head -n1 || true)"
+              cached="$(_pingus_canon_path "$cached")"
+              want="$(_pingus_canon_path "$PINGUS_SOURCE")"
+              if [ -n "$cached" ] && [ "$cached" != "$want" ]; then
+                echo "pingus-build: source path changed since configure:" >&2
+                echo "  cmake cache: $cached" >&2
+                echo "  current:     $want" >&2
+                echo "  → re-running pingus-configure" >&2
+                pingus-configure || exit 1
+              elif [ -n "$cached" ] && [ ! -f "$cached/CMakeLists.txt" ]; then
+                echo "pingus-build: cached source tree is gone: $cached" >&2
+                echo "  → re-running pingus-configure with $want" >&2
+                pingus-configure || exit 1
+              fi
+            fi
+
+            cmake --build "$PINGUS_BUILD_DIR" "$@"
+          ''
+        );
+
+        pingusRun = pkgs.writeShellScriptBin "pingus-run" (
+          pingusDevPreamble
+          + ''
+            pingus-build || exit 1
+            if [ ! -x "$PINGUS_BUILD_DIR/pingus" ]; then
+              echo "pingus-run: $PINGUS_BUILD_DIR/pingus missing after build" >&2
+              exit 1
+            fi
+            # Prefer the live source datadir; CMake also copies data/ into the
+            # build tree, but the source path is the one artists edit.
+            exec "$PINGUS_BUILD_DIR/pingus" --datadir "$PINGUS_SOURCE/data" "$@"
+          ''
+        );
+
+        # Debug build + gdb. Extra args are pingus's (via gdb --args).
+        # Starts the inferior immediately (-ex run). Quits gdb on normal exit
+        # (status 0); stays interactive on crash / signal / non-zero exit.
+        pingusRunGdb = pkgs.writeShellScriptBin "pingus-run-gdb" (
+          pingusDevPreamble
+          + ''
+            pingus-build || exit 1
+            if [ ! -x "$PINGUS_BUILD_DIR/pingus" ]; then
+              echo "pingus-run-gdb: $PINGUS_BUILD_DIR/pingus missing after build" >&2
+              exit 1
+            fi
+            if ! command -v gdb >/dev/null 2>&1; then
+              echo "pingus-run-gdb: gdb not found (should be in the nix develop shell)" >&2
+              exit 1
+            fi
+            gdb -q \
+              -ex "set pagination off" \
+              -ex "set confirm off" \
+              -ex "set debuginfod enabled off" \
+              -ex run \
+              -ex 'python
+try:
+  ec = gdb.parse_and_eval("$_exitcode")
+  if int(ec) == 0:
+    gdb.execute("quit")
+except Exception:
+  pass
+' \
+              --args "$PINGUS_BUILD_DIR/pingus" --datadir "$PINGUS_SOURCE/data" "$@"
+          ''
+        );
+
+        # ccacheStdenv: CC/CXX are ccache wrappers for out-of-tree cmake/ninja.
+        # inputsFrom pulls native buildInputs (SDL2, OpenAL, external/ libs, …).
+        pingusDevShell =
+          pkgs.mkShell.override { stdenv = pkgs.ccacheStdenv; } {
+            inputsFrom = [ pingusNative ];
+            packages = (with pkgs; [
+              cmake
+              ninja
+              gdb
+              ccache
+              pkg-config
+            ]) ++ [
+              pingusConfigure
+              pingusBuild
+              pingusRun
+              pingusRunGdb
+            ];
+            CMAKE_BUILD_TYPE = "Debug";
+            shellHook = ''
+              export PINGUS_SOURCE="$PWD"
+              export PINGUS_BUILD_DIR="''${PINGUS_BUILD_DIR:-/tmp/pingus-build}"
+
+              export CCACHE_DIR="''${CCACHE_DIR:-$HOME/.cache/ccache-pingus}"
+              mkdir -p "$CCACHE_DIR" 2>/dev/null || true
+              export CMAKE_C_COMPILER_LAUNCHER=ccache
+              export CMAKE_CXX_COMPILER_LAUNCHER=ccache
+
+              # Unset host LD_LIBRARY_PATH that can break linking against the
+              # nix-provided glibc (common when mixing distro and nix toolchains).
+              if [ -n "''${LD_LIBRARY_PATH:-}" ]; then
+                case ":$LD_LIBRARY_PATH:" in
+                  *:/usr/lib*|*:/lib*)
+                    echo "note: clearing LD_LIBRARY_PATH (contained system lib dirs that break nix linking)"
+                    unset LD_LIBRARY_PATH
+                    ;;
+                esac
+              fi
+
+              echo "pingus dev shell (CMAKE_BUILD_TYPE=''${CMAKE_BUILD_TYPE:-Debug}, ccacheStdenv)"
+              echo "  source:    $PINGUS_SOURCE"
+              echo "  build dir: $PINGUS_BUILD_DIR"
+              echo "  pingus-configure       # cmake once; then pingus-build is incremental"
+              echo "  pingus-build [args]    # incremental cmake --build"
+              echo "  pingus-run [args]      # build + run (passes --datadir \$PINGUS_SOURCE/data)"
+              echo "  pingus-run-gdb [args]  # build + gdb -q -ex run; quit on normal exit"
+              echo "  also: nix develop -c pingus-run"
+              echo "  nix build .#pingus     # RelWithDebInfo package (no ccache)"
+            '';
+          };
       in {
         inherit packages apps;
         # Build every package; verify every app's program path resolves.
         checks = packages // appChecks;
+        devShells.default = pingusDevShell;
       }
     );
 }

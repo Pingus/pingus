@@ -267,8 +267,9 @@ Found along the way:
       the whole bomber sprite sheet as one image
 - [x] Fake exit smashed forever after the first trigger (looping
       sprite); fixed
-- [ ] Build: an `LD_LIBRARY_PATH` pointing at system libraries built
-      against a newer glibc breaks linking in `nix develop`; unset it
+- [x] Build: an `LD_LIBRARY_PATH` pointing at system libraries built
+      against a newer glibc breaks linking in `nix develop`; the
+      develop shellHook clears system `/usr/lib`/`/lib` entries
 
 ### Asset viewer
 
@@ -290,6 +291,7 @@ Found along the way:
 ## Quick commands
 
 ```sh
+# Packages
 nix build .#pingus
 nix build .#pingus-win32-x64
 nix build .#wasm-sdl-libs          # SDL stack only
@@ -297,6 +299,12 @@ nix build .#pingus-wasm            # full wasm app (WIP)
 nix build .#arkos-sysroot
 nix build .#pingus-r36s            # WIP
 nix build .#pingus-android         # WIP
+
+# Out-of-tree Debug develop loop (nix develop)
+nix develop
+pingus-configure && pingus-build && pingus-run
+# or: nix develop -c pingus-run
+#      nix develop -c pingus-run-gdb
 ```
 
 ## Reference

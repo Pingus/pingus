@@ -120,15 +120,32 @@ See [Git workflow](#git-workflow-for-agents--contributors).
 
   ```sh
   nix run github:Pingus/pingus          # or .# for local
-  nix build .#pingus
+  nix build .#pingus                    # RelWithDebInfo package
   nix build .#pingus-win32-x64          # Windows cross (host = Linux)
   nix build .#pingus-win32-x86
   ```
 
+- **Day-to-day development** (`nix develop`): out-of-tree Debug build with
+  PATH helpers (not shellHook functions, so `nix develop -c …` works):
+
+  ```sh
+  nix develop
+  pingus-configure          # cmake -G Ninja (once)
+  pingus-build              # incremental; auto-reconfigures if the source path moved
+  pingus-run [args]         # build + run (--datadir points at $PINGUS_SOURCE/data)
+  pingus-run-gdb [args]     # build + gdb -ex run; quit on clean exit
+  # or one-shot:
+  nix develop -c pingus-run data/levels/tutorial/t1-tutorial-tux.pingus
+  ```
+
+  Env: `PINGUS_SOURCE` (set by shellHook to `$PWD`), `PINGUS_BUILD_DIR`
+  (default `/tmp/pingus-build`), `CMAKE_BUILD_TYPE` (default `Debug`),
+  `CCACHE_DIR`. Helper libraries under `external/` are used live via
+  CMake `add_subdirectory` — no nested flake-input checkout to override.
+
 - Non-Nix builds: configure with CMake, ensure dependencies (SDL2, SDL2_image,
-  libpng, OpenGL, fmt, boost bits as needed, and the small C++ helper
-  libraries) are available via pkg-config / CMake config packages or under
-  `external/`.
+  libpng, OpenGL, and the small C++ helper libraries) are available via
+  pkg-config / CMake config packages or under `external/`.
 
 Target for day-to-day development: **Linux**. Keep Windows and other
 platform code isolated.
