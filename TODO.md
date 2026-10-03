@@ -279,8 +279,8 @@ Found along the way:
       `.`/`n` step when paused, R reload, Esc quit
 - [x] HUD: name, frame, timing, loop; crosshair at draw anchor; effect-step
       markers; effects fire (sound, overlay, simple particles)
-- [ ] Remove or retire `extra/sprite-view` once the screen has been used in
-      practice
+- [x] Removed obsolete `extra/sprite-view` (resource-name OpenGL smoke loop)
+- [x] HUD panels for contrast; `O` toggles offset crosshair
 
 ## Out of scope (for now)
 
