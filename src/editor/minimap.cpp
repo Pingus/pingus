@@ -61,15 +61,13 @@ Minimap::draw(DrawingContext& gc)
              r.right() * minimap_rect.width() / levelsize.width(),
              r.bottom() * minimap_rect.height() / levelsize.height());
 
-    unsigned attr = (*i)->get_attribs();
-
     Color color;
 
-    if (attr & HAS_OWNER) // entrance & exit
+    if ((*i)->has_property("owner-id")) // entrance & exit
       color = Color(255,255,0);
-    else if (attr & HAS_GPTYPE) // groundpiece
+    else if ((*i)->has_property("type")) // groundpiece
       color = Color(0,255,0);
-    else if (attr & HAS_REPEAT)
+    else if ((*i)->has_property("repeat"))
       color = Color(0,0,255); // liquid
     else // hotspot, background, etc.
       color = Color(255,0,0);

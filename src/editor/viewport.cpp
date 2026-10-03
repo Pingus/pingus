@@ -452,11 +452,11 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
     case SDLK_PLUS:
       for (auto it = selection.begin(); it != selection.end(); ++it)
       {
-        if ((*it)->get_attribs() & HAS_REPEAT)
+        if ((*it)->has_property("repeat"))
         {
           (*it)->set_repeat((*it)->get_repeat() + 1);
         }
-        else if ((*it)->get_attribs() & HAS_HEIGHT)
+        else if ((*it)->has_property("height"))
         {
           (*it)->set_height((*it)->get_height() + 1);
         }
@@ -467,14 +467,14 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
     case SDLK_MINUS:
       for (auto it = selection.begin(); it != selection.end(); ++it)
       {
-        if ((*it)->get_attribs() & HAS_REPEAT)
+        if ((*it)->has_property("repeat"))
         {
           if ((*it)->get_repeat() > 1)
           {
             (*it)->set_repeat((*it)->get_repeat() - 1);
           }
         }
-        else if ((*it)->get_attribs() & HAS_HEIGHT)
+        else if ((*it)->has_property("height"))
         {
           if ((*it)->get_height() > 1)
           {

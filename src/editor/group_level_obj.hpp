@@ -40,6 +40,13 @@ private:
   Vector2f m_orig_pos;
 
   // properties
+  /** Prefab overrides set for this group */
+  enum Override : unsigned {
+    OVERRIDE_REPEAT       = 1 << 0,
+    OVERRIDE_OWNER        = 1 << 1,
+    OVERRIDE_RELEASE_RATE = 1 << 2,
+    OVERRIDE_DIRECTION    = 1 << 3
+  };
   unsigned int m_overrides;
   int m_repeat;
   int m_owner_id;
@@ -67,7 +74,8 @@ public:
   Vector2f get_orig_pos() const override { return m_orig_pos; }
 
   /** Retrieve this object's attribute number */
-  unsigned int get_attribs() const override { return m_overrides; }
+  /** True for the prefab overrides the group has */
+  bool has_property(std::string_view name) const override;
 
   /** Retrieve the object's resource name */
   ResDescriptor get_res_desc() const override { return ResDescriptor(); }

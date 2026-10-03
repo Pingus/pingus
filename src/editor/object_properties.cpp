@@ -16,6 +16,7 @@
 
 #include "editor/object_properties.hpp"
 
+#include <algorithm>
 #include <functional>
 
 #include <logmich/log.hpp>
@@ -30,9 +31,61 @@
 #include "editor/label.hpp"
 #include "editor/level_obj.hpp"
 #include "pingus/gettext.h"
-#include "pingus/groundtype.hpp"
 
 namespace pingus::editor {
+
+namespace {
+
+Rect const label_rect(10, 0, 80, 20);
+Rect const box_rect(80, 0, 190, 20);
+
+/** Pseudo object type for prefab groups, which have no ObjectData but
+    can override these properties of their objects */
+ObjectTypeDef const& prefab_overrides_type()
+{
+  static ObjectTypeDef const type = [] {
+    ObjectSchema const& schema = ObjectSchema::instance();
+    ObjectTypeDef t{"prefab", {}, {}};
+    t.properties.push_back(*schema.find("liquid")->find_property("repeat"));
+    t.properties.push_back(*schema.find("entrance")->find_property("owner-id"));
+    t.properties.push_back(*schema.find("entrance")->find_property("release-rate"));
+    t.properties.push_back(*schema.find("entrance")->find_property("direction"));
+    return t;
+  }();
+  return type;
+}
+
+/** Collect the overridden properties of a prefab group into an ObjectData */
+ObjectData prefab_overrides_data(LevelObj& obj)
+{
+  ObjectData data(prefab_overrides_type());
+  data.set("repeat", obj.get_repeat());
+  data.set("owner-id", obj.get_owner());
+  data.set("release-rate", obj.get_release_rate());
+  data.set("direction", obj.get_direction());
+  return data;
+}
+
+/** Apply a prefab override through the LevelObj setters */
+void set_prefab_override(LevelObj& obj, std::string const& name, PropertyValue const& value)
+{
+  if (name == "repeat") {
+    obj.set_repeat(std::get<int>(value));
+  } else if (name == "owner-id") {
+    obj.set_owner(std::get<int>(value));
+  } else if (name == "release-rate") {
+    obj.set_release_rate(std::get<int>(value));
+  } else if (name == "direction") {
+    obj.set_direction(std::get<std::string>(value));
+  }
+}
+
+std::string label_text(PropertyDef const& prop)
+{
+  return prop.label.empty() ? prop.name + ":" : _(prop.label);
+}
+
+} // namespace
 
 ObjectProperties::ObjectProperties(EditorScreen* editor_, Rect const& rect_) :
   gui::GroupComponent(rect_, false),
@@ -40,132 +93,21 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, Rect const& rect_) :
   objects(),
   type_label(),
   mesg_label(),
-  gptype_label(),
-  gptype_type(),
-  entrance_direction_label(),
-  entrance_direction(),
-  release_rate_label(),
-  release_rate_inputbox(),
-  stretch_label(),
-  stretch_x_checkbox(),
-  stretch_y_checkbox(),
-  keep_aspect_label(),
-  keep_aspect_checkbox(),
-  para_x_label(),
-  para_x_inputbox(),
-  para_y_label(),
-  para_y_inputbox(),
-  scroll_x_label(),
-  scroll_x_inputbox(),
-  scroll_y_label(),
-  scroll_y_inputbox(),
-  owner_label(),
-  owner_inputbox(),
   pos_x_label(),
   pos_x_inputbox(),
   pos_y_label(),
   pos_y_inputbox(),
   pos_z_label(),
   pos_z_inputbox(),
-  color_label(),
-  color_r_inputbox(),
-  color_g_inputbox(),
-  color_b_inputbox(),
-  color_a_inputbox(),
-  small_stars_label(),
-  small_stars_inputbox(),
-  middle_stars_label(),
-  middle_stars_inputbox(),
-  large_stars_label(),
-  large_stars_inputbox(),
-  repeat_label(),
-  repeat_inputbox(),
   flip_horizontal_button(),
   flip_vertical_button(),
   rotate_90_button(),
   rotate_270_button(),
-  id_label(),
-  id_inputbox(),
-  target_id_label(),
-  target_id_inputbox(),
-  height_label(),
-  height_inputbox(),
+  property_widgets(),
   y_pos()
 {
   type_label = create<Label>(Rect(geom::ipoint(4, 4), Size(120, 20)), _("Object:"));
   mesg_label = create<Label>(Rect(geom::ipoint(10, 0), Size(180, 20)), _("Nothing selected"));
-
-  Rect label_rect(10,0, 80, 20);
-  Rect box_rect(80,0, 190, 20);
-
-  // Groundpiece Type
-  gptype_label = create<Label>(label_rect, "GPType:");
-  gptype_type = create<Combobox>(box_rect);
-
-  gptype_type->add(Groundtype::GP_TRANSPARENT, _("Transparent"));
-  gptype_type->add(Groundtype::GP_SOLID,       _("Solid"));
-  gptype_type->add(Groundtype::GP_GROUND,      _("Ground"));
-  gptype_type->add(Groundtype::GP_BRIDGE,      _("Bridge"));
-  gptype_type->add(Groundtype::GP_WATER,       _("Water"));
-  gptype_type->add(Groundtype::GP_LAVA,        _("Lava"));
-  gptype_type->add(Groundtype::GP_REMOVE,      _("Remove"));
-  gptype_type->set_selected_item(Groundtype::GP_GROUND);
-
-  gptype_type->on_select.connect(std::bind(&ObjectProperties::on_gptype_change, this, std::placeholders::_1));
-
-  entrance_direction_label = create<Label>(label_rect, _("Direction:"));
-  entrance_direction = create<Combobox>(box_rect);
-  entrance_direction->add(0, _("Left"));
-  entrance_direction->add(1, _("Misc"));
-  entrance_direction->add(2, _("Right"));
-  entrance_direction->set_selected_item(0);
-
-  entrance_direction->on_select.connect(std::bind(&ObjectProperties::on_entrance_direction_change, this, std::placeholders::_1));
-
-  release_rate_label = create<Label>(label_rect, _("ReleaseRate:"));
-  release_rate_inputbox = create<Inputbox>(box_rect);
-
-  release_rate_inputbox->on_change.connect(std::bind(&ObjectProperties::on_release_rate_change, this, std::placeholders::_1));
-
-  // Background Stretch
-  stretch_label = create<Label>(label_rect, "Stretch:");
-  stretch_x_checkbox = create<Checkbox>(Rect(geom::ipoint(box_rect.left(), box_rect.top()),
-                                             Size(box_rect.width()/2, box_rect.height())),
-                                        "X");
-  stretch_y_checkbox = create<Checkbox>(Rect(geom::ipoint(box_rect.left()+box_rect.width()/2, box_rect.top()),
-                                             Size(box_rect.width()/2, box_rect.height())),
-                                        "Y");
-
-  stretch_x_checkbox->on_change.connect(std::bind(&ObjectProperties::on_stretch_x_change, this, std::placeholders::_1));
-  stretch_y_checkbox->on_change.connect(std::bind(&ObjectProperties::on_stretch_y_change, this, std::placeholders::_1));
-
-  keep_aspect_label = create<Label>(label_rect, "Aspect:");
-  keep_aspect_checkbox = create<Checkbox>(Rect(geom::ipoint(box_rect.left(), box_rect.top()),
-                                               Size(box_rect.width(), box_rect.height())),
-                                          "keep");
-  keep_aspect_checkbox->on_change.connect(std::bind(&ObjectProperties::on_keep_aspect_change, this, std::placeholders::_1));
-
-  para_x_label = create<Label>(label_rect, _("Para-X:"));
-  para_y_label = create<Label>(label_rect, _("Para-Y:"));
-
-  para_x_inputbox = create<Inputbox>(box_rect);
-  para_y_inputbox = create<Inputbox>(box_rect);
-
-  para_x_inputbox->on_change.connect(std::bind(&ObjectProperties::on_para_x_change, this, std::placeholders::_1));
-  para_y_inputbox->on_change.connect(std::bind(&ObjectProperties::on_para_y_change, this, std::placeholders::_1));
-
-  scroll_x_label = create<Label>(label_rect, _("Scroll-X:"));
-  scroll_y_label = create<Label>(label_rect, _("Scroll-Y:"));
-
-  scroll_x_inputbox = create<Inputbox>(box_rect);
-  scroll_y_inputbox = create<Inputbox>(box_rect);
-
-  scroll_x_inputbox->on_change.connect(std::bind(&ObjectProperties::on_scroll_x_change, this, std::placeholders::_1));
-  scroll_y_inputbox->on_change.connect(std::bind(&ObjectProperties::on_scroll_y_change, this, std::placeholders::_1));
-
-  owner_label = create<Label>(label_rect, _("Owner Id:"));
-  owner_inputbox = create<Inputbox>(box_rect);
-  owner_inputbox->on_change.connect(std::bind(&ObjectProperties::on_owner_change, this, std::placeholders::_1));
 
   pos_x_label = create<Label>(label_rect, _("X-Pos:"));
   pos_x_inputbox = create<Inputbox>(box_rect);
@@ -178,41 +120,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, Rect const& rect_) :
   pos_z_label = create<Label>(label_rect, _("Z-Pos:"));
   pos_z_inputbox = create<Inputbox>(box_rect);
   pos_z_inputbox->on_change.connect(std::bind(&ObjectProperties::on_pos_z_change, this, std::placeholders::_1));
-  // ___________________________________________________________________
-  //
-  Size color_s(box_rect.width()/4, box_rect.height());
 
-  color_label = create<Label>(label_rect, _("Color:"));
-  color_r_inputbox = create<Inputbox>(Rect(geom::ipoint(box_rect.left() + 0*color_s.width(), box_rect.top()), color_s));
-  color_g_inputbox = create<Inputbox>(Rect(geom::ipoint(box_rect.left() + 1*color_s.width(), box_rect.top()), color_s));
-  color_b_inputbox = create<Inputbox>(Rect(geom::ipoint(box_rect.left() + 2*color_s.width(), box_rect.top()), color_s));
-  color_a_inputbox = create<Inputbox>(Rect(geom::ipoint(box_rect.left() + 3*color_s.width(), box_rect.top()), color_s));
-
-  color_r_inputbox->on_change.connect(std::bind(&ObjectProperties::on_color_r_change, this, std::placeholders::_1));
-  color_g_inputbox->on_change.connect(std::bind(&ObjectProperties::on_color_g_change, this, std::placeholders::_1));
-  color_b_inputbox->on_change.connect(std::bind(&ObjectProperties::on_color_b_change, this, std::placeholders::_1));
-  color_a_inputbox->on_change.connect(std::bind(&ObjectProperties::on_color_a_change, this, std::placeholders::_1));
-  // ___________________________________________________________________
-  //
-  small_stars_label    = create<Label>(label_rect, _("Small Stars:"));
-  small_stars_inputbox = create<Inputbox>(box_rect);
-
-  middle_stars_label    = create<Label>(label_rect, _("Middle Stars:"));
-  middle_stars_inputbox = create<Inputbox>(box_rect);
-
-  large_stars_label    = create<Label>(label_rect, _("Large Stars:"));
-  large_stars_inputbox = create<Inputbox>(box_rect);
-
-  small_stars_inputbox->on_change.connect(std::bind(&ObjectProperties::on_small_stars_change, this, std::placeholders::_1));
-  middle_stars_inputbox->on_change.connect(std::bind(&ObjectProperties::on_middle_stars_change, this, std::placeholders::_1));
-  large_stars_inputbox->on_change.connect(std::bind(&ObjectProperties::on_large_stars_change, this, std::placeholders::_1));
-  // ___________________________________________________________________
-  //
-  repeat_label = create<Label>(label_rect, _("Repeat:"));
-  repeat_inputbox = create<Inputbox>(box_rect);
-  repeat_inputbox->on_change.connect(std::bind(&ObjectProperties::on_repeat_change, this, std::placeholders::_1));
-  // ___________________________________________________________________
-  //
   flip_horizontal_button = create<Button>(Rect(geom::ipoint(15+40*0-3, 0), Size(34, 34)), "|");
   flip_vertical_button   = create<Button>(Rect(geom::ipoint(15+40*1-3, 0), Size(34, 34)), "--");
   rotate_270_button      = create<Button>(Rect(geom::ipoint(15+40*2-3 + 20, 0), Size(34, 34)), "<-.");
@@ -222,22 +130,7 @@ ObjectProperties::ObjectProperties(EditorScreen* editor_, Rect const& rect_) :
   flip_horizontal_button->on_click.connect(std::bind(&ObjectProperties::on_flip_horizontal, this));
   rotate_90_button->on_click.connect(std::bind(&ObjectProperties::on_rotate_90, this));
   rotate_270_button->on_click.connect(std::bind(&ObjectProperties::on_rotate_270, this));
-  // ___________________________________________________________________
-  //
-  id_label    = create<Label>(label_rect, _("Id:"));
-  id_inputbox = create<Inputbox>(box_rect);
-  id_inputbox->on_change.connect(std::bind(&ObjectProperties::on_id_change, this, std::placeholders::_1));
 
-  target_id_label    = create<Label>(label_rect, _("Target Id:"));
-  target_id_inputbox = create<Inputbox>(box_rect);
-  target_id_inputbox->on_change.connect(std::bind(&ObjectProperties::on_target_id_change, this, std::placeholders::_1));
-  // ___________________________________________________________________
-  //
-  height_label    = create<Label>(label_rect, _("Height:"));
-  height_inputbox = create<Inputbox>(box_rect);
-  height_inputbox->on_change.connect(std::bind(&ObjectProperties::on_height_change, this, std::placeholders::_1));
-  // ___________________________________________________________________
-  //
   set_object(LevelObjPtr());
 }
 
@@ -245,123 +138,181 @@ ObjectProperties::~ObjectProperties()
 {
 }
 
-void
-ObjectProperties::advance()
+ObjectProperties::PropertyWidgets
+ObjectProperties::create_property_widgets(PropertyDef const& prop)
 {
-  y_pos += 22;
+  PropertyWidgets widgets;
+  widgets.prop = &prop;
+  widgets.label = create<Label>(label_rect, label_text(prop));
+
+  std::string const name = prop.name;
+
+  switch (prop.type)
+  {
+    case PropertyType::INT:
+      widgets.inputbox = create<Inputbox>(box_rect);
+      widgets.inputbox->on_change.connect([this, name](std::string const& str) {
+        set_property(name, strut::from_string<int>(str));
+      });
+      break;
+
+    case PropertyType::FLOAT:
+      widgets.inputbox = create<Inputbox>(box_rect);
+      widgets.inputbox->on_change.connect([this, name](std::string const& str) {
+        set_property(name, strut::from_string<float>(str));
+      });
+      break;
+
+    case PropertyType::BOOL:
+      widgets.checkbox = create<Checkbox>(box_rect, _("on"));
+      widgets.checkbox->on_change.connect([this, name](bool value) {
+        set_property(name, value);
+      });
+      break;
+
+    case PropertyType::STRING:
+      if (prop.choices.empty())
+      {
+        widgets.inputbox = create<Inputbox>(box_rect);
+        widgets.inputbox->on_change.connect([this, name](std::string const& str) {
+          set_property(name, str);
+        });
+      }
+      else
+      {
+        widgets.combobox = create<Combobox>(box_rect);
+        for (size_t i = 0; i < prop.choices.size(); ++i) {
+          widgets.combobox->add(static_cast<int>(i), _(prop.choices[i].label));
+        }
+        PropertyDef const* prop_ptr = &prop;
+        widgets.combobox->on_select.connect([this, prop_ptr](ComboItem const& item) {
+          set_property(prop_ptr->name, prop_ptr->choices[static_cast<size_t>(item.id)].value);
+        });
+      }
+      break;
+
+    case PropertyType::COLOR:
+    {
+      Size const color_size(box_rect.width() / 4, box_rect.height());
+      for (int i = 0; i < 4; ++i)
+      {
+        Inputbox* inputbox = create<Inputbox>(Rect(geom::ipoint(box_rect.left() + i * color_size.width(), box_rect.top()),
+                                                   color_size));
+        inputbox->on_change.connect([this, name, i](std::string const& str) {
+          uint8_t const component = static_cast<uint8_t>(std::clamp(strut::from_string<int>(str), 0, 255));
+          for (auto const& obj : objects)
+          {
+            Color color = obj->get_color();
+            uint8_t* channels[] = { &color.r, &color.g, &color.b, &color.a };
+            *channels[i] = component;
+            if (ObjectData* data = obj->get_object_data(); data && data->has(name)) {
+              data->set(name, color);
+            }
+          }
+        });
+        widgets.color[static_cast<size_t>(i)] = inputbox;
+      }
+      break;
+    }
+
+    case PropertyType::SURFACE:
+      // not editable in the panel, the label is hidden too
+      break;
+  }
+
+  return widgets;
+}
+
+std::vector<ObjectProperties::PropertyWidgets>&
+ObjectProperties::get_property_widgets(ObjectTypeDef const& type)
+{
+  auto it = property_widgets.find(&type);
+  if (it != property_widgets.end()) {
+    return it->second;
+  }
+
+  std::vector<PropertyWidgets> widgets;
+  for (auto const& prop : type.properties)
+  {
+    if (!prop.hidden && prop.type != PropertyType::SURFACE) {
+      widgets.push_back(create_property_widgets(prop));
+    }
+  }
+
+  // newly created widgets are visible, hide_all() didn't know them yet
+  for (auto& w : widgets)
+  {
+    w.label->hide();
+    for (gui::RectComponent* comp : std::initializer_list<gui::RectComponent*>{w.inputbox, w.checkbox, w.combobox,
+                                                                              w.color[0], w.color[1], w.color[2], w.color[3]}) {
+      if (comp) { comp->hide(); }
+    }
+  }
+
+  return property_widgets.emplace(&type, std::move(widgets)).first->second;
 }
 
 void
-ObjectProperties::place(gui::RectComponent* comp) // NOLINT
+ObjectProperties::show_property(PropertyWidgets& widgets, ObjectData const& data)
 {
-  Rect crect = comp->get_rect();
-  comp->set_rect(Rect(crect.left(),
-                      y_pos,
-                      crect.right(),
-                      y_pos + crect.height()));
-  comp->show();
-}
+  PropertyDef const& prop = *widgets.prop;
 
-void
-ObjectProperties::place(gui::RectComponent* comp1, gui::RectComponent* comp2) // NOLINT
-{
-  Rect rect1 = comp1->get_rect();
-  Rect rect2 = comp2->get_rect();
+  switch (prop.type)
+  {
+    case PropertyType::INT:
+      widgets.inputbox->set_text(strut::to_string(data.get<int>(prop.name)));
+      place(widgets.label, widgets.inputbox);
+      break;
 
-  comp1->set_rect(Rect(rect1.left(),
-                       y_pos,
-                       rect1.right(),
-                       y_pos + rect1.height()));
+    case PropertyType::FLOAT:
+      widgets.inputbox->set_text(strut::to_string(data.get<float>(prop.name)));
+      place(widgets.label, widgets.inputbox);
+      break;
 
-  comp2->set_rect(Rect(rect2.left(),
-                       y_pos,
-                       rect2.right(),
-                       y_pos + rect2.height()));
+    case PropertyType::BOOL:
+      widgets.checkbox->set_checked(data.get<bool>(prop.name));
+      place(widgets.label, widgets.checkbox);
+      break;
 
-  comp1->show();
-  comp2->show();
+    case PropertyType::STRING:
+    {
+      std::string const& value = data.get<std::string>(prop.name);
+      if (widgets.combobox)
+      {
+        auto it = std::find_if(prop.choices.begin(), prop.choices.end(),
+                               [&value](PropertyChoice const& choice) { return choice.value == value; });
+        if (it == prop.choices.end()) {
+          log_error("unknown value for {}: '{}'", prop.name, value);
+        } else {
+          widgets.combobox->set_selected_item(static_cast<int>(it - prop.choices.begin()));
+        }
+        place(widgets.label, widgets.combobox);
+      }
+      else
+      {
+        widgets.inputbox->set_text(value);
+        place(widgets.label, widgets.inputbox);
+      }
+      break;
+    }
 
-  y_pos += 22;
-}
+    case PropertyType::COLOR:
+    {
+      Color const color = data.get<Color>(prop.name);
+      int const channels[] = { color.r, color.g, color.b, color.a };
+      place(widgets.label);
+      for (size_t i = 0; i < 4; ++i)
+      {
+        widgets.color[i]->set_text(strut::to_string(channels[i]));
+        place(widgets.color[i]);
+      }
+      advance();
+      break;
+    }
 
-void
-ObjectProperties::hide_all()
-{
-  y_pos = 30;
-
-  // Hide everything
-  mesg_label->hide();
-
-  gptype_label->hide();
-  gptype_type->hide();
-
-  entrance_direction_label->hide();
-  entrance_direction->hide();
-
-  release_rate_label->hide();
-  release_rate_inputbox->hide();
-
-  stretch_label->hide();
-  stretch_x_checkbox->hide();
-  stretch_y_checkbox->hide();
-
-  keep_aspect_label->hide();
-  keep_aspect_checkbox->hide();
-
-  para_x_label->hide();
-  para_x_inputbox->hide();
-
-  para_y_label->hide();
-  para_y_inputbox->hide();
-
-  scroll_x_label->hide();
-  scroll_x_inputbox->hide();
-
-  scroll_y_label->hide();
-  scroll_y_inputbox->hide();
-
-  owner_label->hide();
-  owner_inputbox->hide();
-
-  pos_x_label->hide();
-  pos_x_inputbox->hide();
-
-  pos_y_label->hide();
-  pos_y_inputbox->hide();
-
-  pos_z_label->hide();
-  pos_z_inputbox->hide();
-
-  color_label->hide();
-  color_r_inputbox->hide();
-  color_g_inputbox->hide();
-  color_b_inputbox->hide();
-  color_a_inputbox->hide();
-
-  small_stars_label->hide();
-  middle_stars_label->hide();
-  large_stars_label->hide();
-
-  small_stars_inputbox->hide();
-  middle_stars_inputbox->hide();
-  large_stars_inputbox->hide();
-
-  repeat_label->hide();
-  repeat_inputbox->hide();
-
-  flip_horizontal_button->hide();
-  flip_vertical_button->hide();
-  rotate_90_button->hide();
-  rotate_270_button->hide();
-
-  id_label->hide();
-  id_inputbox->hide();
-
-  target_id_label->hide();
-  target_id_inputbox->hide();
-
-  height_label->hide();
-  height_inputbox->hide();
+    case PropertyType::SURFACE:
+      break;
+  }
 }
 
 void
@@ -371,142 +322,34 @@ ObjectProperties::set_object(LevelObjPtr const& obj)
 
   if (obj)
   {
-    unsigned int attr = obj->get_attribs();
-    if (attr & HAS_GPTYPE)
+    if (ObjectData* data = obj->get_object_data())
     {
-      gptype_type->set_selected_item(Groundtype::string_to_type(obj->get_ground_type()));
-      place(gptype_label, gptype_type);
+      for (auto& widgets : get_property_widgets(data->type())) {
+        show_property(widgets, *data);
+      }
     }
-
-    if (attr & HAS_DIRECTION)
+    else
     {
-      if (obj->get_direction() == "left")
-        entrance_direction->set_selected_item(0);
-      else if (obj->get_direction() == "misc")
-        entrance_direction->set_selected_item(1);
-      else if (obj->get_direction() == "right")
-        entrance_direction->set_selected_item(2);
-      else
-        log_error("unknown direction: {}", obj->get_direction());
-
-      place(entrance_direction_label, entrance_direction);
+      // prefab group: only the overrides it has
+      ObjectData const overrides = prefab_overrides_data(*obj);
+      for (auto& widgets : get_property_widgets(prefab_overrides_type()))
+      {
+        if (obj->has_property(widgets.prop->name)) {
+          show_property(widgets, overrides);
+        }
+      }
     }
 
-    if (attr & HAS_SPEED)
-    { // obsolete in large part, since sprites have their own speed
-    }
+    // everybody has x-pos, y-pos and z-pos
+    pos_x_inputbox->set_text(strut::to_string(obj->get_pos_x()));
+    place(pos_x_label, pos_x_inputbox);
+    pos_y_inputbox->set_text(strut::to_string(obj->get_pos_y()));
+    place(pos_y_label, pos_y_inputbox);
+    pos_z_inputbox->set_text(strut::to_string(obj->z_index()));
+    place(pos_z_label, pos_z_inputbox);
 
-    if (attr & HAS_PARALLAX)
-    { // used for hotspot
-    }
-
-    if (attr & HAS_REPEAT)
-    {
-      repeat_inputbox->set_text(strut::to_string(obj->get_repeat()));
-      place(repeat_label, repeat_inputbox);
-    }
-
-    if (attr & HAS_OWNER)
-    {
-      owner_inputbox->set_text(strut::to_string(obj->get_owner()));
-      place(owner_label, owner_inputbox);
-    }
-
-    if (attr & HAS_COLOR)
-    {
-      color_r_inputbox->set_text(strut::to_string(static_cast<int>(obj->get_color().r)));
-      color_g_inputbox->set_text(strut::to_string(static_cast<int>(obj->get_color().g)));
-      color_b_inputbox->set_text(strut::to_string(static_cast<int>(obj->get_color().b)));
-      color_a_inputbox->set_text(strut::to_string(static_cast<int>(obj->get_color().a)));
-
-      place(color_label);
-      place(color_r_inputbox);
-      place(color_g_inputbox);
-      place(color_b_inputbox);
-      place(color_a_inputbox);
-      advance();
-    }
-
-    if (attr & HAS_SCROLL)
-    {
-      scroll_x_inputbox->set_text(strut::to_string(obj->get_scroll_x()));
-      scroll_y_inputbox->set_text(strut::to_string(obj->get_scroll_y()));
-
-      place(scroll_x_label, scroll_x_inputbox);
-      place(scroll_y_label, scroll_y_inputbox);
-    }
-
-    if (attr & HAS_PARA)
-    {
-      para_x_inputbox->set_text(strut::to_string(obj->get_para_x()));
-      para_y_inputbox->set_text(strut::to_string(obj->get_para_y()));
-
-      place(para_x_label, para_x_inputbox);
-      place(para_y_label, para_y_inputbox);
-    }
-
-    if (attr & HAS_STRETCH)
-    {
-      stretch_x_checkbox->set_checked(obj->get_stretch_x());
-      stretch_y_checkbox->set_checked(obj->get_stretch_y());
-
-      place(stretch_label);
-      place(stretch_x_checkbox);
-      place(stretch_y_checkbox);
-      advance();
-
-      keep_aspect_checkbox->set_checked(obj->get_keep_aspect());
-      place(keep_aspect_label);
-      place(keep_aspect_checkbox);
-      advance();
-    }
-
-    if (attr & HAS_RELEASE_RATE)
-    {
-      release_rate_inputbox->set_text(strut::to_string(obj->get_release_rate()));
-      place(release_rate_label, release_rate_inputbox);
-    }
-
-    if (attr & HAS_STARFIELD)
-    {
-      small_stars_inputbox->set_text(strut::to_string(obj->get_small_stars()));
-      middle_stars_inputbox->set_text(strut::to_string(obj->get_middle_stars()));
-      large_stars_inputbox->set_text(strut::to_string(obj->get_large_stars()));
-
-      place(small_stars_label,  small_stars_inputbox);
-      place(middle_stars_label, middle_stars_inputbox);
-      place(large_stars_label,  large_stars_inputbox);
-    }
-
-    if (attr & HAS_ID)
-    {
-      id_inputbox->set_text(obj->get_id());
-      place(id_label, id_inputbox);
-    }
-
-    if (attr & HAS_TARGET_ID)
-    {
-      target_id_inputbox->set_text(obj->get_target_id());
-      place(target_id_label, target_id_inputbox);
-    }
-
-    if (attr & HAS_HEIGHT)
-    {
-      height_inputbox->set_text(strut::to_string(obj->get_height()));
-      place(height_label, height_inputbox);
-    }
-
-    if (1) // everybody has x-pos, y-pos and z-pos
-    {
-      pos_x_inputbox->set_text(strut::to_string(obj->get_pos_x()));
-      place(pos_x_label, pos_x_inputbox);
-      pos_y_inputbox->set_text(strut::to_string(obj->get_pos_y()));
-      place(pos_y_label, pos_y_inputbox);
-      pos_z_inputbox->set_text(strut::to_string(obj->z_index()));
-      place(pos_z_label, pos_z_inputbox);
-    }
-
-    if (attr & CAN_ROTATE)
+    ObjectData* data = obj->get_object_data();
+    if (data && data->type().editor_can_rotate)
     {
       y_pos += 4;
       place(flip_horizontal_button);
@@ -521,13 +364,38 @@ ObjectProperties::set_object(LevelObjPtr const& obj)
     place(mesg_label);
     advance();
   }
+
   finalize();
+}
+
+void
+ObjectProperties::set_property(std::string const& name, PropertyValue const& value)
+{
+  for (auto const& obj : objects)
+  {
+    if (ObjectData* data = obj->get_object_data())
+    {
+      if (data->has(name)) {
+        data->set_value(name, value);
+      }
+    }
+    else if (obj->has_property(name))
+    {
+      set_prefab_override(*obj, name, value);
+    }
+  }
 }
 
 void
 ObjectProperties::draw_background(DrawingContext& gc)
 {
   GUIStyle::draw_raised_box(gc, Rect(0,0, rect.width(), rect.height()));
+}
+
+void
+ObjectProperties::update_layout()
+{
+  GroupComponent::update_layout();
 }
 
 void
@@ -555,252 +423,122 @@ ObjectProperties::set_objects(Selection const& objs)
 }
 
 void
+ObjectProperties::hide_all()
+{
+  y_pos = 30;
+
+  mesg_label->hide();
+
+  pos_x_label->hide();
+  pos_x_inputbox->hide();
+  pos_y_label->hide();
+  pos_y_inputbox->hide();
+  pos_z_label->hide();
+  pos_z_inputbox->hide();
+
+  flip_horizontal_button->hide();
+  flip_vertical_button->hide();
+  rotate_90_button->hide();
+  rotate_270_button->hide();
+
+  for (auto& [type, widgets_list] : property_widgets)
+  {
+    for (auto& w : widgets_list)
+    {
+      w.label->hide();
+      for (gui::RectComponent* comp : std::initializer_list<gui::RectComponent*>{w.inputbox, w.checkbox, w.combobox,
+                                                                                w.color[0], w.color[1], w.color[2], w.color[3]}) {
+        if (comp) { comp->hide(); }
+      }
+    }
+  }
+}
+
+void
+ObjectProperties::advance()
+{
+  y_pos += 22;
+}
+
+void
+ObjectProperties::place(gui::RectComponent* comp) // NOLINT
+{
+  Rect crect = comp->get_rect();
+  comp->set_rect(Rect(crect.left(),
+                      y_pos,
+                      crect.right(),
+                      y_pos + crect.height()));
+  comp->show();
+}
+
+void
+ObjectProperties::place(gui::RectComponent* comp1, gui::RectComponent* comp2) // NOLINT
+{
+  place(comp1);
+  place(comp2);
+  y_pos += 22;
+}
+
+void
 ObjectProperties::finalize()
 {
   set_rect(Rect(rect.left(), rect.bottom() - y_pos - 10, rect.right(), rect.bottom()));
 }
 
 void
-ObjectProperties::on_gptype_change(ComboItem const& item)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_ground_type(Groundtype::type_to_string(static_cast<Groundtype::GPType>(item.id)));
-}
-
-void
-ObjectProperties::on_stretch_x_change(bool t)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_stretch_x(t);
-}
-
-void
-ObjectProperties::on_stretch_y_change(bool t)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_stretch_y(t);
-}
-
-void
-ObjectProperties::on_keep_aspect_change(bool t)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_keep_aspect(t);
-}
-
-void
-ObjectProperties::on_entrance_direction_change(ComboItem const& item)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-  {
-    if (item.id == 0)
-      (*i)->set_direction("left");
-    else if (item.id == 1)
-      (*i)->set_direction("misc");
-    else // (item.id == 2)
-      (*i)->set_direction("right");
-  }
-}
-
-void
-ObjectProperties::on_owner_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_owner(strut::from_string<int>(str));
-}
-
-void
 ObjectProperties::on_pos_x_change(std::string const& str)
 {
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_pos_x(strut::from_string<float>(str));
+  for (auto const& obj : objects) {
+    obj->set_pos_x(strut::from_string<float>(str));
+  }
 }
 
 void
 ObjectProperties::on_pos_y_change(std::string const& str)
 {
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_pos_y(strut::from_string<float>(str));
+  for (auto const& obj : objects) {
+    obj->set_pos_y(strut::from_string<float>(str));
+  }
 }
 
 void
 ObjectProperties::on_pos_z_change(std::string const& str)
 {
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_z_index(strut::from_string<float>(str));
-}
-
-void
-ObjectProperties::on_para_x_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_para_x(strut::from_string<float>(str));
-}
-
-void
-ObjectProperties::on_para_y_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_para_y(strut::from_string<float>(str));
-}
-
-void
-ObjectProperties::on_scroll_x_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_scroll_x(strut::from_string<float>(str));
-}
-
-void
-ObjectProperties::on_scroll_y_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_scroll_y(strut::from_string<float>(str));
-}
-
-void
-ObjectProperties::on_release_rate_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_release_rate(strut::from_string<int>(str));
-}
-
-void
-ObjectProperties::on_color_r_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-  {
-    Color color = (*i)->get_color();
-    color.r = static_cast<uint8_t>(strut::from_string<int>(str));
-    (*i)->set_color(color);
-  }
-}
-
-void
-ObjectProperties::on_color_g_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-  {
-    Color color = (*i)->get_color();
-    color.g = static_cast<uint8_t>(strut::from_string<int>(str));
-    (*i)->set_color(color);
-  }
-}
-
-void
-ObjectProperties::on_color_b_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-  {
-    Color color = (*i)->get_color();
-    color.b = static_cast<uint8_t>(strut::from_string<int>(str));
-    (*i)->set_color(color);
-  }
-}
-
-void
-ObjectProperties::on_color_a_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-  {
-    Color color = (*i)->get_color();
-    color.a = static_cast<uint8_t>(strut::from_string<int>(str));
-    (*i)->set_color(color);
-  }
-}
-
-void
-ObjectProperties::on_small_stars_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-  {
-    (*i)->set_small_stars(strut::from_string<int>(str));
-  }
-}
-
-void
-ObjectProperties::on_middle_stars_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-  {
-    (*i)->set_middle_stars(strut::from_string<int>(str));
-  }
-}
-
-void
-ObjectProperties::on_large_stars_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-  {
-    (*i)->set_large_stars(strut::from_string<int>(str));
-  }
-}
-
-void
-ObjectProperties::on_repeat_change(std::string const& str)
-{
-  int r = strut::from_string<int>(str);
-  if (r <= 0)
-    r = 1;
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-  {
-    (*i)->set_repeat(r);
+  for (auto const& obj : objects) {
+    obj->set_z_index(strut::from_string<float>(str));
   }
 }
 
 void
 ObjectProperties::on_flip_horizontal()
 {
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_modifier(ResourceModifier::horizontal_flip((*i)->get_modifier()));
+  for (auto const& obj : objects) {
+    obj->set_modifier(ResourceModifier::horizontal_flip(obj->get_modifier()));
+  }
 }
 
 void
 ObjectProperties::on_flip_vertical()
 {
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_modifier(ResourceModifier::vertical_flip((*i)->get_modifier()));
+  for (auto const& obj : objects) {
+    obj->set_modifier(ResourceModifier::vertical_flip(obj->get_modifier()));
+  }
 }
 
 void
 ObjectProperties::on_rotate_90()
 {
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_modifier(ResourceModifier::rotate_90((*i)->get_modifier()));
+  for (auto const& obj : objects) {
+    obj->set_modifier(ResourceModifier::rotate_90(obj->get_modifier()));
+  }
 }
 
 void
 ObjectProperties::on_rotate_270()
 {
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_modifier(ResourceModifier::rotate_270((*i)->get_modifier()));
-}
-
-void
-ObjectProperties::on_id_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_id(str);
-}
-
-void
-ObjectProperties::on_target_id_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_target_id(str);
-}
-
-void
-ObjectProperties::on_height_change(std::string const& str)
-{
-  for(auto i = objects.begin(); i != objects.end(); ++i)
-    (*i)->set_height(strut::from_string<int>(str));
-}
-
-void
-ObjectProperties::update_layout()
-{
-  GroupComponent::update_layout();
+  for (auto const& obj : objects) {
+    obj->set_modifier(ResourceModifier::rotate_270(obj->get_modifier()));
+  }
 }
 
 } // namespace pingus::editor

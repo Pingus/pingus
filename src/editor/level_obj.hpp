@@ -17,6 +17,8 @@
 #ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJ_HPP
 #define HEADER_PINGUS_EDITOR_LEVEL_OBJ_HPP
 
+#include <string_view>
+
 #include "editor/level_obj_ptr.hpp"
 #include "engine/display/sprite.hpp"
 #include "math/color.hpp"
@@ -26,28 +28,11 @@
 #include "util/writer.hpp"
 #include "fwd.hpp"
 
-namespace pingus::editor {
+namespace pingus {
+class ObjectData;
+} // namespace pingus
 
-const unsigned HAS_TYPE =         1 << 0;
-const unsigned HAS_SPEED =        1 << 1;
-const unsigned HAS_PARALLAX =     1 << 2;
-const unsigned HAS_REPEAT =       1 << 3;
-const unsigned HAS_OWNER =        1 << 4;
-const unsigned HAS_COLOR =        1 << 5;
-const unsigned HAS_SCROLL =       1 << 6;
-const unsigned HAS_PARA =         1 << 7;
-const unsigned HAS_STRETCH =      1 << 8;
-const unsigned HAS_DIRECTION =    1 << 9;
-const unsigned HAS_RELEASE_RATE = 1 << 10;
-const unsigned HAS_SPRITE =       1 << 11;
-// HAS_SPRITE_FAKE means it has a generic image in the editor, but isn't saved.
-const unsigned HAS_SPRITE_FAKE =  1 << 12;
-const unsigned CAN_ROTATE =       1 << 13;
-const unsigned HAS_GPTYPE =       1 << 14;
-const unsigned HAS_STARFIELD =    1 << 15;
-const unsigned HAS_ID =           1 << 16;
-const unsigned HAS_TARGET_ID =    1 << 17;
-const unsigned HAS_HEIGHT =       1 << 18;
+namespace pingus::editor {
 
 class LevelObj
 {
@@ -60,8 +45,11 @@ public:
   virtual Vector2f get_pos() const = 0;
   virtual Vector2f get_orig_pos() const = 0;
 
-  /** Retrieve this object's attribute number */
-  virtual unsigned int get_attribs() const = 0;
+  /** True if the object has the named level file property */
+  virtual bool has_property(std::string_view name) const = 0;
+
+  /** The object's schema-described properties, nullptr for groups */
+  virtual ObjectData* get_object_data() { return nullptr; }
 
   /** Retrieve the object's resource name */
   virtual ResDescriptor get_res_desc() const = 0;

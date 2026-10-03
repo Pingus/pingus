@@ -35,48 +35,6 @@ ObjectTypeDef const& find_type(std::string const& name)
   return *type;
 }
 
-/** Map the object type's properties to the HAS_* flags used by the
-    editor's property panel */
-unsigned attribs_from_type(ObjectTypeDef const& type)
-{
-  struct Flag { char const* property; unsigned flag; };
-  static Flag const flags[] = {
-    {"speed", HAS_SPEED},
-    {"parallax", HAS_PARALLAX},
-    {"repeat", HAS_REPEAT},
-    {"owner-id", HAS_OWNER},
-    {"colori", HAS_COLOR},
-    {"scroll-x", HAS_SCROLL},
-    {"para-x", HAS_PARA},
-    {"stretch-x", HAS_STRETCH},
-    {"direction", HAS_DIRECTION},
-    {"release-rate", HAS_RELEASE_RATE},
-    {"surface", HAS_SPRITE},
-    {"type", HAS_GPTYPE},
-    {"small-stars", HAS_STARFIELD},
-    {"id", HAS_ID},
-    {"target-id", HAS_TARGET_ID},
-    {"height", HAS_HEIGHT},
-  };
-
-  unsigned attribs = 0;
-  for (auto const& f : flags) {
-    if (type.find_property(f.property)) {
-      attribs |= f.flag;
-    }
-  }
-
-  if (!type.editor_sprite.empty()) {
-    attribs |= HAS_SPRITE_FAKE;
-  }
-
-  if (type.editor_can_rotate) {
-    attribs |= CAN_ROTATE;
-  }
-
-  return attribs;
-}
-
 } // namespace
 
 GenericLevelObj::GenericLevelObj(std::string const& obj_name) :
@@ -89,16 +47,21 @@ GenericLevelObj::GenericLevelObj(ObjectData data_) :
   sprite(),
   surface(),
   desc(),
-  orig_pos(data.get_pos()),
-  attribs(attribs_from_type(data.type()))
+  orig_pos(data.get_pos())
 {
   init_sprite();
+}
+
+bool
+GenericLevelObj::has_sprite() const
+{
+  return data.has("surface") || !data.type().editor_sprite.empty();
 }
 
 void
 GenericLevelObj::init_sprite()
 {
-  if (attribs & HAS_SPRITE)
+  if (data.has("surface"))
   {
     desc = data.get<ResDescriptor>("surface");
     // Objects without a surface in the level file are drawn without one
@@ -106,7 +69,7 @@ GenericLevelObj::init_sprite()
       refresh_sprite();
     }
   }
-  else if (attribs & HAS_SPRITE_FAKE)
+  else if (!data.type().editor_sprite.empty())
   {
     desc = ResDescriptor(data.type().editor_sprite);
     sprite = Sprite(desc);
@@ -128,14 +91,14 @@ GenericLevelObj::draw(DrawingContext& gc)
   float const z = data.get_z_index();
   std::string const& name = data.type().name;
 
-  if (attribs & HAS_COLOR && name == "surface-background")
+  if (name == "surface-background")
   {
     gc.draw(sprite, pos, z);
     gc.draw_fillrect(get_rect(), get_color(), z);
   }
-  else if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
+  else if (has_sprite())
   {
-    if (attribs & HAS_REPEAT)
+    if (data.has("repeat"))
     {
       int const repeat = get_repeat();
       for(int x = static_cast<int>(pos.x()); x < static_cast<int>(pos.x()) + sprite.get_width() * repeat; x += sprite.get_width())
@@ -143,7 +106,7 @@ GenericLevelObj::draw(DrawingContext& gc)
         gc.draw(sprite, Vector2f(static_cast<float>(x), pos.y()), z);
       }
     }
-    else if (attribs & HAS_COLOR && name == "solidcolor-background")
+    else if (name == "solidcolor-background")
     {
       gc.draw_fillrect(get_rect(), get_color(), z);
       gc.draw(sprite, pos);
@@ -187,7 +150,7 @@ GenericLevelObj::is_at(int x, int y)
 void
 GenericLevelObj::refresh_sprite()
 {
-  if (attribs & HAS_SPRITE || attribs & HAS_SPRITE_FAKE)
+  if (has_sprite())
   {
     sprite = Sprite(desc);
     surface = Resource::load_surface(desc);
@@ -203,7 +166,7 @@ GenericLevelObj::set_modifier(std::string const& m)
 void
 GenericLevelObj::set_modifier(ResourceModifier::Enum modifier)
 {
-  if (attribs & CAN_ROTATE)
+  if (data.type().editor_can_rotate)
   {
     desc.modifier = modifier;
     set_if("surface", desc);
@@ -227,7 +190,7 @@ Rect
 GenericLevelObj::get_rect() const
 {
   Vector2f const pos = data.get_pos();
-  int const width = (attribs & HAS_REPEAT) ? sprite.get_width() * get_repeat() : sprite.get_width();
+  int const width = data.has("repeat") ? sprite.get_width() * get_repeat() : sprite.get_width();
   return Rect(geom::ipoint(static_cast<int>(pos.x()), static_cast<int>(pos.y())).as_vec() - sprite.get_offset().as_vec(),
               Size(width, sprite.get_height()));
 }

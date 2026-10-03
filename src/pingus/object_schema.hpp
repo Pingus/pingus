@@ -32,6 +32,15 @@ enum class PropertyType
 
 using PropertyValue = std::variant<int, float, bool, std::string, Color, ResDescriptor>;
 
+/** One of the allowed values of a string property */
+struct PropertyChoice
+{
+  std::string value;
+
+  /** Name shown in the editor, translated with _() */
+  std::string label;
+};
+
 /** One property of a level object as stored in level files */
 struct PropertyDef
 {
@@ -41,6 +50,15 @@ struct PropertyDef
 
   /** Older names that are accepted when reading, never written */
   std::vector<std::string> aliases = {};
+
+  /** Label in the editor's property panel, translated with _() */
+  std::string label = {};
+
+  /** For STRING properties: the allowed values, shown as a combo box */
+  std::vector<PropertyChoice> choices = {};
+
+  /** Not shown in the editor's property panel */
+  bool hidden = false;
 };
 
 /** Description of one level object type: the properties it has in level
@@ -113,8 +131,19 @@ public:
   template<typename T>
   void set(std::string_view name, T const& value)
   {
+    set_value(name, PropertyValue(value));
+  }
+
+  PropertyValue const& get_value(std::string_view name) const
+  {
+    return m_values[index_of(name)];
+  }
+
+  /** Set the named property, throws when the value has the wrong type */
+  void set_value(std::string_view name, PropertyValue const& value)
+  {
     PropertyValue& slot = m_values[index_of(name)];
-    if (!std::holds_alternative<T>(slot)) {
+    if (slot.index() != value.index()) {
       throw std::runtime_error("ObjectData::set(): type mismatch for '" + std::string(name) + "'");
     }
     slot = value;

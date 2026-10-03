@@ -42,19 +42,17 @@ private:
   /** Location of this object before moving it around */
   Vector2f orig_pos;
 
-  /** HAS_* flags derived from the object type's properties */
-  unsigned attribs;
-
 public:
   /** Create an object of the named type with default properties */
   GenericLevelObj(std::string const& obj_name);
   GenericLevelObj(ObjectData data);
 
   ObjectData const& get_data() const { return data; }
+  ObjectData* get_object_data() override { return &data; }
+  bool has_property(std::string_view name) const override { return data.has(name); }
 
   Vector2f get_pos() const override { return data.get_pos(); }
   Vector2f get_orig_pos() const override { return orig_pos; }
-  unsigned int get_attribs() const override { return attribs; }
   ResDescriptor get_res_desc() const override { return desc; }
   std::string get_section_name() const override { return data.get_name(); }
 
@@ -147,6 +145,10 @@ private:
 
   /** Load the sprite shown for this object */
   void init_sprite();
+
+  /** True if the object is drawn with a sprite, either its "surface" or
+      the schema's editor sprite */
+  bool has_sprite() const;
 };
 
 } // namespace pingus::editor

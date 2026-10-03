@@ -90,31 +90,40 @@ GroupLevelObj::add_child(LevelObjPtr const& obj)
   m_objects.push_back(obj);
 }
 
+bool
+GroupLevelObj::has_property(std::string_view name) const
+{
+  return ((name == "repeat" && (m_overrides & OVERRIDE_REPEAT)) ||
+          (name == "owner-id" && (m_overrides & OVERRIDE_OWNER)) ||
+          (name == "release-rate" && (m_overrides & OVERRIDE_RELEASE_RATE)) ||
+          (name == "direction" && (m_overrides & OVERRIDE_DIRECTION)));
+}
+
 void
 GroupLevelObj::set_overrides(ReaderMapping const& reader)
 {
   if (reader.read("repeat", m_repeat))
   {
     set_repeat(m_repeat);
-    m_overrides |= HAS_REPEAT;
+    m_overrides |= OVERRIDE_REPEAT;
   }
 
   if (reader.read("owner-id", m_owner_id))
   {
     set_owner(m_owner_id);
-    m_overrides |= HAS_OWNER;
+    m_overrides |= OVERRIDE_OWNER;
   }
 
   if (reader.read("release-rate", m_release_rate))
   {
     set_release_rate(m_release_rate);
-    m_overrides |= HAS_RELEASE_RATE;
+    m_overrides |= OVERRIDE_RELEASE_RATE;
   }
 
   if (reader.read("direction",  m_direction))
   {
     set_direction(m_direction);
-    m_overrides |= HAS_DIRECTION;
+    m_overrides |= OVERRIDE_DIRECTION;
   }
 }
 
@@ -138,10 +147,10 @@ GroupLevelObj::write_properties(Writer& writer)
     writer.write("name", m_name);
     writer.write("position", OutVector2fZ{m_pos, z_index()});
     writer.begin_mapping("overrides");
-    if (m_overrides & HAS_REPEAT)       writer.write("repeat", m_repeat);
-    if (m_overrides & HAS_RELEASE_RATE) writer.write("release-rate", m_release_rate);
-    if (m_overrides & HAS_DIRECTION)    writer.write("direction", m_direction);
-    if (m_overrides & HAS_OWNER)        writer.write("owner-id", m_owner_id);
+    if (m_overrides & OVERRIDE_REPEAT)       writer.write("repeat", m_repeat);
+    if (m_overrides & OVERRIDE_RELEASE_RATE) writer.write("release-rate", m_release_rate);
+    if (m_overrides & OVERRIDE_DIRECTION)    writer.write("direction", m_direction);
+    if (m_overrides & OVERRIDE_OWNER)        writer.write("owner-id", m_owner_id);
     writer.end_mapping();
     writer.end_object();
   }
