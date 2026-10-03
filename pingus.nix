@@ -13,6 +13,10 @@
 , makeWrapper
 , libGL
 , libGLU
+  # SDL2_image.pc Requires.private — needed on PKG_CONFIG_PATH so
+  # pkg_search_module(SDL2_image) does not warn about missing modules.
+, libtiff
+, libwebp
 , pkg-config
 , mcfgthreads
 
@@ -103,6 +107,11 @@ stdenv.mkDerivation rec {
     libGLU
     gtest
     xdgcpp
+    # Satisfy SDL2_image's Requires.private (libtiff-4, libwebp*) for pkg-config.
+    # Not linked into pingus directly; silences configure-time "Package not found"
+    # warnings when cmake resolves PkgConfig::SDL2IMAGE.
+    libtiff
+    libwebp
   ]
   ++ lib.optional (useGLES2 && libglvnd != null) libglvnd;
 }
