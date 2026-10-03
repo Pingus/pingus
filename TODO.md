@@ -270,6 +270,17 @@ Found along the way:
 - [ ] Build: an `LD_LIBRARY_PATH` pointing at system libraries built
       against a newer glibc breaks linking in `nix develop`; unset it
 
+### Asset viewer
+
+- [x] `SpriteViewerScreen` for `.sprite` and `.animset` files via
+      `pingus path/to/file.{sprite,animset}` (dispatch in `application.cpp`)
+- [x] Animset: up/down select animation, left/right direction, space pause,
+      `.`/`n` step when paused, R reload, Esc quit
+- [x] HUD: name, frame, timing, loop; crosshair at draw anchor; effect-step
+      markers; effects fire (sound, overlay, simple particles)
+- [ ] Remove or retire `extra/sprite-view` once the screen has been used in
+      practice
+
 ## Out of scope (for now)
 
 - GP2X / Wiz / Open2x (explicitly excluded)

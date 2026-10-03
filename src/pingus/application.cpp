@@ -41,6 +41,7 @@
 #include "pingus/screens/font_test_screen.hpp"
 #include "pingus/screens/level_menu.hpp"
 #include "pingus/screens/pingus_menu.hpp"
+#include "pingus/screens/sprite_viewer_screen.hpp"
 #include "pingus/screens/start_screen.hpp"
 #include "pingus/screens/story_screen.hpp"
 #include "pingus/stat_manager.hpp"
@@ -131,6 +132,12 @@ Application::Application(CommandLineOptions const& cmd_options) :
     {
       Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
       m_screen_manager->push_screen(std::make_shared<FontTestScreen>(filename));
+    }
+    else if (cmd_options.rest.get().ends_with(".sprite") ||
+             cmd_options.rest.get().ends_with(".animset"))
+    {
+      Pathname filename(cmd_options.rest.get(), Pathname::SYSTEM_PATH);
+      m_screen_manager->push_screen(std::make_shared<SpriteViewerScreen>(filename));
     }
     else if (cmd_options.rest.get().ends_with(".credits"))
     {

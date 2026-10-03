@@ -113,6 +113,10 @@ public:
       Throws if it doesn't exist. */
   static std::shared_ptr<AnimationSet const> get(std::string const& name);
 
+  /** Load an animation set from an arbitrary .animset file path (not cached).
+      Used by the asset viewer for reload; throws on error. */
+  static AnimationSet from_file(Pathname const& path);
+
   static AnimationSet from_reader(ReaderObject const& reader);
 
 public:

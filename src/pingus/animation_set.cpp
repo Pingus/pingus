@@ -116,6 +116,16 @@ AnimationSet::get(std::string const& name)
 }
 
 AnimationSet
+AnimationSet::from_file(Pathname const& path)
+{
+  ReaderDocument doc = load_document(path);
+  if (doc.get_root().get_name() != "pingus-animset") {
+    throw std::runtime_error(path.str() + ": not a pingus-animset file");
+  }
+  return from_reader(doc.get_root());
+}
+
+AnimationSet
 AnimationSet::from_reader(ReaderObject const& reader)
 {
   AnimationSet set;
