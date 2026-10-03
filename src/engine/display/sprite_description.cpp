@@ -43,15 +43,25 @@ SpriteDescription::from_file(Pathname const& path)
   {
     log_error("'image' missing for {}", doc.get_root().get_name());
   }
-
+  else
   {
-    // Historical .sprite files use paths like "/images/core/misc/start_ok.png".
-    // With an empty datadir (Android assets root) that becomes a filesystem
-    // absolute path which AssetManager cannot see. Strip the leading slash.
-    std::string raw = desc->filename.get_raw_path();
-    if (!raw.empty() && raw.front() == '/')
-      raw.erase(raw.begin());
-    desc->filename = Pathname(raw, Pathname::DATA_PATH);
+    // Resolve the image path the same way ResourceManager used to:
+    // - historical entries "/images/..." → strip leading slash (datadir-relative)
+    // - bare names like "conveyorbelt_left.png" → relative to the .sprite file
+    // - paths already under "images/" stay as-is
+    std::string img = desc->filename.get_raw_path();
+    if (!img.empty() && img.front() == '/')
+      img.erase(img.begin());
+
+    if (img.find("images/") != 0)
+    {
+      img = System::normalize_path(
+        Pathname::join(System::dirname(path.get_raw_path()), img));
+    }
+
+    // Keep the Pathname type of the .sprite so SYSTEM_PATH opens (e.g. the
+    // sprite viewer) still resolve images next to the file on disk.
+    desc->filename = Pathname(img, path.get_type());
   }
   reader.read("array", desc->array);
   reader.read("position",   desc->frame_pos);

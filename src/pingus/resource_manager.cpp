@@ -79,23 +79,9 @@ ResourceManager::get_sprite_description_from_file(std::string const& resname)
   Pathname path(filename, Pathname::DATA_PATH);
   if (path.exist())
   {
-    SpriteDescriptionPtr desc = SpriteDescription::from_file(path);
-
-    // Resolve image path relative to the .sprite when needed.
-    // Legacy entries use "/images/..." — strip the slash and keep as datadir path.
-    {
-      std::string img = desc->filename.get_raw_path();
-      if (!img.empty() && img.front() == '/')
-        img.erase(img.begin());
-      if (img.find("images/") != 0)
-      {
-        // e.g. "blackboard.png" next to the .sprite file
-        img = System::normalize_path(Pathname::join(System::dirname(filename), img));
-      }
-      desc->filename = Pathname(img, Pathname::DATA_PATH);
-    }
-
-    return desc;
+    // SpriteDescription::from_file resolves relative image paths against the
+    // .sprite location (and strips historical "/images/..." prefixes).
+    return SpriteDescription::from_file(path);
   }
 
   // try to load a .png file
