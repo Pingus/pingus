@@ -49,6 +49,8 @@ World::World(PingusLevel const& plf) :
   game_random(Random::seed_from_string(plf.get_checksum())),
   fx_random(Random::seed_from_string("fx:" + plf.get_checksum())),
   world_obj(),
+  registry(),
+  object_order(),
   pingu_particle_holder(),
   rain_particle_holder(),
   smoke_particle_holder(),

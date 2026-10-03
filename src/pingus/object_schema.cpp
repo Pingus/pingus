@@ -132,10 +132,10 @@ void write_property(Writer& writer, PropertyDef const& prop, PropertyValue const
 } // namespace
 
 PropertyDef const*
-ObjectTypeDef::find_property(std::string_view name) const
+ObjectTypeDef::find_property(std::string_view prop_name) const
 {
   auto it = std::find_if(properties.begin(), properties.end(),
-                         [name](PropertyDef const& prop) { return prop.name == name; });
+                         [prop_name](PropertyDef const& prop) { return prop.name == prop_name; });
   return it != properties.end() ? &*it : nullptr;
 }
 

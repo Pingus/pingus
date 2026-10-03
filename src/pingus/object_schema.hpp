@@ -67,7 +67,7 @@ struct ObjectTypeDef
   /** Whether the editor allows rotating and flipping the surface */
   bool editor_can_rotate = false;
 
-  PropertyDef const* find_property(std::string_view name) const;
+  PropertyDef const* find_property(std::string_view prop_name) const;
 };
 
 /** The property values of one level object, read from or written to a
@@ -84,6 +84,11 @@ public:
   /** Create an object with all properties set to their defaults, 'name'
       defaults to the type name */
   explicit ObjectData(ObjectTypeDef const& type, std::string_view name = {});
+
+  ObjectData(ObjectData const&) = default;
+  ObjectData(ObjectData&&) = default;
+  ObjectData& operator=(ObjectData const&) = default;
+  ObjectData& operator=(ObjectData&&) = default;
 
   ObjectTypeDef const& type() const { return *m_type; }
 

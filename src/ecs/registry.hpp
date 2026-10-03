@@ -44,6 +44,8 @@ private:
   {
     std::deque<std::optional<T>> items;
 
+    Pool() : items() {}
+
     void remove(uint32_t index) override
     {
       if (index < items.size()) {
