@@ -20,6 +20,18 @@ AnimationDef::make_clock() const
   return clock;
 }
 
+DirectionalAnimationClock
+AnimationDef::make_directional_clock() const
+{
+  AnimationClock left_clock = AnimationClock::from_sprite(left);
+  AnimationClock right_clock = AnimationClock::from_sprite(right);
+  if (loop) {
+    left_clock.set_loop(*loop);
+    right_clock.set_loop(*loop);
+  }
+  return DirectionalAnimationClock(left_clock, right_clock);
+}
+
 std::shared_ptr<AnimationSet const>
 AnimationSet::get(std::string const& name)
 {

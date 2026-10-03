@@ -72,4 +72,18 @@ TEST(AnimationClockTest, from_description)
   EXPECT_FALSE(clock.is_looping());
 }
 
+TEST(AnimationClockTest, map_frame)
+{
+  // same number of frames: unchanged
+  for (int i = 0; i < 15; ++i) {
+    EXPECT_EQ(AnimationClock::map_frame(i, 15, 15), i);
+  }
+  // art with fewer or more frames than the game timing
+  EXPECT_EQ(AnimationClock::map_frame(7, 15, 5), 2);
+  EXPECT_EQ(AnimationClock::map_frame(14, 15, 5), 4);
+  EXPECT_EQ(AnimationClock::map_frame(3, 4, 8), 6);
+  // no game timing: the frame is an art frame
+  EXPECT_EQ(AnimationClock::map_frame(3, 0, 8), 3);
+}
+
 /* EOF */

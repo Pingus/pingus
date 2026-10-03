@@ -57,6 +57,16 @@ public:
   /** Set the sprite to show the clock's current frame */
   void apply_to(Sprite& sprite) const;
 
+  /** Map a frame of a clock with 'frame_count' frames proportionally to an
+      animation with 'art_frame_count' frames */
+  static int map_frame(int frame, int frame_count, int art_frame_count)
+  {
+    if (frame_count <= 0 || art_frame_count <= 0) {
+      return frame;
+    }
+    return frame * art_frame_count / frame_count;
+  }
+
 private:
   int m_frame_delay;
   int m_frame_count;

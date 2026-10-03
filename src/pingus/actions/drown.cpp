@@ -23,7 +23,8 @@ namespace pingus::actions {
 
 Drown::Drown (Pingu* p) :
   PinguAction(p),
-  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/drownfall/left"))
+  // Game timing: drowning takes 15 steps of 60 ms
+  clock(60, 15, false)
 {
 }
 
@@ -40,7 +41,7 @@ Drown::update()
 void
 Drown::get_look(PinguLook& look) const
 {
-  look.add("drown", clock.frame());
+  look.add("drown", clock);
 }
 
 } // namespace pingus::actions

@@ -25,8 +25,7 @@ Boarder::Boarder (Pingu* p) :
   PinguAction(p),
   x_pos(pingu->get_x()),
   speed(0.0),
-  clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/boarder/left",
-                                                "pingus/player" + pingu->get_owner_str() + "/boarder/right"))
+  clock(look_animation("boarder").make_directional_clock())
 {
 }
 

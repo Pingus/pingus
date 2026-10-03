@@ -32,7 +32,9 @@ Bomber::Bomber (Pingu* p) :
   sound_played(false),
   colmap_exploded(false),
   bomber_radius("other/bomber_radius_gfx", "other/bomber_radius"),
-  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/bomber/left"))
+  // Game timing: 16 steps of 60 ms, the bomber can still drown or splash
+  // until step 9 and explodes at step 13
+  clock(60, 16, false)
 {
   pingu->get_world()->play_sound("ohno", pingu->get_pos());
 }
@@ -102,7 +104,7 @@ Bomber::get_look(PinguLook& look) const
     // the explosion flash, shown once
     look.add("explosion", 0, Vector2f(-32, -48), true);
   }
-  look.add("bomber", clock.frame());
+  look.add("bomber", clock);
 }
 
 } // namespace pingus::actions

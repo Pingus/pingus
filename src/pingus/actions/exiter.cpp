@@ -24,7 +24,8 @@ namespace pingus::actions {
 
 Exiter::Exiter (Pingu* p) :
   PinguAction(p),
-  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/exit/left")),
+  // Game timing: exiting takes 9 steps of 60 ms
+  clock(60, 9, false),
   sound_played(false)
 {
 }
@@ -52,7 +53,7 @@ Exiter::update()
 void
 Exiter::get_look(PinguLook& look) const
 {
-  look.add("exit", clock.frame());
+  look.add("exit", clock);
 }
 
 } // namespace pingus::actions

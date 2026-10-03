@@ -25,7 +25,7 @@ Superman::Superman (Pingu* p)
   : PinguAction(p),
     counter(0.0f),
     x_pos(pingu->get_x()),
-    clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/superman"))
+    clock(look_animation("superman").make_clock())
 {
 }
 

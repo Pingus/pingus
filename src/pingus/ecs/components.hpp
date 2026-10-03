@@ -57,7 +57,12 @@ struct AnimatedSprite
   std::shared_ptr<AnimationSet const> set;
   std::string animation;
   Direction direction = {};
+
+  /** Frame to show, with frame_count set a step of game timing mapped
+      proportionally onto the animation's frames */
   int frame = 0;
+  int frame_count = 0;
+
   bool visible = true;
 
   /** Sprites loaded by the render system, by animation and direction */
@@ -174,6 +179,9 @@ struct LaserExit
 /** Smashes down when a pingu walks under it, splashing everything below */
 struct Smasher
 {
+  /** Game timing: the smasher moves down and up in 6 steps per tick */
+  static constexpr int frame_count = 6;
+
   bool smashing = false;
   bool downwards = false;
   int count = 0;

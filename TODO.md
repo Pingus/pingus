@@ -217,9 +217,9 @@ well (`pingus-headless -s DIR -T TICKS`).
 6. Data-driven visuals
    - [x] Animation sets (`data/animsets/`), `AnimatedSprite` component;
          traps, teleporters and pingus use them
-   - [ ] Game timing still comes from the sprite metadata (e.g. the
-         bridger lays its brick at sprite frame 7); move it into game
-         data so new art can't change gameplay
+   - [x] Game timing is explicit in the actions and traps, the art is
+         mapped onto it proportionally; visual-only animations take their
+         timing from the animation sets
    - [ ] Declarative effects (particles, sound, flash at given frames),
          a fixed set of effect types with parameters in data, no
          scripting

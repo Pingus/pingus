@@ -26,10 +26,9 @@ Splashed::Splashed (Pingu* p) :
   PinguAction(p),
   particle_thrown(false),
   sound_played(false),
-  clock()
+  // Game timing: splashing takes 16 steps of 33 ms
+  clock(33, 16, false)
 {
-  std::string const res_name = "pingus/player" + pingu->get_owner_str() + "/splat";
-  clock = AnimationClock::from_sprite(res_name);
 }
 
 void
@@ -52,7 +51,7 @@ Splashed::update()
 void
 Splashed::get_look(PinguLook& look) const
 {
-  look.add("splashed", clock.frame());
+  look.add("splashed", clock);
 }
 
 } // namespace pingus::actions

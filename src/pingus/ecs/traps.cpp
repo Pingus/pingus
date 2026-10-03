@@ -202,7 +202,7 @@ void update_smashers(World& world, ecs::Registry& reg)
 
     if (smasher.downwards)
     {
-      if (smasher.count >= 5)
+      if (smasher.count >= Smasher::frame_count - 1)
       {
         // SMASH!!! The thing hitten earth and kills the pingus
         smasher.downwards = false;
@@ -251,11 +251,13 @@ void update_trap_animations(ecs::Registry& reg)
 {
   reg.each<Spike, AnimatedSprite>([](ecs::Entity, Spike& spike, AnimatedSprite& anim) {
     anim.frame = spike.clock.frame();
+    anim.frame_count = spike.clock.frame_count();
     anim.visible = spike.killing;
   });
 
   reg.each<FakeExit, AnimatedSprite>([](ecs::Entity, FakeExit& fake_exit, AnimatedSprite& anim) {
     anim.frame = fake_exit.clock.frame();
+    anim.frame_count = fake_exit.clock.frame_count();
   });
 
   reg.each<Guillotine, AnimatedSprite>([](ecs::Entity, Guillotine& guillotine, AnimatedSprite& anim) {
@@ -264,24 +266,29 @@ void update_trap_animations(ecs::Registry& reg)
       anim.animation = "kill";
       anim.direction = guillotine.direction;
       anim.frame = guillotine.kill_clock.frame();
+      anim.frame_count = guillotine.kill_clock.frame_count();
     }
     else
     {
       anim.animation = "idle";
       anim.frame = guillotine.idle_clock.frame();
+      anim.frame_count = 0;
     }
   });
 
   reg.each<Hammer, AnimatedSprite>([](ecs::Entity, Hammer& hammer, AnimatedSprite& anim) {
     anim.frame = hammer.count;
+    anim.frame_count = hammer.frame_count;
   });
 
   reg.each<LaserExit, AnimatedSprite>([](ecs::Entity, LaserExit& laser, AnimatedSprite& anim) {
     anim.frame = laser.clock.frame();
+    anim.frame_count = laser.clock.frame_count();
   });
 
   reg.each<Smasher, AnimatedSprite>([](ecs::Entity, Smasher& smasher, AnimatedSprite& anim) {
     anim.frame = smasher.count;
+    anim.frame_count = Smasher::frame_count;
   });
 }
 

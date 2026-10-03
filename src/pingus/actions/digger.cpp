@@ -27,7 +27,7 @@ Digger::Digger(Pingu* p) :
   PinguAction(p),
   digger_radius("pingus/common/digger_radius_gfx", "pingus/common/digger_radius"),
   digger_radius_final("pingus/common/digger_radius_final_gfx", "pingus/common/digger_radius_final_gfx"),
-  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/digger/left")),
+  clock(look_animation("digger").make_clock()),
   delay_count(0)
 {
 }

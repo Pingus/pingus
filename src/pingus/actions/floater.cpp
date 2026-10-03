@@ -26,7 +26,7 @@ Floater::Floater(Pingu* p) :
   PinguAction(p),
   falling_depth(0),
   step(0),
-  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/floater/left"))
+  clock(look_animation("floater").make_clock())
 {
 }
 

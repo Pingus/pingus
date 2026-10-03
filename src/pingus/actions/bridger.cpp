@@ -29,8 +29,10 @@ namespace pingus::actions {
 Bridger::Bridger (Pingu* p) :
   PinguAction(p),
   mode(B_BUILDING),
-  walk_clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/bridger_walk/left")),
-  build_clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/bridger/left")),
+  // Game timing, independent of the art: a step up takes 4 steps of 66 ms,
+  // laying a brick 15 steps with the brick placed at step 7
+  walk_clock(66, 4, false),
+  build_clock(66, 15, false),
   brick_l("other/brick_left"),
   brick_r("other/brick_right"),
   bricks(MAX_BRICKS),
@@ -207,11 +209,11 @@ Bridger::get_look(PinguLook& look) const
   switch (mode)
   {
     case B_BUILDING:
-      look.add("bridger", build_clock.frame(), offset);
+      look.add("bridger", build_clock, offset);
       break;
 
     case B_WALKING:
-      look.add("bridger-walk", walk_clock.frame(), offset);
+      look.add("bridger-walk", walk_clock, offset);
       break;
   }
 }

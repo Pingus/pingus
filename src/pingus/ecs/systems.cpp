@@ -163,7 +163,7 @@ void draw_animated_sprite(SceneContext& gc, Transform const& transform, Animated
     it = anim.sprites.emplace(sprite_name, Sprite(sprite_name)).first;
   }
 
-  it->second.set_frame(anim.frame);
+  it->second.set_frame(AnimationClock::map_frame(anim.frame, anim.frame_count, it->second.get_frame_count()));
   gc.color().draw(it->second, transform.pos + geom::foffset(def.offset.x(), def.offset.y()));
 }
 

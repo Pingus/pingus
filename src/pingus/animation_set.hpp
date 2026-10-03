@@ -37,6 +37,9 @@ struct AnimationDef
 
   /** A clock with the animation's timing, from the sprite metadata */
   AnimationClock make_clock() const;
+
+  /** Separate clocks for the left and right sprites */
+  DirectionalAnimationClock make_directional_clock() const;
 };
 
 /** Named animations an object can show, so that the game requests

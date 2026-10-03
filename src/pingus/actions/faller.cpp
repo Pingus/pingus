@@ -27,10 +27,8 @@ namespace pingus::actions {
 
 Faller::Faller (Pingu* p) :
   PinguAction(p),
-  faller_clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/faller/left",
-                                                       "pingus/player" + pingu->get_owner_str() + "/faller/right")),
-  tumbler_clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/tumbler/left",
-                                                        "pingus/player" + pingu->get_owner_str() + "/tumbler/right"))
+  faller_clock(look_animation("faller").make_directional_clock()),
+  tumbler_clock(look_animation("tumbler").make_directional_clock())
 {
   // FIXME: add sprites for jumping here: if x_vel > y_vel, use them
 }

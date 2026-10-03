@@ -69,7 +69,7 @@ void draw_pingu(World& world, SceneContext& gc, Pingu& pingu)
       it = view.sprites.emplace(sprite_name, Sprite(sprite_name)).first;
     }
 
-    it->second.set_frame(layer.frame);
+    it->second.set_frame(AnimationClock::map_frame(layer.frame, layer.frame_count, it->second.get_frame_count()));
     geom::foffset const offset(def.offset.x() + layer.offset.x(), def.offset.y() + layer.offset.y());
     gc.color().draw(it->second, pingu.get_pos() + offset);
   }

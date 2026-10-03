@@ -24,8 +24,7 @@ namespace pingus::actions {
 
 Slider::Slider (Pingu* p) :
   PinguAction(p),
-  clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/slider/left",
-                                                "pingus/player" + pingu->get_owner_str() + "/slider/right")),
+  clock(look_animation("slider").make_directional_clock()),
   speed(10)
 {
 }

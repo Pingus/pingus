@@ -21,6 +21,8 @@
 #include <vector>
 
 #include "math/vector2f.hpp"
+#include "pingus/animation_clock.hpp"
+#include "pingus/animation_set.hpp"
 #include "pingus/action_name.hpp"
 #include "fwd.hpp"
 
@@ -42,7 +44,12 @@ struct PinguLook
   struct Layer
   {
     std::string_view animation;
+
+    /** Frame to show. With frame_count set, the frame is a step of game
+        timing that is mapped proportionally onto the animation's frames,
+        so the art can have a different number of frames. */
     int frame = 0;
+    int frame_count = 0;
 
     /** Added to the pingu's position and the animation's own offset */
     Vector2f offset = {};
@@ -55,7 +62,13 @@ struct PinguLook
 
   void add(std::string_view animation, int frame, Vector2f offset = {}, bool once = false)
   {
-    layers.push_back(Layer{animation, frame, offset, once});
+    layers.push_back(Layer{animation, frame, 0, offset, once});
+  }
+
+  /** Show the animation in sync with a game timing clock */
+  void add(std::string_view animation, AnimationClock const& clock, Vector2f offset = {}, bool once = false)
+  {
+    layers.push_back(Layer{animation, clock.frame(), clock.frame_count(), offset, once});
   }
 };
 
@@ -93,6 +106,10 @@ public:
 
   /** Describe what the pingu looks like right now */
   virtual void get_look(PinguLook& look) const = 0;
+
+  /** The named animation of the pingu's animation set, for purely visual
+      animation timing that follows the art */
+  AnimationDef const& look_animation(std::string_view name) const;
 
   virtual Vector2f get_center_pos() const;
 

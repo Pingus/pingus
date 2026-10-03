@@ -150,6 +150,16 @@ their logic from an animation own an `AnimationClock` built from the
 `.sprite` metadata. Logic advances and queries the clock, and drawing
 copies the clock's frame onto the sprite (`AnimationClock::apply_to()`).
 
+Game timing never comes from the art. Clocks the game logic depends on
+(the bridger lays its brick at step 7 of 15, the bomber explodes at
+step 13, a pingu dies when the splash animation ends, …) are created
+with explicit values in the action or trap. The drawing code maps their
+step proportionally onto the frames of the animation
+(`AnimationClock::map_frame()`), so art with a different number of
+frames changes only the look. Purely visual animations (walking,
+falling, …) take their timing from the animation set
+(`PinguAction::look_animation()`).
+
 Random numbers come from `World::get_game_random()` (gameplay, seeded
 from the level, unused so far) and `World::get_fx_random()` (visual
 effects only), never from `rand()`.

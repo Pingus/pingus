@@ -24,7 +24,7 @@ namespace pingus::actions {
 Waiter::Waiter (Pingu* p) :
   PinguAction(p),
   countdown(2.0f),
-  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/waiter/left"))
+  clock(look_animation("waiter").make_clock())
 {
 }
 

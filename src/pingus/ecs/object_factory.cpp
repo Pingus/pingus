@@ -143,25 +143,25 @@ std::shared_ptr<AnimationSet const> add_animated_sprite(ecs::Registry& reg, ecs:
                                                         std::string const& animation, bool visible = true)
 {
   auto set = AnimationSet::get(set_name);
-  reg.emplace<AnimatedSprite>(e, set, animation, Direction(), 0, visible);
+  reg.emplace<AnimatedSprite>(e, set, animation, Direction(), 0, 0, visible);
   return set;
 }
 
 void build_spike(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
-  auto const anims = add_animated_sprite(reg, e, "traps/spike", "active", false);
+  add_animated_sprite(reg, e, "traps/spike", "active", false);
   reg.emplace<TriggerZone>(e, 16.0f - 5.0f, 0.0f, 16.0f + 5.0f, 32.0f);
-  reg.emplace<Spike>(e, anims->get_animation("active").make_clock());
+  // Game timing, independent of the art: the spikes are out for 14 steps
+  // of 100 ms and kill at step 3
+  reg.emplace<Spike>(e, AnimationClock(100, 14, true));
 }
 
 void build_fake_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
   reg.emplace<TriggerZone>(e, -7.0f, -56.0f, 8.0f, 0.0f);
-  auto const anims = add_animated_sprite(reg, e, "traps/fake_exit", "smash");
-  FakeExit& fake_exit = reg.emplace<FakeExit>(e, anims->get_animation("smash").make_clock());
-  // traps/fake_exit.sprite is marked looping, but the trap smashes once per
-  // trigger; with a looping clock it never reset and kept smashing forever
-  fake_exit.clock.set_loop(false);
+  add_animated_sprite(reg, e, "traps/fake_exit", "smash");
+  // Game timing: a smash takes 9 steps of 100 ms and kills at step 4
+  reg.emplace<FakeExit>(e, AnimationClock(100, 9, false));
   reg.emplace<SmallmapSymbol>(e, Sprite("core/misc/smallmap_exit"));
 }
 
@@ -169,22 +169,26 @@ void build_guillotine(World&, ecs::Registry& reg, ecs::Entity e, ObjectData cons
 {
   reg.emplace<TriggerZone>(e, 38.0f, 90.0f, 42.0f, 98.0f);
   auto const anims = add_animated_sprite(reg, e, "traps/guillotine", "idle");
+  // Game timing: a kill takes 12 steps of 100 ms, the idle animation is
+  // only visual and follows the art
   reg.emplace<Guillotine>(e,
-                          anims->get_animation("kill").make_clock(),
+                          AnimationClock(100, 12, false),
                           anims->get_animation("idle").make_clock());
 }
 
 void build_hammer(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
-  auto const anims = add_animated_sprite(reg, e, "traps/hammer", "swing");
-  reg.emplace<Hammer>(e, anims->get_animation("swing").make_clock().frame_count());
+  add_animated_sprite(reg, e, "traps/hammer", "swing");
+  // Game timing: the hammer swings down in 13 steps and splashes at the last
+  reg.emplace<Hammer>(e, 13);
 }
 
 void build_laser_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
 {
   reg.emplace<TriggerZone>(e, 34.0f, 43.0f, 34.0f + 10.0f, 43.0f + 20.0f);
-  auto const anims = add_animated_sprite(reg, e, "traps/laser_exit", "zap");
-  reg.emplace<LaserExit>(e, anims->get_animation("zap").make_clock());
+  add_animated_sprite(reg, e, "traps/laser_exit", "zap");
+  // Game timing: a zap takes 6 steps of 100 ms
+  reg.emplace<LaserExit>(e, AnimationClock(100, 6, false));
 }
 
 void build_smasher(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)

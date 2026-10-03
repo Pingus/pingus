@@ -24,8 +24,7 @@ namespace pingus::actions {
 
 Climber::Climber (Pingu* p) :
   PinguAction(p),
-  clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/climber/left",
-                                                "pingus/player" + pingu->get_owner_str() + "/climber/right"))
+  clock(look_animation("climber").make_directional_clock())
 {
 }
 

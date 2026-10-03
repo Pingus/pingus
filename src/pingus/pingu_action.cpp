@@ -41,6 +41,12 @@ PinguAction::need_catch()
   return false;
 }
 
+AnimationDef const&
+PinguAction::look_animation(std::string_view name) const
+{
+  return AnimationSet::get("pingus/player" + pingu->get_owner_str())->get_animation(name);
+}
+
 Vector2f
 PinguAction::get_center_pos() const
 {

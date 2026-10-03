@@ -30,8 +30,7 @@ Miner::Miner (Pingu* p) :
   miner_radius("pingus/common/miner_radius_gfx", "pingus/common/miner_radius"),
   miner_radius_left("pingus/common/miner_radius_left_gfx", "pingus/common/miner_radius_left"),
   miner_radius_right("pingus/common/miner_radius_right_gfx", "pingus/common/miner_radius_right"),
-  clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/miner/left",
-                                                "pingus/player" + pingu->get_owner_str() + "/miner/right")),
+  clock(look_animation("miner").make_directional_clock()),
   delay_count(0)
 {
 }

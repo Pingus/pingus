@@ -25,7 +25,7 @@ namespace pingus::actions {
 
 Blocker::Blocker(Pingu* p) :
   PinguAction(p),
-  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/blocker/left"))
+  clock(look_animation("blocker").make_clock())
 {
 
   if (   rel_getpixel(0,-1)  ==  Groundtype::GP_NOTHING

@@ -26,7 +26,7 @@ Angel::Angel (Pingu* p)
   : PinguAction(p),
     counter(0.0),
     x_pos(pingu->get_x()),
-    clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/angel"))
+    clock(look_animation("angel").make_clock())
 {
 }
 

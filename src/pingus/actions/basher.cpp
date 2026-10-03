@@ -29,7 +29,9 @@ namespace pingus::actions {
 
 Basher::Basher (Pingu* p) :
   PinguAction(p),
-  clock(AnimationClock::from_sprite("pingus/player" + pingu->get_owner_str() + "/basher/left")),
+  // Game timing: a bash cycle takes 12 steps of 100 ms, the basher stops
+  // when there is nothing left to bash after 60% of a cycle
+  clock(100, 12, true),
   bash_radius("pingus/common/bash_radius_gfx", "pingus/common/bash_radius"),
   basher_c(0),
   first_bash(true),
@@ -162,7 +164,7 @@ Basher::have_something_to_dig()
 void
 Basher::get_look(PinguLook& look) const
 {
-  look.add("basher", clock.frame());
+  look.add("basher", clock);
 }
 
 } // namespace pingus::actions

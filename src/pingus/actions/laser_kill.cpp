@@ -23,7 +23,8 @@ namespace pingus::actions {
 
 LaserKill::LaserKill(Pingu* p) :
   PinguAction(p),
-  clock(AnimationClock::from_sprite("other/laser_kill/left"))
+  // Game timing: the laser kill takes 9 steps of 60 ms
+  clock(60, 9, false)
 {
 }
 
@@ -39,7 +40,7 @@ LaserKill::update()
 void
 LaserKill::get_look(PinguLook& look) const
 {
-  look.add("laserkill", clock.frame());
+  look.add("laserkill", clock);
 }
 
 } // namespace pingus::actions

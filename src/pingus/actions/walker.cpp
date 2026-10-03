@@ -27,9 +27,8 @@ namespace pingus::actions {
 
 Walker::Walker (Pingu* p) :
   PinguAction(p),
-  walker_clock(DirectionalAnimationClock::from_sprites("pingus/player" + pingu->get_owner_str() + "/walker/left",
-                                                       "pingus/player" + pingu->get_owner_str() + "/walker/right")),
-  floaterlayer_clock(DirectionalAnimationClock::from_sprites("other/floaterlayer/left", "other/floaterlayer/right"))
+  walker_clock(look_animation("walker").make_directional_clock()),
+  floaterlayer_clock(look_animation("floater-layer").make_directional_clock())
 {
   // Reset the velocity
   pingu->set_velocity(glm::vec2(0, 0));
