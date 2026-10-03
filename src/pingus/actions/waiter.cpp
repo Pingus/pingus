@@ -24,15 +24,14 @@ namespace pingus::actions {
 Waiter::Waiter (Pingu* p) :
   PinguAction(p),
   countdown(2.0f),
-  sprite()
+  clock(look_animation("waiter").make_clock())
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/waiter/left");
 }
 
 void
 Waiter::update()
 {
-  sprite.update();
+  clock.update();
 
   if (countdown < 0)
   {
@@ -44,9 +43,9 @@ Waiter::update()
 }
 
 void
-Waiter::draw (SceneContext& gc)
+Waiter::get_look(PinguLook& look) const
 {
-  gc.color().draw(sprite, pingu->get_pos());
+  look.add("waiter", clock.frame());
 }
 
 } // namespace pingus::actions

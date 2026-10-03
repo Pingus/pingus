@@ -97,8 +97,7 @@
         (image "groundpieces/ground/snow/block3")
         (modifier "ROT0"))
       (position 790 261 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 822.4 351.4 0)
       (surface 
         (image "exits/sortie_anim")
@@ -159,8 +158,7 @@
       (position 471.8 247.8 0)
       (speed -1)
       (parallax 1))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 533 513.6 0)
       (surface 
         (image "exits/ice2")

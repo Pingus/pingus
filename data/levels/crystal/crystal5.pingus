@@ -54,8 +54,7 @@
       (direction "right")
       (release-rate 50)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1208 708 0)
       (surface 
         (image "exits/stone")

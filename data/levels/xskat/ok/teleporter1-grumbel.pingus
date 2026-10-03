@@ -343,8 +343,7 @@
       (direction "misc")
       (release-rate 50)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1005 679 0)
       (surface 
         (image "exits/space")

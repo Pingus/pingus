@@ -17,23 +17,23 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_FALLER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_FALLER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Faller : public PinguAction
 {
 private:
-  StateSprite faller;
-  StateSprite tumbler;
+  DirectionalAnimationClock faller_clock;
+  DirectionalAnimationClock tumbler_clock;
 
 public:
   Faller(Pingu*);
   ~Faller() override;
 
-  void  draw (SceneContext& gc) override;
   void  update() override;
+  void get_look(PinguLook& look) const override;
 
   bool change_allowed (ActionName::Enum new_action) override;
 

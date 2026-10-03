@@ -17,8 +17,8 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_LASER_KILL_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_LASER_KILL_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
@@ -27,7 +27,7 @@ namespace pingus::actions {
 class LaserKill : public PinguAction
 {
 private:
-  StateSprite sprite;
+  AnimationClock clock;
 
 public:
   LaserKill (Pingu*);
@@ -35,8 +35,8 @@ public:
   ActionName::Enum get_type() const override { return ActionName::LASERKILL; }
   void init (void);
 
-  void draw (SceneContext& gc) override;
   void update() override;
+  void get_look(PinguLook& look) const override;
 
   bool catchable() override { return false; }
 

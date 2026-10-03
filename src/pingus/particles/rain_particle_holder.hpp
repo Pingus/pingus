@@ -21,14 +21,22 @@
 
 #include "engine/display/sprite.hpp"
 #include "math/vector2f.hpp"
-#include "pingus/worldobj.hpp"
 
 class GraphicContext;
 
+namespace pingus {
+class Random;
+class SceneContext;
+class World;
+} // namespace pingus
+
 namespace pingus::particles {
 
-class RainParticleHolder : public WorldObj
+class RainParticleHolder
 {
+private:
+  World* world;
+
   struct RainParticle {
     bool  alive;
     bool  splash;
@@ -40,7 +48,7 @@ class RainParticleHolder : public WorldObj
     // a modificator for x and y pos
     float xy_mod;
 
-    RainParticle(int x, int y);
+    RainParticle(int x, int y, Random& rng);
   };
 
 private:
@@ -51,20 +59,16 @@ private:
   std::vector<RainParticle> particles;
 
 public:
-  RainParticleHolder();
+  explicit RainParticleHolder(World& world);
 
   void add_particle(int x, int y);
 
-  void set_z_index(float /* z_index */) override {}
-  float z_index() const override { return 1000.0f; }
-  void set_pos(Vector2f const& /* p */) override { }
-  Vector2f get_pos() const override { return Vector2f(); }
 
   /// Let the particle move
-  void update() override;
+  void update();
 
   /// Draw the particle with the correct zoom resize
-  void draw (SceneContext& gc) override;
+  void draw (SceneContext& gc);
 
 private:
   RainParticleHolder (RainParticleHolder const&);

@@ -60,7 +60,7 @@ CaptureRectangle::draw(SceneContext& sc)
     }
 
     // Paint the direction arrow
-    if (pingu->direction.is_left())
+    if (pingu->direction().is_left())
     {
       sc.color().draw(arrow_left, pingu->get_center_pos() + geom::foffset(0, 2), 1000);
     }

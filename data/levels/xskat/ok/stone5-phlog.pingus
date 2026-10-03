@@ -229,8 +229,7 @@
       (position 251 57 0)
       (speed -1)
       (parallax 1))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 715 855 0)
       (surface 
         (image "exits/stone")

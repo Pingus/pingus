@@ -25,10 +25,8 @@ namespace pingus::actions {
 
 Blocker::Blocker(Pingu* p) :
   PinguAction(p),
-  sprite()
+  clock(look_animation("blocker").make_clock())
 {
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() + "/blocker/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() + "/blocker/right");
 
   if (   rel_getpixel(0,-1)  ==  Groundtype::GP_NOTHING
          && rel_getpixel(0, -2) ==  Groundtype::GP_GROUND)
@@ -53,20 +51,11 @@ Blocker::update()
   }
   else
   {
-    // FIXME: PinguHolder iterations should be handled otherwise
-    PinguHolder* pingus = WorldObj::get_world()->get_pingus();
-    for(PinguIter i = pingus->begin(); i != pingus->end(); ++i)
-    {
-      catch_pingu(*i);
-    }
+    pingu->get_world()->get_pingus()->for_each([this](Pingu& other) {
+      catch_pingu(&other);
+    });
   }
-  sprite.update();
-}
-
-void
-Blocker::draw (SceneContext& gc)
-{
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  clock.update();
 }
 
 bool
@@ -87,12 +76,18 @@ Blocker::catch_pingu(Pingu* target)
       )
     {
       if (target->get_x() > pingu->get_x()) {
-        target->direction.right();
+        target->direction().right();
       } else {
-        target->direction.left();
+        target->direction().left();
       }
     }
   }
+}
+
+void
+Blocker::get_look(PinguLook& look) const
+{
+  look.add("blocker", clock.frame());
 }
 
 } // namespace pingus::actions

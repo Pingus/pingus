@@ -24,24 +24,20 @@
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_enums.hpp"
 #include "pingus/world.hpp"
-#include "pingus/worldobj.hpp"
 
 namespace pingus::actions {
 
 Basher::Basher (Pingu* p) :
   PinguAction(p),
-  sprite(),
+  // Game timing: a bash cycle takes 12 steps of 100 ms, the basher stops
+  // when there is nothing left to bash after 60% of a cycle
+  clock(100, 12, true),
   bash_radius("pingus/common/bash_radius_gfx", "pingus/common/bash_radius"),
   basher_c(0),
   first_bash(true),
   bash_reach()
 {
   assert(bash_radius.get_width() % 2 == 0);
-
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/basher/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/basher/right"));
 
   bash_reach = bash_radius.get_width();
 
@@ -51,15 +47,9 @@ Basher::Basher (Pingu* p) :
 }
 
 void
-Basher::draw (SceneContext& gc)
-{
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
-}
-
-void
 Basher::update()
 {
-  sprite[pingu->direction].update();
+  clock.update();
 
   ++basher_c;
   if (basher_c % 3 == 0)
@@ -88,7 +78,7 @@ Basher::update()
       {
         // Change direction and let walk code walk forward/up to get out.
         pingus::sound::PingusSound::play_sound("chink");
-        pingu->direction.change();
+        pingu->direction().change();
         pingu->set_action(ActionName::WALKER);
       }
       else if (have_something_to_dig())
@@ -98,9 +88,8 @@ Basher::update()
         if (basher_c % 2 == 0)
           bash();
       }
-      else if (static_cast<float>(sprite[pingu->direction].get_current_frame()) // FIXME: Game logic must be separate from Sprite
-               / static_cast<float>(sprite[pingu->direction].get_frame_count()) > 0.6f)
-      { // FIXME: EVIL! Engine must not relay on graphic
+      else if (clock.progress() > 0.6f)
+      {
         pingu->set_action(ActionName::WALKER);
       }
     }
@@ -110,7 +99,7 @@ Basher::update()
 void
 Basher::bash()
 {
-  WorldObj::get_world()->remove(bash_radius,
+  pingu->get_world()->remove(bash_radius,
                                 pingu->get_xi() - bash_radius.get_width() / 2,
                                 pingu->get_yi() - bash_radius.get_height() + 1);
 }
@@ -138,7 +127,7 @@ Basher::walk_forward()
   {
     // Note that Pingu::set_pos() is the 'reverse' of the y co-ords of
     // rel_getpixel()
-    pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction),
+    pingu->set_pos(pingu->get_x() + static_cast<float>(pingu->direction()),
                    pingu->get_y() - static_cast<float>(y_inc));
   }
 
@@ -170,6 +159,12 @@ Basher::have_something_to_dig()
 
     return false;
   }
+}
+
+void
+Basher::get_look(PinguLook& look) const
+{
+  look.add("basher", clock);
 }
 
 } // namespace pingus::actions

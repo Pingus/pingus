@@ -22,19 +22,8 @@
 namespace pingus::actions {
 
 Jumper::Jumper (Pingu* p) :
-  PinguAction(p),
-  sprite()
+  PinguAction(p)
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/jumper/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/jumper/right"));
-}
-
-void
-Jumper::draw (SceneContext& gc)
-{
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
 }
 
 void
@@ -42,13 +31,13 @@ Jumper::update()
 {
   // if climber, do a wall-jump, else just jump forward
   if ((pingu->get_previous_action() == ActionName::CLIMBER))
-    pingu->direction.change();
+    pingu->direction().change();
 
-  if (pingu->direction.is_left())
+  if (pingu->direction().is_left())
   {
     pingu->set_velocity(pingu->get_velocity() + glm::vec2(-4.58f, -4.58f));
   }
-  else // if (pingu->direction.is_right())
+  else // if (pingu->direction().is_right())
   {
     pingu->set_velocity(pingu->get_velocity() + glm::vec2(4.58f, -4.58f));
   }
@@ -57,6 +46,12 @@ Jumper::update()
   pingu->set_y(pingu->get_y() - 1);
 
   pingu->set_action (ActionName::FALLER);
+}
+
+void
+Jumper::get_look(PinguLook& look) const
+{
+  look.add("jumper", 0);
 }
 
 } // namespace pingus::actions

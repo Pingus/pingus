@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_SPLASHED_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_SPLASHED_HPP
 
-#include "engine/display/sprite.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
 
 namespace pingus::actions {
@@ -25,17 +25,15 @@ namespace pingus::actions {
 class Splashed : public PinguAction
 {
 private:
-  bool particle_thrown;
-  bool sound_played;
-  Sprite sprite;
+  AnimationClock clock;
 
 public:
   Splashed (Pingu*);
 
   ActionName::Enum get_type() const override { return ActionName::SPLASHED; }
 
-  void draw (SceneContext& gc) override;
   void update() override;
+  void get_look(PinguLook& look) const override;
 
   bool catchable() override { return false; }
   bool change_allowed (ActionName::Enum ) override { return false; }

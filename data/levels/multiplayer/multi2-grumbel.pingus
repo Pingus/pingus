@@ -1682,29 +1682,25 @@
       (direction "misc")
       (release-rate 50)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 473 560 0)
       (surface 
         (image "exits/stone")
         (modifier "ROT0"))
       (owner-id 3))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 665 562 0)
       (surface 
         (image "exits/stone")
         (modifier "ROT0"))
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 645 327 0)
       (surface 
         (image "exits/stone")
         (modifier "ROT0"))
       (owner-id 1))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 480 326 0)
       (surface 
         (image "exits/stone")

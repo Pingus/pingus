@@ -26,14 +26,14 @@ Angel::Angel (Pingu* p)
   : PinguAction(p),
     counter(0.0),
     x_pos(pingu->get_x()),
-    sprite(Sprite("pingus/player" + pingu->get_owner_str() + "/angel"))
+    clock(look_animation("angel").make_clock())
 {
 }
 
 void
 Angel::update()
 {
-  sprite.update();
+  clock.update();
 
   counter += static_cast<float>(globals::game_speed);
   pingu->set_pos(x_pos + 20 * std::sin(counter * 3.0f), pingu->get_y() - 50.0f * 0.025f);
@@ -44,9 +44,9 @@ Angel::update()
 }
 
 void
-Angel::draw (SceneContext& gc)
+Angel::get_look(PinguLook& look) const
 {
-  gc.color().draw (sprite, pingu->get_pos());
+  look.add("angel", clock.frame());
 }
 
 } // namespace pingus::actions

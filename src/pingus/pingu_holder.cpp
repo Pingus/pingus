@@ -16,132 +16,82 @@
 
 #include "pingus/pingu_holder.hpp"
 
-#include "pingus/pingu.hpp"
 #include "pingus/pingus_level.hpp"
+#include "pingus/world.hpp"
 
 namespace pingus {
 
-PinguHolder::PinguHolder(PingusLevel const& plf) :
+PinguHolder::PinguHolder(World& world_, PingusLevel const& plf) :
+  world(world_),
   number_of_allowed(plf.get_number_of_pingus()),
   number_of_exited(0),
-  all_pingus(),
+  number_of_active(0),
   pingus()
 {
 }
 
-PinguHolder::~PinguHolder()
+ecs::Registry&
+PinguHolder::get_registry()
 {
-  for(std::vector<Pingu*>::iterator i = all_pingus.begin();
-      i != all_pingus.end(); ++i)
-    delete *i;
+  return world.get_registry();
 }
 
 Pingu*
-PinguHolder::create_pingu (Vector2f const& pos, int owner_id)
+PinguHolder::create_pingu(Vector2f const& pos, int owner_id)
 {
-  if (number_of_allowed > get_number_of_released())
-  {
-    // We use all_pingus.size() as pingu_id, so that id == array
-    // index
-    Pingu* pingu = new Pingu(static_cast<unsigned int>(all_pingus.size()), pos, owner_id);
-
-    // This list will deleted
-    all_pingus.push_back (pingu);
-
-    // This list holds the active pingus
-    pingus.push_back(pingu);
-
-    return pingu;
+  if (number_of_allowed <= get_number_of_released()) {
+    return nullptr;
   }
-  else
-  {
+
+  ecs::Registry& reg = get_registry();
+  ecs::Entity const entity = reg.create();
+
+  // The id is the index in 'pingus'
+  reg.emplace<components::Transform>(entity, pos, 50.0f);
+  reg.emplace<components::PinguState>(entity, static_cast<unsigned int>(pingus.size()), owner_id);
+  reg.emplace<components::PinguBehavior>(entity);
+  reg.emplace<components::ActivePingu>(entity);
+  reg.emplace<components::PinguView>(entity);
+  Pingu& pingu = reg.emplace<Pingu>(entity, world, entity);
+  pingu.init();
+
+  pingus.push_back(entity);
+  number_of_active += 1;
+
+  return &pingu;
+}
+
+Pingu*
+PinguHolder::get_pingu(unsigned int id) const
+{
+  if (id >= pingus.size()) {
+    return nullptr;
+  }
+
+  Pingu& pingu = world.get_registry().get<Pingu>(pingus[id]);
+  assert(pingu.get_id() == id);
+
+  if (pingu.get_status() == Pingu::PS_ALIVE) {
+    return &pingu;
+  } else {
     return nullptr;
   }
 }
 
 void
-PinguHolder::draw (SceneContext& gc)
+PinguHolder::deactivate(Pingu& pingu)
 {
-  // Draw all walkers
-  for(std::list<Pingu*>::iterator pingu = pingus.begin();
-      pingu != pingus.end();
-      ++pingu)
-  {
-    if ((*pingu)->get_action() == ActionName::WALKER)
-      (*pingu)->draw (gc);
+  ecs::Registry& reg = get_registry();
+  if (!reg.has<components::ActivePingu>(pingu.get_entity())) {
+    return;
   }
 
-  // Draw all non-walkers, so that they are easier spotable
+  reg.remove<components::ActivePingu>(pingu.get_entity());
+  number_of_active -= 1;
 
-  // FIXME: This might be usefull, but looks kind of ugly in the game
-  // FIXME: Bridgers where walkers walk behind are an example of
-  // FIMME: uglyness. Either we rip this code out again or fix the
-  // FIXME: bridger so that it looks higher and better with walkers
-  // FIXME: behind him.
-  for(std::list<Pingu*>::iterator pingu = pingus.begin();
-      pingu != pingus.end();
-      ++pingu)
-  {
-    if ((*pingu)->get_action() != ActionName::WALKER)
-      (*pingu)->draw (gc);
+  if (pingu.get_status() == Pingu::PS_EXITED) {
+    number_of_exited += 1;
   }
-}
-
-void
-PinguHolder::update()
-{
-  PinguIter pingu = pingus.begin();
-
-  while(pingu != pingus.end())
-  {
-    (*pingu)->update();
-
-    // FIXME: The draw-loop is not the place for things like this,
-    // this belongs in the update loop
-    if ((*pingu)->get_status() == Pingu::PS_DEAD)
-    {
-      // Removing the dead pingu and setting the iterator back to
-      // the correct possition, no memory hole since pingus will
-      // keep track of the allocated Pingus
-      pingu = pingus.erase(pingu);
-    }
-    else if ((*pingu)->get_status() == Pingu::PS_EXITED)
-    {
-      number_of_exited += 1;
-      pingu = pingus.erase(pingu);
-    }
-    else
-    {
-      // move to the next Pingu
-      ++pingu;
-    }
-  }
-}
-
-Pingu*
-PinguHolder::get_pingu(unsigned int id_) const
-{
-  if (id_ < all_pingus.size())
-  {
-    Pingu* pingu = all_pingus[id_];
-
-    assert(pingu->get_id() == id_);
-
-    if (pingu->get_status() == Pingu::PS_ALIVE)
-      return pingu;
-    else
-      return nullptr;
-  }
-  else
-  {
-    return nullptr;
-  }
-}
-
-float
-PinguHolder::z_index() const
-{
-  return 50;
 }
 
 int
@@ -153,19 +103,19 @@ PinguHolder::get_number_of_exited() const
 int
 PinguHolder::get_number_of_killed() const
 {
-  return static_cast<int>(all_pingus.size()) - static_cast<int>(pingus.size()) - get_number_of_exited();
+  return get_number_of_released() - number_of_active - number_of_exited;
 }
 
 int
 PinguHolder::get_number_of_alive() const
 {
-  return static_cast<int>(pingus.size());
+  return number_of_active;
 }
 
 int
 PinguHolder::get_number_of_released() const
 {
-  return static_cast<int>(all_pingus.size());
+  return static_cast<int>(pingus.size());
 }
 
 int
@@ -177,7 +127,7 @@ PinguHolder::get_number_of_allowed() const
 unsigned int
 PinguHolder::get_end_id() const
 {
-  return static_cast<unsigned int>(all_pingus.size());
+  return static_cast<unsigned int>(pingus.size());
 }
 
 } // namespace pingus

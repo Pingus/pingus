@@ -3,9 +3,7 @@
   (version 2)
   (head 
     (levelname "Bombs away")
-    (description "The pingus come across a cave with some strange vegetations. Stranded with "
-                 "only a few propellers and no digging tools and bridges how will the pingus "
-                 "move on ?")
+    (description "The pingus come across a cave with some strange vegetations. Stranded with only a few propellers and no digging tools and bridges how will the pingus move on ?")
     (author "darune")
     (number-of-pingus 50)
     (number-to-save 1)
@@ -307,15 +305,13 @@
         (image "groundpieces/ground/misc/grey_stone4")
         (modifier "ROT0"))
       (position 499 989 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 440 1000 0)
       (surface 
         (image "exits/stone")
         (modifier "ROT0"))
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 798 993 0)
       (surface 
         (image "exits/stone")

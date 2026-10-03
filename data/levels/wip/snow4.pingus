@@ -23,8 +23,7 @@
     (music "none")
     (levelsize 1504 480))
   (objects 
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1432 248 -1100)
       (surface 
         (image "exits/ice")

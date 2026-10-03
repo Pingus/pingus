@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "The Ones")
-    (description "During their way through the volcano, the pingus stumbles upon the number "
-                 "11, cut out in stone.")
+    (description "During their way through the volcano, the pingus stumbles upon the number 11, cut out in stone.")
     (author "Rune Zedeler <rz@daimi.au.dk>")
     (number-of-pingus 20)
     (number-to-save 11)
@@ -125,8 +124,7 @@
         (image "groundpieces/ground/misc/grey_stone6")
         (modifier "ROT0"))
       (position 248 211 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 821 798 0)
       (surface 
         (image "exits/stone")

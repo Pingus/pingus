@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Entering the cave")
-    (description "The Pingus are going to explore the inner portion of this island. Will they "
-                 "be able to resist the urge of going down to quickly?")
+    (description "The Pingus are going to explore the inner portion of this island. Will they be able to resist the urge of going down to quickly?")
     (author "Etienne Marcotte <marcotte_moi@yahoo.com>")
     (number-of-pingus 18)
     (number-to-save 15)
@@ -94,8 +93,7 @@
         (image "groundpieces/ground/misc/grey_stone4")
         (modifier "ROT0"))
       (position 450 813 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 780 803 0)
       (surface 
         (image "exits/stone")

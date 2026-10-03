@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Down and up")
-    (description "The Pingus have to ascend & descend steep hills and precipices in the cave. "
-                 "Will they make it?")
+    (description "The Pingus have to ascend & descend steep hills and precipices in the cave. Will they make it?")
     (author "Michael Wand <mwand@gmx.de>")
     (number-of-pingus 50)
     (number-to-save 30)
@@ -1195,8 +1194,7 @@
       (direction "left")
       (release-rate 25)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1804 313 0)
       (surface 
         (image "exits/stone")

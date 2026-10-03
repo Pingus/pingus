@@ -1,0 +1,4 @@
+(pingus-animset
+  (animations
+    (box (sprite "worldobjs/switchdoor_box"))
+    (tile (sprite "worldobjs/switchdoor_tile"))))

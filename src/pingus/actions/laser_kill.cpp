@@ -23,25 +23,24 @@ namespace pingus::actions {
 
 LaserKill::LaserKill(Pingu* p) :
   PinguAction(p),
-  sprite()
+  // Game timing: the laser kill takes 9 steps of 60 ms
+  clock(60, 9, false)
 {
-  sprite.load(Direction::LEFT,  Sprite("other/laser_kill/left"));
-  sprite.load(Direction::RIGHT, Sprite("other/laser_kill/right"));
-}
-
-void
-LaserKill::draw (SceneContext& gc)
-{
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos() + geom::foffset(0, 2));
 }
 
 void
 LaserKill::update()
 {
-  if (sprite[pingu->direction].is_finished())
+  if (clock.is_finished())
     pingu->set_status(Pingu::PS_DEAD);
   else
-    sprite[pingu->direction].update();
+    clock.update();
+}
+
+void
+LaserKill::get_look(PinguLook& look) const
+{
+  look.add("laserkill", clock);
 }
 
 } // namespace pingus::actions

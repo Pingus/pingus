@@ -301,8 +301,7 @@
         (image "groundpieces/ground/crystal/block")
         (modifier "ROT0"))
       (position 694 623 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 519.898 735.021 0)
       (surface 
         (image "exits/crystal")

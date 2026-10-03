@@ -24,29 +24,25 @@ namespace pingus::actions {
 
 Slider::Slider (Pingu* p) :
   PinguAction(p),
-  sprite(),
+  clock(look_animation("slider").make_directional_clock()),
   speed(10)
 {
-  sprite.load(Direction::LEFT,  "pingus/player" + pingu->get_owner_str() +
-              "/slider/left");
-  sprite.load(Direction::RIGHT, "pingus/player" + pingu->get_owner_str() +
-              "/slider/right");
 }
 
 void
 Slider::update()
 {
-  sprite[pingu->direction].update();
+  clock[pingu->direction()].update();
 
   for (int i = 0; static_cast<float>(i) < speed && rel_getpixel(1, 0) == Groundtype::GP_NOTHING; ++i)
   {
-    pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction));
+    pingu->set_x(pingu->get_x() + static_cast<float>(pingu->direction()));
 
     if (rel_getpixel(0, -1) ==  Groundtype::GP_NOTHING)
     {
       speed = (speed > 5) ? 5 : speed;
 
-      if (pingu->direction.is_right())
+      if (pingu->direction().is_right())
       {
         pingu->set_velocity(pingu->get_velocity() + glm::vec2(speed, 0.0));
       }
@@ -69,9 +65,9 @@ Slider::update()
 }
 
 void
-Slider::draw (SceneContext& gc)
+Slider::get_look(PinguLook& look) const
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos() + geom::foffset(0, -2));
+  look.add("slider", clock[pingu->direction()].frame());
 }
 
 } // namespace pingus::actions

@@ -42,8 +42,7 @@
       (position -38 529 -5)
       (repeat 27)
       (speed 50))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1209 537 -3)
       (surface 
         (image "exits/stone")

@@ -58,8 +58,7 @@
       (direction "left")
       (release-rate 150)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 192 315 0)
       (surface 
         (image "special/pacman/pacman")

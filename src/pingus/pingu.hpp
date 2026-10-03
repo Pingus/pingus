@@ -18,8 +18,11 @@
 #define HEADER_PINGUS_PINGUS_PINGU_HPP
 
 #include <memory>
+#include <string>
+
 #include <glm/glm.hpp>
 
+#include "ecs/registry.hpp"
 #include "math/vector2f.hpp"
 #include "pingus/direction.hpp"
 #include "pingus/action_name.hpp"
@@ -27,9 +30,21 @@
 
 namespace pingus {
 
-/** The class for managing one of the many penguins which are walking
-    around in the World. All actions are handled by PinguAction
-    objects. */
+namespace components {
+struct PinguBehavior;
+struct PinguState;
+struct Transform;
+} // namespace components
+
+/** Interface to one of the penguins walking around in the World.
+
+    Each pingu is an entity, its state lives in the components
+    Transform (position), PinguState (id, owner, status, direction,
+    velocity) and PinguBehavior (the action state machine). Pingu is the
+    component that gives the actions, the GUI and the server a
+    convenient interface to them; it holds no state of its own besides
+    its entity. The per tick update and drawing are done by the systems
+    in pingus/ecs/pingus.cpp. */
 class Pingu
 {
 public:
@@ -43,60 +58,36 @@ public:
   enum PinguStatus { PS_ALIVE, PS_EXITED, PS_DEAD };
 
 private:
-  /** The primary action which is currently in use */
-  std::shared_ptr<PinguAction> action;
+  World* m_world;
+  ecs::Entity m_entity;
 
-  /** A secondary action which will turn active after a given amount of time
-      The only example is currently the bomber. */
-  std::shared_ptr<PinguAction> countdown_action;
-
-  /** the action that gets triggered when the pingu hits a wall */
-  std::shared_ptr<PinguAction> wall_action;
-
-  /** the action that gets triggered when the pingu falls */
-  std::shared_ptr<PinguAction> fall_action;
-
-  /** The previous_action contains the action type that was in action
-      before action got applied, its here to enable action to behave
-      differently depending on the previous action */
-  ActionName::Enum previous_action;
-
-  /** The uniq id of the Pingu, this is used to refer to the Pingu in
-      a demo file or in a network connection */
-  unsigned int id;
-
-  /** Countdown till countdown_action is triggered (-1 for no active countdown) */
-  int action_time;
-
-  /** The id of the owner of the pingus, used in multiplayer matches */
-  int owner_id;
-
-  /** The stat of the pingu, these can be modified by PinguActions */
-  PinguStatus status;
-
-  float pos_x;
-  float pos_y;
-
-  glm::vec2 velocity;
+  /** The entity's components, cached by init(). Pingu entities are never
+      destroyed during a level and the registry keeps component addresses
+      stable, so these stay valid. */
+  components::PinguState* m_state;
+  components::PinguBehavior* m_behavior;
+  components::Transform* m_transform;
 
 private:
   void set_action(std::shared_ptr<PinguAction>);
-
   std::shared_ptr<PinguAction> create_action(ActionName::Enum action);
 
+  components::PinguState& state() const { return *m_state; }
+  components::PinguBehavior& behavior() const { return *m_behavior; }
+  components::Transform& transform() const { return *m_transform; }
+
 public:
+  /** Create the interface for the pingu entity, the entity needs its
+      PinguState, PinguBehavior and Transform components, see
+      PinguHolder::create_pingu() */
+  Pingu(World& world, ecs::Entity entity);
 
-  //FIXME make me private
-  Direction direction;
+  /** Give the pingu its initial action, needs to be called once the
+      Pingu has its final address in the registry */
+  void init();
 
-  /** Creates a new Pingu at the given coordinates
-      @param arg_id The uniq id of the pingu
-      @param pos The start position of the pingu
-      @param owner The owner id of the pingu (used for multiplayer) */
-  Pingu(unsigned int arg_id, Vector2f const& pos, int owner);
-
-  /** Destruct the pingu... */
-  ~Pingu();
+  World* get_world() const { return m_world; }
+  ecs::Entity get_entity() const { return m_entity; }
 
   /** Return the logical pingus position, this is the position which
       is used for collision detection to the ground (the pingus
@@ -107,17 +98,11 @@ public:
       of the pingu. */
   Vector2f get_center_pos() const;
 
-  /** Returns the x position of the pingu
-   * For backward comp. only
-   */
-  float const& get_x() const { return pos_x; }
+  float get_x() const;
+  float get_y() const;
 
-  /** Returns the y position of the pingu
-      For backward comp. only */
-  float const& get_y() const { return pos_y; }
-
-  int get_xi() const { return static_cast<int>(pos_x); }
-  int get_yi() const { return static_cast<int>(pos_y); }
+  int get_xi() const { return static_cast<int>(get_x()); }
+  int get_yi() const { return static_cast<int>(get_y()); }
 
   /** Checks if this action allows to be overwritten with the given new action */
   bool change_allowed (ActionName::Enum new_action);
@@ -133,21 +118,23 @@ public:
   std::string get_name();
 
   /// Returns the unique id of the pingu
-  unsigned int  get_id (void) const;
+  unsigned int get_id (void) const;
 
   /// Set the pingu to the given coordinates
   void set_pos (float x, float y);
   void set_pos (int x, int y) { set_pos(static_cast<float>(x), static_cast<float>(y)); }
 
   void set_x (float x);
-
   void set_y (float y);
 
   /// Set the pingu to the given coordinates
   void set_pos (Vector2f const& arg_pos);
 
-  glm::vec2 get_velocity() const { return velocity; }
+  glm::vec2 get_velocity() const;
   void set_velocity (glm::vec2 const& velocity_);
+
+  /** The direction the pingu is walking in */
+  Direction& direction() const;
 
   // Set the pingu in the gives direction
   void set_direction (Direction const& d);
@@ -168,9 +155,8 @@ public:
   /// set the fall action if we have one
   bool request_fall_action();
 
-  PinguAction* get_wall_action() { return wall_action.get(); }
-
-  PinguAction* get_fall_action() { return fall_action.get(); }
+  PinguAction* get_wall_action();
+  PinguAction* get_fall_action();
 
   /** Returns the `color' of the colmap in the walking direction
       Examples:
@@ -187,15 +173,14 @@ public:
   /** Returns true if the pingu needs to catch another pingu */
   bool need_catch();
 
-  void draw (SceneContext& gc);
+  /** The action currently in control */
+  std::shared_ptr<PinguAction> get_current_action() const;
+
+  /** Ticks until the countdown action (bomber) takes over, -1 for none */
+  int get_action_time() const;
   void apply_force(glm::vec2 const&);
 
   void update();
-
-  /** Indicate if the pingu's speed is above the deadly velocity */
-  //bool is_tumbling () const;
-
-  float z_index() const { return 0; }
 
   /** @return The owner_id of the owner, only used in multiplayer
       configurations, ought to be 0 in single player */
@@ -223,12 +208,8 @@ public:
       get_action() took place. This is used in a few situations where
       an action needs to now what the Pingu was doing before the
       action took place (faller->bomber translation is different
-      walker->bomber, etc.). */
-  ActionName::Enum get_previous_action() const { return previous_action; }
-
-private:
-  Pingu (Pingu const&);
-  Pingu& operator= (Pingu const&);
+      then Walker->bomber, etc.). */
+  ActionName::Enum get_previous_action() const;
 };
 
 } // namespace pingus

@@ -104,8 +104,10 @@ libraries as packages and passes them into `pingus.nix`.
 
 ### Git commit messages
 
-After every coherent series of changes, leave a **detailed suggested commit
-message** for the human (subject ≤ ~72 chars, body explaining why and what).
+Every commit gets a **detailed message** (subject ≤ ~72 chars, body
+explaining why and what). Agents that commit directly write it into the
+commit; agents that hand off bundles also include it in the handoff note.
+See [Git workflow](#git-workflow-for-agents--contributors).
 
 ---
 
@@ -179,16 +181,24 @@ Repository: https://github.com/Pingus/pingus.git
 - Make every coherent change a **separate commit**. Prefer small, reviewable
   commits; do not bulk-reformat unrelated code in the same commit as a
   functional change.
-- After each coherent series, leave a **detailed suggested commit message**
-  (subject ≤ ~72 chars, body explaining why and what).
+- Write **detailed commit messages** (subject ≤ ~72 chars, body explaining
+  why and what).
 - Update documentation (`README.md`, man pages, `NEWS`, …) in the same series
   when user-visible behaviour or build requirements change.
 
+How changes reach the human depends on the agent's environment:
+
+| Environment | Delivery |
+|-------------|----------|
+| Local agent with direct repo access (e.g. Claude Code) | Commit directly on the current branch. See [Direct commits](#direct-commits-local-agents). |
+| Sandboxed / web agent without access to the human's checkout (e.g. Grok Web) | Hand off via numbered `git bundle`s. See [Handoff: git bundle](#handoff-git-bundle-sandboxed--web-agents). |
+
 ### History is append-only (agents)
 
-- **Never rewrite, reset, rebase, or re-root history** against `origin/master`
-  or an earlier tip unless the human **explicitly** asks for a rollback of a
-  failed change (e.g. “drop the last commit”, “revert this series”).
+- **Never rewrite, reset, rebase, amend, or re-root history** against
+  `origin/master` or an earlier tip unless the human **explicitly** asks for a
+  rollback of a failed change (e.g. “drop the last commit”, “revert this
+  series”).
 - **Never** `git reset --hard` to `origin`, re-clone over a lost tip and
   “rebuild” prior commits with new SHAs, or ship a bundle whose parent is an
   older commit when the consumer already applied a newer tip.
@@ -201,37 +211,55 @@ Repository: https://github.com/Pingus/pingus.git
 ### Commit author and AI attribution (required)
 
 **Every** agent-created commit must set author **and** committer to the human
-maintainer. AI identity goes **only** in a message trailer.
+maintainer. AI identity goes **only** in a `Co-authored-by` message trailer
+naming the agent that actually did the work.
 
 | Field | Value |
 |-------|--------|
 | Author name | `Ingo Ruhnke` |
 | Author email | `grumbel@gmail.com` |
-| Trailer | `Co-authored-by: Grok <grok@x.ai>` |
+| Trailer (Claude) | `Co-Authored-By: Claude <noreply@anthropic.com>` (or the specific model name) |
+| Trailer (Grok) | `Co-authored-by: Grok <grok@x.ai>` |
 
-**Forbidden:** `agent@…`, `Pingus Agent`, `grok@x.ai` (or any AI address) as
-`user.name` / `user.email` / author / committer.
+**Forbidden:** `agent@…`, `Pingus Agent`, or any AI name / address (e.g.
+`grok@x.ai`, `noreply@anthropic.com`) as `user.name` / `user.email` / author /
+committer.
 
 Use one-shot `-c` overrides so a machine global config cannot override this:
 
 ```sh
-git -c user.name='Ingo Ruhnke' -c user.email='grumbel@gmail.com' commit -m "$(cat <<'EOF'
+git -c user.name='Ingo Ruhnke' -c user.email='grumbel@gmail.com' commit -m "$(cat <<'MSG'
 engine: fix OpenGL context loss on window resize
 
 Recreate the GL state after SDL window events that invalidate the
 context on some drivers.
 
-Co-authored-by: Grok <grok@x.ai>
-EOF
+Co-Authored-By: Claude <noreply@anthropic.com>
+MSG
 )"
 ```
 
 `git log -1 --format='%an <%ae>%n%cn <%ce>%n%B'` must show Ingo as author and
 committer, and the Co-authored-by trailer in the body.
 
-### Handoff: git bundle only
+### Direct commits (local agents)
 
-Agent handoffs use **`git bundle` + `git pull` only**.
+Agents running in the human's own checkout (Claude Code and similar) commit
+directly; no bundles, no “suggested commit message” handoff.
+
+- Commit on the **current branch**. Do not switch, create, or delete branches
+  unless asked.
+- Stage only the files belonging to the change (`git add <paths>`); never
+  sweep in unrelated untracked or modified files with `git add -A` / `.`.
+- Do **not** push, force-push, or touch remotes unless the human asks.
+- Do not use `--no-verify` or otherwise skip hooks.
+- If the build or tests were run, say so and report the result; if they were
+  not, say that too.
+
+### Handoff: git bundle (sandboxed / web agents)
+
+Agents that cannot commit into the human's checkout hand off via
+**`git bundle` + `git pull` only**.
 
 **Forbidden for handoffs (never suggest, never use):**
 
@@ -244,9 +272,6 @@ Agent handoffs use **`git bundle` + `git pull` only**.
 If a bundle does not fast-forward onto the consumer’s current tip, the
 **producer** was wrong — do not invent consumer-side workarounds. Produce a
 new bundle whose required parent is exactly the tip the consumer already has.
-
-Bundles carry real commits and chain cleanly **only** when each bundle is based
-on the consumer’s current tip.
 
 **Bundles must stack.** Each handoff bundle’s required parent is the tip the
 consumer already has (last applied bundle or `origin/master` after they push).
@@ -293,3 +318,5 @@ stacked bundle.
 3. `git bundle create … <parent>..HEAD` then `git bundle verify …`.
 4. Handoff note states **required parent SHA** and **tip SHA**.
 5. Do not reuse numbers; restart at `001` only when the human sets a new base.
+6. Since the human applies the commits, also include the commit messages in
+   the handoff note.

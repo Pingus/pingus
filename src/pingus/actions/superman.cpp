@@ -25,14 +25,14 @@ Superman::Superman (Pingu* p)
   : PinguAction(p),
     counter(0.0f),
     x_pos(pingu->get_x()),
-    sprite(Sprite("pingus/player" + pingu->get_owner_str() + "/superman"))
+    clock(look_animation("superman").make_clock())
 {
 }
 
 void
 Superman::update()
 {
-  sprite.update();
+  clock.update();
   counter += 0.025f;
   pingu->set_pos(pingu->get_x() + 40.0f * 0.025f, pingu->get_y() - 200.0f * 0.025f);
 
@@ -41,9 +41,9 @@ Superman::update()
 }
 
 void
-Superman::draw (SceneContext& gc)
+Superman::get_look(PinguLook& look) const
 {
-  gc.color().draw(sprite, pingu->get_pos());
+  look.add("superman", clock.frame());
 }
 
 } // namespace pingus::actions

@@ -20,6 +20,8 @@
 #include <string>
 #include <vector>
 
+#include "ecs/registry.hpp"
+#include "math/random.hpp"
 #include "math/vector2i.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/groundtype.hpp"
@@ -51,7 +53,35 @@ private:
       of them, should use pingus_id instead */
   unsigned int armageddon_count;
 
-  std::vector<WorldObj*> world_obj;
+  /** Random numbers for decisions that affect gameplay, seeded from the
+      level so a run is reproducible */
+  Random game_random;
+
+  /** Random numbers for purely visual effects (particles, weather,
+      stars). Kept separate from game_random so that presentation
+      changes, or not drawing at all, never alter gameplay. */
+  Random fx_random;
+
+  /** Level objects and pingus are entities, see pingus/ecs/ */
+  ecs::Registry registry;
+
+  /** What an entry of object_order stands for */
+  enum class Layer {
+    ENTITY,     /**< a level object entity */
+    GROUND,     /**< the ground map */
+    PINGUS,     /**< all pingus */
+    PARTICLES   /**< all particle systems */
+  };
+
+  struct ObjectRef
+  {
+    Layer layer;
+    ecs::Entity entity;
+  };
+
+  /** Level objects, ground, pingus and particles in z-order, used for
+      startup and drawing */
+  std::vector<ObjectRef> object_order;
 
   pingus::particles::PinguParticleHolder* pingu_particle_holder;
   pingus::particles::RainParticleHolder*  rain_particle_holder;
@@ -70,10 +100,6 @@ private:
 public:
   World(PingusLevel const& level);
   virtual ~World();
-
-  /** Add an object to the world, obj needs to be new'ed the World
-      make sure that it will get deleted */
-  void add_object (WorldObj* obj);
 
   /** Draw the world onto the given SceneContext */
   void    draw (SceneContext& gc);
@@ -106,7 +132,7 @@ public:
 
   void remove(CollisionMask const&, int x, int y);
 
-  WorldObj* get_worldobj(std::string const& id);
+  ecs::Registry& get_registry() { return registry; }
 
   /** @return A pointer to the worlds pingu particle holder */
   pingus::particles::PinguParticleHolder* get_pingu_particle_holder() { return pingu_particle_holder; }
@@ -119,6 +145,9 @@ public:
 
   /** @return A pointer to the worlds snow particle holder */
   pingus::particles::SnowParticleHolder* get_snow_particle_holder() { return snow_particle_holder; }
+
+  Random& get_game_random() { return game_random; }
+  Random& get_fx_random() { return fx_random; }
 
   /** @return true if the world is currently doing an armageddon */
   bool check_armageddon() const { return do_armageddon; }
@@ -142,7 +171,7 @@ public:
   float get_gravity() const;
 
   /** Returns the start pos for the given player */
-  Vector2i get_start_pos(int player_id) const;
+  Vector2i get_start_pos(int player_id);
 
 private:
   World (World const&);

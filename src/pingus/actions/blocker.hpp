@@ -17,23 +17,23 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_BLOCKER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_BLOCKER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Blocker : public PinguAction
 {
 private:
-  StateSprite sprite;
+  AnimationClock clock;
 
 public:
   Blocker (Pingu* p);
 
   ActionName::Enum get_type() const override { return ActionName::BLOCKER; }
 
-  void  draw (SceneContext& gc) override;
   void  update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   bool  standing_on_ground();

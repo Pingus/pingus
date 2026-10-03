@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Trapped by the snow")
-    (description "Who said that this cave was a good place to rest overnight ? Now you have "
-                 "to dig yourself out of it.")
+    (description "Who said that this cave was a good place to rest overnight ? Now you have to dig yourself out of it.")
     (author "Etienne Marcotte <marcotte_moi@yahoo.com>")
     (number-of-pingus 15)
     (number-to-save 15)
@@ -44,8 +43,7 @@
         (image "groundpieces/ground/snow/cabin_winter")
         (modifier "ROT0"))
       (position 383 201 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 84 294 0)
       (surface 
         (image "exits/ice2")

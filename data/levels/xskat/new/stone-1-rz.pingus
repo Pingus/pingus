@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Fly, pingus, fly!")
-    (description "In this level you need the pingus to cross a whole, a bit too wide for a "
-                 "simple bridge.")
+    (description "In this level you need the pingus to cross a whole, a bit too wide for a simple bridge.")
     (author "Rune Zedeler <rz@daimi.au.dk>")
     (number-of-pingus 60)
     (number-to-save 50)
@@ -51,8 +50,7 @@
         (image "groundpieces/ground/misc/column_flat_right")
         (modifier "ROT0"))
       (position 1225 299 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1287 593 0)
       (surface 
         (image "exits/stone")

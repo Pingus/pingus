@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "The Crystal Wall")
-    (description "Some mad architect must have build that wall in the middle of nowhere. But "
-                 "now the Pingus horde must go on the other side of it.")
+    (description "Some mad architect must have build that wall in the middle of nowhere. But now the Pingus horde must go on the other side of it.")
     (author "Etienne Marcotte <marcotte_moi@yahoo.com>")
     (number-of-pingus 60)
     (number-to-save 20)
@@ -34,8 +33,7 @@
       (stretch-y #t)
       (keep-aspect #t)
       (position -257 2 -150))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 106 430 0)
       (surface 
         (image "exits/crystal")

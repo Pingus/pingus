@@ -101,21 +101,18 @@ Playfield::current_pingu_find(Vector2f const& pos)
   float dist;
   Pingu* c_pingu = nullptr;
 
-  for (PinguIter pingu = server->get_world()->get_pingus()->begin();
-       pingu != server->get_world()->get_pingus()->end();
-       ++pingu)
-  {
-    if ((*pingu)->is_over(pos.x(), pos.y()))
+  server->get_world()->get_pingus()->for_each([&](Pingu& pingu) {
+    if (pingu.is_over(pos.x(), pos.y()))
     {
-      dist = (*pingu)->dist(pos.x(), pos.y());
+      dist = pingu.dist(pos.x(), pos.y());
 
       if (dist < min_dist)
       {
         min_dist = dist;
-        c_pingu = *pingu;
+        c_pingu = &pingu;
       }
     }
-  }
+  });
   return c_pingu;
 }
 

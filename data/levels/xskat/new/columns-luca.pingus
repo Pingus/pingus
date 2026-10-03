@@ -185,8 +185,7 @@
         (image "groundpieces/transparent/foliage/grass4")
         (modifier "ROT0FLIP"))
       (position 805 411 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1121 321 0)
       (surface 
         (image "exits/stone")

@@ -21,6 +21,7 @@
 #include <logmich/log.hpp>
 
 #include "engine/display/scene_context.hpp"
+#include "math/vector2i.hpp"
 #include "pingus/collision_map.hpp"
 
 namespace pingus {

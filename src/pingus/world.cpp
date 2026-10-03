@@ -17,6 +17,8 @@
 #include "pingus/world.hpp"
 
 #include <algorithm>
+#include <functional>
+#include <optional>
 
 #include <logmich/log.hpp>
 
@@ -30,9 +32,11 @@
 #include "pingus/particles/snow_particle_holder.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_holder.hpp"
+#include "pingus/ecs/components.hpp"
+#include "pingus/ecs/systems.hpp"
+#include "pingus/object_schema.hpp"
 #include "pingus/pingus_level.hpp"
-#include "pingus/worldobj_factory.hpp"
-#include "pingus/worldobjs/entrance.hpp"
+#include "pingus/prefab_file.hpp"
 
 namespace pingus {
 
@@ -42,124 +46,206 @@ World::World(PingusLevel const& plf) :
   game_time(0),
   do_armageddon(false),
   armageddon_count(0),
-  world_obj(),
+  game_random(Random::seed_from_string(plf.get_checksum())),
+  fx_random(Random::seed_from_string("fx:" + plf.get_checksum())),
+  registry(),
+  object_order(),
   pingu_particle_holder(),
   rain_particle_holder(),
   smoke_particle_holder(),
   snow_particle_holder(),
-  pingus(new PinguHolder(plf)),
+  pingus(new PinguHolder(*this, plf)),
   colmap(gfx_map->get_colmap()),
   gravitational_acceleration(0.2f)
 {
-  WorldObj::set_world(this);
-
   log_debug("create particle holder");
 
-  // These get deleted via the world_obj vector in the destructor
-  pingu_particle_holder = new pingus::particles::PinguParticleHolder();
-  rain_particle_holder  = new pingus::particles::RainParticleHolder();
-  smoke_particle_holder = new pingus::particles::SmokeParticleHolder();
-  snow_particle_holder  = new pingus::particles::SnowParticleHolder();
-
-  world_obj.push_back(gfx_map);
-
-  world_obj.push_back(pingu_particle_holder);
-  world_obj.push_back(rain_particle_holder);
-  world_obj.push_back(smoke_particle_holder);
-  world_obj.push_back(snow_particle_holder);
+  // These get deleted in the destructor
+  pingu_particle_holder = new pingus::particles::PinguParticleHolder(*this);
+  rain_particle_holder  = new pingus::particles::RainParticleHolder(*this);
+  smoke_particle_holder = new pingus::particles::SmokeParticleHolder(*this);
+  snow_particle_holder  = new pingus::particles::SnowParticleHolder(*this);
 
   init_worldobjs(plf);
 }
 
-void
-World::add_object (WorldObj* obj)
+namespace {
+
+/** Called for each level object after expanding groups and prefabs, with
+    the offset of the prefab the object is part of */
+using LevelObjectCallback = std::function<void (std::string const& name, ReaderMapping const& mapping,
+                                                Vector2f const& offset, float z_offset)>;
+
+void expand_level_object(std::string const& name, ReaderMapping const& mapping,
+                         Vector2f const& offset, float z_offset,
+                         LevelObjectCallback const& out)
 {
-  world_obj.push_back(obj);
+  if (name == "group")
+  {
+    ReaderCollection collection;
+    mapping.read("objects", collection);
+    for (auto const& obj : collection.get_objects()) {
+      expand_level_object(obj.get_name(), obj.get_mapping(), offset, z_offset, out);
+    }
+  }
+  else if (name == "prefab")
+  {
+    std::string prefab_name;
+    mapping.read("name", prefab_name);
+
+    Vector2f pos;
+    float z_index = 0.0f;
+    InVector2fZ in_vec{pos, z_index};
+    mapping.read("position", in_vec);
+
+    ReaderMapping overrides;
+    mapping.read("overrides", overrides);
+
+    PrefabFile prefab = PrefabFile::from_resource(prefab_name);
+    for (auto const& obj : prefab.get_objects().get_objects())
+    {
+      expand_level_object(obj.get_name(), make_override_mapping(obj.get_mapping(), overrides),
+                          offset + geom::foffset(pos.x(), pos.y()), z_offset + z_index, out);
+    }
+  }
+  else
+  {
+    out(name, mapping, offset, z_offset);
+  }
 }
+
+} // namespace
 
 void
 World::init_worldobjs(PingusLevel const& plf)
 {
-  for (auto const& reader_object : plf.get_objects().get_objects())
+  // Objects are collected first and only turned into entities after
+  // sorting, so that entity creation order, and thus system iteration
+  // order, follows the z-order.
+  struct PendingObject
   {
-    std::vector<WorldObj*> objs = WorldObjFactory::instance().create(reader_object);
-    for(auto obj = objs.begin(); obj != objs.end(); ++obj)
+    float z_index;
+    Layer layer;
+    std::optional<ObjectData> data;
+  };
+
+  // the ground is drawn at depth 0, the particles at 1000
+  std::vector<PendingObject> pending;
+  pending.push_back(PendingObject{0.0f, Layer::GROUND, {}});
+  pending.push_back(PendingObject{1000.0f, Layer::PARTICLES, {}});
+
+  auto add_level_object = [&](std::string const& name, ReaderMapping const& mapping,
+                              Vector2f const& offset, float z_offset)
+  {
+    ObjectTypeDef const* type = ObjectSchema::instance().find(name);
+    if (!type)
     {
-      if (*obj)
-      {
-        add_object(*obj);
-      }
+      log_error("unknown object type: '{}'", name);
+      return;
     }
+
+    ObjectData data = ObjectData::from_reader(*type, name, mapping);
+    data.set_pos(data.get_pos() + geom::foffset(offset.x(), offset.y()));
+    data.set_z_index(data.get_z_index() + z_offset);
+    float const z_index = systems::object_z_index(data);
+    pending.push_back(PendingObject{z_index, Layer::ENTITY, std::move(data)});
+  };
+
+  for (auto const& reader_object : plf.get_objects().get_objects()) {
+    expand_level_object(reader_object.get_name(), reader_object.get_mapping(), Vector2f(), 0.0f, add_level_object);
   }
 
+  // insert a dummy background in case the user didn't provide one
+  bool const has_solid_background =
+    std::any_of(pending.begin(), pending.end(), [](PendingObject const& p) {
+      return p.data && systems::is_solid_background(*p.data);
+    });
+  if (!has_solid_background)
   {
-    // insert a dummy background in case the user didn't provide one
-    if (std::none_of(world_obj.begin(), world_obj.end(),
-                     [](WorldObj* obj) { return obj->is_solid_background(); }))
-    {
-      auto doc = ReaderDocument::from_string("(solidcolor-background "
-                                             "  (position 0 0 -1000) "
-                                             "  (colori 127 0 127 255))");
-      auto objs = WorldObjFactory::instance().create(doc.get_root());
-      for(auto obj = objs.begin(); obj != objs.end(); ++obj)
-      {
-        add_object(*obj);
-      }
-    }
+    auto doc = ReaderDocument::from_string("(solidcolor-background "
+                                           "  (position 0 0 -1000) "
+                                           "  (colori 127 0 127 255))");
+    add_level_object(doc.get_root().get_name(), doc.get_root().get_mapping(), Vector2f(), 0.0f);
   }
 
-  world_obj.push_back(pingus);
+  // the pingus are drawn at depth 50
+  pending.push_back(PendingObject{50.0f, Layer::PINGUS, {}});
 
-  std::stable_sort(world_obj.begin(), world_obj.end(),
-                   [](WorldObj* lhs, WorldObj* rhs)
+  std::stable_sort(pending.begin(), pending.end(),
+                   [](PendingObject const& lhs, PendingObject const& rhs)
                    {
-                     return lhs->z_index() < rhs->z_index();
+                     return lhs.z_index < rhs.z_index;
                    });
+
+  for (auto& p : pending)
+  {
+    if (p.layer == Layer::ENTITY) {
+      object_order.push_back(ObjectRef{Layer::ENTITY, systems::create_object(*this, *p.data)});
+    } else {
+      object_order.push_back(ObjectRef{p.layer, ecs::null_entity});
+    }
+  }
 
   // Drawing all world objs to the colmap, gfx, or what ever the
   // objects want to do
-  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+  for (auto const& ref : object_order)
   {
-    (*obj)->on_startup();
+    if (ref.layer == Layer::ENTITY) {
+      systems::startup(*this, ref.entity);
+    }
   }
 }
 
 World::~World()
 {
-  for (auto it = world_obj.begin(); it != world_obj.end(); ++it) {
-    delete *it;
-  }
+  delete snow_particle_holder;
+  delete smoke_particle_holder;
+  delete rain_particle_holder;
+  delete pingu_particle_holder;
+  delete gfx_map;
+  delete pingus;
 }
 
 void
 World::draw (SceneContext& gc)
 {
-  WorldObj::set_world(this);
-
   gc.light().fill_screen(ambient_light);
 
-  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
+  for (auto const& ref : object_order)
   {
-    (*obj)->draw(gc);
+    switch (ref.layer)
+    {
+      case Layer::ENTITY:
+        systems::draw(*this, gc, ref.entity);
+        break;
+
+      case Layer::GROUND:
+        gfx_map->draw(gc);
+        break;
+
+      case Layer::PINGUS:
+        systems::draw_pingus(*this, gc);
+        break;
+
+      case Layer::PARTICLES:
+        pingu_particle_holder->draw(gc);
+        rain_particle_holder->draw(gc);
+        smoke_particle_holder->draw(gc);
+        snow_particle_holder->draw(gc);
+        break;
+    }
   }
 }
 
 void
 World::draw_smallmap(SmallMap* smallmap)
 {
-  WorldObj::set_world(this);
-
-  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-  {
-    (*obj)->draw_smallmap (smallmap);
-  }
+  systems::draw_smallmap(*this, *smallmap);
 }
 
 void
 World::update()
 {
-  WorldObj::set_world(this);
-
   game_time += 1;
 
   if (do_armageddon)
@@ -185,16 +271,23 @@ World::update()
     }
   }
 
-  // Let all pingus move and
-  // Let the pingus catch each other and
-  // Let the traps catch the pingus and
-  // Let the exit catch the pingus
-  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-  {
-    // catch_pingu() is now done in relevant update() if WorldObj
-    // needs to catch pingus.
-    (*obj)->update();
-  }
+  // Release new pingus
+  systems::update_spawners(*this);
+
+  // Let all pingus move and catch each other
+  systems::update_pingus(*this);
+
+  // Update the particles
+  pingu_particle_holder->update();
+  rain_particle_holder->update();
+  smoke_particle_holder->update();
+  snow_particle_holder->update();
+
+  // Traps, exits and other level objects react to the pingus
+  systems::update_objects(*this);
+
+  // Sounds, particles and overlays defined in the animation sets
+  systems::update_effects(*this);
 }
 
 PinguHolder*
@@ -269,16 +362,16 @@ World::get_pingu (Vector2f const& pos)
   Pingu* current_pingu = nullptr;
   float distance = -1.0;
 
-  for (PinguIter i = pingus->begin(); i != pingus->end(); ++i) {
-    if ((*i)->is_over(pos.x(), pos.y()))
+  pingus->for_each([&](Pingu& pingu) {
+    if (pingu.is_over(pos.x(), pos.y()))
     {
-      if (distance == -1.0f || distance >= (*i)->dist(pos.x(), pos.y()))
+      if (distance == -1.0f || distance >= pingu.dist(pos.x(), pos.y()))
       {
-        current_pingu = (*i);
-        distance = (*i)->dist(pos.x(), pos.y());
+        current_pingu = &pingu;
+        distance = pingu.dist(pos.x(), pos.y());
       }
     }
-  }
+  });
 
   return current_pingu;
 }
@@ -307,33 +400,21 @@ World::remove(CollisionMask const& mask, int x, int y)
   colmap->remove(mask, x, y);
 }
 
-WorldObj*
-World::get_worldobj(std::string const& id)
-{
-  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-  {
-    if ((*obj)->get_id() == id)
-      return *obj;
-  }
-  return nullptr;
-}
-
 Vector2i
-World::get_start_pos(int player_id) const
+World::get_start_pos(int player_id)
 {
   // FIXME: Workaround for lack of start-pos
   Vector2i pos;
   int num_entrances = 0;
-  for(auto obj = world_obj.begin(); obj != world_obj.end(); ++obj)
-  {
-    pingus::worldobjs::Entrance* entrance = dynamic_cast<pingus::worldobjs::Entrance*>(*obj);
-    if (entrance && entrance->get_owner_id() == player_id)
-    {
-      pos += geom::ioffset(static_cast<int>(entrance->get_pos().x()),
-                           static_cast<int>(entrance->get_pos().y()));
-      num_entrances += 1;
-    }
-  }
+  registry.each<components::Transform, components::Owner, components::Entrance>(
+    [&](ecs::Entity, components::Transform& transform, components::Owner& owner, components::Entrance&) {
+      if (owner.owner_id == player_id)
+      {
+        pos += geom::ioffset(static_cast<int>(transform.pos.x()),
+                             static_cast<int>(transform.pos.y()));
+        num_entrances += 1;
+      }
+    });
 
   if (num_entrances > 0)
   {

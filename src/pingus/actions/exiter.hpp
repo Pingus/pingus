@@ -17,24 +17,23 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_EXITER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_EXITER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Exiter : public PinguAction
 {
 private:
-  StateSprite sprite;
-  bool sound_played;
+  AnimationClock clock;
 
 public:
   Exiter(Pingu*);
   void init(void);
   ActionName::Enum get_type() const override { return ActionName::EXITER; }
 
-  void draw (SceneContext& gc) override;
   void update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   Exiter (Exiter const&);

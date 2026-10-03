@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Near can mean far")
-    (description "What do you do when you're going in the wrong direction ? Simple: walk into "
-                 "a wall. But it is easier said than done...")
+    (description "What do you do when you're going in the wrong direction ? Simple: walk into a wall. But it is easier said than done...")
     (author "Etienne Marcotte <marcotte_moi@yahoo.com>")
     (number-of-pingus 40)
     (number-to-save 32)
@@ -29,9 +28,9 @@
       (scroll-y 0.0)
       (para-x 0.85)
       (para-y 1.0)
-      (stretch-x 0)
-      (stretch-y 0)
-      (keep-aspect 0)
+      (stretch-x #f)
+      (stretch-y #f)
+      (keep-aspect #f)
       (position 0 0 -150))
     (groundpiece 
       (type "ground")
@@ -45,8 +44,7 @@
       (direction "misc")
       (release-rate 75)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 151 394 0)
       (surface 
         (image "exits/stone")

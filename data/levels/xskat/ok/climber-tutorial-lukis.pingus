@@ -378,8 +378,7 @@
         (image "groundpieces/ground/desert/domedune")
         (modifier "ROT0"))
       (position 1088 567 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1003 213 0)
       (surface 
         (image "exits/desert")

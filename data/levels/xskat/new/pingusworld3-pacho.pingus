@@ -178,8 +178,7 @@
         (image "groundpieces/ground/snow/block2")
         (modifier "ROT0"))
       (position 977 535 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1381 435 0)
       (surface 
         (image "exits/ice2")

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_ANGEL_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_ANGEL_HPP
 
-#include "engine/display/sprite.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
 
 namespace pingus::actions {
@@ -27,7 +27,7 @@ class Angel : public PinguAction
 private:
   float counter;
   float x_pos;
-  Sprite sprite;
+  AnimationClock clock;
 
 public:
   Angel (Pingu* p);
@@ -35,7 +35,7 @@ public:
   ActionName::Enum get_type() const override { return ActionName::ANGEL; }
 
   void  update() override;
-  void  draw (SceneContext& gc) override;
+  void get_look(PinguLook& look) const override;
 
 private:
   Angel (Angel const&);

@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "A flag is in the way")
-    (description "The path would have been dull if it wasn't for that flag poll in the middle "
-                 "of nowhere. Hope its owner won't mind a little hole in it...")
+    (description "The path would have been dull if it wasn't for that flag poll in the middle of nowhere. Hope its owner won't mind a little hole in it...")
     (author "Etienne Marcotte <marcotte_moi@yahoo.com>")
     (number-of-pingus 40)
     (number-to-save 35)
@@ -45,8 +44,7 @@
       (stretch-y #t)
       (keep-aspect #f)
       (position 0 0 -250))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 69 232 0)
       (surface 
         (image "exits/stone")

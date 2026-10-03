@@ -47,8 +47,7 @@
         (image "groundpieces/ground/desert/blobdune")
         (modifier "ROT0"))
       (position 71 694 -150))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 542 618 -100)
       (surface 
         (image "exits/industrial")

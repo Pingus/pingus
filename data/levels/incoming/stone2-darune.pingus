@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Dire Descent")
-    (description "The pingus descends downward to deeper caves. A large cave around halfway "
-                 "down poses a problem that the pingus must find a way around.")
+    (description "The pingus descends downward to deeper caves. A large cave around halfway down poses a problem that the pingus must find a way around.")
     (author "darune")
     (number-of-pingus 50)
     (number-to-save 30)
@@ -445,8 +444,7 @@
         (image "groundpieces/ground/misc/grey_stone4")
         (modifier "ROT0"))
       (position 513 1684 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 463 1695 0)
       (surface 
         (image "exits/stone")

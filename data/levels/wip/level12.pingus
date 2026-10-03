@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Get up")
-    (description "This time the exit is above the Pingus, the only question left is: How can "
-                 "they reach it?")
+    (description "This time the exit is above the Pingus, the only question left is: How can they reach it?")
     (author )
     (number-of-pingus 50)
     (number-to-save 30)

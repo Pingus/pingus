@@ -350,8 +350,7 @@
         (image "groundpieces/ground/misc/stoneblock2")
         (modifier "ROT0"))
       (position 591 204 40))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 342 536 0)
       (surface 
         (image "exits/stone")

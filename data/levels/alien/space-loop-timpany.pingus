@@ -374,8 +374,7 @@
       (direction "left")
       (release-rate 25)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 216 501 0)
       (surface 
         (image "exits/space")

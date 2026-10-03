@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Blockers and crowd control")
-    (description "Use a blocker to keep the Pingus from walking off the cliff. Afterwards you "
-                 "can make them stop by giving them another job. ")
+    (description "Use a blocker to keep the Pingus from walking off the cliff. Afterwards you can make them stop by giving them another job. ")
     (author )
     (number-of-pingus 50)
     (number-to-save 20)
@@ -223,8 +222,7 @@
       (direction "left")
       (release-rate 25)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 727 425 0)
       (surface 
         (image "exits/stone")

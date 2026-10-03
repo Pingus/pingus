@@ -20,7 +20,6 @@
 #include "engine/sound/sound.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
-#include "pingus/worldobj.hpp"
 
 namespace pingus::actions {
 
@@ -28,16 +27,15 @@ Digger::Digger(Pingu* p) :
   PinguAction(p),
   digger_radius("pingus/common/digger_radius_gfx", "pingus/common/digger_radius"),
   digger_radius_final("pingus/common/digger_radius_final_gfx", "pingus/common/digger_radius_final_gfx"),
-  sprite(),
+  clock(look_animation("digger").make_clock()),
   delay_count(0)
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/digger/left");
 }
 
 void
 Digger::update()
 {
-  sprite.update();
+  clock.update();
 
   delay_count += 1;
 
@@ -84,13 +82,13 @@ Digger::dig(bool final)
 {
   if (!final)
   {
-    WorldObj::get_world()->remove(digger_radius,
+    pingu->get_world()->remove(digger_radius,
                                   pingu->get_xi() - digger_radius.get_width() / 2,
                                   pingu->get_yi() - digger_radius.get_height() + 2);
   }
   else
   {
-    WorldObj::get_world()->remove(digger_radius_final,
+    pingu->get_world()->remove(digger_radius_final,
                                   pingu->get_xi() - digger_radius.get_width() / 2,
                                   pingu->get_yi() - digger_radius.get_height() + 2);
   }
@@ -98,9 +96,9 @@ Digger::dig(bool final)
 }
 
 void
-Digger::draw(SceneContext& gc)
+Digger::get_look(PinguLook& look) const
 {
-  gc.color().draw(sprite, pingu->get_pos());
+  look.add("digger", clock.frame());
 }
 
 } // namespace pingus::actions

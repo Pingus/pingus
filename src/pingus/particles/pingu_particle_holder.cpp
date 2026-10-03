@@ -25,16 +25,17 @@ namespace pingus::particles {
 const float x_collision_decrease = 0.3f;
 const float y_collision_decrease = 0.6f;
 
-PinguParticleHolder::PinguParticle::PinguParticle (int x, int y)
-  : livetime(50 + (rand() % 75)),
-    use_frame2((rand() % 5) == 0),
+PinguParticleHolder::PinguParticle::PinguParticle (int x, int y, Random& rng)
+  : livetime(50 + rng.next_int(75)),
+    use_frame2(rng.next_int(5) == 0),
     pos(static_cast<float>(x), static_cast<float>(y)),
-    velocity(Math::frand() * 7 - 3.5f,
-             Math::frand() * -9)
+    velocity(rng.next_float() * 7 - 3.5f,
+             rng.next_float() * -9)
 {
 }
 
-PinguParticleHolder::PinguParticleHolder() :
+PinguParticleHolder::PinguParticleHolder(World& world_) :
+  world(&world_),
   surface("particles/pingu_explo"),
   particles()
 {
@@ -50,7 +51,7 @@ PinguParticleHolder::add_particle (int x, int y)
   {
     if (!it->livetime)
     {
-      *it = PinguParticle(x, y);
+      *it = PinguParticle(x, y, world->get_fx_random());
       ++i;
     }
   }
@@ -60,7 +61,7 @@ PinguParticleHolder::add_particle (int x, int y)
 
   // create remaining entries
   for (; i < 50; ++i)
-    particles.push_back(PinguParticle(x, y));
+    particles.push_back(PinguParticle(x, y, world->get_fx_random()));
 }
 
 void
@@ -77,7 +78,7 @@ PinguParticleHolder::update()
     float tmp_y_add = 0.0f;
 
     // Simulated gravity
-    it->velocity.y += WorldObj::get_world()->get_gravity();
+    it->velocity.y += world->get_gravity();
 
     if (it->velocity.y > 0)
     {

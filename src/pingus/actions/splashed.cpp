@@ -19,40 +19,31 @@
 #include "engine/display/scene_context.hpp"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
-#include "pingus/worldobj.hpp"
 
 namespace pingus::actions {
 
 Splashed::Splashed (Pingu* p) :
   PinguAction(p),
-  particle_thrown(false),
-  sound_played(false),
-  sprite()
+  // Game timing: splashing takes 16 steps of 33 ms
+  clock(33, 16, false)
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/splat");
 }
 
 void
 Splashed::update()
 {
-  sprite.update();
+  clock.update();
 
-  if (!particle_thrown)
-  {
-    particle_thrown = true;
-    WorldObj::get_world()->play_sound("splash", pingu->get_pos());
-  }
-
-  if (sprite.is_finished())
+  if (clock.is_finished())
   {
     pingu->set_status(Pingu::PS_DEAD);
   }
 }
 
 void
-Splashed::draw (SceneContext& gc)
+Splashed::get_look(PinguLook& look) const
 {
-  gc.color().draw(sprite, pingu->get_pos());
+  look.add("splashed", clock);
 }
 
 } // namespace pingus::actions

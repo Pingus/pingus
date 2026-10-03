@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_FLOATER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_FLOATER_HPP
 
-#include "engine/display/sprite.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
 
 namespace pingus::actions {
@@ -27,7 +27,7 @@ class Floater : public PinguAction
 private:
   int falling_depth;
   int step;
-  Sprite sprite;
+  AnimationClock clock;
 
 public:
   Floater(Pingu* p);
@@ -36,8 +36,8 @@ public:
 
   void init(void);
 
-  void draw (SceneContext& gc) override;
   void update() override;
+  void get_look(PinguLook& look) const override;
 
   char get_persistent_char() override { return 'f'; }
   bool change_allowed (ActionName::Enum new_action) override;

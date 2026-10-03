@@ -17,26 +17,24 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_CLIMBER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_CLIMBER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Climber : public PinguAction
 {
 private:
-  StateSprite sprite;
-  int sprite_width;
-  int sprite_height;
+  DirectionalAnimationClock clock;
 
 public:
   Climber (Pingu*);
 
   ActionName::Enum get_type() const override { return ActionName::CLIMBER; }
 
-  void draw (SceneContext& gc) override;
 
   void update() override;
+  void get_look(PinguLook& look) const override;
 
   char get_persistent_char() override { return 'c'; }
   bool change_allowed(ActionName::Enum new_action) override;

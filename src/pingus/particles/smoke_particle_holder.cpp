@@ -17,22 +17,24 @@
 #include "pingus/particles/smoke_particle_holder.hpp"
 
 #include "engine/display/scene_context.hpp"
+#include "pingus/world.hpp"
 
 namespace pingus::particles {
 
-SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x, float vel_y) :
+SmokeParticleHolder::SmokeParticle::SmokeParticle (float x, float y, float vel_x, float vel_y, Random& rng) :
   time(),
   livetime(),
   use_surf2(),
   pos(x,y),
   velocity(vel_x, vel_y)
 {
-  time = livetime = 25 + (rand() % 10);
-  use_surf2 = rand() % 2;
+  time = livetime = 25 + rng.next_int(10);
+  use_surf2 = rng.next_int(2);
 }
 
-SmokeParticleHolder::SmokeParticleHolder()
-  : surf1("particles/smoke"),
+SmokeParticleHolder::SmokeParticleHolder(World& world_) :
+  world(&world_),
+  surf1("particles/smoke"),
     surf2("particles/smoke2"),
     particles()
 {
@@ -45,12 +47,12 @@ SmokeParticleHolder::add_particle (float x, float y, float vel_x, float vel_y)
   for (std::vector<SmokeParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     if (!it->livetime)
     {
-      *it = SmokeParticle(x, y, vel_x, vel_y);
+      *it = SmokeParticle(x, y, vel_x, vel_y, world->get_fx_random());
       return;
     }
 
   // create new entry
-  particles.push_back(SmokeParticle(x, y, vel_x, vel_y));
+  particles.push_back(SmokeParticle(x, y, vel_x, vel_y, world->get_fx_random()));
 }
 
 void

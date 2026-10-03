@@ -18,8 +18,8 @@
 #define HEADER_PINGUS_PINGUS_ACTIONS_MINER_HPP
 
 #include "pingus/collision_mask.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
@@ -30,7 +30,7 @@ private:
   CollisionMask miner_radius_left;
   CollisionMask miner_radius_right;
 
-  StateSprite sprite;
+  DirectionalAnimationClock clock;
   int delay_count;
 
 public:
@@ -39,8 +39,8 @@ public:
 
   ActionName::Enum get_type() const override { return ActionName::MINER; }
 
-  void draw (SceneContext& gc) override;
   void update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   void mine(bool final);

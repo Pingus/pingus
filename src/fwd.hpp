@@ -49,8 +49,7 @@ class ScreenManager;
 class Server;
 class SmallMap;
 class StoryScreenComponent;
-class WorldObj;
-class WorldObjAbstractFactory;
+class World;
 struct CommandLineOptions;
 } // namespace pingus
 

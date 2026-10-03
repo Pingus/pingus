@@ -259,11 +259,11 @@ file(GLOB PINGUS_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   src/pingus/actions/*.cpp
   src/pingus/colliders/*.cpp
   src/pingus/components/*.cpp
+  src/pingus/ecs/*.cpp
   src/pingus/movers/*.cpp
   src/pingus/particles/*.cpp
   src/pingus/screens/*.cpp
   src/pingus/worldmap/*.cpp
-  src/pingus/worldobjs/*.cpp
   src/util/*.cpp
   )
 
@@ -285,8 +285,14 @@ function(build_dependencies)
   # even if WERROR is forced OFF. Clear the flag vars in this function
   # scope so add_subdirectory sees a clean slate (helpers apply their own
   # MaximumWarnings from their WERROR/WARNINGS options).
-  set(BUILD_TESTS OFF CACHE BOOL "" FORCE)
-  set(WERROR OFF CACHE BOOL "" FORCE)
+  #
+  # BUILD_TESTS and WERROR are set as function-scoped normal variables, not
+  # cache entries: forcing the cache would also switch off Pingus' own
+  # tests and -Werror on every reconfigure. CMP0077 makes the helpers'
+  # option() calls honor the normal variable.
+  set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+  set(BUILD_TESTS OFF)
+  set(WERROR OFF)
   set(TINYGETTEXT_WITH_SDL ON CACHE BOOL "" FORCE)
   set(WARNINGS_CXX_FLAGS "")
   set(TINYCMMC_WARNINGS_CXX_FLAGS "")
@@ -464,6 +470,15 @@ if(BUILD_TESTS)
   add_test(NAME test_pingus_desktop
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMAND desktop-file-validate pingus.desktop)
+
+  if(BUILD_EXTRA)
+    # Smoke test: run the tutorial levels through the simulation without
+    # a display, fails if a level does not load or the game crashes.
+    file(GLOB PINGUS_HEADLESS_LEVELS ${CMAKE_CURRENT_SOURCE_DIR}/data/levels/tutorial/*.pingus)
+    add_test(NAME test_pingus_headless
+      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+      COMMAND pingus-headless ${PINGUS_HEADLESS_LEVELS})
+  endif()
 endif(BUILD_TESTS)
 
 # Binary + data under the normal FHS prefix. Datadir is baked into the

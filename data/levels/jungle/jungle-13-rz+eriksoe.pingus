@@ -268,8 +268,7 @@
         (image "groundpieces/ground/misc/column_flat_right")
         (modifier "ROT0"))
       (position 760 600 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 725 265 0)
       (surface 
         (image "exits/ordina")

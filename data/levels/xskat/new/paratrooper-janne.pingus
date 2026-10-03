@@ -54,8 +54,7 @@
         (image "groundpieces/ground/foliage/flax2")
         (modifier "ROT0"))
       (position 267 992 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 445.8 1067.7 0)
       (surface 
         (image "exits/ordina")

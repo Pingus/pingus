@@ -270,8 +270,7 @@
         (image "groundpieces/ground/crystal/diagcrystal")
         (modifier "ROT270"))
       (position 667 663 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 545.898 768.021 0)
       (surface 
         (image "exits/crystal")

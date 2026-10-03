@@ -210,8 +210,7 @@
       (direction "right")
       (release-rate 100)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1118 612 0)
       (surface 
         (image "exits/desert")

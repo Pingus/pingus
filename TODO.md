@@ -187,6 +187,89 @@ OpenAL EFX on mobile.
 - [ ] CI: `nix build .#pingus` + optional port smoke jobs
 - [ ] Consider vendoring Win32 SDL under `external/` later (optional)
 
+## ECS refactor (`ecs-refactor` branch)
+
+Goal: data-driven Entity Component System for world objects and pingus,
+with game logic separated from presentation. All work stays on the
+`ecs-refactor` branch until it is in good shape; `master` is left alone.
+Demo replay compatibility is not a constraint (the demos were never fully
+reliable).
+
+Regression check: `extra/pingus-headless` runs demos and levels without a
+display; diff its output before/after a change:
+
+```sh
+find data -name '*.pingus-demo' -o -path 'data/levels/*.pingus' | sort \
+  | xargs -d '\n' build/extra/pingus-headless > results.txt
+```
+
+Architecture and how-tos: `doc/ecs.md`. Renderings can be compared as
+well (`pingus-headless -s DIR -T TICKS`).
+
+1. Separate game logic from sprites
+   - [x] `AnimationClock`: animation timing from `.sprite` metadata
+   - [x] Actions use clocks instead of `Sprite` frame state
+   - [x] World objects use clocks instead of `Sprite` frame state
+   - [x] Seeded `Random` in `World` (`game_random`, `fx_random`) replaces
+         global `rand()` in world code
+   - [x] Pingu actions hold no sprites, they describe their look
+         (`get_look()`) as animations of the player's animation set
+6. Data-driven visuals
+   - [x] Animation sets (`data/animsets/`), `AnimatedSprite` component;
+         traps, teleporters and pingus use them
+   - [x] Game timing is explicit in the actions and traps, the art is
+         mapped onto it proportionally; visual-only animations take their
+         timing from the animation sets
+   - [x] Declarative effects (sound, particles, overlay at a step) in
+         the animation sets; bomber, exiter, splashed, guillotine and
+         smasher use them
+   - [x] Ice blocks, switch doors and conveyor belts use animation sets
+   - [ ] Liquid width in the collision map depends on the width of the
+         level's surface sprite (game data from art)
+2. Headless smoke test
+   - [x] `extra/pingus-headless` (demos + levels with armageddon,
+         offscreen screenshots)
+   - [x] Hook into ctest (`test_pingus_headless`, tutorial levels)
+   - [ ] CI job
+3. Shared object schema
+   - [x] `ObjectSchema` / `ObjectData` describe all level object types
+   - [x] Editor reads, writes and derives its `HAS_*` flags from it
+   - [x] Editor property panel generated from the schema, `HAS_*` flags
+         removed
+   - [ ] `WorldObjRenderer` (`pingus-level2png`) still has its own
+         per-type code
+   - [ ] (Maybe) move the type definitions into a data file
+4. World objects as entities + systems
+   - [x] `ecs::Registry`, components, systems for all 22 object types
+   - [x] `TriggerZone`, `Owner`, `ObjectId`, `SmallmapSymbol` shared
+         components
+   - [x] `WorldObj` level object classes and `WorldObjFactory` removed
+   - [x] Global `WorldObj::world` replaced by explicit references
+   - [x] Ground map and particles are plain services, `WorldObj` removed
+   - [x] Editor accesses properties by name, typed `LevelObj` accessors
+         removed
+   - [x] Fixed system order (spawners, pingus, objects) instead of the
+         old z-based update order
+5. Pingus as entities
+   - [x] `Transform`, `PinguState`, `PinguBehavior`, `ActivePingu`
+         components, `Pingu` as interface component, `PinguHolder` no
+         longer a `WorldObj`, systems in `pingus/ecs/pingus.cpp`
+   - [ ] (Maybe) actions as data + systems instead of classes
+
+Found along the way:
+
+- [x] 44 levels failed to load because of syntax errors (multi-string
+      descriptions, malformed numbers/bools, unescaped quotes); fixed
+- [x] Editor dropped old `(color ...)` values and snow `intensity` on
+      save; fixed by the schema
+- [ ] 87 demos reference levels that no longer exist
+- [ ] The (unused) smashed action shows `pingus/playerN/bomber`, which is
+      the whole bomber sprite sheet as one image
+- [x] Fake exit smashed forever after the first trigger (looping
+      sprite); fixed
+- [ ] Build: an `LD_LIBRARY_PATH` pointing at system libraries built
+      against a newer glibc breaks linking in `nix develop`; unset it
+
 ## Out of scope (for now)
 
 - GP2X / Wiz / Open2x (explicitly excluded)

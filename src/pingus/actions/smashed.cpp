@@ -24,24 +24,25 @@ namespace pingus::actions {
 Smashed::Smashed (Pingu* p) :
   PinguAction(p),
   sound_played(false),
-  sprite()
+  // FIXME: this timing never finishes, so a smashed pingu never dies. It
+  // matches the sprite the action used to show; the action is unused.
+  clock(100, 1, true)
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/bomber");
-}
-
-void
-Smashed::draw (SceneContext& gc)
-{
-  gc.color().draw(sprite, pingu->get_pos());
 }
 
 void
 Smashed::update()
 {
-  sprite.update();
+  clock.update();
   //  pingu->particle->add_pingu_explo(pingu->x_pos, pingu->y_pos - 16);
-  if (sprite.is_finished())
+  if (clock.is_finished())
     pingu->set_status(Pingu::PS_DEAD);
+}
+
+void
+Smashed::get_look(PinguLook& look) const
+{
+  look.add("smashed", clock);
 }
 
 } // namespace pingus::actions

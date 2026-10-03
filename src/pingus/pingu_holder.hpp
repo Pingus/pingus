@@ -17,104 +17,86 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGU_HOLDER_HPP
 #define HEADER_PINGUS_PINGUS_PINGU_HOLDER_HPP
 
-#include <list>
+#include <vector>
 
-#include "pingus/worldobj.hpp"
+#include "ecs/registry.hpp"
 #include "math/vector2f.hpp"
+#include "pingus/ecs/components.hpp"
+#include "pingus/pingu.hpp"
 
 namespace pingus {
 
 class PingusLevel;
-class Pingu;
+class World;
 
-typedef std::list<Pingu*>::iterator PinguIter;
-
-/** This class holds all the penguins in the world */
-class PinguHolder : public WorldObj
+/** Creates the pingu entities of a World and keeps track of them: lookup
+    by id, iteration over the active pingus and the released, exited and
+    killed counts. The per tick update and drawing of the pingus are done
+    by the systems in pingus/ecs/pingus.cpp. */
+class PinguHolder
 {
 private:
-  /** The total number of pingus that will get released in this
-      level */
+  World& world;
+
+  /** Maximum number of pingus that can be released */
   int number_of_allowed;
 
-  /** Number of pingus that made it to the exit, we cache this, since
-      else we would have to iterate over the whole list and count them
-      each time they are requested. */
   int number_of_exited;
 
-  /** This vector holds all pingus which are ever allocated in the
-      world, its used to free them all on the end of this class. */
-  std::vector<Pingu*> all_pingus;
+  /** Number of pingus with an ActivePingu component */
+  int number_of_active;
 
-  /** A list holding all Pingus, the PinguHolder itself has only the
-      active (not dead) ones */
-  std::list<Pingu*> pingus;
+  /** All pingus ever created, the pingu id is the index */
+  std::vector<ecs::Entity> pingus;
 
 public:
-  PinguHolder(PingusLevel const&);
-  ~PinguHolder() override;
+  PinguHolder(World& world, PingusLevel const& plf);
 
-  /*@{
-    @name overloaded stuff for WorldObj
-  */
-  void draw (SceneContext& gc) override;
+  PinguHolder(PinguHolder const&) = delete;
+  PinguHolder& operator=(PinguHolder const&) = delete;
 
-  /** Update all Pingus (this calls Pingu::update() which then calls
-      PinguAction::update()) */
-  void update() override;
-
-  /** The z-pos at which the pingus gets draw.
-      @return 50 */
-  float z_index() const override;
-  void set_z_index(float) override {}
-  void set_pos(Vector2f const& /* p */) override { }
-  Vector2f get_pos() const override { return Vector2f(); }
-  /*@}*/
-
-  /** @return the number of pingus that have successfully exit this
-      level */
-  int  get_number_of_exited() const;
-
-  /** @return the number of pingus that got killed */
-  int  get_number_of_killed() const;
-
-  /** @return the number of pingus that are still alive, this is shown
-      in the PingusCounter panel as 'Out'. Exited pingus are *not*
-      counted. FIXME: name should be different (out, active?!) */
-  int  get_number_of_alive() const;
-
-  /** @return the total number of pingus released, this is alive +
-      killed + exited */
-  int get_number_of_released() const;
-
-  /** @return the maximal number of pingus that will get released in
-      this level */
-  int get_number_of_allowed() const;
-
-  /** @return a reference to a newly create Pingu, the PinguHolder
-      will take care of the deletion. The caller *must* not delete the
-      Pingu. Might return 0 if all available pingus are already
-      released */
+  /** Create a new pingu at the given position, returns nullptr when all
+      pingus allowed by the level are released */
   Pingu* create_pingu(Vector2f const& pos, int owner_id);
 
-  /** Get a pingu by id, references to dead or exited Pingus are not
-      returned, but 0 instead
-
-      @return the pingu with the id, or 0 if none found or pingu is
-      dead or exited */
+  /** @return the pingu with the given id, nullptr if it doesn't exist
+      or isn't alive */
   Pingu* get_pingu(unsigned int id) const;
 
-  /** @return the id of the last pingu + 1 */
+  /** Call func(Pingu&) for each active pingu, in creation order */
+  template<typename Func>
+  void for_each(Func&& func)
+  {
+    get_registry().each<Pingu, components::ActivePingu>(
+      [&](ecs::Entity, Pingu& pingu, components::ActivePingu&) {
+        func(pingu);
+      });
+  }
+
+  /** Remove a pingu that died or exited from the active pingus, called
+      by the pingu update system */
+  void deactivate(Pingu& pingu);
+
+  /** @return the number of pingus that have successfully exited this level */
+  int get_number_of_exited() const;
+
+  /** @return the number of pingus that have been killed */
+  int get_number_of_killed() const;
+
+  /** @return the number of pingus that are still alive and in the level */
+  int get_number_of_alive() const;
+
+  /** @return the total number of pingus released */
+  int get_number_of_released() const;
+
+  /** @return the maximum number of pingus that can be released */
+  int get_number_of_allowed() const;
+
+  /** @return the id after the highest id handed out so far */
   unsigned int get_end_id() const;
 
-  // FIXME: Dirty cruft, needs cleanup
-  std::list<Pingu*>::iterator  begin() { return pingus.begin(); }
-  std::list<Pingu*>::iterator  end()   { return pingus.end(); }
-  std::list<Pingu*>::size_type size()  { return pingus.size(); }
-
 private:
-  PinguHolder (PinguHolder const&);
-  PinguHolder& operator= (PinguHolder const&);
+  ecs::Registry& get_registry();
 };
 
 } // namespace pingus

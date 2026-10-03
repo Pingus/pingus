@@ -18,7 +18,7 @@
 #define HEADER_PINGUS_PINGUS_ACTIONS_DIGGER_HPP
 
 #include "pingus/collision_mask.hpp"
-#include "engine/display/sprite.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
 
 namespace pingus::actions {
@@ -28,7 +28,7 @@ class Digger : public PinguAction
 private:
   CollisionMask digger_radius;
   CollisionMask digger_radius_final;
-  Sprite sprite;
+  AnimationClock clock;
   int delay_count;
 
 public:
@@ -39,8 +39,8 @@ public:
   bool have_something_to_dig();
   void dig(bool final);
 
-  void draw(SceneContext& gc) override;
   void update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   Digger (Digger const&);

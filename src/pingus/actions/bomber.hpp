@@ -17,9 +17,9 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_BOMBER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_BOMBER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
@@ -28,15 +28,10 @@ namespace pingus::actions {
 class Bomber : public PinguAction
 {
 private:
-  bool particle_thrown;
-  bool sound_played;
-  bool gfx_exploded;
   bool colmap_exploded;
 
   CollisionMask bomber_radius;
-  StateSprite sprite;
-
-  Sprite   explo_surf;
+  AnimationClock clock;
 
 public:
   Bomber (Pingu* p);
@@ -45,8 +40,8 @@ public:
 
   bool change_allowed (ActionName::Enum /* action */) override { return false; }
 
-  void draw (SceneContext& gc) override;
   void update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   Bomber (Bomber const&);

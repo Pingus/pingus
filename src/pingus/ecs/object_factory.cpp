@@ -1,0 +1,375 @@
+// SPDX-FileCopyrightText: 2026 Ingo Ruhnke <grumbel@gmail.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+#include "pingus/ecs/systems.hpp"
+
+#include <functional>
+#include <map>
+
+#include <logmich/log.hpp>
+
+#include "pingus/ecs/components.hpp"
+#include "pingus/object_schema.hpp"
+#include "pingus/resource.hpp"
+#include "pingus/world.hpp"
+
+namespace pingus::systems {
+
+using namespace pingus::components;
+
+namespace {
+
+using Builder = std::function<void (World&, ecs::Registry&, ecs::Entity, ObjectData const&)>;
+
+void build_groundpiece(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  reg.emplace<Groundpiece>(e, data.get<ResDescriptor>("surface"),
+                           Groundtype::string_to_type(data.get<std::string>("type")));
+}
+
+void build_hotspot(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  // "parallax" is read but was never implemented for drawing
+  reg.emplace<SpriteRender>(e, Sprite(data.get<ResDescriptor>("surface")), true);
+  reg.emplace<LoopingSprite>(e);
+}
+
+void build_liquid(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  Sprite sprite(data.get<ResDescriptor>("surface"));
+  int const width = data.get<int>("repeat") * sprite.get_width();
+  reg.emplace<Liquid>(e, sprite, width);
+}
+
+void build_solidcolor_background(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  reg.emplace<SolidColorBackground>(e, data.get<Color>("colori"));
+}
+
+Sprite create_surface_background_sprite(World& world, ObjectData const& data)
+{
+  ResDescriptor const& desc = data.get<ResDescriptor>("surface");
+  Color const color = data.get<Color>("colori");
+  bool const stretch_x = data.get<bool>("stretch-x");
+  bool const stretch_y = data.get<bool>("stretch-y");
+  bool const keep_aspect = data.get<bool>("keep-aspect");
+
+  if (!stretch_x && !stretch_y && color.a == 0)
+  {
+    // FIXME: would be nice to allow surface manipulation with
+    // animated sprites, but it's not that easy to do
+    return Sprite(desc);
+  }
+
+  Surface surface = Resource::load_surface(desc);
+
+  if (color.a != 0 && surface.is_indexed())
+  {
+    if (surface.has_colorkey()) {
+      surface = surface.convert_to_rgba();
+    } else {
+      surface = surface.convert_to_rgb();
+    }
+  }
+
+  surface.fill(color);
+
+  if (stretch_x && stretch_y)
+  {
+    surface = surface.scale(world.get_width(), world.get_height());
+  }
+  else if (stretch_x && !stretch_y)
+  {
+    if (keep_aspect)
+    {
+      float aspect = static_cast<float>(surface.get_height()) / static_cast<float>(surface.get_width());
+      surface = surface.scale(world.get_width(), static_cast<int>(static_cast<float>(world.get_width()) * aspect));
+    }
+    else
+    {
+      surface = surface.scale(world.get_width(), surface.get_height());
+    }
+  }
+  else if (!stretch_x && stretch_y)
+  {
+    if (keep_aspect)
+    {
+      float aspect = static_cast<float>(surface.get_width()) / static_cast<float>(surface.get_height());
+      surface = surface.scale(static_cast<int>(static_cast<float>(world.get_height()) * aspect), world.get_height());
+    }
+    else
+    {
+      surface = surface.scale(surface.get_width(), world.get_height());
+    }
+  }
+
+  return Sprite(surface);
+}
+
+void build_surface_background(World& world, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  reg.emplace<SurfaceBackground>(e, create_surface_background_sprite(world, data),
+                                 data.get<float>("para-x"), data.get<float>("para-y"),
+                                 data.get<float>("scroll-x"), data.get<float>("scroll-y"));
+}
+
+Star create_star(World& world, char const* sprite_name)
+{
+  Random& rng = world.get_fx_random();
+  Star star{Sprite(sprite_name), 0.0f, 0.0f, 0.0f, 0.0f};
+  star.x_pos = float(rng.next_int(world.get_width()));
+  star.y_pos = float(rng.next_int(world.get_height()));
+  star.x_add = static_cast<float>(rng.next_int(5)) + 1.0f;
+  star.y_add = 0.0f;
+  return star;
+}
+
+void build_starfield_background(World& world, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  StarfieldBackground& starfield = reg.emplace<StarfieldBackground>(e);
+  for (int i = 0; i < data.get<int>("small-stars"); ++i) {
+    starfield.stars.push_back(create_star(world, "game/stars/small_star"));
+  }
+  for (int i = 0; i < data.get<int>("middle-stars"); ++i) {
+    starfield.stars.push_back(create_star(world, "game/stars/middle_star"));
+  }
+  for (int i = 0; i < data.get<int>("large-stars"); ++i) {
+    starfield.stars.push_back(create_star(world, "game/stars/large_star"));
+  }
+}
+
+/** Add an AnimatedSprite showing 'animation' of the named animation set */
+std::shared_ptr<AnimationSet const> add_animated_sprite(ecs::Registry& reg, ecs::Entity e, std::string const& set_name,
+                                                        std::string const& animation, bool visible = true)
+{
+  auto set = AnimationSet::get(set_name);
+  reg.emplace<AnimatedSprite>(e, set, animation, Direction(), 0, 0, visible);
+  return set;
+}
+
+void build_spike(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  add_animated_sprite(reg, e, "traps/spike", "active", false);
+  reg.emplace<TriggerZone>(e, 16.0f - 5.0f, 0.0f, 16.0f + 5.0f, 32.0f);
+  // Game timing, independent of the art: the spikes are out for 14 steps
+  // of 100 ms and kill at step 3
+  reg.emplace<Spike>(e, AnimationClock(100, 14, true));
+}
+
+void build_fake_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<TriggerZone>(e, -7.0f, -56.0f, 8.0f, 0.0f);
+  add_animated_sprite(reg, e, "traps/fake_exit", "smash");
+  // Game timing: a smash takes 9 steps of 100 ms and kills at step 4
+  reg.emplace<FakeExit>(e, AnimationClock(100, 9, false));
+  reg.emplace<SmallmapSymbol>(e, Sprite("core/misc/smallmap_exit"));
+}
+
+void build_guillotine(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<TriggerZone>(e, 38.0f, 90.0f, 42.0f, 98.0f);
+  auto const anims = add_animated_sprite(reg, e, "traps/guillotine", "idle");
+  // Game timing: a kill takes 12 steps of 100 ms, the idle animation is
+  // only visual and follows the art
+  reg.emplace<Guillotine>(e,
+                          AnimationClock(100, 12, false),
+                          anims->get_animation("idle").make_clock());
+}
+
+void build_hammer(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  add_animated_sprite(reg, e, "traps/hammer", "swing");
+  // Game timing: the hammer swings down in 13 steps and splashes at the last
+  reg.emplace<Hammer>(e, 13);
+}
+
+void build_laser_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<TriggerZone>(e, 34.0f, 43.0f, 34.0f + 10.0f, 43.0f + 20.0f);
+  add_animated_sprite(reg, e, "traps/laser_exit", "zap");
+  // Game timing: a zap takes 6 steps of 100 ms
+  reg.emplace<LaserExit>(e, AnimationClock(100, 6, false));
+}
+
+void build_smasher(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  add_animated_sprite(reg, e, "traps/smasher", "smash");
+  reg.emplace<Smasher>(e);
+}
+
+/** Owner ids are limited to the four players */
+int clamp_owner_id(int owner_id)
+{
+  return (owner_id < 0 || owner_id > 3) ? 0 : owner_id;
+}
+
+void build_entrance(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  std::string const& direction_str = data.get<std::string>("direction");
+  Entrance::Direction direction = Entrance::Direction::MISC;
+  if (direction_str == "left") {
+    direction = Entrance::Direction::LEFT;
+  } else if (direction_str == "right") {
+    direction = Entrance::Direction::RIGHT;
+  } else if (direction_str != "misc") {
+    log_error("unknown direction: '{}'", direction_str);
+  }
+
+  int const release_rate = data.get<int>("release-rate");
+  // wait ~2sec at startup to allow a 'lets go' sound
+  int const last_release = 150 - release_rate;
+
+  reg.emplace<Owner>(e, clamp_owner_id(data.get<int>("owner-id")));
+  reg.emplace<Entrance>(e, direction, release_rate, last_release);
+  reg.emplace<SmallmapSymbol>(e, Sprite("core/misc/smallmap_entrance"));
+}
+
+void build_exit(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  int const owner_id = clamp_owner_id(data.get<int>("owner-id"));
+  ResDescriptor const& desc = data.get<ResDescriptor>("surface");
+
+  reg.emplace<Owner>(e, owner_id);
+  reg.emplace<TriggerZone>(e, -1.0f, -5.0f, 1.0f, 5.0f);
+  reg.emplace<Exit>(e, desc, Sprite(desc), Sprite("core/misc/flag" + std::to_string(owner_id)));
+  reg.emplace<SmallmapSymbol>(e, Sprite("core/misc/smallmap_exit"));
+}
+
+void build_teleporter(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  reg.emplace<TriggerZone>(e, -3.0f, -52.0f, 3.0f, 0.0f);
+  auto const anims = add_animated_sprite(reg, e, "worldobjs/teleporter", "teleport");
+  reg.emplace<Teleporter>(e, anims->get_animation("teleport").make_clock(), data.get<std::string>("target-id"));
+}
+
+void build_teleporter_target(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  reg.emplace<ObjectId>(e, data.get<std::string>("id"));
+  auto const anims = add_animated_sprite(reg, e, "worldobjs/teleporter-target", "arrive");
+  reg.emplace<TeleporterTarget>(e, anims->get_animation("arrive").make_clock());
+}
+
+void build_ice_block(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  // "repeat" is part of the level format, but only a single block was
+  // ever implemented
+  auto cmap = std::make_shared<CollisionMask>("worldobjs/iceblock_cmap");
+  reg.emplace<TriggerZone>(e, 0.0f, -4.0f,
+                           static_cast<float>(cmap->get_width()),
+                           static_cast<float>(cmap->get_height()));
+  add_animated_sprite(reg, e, "worldobjs/iceblock", "block");
+  reg.emplace<IceBlock>(e, cmap);
+}
+
+void build_conveyor_belt(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  int const width = data.get<int>("repeat");
+  reg.emplace<TriggerZone>(e, 0.0f, -2.0f, 15.0f * static_cast<float>(width + 2), 10.0f);
+  auto set = AnimationSet::get("worldobjs/conveyorbelt");
+  reg.emplace<AnimationSetRender>(e, set);
+  reg.emplace<ConveyorBelt>(e, width, static_cast<float>(data.get<int>("speed")),
+                            set->get_animation("middle").make_clock());
+}
+
+void build_switch_door(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  int const height = data.get<int>("height");
+  reg.emplace<ObjectId>(e, data.get<std::string>("id"));
+  reg.emplace<AnimationSetRender>(e, AnimationSet::get("worldobjs/switchdoor-door"));
+  reg.emplace<SwitchDoor>(e,
+                          std::make_shared<CollisionMask>("worldobjs/switchdoor_box"),
+                          std::make_shared<CollisionMask>("worldobjs/switchdoor_tile_cmap"),
+                          height, height);
+}
+
+void build_switch(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  // Game data: pingus passing the 15x40 area of the switch trigger it
+  reg.emplace<TriggerZone>(e, 0.0f, 0.0f, 15.0f, 40.0f);
+  add_animated_sprite(reg, e, "worldobjs/switchdoor-switch", "switch");
+  reg.emplace<SwitchDoorSwitch>(e, data.get<std::string>("target-id"));
+}
+
+void build_snow_generator(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const& data)
+{
+  reg.emplace<SnowGenerator>(e, data.get<float>("intensity"));
+}
+
+void build_rain_generator(World&, ecs::Registry& reg, ecs::Entity e, ObjectData const&)
+{
+  reg.emplace<RainGenerator>(e);
+}
+
+std::map<std::string, Builder> const& get_builders()
+{
+  static std::map<std::string, Builder> const builders = {
+    {"groundpiece", build_groundpiece},
+    {"hotspot", build_hotspot},
+    {"liquid", build_liquid},
+    {"solidcolor-background", build_solidcolor_background},
+    {"surface-background", build_surface_background},
+    {"starfield-background", build_starfield_background},
+    {"spike", build_spike},
+    {"fake_exit", build_fake_exit},
+    {"guillotine", build_guillotine},
+    {"hammer", build_hammer},
+    {"laser_exit", build_laser_exit},
+    {"smasher", build_smasher},
+    {"entrance", build_entrance},
+    {"exit", build_exit},
+    {"teleporter", build_teleporter},
+    {"teleporter-target", build_teleporter_target},
+    {"iceblock", build_ice_block},
+    {"conveyorbelt", build_conveyor_belt},
+    {"switchdoor-door", build_switch_door},
+    {"switchdoor-switch", build_switch},
+    {"snow-generator", build_snow_generator},
+    {"rain-generator", build_rain_generator},
+  };
+  return builders;
+}
+
+} // namespace
+
+float
+object_z_index(ObjectData const& data)
+{
+  // These types never used the z-index from the level file
+  static std::map<std::string, float> const fixed_z_index = {
+    {"solidcolor-background", -10.0f},
+    {"starfield-background", -10.0f},
+    {"snow-generator", 1000.0f},
+    {"rain-generator", 1000.0f},
+    {"switchdoor-door", 100.0f},
+    {"switchdoor-switch", 100.0f},
+  };
+
+  auto it = fixed_z_index.find(data.type().name);
+  return it != fixed_z_index.end() ? it->second : data.get_z_index();
+}
+
+bool
+is_solid_background(ObjectData const& data)
+{
+  std::string const& name = data.type().name;
+  return name == "surface-background" || name == "solidcolor-background";
+}
+
+ecs::Entity
+create_object(World& world, ObjectData const& data)
+{
+  auto it = get_builders().find(data.type().name);
+  if (it == get_builders().end()) {
+    throw std::runtime_error("create_object(): no entity builder for '" + data.type().name + "'");
+  }
+
+  ecs::Registry& reg = world.get_registry();
+  ecs::Entity const entity = reg.create();
+  reg.emplace<Transform>(entity, data.get_pos(), object_z_index(data));
+  it->second(world, reg, entity, data);
+  return entity;
+}
+
+} // namespace pingus::systems
+
+/* EOF */

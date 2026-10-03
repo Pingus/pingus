@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_WAITER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_WAITER_HPP
 
-#include "engine/display/sprite.hpp"
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
 
 namespace pingus::actions {
@@ -29,15 +29,15 @@ class Waiter : public PinguAction
 {
 private:
   float countdown;
-  Sprite sprite;
+  AnimationClock clock;
 
 public:
   Waiter (Pingu*);
 
   ActionName::Enum get_type() const override { return ActionName::WAITER; }
 
-  void draw (SceneContext& gc) override;
   void update() override;
+  void get_look(PinguLook& look) const override;
 
 private:
   Waiter (Waiter const&);

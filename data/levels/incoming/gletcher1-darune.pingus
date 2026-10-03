@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Under the guilotin")
-    (description "Find a way under the guilotin and at same time pass over the water, without "
-                 "getting too wet.")
+    (description "Find a way under the guilotin and at same time pass over the water, without getting too wet.")
     (author "Darune")
     (number-of-pingus 50)
     (number-to-save 44)
@@ -55,8 +54,7 @@
         (image "groundpieces/ground/misc/bpiece5")
         (modifier "ROT0"))
       (position 223 251 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1101 471 0)
       (surface 
         (image "exits/stone")

@@ -23,14 +23,14 @@
 
 namespace pingus::particles {
 
-SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_) :
+SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_, Random& rng) :
   alive(true),
   colliding(colliding_),
   type(SnowParticleHolder::Snow1),
   pos(static_cast<float>(x),static_cast<float>(y)),
-  velocity(0.0f, 1 + (Math::frand() * 3.5f))
+  velocity(0.0f, 1 + (rng.next_float() * 3.5f))
 {
-  switch (rand() % 10)
+  switch (rng.next_int(10))
   {
     case 0:
       type = SnowParticleHolder::Snow1;
@@ -52,7 +52,8 @@ SnowParticleHolder::SnowParticle::SnowParticle (int x, int y, bool colliding_) :
   }
 }
 
-SnowParticleHolder::SnowParticleHolder() :
+SnowParticleHolder::SnowParticleHolder(World& world_) :
+  world(&world_),
   snow1("particles/snow1"),
   snow2("particles/snow2"),
   snow3("particles/snow3"),
@@ -70,12 +71,12 @@ SnowParticleHolder::add_particle (int x, int y, bool colliding)
   for (std::vector<SnowParticle>::iterator it=particles.begin(); it != particles.end(); ++it)
     if (!it->alive)
     {
-      *it = SnowParticle(x, y, colliding);
+      *it = SnowParticle(x, y, colliding, world->get_fx_random());
       return;
     }
 
   // create new entry
-  particles.push_back(SnowParticle(x, y, colliding));
+  particles.push_back(SnowParticle(x, y, colliding, world->get_fx_random()));
 }
 
 void
@@ -95,7 +96,7 @@ SnowParticleHolder::update()
       continue;
     }
 
-    it->velocity.x += (Math::frand() - 0.5f) / 10;
+    it->velocity.x += (world->get_fx_random().next_float() - 0.5f) / 10;
     if (it->colliding)
     {
       int pixel = world->get_colmap()->getpixel(static_cast<int>(it->pos.x()), static_cast<int>(it->pos.y()));

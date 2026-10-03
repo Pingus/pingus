@@ -840,8 +840,7 @@
       (position -11 883 100)
       (repeat 40)
       (speed 50))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1917 867 0)
       (surface 
         (image "exits/ice2")

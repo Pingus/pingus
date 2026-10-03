@@ -22,25 +22,14 @@
 #include "pingus/pingu.hpp"
 #include "pingus/pingu_enums.hpp"
 #include "pingus/world.hpp"
-#include "pingus/worldobj.hpp"
 
 namespace pingus::actions {
 
 Faller::Faller (Pingu* p) :
   PinguAction(p),
-  faller(),
-  tumbler()
+  faller_clock(look_animation("faller").make_directional_clock()),
+  tumbler_clock(look_animation("tumbler").make_directional_clock())
 {
-  faller.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/faller/left"));
-  faller.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/faller/right"));
-
-  tumbler.load(Direction::LEFT,  Sprite("pingus/player" +
-                                        pingu->get_owner_str() + "/tumbler/left"));
-  tumbler.load(Direction::RIGHT, Sprite("pingus/player" +
-                                        pingu->get_owner_str() + "/tumbler/right"));
-
   // FIXME: add sprites for jumping here: if x_vel > y_vel, use them
 }
 
@@ -51,11 +40,11 @@ Faller::update()
 {
   if (is_tumbling())
   {
-    tumbler[pingu->direction].update();
+    tumbler_clock[pingu->direction()].update();
   }
   else
   {
-    faller[pingu->direction].update();
+    faller_clock[pingu->direction()].update();
   }
 
   // FIXME: This should be triggered at a later point, when close to
@@ -65,13 +54,13 @@ Faller::update()
     return;
 
   // Apply gravity
-  pingu->set_velocity(pingu->get_velocity() + glm::vec2(0.0f, WorldObj::get_world()->get_gravity()));
+  pingu->set_velocity(pingu->get_velocity() + glm::vec2(0.0f, pingu->get_world()->get_gravity()));
 
   glm::vec2 velocity = pingu->get_velocity();
   glm::vec2 move = velocity;
   bool collided;
 
-  movers::LinearMover mover(WorldObj::get_world(), pingu->get_pos());
+  movers::LinearMover mover(pingu->get_world(), pingu->get_pos());
 
   // Move the Pingu as far is it can go
   mover.update(move, colliders::PinguCollider(pingu_height));
@@ -96,9 +85,9 @@ Faller::update()
       // previously have been facing in the opposite direction of its
       // velocity because of an explosion.
       if (velocity.x > 0.0f)
-        pingu->direction.right();
+        pingu->direction().right();
       else
-        pingu->direction.left();
+        pingu->direction().left();
 
       pingu->set_velocity(velocity);
     }
@@ -138,16 +127,6 @@ Faller::update()
   }
 }
 
-void
-Faller::draw (SceneContext& gc)
-{
-  if (is_tumbling()) {
-    gc.color().draw(tumbler[pingu->direction], pingu->get_pos());
-  } else {
-    gc.color().draw(faller[pingu->direction], pingu->get_pos());
-  }
-}
-
 bool
 Faller::is_tumbling() const
 {
@@ -163,6 +142,16 @@ Faller::change_allowed (ActionName::Enum new_action)
     new_action == ActionName::FLOATER ||
     new_action == ActionName::CLIMBER ||
     new_action == ActionName::BOMBER;
+}
+
+void
+Faller::get_look(PinguLook& look) const
+{
+  if (is_tumbling()) {
+    look.add("tumbler", tumbler_clock[pingu->direction()].frame());
+  } else {
+    look.add("faller", faller_clock[pingu->direction()].frame());
+  }
 }
 
 } // namespace pingus::actions

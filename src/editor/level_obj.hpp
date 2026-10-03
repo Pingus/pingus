@@ -17,112 +17,29 @@
 #ifndef HEADER_PINGUS_EDITOR_LEVEL_OBJ_HPP
 #define HEADER_PINGUS_EDITOR_LEVEL_OBJ_HPP
 
+#include <string_view>
+
 #include "editor/level_obj_ptr.hpp"
 #include "engine/display/sprite.hpp"
 #include "math/color.hpp"
 #include "math/rect.hpp"
 #include "math/vector2f.hpp"
+#include "pingus/object_schema.hpp"
 #include "pingus/res_descriptor.hpp"
 #include "util/writer.hpp"
 #include "fwd.hpp"
 
 namespace pingus::editor {
 
-const unsigned HAS_TYPE =         1 << 0;
-const unsigned HAS_SPEED =        1 << 1;
-const unsigned HAS_PARALLAX =     1 << 2;
-const unsigned HAS_REPEAT =       1 << 3;
-const unsigned HAS_OWNER =        1 << 4;
-const unsigned HAS_COLOR =        1 << 5;
-const unsigned HAS_SCROLL =       1 << 6;
-const unsigned HAS_PARA =         1 << 7;
-const unsigned HAS_STRETCH =      1 << 8;
-const unsigned HAS_DIRECTION =    1 << 9;
-const unsigned HAS_RELEASE_RATE = 1 << 10;
-const unsigned HAS_SPRITE =       1 << 11;
-// HAS_SPRITE_FAKE means it has a generic image in the editor, but isn't saved.
-const unsigned HAS_SPRITE_FAKE =  1 << 12;
-const unsigned CAN_ROTATE =       1 << 13;
-const unsigned HAS_GPTYPE =       1 << 14;
-const unsigned HAS_STARFIELD =    1 << 15;
-const unsigned HAS_ID =           1 << 16;
-const unsigned HAS_TARGET_ID =    1 << 17;
-const unsigned HAS_HEIGHT =       1 << 18;
-
+/** An object in the edited level: a single level object
+    (GenericLevelObj) or a group or prefab (GroupLevelObj). Properties are
+    accessed by their level file name as described by the ObjectSchema. */
 class LevelObj
 {
 private:
   /** Marks if this object has been deleted or not */
   bool removed;
 
-public:
-  /** Retrieve the object's position */
-  virtual Vector2f get_pos() const = 0;
-  virtual Vector2f get_orig_pos() const = 0;
-
-  /** Retrieve this object's attribute number */
-  virtual unsigned int get_attribs() const = 0;
-
-  /** Retrieve the object's resource name */
-  virtual ResDescriptor get_res_desc() const = 0;
-
-  /** Retrieve the name of the section header for this object */
-  virtual std::string get_section_name() const = 0;
-
-  /** Retrieve the object's type */
-  virtual std::string get_type() const = 0;
-
-  virtual std::string get_ground_type() const = 0;
-
-  /** Retrieve the object's speed */
-  virtual int get_speed() const = 0;
-
-  /** Retrieve the object's release rate (entrances) */
-  virtual int get_release_rate() const = 0;
-
-  /** Retrive the object's parallax (is this even used???) */
-  virtual float get_parallax() const = 0;
-
-  /** Retrieve the object's owner */
-  virtual int get_owner() const = 0;
-
-  /** Retrieve the object's repeat */
-  virtual int get_repeat() const = 0;
-
-  /** Retrieve the object's color */
-  virtual Color get_color() const = 0;
-
-  /** Returns true if the object is stretched in the x direction */
-  virtual bool get_stretch_x() const = 0;
-
-  /** Returns true if the object is stretched in the y direction */
-  virtual bool get_stretch_y() const = 0;
-
-  /** Returns true if the object is to maintain it's aspect ratio if stretched */
-  virtual bool get_keep_aspect() const = 0;
-
-  /** Retrive the objects scroll value in the x direction */
-  virtual float get_scroll_x() const = 0;
-
-  /** Retrive the objects scroll value in the y direction */
-  virtual float get_scroll_y() const = 0;
-
-  /** Returns the parallax speed multiplier in the x direction */
-  virtual float get_para_x() const = 0;
-
-  /** Returns the parallax speed multiplier in the y direction */
-  virtual float get_para_y() const = 0;
-
-  /** Retrieve the object's direction */
-  virtual std::string get_direction() = 0;
-
-  virtual std::string get_id() const = 0;
-  virtual std::string get_target_id() const = 0;
-
-  virtual int get_height() const = 0;
-
-  /////////////////////////////////////////////////////////
-  /// Operations
 public:
   LevelObj() :
     removed(false)
@@ -132,118 +49,69 @@ public:
     removed(rhs.removed)
   {}
 
-  /** Destructor */
   virtual ~LevelObj() { }
 
-  /** Set the object's position */
+  /** The type describing the object's properties */
+  virtual ObjectTypeDef const& get_type_def() const = 0;
+
+  /** True if the object has the named property */
+  virtual bool has_property(std::string_view name) const = 0;
+
+  /** Value of the named property, throws if the object doesn't have it */
+  virtual PropertyValue get_property(std::string_view name) const = 0;
+
+  /** Set the named property, ignored if the object doesn't have it */
+  virtual void set_property(std::string_view name, PropertyValue const& value) = 0;
+
+  template<typename T>
+  T get(std::string_view name) const { return std::get<T>(get_property(name)); }
+
+  template<typename T>
+  void set(std::string_view name, T const& value) { set_property(name, PropertyValue(value)); }
+
+  /** Name of the section the object is saved as */
+  virtual std::string get_section_name() const = 0;
+
+  virtual Vector2f get_pos() const = 0;
   virtual void set_pos(Vector2f const& p) = 0;
+
+  virtual float get_pos_x() const = 0;
+  virtual void set_pos_x(float x) = 0;
+  virtual float get_pos_y() const = 0;
+  virtual void set_pos_y(float y) = 0;
 
   virtual float z_index() const = 0;
   virtual void set_z_index(float z_index) = 0;
 
-  virtual void set_pos_x(float x) = 0;
-  virtual float get_pos_x() const = 0;
-
-  virtual void set_pos_y(float y) = 0;
-  virtual float get_pos_y() const = 0;
-
-  /** Original position of the objects before being dragged around */
+  /** Position before the object is dragged around */
+  virtual Vector2f get_orig_pos() const = 0;
   virtual void set_orig_pos(Vector2f const& p) = 0;
 
-  /** Set the object's resource name */
+  /** The surface the object is drawn with */
+  virtual ResDescriptor get_res_desc() const = 0;
   virtual void set_res_desc(ResDescriptor const& d) = 0;
 
-  /** Set the object's modifier */
+  virtual ResourceModifier::Enum get_modifier() const = 0;
   virtual void set_modifier(std::string const& m) = 0;
-
-  /** Set the object's modifier */
   virtual void set_modifier(ResourceModifier::Enum modifier) = 0;
 
-  virtual ResourceModifier::Enum get_modifier() const = 0;
-
-  /** Set the object's section header name */
-  virtual void set_section_name(std::string const& sn) = 0;
-
-  /** Set the object's type */
-  virtual void set_type(std::string const& t) = 0;
-
-  virtual void set_ground_type(std::string const& t) = 0;
-
-  /** Set the object's speed */
-  virtual void set_speed(int s) = 0;
-
-  /** Set the objects release rate */
-  virtual void set_release_rate(int r) = 0;
-
-  /** Set the object's parallax */
-  virtual void set_parallax(float para) = 0;
-
-  /** Set the object's repeat */
-  virtual void set_repeat(int w) = 0;
-
-  /** Set the object's owner_id */
-  virtual void set_owner(int owner) = 0;
-
-  /** Set the object's scroll rate in the x direction */
-  virtual void set_scroll_x(float s) = 0;
-
-  /** Set the object's scroll rate in the y direction */
-  virtual void set_scroll_y(float s) = 0;
-
-  /** Set the objects stretch in the x direction value */
-  virtual void set_stretch_x(bool s) = 0;
-
-  /** Set the objects stretch in the y direction value */
-  virtual void set_stretch_y(bool s) = 0;
-
-  /** Set whether or not the object should maintain it's aspect ratio when stretched */
-  virtual void set_keep_aspect(bool a) = 0;
-
-  /** Set the objects color if applicable */
-  virtual void set_color(Color const& c) = 0;
-
-  /** Set the object's parallax scroll multiplier in the x direction */
-  virtual void set_para_x(float p) = 0;
-
-  /** Set the object's parallax scroll multiplier in the y direction */
-  virtual void set_para_y(float p) = 0;
-
-  /** Set the object's direction if applicable */
-  virtual void set_direction(std::string const& d) = 0;
-
-  virtual void set_id(std::string const& t) = 0;
-  virtual void set_target_id(std::string const& t) = 0;
-
-  virtual void set_height(int h) = 0;
-
-  /** Soft delete of the object (needed for Undo action) */
+  /** Mark the object as deleted */
   void remove() { removed = true; }
   bool is_removed() const { return removed; }
 
-  /** Write basic properties to the file for this type */
+  /** Write the object in level file format */
   virtual void write_properties(Writer &fw) = 0;
 
   /** Call when the sprite needs to be reloaded */
   virtual void refresh_sprite() = 0;
 
-  /** Draws the sprite with the modifier applied */
   virtual void draw(DrawingContext &gc) = 0;
-
-  /** Draws the sprites selection with the modifier applied */
   virtual void draw_selection(DrawingContext &gc) = 0;
 
-  /** Returns true if the mouse is hovering over this object */
+  /** True if the given position is on the object */
   virtual bool is_at (int x, int y) = 0;
 
   virtual Rect get_rect() const = 0;
-
-  virtual int get_small_stars() const = 0;
-  virtual int get_middle_stars() const = 0;
-  virtual int get_large_stars() const  = 0;
-
-  virtual void set_small_stars(int n)  = 0;
-  virtual void set_middle_stars(int n) = 0;
-  virtual void set_large_stars(int n)  = 0;
 
   virtual LevelObjPtr duplicate(Vector2i const& offset) const = 0;
 };

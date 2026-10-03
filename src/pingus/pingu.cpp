@@ -21,12 +21,10 @@
 
 #include <logmich/log.hpp>
 
-#include "engine/display/scene_context.hpp"
 #include "pingus/collision_map.hpp"
-#include "pingus/fonts.hpp"
 #include "pingus/globals.hpp"
 #include "pingus/world.hpp"
-#include "pingus/worldobj.hpp"
+#include "pingus/ecs/components.hpp"
 #include "pingus/pingu_enums.hpp"
 
 #include "pingus/actions/angel.hpp"
@@ -55,56 +53,70 @@ using namespace pingus::actions;
 
 namespace pingus {
 
-// Init a pingu at the given position while falling
-Pingu::Pingu(unsigned int arg_id, Vector2f const& arg_pos, int owner) :
-  action(),
-  countdown_action(),
-  wall_action(),
-  fall_action(),
-  previous_action(ActionName::FALLER),
-  id(arg_id),
-  action_time(-1),
-  owner_id(owner),
-  status(PS_ALIVE),
-  pos_x(arg_pos.x()),
-  pos_y(arg_pos.y()),
-  velocity(0, 0),
-  direction()
-{
-  direction.left();
+using components::PinguBehavior;
+using components::PinguState;
+using components::Transform;
 
-  // Initialisize the action, after this step the action ptr will
-  // always be valid in the pingu class
-  action = create_action(ActionName::FALLER);
+Pingu::Pingu(World& world, ecs::Entity entity) :
+  m_world(&world),
+  m_entity(entity),
+  m_state(nullptr),
+  m_behavior(nullptr),
+  m_transform(nullptr)
+{
 }
 
-Pingu::~Pingu()
+void
+Pingu::init()
 {
+  ecs::Registry& reg = m_world->get_registry();
+  m_state = &reg.get<PinguState>(m_entity);
+  m_behavior = &reg.get<PinguBehavior>(m_entity);
+  m_transform = &reg.get<Transform>(m_entity);
+
+  state().direction.left();
+  // Initialisize the action, after this step the action ptr will
+  // always be valid in the pingu class
+  behavior().action = create_action(ActionName::FALLER);
 }
 
 unsigned int
 Pingu::get_id() const
 {
-  return id;
+  return state().id;
 }
 
 bool
 Pingu::change_allowed(ActionName::Enum new_action)
 {
-  assert (action);
-  return action->change_allowed (new_action);
+  assert (behavior().action);
+  return behavior().action->change_allowed (new_action);
+}
+
+float
+Pingu::get_x() const
+{
+  return transform().pos.x();
+}
+
+float
+Pingu::get_y() const
+{
+  return transform().pos.y();
 }
 
 void
 Pingu::set_x (float x)
 {
-  pos_x = x;
+  Transform& t = transform();
+  t.pos = Vector2f(x, t.pos.y());
 }
 
 void
 Pingu::set_y (float y)
 {
-  pos_y = y;
+  Transform& t = transform();
+  t.pos = Vector2f(t.pos.x(), y);
 }
 
 void
@@ -121,14 +133,27 @@ Pingu::set_pos (Vector2f const& arg_pos)
   set_y(arg_pos.y());
 }
 
+glm::vec2
+Pingu::get_velocity() const
+{
+  return state().velocity;
+}
+
 void
 Pingu::set_velocity (glm::vec2 const& velocity_)
 {
+  glm::vec2& velocity = state().velocity;
   velocity = velocity_;
 
   // crude terminal velocity
   velocity.x = std::clamp(velocity.x, -terminal_velocity, terminal_velocity);
   velocity.y = std::clamp(velocity.y, -terminal_velocity, terminal_velocity);
+}
+
+Direction&
+Pingu::direction() const
+{
+  return state().direction;
 }
 
 // Set the action of the pingu (bridger, blocker, bomber, etc.)
@@ -138,9 +163,10 @@ Pingu::set_velocity (glm::vec2 const& velocity_)
 bool
 Pingu::request_set_action(ActionName::Enum action_name)
 {
+  PinguBehavior& b = behavior();
   bool ret_val = false;
 
-  if (status == PS_DEAD)
+  if (state().status == PS_DEAD)
   {
     log_debug("Setting action to a dead pingu");
     ret_val =  false;
@@ -150,12 +176,13 @@ Pingu::request_set_action(ActionName::Enum action_name)
     switch (PinguAction::get_activation_mode(action_name))
     {
       case INSTANT:
-        if (action_name == action->get_type())
+
+        if (action_name == b.action->get_type())
         {
           log_debug("Pingu: Already have action");
           ret_val = false;
         }
-        else if (action->change_allowed(action_name))
+        else if (b.action->change_allowed(action_name))
         {
           log_debug("setting instant action");
           set_action(action_name);
@@ -163,13 +190,14 @@ Pingu::request_set_action(ActionName::Enum action_name)
         }
         else
         {
-          log_debug("change from action {} not allowed", action->get_name());
+          log_debug("change from action {} not allowed", b.action->get_name());
           ret_val = false;
         }
         break;
 
       case WALL_TRIGGERED:
-        if (wall_action && wall_action->get_type() == action_name)
+
+        if (b.wall_action && b.wall_action->get_type() == action_name)
         {
           log_debug("Not using wall action, we have already");
           ret_val = false;
@@ -177,13 +205,14 @@ Pingu::request_set_action(ActionName::Enum action_name)
         else
         {
           log_debug("Setting wall action");
-          wall_action = create_action(action_name);
+          b.wall_action = create_action(action_name);
           ret_val = true;
         }
         break;
 
       case FALL_TRIGGERED:
-        if (fall_action && fall_action->get_type() == action_name)
+
+        if (b.fall_action && b.fall_action->get_type() == action_name)
         {
           log_debug("Not using fall action, we have already");
           ret_val = false;
@@ -191,14 +220,14 @@ Pingu::request_set_action(ActionName::Enum action_name)
         else
         {
           log_debug("Setting fall action");
-          fall_action = create_action(action_name);
+          b.fall_action = create_action(action_name);
           ret_val = true;
         }
         break;
 
       case COUNTDOWN_TRIGGERED:
         {
-          if (countdown_action && countdown_action->get_type() == action_name)
+          if (b.countdown_action && b.countdown_action->get_type() == action_name)
           {
             log_debug("Not using countdown action, we have already");
             ret_val = false;
@@ -208,8 +237,8 @@ Pingu::request_set_action(ActionName::Enum action_name)
           log_debug("Setting countdown action");
           // We set the action and start the countdown
           std::shared_ptr<PinguAction> act = create_action(action_name);
-          action_time = act->activation_time();
-          countdown_action = act;
+          b.action_time = act->activation_time();
+          b.countdown_action = act;
           ret_val = true;
         }
         break;
@@ -237,17 +266,18 @@ Pingu::set_action(std::shared_ptr<PinguAction> act)
 {
   assert(act);
 
-  previous_action = action->get_type();
-
-  action = std::move(act);
+  PinguBehavior& b = behavior();
+  b.previous_action = b.action->get_type();
+  b.action = std::move(act);
 }
 
 bool
 Pingu::request_fall_action()
 {
-  if (fall_action)
+  PinguBehavior& b = behavior();
+  if (b.fall_action)
   {
-    set_action(fall_action);
+    set_action(b.fall_action);
     return true;
   }
 
@@ -257,25 +287,38 @@ Pingu::request_fall_action()
 bool
 Pingu::request_wall_action()
 {
-  if (wall_action)
+  PinguBehavior& b = behavior();
+  if (b.wall_action)
   {
-    set_action(wall_action);
+    set_action(b.wall_action);
     return true;
   }
 
   return false;
 }
 
+PinguAction*
+Pingu::get_wall_action()
+{
+  return behavior().wall_action.get();
+}
+
+PinguAction*
+Pingu::get_fall_action()
+{
+  return behavior().fall_action.get();
+}
+
 Pingu::PinguStatus
 Pingu::get_status (void) const
 {
-  return status;
+  return state().status;
 }
 
 Pingu::PinguStatus
 Pingu::set_status (PinguStatus s)
 {
-  return (status = s);
+  return (state().status = s);
 }
 
 // Returns true if the given koordinates are above the pingu
@@ -294,9 +337,10 @@ Pingu::is_inside (float x1, float y1, float x2, float y2) const
   assert (x1 < x2);
   assert (y1 < y2);
 
-  return (pos_x > x1 && pos_x < x2
+  Vector2f const pos = get_pos();
+  return (pos.x() > x1 && pos.x() < x2
           &&
-          pos_y > y1 && pos_y < y2);
+          pos.y() > y1 && pos.y() < y2);
 }
 
 // Returns the distance between the Pingu and a given coordinate
@@ -313,7 +357,10 @@ Pingu::dist(float x, float y) const
 void
 Pingu::update()
 {
-  if (status == PS_DEAD)
+  PinguState& s = state();
+  PinguBehavior& b = behavior();
+
+  if (s.status == PS_DEAD)
     return;
 
   // FIXME: Out of screen check is ugly
@@ -322,124 +369,126 @@ Pingu::update()
   if (rel_getpixel(0, -1) == Groundtype::GP_OUTOFSCREEN)
   {
     //Sound::PingusSound::play_sound("die");
-    status = PS_DEAD;
+    s.status = PS_DEAD;
     return;
   }
 
   // if an countdown action is set, update the countdown time
-  if (action_time > -1)
-    --action_time;
+  if (b.action_time > -1)
+    --b.action_time;
 
-  if (action_time == 0 && countdown_action)
+  if (b.action_time == 0 && b.countdown_action)
   {
-    set_action(countdown_action);
+    set_action(b.countdown_action);
     // Reset the countdown action handlers
-    countdown_action = std::shared_ptr<PinguAction>();
-    action_time = -1;
+    b.countdown_action = std::shared_ptr<PinguAction>();
+    b.action_time = -1;
     return;
   }
 
+  // keep the action alive, it may replace itself during update()
+  std::shared_ptr<PinguAction> action = b.action;
   action->update();
 }
 
-// Draws the pingu on the screen with the given offset
-void
-Pingu::draw(SceneContext& gc)
+std::shared_ptr<PinguAction>
+Pingu::get_current_action() const
 {
-  char str[16];
+  return behavior().action;
+}
 
-  action->draw(gc);
-
-  if (action_time != -1)
-  {
-    // FIXME: some people preffer a 5-0 or a 9-0 countdown, not sure
-    // FIXME: about that got used to the 50-0 countdown [counting is
-    // FIXME: in ticks, should probally be in seconds]
-    snprintf(str, 16, "%d", action_time/3);
-
-    gc.color().print_center(pingus::fonts::chalk_normal, Vector2i(static_cast<int>(pos_x), static_cast<int>(pos_y) - 48), str);
-  }
+int
+Pingu::get_action_time() const
+{
+  return behavior().action_time;
 }
 
 int
 Pingu::rel_getpixel(int x, int y) const
 {
-  return WorldObj::get_world()->get_colmap()->getpixel(static_cast<int>(pos_x + static_cast<float>(x * direction)),
-                                                       static_cast<int>(pos_y - static_cast<float>(y)));
+  Vector2f const pos = get_pos();
+  return m_world->get_colmap()->getpixel(static_cast<int>(pos.x() + static_cast<float>(x * direction())),
+                                         static_cast<int>(pos.y() - static_cast<float>(y)));
 }
 
 void
 Pingu::catch_pingu (Pingu* pingu)
 {
-  action->catch_pingu(pingu);
+  behavior().action->catch_pingu(pingu);
 }
 
 bool
 Pingu::need_catch()
 {
-  if (status == PS_DEAD || status == PS_EXITED)
+  if (state().status == PS_DEAD || state().status == PS_EXITED)
     return false;
 
-  return action->need_catch();
+  return behavior().action->need_catch();
 }
 
 void
 Pingu::set_direction (Direction const& d)
 {
-  direction = d;
+  state().direction = d;
 }
 
 std::string
 Pingu::get_name()
 {
-  return action->get_name();
+  return behavior().action->get_name();
 }
 
 ActionName::Enum
 Pingu::get_action()
 {
-  return action->get_type();
+  return behavior().action->get_type();
+}
+
+ActionName::Enum
+Pingu::get_previous_action() const
+{
+  return behavior().previous_action;
 }
 
 void
 Pingu::apply_force (glm::vec2 const& arg_v)
 {
-  velocity += arg_v;
+  state().velocity += arg_v;
   // Moving the pingu on pixel up, so that the force can take effect
   // FIXME: this should be handled by a state-machine
-  pos_y -= 1;
+  set_y(get_y() - 1);
 }
 
 Vector2f
 Pingu::get_pos() const
 {
-  return Vector2f(pos_x, pos_y);
+  return transform().pos;
 }
 
 Vector2f
 Pingu::get_center_pos() const
 {
-  return action->get_center_pos();
+  return behavior().action->get_center_pos();
 }
 
 int
 Pingu::get_owner() const
 {
-  return owner_id;
+  return state().owner_id;
 }
 
 std::string
 Pingu::get_owner_str() const
 {
   std::ostringstream ostr;
-  ostr << owner_id;
+  ostr << state().owner_id;
   return ostr.str();
 }
 
 bool
 Pingu::catchable()
 {
-  return action->catchable();
+  return behavior().action->catchable();
 }
 
 std::shared_ptr<PinguAction>

@@ -1088,8 +1088,7 @@
       (direction "left")
       (release-rate 30)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 4621 456 0)
       (surface 
         (image "exits/ice2")

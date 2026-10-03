@@ -40,6 +40,13 @@ private:
   Vector2f m_orig_pos;
 
   // properties
+  /** Prefab overrides set for this group */
+  enum Override : unsigned {
+    OVERRIDE_REPEAT       = 1 << 0,
+    OVERRIDE_OWNER        = 1 << 1,
+    OVERRIDE_RELEASE_RATE = 1 << 2,
+    OVERRIDE_DIRECTION    = 1 << 3
+  };
   unsigned int m_overrides;
   int m_repeat;
   int m_owner_id;
@@ -62,176 +69,46 @@ public:
   void set_overrides(ReaderMapping const& reader);
 
 public:
-  /** Retrieve the object's position */
-  Vector2f get_pos() const override { return m_pos; }
-  Vector2f get_orig_pos() const override { return m_orig_pos; }
+  /** Type describing the prefab overrides a group can have */
+  static ObjectTypeDef const& overrides_type();
 
-  /** Retrieve this object's attribute number */
-  unsigned int get_attribs() const override { return m_overrides; }
+  ObjectTypeDef const& get_type_def() const override { return overrides_type(); }
 
-  /** Retrieve the object's resource name */
-  ResDescriptor get_res_desc() const override { return ResDescriptor(); }
+  /** True for the prefab overrides the group has */
+  bool has_property(std::string_view name) const override;
 
-  /** Retrieve the name of the section header for this object */
+  PropertyValue get_property(std::string_view name) const override;
+
+  /** Set an override, passed on to all objects of the group */
+  void set_property(std::string_view name, PropertyValue const& value) override;
+
   std::string get_section_name() const override;
 
-  /** Retrieve the object's type */
-  std::string get_type() const override { return "group"; }
-
-  std::string get_ground_type() const override { return ""; }
-
-  /** Retrieve the object's speed */
-  int get_speed() const override { return 0; }
-
-  /** Retrieve the object's release rate (entrances) */
-  int get_release_rate() const override { return m_release_rate; }
-
-  /** Retrive the object's parallax (is this even used???) */
-  float get_parallax() const override { return 0; }
-
-  /** Retrieve the object's owner */
-  int get_owner() const override { return m_owner_id; }
-
-  /** Retrieve the object's repeat */
-  int get_repeat() const override { return m_repeat; }
-
-  /** Retrieve the object's color */
-  Color get_color() const override { return Color(); }
-
-  /** Returns true if the object is stretched in the x direction */
-  bool get_stretch_x() const override { return false; }
-
-  /** Returns true if the object is stretched in the y direction */
-  bool get_stretch_y() const override { return false; }
-
-  /** Returns true if the object is to maintain it's aspect ratio if stretched */
-  bool get_keep_aspect() const override { return false; }
-
-  /** Retrive the objects scroll value in the x direction */
-  float get_scroll_x() const override { return false; }
-
-  /** Retrive the objects scroll value in the y direction */
-  float get_scroll_y() const override { return 0; }
-
-  /** Returns the parallax speed multiplier in the x direction */
-  float get_para_x() const override { return 0; }
-
-  /** Returns the parallax speed multiplier in the y direction */
-  float get_para_y() const override { return 0; }
-
-  /** Retrieve the object's direction */
-  std::string get_direction() override { return m_direction; }
-
-  std::string get_id() const override { return {}; }
-  std::string get_target_id() const override { return {}; }
-
-  int get_height() const override { return 0; }
-
-  /////////////////////////////////////////////////////////
-  /// Operations
-public:
-  /** Set the object's position */
+  Vector2f get_pos() const override { return m_pos; }
   void set_pos(Vector2f const& p) override;
 
-  void set_pos_x(float /* x */) override { }
   float get_pos_x() const override { return 0.0f; }
-
-  void set_pos_y(float /* y */) override { }
+  void set_pos_x(float /* x */) override { }
   float get_pos_y() const override { return 0.0f; }
+  void set_pos_y(float /* y */) override { }
 
-  void set_z_index(float /* z */) override { }
   float z_index() const override { return 0.0f; }
+  void set_z_index(float /* z */) override { }
 
-  /** Original position of the objects before being dragged around */
+  Vector2f get_orig_pos() const override { return m_orig_pos; }
   void set_orig_pos(Vector2f const& p) override { m_orig_pos = p; }
 
-  /** Set the object's resource name */
+  ResDescriptor get_res_desc() const override { return ResDescriptor(); }
   void set_res_desc(ResDescriptor const& /* d */) override { }
 
-  /** Set the object's modifier */
+  ResourceModifier::Enum get_modifier() const override { return ResourceModifier::Enum::ROT0; }
   void set_modifier(std::string const& /* m */) override { }
-
-  /** Set the object's modifier */
   void set_modifier(ResourceModifier::Enum /* modifier */) override { }
 
-  ResourceModifier::Enum get_modifier() const override { return ResourceModifier::Enum::ROT0; }
-
-  /** Set the object's section header name */
-  void set_section_name(std::string const& /* sn */) override { }
-
-  /** Set the object's type */
-  void set_type(std::string const& /* t */) override { }
-
-  void set_ground_type(std::string const& /* t */) override { }
-
-  /** Set the object's speed */
-  void set_speed(int /* s */) override { }
-
-  /** Set the objects release rate */
-  void set_release_rate(int r) override;
-
-  /** Set the object's parallax */
-  void set_parallax(float /* para */) override { }
-
-  /** Set the object's repeat */
-  void set_repeat(int w) override;
-
-  /** Set the object's owner_id */
-  void set_owner(int owner) override;
-
-  /** Set the object's scroll rate in the x direction */
-  void set_scroll_x(float /* s */) override { }
-
-  /** Set the object's scroll rate in the y direction */
-  void set_scroll_y(float /* s */) override { }
-
-  /** Set the objects stretch in the x direction value */
-  void set_stretch_x(const bool /* s */) override { }
-
-  /** Set the objects stretch in the y direction value */
-  void set_stretch_y(bool /* s */) override { }
-
-  /** Set whether or not the object should maintain it's aspect ratio when stretched */
-  void set_keep_aspect(const bool /* a */) override { }
-
-  /** Set the objects color if applicable */
-  void set_color(Color const& /* c */) override { }
-
-  /** Set the object's parallax scroll multiplier in the x direction */
-  void set_para_x(float /* p */) override { }
-
-  /** Set the object's parallax scroll multiplier in the y direction */
-  void set_para_y(float /* p */) override { }
-
-  /** Set the object's direction if applicable */
-  void set_direction(std::string const& d) override;
-
-  void set_id(std::string const& /* t */) override { }
-  void set_target_id(std::string const& /* t */) override { }
-
-  void set_height(int /* h */) override { }
-
-  /** Write basic properties to the file for this type */
   void write_properties(Writer &fw) override;
-
-  /** Call when the sprite needs to be reloaded */
   void refresh_sprite() override { }
-
-  /** Returns true if the mouse is hovering over this object */
   bool is_at (int x, int y) override;
-
-  /** Returns a number representing which attributes this object possesses */
-  unsigned int get_attributes(std::string const& /* obj_type */) { return 0; }
-
   Rect get_rect() const override;
-
-  int get_small_stars() const override { return 0; }
-  int get_middle_stars() const override { return 0; }
-  int get_large_stars() const override  { return 0; }
-
-  void set_small_stars(int /* n */) override  {}
-  void set_middle_stars(int /* n */) override {}
-  void set_large_stars(int /* n */) override  {}
 
   LevelObjPtr duplicate(Vector2i const& offset) const override;
 

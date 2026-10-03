@@ -41,8 +41,7 @@
       (position 690 186 -110)
       (repeat 2)
       (speed 50))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1614 239 -5)
       (surface 
         (image "exits/ice")

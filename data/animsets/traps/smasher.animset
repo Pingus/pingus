@@ -1,0 +1,7 @@
+(pingus-animset
+  (animations
+    (smash (sprite "traps/smasher")
+           (effects
+             (sound (at-step 5) (name "tenton"))
+             (particles (at-step 5) (kind "smoke") (count 20)
+                        (offset 20 180) (spread 260 0))))))

@@ -21,7 +21,6 @@
 
 #include "engine/display/surface.hpp"
 #include "pingus/globals.hpp"
-#include "pingus/worldobj.hpp"
 
 namespace pingus {
 
@@ -34,7 +33,7 @@ class MapTile;
     most levels. It allows to construct a map, from a set of simple
     small images, this allows the generation of large map without
     using to much diskspace. */
-class GroundMap : public WorldObj
+class GroundMap
 {
 private:
   std::unique_ptr<CollisionMap> colmap;
@@ -52,9 +51,9 @@ private:
 
 public:
   GroundMap(int width, int height);
-  ~GroundMap() override;
+  ~GroundMap();
 
-  void draw(SceneContext& gc) override;
+  void draw(SceneContext& gc);
 
   CollisionMap* get_colmap();
 
@@ -69,10 +68,6 @@ public:
       is removed from the map) */
   void remove(Surface const&, int x, int y);
 
-  float z_index() const override { return 0; }
-  void set_z_index(float /* z_index */) override {}
-  void set_pos(Vector2f const& /* p */) override {}
-  Vector2f get_pos() const override { return Vector2f(); }
 
   /** Low level version of the remove() call, acts on a single tile
       instead of the complete map-tiles */

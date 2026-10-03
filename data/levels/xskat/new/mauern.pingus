@@ -186,8 +186,7 @@
       (position 1199 389 0)
       (repeat 5)
       (speed 2))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 1107.63 423.106 0)
       (surface 
         (image "exits/ordina")

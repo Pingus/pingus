@@ -24,27 +24,17 @@ namespace pingus::actions {
 
 Exiter::Exiter (Pingu* p) :
   PinguAction(p),
-  sprite(),
-  sound_played(false)
+  // Game timing: exiting takes 9 steps of 60 ms
+  clock(60, 9, false)
 {
-  sprite.load(Direction::LEFT,  Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/exit/left"));
-  sprite.load(Direction::RIGHT, Sprite("pingus/player" +
-                                       pingu->get_owner_str() + "/exit/right"));
 }
 
 void
 Exiter::update()
 {
-  sprite[pingu->direction].update();
+  clock.update();
 
-  if (!sound_played)
-  {
-    sound_played = true;
-    pingus::sound::PingusSound::play_sound("yipee");
-  }
-
-  if (sprite[pingu->direction].is_finished())
+  if (clock.is_finished())
   {
     if (pingu->get_status() != Pingu::PS_EXITED)
     {
@@ -54,9 +44,9 @@ Exiter::update()
 }
 
 void
-Exiter::draw (SceneContext& gc)
+Exiter::get_look(PinguLook& look) const
 {
-  gc.color().draw(sprite[pingu->direction], pingu->get_pos());
+  look.add("exit", clock);
 }
 
 } // namespace pingus::actions

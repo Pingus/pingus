@@ -17,7 +17,12 @@
 #ifndef HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 #define HEADER_PINGUS_PINGUS_PINGU_ACTION_HPP
 
+#include <string_view>
+#include <vector>
+
 #include "math/vector2f.hpp"
+#include "pingus/animation_clock.hpp"
+#include "pingus/animation_set.hpp"
 #include "pingus/action_name.hpp"
 #include "fwd.hpp"
 
@@ -31,10 +36,43 @@ enum ActionType
   COUNTDOWN_TRIGGERED
 };
 
+/** What a pingu doing an action looks like at the moment: animations of
+    the owner's animation set (data/animsets/pingus/playerN.animset),
+    drawn in order at the pingu's position */
+struct PinguLook
+{
+  struct Layer
+  {
+    std::string_view animation;
+
+    /** Frame to show. With frame_count set, the frame is a step of game
+        timing that is mapped proportionally onto the animation's frames,
+        so the art can have a different number of frames. */
+    int frame = 0;
+    int frame_count = 0;
+
+    /** Added to the pingu's position and the animation's own offset */
+    Vector2f offset = {};
+  };
+
+  std::vector<Layer> layers = {};
+
+  void add(std::string_view animation, int frame, Vector2f offset = {})
+  {
+    layers.push_back(Layer{animation, frame, 0, offset});
+  }
+
+  /** Show the animation in sync with a game timing clock */
+  void add(std::string_view animation, AnimationClock const& clock, Vector2f offset = {})
+  {
+    layers.push_back(Layer{animation, clock.frame(), clock.frame_count(), offset});
+  }
+};
+
 /** This class provides an abstract interface for pingu actions. It is
-    used to inherit classes which represent the actions. The actions
-    are stored in a seperate library, have a look in actions/ for some
-    examples. */
+    used to inherit classes which represent the actions, see actions/.
+    An action holds game state only and describes its look through
+    get_look(), it never touches sprites. */
 class PinguAction
 {
 protected:
@@ -63,8 +101,12 @@ public:
   /// The "AI" of the pingu.
   virtual void update() = 0;
 
-  /** Draws the action */
-  virtual void draw (SceneContext& gc) =0;
+  /** Describe what the pingu looks like right now */
+  virtual void get_look(PinguLook& look) const = 0;
+
+  /** The named animation of the pingu's animation set, for purely visual
+      animation timing that follows the art */
+  AnimationDef const& look_animation(std::string_view name) const;
 
   virtual Vector2f get_center_pos() const;
 

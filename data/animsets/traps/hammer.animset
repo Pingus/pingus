@@ -1,0 +1,3 @@
+(pingus-animset
+  (animations
+    (swing (sprite "traps/hammer"))))

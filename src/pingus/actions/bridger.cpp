@@ -23,62 +23,22 @@
 #include "pingus/gettext.h"
 #include "pingus/pingu.hpp"
 #include "pingus/world.hpp"
-#include "pingus/worldobj.hpp"
 
 namespace pingus::actions {
 
 Bridger::Bridger (Pingu* p) :
   PinguAction(p),
   mode(B_BUILDING),
-  walk_sprite(),
-  build_sprite(),
+  // Game timing, independent of the art: a step up takes 4 steps of 66 ms,
+  // laying a brick 15 steps with the brick placed at step 7
+  walk_clock(66, 4, false),
+  build_clock(66, 15, false),
   brick_l("other/brick_left"),
   brick_r("other/brick_right"),
   bricks(MAX_BRICKS),
   block_build(false),
   name(_("Bridger") + (" (" + strut::to_string(bricks) + ")"))
 {
-  walk_sprite.load (Direction::LEFT,  Sprite("pingus/player" +
-                                             pingu->get_owner_str() + "/bridger_walk/left"));
-  walk_sprite.load (Direction::RIGHT, Sprite("pingus/player" +
-                                             pingu->get_owner_str() + "/bridger_walk/right"));
-
-  build_sprite.load(Direction::LEFT,  Sprite("pingus/player" +
-                                             pingu->get_owner_str() + "/bridger/left"));
-  build_sprite.load(Direction::RIGHT, Sprite("pingus/player" +
-                                             pingu->get_owner_str() + "/bridger/right"));
-}
-
-void
-Bridger::draw(SceneContext& gc)
-{
-  int x_offset = 6;
-  int y_offset = 4;
-
-  if (bricks == MAX_BRICKS) {
-    x_offset = -4;
-    y_offset = 0;
-
-  } else if (bricks == MAX_BRICKS - 1) {
-    x_offset = 0;
-    y_offset = 1;
-  } else if (bricks == MAX_BRICKS - 2) {
-    x_offset = 3;
-    y_offset = 2;
-  }
-
-  switch (mode)
-  {
-    case B_BUILDING:
-      gc.color().draw(build_sprite[pingu->direction], Vector2f(pingu->get_pos().x() - static_cast<float>(x_offset * pingu->direction),
-                                                               pingu->get_pos().y() + static_cast<float>(y_offset)));
-      break;
-
-    case B_WALKING:
-      gc.color().draw(walk_sprite[pingu->direction], Vector2f(pingu->get_pos().x() - static_cast<float>(x_offset * pingu->direction),
-                                                              pingu->get_pos().y() + static_cast<float>(y_offset)));
-      break;
-  }
 }
 
 void
@@ -99,35 +59,34 @@ Bridger::update()
 void
 Bridger::update_walk()
 {
-  if (walk_sprite[pingu->direction].is_finished()) // FIXME: Dangerous! might not be fixed timing
+  if (walk_clock.is_finished())
   {
     if (way_is_free())
     {
       mode = B_BUILDING;
       block_build = false;
-      walk_sprite[pingu->direction].restart();
+      walk_clock.restart();
       walk_one_step_up();
     }
     else // We reached a wall...
     {
-      pingu->direction.change();
+      pingu->direction().change();
       pingu->set_action (ActionName::WALKER);
       return;
     }
   }
   else
   {
-    walk_sprite.update();
+    walk_clock.update();
   }
 }
 
 void
 Bridger::update_build()
 {
-  build_sprite[pingu->direction].update();
+  build_clock.update();
 
-  // FIXME: Game logic must not depend on Sprite states
-  if (build_sprite[pingu->direction].get_current_frame() >= 7 && !block_build)
+  if (build_clock.frame() >= 7 && !block_build)
   {
     block_build = true;
 
@@ -137,7 +96,7 @@ Bridger::update_build()
         place_a_brick();
       else
       {
-        pingu->direction.change();
+        pingu->direction().change();
         pingu->set_action (ActionName::WALKER);
         return;
       }
@@ -149,10 +108,10 @@ Bridger::update_build()
     }
   }
 
-  if (build_sprite[pingu->direction].is_finished())
+  if (build_clock.is_finished())
   {
     mode = B_WALKING;
-    build_sprite[pingu->direction].restart();
+    build_clock.restart();
   }
 }
 
@@ -199,16 +158,16 @@ Bridger::place_a_brick()
   if (bricks < 4)
     pingus::sound::PingusSound::play_sound("ting");
 
-  if (pingu->direction.is_right())
+  if (pingu->direction().is_right())
   {
-    WorldObj::get_world()->put(brick_r,
+    pingu->get_world()->put(brick_r,
                                static_cast<int>(pingu->get_pos().x() + 10.0f - static_cast<float>(brick_r.get_width())),
                                static_cast<int>(pingu->get_pos().y()),
                                Groundtype::GP_BRIDGE);
   }
   else
   {
-    WorldObj::get_world()->put(brick_l,
+    pingu->get_world()->put(brick_l,
                                static_cast<int>(pingu->get_pos().x() - 10.0f),
                                static_cast<int>(pingu->get_pos().y()),
                                Groundtype::GP_BRIDGE);
@@ -218,7 +177,7 @@ Bridger::place_a_brick()
 void
 Bridger::walk_one_step_up()
 {
-  pingu->set_pos(pingu->get_pos().x() + (4.0f * static_cast<float>(pingu->direction)),
+  pingu->set_pos(pingu->get_pos().x() + (4.0f * static_cast<float>(pingu->direction())),
                  pingu->get_pos().y() - 2);
 }
 
@@ -226,6 +185,37 @@ std::string
 Bridger::get_name() const
 {
   return name;
+}
+
+void
+Bridger::get_look(PinguLook& look) const
+{
+  int x_offset = 6;
+  int y_offset = 4;
+
+  if (bricks == MAX_BRICKS) {
+    x_offset = -4;
+    y_offset = 0;
+  } else if (bricks == MAX_BRICKS - 1) {
+    x_offset = 0;
+    y_offset = 1;
+  } else if (bricks == MAX_BRICKS - 2) {
+    x_offset = 3;
+    y_offset = 2;
+  }
+
+  Vector2f const offset(-static_cast<float>(x_offset * pingu->direction()), static_cast<float>(y_offset));
+
+  switch (mode)
+  {
+    case B_BUILDING:
+      look.add("bridger", build_clock, offset);
+      break;
+
+    case B_WALKING:
+      look.add("bridger-walk", walk_clock, offset);
+      break;
+  }
 }
 
 } // namespace pingus::actions

@@ -17,23 +17,23 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_DROWN_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_DROWN_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Drown : public PinguAction
 {
 private:
-  StateSprite sprite;
+  AnimationClock clock;
 
 public:
   Drown (Pingu* p);
 
   ActionName::Enum get_type() const override { return ActionName::DROWN; }
 
-  void draw (SceneContext& gc) override;
   void update() override;
+  void get_look(PinguLook& look) const override;
 
   bool catchable() override { return false; }
 

@@ -26,15 +26,14 @@ Floater::Floater(Pingu* p) :
   PinguAction(p),
   falling_depth(0),
   step(0),
-  sprite()
+  clock(look_animation("floater").make_clock())
 {
-  sprite = Sprite("pingus/player" + pingu->get_owner_str() + "/floater/left");
 }
 
 void
 Floater::update()
 {
-  sprite.update();
+  clock.update();
 
   pingu->set_velocity(glm::vec2(0.0f, 1.0f));
 
@@ -53,16 +52,16 @@ Floater::update()
   }
 }
 
-void
-Floater::draw (SceneContext& gc)
-{
-  gc.color().draw(sprite, pingu->get_pos());
-}
-
 bool
 Floater::change_allowed(ActionName::Enum action)
 {
   return action == ActionName::BOMBER;
+}
+
+void
+Floater::get_look(PinguLook& look) const
+{
+  look.add("floater", clock.frame());
 }
 
 } // namespace pingus::actions

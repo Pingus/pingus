@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Matrix of the death")
-    (description "Take a piece of paper. Now pingus have to enter the matrix of the death. "
-                 "This is a maze, bad ways are protect by jaws.")
+    (description "Take a piece of paper. Now pingus have to enter the matrix of the death. This is a maze, bad ways are protect by jaws.")
     (author )
     (number-of-pingus 100)
     (number-to-save 50)
@@ -1807,8 +1806,7 @@
       (direction "left")
       (release-rate 25)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 769 574 0)
       (surface 
         (image "groundpieces/ground/sortie/plate_forme_left")

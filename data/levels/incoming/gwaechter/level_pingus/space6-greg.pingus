@@ -3,7 +3,7 @@
   (head 
     (license "GPLv3+")
     (levelname "Rescue a Friend !")
-    (description "A Pingus starts this level close to the exit! However, his colleague is stuck more bottom in the level, and he can not do anything without your help (and that of the other Pingus). Dominate this giant "playground" to dragging the 2 Pingus out to the exit!")
+    (description "A Pingus starts this level close to the exit! However, his colleague is stuck more bottom in the level, and he can not do anything without your help (and that of the other Pingus). Dominate this giant 'playground' to dragging the 2 Pingus out to the exit!")
     (author "Greg")
     (number-of-pingus 2)
     (number-to-save 2)

@@ -21,14 +21,22 @@
 
 #include "engine/display/sprite.hpp"
 #include "math/vector2f.hpp"
-#include "pingus/worldobj.hpp"
 
 class SceneContext;
 
+namespace pingus {
+class Random;
+class SceneContext;
+class World;
+} // namespace pingus
+
 namespace pingus::particles {
 
-class SmokeParticleHolder : public WorldObj
+class SmokeParticleHolder
 {
+private:
+  World* world;
+
   struct SmokeParticle {
     int    time;
     int    livetime;
@@ -36,7 +44,7 @@ class SmokeParticleHolder : public WorldObj
     Vector2f pos;
     glm::vec2 velocity;
 
-    SmokeParticle(float x, float y, float vel_x, float vel_y);
+    SmokeParticle(float x, float y, float vel_x, float vel_y, Random& rng);
   };
 
 private:
@@ -46,20 +54,16 @@ private:
   std::vector<SmokeParticle> particles;
 
 public:
-  SmokeParticleHolder();
+  explicit SmokeParticleHolder(World& world);
 
   void add_particle (float x, float y, float vel_x, float vel_y);
 
-  void set_z_index(float /* z_index */) override {}
-  float z_index() const override { return 1000.0f; }
-  void set_pos(Vector2f const& /* p */) override {}
-  Vector2f get_pos() const override { return Vector2f(); }
 
   /// Let the particle move
-  void update() override;
+  void update();
 
   /// Draw the particle with the correct zoom resize
-  void draw (SceneContext& gc) override;
+  void draw (SceneContext& gc);
 
 private:
   SmokeParticleHolder (SmokeParticleHolder const&);

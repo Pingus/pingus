@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Dig this")
-    (description "Get the Pingus down to the exit - but be careful, completing with enough "
-                 "Pingus may prove a bit difficult. ")
+    (description "Get the Pingus down to the exit - but be careful, completing with enough Pingus may prove a bit difficult. ")
     (author "Rune Zedeler <rz@daimi.au.dk> & Erik Soe Sorensen <eriksoe@daimi.au.dk>")
     (number-of-pingus 40)
     (number-to-save 30)
@@ -128,8 +127,7 @@
         (image "groundpieces/ground/misc/grey_stone6")
         (modifier "ROT0"))
       (position 444 363 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 778 851 0)
       (surface 
         (image "exits/stone")

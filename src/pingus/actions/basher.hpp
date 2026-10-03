@@ -17,16 +17,16 @@
 #ifndef HEADER_PINGUS_PINGUS_ACTIONS_BASHER_HPP
 #define HEADER_PINGUS_PINGUS_ACTIONS_BASHER_HPP
 
+#include "pingus/animation_clock.hpp"
 #include "pingus/collision_mask.hpp"
 #include "pingus/pingu_action.hpp"
-#include "pingus/state_sprite.hpp"
 
 namespace pingus::actions {
 
 class Basher : public PinguAction
 {
 private:
-  StateSprite   sprite;
+  AnimationClock clock;
   CollisionMask bash_radius;
   int  basher_c;
   bool first_bash;
@@ -52,8 +52,8 @@ public:
 
   ActionName::Enum get_type() const override { return ActionName::BASHER; }
 
-  void draw (SceneContext& gc) override;
   void update() override;
+  void get_look(PinguLook& look) const override;
 
   bool have_something_to_dig();
   bool walk_forward();

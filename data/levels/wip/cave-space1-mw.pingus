@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Down to the Secret")
-    (description "The Pingus now are really approaching the secrets of the cave. Will they "
-                 "make their way to the last door, the way home?")
+    (description "The Pingus now are really approaching the secrets of the cave. Will they make their way to the last door, the way home?")
     (author "Michael Wand <mwand@gmx.de>")
     (number-of-pingus 50)
     (number-to-save 30)
@@ -219,8 +218,7 @@
       (direction "left")
       (release-rate 25)
       (owner-id 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 999 1066 0)
       (surface 
         (image "exits/sortie_anim")

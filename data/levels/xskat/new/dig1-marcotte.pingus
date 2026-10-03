@@ -3,8 +3,7 @@
   (version 2)
   (head 
     (levelname "Digging from outside")
-    (description "At last the you have found the exit, but getting out of the caves might require "
-                 "the help from somebody in the jungle.")
+    (description "At last the you have found the exit, but getting out of the caves might require the help from somebody in the jungle.")
     (author "Etienne Marcotte <marcotte_moi@yahoo.com>")
     (number-of-pingus 75)
     (number-to-save 25)
@@ -1048,8 +1047,7 @@
         (image "groundpieces/transparent/misc/flower")
         (modifier "ROT0"))
       (position 2037 696 0))
-    (exit 
-      (owner-id 0)
+    (exit
       (position 2049 783 0)
       (surface 
         (image "exits/mud")
