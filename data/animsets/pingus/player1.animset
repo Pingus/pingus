@@ -5,13 +5,20 @@
     (basher (left "pingus/player1/basher/left") (right "pingus/player1/basher/right"))
     (blocker (left "pingus/player1/blocker/left") (right "pingus/player1/blocker/right"))
     (boarder (left "pingus/player1/boarder/left") (right "pingus/player1/boarder/right"))
-    (bomber (left "pingus/player1/bomber/left") (right "pingus/player1/bomber/right"))
+    (bomber (left "pingus/player1/bomber/left") (right "pingus/player1/bomber/right")
+            (effects
+              (sound (at-step 0) (name "ohno") (volume 0.5))
+              (sound (at-step 10) (name "plop") (volume 0.5))
+              (particles (at-step 13) (kind "pingu") (offset 0 -5))
+              (overlay (at-step 13) (animation "explosion") (offset -32 -48))))
     (bridger (left "pingus/player1/bridger/left") (right "pingus/player1/bridger/right"))
     (bridger-walk (left "pingus/player1/bridger_walk/left") (right "pingus/player1/bridger_walk/right"))
     (climber (left "pingus/player1/climber/left") (right "pingus/player1/climber/right"))
     (digger (sprite "pingus/player1/digger/left"))
     (drown (left "pingus/player1/drownfall/left") (right "pingus/player1/drownfall/right"))
-    (exit (left "pingus/player1/exit/left") (right "pingus/player1/exit/right"))
+    (exit (left "pingus/player1/exit/left") (right "pingus/player1/exit/right")
+          (effects
+            (sound (at-step 0) (name "yipee"))))
     (faller (left "pingus/player1/faller/left") (right "pingus/player1/faller/right"))
     (tumbler (left "pingus/player1/tumbler/left") (right "pingus/player1/tumbler/right"))
     (floater (sprite "pingus/player1/floater/left"))
@@ -22,7 +29,9 @@
     ;; FIXME: this is the whole bomber sprite sheet as one image, the
     ;; smashed action is currently unused
     (smashed (sprite "pingus/player1/bomber"))
-    (splashed (sprite "pingus/player1/splat"))
+    (splashed (sprite "pingus/player1/splat")
+              (effects
+                (sound (at-step 0) (name "splash") (volume 0.5))))
     (superman (sprite "pingus/player1/superman"))
     (waiter (sprite "pingus/player1/waiter/left"))
     (walker (left "pingus/player1/walker/left") (right "pingus/player1/walker/right"))

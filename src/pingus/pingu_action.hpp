@@ -53,22 +53,19 @@ struct PinguLook
 
     /** Added to the pingu's position and the animation's own offset */
     Vector2f offset = {};
-
-    /** Only shown the first time it is requested for the current action */
-    bool once = false;
   };
 
   std::vector<Layer> layers = {};
 
-  void add(std::string_view animation, int frame, Vector2f offset = {}, bool once = false)
+  void add(std::string_view animation, int frame, Vector2f offset = {})
   {
-    layers.push_back(Layer{animation, frame, 0, offset, once});
+    layers.push_back(Layer{animation, frame, 0, offset});
   }
 
   /** Show the animation in sync with a game timing clock */
-  void add(std::string_view animation, AnimationClock const& clock, Vector2f offset = {}, bool once = false)
+  void add(std::string_view animation, AnimationClock const& clock, Vector2f offset = {})
   {
-    layers.push_back(Layer{animation, clock.frame(), clock.frame_count(), offset, once});
+    layers.push_back(Layer{animation, clock.frame(), clock.frame_count(), offset});
   }
 };
 

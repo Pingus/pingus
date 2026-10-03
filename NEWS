@@ -11,6 +11,8 @@ Pingus 0.8.0 (unreleased)
 * editor: levels using the old '(color ...)' property no longer lose
   their color on save, snow intensity is kept, missing properties get
   the game's defaults, duplicated objects keep their z-index
+* the look of traps and pingus, including sounds and particle effects,
+  is defined in data/animsets/ and can be changed without code changes
 * fixed 44 levels that failed to load because of syntax errors
 * new tool extra/pingus-headless runs demos and levels without a
   display and can render them offscreen to PNG, used for regression

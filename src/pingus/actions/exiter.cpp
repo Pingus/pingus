@@ -25,8 +25,7 @@ namespace pingus::actions {
 Exiter::Exiter (Pingu* p) :
   PinguAction(p),
   // Game timing: exiting takes 9 steps of 60 ms
-  clock(60, 9, false),
-  sound_played(false)
+  clock(60, 9, false)
 {
 }
 
@@ -34,12 +33,6 @@ void
 Exiter::update()
 {
   clock.update();
-
-  if (!sound_played)
-  {
-    sound_played = true;
-    pingus::sound::PingusSound::play_sound("yipee");
-  }
 
   if (clock.is_finished())
   {

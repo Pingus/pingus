@@ -49,6 +49,15 @@ struct SpriteRender
     animations that game logic never looks at */
 struct LoopingSprite {};
 
+/** Which effects of an animation were fired, see update_effects() */
+struct EffectState
+{
+  std::string animation = {};
+
+  /** Last step the effects were checked at, -1 before the start */
+  int last_step = -1;
+};
+
 /** Shows one animation of an AnimationSet at the entity's position. Game
     logic only picks the animation, direction and frame; the render
     system loads and draws the sprites. */
@@ -67,6 +76,11 @@ struct AnimatedSprite
 
   /** Sprites loaded by the render system, by animation and direction */
   std::map<std::string, Sprite> sprites = {};
+
+  EffectState effect_state = {};
+
+  /** Overlays fired by effects, drawn once by the next draw */
+  std::vector<OverlayEffect> overlays = {};
 };
 
 /** Drawn into the ground and collision map at startup, the entity is
@@ -329,17 +343,21 @@ struct PinguBehavior
     exited */
 struct ActivePingu {};
 
-/** Drawing state of a pingu, used by draw_pingus(): the owner's
-    animation set, the loaded sprites and which "once" layers of the
-    current action's look were already shown */
+/** Presentation state of a pingu: the owner's animation set, the loaded
+    sprites and the state of the effects of the current action's look */
 struct PinguView
 {
   std::shared_ptr<AnimationSet const> set = {};
   std::map<std::string, Sprite> sprites = {};
 
-  /** The action shown_once belongs to */
+  /** The action effect_states belong to */
   std::shared_ptr<PinguAction> action = {};
-  std::vector<std::string> shown_once = {};
+
+  /** One per layer of the look */
+  std::vector<EffectState> effect_states = {};
+
+  /** Overlays fired by effects, drawn once by the next draw */
+  std::vector<OverlayEffect> overlays = {};
 
   /** Reused for PinguAction::get_look() */
   PinguLook look = {};

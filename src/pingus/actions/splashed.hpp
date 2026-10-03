@@ -25,8 +25,6 @@ namespace pingus::actions {
 class Splashed : public PinguAction
 {
 private:
-  bool particle_thrown;
-  bool sound_played;
   AnimationClock clock;
 
 public:

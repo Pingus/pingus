@@ -26,7 +26,6 @@ class Exiter : public PinguAction
 {
 private:
   AnimationClock clock;
-  bool sound_played;
 
 public:
   Exiter(Pingu*);

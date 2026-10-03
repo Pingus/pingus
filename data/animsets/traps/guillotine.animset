@@ -4,4 +4,7 @@
           (loop #t))
     (kill (left "traps/guillotinekill/left")
           (right "traps/guillotinekill/right")
-          (loop #f))))
+          (loop #f)
+          (effects
+            ;; FIXME: should be a different sound
+            (sound (at-step 7) (name "splash") (volume 0.5))))))

@@ -24,8 +24,6 @@ namespace pingus::actions {
 
 Splashed::Splashed (Pingu* p) :
   PinguAction(p),
-  particle_thrown(false),
-  sound_played(false),
   // Game timing: splashing takes 16 steps of 33 ms
   clock(33, 16, false)
 {
@@ -35,12 +33,6 @@ void
 Splashed::update()
 {
   clock.update();
-
-  if (!particle_thrown)
-  {
-    particle_thrown = true;
-    pingu->get_world()->play_sound("splash", pingu->get_pos());
-  }
 
   if (clock.is_finished())
   {

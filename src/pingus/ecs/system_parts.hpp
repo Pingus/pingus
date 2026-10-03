@@ -29,6 +29,15 @@ void for_each_pingu(World& world, Func&& func)
   world.get_pingus()->for_each(std::forward<Func>(func));
 }
 
+// systems.cpp
+/** Draw a frame of an animation of the set at pos plus the animation's
+    and the given offset, loading its sprite into 'sprites' if needed.
+    With frame_count set, frame is a game timing step mapped onto the
+    animation's frames. */
+void draw_animation(SceneContext& gc, AnimationSet const& set, std::map<std::string, Sprite>& sprites,
+                    std::string_view animation, Direction const& direction,
+                    int frame, int frame_count, Vector2f const& pos, Vector2f const& offset);
+
 // traps.cpp
 void update_traps(World& world);
 void startup_trap(World& world, ecs::Entity entity);

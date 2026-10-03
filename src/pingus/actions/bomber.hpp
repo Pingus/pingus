@@ -28,8 +28,6 @@ namespace pingus::actions {
 class Bomber : public PinguAction
 {
 private:
-  bool particle_thrown;
-  bool sound_played;
   bool colmap_exploded;
 
   CollisionMask bomber_radius;

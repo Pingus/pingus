@@ -8,6 +8,7 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <variant>
 #include <vector>
 
 #include "math/vector2f.hpp"
@@ -16,6 +17,44 @@
 #include "util/reader.hpp"
 
 namespace pingus {
+
+/** Play a sound */
+struct SoundEffect
+{
+  std::string name = {};
+  float volume = 1.0f;
+};
+
+/** Emit particles at the object's position plus offset. 'kind' is one of
+    the particle systems ("pingu", "smoke"), 'spread' adds a random
+    offset between 0 and spread to each particle. */
+struct ParticlesEffect
+{
+  std::string kind = {};
+  int count = 1;
+  Vector2f offset = {};
+  Vector2f spread = {};
+};
+
+/** Draw an animation of the same set once, at the object's position
+    plus offset */
+struct OverlayEffect
+{
+  std::string animation = {};
+  Vector2f offset = {};
+};
+
+using Effect = std::variant<SoundEffect, ParticlesEffect, OverlayEffect>;
+
+/** An effect fired when an animation reaches a step: the step of its game
+    timing, or the animation frame for purely visual animations. Step 0
+    fires when the animation starts. Looping or restarted animations fire
+    their effects again. */
+struct EffectTrigger
+{
+  int step;
+  Effect effect;
+};
 
 /** One named animation of an AnimationSet */
 struct AnimationDef
@@ -32,6 +71,8 @@ struct AnimationDef
 
   /** Overrides the loop flag of the sprite resources */
   std::optional<bool> loop = {};
+
+  std::vector<EffectTrigger> effects = {};
 
   std::string const& sprite_name(Direction const& dir) const { return dir.is_left() ? left : right; }
 
@@ -55,8 +96,16 @@ struct AnimationDef
             (left "traps/guillotinekill/left")
             (right "traps/guillotinekill/right")
             (offset 0 -2)                         ; optional
-            (loop #f))))                          ; optional
-*/
+            (loop #f)                             ; optional
+            (effects                              ; optional
+              (sound (at-step 7) (name "splash") (volume 0.5))
+              (particles (at-step 7) (kind "pingu") (count 3)
+                         (offset 40 90) (spread 4 0))
+              (overlay (at-step 0) (animation "flash")
+                       (offset -32 -48))))))
+
+    The effect types are a fixed vocabulary implemented in C++, the data
+    only picks them and their parameters. */
 class AnimationSet
 {
 public:

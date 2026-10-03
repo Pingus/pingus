@@ -220,9 +220,9 @@ well (`pingus-headless -s DIR -T TICKS`).
    - [x] Game timing is explicit in the actions and traps, the art is
          mapped onto it proportionally; visual-only animations take their
          timing from the animation sets
-   - [ ] Declarative effects (particles, sound, flash at given frames),
-         a fixed set of effect types with parameters in data, no
-         scripting
+   - [x] Declarative effects (sound, particles, overlay at a step) in
+         the animation sets; bomber, exiter, splashed, guillotine and
+         smasher use them
    - [ ] Remaining level objects (exit, liquid, conveyor belt, ...) still
          draw their sprites in code
 2. Headless smoke test

@@ -10,6 +10,67 @@
 
 namespace pingus {
 
+namespace {
+
+Vector2f read_vector(ReaderMapping const& mapping, std::string_view key)
+{
+  geom::ipoint value;
+  if (mapping.read(key, value)) {
+    return Vector2f(static_cast<float>(value.x()), static_cast<float>(value.y()));
+  }
+  return Vector2f();
+}
+
+EffectTrigger read_effect(std::string const& animation, ReaderObject const& reader)
+{
+  ReaderMapping const mapping = reader.get_mapping();
+  std::string const type = reader.get_name();
+
+  EffectTrigger trigger{0, SoundEffect()};
+  if (!mapping.read("at-step", trigger.step)) {
+    throw std::runtime_error("animation '" + animation + "': effect '" + type + "' needs 'at-step'");
+  }
+
+  if (type == "sound")
+  {
+    SoundEffect sound;
+    if (!mapping.read("name", sound.name)) {
+      throw std::runtime_error("animation '" + animation + "': sound effect needs 'name'");
+    }
+    mapping.read("volume", sound.volume);
+    trigger.effect = sound;
+  }
+  else if (type == "particles")
+  {
+    ParticlesEffect particles;
+    mapping.read("kind", particles.kind);
+    if (particles.kind != "pingu" && particles.kind != "smoke") {
+      throw std::runtime_error("animation '" + animation + "': unknown particle kind '" + particles.kind + "'");
+    }
+    mapping.read("count", particles.count);
+    particles.offset = read_vector(mapping, "offset");
+    particles.spread = read_vector(mapping, "spread");
+    trigger.effect = particles;
+  }
+  else if (type == "overlay")
+  {
+    OverlayEffect overlay;
+    if (!mapping.read("animation", overlay.animation)) {
+      throw std::runtime_error("animation '" + animation + "': overlay effect needs 'animation'");
+    }
+    overlay.offset = read_vector(mapping, "offset");
+    trigger.effect = overlay;
+  }
+  else
+  {
+    throw std::runtime_error("animation '" + animation + "': unknown effect '" + type + "'");
+  }
+
+  return trigger;
+}
+
+} // namespace
+
 AnimationClock
 AnimationDef::make_clock() const
 {
@@ -79,14 +140,18 @@ AnimationSet::from_reader(ReaderObject const& reader)
       throw std::runtime_error("animation '" + anim.name + "' needs 'sprite' or 'left' and 'right'");
     }
 
-    geom::ipoint offset;
-    if (mapping.read("offset", offset)) {
-      anim.offset = Vector2f(static_cast<float>(offset.x()), static_cast<float>(offset.y()));
-    }
+    anim.offset = read_vector(mapping, "offset");
 
     bool loop;
     if (mapping.read("loop", loop)) {
       anim.loop = loop;
+    }
+
+    ReaderCollection effects;
+    if (mapping.read("effects", effects)) {
+      for (auto const& effect : effects.get_objects()) {
+        anim.effects.push_back(read_effect(anim.name, effect));
+      }
     }
 
     set.m_animations.push_back(anim);

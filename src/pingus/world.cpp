@@ -285,6 +285,9 @@ World::update()
 
   // Traps, exits and other level objects react to the pingus
   systems::update_objects(*this);
+
+  // Sounds, particles and overlays defined in the animation sets
+  systems::update_effects(*this);
 }
 
 PinguHolder*

@@ -103,10 +103,6 @@ void update_guillotines(World& world, ecs::Registry& reg)
     if (guillotine.killing)
     {
       guillotine.kill_clock.update();
-      // FIXME: Should be a different sound
-      if (guillotine.kill_clock.frame() == 7) {
-        world.play_sound("splash", transform.pos);
-      }
     }
     else
     {
@@ -207,16 +203,7 @@ void update_smashers(World& world, ecs::Registry& reg)
         // SMASH!!! The thing hitten earth and kills the pingus
         smasher.downwards = false;
         --smasher.count;
-        sound::PingusSound::play_sound("tenton");
-
-        Random& rng = world.get_fx_random();
-        for (int i = 0; i < 20; ++i)
-        {
-          float const x = pos.x() + 20 + float(rng.next_int(260));
-          float const vel_x = rng.next_float() - 0.5f;
-          float const vel_y = rng.next_float() - 0.5f;
-          world.get_smoke_particle_holder()->add_particle(x, pos.y() + 180, vel_x, vel_y);
-        }
+        // the sound and smoke are effects of the "smash" animation
 
         for_each_pingu(world, [&](Pingu& pingu) {
           if (pingu.is_inside(pos.x() + 30, pos.y() + 90, pos.x() + 250, pos.y() + 190) &&

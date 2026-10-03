@@ -151,20 +151,16 @@ void draw_surface_background(World& world, SceneContext& gc, Transform const& tr
 
 void draw_animated_sprite(SceneContext& gc, Transform const& transform, AnimatedSprite& anim)
 {
-  if (!anim.visible) {
-    return;
+  for (auto const& overlay : anim.overlays) {
+    draw_animation(gc, *anim.set, anim.sprites, overlay.animation, anim.direction,
+                   0, 0, transform.pos, overlay.offset);
   }
+  anim.overlays.clear();
 
-  AnimationDef const& def = anim.set->get_animation(anim.animation);
-  std::string const& sprite_name = def.sprite_name(anim.direction);
-
-  auto it = anim.sprites.find(sprite_name);
-  if (it == anim.sprites.end()) {
-    it = anim.sprites.emplace(sprite_name, Sprite(sprite_name)).first;
+  if (anim.visible) {
+    draw_animation(gc, *anim.set, anim.sprites, anim.animation, anim.direction,
+                   anim.frame, anim.frame_count, transform.pos, Vector2f());
   }
-
-  it->second.set_frame(AnimationClock::map_frame(anim.frame, anim.frame_count, it->second.get_frame_count()));
-  gc.color().draw(it->second, transform.pos + geom::foffset(def.offset.x(), def.offset.y()));
 }
 
 void draw_liquid(SceneContext& gc, Transform const& transform, Liquid const& liquid)
@@ -176,6 +172,23 @@ void draw_liquid(SceneContext& gc, Transform const& transform, Liquid const& liq
 }
 
 } // namespace
+
+void
+draw_animation(SceneContext& gc, AnimationSet const& set, std::map<std::string, Sprite>& sprites,
+               std::string_view animation, Direction const& direction,
+               int frame, int frame_count, Vector2f const& pos, Vector2f const& offset)
+{
+  AnimationDef const& def = set.get_animation(animation);
+  std::string const& sprite_name = def.sprite_name(direction);
+
+  auto it = sprites.find(sprite_name);
+  if (it == sprites.end()) {
+    it = sprites.emplace(sprite_name, Sprite(sprite_name)).first;
+  }
+
+  it->second.set_frame(AnimationClock::map_frame(frame, frame_count, it->second.get_frame_count()));
+  gc.color().draw(it->second, pos + geom::foffset(def.offset.x() + offset.x(), def.offset.y() + offset.y()));
+}
 
 void
 startup(World& world, ecs::Entity entity)

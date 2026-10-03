@@ -143,6 +143,30 @@ animation, direction, frame and visibility. Game systems only set those
 sprites and draws them. The traps, teleporters and pingus use animation
 sets, so their look can be changed without touching code.
 
+### Effects
+
+Animations can fire effects when they reach a step (the step of their
+game timing, or the frame for purely visual animations; step 0 is the
+start). Looping and restarted animations fire them again.
+
+```scheme
+(bomber (left ...) (right ...)
+  (effects
+    (sound (at-step 10) (name "plop") (volume 0.5))
+    (particles (at-step 13) (kind "pingu") (offset 0 -5))
+    (overlay (at-step 13) (animation "explosion") (offset -32 -48))))
+```
+
+The effect types are a fixed vocabulary implemented in C++
+(`src/pingus/ecs/effects.cpp`): `sound`, `particles` (kinds `pingu`,
+`smoke`; optional `count`, `offset`, `spread`) and `overlay` (another
+animation of the set drawn once). There are no conditions or
+expressions in the data. `systems::update_effects()` runs at the end of
+every tick for the pingus and the `AnimatedSprite` entities, so pausing
+and fast forward don't skip or repeat effects. Effects are presentation
+only; anything that changes the game (craters, kills) stays in the game
+logic.
+
 ## Game logic and presentation
 
 Game logic never reads sprite state. Objects and pingu actions that time

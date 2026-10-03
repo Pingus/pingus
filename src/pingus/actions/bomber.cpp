@@ -28,15 +28,12 @@ namespace pingus::actions {
 
 Bomber::Bomber (Pingu* p) :
   PinguAction(p),
-  particle_thrown(false),
-  sound_played(false),
   colmap_exploded(false),
   bomber_radius("other/bomber_radius_gfx", "other/bomber_radius"),
   // Game timing: 16 steps of 60 ms, the bomber can still drown or splash
   // until step 9 and explodes at step 13
   clock(60, 16, false)
 {
-  pingu->get_world()->play_sound("ohno", pingu->get_pos());
 }
 
 void
@@ -69,19 +66,6 @@ Bomber::update()
     return;
   }
 
-  if (clock.frame() > 9 && !sound_played) {
-    pingu->get_world()->play_sound("plop", pingu->get_pos());
-    sound_played = true;
-  }
-
-  // Throwing particles
-  if (clock.frame() > 12 && !particle_thrown)
-  {
-    particle_thrown = true;
-    pingu->get_world()->get_pingu_particle_holder()->add_particle(static_cast<int>(pingu->get_x()),
-                                                                     static_cast<int>(pingu->get_y()) - 5);
-  }
-
   if (clock.frame() >= 13 && !colmap_exploded)
   {
     colmap_exploded = true;
@@ -100,10 +84,8 @@ Bomber::update()
 void
 Bomber::get_look(PinguLook& look) const
 {
-  if (clock.frame() >= 13) {
-    // the explosion flash, shown once
-    look.add("explosion", 0, Vector2f(-32, -48), true);
-  }
+  // sounds, particles and the explosion flash are effects of the "bomber"
+  // animation, see data/animsets/pingus/
   look.add("bomber", clock);
 }
 

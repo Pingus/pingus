@@ -44,6 +44,10 @@ void update_spawners(World& world);
     active ones */
 void update_pingus(World& world);
 
+/** Fire the effects defined in the animation sets of the pingus and
+    animated level objects, see AnimationDef::effects */
+void update_effects(World& world);
+
 /** Draw all active pingus */
 void draw_pingus(World& world, SceneContext& gc);
 
