@@ -319,7 +319,6 @@ void
 SpriteViewerScreen::draw_hud(DrawingContext& gc)
 {
   Font const& font = fonts::verdana11;
-  geom::isize const size = Display::get_size();
   int const pad = 4;
   int const x = 8;
   int const line_h = font.get_height() + 2;
@@ -408,7 +407,6 @@ SpriteViewerScreen::draw_hud(DrawingContext& gc)
 void
 SpriteViewerScreen::draw(DrawingContext& gc)
 {
-  geom::isize const size = Display::get_size();
   int const checker = 16;
   for (int cy = 0; cy < size.height(); cy += checker) {
     for (int cx = 0; cx < size.width(); cx += checker) {
