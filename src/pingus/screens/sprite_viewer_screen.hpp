@@ -27,9 +27,10 @@ namespace pingus {
     Shows the same frames the game would draw (via Sprite / AnimationSet
     loaders). For animsets: up/down select animation, left/right switch
     direction, space pauses, '.' steps one frame while paused, R reloads
-    the file, Escape exits. Overlay shows name, frame, timing and loop;
-    a crosshair marks the draw anchor; effect steps are marked and fire
-    (sound, overlay sprites, simple particles). */
+    the file, O toggles the offset crosshair, Escape exits. Overlay shows
+    name, frame, timing and loop; a crosshair marks the draw anchor;
+    effect steps are marked and fire (sound, overlay sprites, simple
+    particles). */
 class SpriteViewerScreen : public Screen
 {
 public:
@@ -92,6 +93,7 @@ private:
   Sprite m_sprite;
   AnimationClock m_clock;
   bool m_paused;
+  bool m_show_offset;
 
   AnimationSet m_animset;
   int m_anim_index;

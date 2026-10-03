@@ -45,6 +45,7 @@ SpriteViewerScreen::SpriteViewerScreen(Pathname const& file) :
   m_sprite(),
   m_clock(),
   m_paused(false),
+  m_show_offset(true),
   m_animset(),
   m_anim_index(0),
   m_direction(),
@@ -318,68 +319,96 @@ void
 SpriteViewerScreen::draw_hud(DrawingContext& gc)
 {
   Font const& font = fonts::verdana11;
-  int y = 8;
+  geom::isize const size = Display::get_size();
+  int const pad = 4;
   int const x = 8;
-  auto line = [&](std::string const& text) {
-    gc.print_left(font, geom::ipoint(x, y), text);
-    y += font.get_height() + 2;
+  int const line_h = font.get_height() + 2;
+
+  std::vector<std::string> lines;
+  auto add = [&](std::string text) {
+    lines.push_back(std::move(text));
   };
 
-  line("File: " + m_file.str());
-  line(std::string("Mode: ") + (m_mode == Mode::Animset ? "animset" : "sprite")
-       + (m_paused ? "  [PAUSED]" : ""));
+  add(m_file.get_raw_path());
+  add(std::string("Mode: ") + (m_mode == Mode::Animset ? "animset" : "sprite")
+      + (m_paused ? "  [PAUSED]" : ""));
 
   if (m_mode == Mode::Sprite) {
-    line("Frame: " + strut::to_string(m_clock.frame()) + " / "
-         + strut::to_string(m_clock.frame_count())
-         + "  loop=" + (m_clock.is_looping() ? "yes" : "no")
-         + (m_clock.is_finished() ? "  finished" : ""));
-    line("Size: " + strut::to_string(m_sprite.get_width()) + "x"
-         + strut::to_string(m_sprite.get_height()));
+    add("Frame: " + strut::to_string(m_clock.frame()) + " / "
+        + strut::to_string(m_clock.frame_count())
+        + "  loop=" + (m_clock.is_looping() ? "yes" : "no")
+        + (m_clock.is_finished() ? "  finished" : ""));
+    add("Size: " + strut::to_string(m_sprite.get_width()) + "x"
+        + strut::to_string(m_sprite.get_height()));
   } else if (!m_animset.get_animations().empty()) {
     AnimationDef const& def = m_animset.get_animations()[static_cast<size_t>(m_anim_index)];
-    line("Animation: " + def.name + "  ("
-         + strut::to_string(m_anim_index + 1) + "/"
-         + strut::to_string(static_cast<int>(m_animset.get_animations().size())) + ")");
-    line("Sprite: " + def.sprite_name(m_direction)
-         + "  dir=" + (m_direction.is_left() ? "left" : "right"));
-    line("Frame: " + strut::to_string(m_clock.frame()) + " / "
-         + strut::to_string(m_clock.frame_count())
-         + "  loop=" + (m_clock.is_looping() ? "yes" : "no")
-         + (m_clock.is_finished() ? "  finished" : ""));
-    line("Offset: " + strut::to_string(static_cast<int>(def.offset.x())) + ", "
-         + strut::to_string(static_cast<int>(def.offset.y())));
+    add("Animation: " + def.name + "  ("
+        + strut::to_string(m_anim_index + 1) + "/"
+        + strut::to_string(static_cast<int>(m_animset.get_animations().size())) + ")");
+    add("Sprite: " + def.sprite_name(m_direction)
+        + "  dir=" + (m_direction.is_left() ? "left" : "right"));
+    add("Frame: " + strut::to_string(m_clock.frame()) + " / "
+        + strut::to_string(m_clock.frame_count())
+        + "  loop=" + (m_clock.is_looping() ? "yes" : "no")
+        + (m_clock.is_finished() ? "  finished" : ""));
+    add("Offset: " + strut::to_string(static_cast<int>(def.offset.x())) + ", "
+        + strut::to_string(static_cast<int>(def.offset.y()))
+        + (m_show_offset ? "" : "  (hidden)"));
 
     if (!def.effects.empty()) {
       std::string effects_line = "Effects:";
-      for (auto const& t : def.effects) {
-        effects_line += "  [" + strut::to_string(t.step) + ":" + effect_label(t.effect) + "]";
+      for (auto const& tr : def.effects) {
+        effects_line += "  [" + strut::to_string(tr.step) + ":" + effect_label(tr.effect) + "]";
       }
-      line(effects_line);
+      add(effects_line);
     }
 
-    y += 4;
-    line("Animations (Up/Down):");
-    int const list_top = y;
-    int const max_rows = std::max(1, (size.height() - list_top - 40) / (font.get_height() + 2));
-    int start = std::max(0, m_anim_index - max_rows / 2);
-    int end = std::min(static_cast<int>(m_animset.get_animations().size()), start + max_rows);
-    start = std::max(0, end - max_rows);
+    add("");
+    add("Animations (Up/Down):");
+    int const list_budget = std::max(1, (size.height() - 80) / line_h - static_cast<int>(lines.size()));
+    int start = std::max(0, m_anim_index - list_budget / 2);
+    int end = std::min(static_cast<int>(m_animset.get_animations().size()), start + list_budget);
+    start = std::max(0, end - list_budget);
     for (int i = start; i < end; ++i) {
       std::string prefix = (i == m_anim_index) ? "> " : "  ";
-      gc.print_left(font, geom::ipoint(x, y),
-                    prefix + m_animset.get_animations()[static_cast<size_t>(i)].name);
-      y += font.get_height() + 2;
+      add(prefix + m_animset.get_animations()[static_cast<size_t>(i)].name);
     }
   }
 
-  gc.print_left(font, geom::ipoint(x, size.height() - font.get_height() - 8),
-                "Space pause  . step  R reload  Left/Right dir  Up/Down anim  Esc quit");
+  float max_w = 0.0f;
+  for (auto const& s : lines) {
+    max_w = std::max(max_w, font.get_width(s));
+  }
+
+  int const top_y = 8;
+  int const top_h = static_cast<int>(lines.size()) * line_h + pad * 2;
+  int const top_w = static_cast<int>(max_w) + pad * 2 + 4;
+  gc.draw_fillrect(geom::irect(x - pad, top_y - pad,
+                               x - pad + top_w, top_y - pad + top_h),
+                   Color(240, 240, 220, 220));
+
+  int y = top_y;
+  for (auto const& s : lines) {
+    if (!s.empty()) {
+      gc.print_left(font, geom::ipoint(x, y), s);
+    }
+    y += line_h;
+  }
+
+  std::string const help =
+    "Space pause  . step  R reload  O offset  Left/Right dir  Up/Down anim  Esc quit";
+  int const help_w = static_cast<int>(font.get_width(help)) + pad * 2 + 4;
+  int const help_y = size.height() - font.get_height() - 8;
+  gc.draw_fillrect(geom::irect(x - pad, help_y - pad,
+                               x - pad + help_w, help_y + font.get_height() + pad),
+                   Color(240, 240, 220, 220));
+  gc.print_left(font, geom::ipoint(x, help_y), help);
 }
 
 void
 SpriteViewerScreen::draw(DrawingContext& gc)
 {
+  geom::isize const size = Display::get_size();
   int const checker = 16;
   for (int cy = 0; cy < size.height(); cy += checker) {
     for (int cx = 0; cx < size.width(); cx += checker) {
@@ -426,7 +455,9 @@ SpriteViewerScreen::draw(DrawingContext& gc)
     }
   }
 
-  draw_crosshair(gc, cx, cy);
+  if (m_show_offset) {
+    draw_crosshair(gc, cx, cy);
+  }
   draw_hud(gc);
 }
 
@@ -449,6 +480,10 @@ SpriteViewerScreen::update_input(pingus::input::Event const& event)
 
     case SDLK_r:
       reload();
+      break;
+
+    case SDLK_o:
+      m_show_offset = !m_show_offset;
       break;
 
     case SDLK_SPACE:
