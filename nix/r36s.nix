@@ -12,7 +12,7 @@
 { lib
 , stdenv
 , stdenvNoCC
-, fetchurl
+, sysrootSrc  # unpacked ArkOS sysroot tree (usr/, lib/): flake input github:grumnix/arkos-sysroot
 , cmake
 , pkg-config
 , pkgsCross
@@ -22,17 +22,6 @@
 }:
 
 let
-  arkosSysrootSrc = fetchurl {
-    name = "arkos-sysroot.tar.gz";
-    # Placeholder URL for a published ArkOS aarch64 sysroot tarball
-    # (glibc ~2.30 + SDL2 + GLES/EGL + OpenAL Soft + libmodplug).
-    # Replace with a permanent host before CI/hydra; then:
-    #   nix store prefetch-file <url>
-    # and paste the new sha256-… into `hash`.
-    url = "http://localhost:8888/arkos-sysroot4.tar.gz";
-    hash = "sha256-Sm1Xcy++M6LuOLXs9nOs7xIfuvzqAOledKnWH8H7+/g=";
-  };
-
   # Allow hash to be overridden by the user who already fetched the tarball;
   # if the placeholder remains, Nix will print the expected hash.
   khrplatformH = ../mk/r36s/include/KHR/khrplatform.h;
@@ -40,7 +29,7 @@ let
   arkosSysroot = stdenvNoCC.mkDerivation {
     pname = "arkos-sysroot";
     version = "0.1-openal";
-    src = arkosSysrootSrc;
+    src = sysrootSrc;
 
     # Unpack-only: aarch64 ELF + linker scripts must not be touched by the
     # host fixup (patchelf "wrong ELF type", strip, shebang rewrite).

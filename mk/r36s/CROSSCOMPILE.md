@@ -82,10 +82,8 @@ nix build .#pingus-r36s-portmaster # PortMaster tree under result/
 nix build .#pingus-r36s-portmaster-zip
 ```
 
-The flake pins an **ArkOS sysroot tarball** URL in `nix/r36s.nix`. Replace the
-`localhost` placeholder with a real published URL (or override the `fetchurl`)
-before a clean CI/hydra build. Refresh the hash with
-`nix store prefetch-file <url>`.
+The sysroot is the flake input `github:grumnix/arkos-sysroot` (pinned in `flake.lock`;
+refresh with `nix flake update arkos-sysroot`).
 
 ---
 

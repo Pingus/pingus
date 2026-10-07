@@ -36,11 +36,18 @@
       url = "https://github.com/libxmp/libxmp/releases/download/libxmp-4.6.0/libxmp-4.6.0.tar.gz";
       flake = false;
     };
+
+    # ArkOS (R36S) aarch64 sysroot: headers + libs the handheld port links against.
+    arkos-sysroot = {
+      url = "github:grumnix/arkos-sysroot";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, flake-utils, SDL2-win32, SDL2_image-win32
             , openal-soft-win32, libmodplug-win32
-            , sdl2-src, sdl2-image-src, sdl2-mixer-src, libxmp-src }:
+            , sdl2-src, sdl2-image-src, sdl2-mixer-src, libxmp-src
+            , arkos-sysroot }:
     # Host systems only. Windows is a *target* via pkgsCross.
     # x86_64-darwin is omitted: nixpkgs unstable (26.11+) dropped support.
     flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ] (system:
@@ -255,7 +262,8 @@
             }).androidsdk;
 
             r36s = import ./nix/r36s.nix {
-              inherit (pkgs) lib stdenv stdenvNoCC fetchurl cmake pkg-config writeShellScript zip glm;
+              inherit (pkgs) lib stdenv stdenvNoCC cmake pkg-config writeShellScript zip glm;
+              sysrootSrc = arkos-sysroot;
               pkgsCross = pkgs.pkgsCross;
             };
             pingusR36s = r36s.mkPingusR36s {
