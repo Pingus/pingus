@@ -163,7 +163,6 @@ let
       -isystem ${sysroot}/usr/include \
       -pthread \
       -fexceptions \
-      -DSEXP_NO_FLOAT_CHARCONV \
       -march=armv8-a \
       -mtune=cortex-a35 \
     '';

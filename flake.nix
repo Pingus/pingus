@@ -93,7 +93,10 @@
 
             logmich = call ./external/logmich/logmich.nix { };
 
-            sexpcpp = call ./external/sexpcpp/sexpcpp.nix { };
+            sexpcpp = call ./external/sexpcpp/sexpcpp.nix {
+              version = pkgs'.lib.strings.removeSuffix "\n"
+                (builtins.readFile ./external/sexpcpp/VERSION);
+            };
 
             priocpp = call ./external/priocpp/priocpp.nix {
               self = selfFor ./external/priocpp;
@@ -104,6 +107,8 @@
               # Standalone package tests need gtest; keep off for game dep builds.
               buildTests = false;
               buildExtra = false;
+              enableWarnings = true;
+              enableWerror = true;
             };
 
             strutcpp = call ./external/strutcpp/strutcpp.nix { };

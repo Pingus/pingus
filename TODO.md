@@ -305,8 +305,10 @@ everywhere. Floats stay where they don't feed back into game logic
          (19 of 72 loadable ones save any pingus)
 2. Compiler flags for game logic
    - [ ] `-ffp-contract=off`, SSE2 math on win32-x86, no fast-math
-   - [ ] Build sexpcpp with `USE_CXX17` so level floats parse with
-         `std::from_chars` instead of locale/libc dependent `strtof`
+   - [x] Locale independent float parsing/writing that round-trips
+         exactly: sexpcpp detects float `std::from_chars`/`to_chars` at
+         configure time (falls back to classic-locale iostreams, e.g.
+         R36S), priocpp writes up to 9 digits instead of 6
    - [ ] No libm transcendentals in game logic (`std::sin` in `angel.cpp`)
 3. Fixed point for gameplay state
    - [ ] Pingu position/velocity, gravity, deadly/terminal velocity,
