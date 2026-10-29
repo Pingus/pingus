@@ -18,17 +18,19 @@
 
 #include <filesystem>
 #include <fstream>
+#include <sstream>
 
 #include <prio/writer.hpp>
 
 using namespace prio;
 
-TEST(WriterTest, from_stream)
+#ifdef PRIO_USE_SEXPCPP
+TEST(WriterTest, from_stream_sexp)
 {
   enum class CustomEnum { NONE, ONE };
 
   std::ostringstream out;
-  Writer writer = Writer::from_stream(out);
+  Writer writer = Writer::from_stream(Format::SEXPR, out);
   writer.begin_object("testfile")
     .write("foo", 10)
     .write("bar", 5)
@@ -50,13 +52,13 @@ TEST(WriterTest, from_stream)
             ";; EOF ;;\n");
 }
 
-TEST(WriterTest, from_file)
+TEST(WriterTest, from_file_sexp)
 {
   std::filesystem::path const tmpdir(testing::TempDir());
   std::filesystem::path const outfile = tmpdir / "prio_test_output.txt";
 
   {
-    Writer writer = Writer::from_file(outfile);
+    Writer writer = Writer::from_file(Format::SEXPR, outfile);
     writer.begin_object("testfile")
       .write("foo", 10)
       .write("bar", 5)
@@ -74,6 +76,26 @@ TEST(WriterTest, from_file)
             "\n"
             ";; EOF ;;\n");
 }
+#endif
+
+#ifdef PRIO_USE_JSONCPP
+TEST(WriterTest, from_stream_json)
+{
+  std::ostringstream out;
+  Writer writer = Writer::from_stream(Format::JSON, out);
+  writer.begin_object("testfile")
+    .write("foo", 10)
+    .write("bar", 5)
+    .end_object();
+
+  // Pretty JSON writer; key order may vary — just check it is an object
+  // with the expected top-level name and both properties present.
+  std::string s = out.str();
+  EXPECT_NE(s.find("\"testfile\""), std::string::npos);
+  EXPECT_NE(s.find("\"foo\""), std::string::npos);
+  EXPECT_NE(s.find("\"bar\""), std::string::npos);
+}
+#endif
 
 namespace {
 
@@ -81,23 +103,31 @@ struct CustomType {};
 
 } // namespace
 
+#ifdef PRIO_USE_SEXPCPP
 namespace prio {
 
 template<>
-void write_custom(Writer& writer, std::string_view key, CustomType const& value)
+void write_custom(Writer& writer, std::string_view key, CustomType const& /* value */)
 {
   writer.write(key, "foobar");
 }
 
 } // namespace prio
 
-TEST(WriterTest, write_custom)
+TEST(WriterTest, write_custom_sexp)
 {
   std::ostringstream out;
-  Writer writer = Writer::from_stream(out);
-  writer.begin_object("test");
-  writer.write("custom", CustomType{});
-  writer.end_object();
+  Writer writer = Writer::from_stream(Format::SEXPR, out);
+  writer.begin_object("testfile")
+    .write("custom", CustomType{})
+    .end_object();
+
+  ASSERT_EQ(out.str(),
+            "(testfile\n"
+            "  (custom \"foobar\"))\n"
+            "\n"
+            ";; EOF ;;\n");
 }
+#endif
 
 /* EOF */

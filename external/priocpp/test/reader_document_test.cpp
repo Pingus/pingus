@@ -18,6 +18,8 @@
 
 #include <prio/reader_document.hpp>
 #include <prio/reader_error.hpp>
+#include <prio/reader_mapping.hpp>
+#include <prio/reader_object.hpp>
 
 using namespace prio;
 
@@ -40,11 +42,14 @@ TEST_P(ReaderDocumentTest, from_file__fail)
 
 TEST(ReaderDocumentTest, from_file__format)
 {
+#ifdef PRIO_USE_JSONCPP
   EXPECT_THROW(ReaderDocument::from_file(Format::JSON, "test/data/data.sexp"), ReaderError);
-  EXPECT_THROW(ReaderDocument::from_file(Format::SEXPR, "test/data/data.json"), ReaderError);
-
-  EXPECT_NO_THROW(ReaderDocument::from_file(Format::SEXPR, "test/data/data.sexp"));
   EXPECT_NO_THROW(ReaderDocument::from_file(Format::JSON, "test/data/data.json"));
+#endif
+#ifdef PRIO_USE_SEXPCPP
+  EXPECT_THROW(ReaderDocument::from_file(Format::SEXPR, "test/data/data.json"), ReaderError);
+  EXPECT_NO_THROW(ReaderDocument::from_file(Format::SEXPR, "test/data/data.sexp"));
+#endif
 }
 
 TEST_P(ReaderDocumentTest, get_filename)
@@ -65,7 +70,56 @@ TEST_P(ReaderDocumentTest, get_root)
   EXPECT_EQ(doc.get_root().get_name(), "test-document");
 }
 
+#if defined(PRIO_USE_SEXPCPP) && defined(PRIO_USE_JSONCPP)
 INSTANTIATE_TEST_CASE_P(ParamReaderDocumentTest, ReaderDocumentTest,
                         ::testing::Values(".sexp", ".json"));
+#elif defined(PRIO_USE_SEXPCPP)
+INSTANTIATE_TEST_CASE_P(ParamReaderDocumentTest, ReaderDocumentTest,
+                        ::testing::Values(".sexp"));
+#elif defined(PRIO_USE_JSONCPP)
+INSTANTIATE_TEST_CASE_P(ParamReaderDocumentTest, ReaderDocumentTest,
+                        ::testing::Values(".json"));
+#endif
+
+
+#ifdef PRIO_USE_JSONCPP
+TEST(ReaderDocumentTest, parse_many_json_lines)
+{
+  auto docs = ReaderDocument::parse_many("test/data/many.jsonl");
+  ASSERT_EQ(docs.size(), 3u);
+  EXPECT_EQ(docs[0].get_root().get_name(), "doc-a");
+  EXPECT_EQ(docs[1].get_root().get_name(), "doc-b");
+  EXPECT_EQ(docs[2].get_root().get_name(), "doc-c");
+
+  int id = 0;
+  ASSERT_TRUE(docs[0].get_root().get_mapping().read("id", id));
+  EXPECT_EQ(id, 1);
+}
+
+TEST(ReaderDocumentTest, parse_many_json_compact)
+{
+  // Concatenated JSON values without newlines between them
+  auto docs = ReaderDocument::parse_many("test/data/many-compact.json");
+  ASSERT_EQ(docs.size(), 2u);
+  EXPECT_EQ(docs[0].get_root().get_name(), "doc-a");
+  EXPECT_EQ(docs[1].get_root().get_name(), "doc-b");
+}
+#endif
+
+#ifdef PRIO_USE_SEXPCPP
+TEST(ReaderDocumentTest, parse_many_sexp)
+{
+  auto docs = ReaderDocument::parse_many("test/data/many.sexp");
+  ASSERT_EQ(docs.size(), 3u);
+  EXPECT_EQ(docs[0].get_root().get_name(), "doc-a");
+  EXPECT_EQ(docs[1].get_root().get_name(), "doc-b");
+  EXPECT_EQ(docs[2].get_root().get_name(), "doc-c");
+}
+#endif
+
+TEST(ReaderDocumentTest, parse_many_missing_file)
+{
+  EXPECT_THROW(ReaderDocument::parse_many("does-not-exist"), ReaderError);
+}
 
 /* EOF */

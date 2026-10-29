@@ -14,28 +14,27 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.21...4.1)
 
-# Read our own VERSION file before project() so PROJECT_VERSION is set
-# correctly even when embedded via add_subdirectory() from a parent that
-# has already defined version variables.  project(VERSION) only accepts
-# numeric components, so strip any -dev / +g… suffix for the VERSION argument.
-set(_prio_version_full "0.1.0")
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION")
-  file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION" _prio_version_full LIMIT_COUNT 1)
-  if(_prio_version_full STREQUAL "" OR _prio_version_full MATCHES "^\\$")
-    set(_prio_version_full "0.1.0")
-  endif()
-endif()
-string(REGEX REPLACE "[-+].*" "" _prio_version "${_prio_version_full}")
-if(_prio_version STREQUAL "")
-  set(_prio_version "0.1.0")
+# Source of truth: top-level VERSION file (e.g. "0.1.0-dev"), or
+# -DPROJECT_VERSION_FULL=... from packaging (Nix may append .<revCount>+g<rev>).
+# A parent project's PROJECT_VERSION_FULL isn't ours when we are a subdirectory
+if(NOT DEFINED PROJECT_VERSION_FULL OR NOT CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION" PROJECT_VERSION_FULL LIMIT_COUNT 1)
 endif()
 
-project(prio VERSION ${_prio_version})
+# CMake project() VERSION expects major[.minor[.patch[.tweak]]]; strip
+# any -dev / +git suffix for the numeric project version.
+string(REGEX MATCH "^[0-9]+(\\.[0-9]+)*" _project_version_cmake "${PROJECT_VERSION_FULL}")
+
+project(prio VERSION ${_project_version_cmake} LANGUAGES CXX)
 
 message(STATUS "Project Name: ${PROJECT_NAME}")
 message(STATUS "Project Version: ${PROJECT_VERSION}")
+message(STATUS "Project Version Full: ${PROJECT_VERSION_FULL}")
+
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -43,10 +42,15 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 option(BUILD_TESTS "Build test cases" OFF)
 option(BUILD_EXTRA "Build extra tools (priotool)" OFF)
+option(PRIO_INSTALL "Generate install and export rules, off by default when prio is a subdirectory" ${PROJECT_IS_TOP_LEVEL})
 option(PRIO_USE_JSONCPP "Enable support for jsoncpp" ON)
 option(PRIO_USE_SEXPCPP "Enable support for sexp-cpp" ON)
 option(WARNINGS "Enable extra compiler warnings" OFF)
 option(WERROR "Treat warnings as errors" OFF)
+
+if(NOT PRIO_USE_JSONCPP AND NOT PRIO_USE_SEXPCPP)
+  message(FATAL_ERROR "At least one of PRIO_USE_JSONCPP or PRIO_USE_SEXPCPP must be ON")
+endif()
 
 # --- compiler warnings (inlined from former tinycmmc MaximumWarnings) ---
 set(WARNINGS_CXX_FLAGS "")
@@ -70,7 +74,7 @@ if(WARNINGS)
       -Wlogical-op
       -Wmissing-format-attribute
       -Wmissing-noreturn
-      -Wno-suggest-attribute=noreturn
+      -Wsuggest-attribute=noreturn
       -Wunused-parameter
       -Wnon-virtual-dtor
       -Wold-style-cast
@@ -102,6 +106,7 @@ if(WARNINGS)
       -Wno-sign-conversion
       -Wno-gnu-zero-variadic-macro-arguments
       -Wno-poison-system-directories
+      -Wno-reserved-identifier
       -Wno-documentation-unknown-command
       -Wno-inconsistent-missing-destructor-override
       -Wno-deprecated-dynamic-exception-spec
@@ -127,36 +132,13 @@ if(PRIO_USE_JSONCPP)
   pkg_search_module(JSONCPP REQUIRED jsoncpp IMPORTED_TARGET)
 endif()
 
-# Prefer system / find_package packages; fall back to external/ submodules
-# when present (kept for local development convenience).
-function(build_dependencies)
-  set(BUILD_TESTS OFF)  # do not recurse into dependency tests
-
-  if(PRIO_USE_SEXPCPP)
-    find_package(sexp QUIET)
-    if(NOT TARGET sexp::sexp)
-      if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/sexp-cpp/CMakeLists.txt")
-        add_subdirectory(external/sexp-cpp EXCLUDE_FROM_ALL)
-      else()
-        message(FATAL_ERROR
-          "sexp not found via find_package and external/sexp-cpp is missing.\n"
-          "Install sexp-cpp or run: git submodule update --init --recursive")
-      endif()
-    endif()
-  endif()
-
-  find_package(logmich QUIET)
-  if(NOT TARGET logmich::logmich)
-    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/external/logmich/CMakeLists.txt")
-      add_subdirectory(external/logmich EXCLUDE_FROM_ALL)
-    else()
-      message(FATAL_ERROR
-        "logmich not found via find_package and external/logmich is missing.\n"
-        "Install logmich or run: git submodule update --init --recursive")
-    endif()
-  endif()
-endfunction()
-build_dependencies()
+# The targets already exist when prio is a subdirectory next to them
+if(PRIO_USE_SEXPCPP AND NOT TARGET sexp::sexp)
+  find_package(sexp REQUIRED)
+endif()
+if(NOT TARGET logmich::logmich)
+  find_package(logmich REQUIRED)
+endif()
 
 set(PRIO_HEADERS
   include/prio/error_handler.hpp
@@ -175,6 +157,7 @@ set(PRIO_HEADERS
   include/prio/writer.hpp)
 
 set(PRIO_SOURCES
+  src/float_format.cpp
   src/override_reader_mapping.cpp
   src/reader_collection.cpp
   src/reader_document.cpp
@@ -220,22 +203,23 @@ target_include_directories(prio
     src/
     include/prio/)
 target_link_libraries(prio PUBLIC logmich::logmich)
-target_compile_definitions(prio PUBLIC "-DPRIO_VERSION=\"${PROJECT_VERSION}\"")
+target_compile_definitions(prio PUBLIC "-DPRIO_VERSION=\"${PROJECT_VERSION_FULL}\"")
 
 if(PRIO_USE_SEXPCPP)
   target_link_libraries(prio PUBLIC sexp::sexp)
-  target_compile_definitions(prio PUBLIC "-DPRIO_USE_SEXPCPP=1")
+  target_compile_definitions(prio PUBLIC PRIO_USE_SEXPCPP)
 endif()
 
 if(PRIO_USE_JSONCPP)
   target_link_libraries(prio PUBLIC PkgConfig::JSONCPP)
-  target_compile_definitions(prio PUBLIC "-DPRIO_USE_JSONCPP=1")
+  target_compile_definitions(prio PUBLIC PRIO_USE_JSONCPP)
 endif()
 
 if(BUILD_TESTS)
   find_package(GTest REQUIRED)
 
   set(TEST_PRIO_SOURCES
+    test/float_format_test.cpp
     test/reader_test.cpp
     test/writer_test.cpp
     test/reader_document_test.cpp
@@ -284,26 +268,28 @@ if(BUILD_EXTRA)
     target_compile_options(${EXTRA_EXE} PRIVATE ${WARNINGS_CXX_FLAGS})
     target_link_libraries(${EXTRA_EXE} PRIVATE prio::prio)
 
-    if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-      include(GNUInstallDirs)
+    if(PRIO_INSTALL)
       install(TARGETS ${EXTRA_EXE}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
     endif()
   endforeach()
 
   if(BUILD_TESTS)
-    add_test(NAME priotool
-      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
-      COMMAND ${CMAKE_CURRENT_BINARY_DIR}/extra/priotool test/data/data.sexp)
+    # Round-trip smoke test: prefer sexpr input when available, else json.
+    if(PRIO_USE_SEXPCPP)
+      add_test(NAME priotool
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+        COMMAND ${CMAKE_CURRENT_BINARY_DIR}/extra/priotool --sexp test/data/data.sexp)
+    elseif(PRIO_USE_JSONCPP)
+      add_test(NAME priotool
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+        COMMAND ${CMAKE_CURRENT_BINARY_DIR}/extra/priotool --json test/data/data.json)
+    endif()
   endif()
 endif()
 
-# Packaging only when built as a standalone top-level project.
-# When embedded via add_subdirectory() the parent only needs the target + alias.
-if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
-  include(GNUInstallDirs)
-  include(CMakePackageConfigHelpers)
-
+if(PRIO_INSTALL)
+  # --- install / export (inlined from former tinycmmc_export_and_install_library) ---
   install(TARGETS prio
     EXPORT prio
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}

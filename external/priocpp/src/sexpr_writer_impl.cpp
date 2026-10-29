@@ -16,6 +16,8 @@
 
 #include "sexpr_writer_impl.hpp"
 
+#include "float_format.hpp"
+
 #include <assert.h>
 #include <map>
 
@@ -164,7 +166,9 @@ SExprWriterImpl::write(std::string_view key, int value)
 void
 SExprWriterImpl::write(std::string_view key, float value)
 {
-  (*out) << "\n" << indent() << "(" << key << " " << value << ")";
+  (*out) << "\n" << indent() << "(" << key << " ";
+  write_float(*out, value);
+  (*out) << ")";
 }
 
 void
@@ -206,7 +210,8 @@ SExprWriterImpl::write(std::string_view key, std::span<float const> values)
 {
   (*out) << "\n" << indent() << "(" << key;
   for (float const value : values) {
-    (*out) << ' ' << value;
+    (*out) << ' ';
+    write_float(*out, value);
   }
   (*out) << ")";
 }

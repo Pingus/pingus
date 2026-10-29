@@ -14,14 +14,23 @@
 , withJsoncpp ? true
 , buildTests ? true
 , buildExtra ? true
-, enableWarnings ? true
-, enableWerror ? true
+, enableWarnings ? false
+, enableWerror ? false
 }:
 
 let
+  # Source of truth: top-level VERSION file.
+  # Development builds (VERSION contains -dev) append .revCount+g<shortRev>.
+  # Release builds use VERSION as-is.
   versionBase = lib.strings.removeSuffix "\n" (builtins.readFile ./VERSION);
   gitRev = "${self.shortRev or self.dirtyShortRev or "dirty"}";
-  version = "${versionBase}+g${gitRev}";
+  isDev = lib.strings.hasInfix "-dev" versionBase;
+  # revCount is not always present (shallow clones, some path flakes).
+  version =
+    if isDev then
+      "${versionBase}.${toString (self.revCount or 0)}+g${gitRev}"
+    else
+      versionBase;
 in
 stdenv.mkDerivation {
   pname = "priocpp";

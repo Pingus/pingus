@@ -7,7 +7,6 @@
 
     logmich.url = "git+https://github.com/logmich/logmich.git";
     logmich.inputs.nixpkgs.follows = "nixpkgs";
-    # logmich still pulls tinycmmc transitively; we no longer depend on it here
 
     sexpcpp.url = "git+https://github.com/lispparser/sexp-cpp.git";
     sexpcpp.inputs.nixpkgs.follows = "nixpkgs";
@@ -27,20 +26,23 @@
           logmich = logmichPkg;
           sexpcpp = sexpcppPkg;
         } // args);
-      in
-      {
+      in {
         packages = rec {
           default = priocpp;
 
-          # Default: both backends, tests + extras
-          priocpp = mkPriocpp { };
+          # Both backends (default)
+          priocpp = mkPriocpp {
+            withJsoncpp = true;
+            withSexpcpp = true;
+          };
 
-          # Feature variants (still with tests)
+          # S-expression only
           priocpp-sexp = mkPriocpp {
             withJsoncpp = false;
             withSexpcpp = true;
           };
 
+          # JSON only
           priocpp-json = mkPriocpp {
             withJsoncpp = true;
             withSexpcpp = false;
@@ -48,16 +50,37 @@
           };
         };
 
+        # flake check runs ctest for every backend combination
         checks = {
-          # Full default configuration (json + sexp), runs ctest
+          # json + sexp (default)
           priocpp = self.packages.${system}.priocpp;
 
-          # Backend-only variants
+          # sexp only — parameterized tests must not instantiate .json
           priocpp-sexp = self.packages.${system}.priocpp-sexp;
+
+          # json only — parameterized tests must not instantiate .sexp
           priocpp-json = self.packages.${system}.priocpp-json;
 
-          # Strict build: maximum warnings treated as errors
+          # both backends, maximum warnings as errors
           priocpp-werror = mkPriocpp {
+            withJsoncpp = true;
+            withSexpcpp = true;
+            enableWarnings = true;
+            enableWerror = true;
+          };
+
+          # each single backend with -Werror as well
+          priocpp-sexp-werror = mkPriocpp {
+            withJsoncpp = false;
+            withSexpcpp = true;
+            enableWarnings = true;
+            enableWerror = true;
+          };
+
+          priocpp-json-werror = mkPriocpp {
+            withJsoncpp = true;
+            withSexpcpp = false;
+            sexpcpp = null;
             enableWarnings = true;
             enableWerror = true;
           };
