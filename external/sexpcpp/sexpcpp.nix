@@ -2,11 +2,12 @@
 , lib
 , cmake
 , gtest
+, version
 }:
 
 stdenv.mkDerivation {
   pname = "sexp-cpp";
-  version = "0.1.0";
+  inherit version;
 
   src = lib.cleanSource ./.;
 
@@ -14,7 +15,7 @@ stdenv.mkDerivation {
     "-DBUILD_TESTS=ON"
     "-DWARNINGS=ON"
     "-DWERROR=ON"
-    # "-DUSE_CXX17=ON"
+    "-DPROJECT_VERSION_FULL=${version}"
   ];
 
   doCheck = true;

@@ -20,11 +20,27 @@
 
 #include <ostream>
 #include <string>
+#include <string_view>
 
 namespace sexp {
 
+/** Parse the longest prefix of 'text' that is a decimal floating point
+    number, independent of the C and C++ locale. Uses std::from_chars()
+    when the standard library provides it for float, see CMakeLists.txt. */
 float string2float(const std::string& text);
+
+/** Write 'value' in the shortest form that string2float() reads back to
+    the same value, independent of the locale and flags of 'os' */
 void float2string(std::ostream& os, float value);
+
+namespace detail {
+
+/** Implementations for standard libraries without std::from_chars() and
+    std::to_chars() for float, exposed for testing */
+float string2float_fallback(std::string_view text);
+void float2string_fallback(std::ostream& os, float value);
+
+} // namespace detail
 
 } // namespace sexp
 

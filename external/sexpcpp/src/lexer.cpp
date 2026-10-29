@@ -100,7 +100,7 @@ Lexer::get_next_token()
   switch(m_c)
   {
     case ';': // comment
-      while(m_c != '\n') {
+      while(m_c != '\n' && m_c != EOF) {
         next_char();
       }
       return get_next_token(); // and again
