@@ -1,20 +1,22 @@
 { stdenv
 , lib
 , cmake
-, tinycmmc
 , gtest
+, version
 }:
 
 stdenv.mkDerivation {
   pname = "sexp-cpp";
-  version = "0.1.0";
+  inherit version;
 
   src = lib.cleanSource ./.;
 
   cmakeFlags = [
     "-DBUILD_TESTS=ON"
-  ]
-  ++ (lib.optional (!stdenv.hostPlatform.isWindows) "-DUSE_CXX17=ON");
+    "-DWARNINGS=ON"
+    "-DWERROR=ON"
+    "-DPROJECT_VERSION_FULL=${version}"
+  ];
 
   doCheck = true;
 
@@ -23,7 +25,6 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = [
-    tinycmmc
     gtest
   ];
 }

@@ -56,6 +56,8 @@ TEST(LexerTest, comment)
   ASSERT_EQ(sexp::Lexer::TOKEN_SYMBOL, lexer.get_next_token());
   ASSERT_EQ(sexp::Lexer::TOKEN_SYMBOL, lexer.get_next_token());
   ASSERT_EQ(sexp::Lexer::TOKEN_CLOSE_PAREN, lexer.get_next_token());
+  // a comment at the end without a newline must not hang
+  ASSERT_EQ(sexp::Lexer::TOKEN_EOF, lexer.get_next_token());
 }
 
 TEST(LexerTest, token_dot)

@@ -18,7 +18,10 @@
 #ifndef HEADER_SEXP_IO_HPP
 #define HEADER_SEXP_IO_HPP
 
+#include <format>
 #include <ostream>
+#include <sstream>
+#include <string>
 
 #include <sexp/value.hpp>
 
@@ -29,6 +32,20 @@ void escape_string(std::ostream& os, std::string const& text);
 std::ostream& operator<<(std::ostream& os, Value const& sx);
 
 } // namespace sexp
+
+/** std::format support via operator<< (logmich / std::vformat). */
+template<>
+struct std::formatter<sexp::Value>
+{
+  constexpr auto parse(std::format_parse_context& ctx) { return ctx.begin(); }
+
+  auto format(sexp::Value const& sx, std::format_context& ctx) const
+  {
+    std::ostringstream oss;
+    oss << sx;
+    return std::format_to(ctx.out(), "{}", oss.str());
+  }
+};
 
 #endif
 

@@ -30,7 +30,7 @@ Value
 Parser::from_string(std::string const& str, bool use_arrays)
 {
   std::istringstream is(str);
-  return from_stream(is);
+  return from_stream(is, use_arrays);
 }
 
 Value
@@ -50,7 +50,7 @@ std::vector<Value>
 Parser::from_string_many(std::string const& str, bool use_arrays)
 {
   std::istringstream is(str);
-  return from_stream_many(is);
+  return from_stream_many(is, use_arrays);
 }
 
 std::vector<Value>

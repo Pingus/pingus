@@ -13,17 +13,18 @@
         "type": "github"
       },
       "original": {
-        "id": "flake-utils",
-        "type": "indirect"
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1775423009,
-        "narHash": "sha256-vPKLpjhIVWdDrfiUM8atW6YkIggCEKdSAlJPzzhkQlw=",
+        "lastModified": 1787135253,
+        "narHash": "sha256-RD2kNWCG+Bjo6h+JVjWVNntZs2GtRoeY2xHjts/FNkA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "68d8aa3d661f0e6bd5862291b5bb263b2a6595c9",
+        "rev": "ffb3c9b700e759be2ef13237c9d8f953b32a1e46",
         "type": "github"
       },
       "original": {
@@ -36,8 +37,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs",
-        "tinycmmc": "tinycmmc"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
@@ -53,29 +53,6 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
-      }
-    },
-    "tinycmmc": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1763256011,
-        "narHash": "sha256-CpQWAHdeLUYd28cT9heG05p6RX9WF7QslqNHoBi931E=",
-        "ref": "refs/heads/master",
-        "rev": "2e007ba059a4991c011a7193c9d7df28826c9adc",
-        "revCount": 64,
-        "type": "git",
-        "url": "https://github.com/grumbel/tinycmmc.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://github.com/grumbel/tinycmmc.git"
       }
     }
   },
