@@ -4,7 +4,13 @@
 // Run the game simulation without a display, for regression and smoke
 // testing. A .pingus-demo file is replayed, a .pingus level is run without
 // player input and armageddon is triggered after a fixed number of ticks.
-// Prints one result line per file.
+// Prints one result line per file, including a hash of the final game
+// state, so that runs on different builds and platforms can be compared.
+//
+// With --trace a hash of the game state is written for every tick, to
+// find the first tick where two runs diverge. --repeat runs each file
+// several times in the same process and reports differing results,
+// which points to state leaking between runs or uninitialized memory.
 //
 // With --screenshot the world is rendered offscreen with the SDL renderer
 // at the given ticks and saved as PNG, for comparing rendering output.
@@ -12,6 +18,8 @@
 #include <algorithm>
 #include <exception>
 #include <filesystem>
+#include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <memory>
 #include <set>
@@ -38,6 +46,7 @@
 #include "pingus/resource.hpp"
 #include "pingus/server.hpp"
 #include "pingus/server_event.hpp"
+#include "pingus/state_hash.hpp"
 #include "pingus/world.hpp"
 #include "util/pathname.hpp"
 #include "util/system.hpp"
@@ -54,7 +63,53 @@ struct RunOptions
   /** Directory for screenshots, empty when disabled */
   std::filesystem::path screenshot_dir = {};
   std::set<int> screenshot_ticks = {};
+
+  /** Directory for per-tick state traces, empty when disabled */
+  std::filesystem::path trace_dir = {};
+
+  /** Include the state of every live pingu in the trace */
+  bool trace_pingus = false;
+
+  /** Number of times each file is run */
+  int repeat = 1;
 };
+
+struct RunResult
+{
+  bool finished;
+  uint64_t hash;
+};
+
+/** The terrain is only hashed every so many ticks in traces, hashing
+    the whole collision map every tick is too slow */
+constexpr int terrain_trace_interval = 100;
+
+std::string hex(uint64_t value)
+{
+  std::ostringstream out;
+  out << std::hex << std::setw(16) << std::setfill('0') << value;
+  return out.str();
+}
+
+uint64_t final_hash(Server& server)
+{
+  StateHash hash;
+  hash.add_u64(hash_game_state(server));
+  hash.add_u64(hash_terrain(*server.get_world()));
+  return hash.get();
+}
+
+void write_trace(std::ostream& trace, Server& server, RunOptions const& opts)
+{
+  int const time = server.get_time();
+  trace << time << " " << hex(hash_game_state(server)) << "\n";
+  if (time % terrain_trace_interval == 0) {
+    trace << time << " terrain " << hex(hash_terrain(*server.get_world())) << "\n";
+  }
+  if (opts.trace_pingus) {
+    write_pingu_states(trace, *server.get_world());
+  }
+}
 
 std::set<int> parse_ticks(std::string const& text)
 {
@@ -94,7 +149,8 @@ void save_screenshot(Server& server, Pathname const& path, RunOptions const& opt
 
 /** Run the server until the level is finished, sending the given events
     at their time stamps. Returns false if max_ticks was reached. */
-bool run(Server& server, Pathname const& path, std::vector<ServerEvent> events, RunOptions const& opts, bool armageddon)
+bool run(Server& server, Pathname const& path, std::vector<ServerEvent> events, RunOptions const& opts, bool armageddon,
+         std::ostream* trace)
 {
   // Reverse so that the next event can be taken with pop_back()
   std::reverse(events.begin(), events.end());
@@ -120,11 +176,15 @@ bool run(Server& server, Pathname const& path, std::vector<ServerEvent> events, 
     if (!opts.screenshot_dir.empty() && opts.screenshot_ticks.contains(server.get_time())) {
       save_screenshot(server, path, opts);
     }
+
+    if (trace) {
+      write_trace(*trace, server, opts);
+    }
   }
   return true;
 }
 
-void print_result(Pathname const& path, Server& server, bool finished)
+void print_result(Pathname const& path, Server& server, RunResult const& result)
 {
   PinguHolder* pingus = server.get_world()->get_pingus();
   std::cout << path.get_raw_path() << ":"
@@ -132,25 +192,63 @@ void print_result(Pathname const& path, Server& server, bool finished)
             << " released=" << pingus->get_number_of_released()
             << " exited=" << pingus->get_number_of_exited()
             << " killed=" << pingus->get_number_of_killed()
-            << (finished ? "" : " TIMEOUT")
+            << " hash=" << hex(result.hash)
+            << (result.finished ? "" : " TIMEOUT")
             << std::endl;
 }
 
-void process_demo(Pathname const& path, RunOptions const& opts)
+/** Run a .pingus-demo or .pingus file once, printing the result line
+    unless 'quiet' is set */
+RunResult process_file(Pathname const& path, RunOptions const& opts, bool quiet, std::ostream* trace)
 {
-  PingusDemo demo(path);
-  PingusLevel plf(Pathname("levels/" + demo.get_levelname() + ".pingus", Pathname::DATA_PATH));
-  Server server(plf, false);
-  bool const finished = run(server, path, demo.get_events(), opts, false);
-  print_result(path, server, finished);
+  bool const is_demo = System::get_file_extension(path.get_raw_path()) == "pingus-demo";
+
+  std::vector<ServerEvent> events;
+  std::unique_ptr<PingusLevel> plf;
+  if (is_demo) {
+    PingusDemo demo(path);
+    events = demo.get_events();
+    plf = std::make_unique<PingusLevel>(Pathname("levels/" + demo.get_levelname() + ".pingus", Pathname::DATA_PATH));
+  } else {
+    plf = std::make_unique<PingusLevel>(path);
+  }
+
+  Server server(*plf, false);
+  if (trace) {
+    write_trace(*trace, server, opts);
+  }
+  bool const finished = run(server, path, std::move(events), opts, !is_demo, trace);
+  RunResult const result{finished, final_hash(server)};
+  if (!quiet) {
+    print_result(path, server, result);
+  }
+  return result;
 }
 
-void process_level(Pathname const& path, RunOptions const& opts)
+/** Run a file opts.repeat times, returns false if the runs differ */
+bool process(Pathname const& path, RunOptions const& opts)
 {
-  PingusLevel plf(path);
-  Server server(plf, false);
-  bool const finished = run(server, path, {}, opts, true);
-  print_result(path, server, finished);
+  std::unique_ptr<std::ofstream> trace;
+  if (!opts.trace_dir.empty()) {
+    std::filesystem::path const filename = opts.trace_dir /
+      (std::filesystem::path(path.get_raw_path()).filename().string() + ".trace");
+    trace = std::make_unique<std::ofstream>(filename);
+    if (!*trace) {
+      throw std::runtime_error("failed to write " + filename.string());
+    }
+  }
+
+  RunResult const first = process_file(path, opts, false, trace.get());
+  for (int i = 1; i < opts.repeat; ++i)
+  {
+    RunResult const other = process_file(path, opts, true, nullptr);
+    if (other.hash != first.hash || other.finished != first.finished) {
+      std::cout << path.get_raw_path() << ": MISMATCH in run " << (i + 1)
+                << " hash=" << hex(other.hash) << std::endl;
+      return false;
+    }
+  }
+  return true;
 }
 
 } // namespace
@@ -169,7 +267,10 @@ int main(int argc, char** argv)
     .add_option('a', "armageddon", "TICKS", "Trigger armageddon in levels after TICKS (default: 6000)")
     .add_option('t', "max-ticks", "TICKS", "Give up after TICKS (default: 100000)")
     .add_option('s', "screenshot", "DIR", "Save renderings of the world to DIR")
-    .add_option('T', "screenshot-ticks", "LIST", "Comma separated ticks for --screenshot (default: 1,500,2000)");
+    .add_option('T', "screenshot-ticks", "LIST", "Comma separated ticks for --screenshot (default: 1,500,2000)")
+    .add_option('H', "trace", "DIR", "Write a hash of the game state for every tick to DIR/FILE.trace")
+    .add_option('P', "trace-pingus", "", "Include the state of every live pingu in the trace")
+    .add_option('r', "repeat", "N", "Run each file N times and report differing results (default: 1)");
 
   for (auto const& opt : argp.parse_args(argc, argv))
   {
@@ -197,6 +298,18 @@ int main(int argc, char** argv)
 
       case 'T':
         opts.screenshot_ticks = parse_ticks(opt.argument);
+        break;
+
+      case 'H':
+        opts.trace_dir = opt.argument;
+        break;
+
+      case 'P':
+        opts.trace_pingus = true;
+        break;
+
+      case 'r':
+        opts.repeat = std::stoi(opt.argument);
         break;
 
       case argpp::ArgumentType::REST:
@@ -235,15 +348,17 @@ int main(int argc, char** argv)
   fonts::init();
   sound::PingusSound::init();
 
+  if (!opts.trace_dir.empty()) {
+    std::filesystem::create_directories(opts.trace_dir);
+  }
+
   int errors = 0;
   for (auto const& path : files)
   {
     try
     {
-      if (System::get_file_extension(path.get_raw_path()) == "pingus-demo") {
-        process_demo(path, opts);
-      } else {
-        process_level(path, opts);
+      if (!process(path, opts)) {
+        errors += 1;
       }
     }
     catch (std::exception const& err)

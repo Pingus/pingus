@@ -287,6 +287,32 @@ Found along the way:
 - [x] Removed obsolete `extra/sprite-view` (resource-name OpenGL smoke loop)
 - [x] HUD panels for contrast; `O` toggles offset crosshair
 
+## Deterministic game logic
+
+Goal: the same level + input gives bit-identical results on every build
+and platform (x86-64, win32-x86, aarch64, WASM), so demos replay
+everywhere. Floats stay where they don't feed back into game logic
+(rendering, sound, `fx_random` particles).
+
+1. Measure
+   - [x] State hash in `src/pingus/state_hash.*`; `pingus-headless`
+         prints it per file, `--trace DIR` per tick (`--trace-pingus`
+         adds every pingu), `--repeat N` checks runs in one process
+   - [x] All demos and levels give the same hash on repeated runs
+   - [ ] Compare traces across builds: -O0/-O2, FMA (x86-64-v3),
+         win32 under wine, aarch64, WASM
+   - [ ] Re-record reference demos; most current demos no longer replay
+         (19 of 72 loadable ones save any pingus)
+2. Compiler flags for game logic
+   - [ ] `-ffp-contract=off`, SSE2 math on win32-x86, no fast-math
+   - [ ] Build sexpcpp with `USE_CXX17` so level floats parse with
+         `std::from_chars` instead of locale/libc dependent `strtof`
+   - [ ] No libm transcendentals in game logic (`std::sin` in `angel.cpp`)
+3. Fixed point for gameplay state
+   - [ ] Pingu position/velocity, gravity, deadly/terminal velocity,
+         collider, boarder/slider/angel/superman
+   - [ ] Demo events store integer positions instead of raw float bits
+
 ## Out of scope (for now)
 
 - GP2X / Wiz / Open2x (explicitly excluded)

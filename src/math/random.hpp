@@ -48,6 +48,14 @@ public:
     return static_cast<float>(m_engine() >> 8) * (1.0f / 16777216.0f);
   }
 
+  /** The next raw output without advancing the generator, for checking
+      that two runs are in the same state */
+  uint32_t peek() const
+  {
+    std::mt19937 copy = m_engine;
+    return static_cast<uint32_t>(copy());
+  }
+
 private:
   std::mt19937 m_engine;
 };

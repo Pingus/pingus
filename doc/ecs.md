@@ -229,7 +229,17 @@ find data -name '*.pingus-demo' -o -path 'data/levels/*.pingus' | sort \
 # render the world at given ticks to PNGs (offscreen, software renderer,
 # byte-identical between runs)
 build/extra/pingus-headless -s shots/ -T 1,400,1500 data/levels/tutorial/*.pingus
+
+# per-tick state hashes, diff two builds to find the first diverging tick
+# (--trace-pingus adds every pingu, --repeat 2 checks for state leaking
+# between runs in the same process)
+build/extra/pingus-headless --trace traces/ data/levels/tutorial/*.pingus
+# writes traces/FILE.trace, e.g. traces/basher-tutorial-grumbel.pingus.trace
 ```
+
+Every result line ends with `hash=`, a hash of the final game state
+(time, gameplay random state, action pool, live pingus, terrain; see
+`src/pingus/state_hash.hpp`).
 
 ctest runs the tutorial levels through it (`test_pingus_headless`). Unit
 tests for the registry, the schema, `AnimationClock` and `Random` are in
