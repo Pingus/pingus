@@ -16,6 +16,8 @@
 
 #include "sexpr_writer_impl.hpp"
 
+#include "float_format.hpp"
+
 #include <assert.h>
 #include <map>
 
@@ -61,6 +63,28 @@ std::string
 SExprWriterImpl::indent() const
 {
   return std::string(level*2, ' ');
+}
+
+void
+SExprWriterImpl::write_comment(std::string_view text)
+{
+  // Emit each line as a Scheme-style line comment.
+  std::size_t begin = 0;
+  while (begin <= text.size()) {
+    std::size_t end = text.find('\n', begin);
+    if (end == std::string_view::npos) {
+      end = text.size();
+    }
+    (*out) << indent() << ";;";
+    if (end > begin) {
+      (*out) << " " << text.substr(begin, end - begin);
+    }
+    (*out) << "\n";
+    if (end == text.size()) {
+      break;
+    }
+    begin = end + 1;
+  }
 }
 
 void
@@ -142,7 +166,9 @@ SExprWriterImpl::write(std::string_view key, int value)
 void
 SExprWriterImpl::write(std::string_view key, float value)
 {
-  (*out) << "\n" << indent() << "(" << key << " " << value << ")";
+  (*out) << "\n" << indent() << "(" << key << " ";
+  write_float(*out, value);
+  (*out) << ")";
 }
 
 void
@@ -184,7 +210,8 @@ SExprWriterImpl::write(std::string_view key, std::span<float const> values)
 {
   (*out) << "\n" << indent() << "(" << key;
   for (float const value : values) {
-    (*out) << ' ' << value;
+    (*out) << ' ';
+    write_float(*out, value);
   }
   (*out) << ")";
 }

@@ -20,7 +20,6 @@
 #include <sstream>
 
 #include <logmich/log.hpp>
-#include <fmt/ostream.h>
 #include <sexp/util.hpp>
 #include <sexp/io.hpp>
 
@@ -29,6 +28,9 @@
 #include "reader_impl.hpp"
 #include "reader_mapping.hpp"
 #include "reader_object.hpp"
+#include <utility>
+#include <format>
+#include "format_util.hpp"
 
 namespace prio {
 
@@ -58,10 +60,10 @@ SExprReaderDocumentImpl::error(ErrorHandler error_handler, sexp::Value const& sx
 {
   switch (error_handler) {
     case ErrorHandler::THROW:
-      throw ReaderError(fmt::format("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), fmt::streamed(sx), message));
+      throw ReaderError(std::format("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), stream_str(sx), message));
 
     case ErrorHandler::LOG:
-      log_error("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), fmt::streamed(sx), message);
+      log_error("{}:{}: {}: {}", m_filename ? *m_filename : "<unknown>", sx.get_line(), stream_str(sx), message);
       break;
 
     case ErrorHandler::IGNORE:
@@ -322,7 +324,7 @@ SExprReaderMappingImpl::read(std::string_view key, ReaderMapping& value) const
 void
 SExprReaderMappingImpl::error(std::string_view key, std::string_view message) const
 {
-  m_doc.error(m_sx, message);
+  m_doc.error(m_sx, std::format("{}: {}", key, message));
 }
 
 void

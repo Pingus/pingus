@@ -23,6 +23,8 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include <utility>
+#include <cstring>
 
 #ifdef PRIO_USE_JSONCPP
 #  include "json_writer_impl.hpp"
@@ -106,14 +108,16 @@ Writer::Writer(std::ostream& out) :
   m_owned()
 {
 }
-#elif PRIO_USE_JSONCPP
+#else
+#  ifdef PRIO_USE_JSONCPP
 Writer::Writer(std::ostream& out) :
   m_impl(std::make_unique<JsonPrettyWriterImpl>(out)),
   m_owned()
 {
 }
-#else
-#  error "No syntax library available"
+#  else
+#    error "No syntax library available"
+#  endif
 #endif
 
 Writer::Writer(std::unique_ptr<WriterImpl> impl) :
@@ -129,6 +133,8 @@ Writer::~Writer()
 Writer&
 Writer::write_comment(std::string_view text)
 {
+  assert(m_impl);
+  m_impl->write_comment(text);
   return *this;
 }
 

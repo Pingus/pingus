@@ -64,8 +64,12 @@ public:
                                     ErrorHandler error_handler = ErrorHandler::THROW,
                                     std::optional<std::string> const& filename = {});
 
-  /** Reads multiple trees from a file, for use with files that don't
-      contain a root element */
+  /** Reads multiple top-level trees from a file that has no single root
+      wrapper. For sexpr this is successive top-level lists; for JSON this
+      is successive top-level values separated by whitespace (JSON Lines
+      is the newline-separated special case; compact concatenation without
+      newlines is also accepted). Format is auto-detected from the first
+      non-whitespace character ('{'/'[' => JSON, otherwise sexpr). */
   static std::vector<ReaderDocument> parse_many(const std::string& pathname);
 
 public:

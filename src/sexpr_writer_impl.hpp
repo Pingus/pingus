@@ -54,6 +54,8 @@ public:
 
   void write(std::string_view key, std::vector<bool> const& values) override;
 
+  void write_comment(std::string_view text) override;
+
 private:
   /** A reference to the output stream */
   std::ostream* out;

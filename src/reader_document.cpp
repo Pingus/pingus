@@ -16,6 +16,7 @@
 
 #include "reader_document.hpp"
 
+#include <exception>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -38,6 +39,10 @@
 #include "reader_impl.hpp"
 #include "reader_mapping.hpp"
 #include "reader_object.hpp"
+#include <cctype>
+#include <cstring>
+#include <format>
+#include "format_util.hpp"
 
 namespace prio {
 
@@ -56,7 +61,7 @@ ReaderDocument::from_file(Format format,
 {
   std::ifstream fin(filename);
   if (!fin) {
-    throw ReaderError(fmt::format("{}: failed to open: {}", fmt::streamed(filename), strerror(errno)));
+    throw ReaderError(std::format("{}: failed to open: {}", stream_str(filename), strerror(errno)));
   } else {
     return from_stream(format, fin, error_handler, filename.string());
   }
@@ -86,7 +91,7 @@ ReaderDocument::from_stream(Format format,
       std::string errs;
       Json::Value root;
       if (!Json::parseFromStream(builder, stream, &root, &errs)) {
-        throw ReaderError(fmt::format("json parse error: {}", errs));
+        throw ReaderError(std::format("json parse error: {}", errs));
       }
       return ReaderDocument(std::make_unique<JsonReaderDocumentImpl>(std::move(root), error_handler, filename));
     }
@@ -98,7 +103,7 @@ ReaderDocument::from_stream(Format format,
         auto sx = sexp::Parser::from_stream(stream, sexp::Parser::USE_ARRAYS);
         return ReaderDocument(std::make_unique<SExprReaderDocumentImpl>(std::move(sx), error_handler, filename));
       } catch(std::exception const& err) {
-        std::throw_with_nested(ReaderError(fmt::format("{}: ReaderDocument::from_stream() failed", filename ?  *filename : "<unknown>")));
+        std::throw_with_nested(ReaderError(std::format("{}: ReaderDocument::from_stream() failed", filename ?  *filename : "<unknown>")));
       }
     }
 #endif
@@ -128,26 +133,182 @@ ReaderDocument::from_file(std::filesystem::path const& filename, ErrorHandler er
   return from_file(Format::AUTO, filename, error_handler);
 }
 
+namespace {
+
+#ifdef PRIO_USE_JSONCPP
+/** Return a pointer just past one complete JSON value starting at @a p.
+    Supports objects, arrays, strings, numbers and keywords. Returns nullptr
+    if the value is incomplete or malformed. */
+char const*
+json_value_end(char const* p, char const* end)
+{
+  auto skip_string = [&](char const* s) -> char const* {
+    // s points at the opening quote
+    ++s;
+    while (s < end) {
+      if (*s == '\\') {
+        ++s;
+        if (s >= end) return nullptr;
+        ++s;
+        continue;
+      }
+      if (*s == '"') return s + 1;
+      ++s;
+    }
+    return nullptr;
+  };
+
+  if (p >= end) return p;
+
+  if (*p == '"') {
+    return skip_string(p);
+  }
+
+  if (*p == '{' || *p == '[') {
+    char const open = *p;
+    char const close = (open == '{') ? '}' : ']';
+    int depth = 0;
+    char const* s = p;
+    while (s < end) {
+      if (*s == '"') {
+        s = skip_string(s);
+        if (!s) return nullptr;
+        continue;
+      }
+      if (*s == open) {
+        ++depth;
+      } else if (*s == close) {
+        --depth;
+        if (depth == 0) return s + 1;
+      }
+      ++s;
+    }
+    return nullptr;
+  }
+
+  // number
+  if (*p == '-' || (*p >= '0' && *p <= '9')) {
+    char const* s = p + 1;
+    while (s < end
+           && !std::isspace(static_cast<unsigned char>(*s))
+           && *s != ',' && *s != '}' && *s != ']' && *s != ':') {
+      ++s;
+    }
+    return s;
+  }
+
+  // keywords
+  if (p + 4 <= end && std::strncmp(p, "true", 4) == 0) return p + 4;
+  if (p + 5 <= end && std::strncmp(p, "false", 5) == 0) return p + 5;
+  if (p + 4 <= end && std::strncmp(p, "null", 4) == 0) return p + 4;
+
+  return nullptr;
+}
+
+/** Parse successive top-level JSON values from @a content.
+    Values may be separated by any whitespace (JSON Lines is the
+    newline-separated special case; compact concatenation without
+    newlines is also accepted). */
+std::vector<Json::Value>
+parse_json_values_many(std::string const& content)
+{
+  std::vector<Json::Value> values;
+  char const* p = content.data();
+  char const* const end = p + content.size();
+
+  Json::CharReaderBuilder builder;
+  std::unique_ptr<Json::CharReader> reader(builder.newCharReader());
+
+  while (true) {
+    while (p < end && std::isspace(static_cast<unsigned char>(*p))) {
+      ++p;
+    }
+    if (p >= end) {
+      break;
+    }
+
+    char const* const value_end = json_value_end(p, end);
+    if (!value_end) {
+      throw ReaderError("json parse error: incomplete or invalid JSON value");
+    }
+
+    Json::Value root;
+    std::string errs;
+    if (!reader->parse(p, value_end, &root, &errs)) {
+      throw ReaderError(std::format("json parse error: {}", errs));
+    }
+    values.push_back(std::move(root));
+    p = value_end;
+  }
+
+  return values;
+}
+#endif
+
+} // namespace
+
 std::vector<ReaderDocument>
 ReaderDocument::parse_many(const std::string& pathname)
 {
-#if 0
-  std::shared_ptr<lisp::Lisp> sexpr = lisp::Parser::parse(pathname.get_sys_path());
-  if (sexpr)
-  {
-    std::vector<Reader> sections;
-    for(size_t i = 0; i < sexpr->get_list_size(); ++i)
-    {
-      sections.push_back(Reader(std::make_unique<SExprReaderImpl>(sexpr->get_list_elem(i))));
-    }
+  std::ifstream fin(pathname);
+  if (!fin) {
+    throw ReaderError(std::format("{}: failed to open: {}", pathname, strerror(errno)));
+  }
 
-    return sections;
+  // Peek at the first non-whitespace character to choose a backend when both
+  // are available. '{' / '[' => JSON; otherwise treat as sexpr.
+  int c = fin.get();
+  while (c != EOF && std::isspace(static_cast<unsigned char>(c))) {
+    c = fin.get();
   }
-  else
+  if (c == EOF) {
+    return {};
+  }
+  fin.unget();
+
+  bool const looks_json = (c == '{' || c == '[');
+
+#ifdef PRIO_USE_JSONCPP
+  if (looks_json) {
+    try {
+      std::string content(
+          (std::istreambuf_iterator<char>(fin)),
+          std::istreambuf_iterator<char>());
+      auto values = parse_json_values_many(content);
+      std::vector<ReaderDocument> docs;
+      docs.reserve(values.size());
+      for (auto& value : values) {
+        docs.emplace_back(std::make_unique<JsonReaderDocumentImpl>(
+            std::move(value), ErrorHandler::THROW, pathname));
+      }
+      return docs;
+    } catch (std::exception const&) {
+      std::throw_with_nested(ReaderError(std::format(
+          "{}: ReaderDocument::parse_many() failed", pathname)));
+    }
+  }
 #endif
-  {
-    return std::vector<ReaderDocument>();
+
+#ifdef PRIO_USE_SEXPCPP
+  if (!looks_json) {
+    try {
+      auto values = sexp::Parser::from_stream_many(fin, sexp::Parser::USE_ARRAYS);
+      std::vector<ReaderDocument> docs;
+      docs.reserve(values.size());
+      for (auto& sx : values) {
+        docs.emplace_back(std::make_unique<SExprReaderDocumentImpl>(
+            std::move(sx), ErrorHandler::THROW, pathname));
+      }
+      return docs;
+    } catch (std::exception const&) {
+      std::throw_with_nested(ReaderError(std::format(
+          "{}: ReaderDocument::parse_many() failed", pathname)));
+    }
   }
+#endif
+
+  throw ReaderError(std::format(
+      "{}: parse_many() has no suitable backend for this content", pathname));
 }
 
 ReaderDocument:: ReaderDocument() :
@@ -216,10 +377,21 @@ ReaderDocument::get_directory() const
   if (!m_impl) { return {}; }
 
   if (!m_impl->get_filename()) {
-    return std::filesystem::path("/").string();
-  } else {
-    return std::filesystem::path(*m_impl->get_filename()).parent_path().string();
+    return "/";
   }
+
+  // Pure string dirname — do not use std::filesystem::path::parent_path().
+  // On R36S (GCC 15 headers + _GLIBCXX_USE_CXX11_ABI=0 + ArkOS libstdc++),
+  // path::parent_path can fail to strip the filename, producing broken joins
+  // like "images/engine/menu/mousecursor.sprite/mousecursor.png".
+  // get_filename() returns optional by value — copy, do not bind a reference
+  // to the temporary (dangling → segfault in tests / R36S).
+  std::string const filename = *m_impl->get_filename();
+  auto p = filename.find_last_of("/\\");
+  if (p == std::string::npos) {
+    return ".";
+  }
+  return filename.substr(0, p);
 }
 
 } // namespace prio

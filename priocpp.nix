@@ -1,57 +1,79 @@
-{ stdenv
+{ self
+, stdenv
 , lib
 
 , cmake
-, fmt
 , gtest
 , jsoncpp
 , pkg-config
 
 , logmich
 , sexpcpp
-, tinycmmc
 
 , withSexpcpp ? true
 , withJsoncpp ? true
+, buildTests ? true
+, buildExtra ? true
+, enableWarnings ? false
+, enableWerror ? false
 }:
 
+let
+  # Source of truth: top-level VERSION file.
+  # Development builds (VERSION contains -dev) append .revCount+g<shortRev>.
+  # Release builds use VERSION as-is.
+  versionBase = lib.strings.removeSuffix "\n" (builtins.readFile ./VERSION);
+  gitRev = "${self.shortRev or self.dirtyShortRev or "dirty"}";
+  isDev = lib.strings.hasInfix "-dev" versionBase;
+  # revCount is not always present (shallow clones, some path flakes).
+  version =
+    if isDev then
+      "${versionBase}.${toString (self.revCount or 0)}+g${gitRev}"
+    else
+      versionBase;
+in
 stdenv.mkDerivation {
   pname = "priocpp";
-  version = "0.0.0";
+  inherit version;
 
   src = lib.cleanSource ./.;
 
   cmakeFlags = [
-    "-DBUILD_EXTRA=ON"
-    "-DBUILD_TESTS=ON"
-  ]
-  ++ [(if withJsoncpp then "-DPRIO_USE_JSONCPP=ON" else "-DPRIO_USE_JSONCPP=OFF")]
-  ++ [(if withSexpcpp then "-DPRIO_USE_SEXPCPP=ON" else "-DPRIO_USE_SEXPCPP=OFF")];
+    "-DPROJECT_VERSION_FULL=${version}"
+    (if buildExtra then "-DBUILD_EXTRA=ON" else "-DBUILD_EXTRA=OFF")
+    (if buildTests then "-DBUILD_TESTS=ON" else "-DBUILD_TESTS=OFF")
+    (if withJsoncpp then "-DPRIO_USE_JSONCPP=ON" else "-DPRIO_USE_JSONCPP=OFF")
+    (if withSexpcpp then "-DPRIO_USE_SEXPCPP=ON" else "-DPRIO_USE_SEXPCPP=OFF")
+    (if enableWarnings then "-DWARNINGS=ON" else "-DWARNINGS=OFF")
+    (if enableWerror then "-DWERROR=ON" else "-DWERROR=OFF")
+  ];
 
-  postFixup = ""
-  + (lib.optionalString stdenv.hostPlatform.isWindows ''
-    # This is rather ugly, but functional. Nix has a 'win-dll-link.sh'
-    # for this, but that's currently broken:
-    # https://github.com/NixOS/nixpkgs/issues/38451
-    mkdir -p $out/bin/
+  # Run ctest (test_prio + priotool smoke test when BUILD_EXTRA is on).
+  doCheck = buildTests;
 
-    ln -sfv ${fmt}/bin/*.dll $out/bin/
-  ''
-  + (lib.optionalString withJsoncpp
-    ''ln -sfv ${jsoncpp}/bin/*.dll $out/bin/''));
+  postFixup = lib.optionalString stdenv.hostPlatform.isWindows (
+    ''
+      # This is rather ugly, but functional. Nix has a 'win-dll-link.sh'
+      # for this, but that's currently broken:
+      # https://github.com/NixOS/nixpkgs/issues/38451
+      mkdir -p $out/bin/
+    ''
+    + lib.optionalString withJsoncpp ''
+      ln -sfv ${jsoncpp}/bin/*.dll $out/bin/
+    ''
+  );
 
   nativeBuildInputs = [
     cmake
     pkg-config
   ];
 
-  propagatedBuildInputs = [
-    fmt
-    gtest
+  # gtest is only needed to build/run the test binary, not by consumers of the library.
+  buildInputs = lib.optionals buildTests [ gtest ];
 
+  propagatedBuildInputs = [
     logmich
-    tinycmmc
   ]
-  ++ (lib.optional withJsoncpp jsoncpp)
-  ++ (lib.optional withSexpcpp sexpcpp);
+  ++ lib.optional withJsoncpp jsoncpp
+  ++ lib.optional withSexpcpp sexpcpp;
 }

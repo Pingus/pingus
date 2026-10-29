@@ -16,6 +16,8 @@
 
 #include "jsonpretty_writer_impl.hpp"
 
+#include "float_format.hpp"
+
 #include <sstream>
 #include <ostream>
 #include <assert.h>
@@ -202,7 +204,8 @@ JsonPrettyWriterImpl::write(std::string_view key, float value)
 
   write_indent();
   write_quoted_string(key);
-  m_out << ": " << value;
+  m_out << ": ";
+  write_float(m_out, value);
   write_separator();
 }
 
@@ -265,7 +268,7 @@ JsonPrettyWriterImpl::write(std::string_view key, std::span<float const> values)
   write_quoted_string(key);
   m_out << ": [";
   for(auto const& value : values) {
-    m_out << value;
+    write_float(m_out, value);
     if (&value != &values.back()) {
       m_out << ", ";
     }

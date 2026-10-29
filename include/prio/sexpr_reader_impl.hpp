@@ -30,11 +30,13 @@ class SExprReaderDocumentImpl final : public ReaderDocumentImpl
 public:
   SExprReaderDocumentImpl(sexp::Value sx, ErrorHandler error_handler,
                           std::optional<std::string> filename);
+  SExprReaderDocumentImpl(SExprReaderDocumentImpl const&) = delete;
+  SExprReaderDocumentImpl& operator=(SExprReaderDocumentImpl const&) = delete;
 
   ReaderObject get_root() const override;
   std::optional<std::string> get_filename() const override { return m_filename; }
   void set_parent(ReaderDocument const* parent) override { m_parent = parent; }
-  ReaderDocument const& get_parent() const { assert(m_parent != nullptr); return *m_parent; }
+  ReaderDocument const& get_parent() const override { assert(m_parent != nullptr); return *m_parent; }
 
   void error(sexp::Value const& sx, std::string_view message) const;
   void error(ErrorHandler error_handler, sexp::Value const& sx, std::string_view message) const;
