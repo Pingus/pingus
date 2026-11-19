@@ -115,4 +115,12 @@ TYPED_TEST(tpoint_test, clamp)
   EXPECT_EQ(geom::clamp(point(100, 150), rect(20, 50, 200, 500)), point(100, 150));
 }
 
+TYPED_TEST(tpoint_test, point_difference)
+{
+  using point = tpoint<TypeParam>;
+  using offset = toffset<TypeParam>;
+  EXPECT_EQ(point(10, 20) - point(3, 5), offset(7, 15));
+  EXPECT_EQ(point(3, 5) + (point(10, 20) - point(3, 5)), point(10, 20));
+}
+
 /* EOF */

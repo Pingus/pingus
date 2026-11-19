@@ -61,7 +61,8 @@
             argpp = call ./external/argpp/argpp.nix { };
 
             geomcpp = call ./external/geomcpp/geomcpp.nix {
-              self = selfFor ./external/geomcpp;
+              version = pkgs'.lib.strings.removeSuffix "\n"
+                (builtins.readFile ./external/geomcpp/VERSION);
               glm = pkgs'.glm.overrideAttrs (_: { meta = { }; });
             };
 

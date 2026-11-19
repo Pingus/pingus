@@ -17,28 +17,46 @@
 #    misrepresented as being the original software.
 # 3. This notice may not be removed or altered from any source distribution.
 
-cmake_minimum_required(VERSION 3.15)
-project(geom VERSION 0.0.0)
+cmake_minimum_required(VERSION 3.10...4.1)
 
-include(GNUInstallDirs)
-include(CMakePackageConfigHelpers)
+# Source of truth: top-level VERSION file (e.g. "0.1.0-dev"), or
+# -DPROJECT_VERSION_FULL=... from packaging (Nix may append .<revCount>+g<rev>).
+# A parent project's PROJECT_VERSION_FULL isn't ours when we are a subdirectory
+if(NOT DEFINED PROJECT_VERSION_FULL OR NOT CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION" PROJECT_VERSION_FULL LIMIT_COUNT 1)
+endif()
 
-option(BUILD_TESTS "Build test cases" OFF)
-option(WARNINGS "Enable extra compiler warnings" OFF)
-option(WERROR "Treat warnings as errors" OFF)
+# CMake project() VERSION expects major[.minor[.patch[.tweak]]]; strip
+# any -dev / +git suffix for the numeric project version.
+string(REGEX MATCH "^[0-9]+(\\.[0-9]+)*" _project_version_cmake "${PROJECT_VERSION_FULL}")
+
+project(geom VERSION ${_project_version_cmake} LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(WARNINGS_CXX_FLAGS "")
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+
+option(BUILD_TESTS "Build test cases" OFF)
+option(WARNINGS "Switch on extra warnings" OFF)
+option(WERROR "Turn warnings into errors" OFF)
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  set(_geom_is_top_level ON)
+else()
+  set(_geom_is_top_level OFF)
+endif()
+option(GEOM_INSTALL "Generate install and export rules, off by default when geom is a subdirectory" ${_geom_is_top_level})
+
+set(GEOM_WARNINGS_CXX_FLAGS "")
 if(WERROR)
-  list(APPEND WARNINGS_CXX_FLAGS -Werror)
+  list(APPEND GEOM_WARNINGS_CXX_FLAGS -Werror)
 endif()
 if(WARNINGS)
-  list(APPEND WARNINGS_CXX_FLAGS -Wall -Wextra)
+  list(APPEND GEOM_WARNINGS_CXX_FLAGS -Wall -Wextra)
   if(CMAKE_COMPILER_IS_GNUCXX)
-    list(APPEND WARNINGS_CXX_FLAGS
+    list(APPEND GEOM_WARNINGS_CXX_FLAGS
       -Wcast-align
       -Wcast-qual
       -Wconversion
@@ -68,10 +86,10 @@ if(WARNINGS)
       -pedantic
     )
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 8)
-      list(APPEND WARNINGS_CXX_FLAGS -Wint-in-bool-context)
+      list(APPEND GEOM_WARNINGS_CXX_FLAGS -Wint-in-bool-context)
     endif()
   elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    list(APPEND WARNINGS_CXX_FLAGS
+    list(APPEND GEOM_WARNINGS_CXX_FLAGS
       -Weverything
       -Wno-c++98-compat
       -Wno-c++98-compat-pedantic
@@ -103,6 +121,8 @@ if(WARNINGS)
   endif()
 endif()
 
+
+# Must guard find_package(glm) as otherwise error will result
 if(NOT TARGET glm::glm)
   find_package(glm REQUIRED)
 endif()
@@ -117,7 +137,8 @@ target_include_directories(geom INTERFACE
   $<INSTALL_INTERFACE:include>)
 target_link_libraries(geom INTERFACE glm::glm)
 target_compile_definitions(geom INTERFACE -DGLM_ENABLE_EXPERIMENTAL)
-set_target_properties(geom PROPERTIES PUBLIC_HEADER "${GEOM_HEADERS}")
+set_target_properties(geom PROPERTIES PUBLIC_HEADER
+  "${GEOM_HEADERS}")
 
 if(BUILD_TESTS)
   enable_testing()
@@ -125,51 +146,56 @@ if(BUILD_TESTS)
 
   file(GLOB TEST_GEOM_SOURCES test/*_test.cpp)
   add_executable(test_geom ${TEST_GEOM_SOURCES})
-  target_compile_options(test_geom PRIVATE ${WARNINGS_CXX_FLAGS})
+  target_compile_options(test_geom PRIVATE ${GEOM_WARNINGS_CXX_FLAGS})
   target_link_libraries(test_geom
     GTest::GTest
     GTest::Main
-    geom::geom)
+    geom)
+
   add_test(NAME test_geom
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMAND test_geom)
 endif()
 
-if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+if(GEOM_INSTALL)
   configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/geom.pc.in"
     "${CMAKE_CURRENT_BINARY_DIR}/geom.pc"
     @ONLY)
+
   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/geom.pc"
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 
+  # Export and install (inlined from former tinycmmc helper)
   install(TARGETS geom
     EXPORT geom
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/geom)
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/geom")
 
   configure_package_config_file(
-    geom-config.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/geom-config.cmake
-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/geom)
+    "${CMAKE_CURRENT_SOURCE_DIR}/geom-config.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/geom-config.cmake"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/geom")
 
   write_basic_package_version_file(
-    ${CMAKE_CURRENT_BINARY_DIR}/geom-config-version.cmake
-    VERSION ${PROJECT_VERSION}
+    "${CMAKE_CURRENT_BINARY_DIR}/geom-config-version.cmake"
+    VERSION "${PROJECT_VERSION}"
     COMPATIBILITY SameMinorVersion)
 
   export(EXPORT geom
     NAMESPACE geom::
-    FILE ${CMAKE_CURRENT_BINARY_DIR}/geom-targets.cmake)
+    FILE "${CMAKE_CURRENT_BINARY_DIR}/geom-targets.cmake")
 
   install(EXPORT geom
     FILE geom-targets.cmake
     NAMESPACE geom::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/geom)
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/geom")
 
   install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/geom-config.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/geom-config-version.cmake
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/geom)
+    "${CMAKE_CURRENT_BINARY_DIR}/geom-config-version.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/geom-config.cmake"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/geom")
 endif()
 
 # EOF #

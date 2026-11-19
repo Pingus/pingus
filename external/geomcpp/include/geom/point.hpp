@@ -118,6 +118,14 @@ tpoint<T> operator-(tpoint<T> const& point, toffset<T> const& offset)
                    point.y() - offset.y());
 }
 
+/** The offset that moves \a rhs onto \a lhs */
+template<typename T> inline
+toffset<T> operator-(tpoint<T> const& lhs, tpoint<T> const& rhs)
+{
+  return toffset<T>(lhs.x() - rhs.x(),
+                    lhs.y() - rhs.y());
+}
+
 template<typename T> inline
 float distance(tpoint<T> const& lhs, tpoint<T> const& rhs)
 {

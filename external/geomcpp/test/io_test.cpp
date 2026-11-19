@@ -18,6 +18,8 @@
 // 3. This notice may not be removed or altered from any source distribution.
 
 #include <gtest/gtest.h>
+
+#include <format>
 #include <sstream>
 
 #include <geom/geom.hpp>
@@ -140,6 +142,13 @@ TEST(io_test, frect_from_string)
   EXPECT_EQ(frect(fpoint(4, 5), fsize(123, 456)), frect_from_string("123x456+4+5"));
   EXPECT_THROW({frect_from_string("AxB");}, std::invalid_argument);
   EXPECT_THROW({frect_from_string("1,2,3,4,5");}, std::invalid_argument);
+}
+
+TEST(io_test, format_offset_and_origin)
+{
+  EXPECT_EQ(std::format("{}", geom::ioffset(1, -2)), "ioffset(1, -2)");
+  EXPECT_EQ(std::format("{}", geom::foffset(0.5f, 2.0f)), "foffset(0.5, 2)");
+  EXPECT_EQ(std::format("{}", geom::origin::BOTTOM_CENTER), "bottom-center");
 }
 
 /* EOF */

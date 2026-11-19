@@ -1,19 +1,14 @@
-{ self
-, stdenv
+{ stdenv
 , lib
 , cmake
 , glm
 , gtest
+, version
 }:
 
 stdenv.mkDerivation {
   pname = "geomcpp";
-  version =
-    let
-      raw = lib.strings.removeSuffix "\n" (builtins.readFile ./VERSION);
-    in
-      if lib.hasPrefix "$Format" raw then "0.0.0"
-      else lib.removePrefix "v" raw;
+  inherit version;
 
   src = lib.cleanSource ./.;
 
@@ -23,6 +18,7 @@ stdenv.mkDerivation {
     "-DWARNINGS=ON"
     "-DWERROR=ON"
     "-DBUILD_TESTS=ON"
+    "-DPROJECT_VERSION_FULL=${version}"
   ];
 
   nativeBuildInputs = [

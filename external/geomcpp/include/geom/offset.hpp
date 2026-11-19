@@ -21,6 +21,7 @@
 #define HEADER_GEOMCPP_OFFSET_HPP
 
 #include <math.h>
+#include <stdexcept>
 #include <glm/glm.hpp>
 
 #include "fwd.hpp"

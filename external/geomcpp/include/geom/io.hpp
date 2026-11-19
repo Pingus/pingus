@@ -26,6 +26,7 @@
 #include <stdexcept>
 #include <string>
 
+#include "offset.hpp"
 #include "origin.hpp"
 #include "point.hpp"
 #include "size.hpp"
@@ -301,6 +302,38 @@ struct std::formatter<geom::frect>
   {
     return std::format_to(ctx.out(), "frect({}, {}, {}, {})",
                           v.left(), v.top(), v.right(), v.bottom());
+  }
+};
+
+template<>
+struct std::formatter<geom::ioffset>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::ioffset const& v, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "ioffset({}, {})", v.x(), v.y());
+  }
+};
+
+template<>
+struct std::formatter<geom::foffset>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::foffset const& v, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "foffset({}, {})", v.x(), v.y());
+  }
+};
+
+template<>
+struct std::formatter<geom::origin>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::origin const& v, auto& ctx) const
+  {
+    std::ostringstream os;
+    geom::operator<<(os, v);
+    return std::format_to(ctx.out(), "{}", os.str());
   }
 };
 

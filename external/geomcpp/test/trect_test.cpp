@@ -19,6 +19,8 @@
 
 #include <gtest/gtest.h>
 
+#include <type_traits>
+
 #include <geom/geom.hpp>
 
 using namespace geom;
@@ -242,6 +244,50 @@ TYPED_TEST(trect_test, anchored_rect)
 
   EXPECT_EQ(anchored_rect(point(100, 50), size(60, 40), origin::BOTTOM_RIGHT),
             rect(40, 10, 100, 50));
+}
+
+TYPED_TEST(trect_test, intersects_is_strict)
+{
+  using rect = trect<TypeParam>;
+  rect const a(0, 0, 10, 10);
+  EXPECT_TRUE(intersects(a, rect(5, 5, 15, 15)));
+  EXPECT_FALSE(intersects(a, rect(10, 0, 20, 10))); // touching edge
+  EXPECT_FALSE(intersects(a, rect(10, 10, 20, 20))); // touching corner
+  EXPECT_FALSE(intersects(a, rect(20, 20, 30, 30)));
+  EXPECT_FALSE(intersects(a, rect(5, 5, 5, 5))); // empty
+}
+
+TYPED_TEST(trect_test, is_empty)
+{
+  using rect = trect<TypeParam>;
+  EXPECT_TRUE(rect(0, 0, 0, 10).is_empty());
+  EXPECT_TRUE(intersection(rect(0, 0, 10, 10), rect(20, 20, 30, 30)).is_empty());
+  EXPECT_FALSE(rect(0, 0, 1, 1).is_empty());
+}
+
+TYPED_TEST(trect_test, area_keeps_type)
+{
+  using rect = trect<TypeParam>;
+  static_assert(std::is_same_v<decltype(area(rect())), TypeParam>);
+  EXPECT_EQ(area(rect(0, 0, 4, 5)), TypeParam(20));
+}
+
+TYPED_TEST(trect_test, edit_helpers)
+{
+  using rect = trect<TypeParam>;
+  using point = tpoint<TypeParam>;
+  using size = tsize<TypeParam>;
+  rect const r(10, 20, 30, 40);
+  EXPECT_EQ(with_left(r, TypeParam(0)), rect(0, 20, 30, 40));
+  EXPECT_EQ(with_right(r, TypeParam(50)), rect(10, 20, 50, 40));
+  EXPECT_EQ(with_top(r, TypeParam(0)), rect(10, 0, 30, 40));
+  EXPECT_EQ(with_bottom(r, TypeParam(60)), rect(10, 20, 30, 60));
+  EXPECT_EQ(with_pos(r, point(0, 0)), rect(0, 0, 20, 20));
+  EXPECT_EQ(with_size(r, size(5, 5)), rect(10, 20, 15, 25));
+  EXPECT_EQ(from_center(point(20, 30), size(20, 20)), r);
+  EXPECT_EQ(anchor_point(r, origin::CENTER), point(20, 30));
+  EXPECT_EQ(anchor_point(r, origin::BOTTOM_RIGHT), point(30, 40));
+  EXPECT_EQ(anchor_point(r, origin::TOP_LEFT), point(10, 20));
 }
 
 /* EOF */
