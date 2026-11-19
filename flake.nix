@@ -219,12 +219,25 @@
           '';
 
         # MinGW target packages, hosted under packages.${system} (Linux builder).
+        # libogg's win32/ogg.def declares "LIBRARY ogg", so its import
+        # library makes libvorbis, opusfile, ... load ogg.dll, while CMake
+        # under MinGW names the file libogg.dll. Drop the prefix so the
+        # shipped DLL has the name its importers ask for (a target property:
+        # CMake's Windows-GNU platform file resets CMAKE_SHARED_LIBRARY_PREFIX).
+        mingwOverlay = final: prev: {
+          libogg = prev.libogg.overrideAttrs (old: {
+            postPatch = (old.postPatch or "") + ''
+              echo 'set_target_properties(ogg PROPERTIES PREFIX "")' >> CMakeLists.txt
+            '';
+          });
+        };
+
         # Sound uses openal-soft-win32 / libmodplug-win32 — not pkgsCross openal (ffmpeg).
         win64Game = if isWin then null else mkPingus {
-          pkgs' = pkgs.pkgsCross.mingwW64;
+          pkgs' = pkgs.pkgsCross.mingwW64.appendOverlays [ mingwOverlay ];
         };
         win32Game = if isWin then null else mkPingus {
-          pkgs' = pkgs.pkgsCross.mingw32;
+          pkgs' = pkgs.pkgsCross.mingw32.appendOverlays [ mingwOverlay ];
         };
 
         win64Package = if isWin then null else mkWinFlat {
