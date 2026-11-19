@@ -264,9 +264,11 @@
               config.allowUnfree = true;
               config.android_sdk.accept_license = true;
             };
-            buildToolsVersion = "30.0.3";
+            # SDL3's Java side (SDLActivity) needs API 35 to compile; the
+            # APK still targets minSdk 22 (packagePlatform).
+            buildToolsVersion = "35.0.0";
             packagePlatform = "22";
-            compilePlatform = "33";
+            compilePlatform = "35";
             # Need full std::format (format_to/vformat). r23: no <format>;
             # r26.1: header present but incomplete in practice; r27 is solid.
             ndkVersion = "29.0.14206865";
@@ -298,11 +300,10 @@
 
             android = import ./nix/android.nix {
               pkgs = androidPkgs;
-              sdlSrc = sdl2-src;
-              sdlVersion = "2.30.3";
-              sdlMixerSrc = sdl2-mixer-src;
-              sdlMixerVersion = "2.8.0";
-              libxmpSrc = libxmp-src;
+              sdlSrc = androidPkgs.sdl3.src;
+              sdlVersion = androidPkgs.sdl3.version;
+              sdlImageSrc = androidPkgs.sdl3-image.src;
+              sdlImageVersion = androidPkgs.sdl3-image.version;
               inherit androidSdk buildToolsVersion packagePlatform compilePlatform targetAbis;
             };
 
@@ -315,10 +316,6 @@
               if self ? lastModifiedDate then builtins.substring 0 8 self.lastModifiedDate
               else "00000000";
             androidApkName = "pingus-${gitDate}-${gitRev}.apk";
-            stbImageH = androidPkgs.fetchurl {
-              url = "https://raw.githubusercontent.com/nothings/stb/refs/heads/master/stb_image.h";
-              sha256 = "sha256-WUwv411JSItDgtv67I+YNm3vyoGdkWrJW+zz519CALM=";
-            };
           in {
             packages = {
               arkos-sysroot = r36s.arkosSysroot;
@@ -339,7 +336,6 @@
                 gameExternalDir = ./external;
                 glmIncludeDir = "${androidPkgs.glm}/include";
                 gameDataDir = ./data;
-                stbImageH = stbImageH;
                 gameVersion = pingusVersion;
               };
               wasm-sdl3 = wasm.sdl3Wasm;
@@ -371,7 +367,6 @@
                   gameExternalDir = ./external;
                   glmIncludeDir = "${androidPkgs.glm}/include";
                   gameDataDir = ./data;
-                  stbImageH = stbImageH;
                   gameVersion = pingusVersion;
                 };
                 apkFileName = androidApkName;

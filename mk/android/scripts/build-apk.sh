@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Builds the Pingus APK, linking SDL2 as a prebuilt library.
+# Builds the Pingus APK, linking prebuilt SDL3 (shared) and SDL3_image (static).
 # Required environment:
 #   ANDROID_HOME, BUILD_TOOLS_VERSION, PACKAGE_PLATFORM, TARGET_ABIS
 #   APP_NAME, APP_DIR          - android/ packaging dir (manifest, res, jni/)
 #   GAME_SRC_DIR               - path to C++ sources (repo src/)
 #   GAME_DATA_DIR              - required data/ tree packaged as assets
 #   APPLICATION_MK, TOP_ANDROID_MK, SDL_PREBUILT_MK, SDL_ANDROID_LIBS
-#   KEYSTORE, STB_IMAGE_H
+#   KEYSTORE
 #   PINGUS_VERSION           - full version string (e.g. 0.8.0-dev+gabc1234)
 set -euo pipefail
 
@@ -213,26 +213,8 @@ fi
 export ENABLE_ANDROID_SOUND
 
 
-# IMG_* shim + headers.
-cp "$APP_DIR/jni/img_stb_min.c" src/jni/src/img_stb_min.c
-cp "$APP_DIR/jni/android_SDL_image.h" src/jni/src/SDL_image.h
-if [ -n "${STB_IMAGE_H:-}" ] && [ -f "$STB_IMAGE_H" ]; then
-  cp "$STB_IMAGE_H" src/jni/src/stb_image.h
-elif [ -f "$APP_DIR/jni/stb_image.h" ]; then
-  cp "$APP_DIR/jni/stb_image.h" src/jni/src/stb_image.h
-else
-  echo "error: need STB_IMAGE_H or android/jni/stb_image.h (upstream stb)" >&2
-  exit 1
-fi
-
 cp "$SDL_PREBUILT_MK" src/jni/SDL/Android.mk
 cp -r "$SDL_ANDROID_LIBS/include" src/jni/SDL/include
-# SDL2_mixer headers (SDL_mixer.h) live next to SDL headers when present.
-if [ -f src/jni/SDL/include/SDL_mixer.h ] || [ -f src/jni/SDL/include/SDL2/SDL_mixer.h ]; then
-  echo "SDL2_mixer headers present"
-else
-  echo "warning: SDL_mixer.h not found under SDL include — sound build may fail" >&2
-fi
 
 # Game data → APK assets/ (AssetManager root).
 mkdir -p src/assets
@@ -245,7 +227,7 @@ ASSET_SIZE=$(du -sh src/assets | awk '{print $1}')
 echo "Packaging $ASSET_COUNT asset files ($ASSET_SIZE) from $GAME_DATA_DIR"
 
 # Flat list of asset paths so native code can "opendir" without AAssetManager_list.
-# Paths are relative to AssetManager root (same as SDL_RWFromFile).
+# Paths are relative to AssetManager root (same as SDL_IOFromFile).
 ( cd src/assets && find . -type f ! -name 'android-asset-index.txt' | sed 's|^\./||' | sort > android-asset-index.txt )
 INDEX_COUNT=$(wc -l < src/assets/android-asset-index.txt | tr -d ' ')
 echo "Wrote android-asset-index.txt ($INDEX_COUNT paths)"

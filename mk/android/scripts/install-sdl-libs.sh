@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Collects sdl-libs build outputs into $out.
+# Collects sdl-libs build outputs into $out: lib/<abi>/{libSDL3.so,libSDL3_image.a},
+# include/SDL3/ and include/SDL3_image/, dex/classes.dex.
 #   TARGET_ABIS - space-separated list, e.g. "armeabi-v7a arm64-v8a"
 #   $out        - set by Nix installPhase
 set -euo pipefail
@@ -7,14 +8,11 @@ set -euo pipefail
 mkdir -p "$out/lib" "$out/dex" "$out/include"
 for abi in $TARGET_ABIS; do
   mkdir -p "$out/lib/$abi"
-  cp sdl-jni/libs/"$abi"/*.so "$out/lib/$abi/"
+  cp sdl-jni/libs/"$abi"/libSDL3.so sdl-jni/obj/local/"$abi"/libSDL3_image.a "$out/lib/$abi/"
 done
 cp -r sdl-jni/SDL/include/. "$out/include/"
-if [ -d sdl-jni/SDL2_mixer_include ]; then
-  # SDL_mixer.h alongside SDL headers (or under include/ as upstream lays out).
-  cp -a sdl-jni/SDL2_mixer_include/. "$out/include/"
-fi
+cp -r sdl-jni/SDL_image/include/. "$out/include/"
 cp classes/classes.dex "$out/dex/classes.dex"
 
 echo "Installed native libs:"
-find "$out/lib" -name '*.so' | sort
+find "$out/lib" -type f | sort

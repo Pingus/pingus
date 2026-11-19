@@ -29,7 +29,6 @@ LOCAL_MODULE := main
 # Recursively collect C++ under this tree (game + deps/*).
 RWILDCARD = $(foreach d,$(wildcard $1*),$(call RWILDCARD,$d/,$2) $(filter $(subst *,%,$2),$d))
 LOCAL_SRC_FILES := $(patsubst $(LOCAL_PATH)/%,%,$(call RWILDCARD,$(LOCAL_PATH)/,%.cpp))
-LOCAL_SRC_FILES += $(patsubst $(LOCAL_PATH)/%,%,$(wildcard $(LOCAL_PATH)/*.c))
 
 # Exclude desktop-only / optional backends when present under the tree.
 LOCAL_SRC_FILES := $(filter-out %/win32/% win32/%,$(LOCAL_SRC_FILES))
@@ -43,7 +42,6 @@ endif
 
 LOCAL_C_INCLUDES := \
 	$(LOCAL_PATH)/../SDL/include \
-	$(LOCAL_PATH)/../SDL/include/SDL2 \
 	$(LOCAL_PATH) \
 	$(LOCAL_PATH)/../external_includes \
 	$(LOCAL_PATH)/../external_includes/argpp \
@@ -68,7 +66,9 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../audio/include
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../audio/include/AL
 endif
 
-LOCAL_SHARED_LIBRARIES := SDL2
+LOCAL_SHARED_LIBRARIES := SDL3
+
+LOCAL_STATIC_LIBRARIES := SDL3_image
 
 LOCAL_LDLIBS := -llog -landroid -lz -lGLESv2 -lEGL
 
@@ -76,15 +76,15 @@ ifeq ($(ENABLE_ANDROID_SOUND),1)
 # WHOLE_STATIC: OpenAL Soft registers backends via static constructors;
 # regular static linking drops them and alcOpenDevice fails silently.
 LOCAL_WHOLE_STATIC_LIBRARIES := openal
-LOCAL_STATIC_LIBRARIES := modplug
+LOCAL_STATIC_LIBRARIES += modplug
 LOCAL_LDLIBS += -lOpenSLES
-LOCAL_CFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_USE_GLES=1
-LOCAL_CPPFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_USE_GLES=1 -std=c++23 -D_LIBCPP_ENABLE_EXPERIMENTAL=1
+LOCAL_CFLAGS += -DANDROID -DPINGUS_USE_GLES=1
+LOCAL_CPPFLAGS += -DANDROID -DPINGUS_USE_GLES=1 -std=c++23 -D_LIBCPP_ENABLE_EXPERIMENTAL=1
 LOCAL_CFLAGS += -DWSTSOUND_WITH_MODPLUG=1
 LOCAL_CPPFLAGS += -DWSTSOUND_WITH_MODPLUG=1
 else
-LOCAL_CFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_NO_SOUND=1 -DPINGUS_USE_GLES=1
-LOCAL_CPPFLAGS += -DUSE_SDL2 -DANDROID -DPINGUS_NO_SOUND=1 -DPINGUS_USE_GLES=1 -std=c++23 -D_LIBCPP_ENABLE_EXPERIMENTAL=1
+LOCAL_CFLAGS += -DANDROID -DPINGUS_NO_SOUND=1 -DPINGUS_USE_GLES=1
+LOCAL_CPPFLAGS += -DANDROID -DPINGUS_NO_SOUND=1 -DPINGUS_USE_GLES=1 -std=c++23 -D_LIBCPP_ENABLE_EXPERIMENTAL=1
 endif
 
 # ndk-build skips sexpcpp's CMake checks; NDK 29's libc++ has float charconv
