@@ -17,6 +17,7 @@
 #ifndef HEADER_PRIO_READER_IMPL_HPP
 #define HEADER_PRIO_READER_IMPL_HPP
 
+#include <cassert>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -32,12 +33,21 @@ class ReaderObject;
 class ReaderDocumentImpl
 {
 public:
+  ReaderDocumentImpl() : m_parent(nullptr) {}
+  ReaderDocumentImpl(ReaderDocumentImpl const&) = delete;
+  ReaderDocumentImpl& operator=(ReaderDocumentImpl const&) = delete;
   virtual ~ReaderDocumentImpl() {}
 
   virtual ReaderObject get_root() const = 0;
   virtual std::optional<std::string> get_filename() const = 0;
-  virtual void set_parent(ReaderDocument const* parent) = 0;
-  virtual ReaderDocument const& get_parent() const = 0;
+
+  /** The ReaderDocument owning this impl, updated when it is moved.
+      Non-virtual: every backend tracks it the same way. */
+  void set_parent(ReaderDocument const* parent) { m_parent = parent; }
+  ReaderDocument const& get_parent() const { assert(m_parent != nullptr); return *m_parent; }
+
+private:
+  ReaderDocument const* m_parent;
 };
 
 class ReaderObjectImpl

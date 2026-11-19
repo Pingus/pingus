@@ -34,10 +34,10 @@ namespace prio {
 
 JsonReaderDocumentImpl::JsonReaderDocumentImpl(Json::Value value, ErrorHandler error_handler,
                                                std::optional<std::string> filename) :
+  ReaderDocumentImpl(),
   m_value(std::move(value)),
   m_error_handler(error_handler),
-  m_filename(std::move(filename)),
-  m_parent(nullptr)
+  m_filename(std::move(filename))
 {
 }
 

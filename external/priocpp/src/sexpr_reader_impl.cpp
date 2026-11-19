@@ -36,10 +36,10 @@ namespace prio {
 
 SExprReaderDocumentImpl::SExprReaderDocumentImpl(sexp::Value sx, ErrorHandler error_handler,
                                                  std::optional<std::string> filename) :
+  ReaderDocumentImpl(),
   m_sx(std::move(sx)),
   m_error_handler(error_handler),
-  m_filename(std::move(filename)),
-  m_parent(nullptr)
+  m_filename(std::move(filename))
 {
 }
 

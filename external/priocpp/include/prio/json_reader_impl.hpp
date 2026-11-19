@@ -35,8 +35,6 @@ public:
 
   ReaderObject get_root() const override;
   std::optional<std::string> get_filename() const override { return m_filename; }
-  void set_parent(ReaderDocument const* parent) override { m_parent = parent; }
-  ReaderDocument const& get_parent() const override { assert(m_parent != nullptr); return *m_parent; }
 
   void error(Json::Value const& json, std::string_view message) const;
   void error(ErrorHandler error_handler, Json::Value const& json, std::string_view message) const;
@@ -45,7 +43,6 @@ private:
   Json::Value m_value;
   ErrorHandler m_error_handler;
   std::optional<std::string> m_filename;
-  ReaderDocument const* m_parent;
 };
 
 class JsonReaderObjectImpl final : public ReaderObjectImpl
