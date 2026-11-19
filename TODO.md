@@ -61,8 +61,9 @@ land or scope changes.
 - [x] Android: SDL3 (ndk-build, Java glue from SDL3), real SDL3_image
       (static, stb backend) instead of the `img_stb_min.c` shim
 - [ ] Android: test the SDL3 APK on a device
-- [ ] R36S: build SDL3 (KMSDRM + GLES) against `arkos-sysroot` and ship
-      `libSDL3.so.0` in the port (sysroot only provides SDL2)
+- [x] R36S: build SDL3 (KMSDRM + GLES) + SDL3_image against `arkos-sysroot`
+      and ship `libSDL3.so.0` / `libSDL3_image.so.0` in the port
+- [ ] R36S: test the SDL3 build on the device (KMSDRM + GLES, joystick)
 - [ ] Drop the now unused `sdl2-*-src` and `SDL2*-win32` flake inputs
 
 ### Dependencies

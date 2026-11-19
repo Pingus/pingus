@@ -27,8 +27,6 @@
 #include <new>
 #include <system_error>
 
-#include <SDL.h>
-
 #ifdef PINGUS_SHIM_FORMAT_ARG
 #  include <format>
 
@@ -118,13 +116,6 @@ extern "C" int _dl_find_object(void* address, struct dl_find_object* result)
 extern "C" void __cxa_call_terminate(void*) noexcept
 {
   std::terminate();
-}
-
-// Some SDL2_image builds expose IMG_GetError only as a macro → SDL_GetError.
-// Older headers declare a real function; the .so then has no such symbol.
-extern "C" const char* IMG_GetError(void)
-{
-  return SDL_GetError();
 }
 
 namespace std {

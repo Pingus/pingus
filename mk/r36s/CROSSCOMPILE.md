@@ -7,7 +7,7 @@ Pingus’s native resolution (**640×480**) matches the panel. Prefer windowed o
 
 | Setting | Value |
 |---------|--------|
-| Video | **SDL2** + **OpenGL ES 2** (`-DPINGUS_USE_GLES=ON`) — Mali-G31 / libmali or Mesa |
+| Video | **SDL3** (KMS/DRM, bundled) + **OpenGL ES 2** (`-DPINGUS_USE_GLES=ON`) — Mali-G31 / libmali or Mesa |
 | Sound | wstsound when available (`-DPINGUS_ENABLE_SOUND=ON`) |
 | XDG | often off on CFW (`-DPINGUS_NO_XDGCPP=ON`) |
 | ABI (preferred) | **aarch64-linux-gnu** |
@@ -24,6 +24,7 @@ Stock ArkOS tracks **Ubuntu 19.10**-era libraries. That means roughly:
 | glibc | **2.30** (eoan); some images stay near Debian Buster’s **2.28** |
 | libstdc++ | GCC 8/9 era |
 | SDL2 | Custom ArkOS builds (often 2.0.x with KMS/DRM patches), not stock Ubuntu only |
+| SDL3 | **Not available** — built from source and shipped in the port's `libs/` |
 
 A binary linked against **modern nixpkgs / Ubuntu 22.04+ glibc** will fail on the device with:
 
@@ -48,13 +49,18 @@ On a host with `aarch64-linux-gnu-gcc` (Debian/Ubuntu: `gcc-aarch64-linux-gnu`):
 sudo apt-get update
 sudo apt-get install --reinstall -y \
   libc6-dev linux-libc-dev libstdc++-9-dev \
-  libsdl2-dev libsdl2-image-dev \
-  libgles2-mesa-dev libegl1-mesa-dev libgbm-dev \
+  libgles2-mesa-dev libegl1-mesa-dev libgbm-dev libdrm-dev libudev-dev \
   zlib1g-dev libpng-dev pkg-config
 
 # From the build machine:
 ./mk/r36s/scripts/make-sysroot-from-device.sh ark@<device-ip> $HOME/arkos-sysroot-aarch64
 ```
+
+ArkOS has no SDL3 packages: cross-build SDL3 (`-DSDL_KMSDRM=ON
+-DSDL_OPENGLES=ON -DSDL_X11=OFF -DSDL_WAYLAND=OFF`) and SDL3_image
+(`-DSDLIMAGE_BACKEND_STB=ON`) against the same sysroot first, see
+`sdl3R36s` / `sdl3ImageR36s` in `nix/r36s.nix` for the full flag set,
+and ship `libSDL3.so.0` / `libSDL3_image.so.0` next to the binary.
 
 Then:
 
@@ -62,6 +68,8 @@ Then:
 export ARKOS_SYSROOT=$HOME/arkos-sysroot-aarch64
 cmake -S . -B build-r36s \
   -DCMAKE_TOOLCHAIN_FILE=mk/r36s/toolchain-arkos-aarch64.cmake \
+  -DSDL3_DIR=<sdl3-prefix>/lib/cmake/SDL3 \
+  -DSDL3_image_DIR=<sdl3-image-prefix>/lib/cmake/SDL3_image \
   -DPINGUS_USE_GLES=ON -DPINGUS_ENABLE_SOUND=ON -DPINGUS_NO_XDGCPP=ON
 cmake --build build-r36s -j"$(nproc)"
 ```
@@ -77,6 +85,7 @@ cmake --build build-r36s -j"$(nproc)"
 
 ```bash
 nix build .#arkos-sysroot          # unpack-only derivation
+nix build .#sdl3-r36s .#sdl3-image-r36s  # SDL3 + SDL3_image for ArkOS
 nix build .#pingus-r36s            # aarch64 binary + data
 nix build .#pingus-r36s-portmaster # PortMaster tree under result/
 nix build .#pingus-r36s-portmaster-zip
@@ -122,6 +131,7 @@ Manual layout:
   Pingus.sh      # launcher (may source PortMaster control.txt)
   pingus/
     pingus       # binary
+    libs/        # SDL3, SDL3_image, OpenAL Soft, libmodplug
     data/        # game data
 ```
 
@@ -141,7 +151,7 @@ Useful on-device checks:
 ```bash
 # Prefer matching mali GBM EGL+GLES from one tree when mixing mesa/mali
 export LD_LIBRARY_PATH=/usr/local/lib/aarch64-linux-gnu:$LD_LIBRARY_PATH
-export SDL_VIDEODRIVER=KMSDRM
+export SDL_VIDEO_DRIVER=kmsdrm
 ./pingus --renderer opengl --geometry 640x480
 ```
 

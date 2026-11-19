@@ -283,7 +283,8 @@
             }).androidsdk;
 
             r36s = import ./nix/r36s.nix {
-              inherit (pkgs) lib stdenv stdenvNoCC cmake pkg-config writeShellScript zip glm;
+              inherit (pkgs) lib stdenv stdenvNoCC cmake pkg-config writeShellScript zip glm
+                fetchurl dpkg sdl3 sdl3-image;
               sysrootSrc = arkos-sysroot;
               pkgsCross = pkgs.pkgsCross;
             };
@@ -319,6 +320,8 @@
           in {
             packages = {
               arkos-sysroot = r36s.arkosSysroot;
+              sdl3-r36s = r36s.sdl3R36s;
+              sdl3-image-r36s = r36s.sdl3ImageR36s;
               pingus-r36s = pingusR36s;
               pingus-r36s-portmaster = pingusR36sPortMaster;
               pingus-r36s-portmaster-zip = r36s.mkPingusR36sPortMasterZip {

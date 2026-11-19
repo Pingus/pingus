@@ -1,8 +1,13 @@
 # R36S / ArkOS (RK3326) cross builds against a published ArkOS sysroot.
 #
 # The sysroot tarball supplies aarch64 headers + shared libs (glibc ~2.30 era,
-# SDL2, GLES, …) so the binary can run on stock ArkOS — unlike pkgsCross
+# GLES, OpenAL, …) so the binary can run on stock ArkOS — unlike pkgsCross
 # alone, which links modern nixpkgs glibc/Mesa.
+#
+# ArkOS has no SDL3: SDL3 (KMS/DRM + GLES, device libraries loaded at
+# runtime) and SDL3_image (stb backend) are cross-built here from nixpkgs'
+# sources against the sysroot and shipped in the port's libs/, the same
+# approach as sdl-jstest's nix/r36s.nix.
 #
 # Usage:
 #   nix build .#arkos-sysroot
@@ -19,6 +24,10 @@
 , writeShellScript
 , zip
 , glm  # header-only; not present in ArkOS sysroot
+, fetchurl
+, dpkg
+, sdl3        # only .src / .version are used
+, sdl3-image  # only .src / .version are used
 }:
 
 let
@@ -96,7 +105,7 @@ let
     '';
 
     meta = with lib; {
-      description = "ArkOS / R36S aarch64 sysroot (glibc + SDL2 + GLES)";
+      description = "ArkOS / R36S aarch64 sysroot (glibc + GLES + OpenAL)";
       license = licenses.free;
       platforms = platforms.linux;
       hydraPlatforms = [];
@@ -121,8 +130,8 @@ let
   #   - -nostdlib++ so g++ does not force its libstdc++; link sysroot -lstdc++
   #   - -static-libgcc (libgcc.a / libgcc_eh.a have no versioned GLIBC_2.3x deps)
   #   - -fexceptions: Pingus/tinygettext/prio use try/catch (unlike SuperTux M1)
-  #   - --allow-shlib-undefined for DT_NEEDED of sysroot libs (e.g. opusfile
-  #     from SDL2_mixer) that exist on the device at runtime
+  #   - --allow-shlib-undefined for DT_NEEDED of sysroot libs that exist on
+  #     the device at runtime
   mkWrappers = sysroot: let
     gcc = crossCc.cc;
     tp = lib.removeSuffix "-" targetPrefix; # aarch64-unknown-linux-gnu
@@ -166,7 +175,7 @@ let
       -march=armv8-a \
       -mtune=cortex-a35 \
     '';
-    # Link flags: sysroot first for libc/SDL; add modern gcc -L so
+    # Link flags: sysroot first for libc; add modern gcc -L so
     # -static-libgcc can find libgcc.a / libgcc_eh.a (stdc++ is still the
     # absolute sysroot path in the cxx wrapper — not -lstdc++).
     # Explicit dynamic linker so the binary runs on ArkOS (not /nix/store/.../ld).
@@ -250,36 +259,6 @@ let
           echo "aarch64-arkos-g++: no libstdc++ in sysroot" >&2
           exit 1
         fi
-        sdl2=
-        sdl2image=
-        for cand in \
-          "${libdir}/libSDL2-2.0.so" \
-          "${libdir}/libSDL2-2.0.so.0" \
-          "${libdir}/libSDL2.so" \
-          "${sysroot}/usr/lib/libSDL2-2.0.so.0" \
-          "${sysroot}/usr/lib/libSDL2.so"
-        do
-          if [ -e "$cand" ]; then sdl2="$cand"; break; fi
-        done
-        for cand in \
-          "${libdir}/libSDL2_image-2.0.so" \
-          "${libdir}/libSDL2_image-2.0.so.0" \
-          "${libdir}/libSDL2_image.so" \
-          "${sysroot}/usr/lib/libSDL2_image-2.0.so.0" \
-          "${sysroot}/usr/lib/libSDL2_image.so"
-        do
-          if [ -e "$cand" ]; then sdl2image="$cand"; break; fi
-        done
-        if [ -z "$sdl2" ]; then
-          echo "aarch64-arkos-g++: no libSDL2 in sysroot" >&2
-          find "${sysroot}" -name 'libSDL2*' 2>/dev/null | head -20 >&2 || true
-          exit 1
-        fi
-        if [ -z "$sdl2image" ]; then
-          echo "aarch64-arkos-g++: no libSDL2_image in sysroot" >&2
-          find "${sysroot}" -name 'libSDL2_image*' 2>/dev/null | head -20 >&2 || true
-          exit 1
-        fi
         extra_audio=
         for cand in \
           "${libdir}/libopenal.so" \
@@ -307,12 +286,140 @@ let
           -nostdlib++ \
           ${commonLink} \
           "$@" \
-          -Wl,--no-as-needed "$stdcpp" "$sdl2image" "$sdl2" $extra_audio \
+          -Wl,--no-as-needed "$stdcpp" $extra_audio \
           -Wl,-Bdynamic -l:libpthread.so.0 -lm \
           -Wl,--as-needed
       fi
     '';
   };
+
+  # The ArkOS sysroot has libdrm/gbm libraries and headers but no
+  # pkg-config files, which SDL3's KMS/DRM check requires, and no udev.
+  # Ubuntu eoan's (ArkOS' base) dev packages fill that in; this sysroot is
+  # only used to build SDL3, Pingus links against arkosSysroot.
+  eoanDebs = [
+    { file = "pool/main/libd/libdrm/libdrm2_2.4.99-1ubuntu1_arm64.deb"; sha256 = "570407f42d8fac13c20be388fa45a1739ae0e900b30d9a924bd6599cd5e64d45"; }
+    { file = "pool/main/libd/libdrm/libdrm-dev_2.4.99-1ubuntu1_arm64.deb"; sha256 = "69071f9360391bdf3ec9a3842aef851b05aac363e9c35b89a8c31f8227d31af5"; }
+    { file = "pool/main/m/mesa/libgbm1_19.2.1-1ubuntu1_arm64.deb"; sha256 = "c982ba0bc2e00522e82bdde0b510fee50185b89670ff77853074d7b591c1f054"; }
+    { file = "pool/main/m/mesa/libgbm-dev_19.2.1-1ubuntu1_arm64.deb"; sha256 = "7732f9ebe793b7ea5dd45b7c7c531446ea6d9a4f366229630e70a1bd9a58252a"; }
+    { file = "pool/main/s/systemd/libudev1_242-7ubuntu3_arm64.deb"; sha256 = "af9cb069b6900a330d6ccf82f9e346ab1d74d5d8df76f4a50b76f63602904610"; }
+    { file = "pool/main/s/systemd/libudev-dev_242-7ubuntu3_arm64.deb"; sha256 = "2785dd52d59b7a590f5471b474fd8f09fd2ef5c79d889510b740e5ce95fc69fa"; }
+  ];
+  fetchDeb = d: fetchurl {
+    url = "http://old-releases.ubuntu.com/ubuntu/${d.file}";
+    inherit (d) sha256;
+  };
+
+  sdlSysroot = stdenvNoCC.mkDerivation {
+    pname = "arkos-sysroot-sdl3";
+    version = "0.1-openal+eoan-kmsdrm";
+    dontUnpack = true;
+    nativeBuildInputs = [ dpkg ];
+    installPhase = ''
+      mkdir -p $out
+      cp -a ${arkosSysroot}/. $out/
+      chmod -R u+w $out
+      ${lib.concatMapStrings (d: "dpkg-deb -x ${fetchDeb d} $out\n") eoanDebs}
+      # Re-root absolute symlinks (e.g. libudev.so -> /lib/...).
+      find $out -type l | while read -r link; do
+        target=$(readlink "$link")
+        case "$target" in
+          /nix/store/*) ;;
+          /*) ln -sfn "$out$target" "$link" ;;
+        esac
+      done
+    '';
+    dontFixup = true;
+  };
+
+  # CMake cross flags shared by SDL3 and SDL3_image (C only).
+  mkSdlCrossFlags = sysroot: wrappers: [
+    "-DCMAKE_SYSTEM_NAME=Linux"
+    "-DCMAKE_SYSTEM_PROCESSOR=aarch64"
+    "-DCMAKE_SYSROOT=${sysroot}"
+    "-DCMAKE_C_COMPILER=${wrappers.cc}"
+    "-DCMAKE_AR=${crossCc.bintools.bintools}/bin/${targetPrefix}ar"
+    "-DCMAKE_RANLIB=${crossCc.bintools.bintools}/bin/${targetPrefix}ranlib"
+    "-DCMAKE_STRIP=${crossCc.bintools.bintools}/bin/${targetPrefix}strip"
+    "-DCMAKE_BUILD_TYPE=Release"
+    "-DCMAKE_SKIP_RPATH=ON"
+  ];
+  mkSdlCrossAttrs = sysroot: {
+    nativeBuildInputs = [ cmake pkg-config ];
+    strictDeps = true;
+    PKG_CONFIG_PATH = "";
+    PKG_CONFIG_LIBDIR = "${sysroot}/usr/lib/aarch64-linux-gnu/pkgconfig:${sysroot}/lib/aarch64-linux-gnu/pkgconfig:${sysroot}/usr/share/pkgconfig";
+    PKG_CONFIG_SYSROOT_DIR = "${sysroot}";
+    # aarch64 ELF built against the ArkOS glibc: keep host fixups away.
+    dontPatchELF = true;
+    dontPatchShebangs = true;
+    dontStrip = true;
+    preConfigure = ''
+      export NIX_DONT_SET_RPATH=1
+      export NIX_NO_SELF_RPATH=1
+    '';
+  };
+
+  # SDL3 for KMS/DRM + GLES; libdrm / gbm / EGL / udev are loaded at
+  # runtime from the device.
+  sdl3R36s = stdenv.mkDerivation (mkSdlCrossAttrs sdlSysroot // {
+    pname = "sdl3-r36s";
+    inherit (sdl3) version src;
+    cmakeFlags = mkSdlCrossFlags sdlSysroot (mkWrappers sdlSysroot) ++ [
+      "-DSDL_SHARED=ON"
+      "-DSDL_STATIC=OFF"
+      "-DSDL_TESTS=OFF"
+      "-DSDL_TEST_LIBRARY=OFF"
+      "-DSDL_EXAMPLES=OFF"
+      "-DSDL_REVISION=SDL-${sdl3.version}"
+      "-DSDL_VENDOR_INFO=Pingus R36S"
+      "-DSDL_UNIX_CONSOLE_BUILD=ON"
+      "-DSDL_KMSDRM=ON"
+      "-DSDL_OPENGLES=ON"
+      "-DSDL_OPENGL=OFF"
+      "-DSDL_VULKAN=OFF"
+      "-DSDL_RENDER_VULKAN=OFF"
+      "-DSDL_RENDER_GPU=OFF"
+      "-DSDL_GPU=OFF"
+      "-DSDL_X11=OFF"
+      "-DSDL_WAYLAND=OFF"
+      # Pingus plays sound through OpenAL, not SDL audio.
+      "-DSDL_ALSA=OFF"
+      "-DSDL_PULSEAUDIO=OFF"
+      "-DSDL_PIPEWIRE=OFF"
+      "-DSDL_JACK=OFF"
+      "-DSDL_SNDIO=OFF"
+      "-DSDL_DBUS=OFF"
+      "-DSDL_IBUS=OFF"
+      "-DSDL_LIBURING=OFF"
+      "-DSDL_HIDAPI_LIBUSB=OFF"
+      "-DSDL_LIBUDEV=ON"
+      # eoan has libudev.so under /lib (rerooted into the sysroot).
+      "-DCMAKE_LIBRARY_PATH=/lib/aarch64-linux-gnu"
+    ];
+  });
+
+  # SDL3_image with the built-in stb (PNG/JPEG loading) and miniz
+  # (IMG_SavePNG) code: no image libraries needed on the device.
+  sdl3ImageR36s = stdenv.mkDerivation (mkSdlCrossAttrs arkosSysroot // {
+    pname = "sdl3-image-r36s";
+    inherit (sdl3-image) version src;
+    cmakeFlags = mkSdlCrossFlags arkosSysroot (mkWrappers arkosSysroot) ++ [
+      "-DSDL3_DIR=${sdl3R36s}/lib/cmake/SDL3"
+      "-DCMAKE_FIND_ROOT_PATH=${sdl3R36s}"
+      "-DBUILD_SHARED_LIBS=ON"
+      "-DSDLIMAGE_SAMPLES=OFF"
+      "-DSDLIMAGE_TESTS=OFF"
+      "-DSDLIMAGE_VENDORED=OFF"
+      "-DSDLIMAGE_DEPS_SHARED=OFF"
+      "-DSDLIMAGE_BACKEND_STB=ON"
+      "-DSDLIMAGE_PNG_LIBPNG=OFF"
+      "-DSDLIMAGE_AVIF=OFF"
+      "-DSDLIMAGE_JXL=OFF"
+      "-DSDLIMAGE_TIF=OFF"
+      "-DSDLIMAGE_WEBP=OFF"
+    ];
+  });
 
   mkPingusR36s = {
     src
@@ -341,7 +448,7 @@ let
         "-DCMAKE_SYSTEM_NAME=Linux"
         "-DCMAKE_SYSTEM_PROCESSOR=aarch64"
         "-DCMAKE_SYSROOT=${arkosSysroot}"
-        "-DCMAKE_FIND_ROOT_PATH=${arkosSysroot}"
+        "-DCMAKE_FIND_ROOT_PATH=${arkosSysroot};${sdl3R36s};${sdl3ImageR36s}"
         "-DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER"
         "-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY"
         "-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY"
@@ -360,6 +467,8 @@ let
         "-DCMAKE_BUILD_WITH_INSTALL_RPATH=OFF"
         "-DCMAKE_INSTALL_RPATH="
         "-DCMAKE_BUILD_TYPE=Release"
+        "-DSDL3_DIR=${sdl3R36s}/lib/cmake/SDL3"
+        "-DSDL3_image_DIR=${sdl3ImageR36s}/lib/cmake/SDL3_image"
         "-DBUILD_TESTS=OFF"
         "-DBUILD_EXTRA=OFF"
         "-DWARNINGS=OFF"
@@ -403,7 +512,6 @@ let
         export PKG_CONFIG_DIR=""
         export PKG_CONFIG_PATH=""
         export PKG_CONFIG_LIBDIR="${arkosSysroot}/usr/lib/aarch64-linux-gnu/pkgconfig:${arkosSysroot}/usr/lib/pkgconfig:${arkosSysroot}/usr/share/pkgconfig"
-        pkg-config --exists sdl2 && pkg-config --modversion sdl2 || true
 
         ZLIB_LIB=
         for cand in \
@@ -518,6 +626,13 @@ let
           chmod -R u+w $out/share/pingus || true
         fi
 
+        # SDL3 + SDL3_image are not part of ArkOS: always ship them.
+        for f in ${sdl3R36s}/lib/libSDL3.so.0 ${sdl3ImageR36s}/lib/libSDL3_image.so.0; do
+          cp -L "$f" "$out/lib/pingus/"
+        done
+        chmod u+w $out/lib/pingus/libSDL3*.so.0
+        ${crossCc.bintools.bintools}/bin/${targetPrefix}strip $out/lib/pingus/libSDL3*.so.0
+
         # Ship OpenAL Soft + libmodplug next to the port so stock ArkOS
         # (without apt install) can load them via LD_LIBRARY_PATH.
         if [ "${if enableSound then "1" else "0"}" = "1" ]; then
@@ -554,7 +669,8 @@ Pingus — R36S / ArkOS (sysroot-linked)
 ====================================================
 
 Binary: bin/pingus
-  Linked against the ArkOS aarch64 sysroot (SDL2 + OpenGL/GLES as available).
+  Linked against the ArkOS aarch64 sysroot (GLES) and the bundled SDL3 +
+  SDL3_image in lib/pingus/ (put that directory on LD_LIBRARY_PATH).
 
 Deploy the binary + share/pingus data to the device.
 
@@ -712,12 +828,13 @@ fi
 export XDG_DATA_HOME="$CONFDIR"
 export XDG_CONFIG_HOME="$CONFDIR"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
-# Prefer bundled OpenAL Soft / libmodplug over any system copy.
+# Bundled SDL3 / SDL3_image (not on ArkOS); prefer bundled OpenAL Soft /
+# libmodplug over any system copy.
 if [ -d "$GAMEDIR/libs" ]; then
   export LD_LIBRARY_PATH="$GAMEDIR/libs''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 fi
 
-# Native aarch64 SDL2 joystick input; gptokeyb optional for exit hotkey.
+# Native aarch64 SDL3 joystick input; gptokeyb optional for exit hotkey.
 pm_platform_helper "$GAMEDIR/pingus" 2>/dev/null || true
 
 # Force on-device data + config dirs (do not use any baked-in install prefix).
@@ -747,7 +864,7 @@ EOF_LAUNCH
   "items_opt": null,
   "attr": {
     "title": "${title}",
-    "desc": "Classic Pingus (SDL2 + GLES2) for ArkOS / R36S. Free jump-and-run platformer starring Tux.",
+    "desc": "Classic Pingus (SDL3 + GLES2) for ArkOS / R36S. Free jump-and-run platformer starring Tux.",
     "inst": "Ready to run. Copy Pingus.sh and the pingus/ folder into /roms/ports/ (or install the zip via PortMaster autoinstall).",
     "genres": ["platform", "action"],
     "porter": ["Pingus-Origins"],
@@ -767,7 +884,7 @@ EOF_JSON
   <game>
     <path>./${scriptName}</path>
     <name>${title}</name>
-    <desc>Classic Pingus — free jump-and-run platformer starring Tux. SDL2 + GLES2 build for ArkOS / R36S.</desc>
+    <desc>Classic Pingus — free jump-and-run platformer starring Tux. SDL3 + GLES2 build for ArkOS / R36S.</desc>
     <releasedate>20040511T000000</releasedate>
     <developer>Pingus Team</developer>
     <publisher>Pingus-Origins</publisher>
@@ -780,7 +897,7 @@ EOF_XML
         cat > "$root/README.md" << 'EOF_README'
 ## Pingus (R36S / ArkOS)
 
-Native **aarch64** build linked against the ArkOS sysroot (SDL2 + GLES2).
+Native **aarch64** build linked against the ArkOS sysroot (GLES2), with SDL3 + SDL3_image bundled in `libs/`.
 
 ### Install
 
@@ -850,5 +967,5 @@ EOF_README
 
 in
 {
-  inherit arkosSysroot mkPingusR36s mkPingusR36sPortMaster mkPingusR36sPortMasterZip;
+  inherit arkosSysroot sdlSysroot sdl3R36s sdl3ImageR36s mkPingusR36s mkPingusR36sPortMaster mkPingusR36sPortMasterZip;
 }
