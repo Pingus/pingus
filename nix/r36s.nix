@@ -521,7 +521,9 @@ let
         # Ship OpenAL Soft + libmodplug next to the port so stock ArkOS
         # (without apt install) can load them via LD_LIBRARY_PATH.
         if [ "${if enableSound then "1" else "0"}" = "1" ]; then
-          for pattern in libopenal.so* libmodplug.so*; do
+          # Quoted: stdenv enables nullglob, so a bare libopenal.so* would
+          # expand to nothing here and silently skip the copy.
+          for pattern in 'libopenal.so*' 'libmodplug.so*'; do
             found=
             for dir in \
               "${arkosSysroot}/usr/lib/aarch64-linux-gnu" \
@@ -535,6 +537,8 @@ let
                   found=1
                 fi
               done
+              # The sysroot has the same files under usr/lib and lib.
+              if [ -n "$found" ]; then break; fi
             done
             if [ -z "$found" ]; then
               echo "postInstall: missing $pattern in sysroot" >&2
