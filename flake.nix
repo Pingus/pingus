@@ -308,11 +308,6 @@
 
             wasm = import ./nix/wasm.nix {
               inherit pkgs;
-              sdlSrc = sdl2-src;
-              sdlImageSrc = sdl2-image-src;
-              sdlMixerSrc = sdl2-mixer-src;
-              libxmpSrc = libxmp-src;
-              sdlVersion = "2.30.3";
             };
 
             wasmDataDir = if builtins.pathExists ./data then ./data else null;
@@ -347,8 +342,8 @@
                 stbImageH = stbImageH;
                 gameVersion = pingusVersion;
               };
-              wasm-sdl2 = wasm.sdl2WasmLibs;
-              wasm-sdl-libs = wasm.sdlWasmLibs;
+              wasm-sdl3 = wasm.sdl3Wasm;
+              wasm-sdl3-image = wasm.sdl3ImageWasm;
               # Isolated audio deps for wstsound-on-wasm (build without the full game):
               #   nix build .#libmodplug-wasm
               libmodplug-wasm = wasm.modplugWasm;
@@ -625,7 +620,7 @@ except Exception:
         );
 
         # ccacheStdenv: CC/CXX are ccache wrappers for out-of-tree cmake/ninja.
-        # inputsFrom pulls native buildInputs (SDL2, OpenAL, external/ libs, …).
+        # inputsFrom pulls native buildInputs (SDL3, OpenAL, external/ libs, …).
         pingusDevShell =
           pkgs.mkShell.override { stdenv = pkgs.ccacheStdenv; } {
             inputsFrom = [ pingusNative ];

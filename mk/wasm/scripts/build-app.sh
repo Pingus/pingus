@@ -3,7 +3,8 @@
 # Expects (set by nix/wasm.nix):
 #   APP_NAME         - binary/html basename (e.g. pingus)
 #   SRC_DIR          - repo root (contains CMakeLists.txt + src/)
-#   SDL_WASM_LIBS    - prebuilt SDL2 (+ image) prefix (include/ + lib/)
+#   SDL3_WASM        - prebuilt static SDL3 prefix (lib/cmake/SDL3)
+#   SDL3_IMAGE_WASM  - prebuilt static SDL3_image prefix (lib/cmake/SDL3_image)
 #   ZLIB_WASM_LIBS   - prebuilt static zlib prefix (libz.a + zlib.h)
 #   DATA_DIR         - optional path to data/ for --preload-file (may be absent)
 #   ENABLE_SOUND     - 0|1 (default 0; ON → wstsound via Emscripten OpenAL + libmodplug)
@@ -104,14 +105,15 @@ cmake_args=(
   -DPRIO_USE_JSONCPP=OFF
   -DPINGUS_ENABLE_SOUND="$( [ "$ENABLE_SOUND" = 1 ] && echo ON || echo OFF )"
   -DDATA_PREFIX="/data"
-  -DSDL2_ROOT="$SDL_WASM_LIBS"
+  -DSDL3_DIR="$SDL3_WASM/lib/cmake/SDL3"
+  -DSDL3_image_DIR="$SDL3_IMAGE_WASM/lib/cmake/SDL3_image"
   -DEMSCRIPTEN_LINK_FLAGS="${LINK_FLAGS[*]} ${PRELOAD[*]}"
 )
 # Prebuilt glm (and friends) live outside the emscripten sysroot.
 if [ -n "${EXTRA_PREFIX_PATH:-}" ]; then
   cmake_args+=(
     -DCMAKE_PREFIX_PATH="${EXTRA_PREFIX_PATH}"
-    -DCMAKE_FIND_ROOT_PATH="${EXTRA_PREFIX_PATH};${SDL_WASM_LIBS}"
+    -DCMAKE_FIND_ROOT_PATH="${EXTRA_PREFIX_PATH};${SDL3_WASM};${SDL3_IMAGE_WASM}"
     -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=BOTH
     -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH
     -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=BOTH

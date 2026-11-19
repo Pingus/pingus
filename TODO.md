@@ -57,7 +57,7 @@ land or scope changes.
 - [x] Native Nix build (`pkgs.sdl3`, `pkgs.sdl3-image`)
 - [x] Windows: SDL3 + SDL3_image cross-built from nixpkgs sources
       (`nix/windows.nix`), replacing the SDL2-win32 flake inputs
-- [ ] WASM: SDL3 + SDL3_image static builds instead of `build-sdl2*.sh`
+- [x] WASM: SDL3 + SDL3_image static builds instead of `build-sdl2*.sh`
 - [ ] Android: SDL3 (Java glue `org.libsdl.app`), image shim on SDL3
 - [ ] R36S: build SDL3 (KMSDRM + GLES) against `arkos-sysroot` and ship
       `libSDL3.so.0` in the port (sysroot only provides SDL2)
@@ -342,7 +342,7 @@ everywhere. Floats stay where they don't feed back into game logic
 # Packages
 nix build .#pingus
 nix build .#pingus-win32-x64
-nix build .#wasm-sdl-libs          # SDL stack only
+nix build .#wasm-sdl3 .#wasm-sdl3-image  # SDL stack only
 nix build .#pingus-wasm            # full wasm app (WIP)
 nix build .#arkos-sysroot
 nix build .#pingus-r36s            # WIP

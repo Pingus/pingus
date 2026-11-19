@@ -1,9 +1,4 @@
 { pkgs
-, sdlSrc
-, sdlVersion
-, sdlImageSrc ? null
-, sdlMixerSrc ? null
-, libxmpSrc ? null
 }:
 
 let
@@ -35,163 +30,66 @@ EOF
     runHook postInstall
   '';
 
-  # --- SDL2 only -----------------------------------------------------------
-  sdl2WasmLibs = pkgs.stdenv.mkDerivation {
-    pname = "sdl2-wasm";
-    version = sdlVersion;
+  # Emscripten writes to its cache; start from the prebuilt one in the
+  # store (libc ...) instead of building those again.
+  setupEmCache = name: ''
+    export EM_CACHE="$TMPDIR/emcache-${name}"
+    cp -r ${pkgs.emscripten}/share/emscripten/cache "$EM_CACHE"
+    chmod -R u+w "$EM_CACHE"
+  '';
+
+  # --- SDL3 + SDL3_image (static, from nixpkgs' sources) -------------------
+  # Built here instead of Emscripten's ports, which download at build time.
+  sdl3Wasm = pkgs.stdenv.mkDerivation {
+    pname = "sdl3-wasm";
+    inherit (pkgs.sdl3) version;
     dontUnpack = true;
     dontConfigure = true;
     dontUseCmakeConfigure = true;
     nativeBuildInputs = [ pkgs.emscripten pkgs.cmake pkgs.python3 ];
     env = {
-      SDL_SRC = "${sdlSrc}";
+      SDL_SRC = "${pkgs.sdl3.src}";
+      SDL_REVISION = "SDL-${pkgs.sdl3.version}";
     };
     buildPhase = ''
       runHook preBuild
-      bash ${../mk/wasm/scripts/build-sdl2.sh}
+      ${setupEmCache "sdl3"}
+      PREFIX=$PWD/prefix bash ${../mk/wasm/scripts/build-sdl3.sh}
       runHook postBuild
     '';
-    installPhase = ''
-      runHook preInstall
-      mkdir -p $out
-      if [ -d prefix ]; then
-        cp -a prefix/. $out/
-      else
-        mkdir -p $out/lib $out/include
-        find . -name 'libSDL2.a' -exec cp {} $out/lib/ \;
-        if [ -d SDL2-src/include ]; then cp -a SDL2-src/include/. $out/include/; fi
-      fi
-      mkdir -p $out/lib/pkgconfig
-      cat > $out/lib/pkgconfig/sdl2.pc <<EOF
-prefix=$out
-exec_prefix=\''${prefix}
-libdir=\''${prefix}/lib
-includedir=\''${prefix}/include
-Name: sdl2
-Description: SDL2 (wasm static)
-Version: ${sdlVersion}
-Libs: -L\''${libdir} -lSDL2
-Cflags: -I\''${includedir} -I\''${includedir}/SDL2
-EOF
-      runHook postInstall
-    '';
+    installPhase = installPrefixPhase;
+    dontStrip = true; # the host's strip does not know wasm objects
+    meta = {
+      description = "Static SDL3 for wasm32-emscripten";
+      license = lib.licenses.zlib;
+      platforms = lib.platforms.linux;
+    };
   };
 
-  # --- SDL2_image (depends on sdl2WasmLibs) --------------------------------
-  sdl2Image = if sdlImageSrc == null then null else pkgs.stdenv.mkDerivation {
-      pname = "sdl2-image-wasm";
-      version = "2.8.2";
-      dontUnpack = true;
-      dontConfigure = true;
-      dontUseCmakeConfigure = true;
-      nativeBuildInputs = [ pkgs.emscripten pkgs.cmake pkgs.python3 ];
-      env = {
-        SDL_PREFIX = "${sdl2WasmLibs}";
-        SDL_IMAGE_SRC = "${sdlImageSrc}";
-      };
-      buildPhase = ''
-        runHook preBuild
-        bash ${../mk/wasm/scripts/build-sdl2-image.sh}
-        runHook postBuild
-      '';
-      installPhase = ''
-        runHook preInstall
-        mkdir -p $out/lib $out/include $out/lib/pkgconfig
-        if [ -d prefix ]; then
-          # Prefer only image artifacts if present; still copy tree for cmake configs.
-          cp -a prefix/. $out/
-          # Drop SDL2 core copies if the script staged any (should not with SDL_PREFIX).
-          rm -f $out/lib/libSDL2.a $out/lib/libSDL2main.a 2>/dev/null || true
-        fi
-        if [ ! -f $out/lib/libSDL2_image.a ]; then
-          find . -name 'libSDL2_image.a' -exec cp {} $out/lib/ \; || true
-        fi
-        if [ -f $out/lib/libSDL2_image.a ]; then
-          cat > $out/lib/pkgconfig/SDL2_image.pc <<EOF
-prefix=$out
-libdir=\''${prefix}/lib
-includedir=\''${prefix}/include
-Name: SDL2_image
-Description: SDL2_image (wasm static)
-Version: 2.8.2
-Requires: sdl2
-Libs: -L\''${libdir} -lSDL2_image
-Cflags: -I\''${includedir}
-EOF
-        fi
-        runHook postInstall
-      '';
+  sdl3ImageWasm = pkgs.stdenv.mkDerivation {
+    pname = "sdl3-image-wasm";
+    inherit (pkgs.sdl3-image) version;
+    dontUnpack = true;
+    dontConfigure = true;
+    dontUseCmakeConfigure = true;
+    nativeBuildInputs = [ pkgs.emscripten pkgs.cmake pkgs.python3 ];
+    env = {
+      SDL_IMAGE_SRC = "${pkgs.sdl3-image.src}";
+      SDL_PREFIX = "${sdl3Wasm}";
     };
-
-  # --- SDL2_mixer + libxmp (depends on sdl2WasmLibs) -----------------------
-  sdl2Mixer = if sdlMixerSrc == null then null else pkgs.stdenv.mkDerivation {
-      pname = "sdl2-mixer-wasm";
-      version = "2.8.0";
-      dontUnpack = true;
-      dontConfigure = true;
-      dontUseCmakeConfigure = true;
-      nativeBuildInputs = [ pkgs.emscripten pkgs.cmake pkgs.python3 ];
-      env = {
-        SDL_PREFIX = "${sdl2WasmLibs}";
-        SDL_MIXER_SRC = "${sdlMixerSrc}";
-      } // lib.optionalAttrs (libxmpSrc != null) {
-        LIBXMP_SRC = "${libxmpSrc}";
-      };
-      buildPhase = ''
-        runHook preBuild
-        bash ${../mk/wasm/scripts/build-sdl2-mixer.sh}
-        runHook postBuild
-      '';
-      installPhase = ''
-        runHook preInstall
-        mkdir -p $out/lib $out/include $out/lib/pkgconfig
-        if [ -d prefix ]; then
-          cp -a prefix/. $out/
-          rm -f $out/lib/libSDL2.a $out/lib/libSDL2main.a 2>/dev/null || true
-        fi
-        for lib in libSDL2_mixer.a libxmp.a; do
-          if [ ! -f $out/lib/$lib ]; then
-            find . -name "$lib" -exec cp {} $out/lib/ \; || true
-          fi
-        done
-        if [ -f $out/lib/libSDL2_mixer.a ]; then
-          xmp_libs=""
-          if [ -f $out/lib/libxmp.a ]; then xmp_libs=" -lxmp"; fi
-          cat > $out/lib/pkgconfig/SDL2_mixer.pc <<EOF
-prefix=$out
-libdir=\''${prefix}/lib
-includedir=\''${prefix}/include
-Name: SDL2_mixer
-Description: SDL2_mixer (wasm static)
-Version: 2.8.0
-Requires: sdl2
-Libs: -L\''${libdir} -lSDL2_mixer$xmp_libs
-Cflags: -I\''${includedir}
-EOF
-        fi
-        if [ -f $out/lib/libxmp.a ]; then
-          cat > $out/lib/pkgconfig/libxmp.pc <<EOF
-prefix=$out
-libdir=\''${prefix}/lib
-includedir=\''${prefix}/include
-Name: libxmp
-Description: libxmp (wasm static)
-Version: 4.6.0
-Libs: -L\''${libdir} -lxmp
-Cflags: -I\''${includedir}
-EOF
-        fi
-        runHook postInstall
-      '';
+    buildPhase = ''
+      runHook preBuild
+      ${setupEmCache "sdl3-image"}
+      PREFIX=$PWD/prefix bash ${../mk/wasm/scripts/build-sdl3-image.sh}
+      runHook postBuild
+    '';
+    installPhase = installPrefixPhase;
+    dontStrip = true;
+    meta = {
+      description = "Static SDL3_image for wasm32-emscripten (stb_image backend)";
+      license = lib.licenses.zlib;
+      platforms = lib.platforms.linux;
     };
-
-  # Combined prefix for the game (and legacy attribute name).
-  sdlWasmLibs = pkgs.symlinkJoin {
-    name = "sdl2-wasm-libs-${sdlVersion}";
-    paths =
-      [ sdl2WasmLibs ]
-      ++ lib.optional (sdl2Image != null) sdl2Image
-      ++ lib.optional (sdl2Mixer != null) sdl2Mixer;
   };
 
   # Static zlib for wasm (lispreader / .gz levels). Offline — no -sUSE_ZLIB port.
@@ -401,8 +299,7 @@ EOF
       # external/wstsound/CMakeLists.txt (modplug + wav only, EFX off).
       prefixPath = "${glmPrefix}"
         + (if enableSound then ":${modplugWasm}" else "");
-      pkgConfigPath = "${sdlWasmLibs}/lib/pkgconfig"
-        + (if enableSound then ":${modplugWasm}/lib/pkgconfig" else "");
+      pkgConfigPath = if enableSound then "${modplugWasm}/lib/pkgconfig" else "";
     in
     pkgs.stdenv.mkDerivation {
       pname = "${appName}-wasm";
@@ -416,7 +313,8 @@ EOF
       env = {
         APP_NAME = appName;
         SRC_DIR = "${srcDir}";
-        SDL_WASM_LIBS = sdlWasmLibs;
+        SDL3_WASM = "${sdl3Wasm}";
+        SDL3_IMAGE_WASM = "${sdl3ImageWasm}";
         EXTRA_PREFIX_PATH = prefixPath;
         CMAKE_PREFIX_PATH = prefixPath;
         ENABLE_SOUND = if enableSound then "1" else "0";
@@ -435,7 +333,7 @@ EOF
       buildPhase = ''
         runHook preBuild
         # Emscripten + pkg-config stubs for our static libs.
-        export EM_PKG_CONFIG_PATH="${sdlWasmLibs}/lib/pkgconfig"
+        export EM_PKG_CONFIG_PATH="${pkgConfigPath}"
         export PKG_CONFIG_PATH="${pkgConfigPath}''${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
         bash ${../mk/wasm/scripts/build-app.sh}
         runHook postBuild
@@ -479,7 +377,6 @@ EOF
   };
 
 in {
-  inherit sdl2WasmLibs sdlWasmLibs zlibWasmLibs mkApp mkOpenBrowserApp;
-  inherit sdl2Image sdl2Mixer;
+  inherit sdl3Wasm sdl3ImageWasm zlibWasmLibs mkApp mkOpenBrowserApp;
   inherit modplugWasm wstsoundWasm glmPrefix;
 }
