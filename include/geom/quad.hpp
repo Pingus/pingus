@@ -22,8 +22,8 @@
 
 #include <math.h>
 
-#include <glm/ext.hpp>
-#include <glm/gtx/rotate_vector.hpp>
+// Avoid <glm/ext.hpp>: GLM 1.0+ packing.inl pulls <endian.h> (missing on MinGW).
+#include <glm/glm.hpp>
 
 #include "rect.hpp"
 
@@ -40,15 +40,15 @@ public:
     p4()
   {}
 
-  tquad(const geom::frect& rect) :
+  tquad(trect<T> const& rect) :
     p1(rect.left(), rect.top()),
     p2(rect.right(), rect.top()),
     p3(rect.right(), rect.bottom()),
     p4(rect.left(), rect.bottom())
   {}
 
-  tquad(float x1, float y1,
-       float x2, float y2) :
+  tquad(T x1, T y1,
+        T x2, T y2) :
     p1(x1, y1),
     p2(x2, y1),
     p3(x2, y2),
@@ -73,15 +73,25 @@ public:
                           std::max(std::max(std::max(p1.y(), p2.y()), p3.y()), p4.y()));
   }
 
+  /** Rotate by \a rad radians around the center of the quad */
   void rotate(float rad)
   {
-    glm::vec2 center(static_cast<float>(p1.x() + p2.x() + p3.x() + p4.x()) / 4.0f,
-                     static_cast<float>(p1.y() + p2.y() + p3.y() + p4.y()) / 4.0f);
+    float const cx = static_cast<float>(p1.x() + p2.x() + p3.x() + p4.x()) / 4.0f;
+    float const cy = static_cast<float>(p1.y() + p2.y() + p3.y() + p4.y()) / 4.0f;
+    float const c = cosf(rad);
+    float const s = sinf(rad);
 
-    p1 = glm::tvec2<T>(center + glm::rotate(glm::vec2(p1.as_vec()) - center, rad));
-    p2 = glm::tvec2<T>(center + glm::rotate(glm::vec2(p2.as_vec()) - center, rad));
-    p3 = glm::tvec2<T>(center + glm::rotate(glm::vec2(p3.as_vec()) - center, rad));
-    p4 = glm::tvec2<T>(center + glm::rotate(glm::vec2(p4.as_vec()) - center, rad));
+    auto const rot = [&](tpoint<T> const& p) {
+      float const dx = static_cast<float>(p.x()) - cx;
+      float const dy = static_cast<float>(p.y()) - cy;
+      return tpoint<T>(static_cast<T>(cx + c * dx - s * dy),
+                       static_cast<T>(cy + s * dx + c * dy));
+    };
+
+    p1 = rot(p1);
+    p2 = rot(p2);
+    p3 = rot(p3);
+    p4 = rot(p4);
   }
 
 public:

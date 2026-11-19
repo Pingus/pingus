@@ -94,6 +94,13 @@ public:
     return *this;
   }
 
+  /** True if the rect covers no area, e.g. the result of
+      intersection() of rects that don't overlap */
+  constexpr bool is_empty() const {
+    return m_size.width() <= 0 || m_size.height() <= 0;
+  }
+
+  /** True if the size is not negative, an empty rect is valid */
   constexpr explicit operator bool() const {
     return (m_size.width() >=0 &&
             m_size.height() >=0);
@@ -119,7 +126,7 @@ trect<T> operator-(trect<T> const& rect, toffset<T> const& offset)
 }
 
 template<typename T> inline
-int area(trect<T> const& rect) {
+T area(trect<T> const& rect) {
   return area(rect.size());
 }
 
@@ -139,6 +146,9 @@ trect<T> grow(trect<T> const& rect, T x, T y) {
                   rect.bottom() + y);
 }
 
+/** The overlapping area of \a lhs and \a rhs. For rects that don't
+    overlap the result has a negative size, use is_empty() or
+    intersects() to check for overlap. */
 template<typename T> inline
 trect<T> intersection(trect<T> const& lhs, trect<T> const& rhs) {
   return trect<T>(std::max(lhs.left(), rhs.left()),
@@ -147,9 +157,11 @@ trect<T> intersection(trect<T> const& lhs, trect<T> const& rhs) {
                   std::min(lhs.bottom(), rhs.bottom()));
 }
 
+/** True if \a lhs and \a rhs overlap, rects that only touch at an
+    edge or corner don't intersect */
 template<typename T> inline
 bool intersects(trect<T> const& lhs, trect<T> const& rhs) {
-  return static_cast<bool>(intersection(lhs, rhs));
+  return !intersection(lhs, rhs).is_empty();
 }
 
 template<typename T> inline
@@ -186,6 +198,51 @@ template<typename T> inline
 trect<T> anchored_rect(tpoint<T> const& center_pos, tsize<T> const& size, origin origin) {
   return trect<T>(center_pos + anchor_offset(size, origin),
                   size);
+}
+
+/** The point of \a rect at \a origin, e.g. the center or a corner */
+template<typename T> inline
+tpoint<T> anchor_point(trect<T> const& rect, origin origin) {
+  return rect.topleft() - anchor_offset(rect.size(), origin);
+}
+
+/** A rect of \a size centered at \a center */
+template<typename T> inline
+trect<T> from_center(tpoint<T> const& center_pos, tsize<T> const& size) {
+  return anchored_rect(center_pos, size, origin::CENTER);
+}
+
+/** Copies of \a rect with one edge moved, the opposite edge stays */
+template<typename T> inline
+trect<T> with_left(trect<T> const& rect, T left) {
+  return trect<T>(left, rect.top(), rect.right(), rect.bottom());
+}
+
+template<typename T> inline
+trect<T> with_right(trect<T> const& rect, T right) {
+  return trect<T>(rect.left(), rect.top(), right, rect.bottom());
+}
+
+template<typename T> inline
+trect<T> with_top(trect<T> const& rect, T top) {
+  return trect<T>(rect.left(), top, rect.right(), rect.bottom());
+}
+
+template<typename T> inline
+trect<T> with_bottom(trect<T> const& rect, T bottom) {
+  return trect<T>(rect.left(), rect.top(), rect.right(), bottom);
+}
+
+/** A copy of \a rect with the top left corner moved to \a pos, the size stays */
+template<typename T> inline
+trect<T> with_pos(trect<T> const& rect, tpoint<T> const& pos) {
+  return trect<T>(pos, rect.size());
+}
+
+/** A copy of \a rect with \a size, the top left corner stays */
+template<typename T> inline
+trect<T> with_size(trect<T> const& rect, tsize<T> const& size) {
+  return trect<T>(rect.topleft(), size);
 }
 
 /** Create a rectangle that contain boths lhs and rhs */

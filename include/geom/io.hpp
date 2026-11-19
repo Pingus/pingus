@@ -20,11 +20,13 @@
 #ifndef HEADER_GEOMCPP_IO_HPP
 #define HEADER_GEOMCPP_IO_HPP
 
+#include <format>
 #include <ostream>
 #include <sstream>
 #include <stdexcept>
 #include <string>
 
+#include "offset.hpp"
 #include "origin.hpp"
 #include "point.hpp"
 #include "size.hpp"
@@ -237,6 +239,103 @@ std::ostream& operator<<(std::ostream& os, origin origin)
 }
 
 } // namespace geom
+
+
+
+// std::format support
+template<>
+struct std::formatter<geom::ipoint>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::ipoint const& v, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "ipoint({}, {})", v.x(), v.y());
+  }
+};
+
+template<>
+struct std::formatter<geom::isize>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::isize const& v, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "isize({}, {})", v.width(), v.height());
+  }
+};
+
+template<>
+struct std::formatter<geom::irect>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::irect const& v, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "irect({}, {}, {}, {})",
+                          v.left(), v.top(), v.right(), v.bottom());
+  }
+};
+
+template<>
+struct std::formatter<geom::fpoint>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::fpoint const& v, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "fpoint({}, {})", v.x(), v.y());
+  }
+};
+
+template<>
+struct std::formatter<geom::fsize>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::fsize const& v, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "fsize({}, {})", v.width(), v.height());
+  }
+};
+
+template<>
+struct std::formatter<geom::frect>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::frect const& v, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "frect({}, {}, {}, {})",
+                          v.left(), v.top(), v.right(), v.bottom());
+  }
+};
+
+template<>
+struct std::formatter<geom::ioffset>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::ioffset const& v, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "ioffset({}, {})", v.x(), v.y());
+  }
+};
+
+template<>
+struct std::formatter<geom::foffset>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::foffset const& v, auto& ctx) const
+  {
+    return std::format_to(ctx.out(), "foffset({}, {})", v.x(), v.y());
+  }
+};
+
+template<>
+struct std::formatter<geom::origin>
+{
+  constexpr auto parse(auto& ctx) { return ctx.begin(); }
+  auto format(geom::origin const& v, auto& ctx) const
+  {
+    std::ostringstream os;
+    geom::operator<<(os, v);
+    return std::format_to(ctx.out(), "{}", os.str());
+  }
+};
 
 #endif
 

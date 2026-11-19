@@ -1,22 +1,16 @@
-{ self
-, stdenv
+{ stdenv
 , lib
 , cmake
 , glm
 , gtest
-, tinycmmc
-, tinycmmc_lib
+, version
 }:
 
 stdenv.mkDerivation {
   pname = "geomcpp";
-  version = tinycmmc_lib.versionFromFile self;
+  inherit version;
 
   src = lib.cleanSource ./.;
-
-  postPatch = ''
-    echo "v${tinycmmc_lib.versionFromFile self}" > VERSION
-  '';
 
   doCheck = true;
 
@@ -24,6 +18,7 @@ stdenv.mkDerivation {
     "-DWARNINGS=ON"
     "-DWERROR=ON"
     "-DBUILD_TESTS=ON"
+    "-DPROJECT_VERSION_FULL=${version}"
   ];
 
   nativeBuildInputs = [
@@ -32,7 +27,6 @@ stdenv.mkDerivation {
 
   buildInputs = [
     gtest
-    tinycmmc
   ];
 
   propagatedBuildInputs = [

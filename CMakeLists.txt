@@ -17,18 +17,43 @@
 #    misrepresented as being the original software.
 # 3. This notice may not be removed or altered from any source distribution.
 
-cmake_minimum_required(VERSION 3.6)
-project(geom VERSION 0.0.0)
+cmake_minimum_required(VERSION 3.10...4.1)
 
-include(mk/cmake/TinyCMMC.cmake)
+# Source of truth: top-level VERSION file (e.g. "0.1.0-dev"), or
+# -DPROJECT_VERSION_FULL=... from packaging (Nix may append .<revCount>+g<rev>).
+if(NOT DEFINED PROJECT_VERSION_FULL)
+  file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION" PROJECT_VERSION_FULL LIMIT_COUNT 1)
+endif()
 
-function(build_dependencies)
-  # Must guard find_package(glm) as otherwise error will result
-  if(NOT TARGET glm::glm)
-    find_package(glm REQUIRED)
-  endif()
-endfunction()
-build_dependencies()
+# CMake project() VERSION expects major[.minor[.patch[.tweak]]]; strip
+# any -dev / +git suffix for the numeric project version.
+string(REGEX MATCH "^[0-9]+(\\.[0-9]+)*" _project_version_cmake "${PROJECT_VERSION_FULL}")
+
+project(geom VERSION ${_project_version_cmake} LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+
+option(BUILD_TESTS "Build test cases" OFF)
+option(WARNINGS "Switch on extra warnings" OFF)
+option(WERROR "Turn warnings into errors" OFF)
+
+set(GEOM_WARNINGS_CXX_FLAGS "")
+if(WERROR)
+  list(APPEND GEOM_WARNINGS_CXX_FLAGS -Werror)
+endif()
+if(WARNINGS)
+  list(APPEND GEOM_WARNINGS_CXX_FLAGS -Wall -Wextra -Wpedantic)
+endif()
+
+# Must guard find_package(glm) as otherwise error will result
+if(NOT TARGET glm::glm)
+  find_package(glm REQUIRED)
+endif()
 
 file(GLOB GEOM_HEADERS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
   include/geom/*.hpp)
@@ -54,21 +79,50 @@ if(BUILD_TESTS)
   enable_testing()
   find_package(GTest REQUIRED)
 
-  # build automatic tests
   file(GLOB TEST_GEOM_SOURCES test/*_test.cpp)
   add_executable(test_geom ${TEST_GEOM_SOURCES})
-  target_compile_options(test_geom PRIVATE ${TINYCMMC_WARNINGS_CXX_FLAGS})
+  target_compile_options(test_geom PRIVATE ${GEOM_WARNINGS_CXX_FLAGS})
   target_link_libraries(test_geom
     GTest::GTest
     GTest::Main
     geom)
 
-  set(ARGV "-V")
   add_test(NAME test_geom
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMAND test_geom)
 endif()
 
-tinycmmc_export_and_install_library(geom)
+# Export and install (inlined from former tinycmmc helper)
+install(TARGETS geom
+  EXPORT geom
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/geom")
+
+add_library(geom::geom ALIAS geom)
+
+configure_package_config_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/geom-config.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/geom-config.cmake"
+  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/geom")
+
+write_basic_package_version_file(
+  "${CMAKE_CURRENT_BINARY_DIR}/geom-config-version.cmake"
+  VERSION "${PROJECT_VERSION}"
+  COMPATIBILITY SameMinorVersion)
+
+export(EXPORT geom
+  NAMESPACE geom::
+  FILE "${CMAKE_CURRENT_BINARY_DIR}/geom-targets.cmake")
+
+install(EXPORT geom
+  FILE geom-targets.cmake
+  NAMESPACE geom::
+  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/geom")
+
+install(FILES
+  "${CMAKE_CURRENT_BINARY_DIR}/geom-config-version.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/geom-config.cmake"
+  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/geom")
 
 # EOF #
