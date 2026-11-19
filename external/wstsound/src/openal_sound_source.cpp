@@ -22,10 +22,11 @@
 #include <iostream>
 
 #if defined(WSTSOUND_WITH_EFX)
-#  define AL_ALEXT_PROTOTYPES
-#  include <AL/efx.h>
-#  include "effect_slot.hpp"
-#  include "filter.hpp"
+#define AL_ALEXT_PROTOTYPES
+#include <AL/efx.h>
+
+#include "effect_slot.hpp"
+#include "filter.hpp"
 #endif
 #include "sound_error.hpp"
 #include "sound_manager.hpp"
@@ -143,9 +144,8 @@ OpenALSoundSource::set_looping(bool looping)
 }
 
 void
-OpenALSoundSource::set_loop(int /* sample_beg */, int /* sample_end */)
+OpenALSoundSource::set_loop(int sample_beg, int sample_end)
 {
-  // Sample-range looping is only implemented for streaming sources.
   throw SoundError("OpenALSoundSource::set_loop() not supported for non-streaming sources");
 }
 

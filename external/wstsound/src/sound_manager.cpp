@@ -24,9 +24,9 @@
 #include "openal_buffer.hpp"
 #include "dummy_sound_source.hpp"
 #if defined(WSTSOUND_WITH_EFX)
-#  include "effect.hpp"
-#  include "effect_slot.hpp"
-#  include "filter.hpp"
+#include "effect.hpp"
+#include "effect_slot.hpp"
+#include "filter.hpp"
 #endif
 #include "openal_system.hpp"
 #include "sound_error.hpp"
@@ -213,37 +213,43 @@ SoundManager::update(float delta)
   }
 }
 
+#if defined(WSTSOUND_WITH_EFX)
 EffectSlotPtr
 SoundManager::create_effect_slot()
 {
-#if defined(WSTSOUND_WITH_EFX)
   return std::make_shared<EffectSlot>();
-#else
-  throw SoundError("EFX effects not available in this build");
-#endif
 }
 
 EffectPtr
 SoundManager::create_effect(ALuint effect_type)
 {
-#if defined(WSTSOUND_WITH_EFX)
   return std::make_shared<Effect>(effect_type);
-#else
-  (void)effect_type;
-  throw SoundError("EFX effects not available in this build");
-#endif
 }
 
 FilterPtr
 SoundManager::create_filter(ALuint filter_type)
 {
-#if defined(WSTSOUND_WITH_EFX)
   return std::make_shared<Filter>(filter_type);
-#else
-  (void)filter_type;
-  throw SoundError("EFX effects not available in this build");
-#endif
 }
+#else
+EffectSlotPtr
+SoundManager::create_effect_slot()
+{
+  throw SoundError("EFX support is disabled in this build");
+}
+
+EffectPtr
+SoundManager::create_effect(ALuint /*effect_type*/)
+{
+  throw SoundError("EFX support is disabled in this build");
+}
+
+FilterPtr
+SoundManager::create_filter(ALuint /*filter_type*/)
+{
+  throw SoundError("EFX support is disabled in this build");
+}
+#endif
 
 } // namespace wstsound
 

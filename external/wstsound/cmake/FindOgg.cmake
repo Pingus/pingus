@@ -31,6 +31,18 @@ find_library(OGG_LIBRARY ogg
   PATH_SUFFIXES "lib"
   )
 
+# Drop pkg-config include dirs that point at vanished build trees
+# (e.g. /build/libogg-*/prefix/include from a previous configure).
+if(PC_OGG_INCLUDE_DIRS)
+  set(_ogg_pc_incs "")
+  foreach(_d ${PC_OGG_INCLUDE_DIRS})
+    if(EXISTS "${_d}")
+      list(APPEND _ogg_pc_incs "${_d}")
+    endif()
+  endforeach()
+  set(PC_OGG_INCLUDE_DIRS "${_ogg_pc_incs}")
+endif()
+
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Ogg
   REQUIRED_VARS OGG_INCLUDE_DIRECTORY OGG_LIBRARY

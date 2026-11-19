@@ -24,16 +24,16 @@
 #include <string.h>
 
 #if defined(WSTSOUND_WITH_MODPLUG)
-#  include "modplug_sound_file.hpp"
+#include "modplug_sound_file.hpp"
 #endif
 #if defined(WSTSOUND_WITH_MPG123)
-#  include "mp3_sound_file.hpp"
+#include "mp3_sound_file.hpp"
 #endif
 #if defined(WSTSOUND_WITH_VORBIS)
-#  include "ogg_sound_file.hpp"
+#include "ogg_sound_file.hpp"
 #endif
 #if defined(WSTSOUND_WITH_OPUS)
-#  include "opus_sound_file.hpp"
+#include "opus_sound_file.hpp"
 #endif
 #include "sound_error.hpp"
 #include "wav_sound_file.hpp"

@@ -102,8 +102,6 @@ OpenALSystem::open_loopback_device(int frequency, int channels)
   m_device = std::move(loopback_device);
   return loopback_device_ref;
 #else
-  (void)frequency;
-  (void)channels;
   throw SoundError("OpenAL loopback device not available in this build");
 #endif
 }
