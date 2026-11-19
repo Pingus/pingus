@@ -20,7 +20,7 @@
 #include <map>
 #include <vector>
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
 
 #include "engine/input/control.hpp"
 #include "engine/input/driver.hpp"
@@ -33,14 +33,16 @@ private:
   struct JoystickButtonBinding {
     Button* binding;
 
-    int device;
+    int device; ///< index into SDL_GetJoysticks(), as written in the config
+    SDL_JoystickID instance; ///< what SDL events carry in 'which'
     int button;
   };
 
   struct JoystickAxisBinding {
     Axis* binding;
 
-    int  device;
+    int  device; ///< index into SDL_GetJoysticks(), as written in the config
+    SDL_JoystickID instance; ///< what SDL events carry in 'which'
     int  axis;
   };
 
@@ -91,7 +93,9 @@ public:
   void dispatch_event(SDL_Event const& event);
 
 private:
-  bool open_joystick(int device);
+  /** Opens joystick number \a device (an index into SDL_GetJoysticks())
+      and returns its instance ID, or 0 on failure. */
+  SDL_JoystickID open_joystick(int device);
 
 private:
   SDLDriver(SDLDriver const&);

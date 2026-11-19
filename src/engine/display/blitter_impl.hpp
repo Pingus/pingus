@@ -100,7 +100,7 @@ Surface modify(Surface source)
                                           Transform::get_height(source.get_width(), source.get_height()));
   Surface target(target_surface);
 
-  const int bpp = target.get_surface()->format->BytesPerPixel;
+  const int bpp = SDL_BYTESPERPIXEL(target.get_surface()->format);
 
   target.lock();
   source.lock();

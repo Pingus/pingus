@@ -20,6 +20,9 @@ Pingus 0.8.0 (unreleased)
   display and can render them offscreen to PNG, used for regression
   testing; it prints a hash of the game state and can write per-tick
   traces to compare runs across builds and platforms
+* ported from SDL2 to SDL3 and SDL3_image; Windows builds ship SDL3.dll
+  and SDL3_image.dll built from source, PNG loading there uses SDL3_image's
+  built-in stb_image backend
 
 
 Pingus 0.7.6 (24/Dec/2011)

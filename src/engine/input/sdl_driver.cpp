@@ -54,10 +54,13 @@ SDLDriver::create_button(prio::ReaderObject const& reader_object, Control* paren
     prio::ReaderMapping reader = reader_object.get_mapping();
     JoystickButtonBinding binding;
 
+    binding.device = 0;
+    binding.button = 0;
     reader.read("device", binding.device);
     reader.read("button", binding.button);
 
-    if (open_joystick(binding.device))
+    binding.instance = open_joystick(binding.device);
+    if (binding.instance)
     {
       auto button = std::make_unique<Button>(parent);
       binding.binding = button.get();
@@ -128,10 +131,13 @@ SDLDriver::create_axis(prio::ReaderObject const& reader_object, Control* parent)
 
     JoystickAxisBinding binding;
 
+    binding.device = 0;
+    binding.axis = 0;
     reader.read("device", binding.device);
     reader.read("axis",   binding.axis);
 
-    if (open_joystick(binding.device))
+    binding.instance = open_joystick(binding.device);
+    if (binding.instance)
     {
       auto axis = std::make_unique<Axis>(parent);
 
@@ -189,28 +195,40 @@ SDLDriver::create_pointer(prio::ReaderObject const& reader_object, Control* pare
   }
 }
 
-bool
+SDL_JoystickID
 SDLDriver::open_joystick(int device)
 {
   auto i = joystick_handles.find(device);
-  if (i == joystick_handles.end())
+  if (i != joystick_handles.end())
   {
-    SDL_Joystick* joy = SDL_JoystickOpen(device);
-    if (joy)
-    {
-      joystick_handles[device] = joy;
-      return true;
-    }
-    else
-    {
-      log_error("couldn't open joystick number {}", device);
-      return false;
-    }
+    return SDL_GetJoystickID(i->second);
   }
-  else
+
+  int count = 0;
+  SDL_JoystickID* ids = SDL_GetJoysticks(&count);
+  SDL_JoystickID id = 0;
+  if (ids && device >= 0 && device < count)
   {
-    return true;
+    id = ids[device];
   }
+  SDL_free(ids);
+
+  if (!id)
+  {
+    log_error("couldn't find joystick number {} ({} connected)", device, count);
+    return 0;
+  }
+
+  SDL_Joystick* joy = SDL_OpenJoystick(id);
+  if (!joy)
+  {
+    log_error("couldn't open joystick number {}: {}", device, SDL_GetError());
+    return 0;
+  }
+
+  log_info("opened joystick number {}: '{}'", device, SDL_GetJoystickName(joy));
+  joystick_handles[device] = joy;
+  return id;
 }
 
 void
@@ -223,46 +241,45 @@ SDLDriver::dispatch_event(SDL_Event const& event)
 {
   switch(event.type)
   {
-    case SDL_MOUSEMOTION:
+    case SDL_EVENT_MOUSE_MOTION:
       for(auto i = pointer_bindings.begin();
           i != pointer_bindings.end(); ++i)
       {
-        i->binding->set_pos(geom::fpoint(static_cast<float>(event.motion.x),
-                                         static_cast<float>(event.motion.y)));
+        i->binding->set_pos(geom::fpoint(event.motion.x, event.motion.y));
       }
 
       for(auto i = scroller_bindings.begin();
           i != scroller_bindings.end(); ++i)
       {
-        i->binding->set_delta(geom::fpoint(static_cast<float>(event.motion.xrel),
-                                           static_cast<float>(event.motion.yrel)));
+        i->binding->set_delta(geom::fpoint(event.motion.xrel, event.motion.yrel));
       }
       break;
 
-    case SDL_MOUSEWHEEL:
+    case SDL_EVENT_MOUSE_WHEEL:
       log_error("mousewheel not implemented: {} {} {}", event.wheel.which, event.wheel.x, event.wheel.y);
       break;
 
-    case SDL_TEXTINPUT:
+    case SDL_EVENT_TEXT_INPUT:
       if (keyboard_binding)
       {
         keyboard_binding->send_event(event);
       }
       break;
 
-    case SDL_TEXTEDITING:
+    case SDL_EVENT_TEXT_EDITING:
       log_error("textediting not implemented: {} {} '{}'",
-                event.edit.start, event.edit.length, event.edit.text);
+                event.edit.start, event.edit.length,
+                event.edit.text ? event.edit.text : "");
       break;
 
-    case SDL_MOUSEBUTTONDOWN:
-    case SDL_MOUSEBUTTONUP:
+    case SDL_EVENT_MOUSE_BUTTON_DOWN:
+    case SDL_EVENT_MOUSE_BUTTON_UP:
       for(auto i = mouse_button_bindings.begin();
           i != mouse_button_bindings.end(); ++i)
       {
         if (event.button.button == (*i).button)
         {
-          if (event.button.state == SDL_PRESSED)
+          if (event.button.down)
             (*i).binding->set_state(BUTTON_PRESSED);
           else
             (*i).binding->set_state(BUTTON_RELEASED);
@@ -271,8 +288,8 @@ SDLDriver::dispatch_event(SDL_Event const& event)
       break;
 
 
-    case SDL_KEYDOWN:
-    case SDL_KEYUP:
+    case SDL_EVENT_KEY_DOWN:
+    case SDL_EVENT_KEY_UP:
       // keyboard events
       if (keyboard_binding)
         keyboard_binding->send_event(event);
@@ -281,9 +298,9 @@ SDLDriver::dispatch_event(SDL_Event const& event)
       for(auto i = keyboard_button_bindings.begin();
           i != keyboard_button_bindings.end(); ++i)
       {
-        if (event.key.keysym.sym == i->key)
+        if (event.key.key == i->key)
         {
-          if (event.key.state == SDL_PRESSED)
+          if (event.key.down)
             i->binding->set_state(BUTTON_PRESSED);
           else
             i->binding->set_state(BUTTON_RELEASED);
@@ -291,25 +308,25 @@ SDLDriver::dispatch_event(SDL_Event const& event)
       }
       break;
 
-    case SDL_JOYAXISMOTION:
+    case SDL_EVENT_JOYSTICK_AXIS_MOTION:
       for(auto i = joystick_axis_bindings.begin();
           i != joystick_axis_bindings.end(); ++i)
       {
-        if (event.jaxis.which == i->device &&
+        if (event.jaxis.which == i->instance &&
             event.jaxis.axis  == i->axis)
           i->binding->set_state(static_cast<float>(event.jaxis.value) / 32767.0f);
       }
       break;
 
-    case SDL_JOYBUTTONDOWN:
-    case SDL_JOYBUTTONUP:
+    case SDL_EVENT_JOYSTICK_BUTTON_DOWN:
+    case SDL_EVENT_JOYSTICK_BUTTON_UP:
       for(auto i = joystick_button_bindings.begin();
           i != joystick_button_bindings.end(); ++i)
       {
-        if (event.jbutton.which  == i->device &&
+        if (event.jbutton.which  == i->instance &&
             event.jbutton.button == i->button)
         {
-          i->binding->set_state(event.jbutton.state == SDL_PRESSED ? BUTTON_PRESSED : BUTTON_RELEASED);
+          i->binding->set_state(event.jbutton.down ? BUTTON_PRESSED : BUTTON_RELEASED);
         }
       }
       break;

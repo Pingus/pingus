@@ -19,7 +19,7 @@
 
 #include <memory>
 #include <vector>
-#include <SDL.h>
+#include <SDL3/SDL.h>
 
 #include <geom/rect.hpp>
 #include <geom/size.hpp>

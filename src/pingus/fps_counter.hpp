@@ -19,6 +19,8 @@
 
 #include <string>
 
+#include <SDL3/SDL_stdinc.h>
+
 namespace pingus {
 
 class FPSCounter
@@ -35,7 +37,7 @@ private:
   int fps_count;
 
   /** The time were the last fps string update was performent */
-  unsigned int start_time;
+  Uint64 start_time;
 
   /** Check if one second is passed and if that is the case, update
       everything then. */

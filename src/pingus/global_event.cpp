@@ -37,14 +37,14 @@ GlobalEvent::GlobalEvent()
 void
 GlobalEvent::on_button_press(SDL_KeyboardEvent const& event)
 {
-  switch (event.keysym.sym)
+  switch (event.key)
   {
     case SDLK_F10:
       config_manager.set_print_fps(!config_manager.get_print_fps());
       break;
 
     case SDLK_RETURN:
-      if (event.keysym.mod & KMOD_ALT)
+      if (event.mod & SDL_KMOD_ALT)
       {
         config_manager.set_fullscreen(!config_manager.get_fullscreen());
       }
@@ -53,7 +53,7 @@ GlobalEvent::on_button_press(SDL_KeyboardEvent const& event)
     case SDLK_TAB: // unlock mouse grab if Alt-Tab is pressed to allow the user to change windows
       if (config_manager.get_mouse_grab())
       {
-        if (event.keysym.mod & KMOD_ALT)
+        if (event.mod & SDL_KMOD_ALT)
         {
           // FIXME: should suspend the grab till the user clicks the
           // window again, not completely disable it
@@ -71,8 +71,8 @@ GlobalEvent::on_button_press(SDL_KeyboardEvent const& event)
         ScreenManager::instance()->push_screen(std::make_shared<OptionMenu>());
       break;
 
-    case SDLK_o:
-      if (event.keysym.mod & KMOD_CTRL)
+    case SDLK_O:
+      if (event.mod & SDL_KMOD_CTRL)
       {
         if (!dynamic_cast<OptionMenu*>(ScreenManager::instance()->get_current_screen().get()))
           ScreenManager::instance()->push_screen(std::make_shared<OptionMenu>());
@@ -119,12 +119,12 @@ GlobalEvent::on_button_press(SDL_KeyboardEvent const& event)
       }
       break;
 
-    case SDLK_c:
+    case SDLK_C:
       if (globals::developer_mode)
         globals::draw_collision_map = !globals::draw_collision_map;
       break;
 
-    case SDLK_k:
+    case SDLK_K:
       if (globals::developer_mode)
       {
 #ifdef OLD_SDL1
@@ -136,16 +136,16 @@ GlobalEvent::on_button_press(SDL_KeyboardEvent const& event)
       }
       break;
 
-    case SDLK_m:
-      if (event.keysym.mod & KMOD_CTRL)
+    case SDLK_M:
+      if (event.mod & SDL_KMOD_CTRL)
       {
         log_info("Developer Mode: {}", globals::developer_mode);
         globals::developer_mode = !globals::developer_mode;
       }
       break;
 
-    case SDLK_g:
-      if (event.keysym.mod & KMOD_CTRL)
+    case SDLK_G:
+      if (event.mod & SDL_KMOD_CTRL)
       {
         config_manager.set_mouse_grab(!config_manager.get_mouse_grab());
       }

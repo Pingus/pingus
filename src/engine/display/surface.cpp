@@ -16,7 +16,7 @@
 
 #include "engine/display/surface.hpp"
 
-#include <SDL_image.h>
+#include <SDL3_image/SDL_image.h>
 #include <stdexcept>
 #include <format>
 
@@ -46,7 +46,7 @@ public:
   {
     if (surface)
     {
-      SDL_FreeSurface(surface);
+      SDL_DestroySurface(surface);
     }
   }
 
@@ -71,7 +71,7 @@ Surface::Surface(Pathname const& pathname) :
   SDL_Surface* surface = IMG_Load(pathname.get_sys_path().c_str());
   if (!surface)
   {
-    throw std::runtime_error(std::format("couldn't load {}\n  IMG_GetError: {}",
+    throw std::runtime_error(std::format("couldn't load {}\n  SDL_GetError: {}",
                                          pathname.get_sys_path(), SDL_GetError()));
   }
   else
@@ -83,16 +83,10 @@ Surface::Surface(Pathname const& pathname) :
 Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey) :
   impl(new SurfaceImpl)
 {
-  if (colorkey == -1)
+  impl->surface = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_INDEX8);
+  if (colorkey != -1)
   {
-    impl->surface = SDL_CreateRGBSurface(0, width, height, 8,
-                                         0, 0, 0 ,0);
-  }
-  else
-  {
-    impl->surface = SDL_CreateRGBSurface(0, width, height, 8,
-                                         0, 0, 0 ,0);
-    SDL_SetColorKey(impl->surface, SDL_TRUE, static_cast<Uint32>(colorkey));
+    SDL_SetSurfaceColorKey(impl->surface, true, static_cast<Uint32>(colorkey));
   }
 
   SDL_SetSurfacePalette(impl->surface, palette);
@@ -101,13 +95,7 @@ Surface::Surface(int width, int height, SDL_Palette* palette, int colorkey) :
 Surface::Surface(int width, int height) :
   impl(new SurfaceImpl())
 {
-  impl->surface = SDL_CreateRGBSurface(0, width, height, 32,
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                                       0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
-#else
-                                       0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
-#endif
-    );
+  impl->surface = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
   //SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, 0, 0, 0, 0));
 }
 
@@ -131,9 +119,9 @@ Surface::blit(Surface src, int x_pos, int y_pos)
   {
     log_error("trying to blit with an empty surface");
   }
-  else if (get_surface()->format->BytesPerPixel == 4 &&
-           src.get_surface()->format->BytesPerPixel == 4 &&
-           src.get_surface()->format->Amask)
+  else if (SDL_BYTESPERPIXEL(get_surface()->format) == 4 &&
+           SDL_BYTESPERPIXEL(src.get_surface()->format) == 4 &&
+           SDL_ISPIXELFORMAT_ALPHA(src.get_surface()->format))
   {
     // RGBA to RGBA blit
     int start_x = std::max(0, -x_pos);
@@ -155,15 +143,17 @@ Surface::blit(Surface src, int x_pos, int y_pos)
     int spitch = src.get_pitch();
     uint8_t* sdata = src.get_data();
 
-    const uint32_t srmask = src.get_surface()->format->Rmask;
-    const uint32_t sgmask = src.get_surface()->format->Gmask;
-    const uint32_t sbmask = src.get_surface()->format->Bmask;
-    const uint32_t samask = src.get_surface()->format->Amask;
+    SDL_PixelFormatDetails const* sfmt = SDL_GetPixelFormatDetails(src.get_surface()->format);
 
-    const uint8_t srshift = src.get_surface()->format->Rshift;
-    const uint8_t sgshift = src.get_surface()->format->Gshift;
-    const uint8_t sbshift = src.get_surface()->format->Bshift;
-    const uint8_t sashift = src.get_surface()->format->Ashift;
+    const uint32_t srmask = sfmt->Rmask;
+    const uint32_t sgmask = sfmt->Gmask;
+    const uint32_t sbmask = sfmt->Bmask;
+    const uint32_t samask = sfmt->Amask;
+
+    const uint8_t srshift = sfmt->Rshift;
+    const uint8_t sgshift = sfmt->Gshift;
+    const uint8_t sbshift = sfmt->Bshift;
+    const uint8_t sashift = sfmt->Ashift;
 
     for(int y = start_y; y < end_y; ++y)
     {
@@ -223,8 +213,10 @@ Surface::blit(Surface src, int x_pos, int y_pos)
   {
     SDL_Rect dstrect;
 
-    dstrect.x = static_cast<Sint16>(x_pos);
-    dstrect.y = static_cast<Sint16>(y_pos);
+    dstrect.x = x_pos;
+    dstrect.y = y_pos;
+    dstrect.w = src.get_width();
+    dstrect.h = src.get_height();
 
     SDL_BlitSurface(src.get_surface(), nullptr, get_surface(), &dstrect);
   }
@@ -298,27 +290,34 @@ Surface::operator bool() const
 Color
 Surface::get_pixel(int x, int y) const
 {
-  Uint8 *p = static_cast<Uint8 *>(get_surface()->pixels) + y * get_surface()->pitch + x * get_surface()->format->BytesPerPixel;
+  int const bytes_per_pixel = SDL_BYTESPERPIXEL(get_surface()->format);
+  Uint8 *p = static_cast<Uint8 *>(get_surface()->pixels) + y * get_surface()->pitch + x * bytes_per_pixel;
   Uint32 pixel;
 
-  switch(get_surface()->format->BytesPerPixel)
+  SDL_Palette* palette = SDL_GetSurfacePalette(impl->surface);
+
+  switch(bytes_per_pixel)
   {
     case 1:
       {
         pixel = *p;
 
-        if (impl->surface->format->palette)
+        if (palette)
         {
           Uint32 colorkey;
-          if (SDL_GetColorKey(impl->surface, &colorkey) == 0 &&
+          if (SDL_GetSurfaceColorKey(impl->surface, &colorkey) &&
               pixel == colorkey)
           {
             return Color(0,0,0,0);
           }
+          else if (static_cast<int>(pixel) < palette->ncolors)
+          {
+            SDL_Color c = palette->colors[pixel];
+            return Color(c.r, c.g, c.b, 255);
+          }
           else
           {
-            SDL_Color c = impl->surface->format->palette->colors[pixel];
-            return Color(c.r, c.g, c.b, 255);
+            return Color(0,0,0,255);
           }
         }
       }
@@ -342,7 +341,8 @@ Surface::get_pixel(int x, int y) const
   }
 
   Color color;
-  SDL_GetRGBA(pixel, get_surface()->format, &color.r, &color.g, &color.b, &color.a);
+  SDL_GetRGBA(pixel, SDL_GetPixelFormatDetails(get_surface()->format), palette,
+              &color.r, &color.g, &color.b, &color.a);
   return color;
 }
 
@@ -424,7 +424,7 @@ Surface::subsection(geom::irect const& rect) const
            + (y * new_surface->pitch),
            static_cast<uint8_t*>(impl->surface->pixels)
            + (impl->surface->pitch * (y + rect.top()))
-           + rect.left() * impl->surface->format->BytesPerPixel,
+           + rect.left() * SDL_BYTESPERPIXEL(impl->surface->format),
            static_cast<size_t>(new_surface->pitch));
   }
   SDL_UnlockSurface(new_surface);
@@ -442,7 +442,7 @@ Surface::fill(Color const& color)
   }
   else
   {
-    if (impl->surface->format->BytesPerPixel == 4)
+    if (SDL_BYTESPERPIXEL(impl->surface->format) == 4)
     {
       SDL_LockSurface(impl->surface);
       uint8_t* pixels = static_cast<uint8_t*>(impl->surface->pixels);
@@ -459,7 +459,7 @@ Surface::fill(Color const& color)
       }
       SDL_UnlockSurface(impl->surface);
     }
-    else if (impl->surface->format->BytesPerPixel == 3)
+    else if (SDL_BYTESPERPIXEL(impl->surface->format) == 3)
     {
       SDL_LockSurface(impl->surface);
       uint8_t* pixels = static_cast<uint8_t*>(impl->surface->pixels);
@@ -478,7 +478,7 @@ Surface::fill(Color const& color)
     }
     else
     {
-      log_error("unsupported BytesPerPixel format: {}", impl->surface->format->BytesPerPixel);
+      log_error("unsupported BytesPerPixel format: {}", SDL_BYTESPERPIXEL(impl->surface->format));
     }
   }
 }
@@ -502,20 +502,21 @@ Surface::convert_to_rgb() const
 bool
 Surface::has_colorkey() const
 {
-  Uint32 colorkey;
-  return SDL_GetColorKey(impl->surface, &colorkey) == 0;
+  return SDL_SurfaceHasColorKey(impl->surface);
 }
 
 bool
 Surface::is_indexed() const
 {
-  return impl->surface->format->palette;
+  return SDL_GetSurfacePalette(impl->surface) != nullptr;
 }
 
 void
 Surface::print(std::ostream& out)
 {
+  SDL_PixelFormatDetails const* fmt = SDL_GetPixelFormatDetails(impl->surface->format);
   out << std::format("Pointer: 0x{:p}\n"
+                     "Format:  {}\n"
                      "Rmask:   0x{:08x}\n"
                      "Gmask:   0x{:08x}\n"
                      "Bmask:   0x{:08x}\n"
@@ -524,16 +525,17 @@ Surface::print(std::ostream& out)
                      "Palette: 0x{:p}\n"
                      "BitsPerPixel: {:d}\n",
                      static_cast<void*>(impl->surface),
-                     impl->surface->format->Rmask,
-                     impl->surface->format->Gmask,
-                     impl->surface->format->Bmask,
-                     impl->surface->format->Amask,
-                     impl->surface->flags,
-                     static_cast<void*>(impl->surface->format->palette),
-                     static_cast<int>(impl->surface->format->BitsPerPixel));
+                     SDL_GetPixelFormatName(impl->surface->format),
+                     fmt->Rmask,
+                     fmt->Gmask,
+                     fmt->Bmask,
+                     fmt->Amask,
+                     static_cast<Uint32>(impl->surface->flags),
+                     static_cast<void*>(SDL_GetSurfacePalette(impl->surface)),
+                     static_cast<int>(fmt->bits_per_pixel));
 
   Uint32 colorkey;
-  if (SDL_GetColorKey(impl->surface, &colorkey) == 0)
+  if (SDL_GetSurfaceColorKey(impl->surface, &colorkey))
   {
     out << "Colorkey: " << std::format("0x{:08x}", colorkey) << std::endl;
   }
@@ -543,7 +545,7 @@ Surface::print(std::ostream& out)
   }
 
   Uint8 alpha;
-  if (SDL_GetSurfaceAlphaMod(impl->surface, &alpha) == 0)
+  if (SDL_GetSurfaceAlphaMod(impl->surface, &alpha))
   {
     out << "Alpha: " << static_cast<int>(alpha) << std::endl;
   }

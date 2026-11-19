@@ -572,11 +572,11 @@ SpriteViewerScreen::update_input(pingus::input::Event const& event)
       ScreenManager::instance()->pop_screen();
       break;
 
-    case SDLK_r:
+    case SDLK_R:
       reload();
       break;
 
-    case SDLK_o:
+    case SDLK_O:
       m_show_offset = !m_show_offset;
       break;
 
@@ -595,7 +595,7 @@ SpriteViewerScreen::update_input(pingus::input::Event const& event)
       break;
 
     case SDLK_PERIOD:
-    case SDLK_n:
+    case SDLK_N:
       if (m_paused) {
         step_frame();
       }

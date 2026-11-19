@@ -7,7 +7,7 @@
 
 #include <stdexcept>
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
 
 #include "util/raise_exception.hpp"
 
@@ -79,7 +79,7 @@ namespace {
 template<typename T>
 T load_proc(char const* name)
 {
-  void* p = SDL_GL_GetProcAddress(name);
+  SDL_FunctionPointer p = SDL_GL_GetProcAddress(name);
   if (!p)
     raise_exception(std::runtime_error,
                     "SDL_GL_GetProcAddress failed for " << name);

@@ -16,7 +16,7 @@
 
 #include "pingus/fps_counter.hpp"
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
 #include <sstream>
 
 #include "engine/display/display.hpp"
@@ -58,7 +58,7 @@ FPSCounter::draw()
 void
 FPSCounter::update_fps_counter()
 {
-  unsigned int current_time = SDL_GetTicks();
+  Uint64 current_time = SDL_GetTicks();
   int current_fps;
 
   fps_count++;

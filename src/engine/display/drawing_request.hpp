@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_DRAWING_REQUEST_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_DRAWING_REQUEST_HPP
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
 
 #include <geom/point.hpp>
 #include <geom/rect.hpp>

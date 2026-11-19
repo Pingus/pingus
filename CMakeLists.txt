@@ -50,7 +50,6 @@ endif()
 list(APPEND WARNINGS_CXX_FLAGS -Wno-unused-parameter)
 
 # Port / packaging options (used by mk/wasm, mk/r36s, distro builds).
-set(SDL2_ROOT "" CACHE PATH "Prebuilt SDL2 prefix (wasm static libs, optional)")
 # Override install datadir baked into the binary (default: <prefix>/share/pingus).
 set(DATA_PREFIX "" CACHE PATH "Runtime data directory hardcoded as PINGUS_DEFAULT_DATADIR")
 if(NOT PROJECT_VERSION_FULL)
@@ -69,13 +68,6 @@ endif()
 # R36S/ArkOS PortMaster builds after SDL_CreateWindow failed.
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
   add_compile_options(-fexceptions)
-endif()
-
-# Optional prebuilt SDL prefix (wasm): pkg-config + find_path under SDL2_ROOT.
-if(SDL2_ROOT)
-  list(APPEND CMAKE_PREFIX_PATH "${SDL2_ROOT}")
-  set(ENV{PKG_CONFIG_PATH} "${SDL2_ROOT}/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}")
-  message(STATUS "SDL2_ROOT=${SDL2_ROOT}")
 endif()
 
 find_package(PkgConfig REQUIRED)
@@ -119,61 +111,15 @@ else()
   endif()
 endif()
 
-if(EMSCRIPTEN AND SDL2_ROOT)
-  # Emscripten's toolchain sets FIND_ROOT_PATH_MODE_*=ONLY, so find_path /
-  # find_library ignore SDL2_ROOT outside the emscripten sysroot. Resolve paths
-  # explicitly instead.
-  set(_pingus_sdl2_h "")
-  if(EXISTS "${SDL2_ROOT}/include/SDL2/SDL.h")
-    set(_pingus_sdl2_h "${SDL2_ROOT}/include/SDL2/SDL.h")
-    set(SDL2_INCLUDE_DIR "${SDL2_ROOT}/include")
-  elseif(EXISTS "${SDL2_ROOT}/include/SDL.h")
-    set(_pingus_sdl2_h "${SDL2_ROOT}/include/SDL.h")
-    set(SDL2_INCLUDE_DIR "${SDL2_ROOT}/include")
-  endif()
-
-  set(SDL2_LIBRARY "")
-  foreach(_cand libSDL2.a libSDL2-static.a)
-    if(EXISTS "${SDL2_ROOT}/lib/${_cand}")
-      set(SDL2_LIBRARY "${SDL2_ROOT}/lib/${_cand}")
-      break()
-    endif()
-  endforeach()
-
-  set(SDL2_IMAGE_LIBRARY "")
-  foreach(_cand libSDL2_image.a)
-    if(EXISTS "${SDL2_ROOT}/lib/${_cand}")
-      set(SDL2_IMAGE_LIBRARY "${SDL2_ROOT}/lib/${_cand}")
-      break()
-    endif()
-  endforeach()
-
-  if(NOT _pingus_sdl2_h OR NOT SDL2_LIBRARY)
-    message(FATAL_ERROR
-      "EMSCRIPTEN build: SDL2 not found under SDL2_ROOT=${SDL2_ROOT}\n"
-      "  expected include/SDL2/SDL.h (or include/SDL.h) and lib/libSDL2.a")
-  endif()
-
-  message(STATUS "Emscripten SDL2 include: ${SDL2_INCLUDE_DIR}")
-  message(STATUS "Emscripten SDL2 library: ${SDL2_LIBRARY}")
-  if(SDL2_IMAGE_LIBRARY)
-    message(STATUS "Emscripten SDL2_image: ${SDL2_IMAGE_LIBRARY}")
-  endif()
-
-  add_library(pingus_sdl2 INTERFACE)
-  target_include_directories(pingus_sdl2 INTERFACE
-    "${SDL2_INCLUDE_DIR}"
-    "${SDL2_ROOT}/include")
-  target_link_libraries(pingus_sdl2 INTERFACE "${SDL2_LIBRARY}")
-  if(SDL2_IMAGE_LIBRARY)
-    target_link_libraries(pingus_sdl2 INTERFACE "${SDL2_IMAGE_LIBRARY}")
-  endif()
-  set(PINGUS_SDL_LIBS pingus_sdl2)
-else()
-  pkg_search_module(SDL2 REQUIRED sdl2 IMPORTED_TARGET)
-  pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0 IMPORTED_TARGET)
-  set(PINGUS_SDL_LIBS PkgConfig::SDL2 PkgConfig::SDL2IMAGE)
-endif()
+# SDL3 and SDL3_image ship CMake package configs. Cross builds (wasm,
+# R36S, Windows) point at prebuilt ones with -DSDL3_DIR=<prefix>/lib/cmake/SDL3
+# and -DSDL3_image_DIR=<prefix>/lib/cmake/SDL3_image; SDL3::SDL3 resolves to
+# the shared or the static library, whichever the prefix has.
+find_package(SDL3 3.2 REQUIRED CONFIG COMPONENTS SDL3)
+find_package(SDL3_image 3.2 REQUIRED CONFIG)
+message(STATUS "SDL3 ${SDL3_VERSION}: ${SDL3_DIR}")
+message(STATUS "SDL3_image ${SDL3_image_VERSION}: ${SDL3_image_DIR}")
+set(PINGUS_SDL_LIBS SDL3_image::SDL3_image SDL3::SDL3)
 
 # Optional / platform-variable deps
 set(PINGUS_OPTIONAL_LIBS "")
@@ -293,7 +239,7 @@ function(build_dependencies)
   set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
   set(BUILD_TESTS OFF)
   set(WERROR OFF)
-  set(TINYGETTEXT_WITH_SDL ON CACHE BOOL "" FORCE)
+  set(TINYGETTEXT_WITH_SDL3 ON CACHE BOOL "" FORCE)
   set(WARNINGS_CXX_FLAGS "")
   set(TINYCMMC_WARNINGS_CXX_FLAGS "")
 
@@ -388,8 +334,8 @@ set_target_properties(libpingus PROPERTIES OUTPUT_NAME pingus)
 target_compile_options(pingus PRIVATE ${WARNINGS_CXX_FLAGS})
 target_link_libraries(pingus libpingus)
 if(WIN32)
-  # Static libpingus does not always pull pkg-config INTERFACE libs through to
-  # the .exe under MinGW; re-state SDL + OpenGL on the executable.
+  # Static libpingus does not always pull INTERFACE libs through to the
+  # .exe under MinGW; re-state SDL + OpenGL on the executable.
   target_link_libraries(pingus ${PINGUS_SDL_LIBS} ${PINGUS_GL_LIBS})
 endif()
 # Optional ABI shims when linking a newer compiler against an older libstdc++

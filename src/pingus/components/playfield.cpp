@@ -171,7 +171,7 @@ Playfield::on_key_pressed(pingus::input::KeyboardEvent const& ev)
 {
   if (globals::developer_mode)
   {
-    bool spawn = ev.keysym.sym == SDLK_l || ev.keysym.sym == SDLK_r;
+    bool spawn = ev.keysym.sym == SDLK_L || ev.keysym.sym == SDLK_R;
     if (spawn)
     {
       Vector2i n = state.screen2world(mouse_pos);
@@ -180,7 +180,7 @@ Playfield::on_key_pressed(pingus::input::KeyboardEvent const& ev)
       if (pingu)
       {
         Direction d;
-        ev.keysym.sym == SDLK_l ? d.left() : d.right();
+        ev.keysym.sym == SDLK_L ? d.left() : d.right();
         pingu->set_direction(d);
       }
     }
@@ -263,7 +263,7 @@ Playfield::on_pointer_move (int x, int y)
 
   if (globals::developer_mode)
   { // Some fun stuff that lets you draw directly on the level
-    Uint8 const* keystate = SDL_GetKeyboardState(nullptr);
+    bool const* keystate = SDL_GetKeyboardState(nullptr);
     if (keystate[SDL_SCANCODE_DELETE])
     {
       CollisionMask mask("other/bash_radius_gfx");

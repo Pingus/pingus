@@ -478,17 +478,17 @@ public:
   void notify_parent() override {
     switch(m_ev.type)
     {
-      case SDL_KEYUP:
-      case SDL_KEYDOWN:
+      case SDL_EVENT_KEY_UP:
+      case SDL_EVENT_KEY_DOWN:
         controller->add_keyboard_event(m_ev.key);
         break;
 
-      case SDL_TEXTINPUT:
+      case SDL_EVENT_TEXT_INPUT:
         controller->add_text_input_event(m_ev.text);
         break;
 
       default:
-        log_error("unexpected SDL_Event: {}", m_ev.type);
+        log_error("unexpected SDL_Event: {}", static_cast<Uint32>(m_ev.type));
         break;
     }
   }

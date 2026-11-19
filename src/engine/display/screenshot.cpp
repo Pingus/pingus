@@ -18,7 +18,7 @@
 
 #include <filesystem>
 
-#include <SDL_image.h>
+#include <SDL3_image/SDL_image.h>
 #include <logmich/log.hpp>
 
 #include "engine/display/display.hpp"
@@ -38,7 +38,7 @@ Screenshot::save_screenshot(std::filesystem::path const& filename)
   }
 
   log_info("Screenshot: Saving screenshot to: {}", filename.string());
-  if (IMG_SavePNG(screen.get_surface(), filename.string().c_str()) != 0)
+  if (!IMG_SavePNG(screen.get_surface(), filename.string().c_str()))
   {
     log_error("Screenshot: Couldn't write file: {}: {}", filename.string(), SDL_GetError());
     return;
@@ -51,27 +51,21 @@ Screenshot::save_png(std::filesystem::path const& filename, uint8_t const* buffe
                      int width, int height, int pitch)
 {
   // buffer is expected as RGBX / RGBA packed pixels (4 bytes per pixel).
-  SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(
-    const_cast<uint8_t*>(buffer), width, height, 32, pitch,
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
-#else
-    0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
-#endif
-  );
+  SDL_Surface* surface = SDL_CreateSurfaceFrom(
+    width, height, SDL_PIXELFORMAT_RGBA32, const_cast<uint8_t*>(buffer), pitch);
 
   if (!surface)
   {
-    log_error("Screenshot: SDL_CreateRGBSurfaceFrom failed: {}", SDL_GetError());
+    log_error("Screenshot: SDL_CreateSurfaceFrom failed: {}", SDL_GetError());
     return;
   }
 
-  if (IMG_SavePNG(surface, filename.string().c_str()) != 0)
+  if (!IMG_SavePNG(surface, filename.string().c_str()))
   {
     log_error("Screenshot: Couldn't write file: {}: {}", filename.string(), SDL_GetError());
   }
 
-  SDL_FreeSurface(surface);
+  SDL_DestroySurface(surface);
 }
 
 } // namespace pingus

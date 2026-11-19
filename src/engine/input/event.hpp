@@ -17,11 +17,12 @@
 #ifndef HEADER_PINGUS_ENGINE_INPUT_EVENT_HPP
 #define HEADER_PINGUS_ENGINE_INPUT_EVENT_HPP
 
+#include <cstring>
 #include <string>
 #include <vector>
 
-#include <SDL_keyboard.h>
-#include <SDL_events.h>
+#include <SDL3/SDL_keyboard.h>
+#include <SDL3/SDL_events.h>
 
 namespace pingus::input {
 
@@ -62,15 +63,26 @@ struct ScrollEvent
   float y_delta;
 };
 
+/** The key fields of an SDL_KeyboardEvent (SDL3 has no SDL_Keysym). */
+struct Keysym
+{
+  SDL_Scancode scancode;
+  SDL_Keycode sym;
+  SDL_Keymod mod;
+};
+
 struct KeyboardEvent
 {
   bool state;
-  SDL_Keysym keysym;
+  Keysym keysym;
 };
 
 struct TextInputEvent
 {
-  char text[sizeof(SDL_TextInputEvent::text)];
+  /** NUL-terminated UTF-8; SDL3 hands out a pointer that is only valid
+      during event processing, so the text is copied (and truncated at a
+      character boundary if it does not fit). */
+  char text[32];
 };
 
 struct Event
@@ -140,8 +152,8 @@ inline Event makeKeyboardEvent(SDL_KeyboardEvent const& ev)
   Event event;
 
   event.type = KEYBOARD_EVENT_TYPE;
-  event.keyboard.state  = ev.state;
-  event.keyboard.keysym = ev.keysym;
+  event.keyboard.state  = ev.down;
+  event.keyboard.keysym = Keysym{ev.scancode, ev.key, ev.mod};
 
   return event;
 }
@@ -151,7 +163,16 @@ inline Event makeTextInputEvent(SDL_TextInputEvent const& ev)
   Event event;
 
   event.type = TEXT_INPUT_EVENT_TYPE;
-  memcpy(event.text.text, ev.text, sizeof(SDL_TextInputEvent::text));
+  size_t len = ev.text ? strlen(ev.text) : 0;
+  if (len >= sizeof(event.text.text))
+  {
+    len = sizeof(event.text.text) - 1;
+    // do not cut a UTF-8 sequence in half
+    while (len > 0 && (static_cast<unsigned char>(ev.text[len]) & 0xC0) == 0x80)
+      --len;
+  }
+  memcpy(event.text.text, ev.text, len);
+  event.text.text[len] = '\0';
 
   return event;
 }

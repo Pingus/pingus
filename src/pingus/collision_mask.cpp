@@ -72,11 +72,11 @@ CollisionMask::init_colmap(Surface const& surf, std::string const& surface_res)
   SDL_Surface* sdl_surface = surf.get_surface();
   SDL_LockSurface(sdl_surface);
 
-  if (sdl_surface->format->palette)
+  if (SDL_GetSurfacePalette(sdl_surface))
   {
     uint8_t* source = static_cast<uint8_t*>(sdl_surface->pixels);
     Uint32 colorkey;
-    if (SDL_GetColorKey(sdl_surface, &colorkey) == 0)
+    if (SDL_GetSurfaceColorKey(sdl_surface, &colorkey))
     { // surface with transparent areas
       for(int y = 0; y < height; ++y)
         for(int x = 0; x < width; ++x)
@@ -92,12 +92,12 @@ CollisionMask::init_colmap(Surface const& surf, std::string const& surface_res)
       memset(buffer.get(), 1, width * height);
     }
   }
-  else if (sdl_surface->format->BitsPerPixel == 24)
+  else if (SDL_BITSPERPIXEL(sdl_surface->format) == 24)
   {
     // completly opaque surface
     memset(buffer.get(), 1, width * height);
   }
-  else if (sdl_surface->format->BitsPerPixel == 32)
+  else if (SDL_BITSPERPIXEL(sdl_surface->format) == 32)
   {
     uint8_t* source = static_cast<uint8_t*>(sdl_surface->pixels);
     for(int y = 0; y < height; ++y)
@@ -113,20 +113,14 @@ CollisionMask::init_colmap(Surface const& surf, std::string const& surface_res)
     memset(buffer.get(), 0, width * height);
 
     log_error("unsupported image format:\n"
-              "  File: %s\n"
-              "  BitsPerPixel: %d\n"
-              "  BytesPerPixel: %d\n"
-              "  rmask: 0x%08x\n"
-              "  gmask: 0x%08x\n"
-              "  bmask: 0x%08x\n"
-              "  amask: 0x%08x\n",
-              surface_res.c_str(),
-              static_cast<int>(sdl_surface->format->BitsPerPixel),
-              static_cast<int>(sdl_surface->format->BytesPerPixel),
-              sdl_surface->format->Rmask,
-              sdl_surface->format->Gmask,
-              sdl_surface->format->Bmask,
-              sdl_surface->format->Amask);
+              "  File: {}\n"
+              "  Format: {}\n"
+              "  BitsPerPixel: {}\n"
+              "  BytesPerPixel: {}",
+              surface_res,
+              SDL_GetPixelFormatName(sdl_surface->format),
+              SDL_BITSPERPIXEL(sdl_surface->format),
+              SDL_BYTESPERPIXEL(sdl_surface->format));
   }
 
   SDL_UnlockSurface(sdl_surface);

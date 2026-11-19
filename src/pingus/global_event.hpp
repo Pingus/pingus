@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_GLOBAL_EVENT_HPP
 #define HEADER_PINGUS_PINGUS_GLOBAL_EVENT_HPP
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
 
 namespace pingus {
 

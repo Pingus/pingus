@@ -29,21 +29,14 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
   // Power-of-two pad keeps sampling simple on ES2 without NPOT restrictions.
   m_texture_size = geom::isize(next_power_of_two(src->w), next_power_of_two(src->h));
 
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-  SDL_Surface* convert = SDL_CreateRGBSurface(0,
-                                              m_texture_size.width(), m_texture_size.height(), 32,
-                                              0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff);
-#else
-  SDL_Surface* convert = SDL_CreateRGBSurface(0,
-                                              m_texture_size.width(), m_texture_size.height(), 32,
-                                              0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000);
-#endif
+  SDL_Surface* convert = SDL_CreateSurface(m_texture_size.width(), m_texture_size.height(),
+                                           SDL_PIXELFORMAT_RGBA32);
   SDL_BlitSurface(src, nullptr, convert, nullptr);
 
   GLenum sdl_format = GL_RGBA;
-  if (convert->format->BytesPerPixel == 3)
+  if (SDL_BYTESPERPIXEL(convert->format) == 3)
     sdl_format = GL_RGB;
-  else if (convert->format->BytesPerPixel == 4)
+  else if (SDL_BYTESPERPIXEL(convert->format) == 4)
     sdl_format = GL_RGBA;
   else
     assert(false && "OpenGLFramebufferSurfaceImpl: Unsupported surface format");
@@ -65,7 +58,7 @@ OpenGLFramebufferSurfaceImpl::OpenGLFramebufferSurfaceImpl(SDL_Surface* src) :
   glTexImage2D(GL_TEXTURE_2D, 0, internal, m_texture_size.width(), m_texture_size.height(), 0,
                sdl_format, GL_UNSIGNED_BYTE, convert->pixels);
   SDL_UnlockSurface(convert);
-  SDL_FreeSurface(convert);
+  SDL_DestroySurface(convert);
 
   glBindTexture(GL_TEXTURE_2D, 0);
 }

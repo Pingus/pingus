@@ -130,7 +130,7 @@ Viewport::on_primary_button_press(int x_, int y_)
       if (selection.find(obj) == selection.end())
       {
         // if the clicked on object isn't selected, select it and deselect the rest
-        if (key_modifier & KMOD_SHIFT)
+        if (key_modifier & SDL_KMOD_SHIFT)
         {
           selection.insert(obj);
           selection_changed(selection);
@@ -144,7 +144,7 @@ Viewport::on_primary_button_press(int x_, int y_)
       }
       else
       {
-        if (key_modifier & KMOD_SHIFT)
+        if (key_modifier & SDL_KMOD_SHIFT)
         {
           // if object is already selected and shift is pressed remove
           // it from the selection
@@ -170,7 +170,7 @@ Viewport::on_primary_button_press(int x_, int y_)
                               mouse_world_pos.x(),
                               mouse_world_pos.y());
 
-      if (!(key_modifier & KMOD_LSHIFT) && !(key_modifier & KMOD_RSHIFT))
+      if (!(key_modifier & SDL_KMOD_LSHIFT) && !(key_modifier & SDL_KMOD_RSHIFT))
       {
         clear_selection();
         selection_changed(selection);
@@ -262,8 +262,8 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
 {
   switch(ev.keysym.sym)
   {
-    case SDLK_g:
-      if (ev.keysym.mod & KMOD_SHIFT)
+    case SDLK_G:
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         ungroup_selection();
       }
@@ -273,8 +273,8 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       }
       break;
 
-    case SDLK_b:
-      if (ev.keysym.mod & KMOD_SHIFT)
+    case SDLK_B:
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         if (m_background_colors_idx > 1)
         {
@@ -298,8 +298,8 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       }
       break;
 
-    case SDLK_a:
-      if (ev.keysym.mod & KMOD_SHIFT)
+    case SDLK_A:
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         clear_selection();
         selection_changed(selection);
@@ -324,13 +324,13 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
 
     case SDLK_PAGEUP:
     case SDLK_RIGHTBRACKET:
-    case SDLK_w:
-      if (ev.keysym.mod & KMOD_CTRL)
+    case SDLK_W:
+      if (ev.keysym.mod & SDL_KMOD_CTRL)
       {
         raise_objects_z_pos();
       }
 
-      if (ev.keysym.mod & KMOD_SHIFT)
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         raise_objects_to_top();
       }
@@ -342,13 +342,13 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
 
     case SDLK_PAGEDOWN:
     case SDLK_LEFTBRACKET:
-    case SDLK_s:
-      if (ev.keysym.mod & KMOD_CTRL)
+    case SDLK_S:
+      if (ev.keysym.mod & SDL_KMOD_CTRL)
       {
         lower_objects_z_pos();
       }
 
-      if (ev.keysym.mod & KMOD_SHIFT)
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         lower_objects_to_bottom();
       }
@@ -358,8 +358,8 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       }
       break;
 
-    case SDLK_r:
-      if (ev.keysym.mod & KMOD_SHIFT)
+    case SDLK_R:
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         rotate_270_selected_objects();
       }
@@ -374,12 +374,12 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       delete_selected_objects();
       break;
 
-    case SDLK_d:
+    case SDLK_D:
       duplicate_selected_objects();
       break;
 
-    case SDLK_f:
-      if (ev.keysym.mod & KMOD_SHIFT)
+    case SDLK_F:
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         vflip_selected_objects();
       }
@@ -389,8 +389,8 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       }
       break;
 
-    case SDLK_v:
-      if (ev.keysym.mod & KMOD_SHIFT)
+    case SDLK_V:
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         hflip_selected_objects();
       }
@@ -400,9 +400,9 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       }
       break;
 
-    case SDLK_c: // dvorak-up
-    case SDLK_i: // up
-      if (ev.keysym.mod & KMOD_SHIFT)
+    case SDLK_C: // dvorak-up
+    case SDLK_I: // up
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         move_objects(Vector2i(0,-keyboard_movement_distance));
       }
@@ -412,9 +412,9 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       }
       break;
 
-    case SDLK_t: // dvorak-down
-    case SDLK_k: // down
-      if (ev.keysym.mod & KMOD_SHIFT)
+    case SDLK_T: // dvorak-down
+    case SDLK_K: // down
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         move_objects(Vector2i(0, keyboard_movement_distance));
       }
@@ -424,9 +424,9 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       }
       break;
 
-    case SDLK_h: // dvorak-left
-    case SDLK_j: // left
-      if (ev.keysym.mod & KMOD_SHIFT)
+    case SDLK_H: // dvorak-left
+    case SDLK_J: // left
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         move_objects(Vector2i(-keyboard_movement_distance, 0));
       }
@@ -436,9 +436,9 @@ Viewport::on_key_pressed(input::KeyboardEvent const& ev)
       }
       break;
 
-    case SDLK_n: // dvorak-right
-    case SDLK_l: // right
-      if (ev.keysym.mod & KMOD_SHIFT)
+    case SDLK_N: // dvorak-right
+    case SDLK_L: // right
+      if (ev.keysym.mod & SDL_KMOD_SHIFT)
       {
         move_objects(Vector2i(keyboard_movement_distance, 0));
       }

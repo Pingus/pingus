@@ -16,7 +16,7 @@
 
 #include <iostream>
 #include <stdexcept>
-#include <SDL.h>
+#include <SDL3/SDL.h>
 
 #include "util/pathname.hpp"
 #include "engine/input/manager.hpp"

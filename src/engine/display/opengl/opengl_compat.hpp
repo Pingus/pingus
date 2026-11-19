@@ -12,7 +12,7 @@
 
 #if defined(PINGUS_USE_GLES) || defined(PINGUS_EMSCRIPTEN)
 
-#  include <SDL_opengles2.h>
+#  include <SDL3/SDL_opengles2.h>
 #  ifndef PINGUS_GL_ES
 #    define PINGUS_GL_ES 1
 #  endif
@@ -20,13 +20,13 @@
 #else
 
 // Desktop GL
-#  include <SDL_opengl.h>
+#  include <SDL3/SDL_opengl.h>
 
 #  if defined(_WIN32)
 // SDL_opengl.h (MinGW) already declares some 1.2+ entry points as functions,
 // but opengl32.dll does not provide them. Use uniquely named function pointers
 // loaded via SDL_GL_GetProcAddress, then macro-redirect the usual gl* names.
-#    include <SDL_opengl_glext.h>
+#    include <SDL3/SDL_opengl_glext.h>
 
 extern PFNGLACTIVETEXTUREPROC              pingus_glActiveTexture;
 extern PFNGLATTACHSHADERPROC               pingus_glAttachShader;
@@ -97,7 +97,7 @@ void opengl_load_procs();
 #    ifndef GL_GLEXT_PROTOTYPES
 #      define GL_GLEXT_PROTOTYPES 1
 #    endif
-#    include <SDL_opengl_glext.h>
+#    include <SDL3/SDL_opengl_glext.h>
 #    if defined(__has_include)
 #      if __has_include(<GL/glext.h>)
 #        include <GL/glext.h>

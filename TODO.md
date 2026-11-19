@@ -42,12 +42,26 @@ land or scope changes.
       (GP2X/Wiz **not** brought over)
 - [x] Wire host-system packages: `pingus-wasm`, `pingus-android`,
       `pingus-r36s`, PortMaster zips, `arkos-sysroot`, SDL helper outputs
-- [x] CMake: `SDL2_ROOT`, `PINGUS_USE_GLES`, `EMSCRIPTEN_LINK_FLAGS`,
+- [x] CMake: `SDL3_DIR` / `SDL3_image_DIR`, `PINGUS_USE_GLES`, `EMSCRIPTEN_LINK_FLAGS`,
       html suffix, skip `xdgcpp` on Emscripten/Android
 - [x] `PINGUS_ENABLE_SOUND` optional on Emscripten (was forced OFF; now ON via flake when wstsound path is ready)
 - [x] wasm `build-app.sh` uses Pingus CMake options (not SuperTux `ENABLE_*`)
 
 ## In progress / next
+
+### SDL3
+
+- [x] Port the C++ code from SDL2 / SDL2_image to SDL3 / SDL3_image
+- [x] CMake: `find_package(SDL3)` / `find_package(SDL3_image)` (CONFIG)
+- [x] tinygettext: `TINYGETTEXT_WITH_SDL3` (SDL_iconv)
+- [x] Native Nix build (`pkgs.sdl3`, `pkgs.sdl3-image`)
+- [x] Windows: SDL3 + SDL3_image cross-built from nixpkgs sources
+      (`nix/windows.nix`), replacing the SDL2-win32 flake inputs
+- [ ] WASM: SDL3 + SDL3_image static builds instead of `build-sdl2*.sh`
+- [ ] Android: SDL3 (Java glue `org.libsdl.app`), image shim on SDL3
+- [ ] R36S: build SDL3 (KMSDRM + GLES) against `arkos-sysroot` and ship
+      `libSDL3.so.0` in the port (sysroot only provides SDL2)
+- [ ] Drop the now unused `sdl2-*-src` and `SDL2*-win32` flake inputs
 
 ### Dependencies
 
@@ -130,8 +144,8 @@ fixes. Sound is still forced off (`PINGUS_NO_SOUND`).
 
 - [x] Stage `external/*/include` into the NDK tree; exclude `sound_real.cpp` (until sound lands)
 - [x] GLES context attributes in OpenGLFramebuffer when `PINGUS_USE_GLES`
-- [x] Writable userdir via `SDL_AndroidGetInternalStoragePath`
-- [x] Asset I/O: `System::read_file` / `exist` via `SDL_RWFromFile`
+- [x] Writable userdir via `SDL_GetAndroidInternalStoragePath`
+- [x] Asset I/O: `System::read_file` / `exist` via `SDL_IOFromFile`
 - [x] Load prio documents via `System::read_file` (`load_document`)
 - [x] Legacy `/images/...` sprite paths stripped for AssetManager
 - [x] GLES viewport synced to drawable size (1024×528 vs requested 1024×768)

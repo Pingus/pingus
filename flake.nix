@@ -152,6 +152,11 @@
             win = pkgs'.stdenv.hostPlatform.isWindows;
             winSuffix =
               if pkgs'.stdenv.hostPlatform.is32bit then "win32" else "win64";
+            winSdl = import ./nix/windows.nix {
+              inherit pkgs;
+              crossPkgs = pkgs';
+              target = winSuffix;
+            };
           in
           pkgs'.callPackage ./pingus.nix {
             inherit self;
@@ -174,12 +179,8 @@
             libglvnd = if win || !useGLES2 then null else pkgs'.libglvnd;
             addDriverRunpath = if win || !useGLES2 then null else pkgs'.addDriverRunpath;
 
-            SDL2 =
-              if win then SDL2-win32.packages.${system}."SDL2-${winSuffix}"
-              else pkgs'.SDL2;
-            SDL2_image =
-              if win then SDL2_image-win32.packages.${system}."SDL2_image-${winSuffix}"
-              else pkgs'.SDL2_image;
+            sdl3 = if win then winSdl.sdl3 else pkgs'.sdl3;
+            sdl3-image = if win then winSdl.sdl3-image else pkgs'.sdl3-image;
           };
 
         pingusNative = mkPingus {
@@ -398,7 +399,7 @@
               export WINEPREFIX=$(mktemp -d)
               export WINEARCH=win64
               export WINEDLLOVERRIDES="mscoree,mshtml="
-              export WINEDLLOVERRIDES="SDL2=n,$WINEDLLOVERRIDES"
+              export WINEDLLOVERRIDES="SDL3=n,SDL3_image=n,$WINEDLLOVERRIDES"
               trap 'rm -rf "$WINEPREFIX"' EXIT
               ${pkgs.wineWow64Packages.stable}/bin/wineboot --init >/dev/null 2>&1 || true
               cd ${pkg}

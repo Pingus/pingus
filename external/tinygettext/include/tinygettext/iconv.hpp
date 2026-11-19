@@ -22,7 +22,10 @@
 
 #include <string>
 
-#ifdef TINYGETTEXT_WITH_SDL
+#ifdef TINYGETTEXT_WITH_SDL3
+#  include <SDL3/SDL_stdinc.h>
+#  define TINYGETTEXT_WITH_SDL
+#elif defined(TINYGETTEXT_WITH_SDL)
 #  include "SDL.h"
 #elif !defined(TINYGETTEXT_UTF8_ONLY)
 #  include <iconv.h>

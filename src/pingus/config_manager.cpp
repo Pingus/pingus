@@ -180,7 +180,7 @@ ConfigManager::set_mouse_grab(bool v)
 
   if (v != get_mouse_grab())
   {
-    SDL_SetWindowGrab(SDL_GL_GetCurrentWindow(), static_cast<SDL_bool>(v));
+    SDL_SetWindowMouseGrab(SDL_GL_GetCurrentWindow(), v);
     on_mouse_grab_change(v);
   }
 
@@ -190,7 +190,7 @@ ConfigManager::set_mouse_grab(bool v)
 bool
 ConfigManager::get_mouse_grab() const
 {
-  return SDL_GetWindowGrab(SDL_GL_GetCurrentWindow());
+  return SDL_GetWindowMouseGrab(SDL_GL_GetCurrentWindow());
 }
 
 void

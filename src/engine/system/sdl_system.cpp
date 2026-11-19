@@ -16,7 +16,7 @@
 
 #include "engine/system/sdl_system.hpp"
 
-#include <SDL_image.h>
+#include <SDL3_image/SDL_image.h>
 
 #include <logmich/log.hpp>
 
@@ -28,7 +28,7 @@ namespace pingus {
 
 SDLSystem::SDLSystem()
 {
-  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) != 0)
+  if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK))
   {
     log_error("Unable to initialize SDL: {}", SDL_GetError());
     exit(1);

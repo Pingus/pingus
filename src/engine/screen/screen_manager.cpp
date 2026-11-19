@@ -115,8 +115,8 @@ ScreenManager::display()
 
 #ifdef __EMSCRIPTEN__
   std::fprintf(stderr,
-    "[pingus] ScreenManager::display: screens=%zu last_ticks=%u — registering main loop\n",
-    screens.size(), last_ticks);
+    "[pingus] ScreenManager::display: screens=%zu last_ticks=%llu — registering main loop\n",
+    screens.size(), static_cast<unsigned long long>(last_ticks));
   // Browser-driven loop via requestAnimationFrame (fps=0). Avoids SDL_Delay
   // busy-waits that spin the tab at 100% CPU without ASYNCIFY.
   // simulate_infinite_loop=false: return to caller so we do not JS-throw/unwind
@@ -168,7 +168,7 @@ ScreenManager::run_one_frame()
   else
   {
     // Get Time
-    Uint32 ticks = SDL_GetTicks();
+    Uint64 ticks = SDL_GetTicks();
     previous_frame_time  = float(ticks - last_ticks)/1000.0f;
     last_ticks = ticks;
 
@@ -299,36 +299,28 @@ ScreenManager::process_events()
   while (SDL_PollEvent(&event))
   {
     switch (event.type) {
-      case SDL_QUIT: // FIXME: make this into a GameEvent
+      case SDL_EVENT_QUIT: // FIXME: make this into a GameEvent
         ScreenManager::instance()->pop_all_screens();
         break;
 
-      case SDL_WINDOWEVENT:
-        switch(event.window.event)
-        {
-          case SDL_WINDOWEVENT_RESIZED:
-            Display::resize(Size(event.window.data1, event.window.data2));
-            break;
-
-          default:
-            break;
-        }
+      case SDL_EVENT_WINDOW_RESIZED:
+        Display::resize(Size(event.window.data1, event.window.data2));
         break;
 
-      case SDL_MOUSEMOTION:
-      case SDL_MOUSEWHEEL:
-      case SDL_TEXTINPUT:
-      case SDL_TEXTEDITING:
-      case SDL_MOUSEBUTTONDOWN:
-      case SDL_MOUSEBUTTONUP:
-      case SDL_KEYDOWN:
-      case SDL_KEYUP:
-      case SDL_JOYAXISMOTION:
-      case SDL_JOYBUTTONDOWN:
-      case SDL_JOYBUTTONUP:
-        if (event.type == SDL_KEYUP || event.type == SDL_KEYDOWN) {
+      case SDL_EVENT_MOUSE_MOTION:
+      case SDL_EVENT_MOUSE_WHEEL:
+      case SDL_EVENT_TEXT_INPUT:
+      case SDL_EVENT_TEXT_EDITING:
+      case SDL_EVENT_MOUSE_BUTTON_DOWN:
+      case SDL_EVENT_MOUSE_BUTTON_UP:
+      case SDL_EVENT_KEY_DOWN:
+      case SDL_EVENT_KEY_UP:
+      case SDL_EVENT_JOYSTICK_AXIS_MOTION:
+      case SDL_EVENT_JOYSTICK_BUTTON_DOWN:
+      case SDL_EVENT_JOYSTICK_BUTTON_UP:
+        if (event.type == SDL_EVENT_KEY_UP || event.type == SDL_EVENT_KEY_DOWN) {
           // global event hacks
-          if (event.key.state == SDL_PRESSED) {
+          if (event.key.down) {
             global_event.on_button_press(event.key);
           } else {
             global_event.on_button_release(event.key);
@@ -339,7 +331,7 @@ ScreenManager::process_events()
         break;
 
       default:
-        log_debug("unknown SDL_Event type: {}", event.type);
+        log_debug("unknown SDL_Event type: {}", static_cast<Uint32>(event.type));
         break;
     }
   }
@@ -412,7 +404,7 @@ ScreenManager::fade_over(ScreenPtr const& old_screen, ScreenPtr const& new_scree
   input_manager.refresh();
   return;
 #else
-  Uint32 fade_start_ticks = SDL_GetTicks();
+  Uint64 fade_start_ticks = SDL_GetTicks();
   float progress = 0.0f;
   Framebuffer& fb = *Display::get_framebuffer();
   while (progress <= 1.0f)
@@ -470,11 +462,11 @@ ScreenManager::show_software_cursor(bool visible)
 
   if (globals::software_cursor)
   {
-    SDL_ShowCursor(SDL_DISABLE);
+    SDL_HideCursor();
   }
   else
   {
-    SDL_ShowCursor(SDL_ENABLE);
+    SDL_ShowCursor();
   }
 }
 

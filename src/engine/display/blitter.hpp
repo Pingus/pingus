@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_HPP
 #define HEADER_PINGUS_ENGINE_DISPLAY_BLITTER_HPP
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
 
 namespace pingus {
 

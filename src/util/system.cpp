@@ -17,7 +17,7 @@
 #include "util/system.hpp"
 
 #ifdef ANDROID
-#include <SDL.h>
+#include <SDL3/SDL.h>
 #endif
 
 #include <algorithm>
@@ -342,10 +342,10 @@ System::exist(std::string const& filename)
 {
 #ifdef ANDROID
   // access()/fopen cannot see APK assets; SDL routes relative paths to AssetManager.
-  SDL_RWops* rw = SDL_RWFromFile(filename.c_str(), "rb");
-  if (!rw)
+  SDL_IOStream* io = SDL_IOFromFile(filename.c_str(), "rb");
+  if (!io)
     return false;
-  SDL_RWclose(rw);
+  SDL_CloseIO(io);
   return true;
 #else
   return !access(filename.c_str(), F_OK);
@@ -443,11 +443,11 @@ System::find_userdir()
   // App-private internal storage (writable). Root paths like /pingus-user/
   // are not creatable on device and caused init_directories() to throw,
   // which made SDL_main return immediately with no visible UI.
-  if (char const* internal = SDL_AndroidGetInternalStoragePath())
+  if (char const* internal = SDL_GetAndroidInternalStoragePath())
   {
     return std::string(internal) + "/pingus/";
   }
-  raise_exception(std::runtime_error, "SDL_AndroidGetInternalStoragePath returned null");
+  raise_exception(std::runtime_error, "SDL_GetAndroidInternalStoragePath returned null");
 #elif defined(PINGUS_NO_XDGCPP)
   // R36S / other embedded Linux without xdgcpp: XDG-ish path under $HOME.
   if (char const* homedir = getenv("HOME"))
@@ -914,17 +914,17 @@ std::string
 System::read_file(std::string const& filename)
 {
 #ifdef ANDROID
-  SDL_RWops* rw = SDL_RWFromFile(filename.c_str(), "rb");
-  if (!rw) {
+  SDL_IOStream* io = SDL_IOFromFile(filename.c_str(), "rb");
+  if (!io) {
     raise_exception(std::runtime_error, "System::read_file: " << filename << ": " << SDL_GetError());
   }
   std::string out;
   char chunk[4096];
   size_t got;
-  while ((got = static_cast<size_t>(SDL_RWread(rw, chunk, 1, sizeof(chunk)))) > 0) {
+  while ((got = SDL_ReadIO(io, chunk, sizeof(chunk))) > 0) {
     out.append(chunk, got);
   }
-  SDL_RWclose(rw);
+  SDL_CloseIO(io);
   return out;
 #else
   std::ifstream in(filename, std::ios::binary);

@@ -16,9 +16,44 @@
 
 #include "engine/display/blitter.hpp"
 
+#include <logmich/log.hpp>
+
 #include "engine/display/blitter_impl.hpp"
 
 namespace pingus {
+
+namespace {
+
+/** Give \a dst its own copy of \a src's palette, if \a src has one. */
+void copy_palette(SDL_Surface* src, SDL_Surface* dst)
+{
+  SDL_Palette* src_pal = SDL_GetSurfacePalette(src);
+  if (!src_pal)
+    return;
+
+  SDL_Palette* dst_pal = SDL_CreateSurfacePalette(dst);
+  if (!dst_pal)
+  {
+    log_error("SDL_CreateSurfacePalette failed: {}", SDL_GetError());
+    return;
+  }
+
+  if (src_pal->ncolors > dst_pal->ncolors)
+  {
+    log_error("target palette smaller then source palette: src:{} > tgt:{}",
+              src_pal->ncolors, dst_pal->ncolors);
+    return;
+  }
+
+  // A surface loaded from file can have a palette with fewer colors than
+  // its pixel format allows; copy only those.
+  if (!SDL_SetPaletteColors(dst_pal, src_pal->colors, 0, src_pal->ncolors))
+  {
+    log_error("SDL_SetPaletteColors failed: {}", SDL_GetError());
+  }
+}
+
+} // namespace
 
 SDL_Surface*
 Blitter::scale_surface(SDL_Surface* surface, int width, int height)
@@ -32,16 +67,13 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
   int new_pitch;
   SDL_Surface* new_surface;
 
-  bpp = surface->format->BytesPerPixel;
+  bpp = SDL_BYTESPERPIXEL(surface->format);
   if (bpp == 1) {
-    SDL_Palette* pal = SDL_AllocPalette(256);
-
     Uint32 ckey;
-    int useckey = 0;
+    bool const useckey = SDL_GetSurfaceColorKey(surface, &ckey);
 
-    useckey = SDL_GetColorKey(surface, &ckey) == 0;
-
-    new_surface = SDL_CreateRGBSurface(0, width, height, 8, 0, 0, 0, 0);
+    new_surface = SDL_CreateSurface(width, height, surface->format);
+    copy_palette(surface, new_surface);
 
     SDL_LockSurface(surface);
     SDL_LockSurface(new_surface);
@@ -49,8 +81,6 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     pixels     = static_cast<unsigned char*>(surface->pixels);
     new_pixels = static_cast<unsigned char*>(new_surface->pixels);
     new_pitch  = new_surface->pitch;
-
-    memcpy(pal->colors, surface->format->palette->colors, sizeof(SDL_Color) * 256);
 
     for (i = 0; i < height; ++i) {
       x = i * new_pitch;
@@ -63,19 +93,17 @@ Blitter::scale_surface(SDL_Surface* surface, int width, int height)
     SDL_UnlockSurface(surface);
     SDL_UnlockSurface(new_surface);
 
-    SDL_SetSurfacePalette(new_surface, pal);
     if (useckey)
     {
-      SDL_SetColorKey(new_surface, SDL_TRUE, ckey);
-      SDL_SetSurfaceRLE(new_surface, SDL_TRUE);
+      SDL_SetSurfaceColorKey(new_surface, true, ckey);
+      SDL_SetSurfaceRLE(new_surface, true);
     }
   } else {
     int ix, iy;
     float fx, fy, fz;
     unsigned char *p1, *p2, *p3, *p4;
 
-    new_surface = SDL_CreateRGBSurface(0, width, height, surface->format->BitsPerPixel,
-                                       surface->format->Rmask, surface->format->Gmask, surface->format->Bmask, surface->format->Amask);
+    new_surface = SDL_CreateSurface(width, height, surface->format);
 
     SDL_LockSurface(surface);
     SDL_LockSurface(new_surface);
@@ -186,39 +214,22 @@ Blitter::rotate_270_flip (Surface const& sur)
 SDL_Surface*
 Blitter::create_surface_rgba(int w, int h)
 {
-  return SDL_CreateRGBSurface(0, w, h, 32,
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                              0xff000000, 0x00ff0000, 0x0000ff00, 0x000000ff
-#else
-                              0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
-#endif
-    );
+  return SDL_CreateSurface(w, h, SDL_PIXELFORMAT_RGBA32);
 }
 
 SDL_Surface*
 Blitter::create_surface_rgb(int w, int h)
 {
-  return SDL_CreateRGBSurface(0, w, h, 24,
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                              0xff000000, 0x00ff0000, 0x0000ff00, 0x00000000
-#else
-                              0x000000ff, 0x0000ff00, 0x00ff0000, 0x00000000
-#endif
-    );
+  return SDL_CreateSurface(w, h, SDL_PIXELFORMAT_RGB24);
 }
 
 SDL_Surface*
 Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
 {
-  SDL_Surface* new_surface = SDL_CreateRGBSurface(0, w, h,
-                                                  surface->format->BitsPerPixel,
-                                                  surface->format->Rmask,
-                                                  surface->format->Gmask,
-                                                  surface->format->Bmask,
-                                                  surface->format->Amask);
+  SDL_Surface* new_surface = SDL_CreateSurface(w, h, surface->format);
 
   Uint8 alpha;
-  if (SDL_GetSurfaceAlphaMod(surface, &alpha) == 0)
+  if (SDL_GetSurfaceAlphaMod(surface, &alpha))
   {
     SDL_SetSurfaceAlphaMod(new_surface, alpha);
   }
@@ -228,7 +239,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
   }
 
   SDL_BlendMode blend_mode;
-  if (SDL_GetSurfaceBlendMode(surface, &blend_mode) == 0)
+  if (SDL_GetSurfaceBlendMode(surface, &blend_mode))
   {
     SDL_SetSurfaceBlendMode(new_surface, blend_mode);
   }
@@ -238,7 +249,7 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
   }
 
   Uint8 r, g, b;
-  if (SDL_GetSurfaceColorMod(surface, &r, &g, &b) == 0)
+  if (SDL_GetSurfaceColorMod(surface, &r, &g, &b))
   {
     SDL_SetSurfaceColorMod(new_surface, r, g, b);
   }
@@ -247,45 +258,12 @@ Blitter::create_surface_from_format(SDL_Surface* surface, int w, int h)
     log_error("SDL_GetSurfaceColorMod failed: {}", SDL_GetError());
   }
 
-  if (surface->format->palette)
-  {
-    if (surface->format->palette->ncolors <= new_surface->format->palette->ncolors)
-    {
-      // An SDL_Surface loaded from file can have a palette with very
-      // few colors, SDL_SetSurfacePalette() however expects the
-      // number of colors to match the bits per pixel:
-      //
-      // if (palette && palette->ncolors != (1 << format->BitsPerPixel)) {
-      //   return SDL_SetError("SDL_SetPixelFormatPalette() passed a palette that doesn't match the format");
-      // }
-      //
-      // As a result, we are not using SDL_SetSurfacePalette() here,
-      // but a manual memcpy().
-      memcpy(new_surface->format->palette->colors,
-             surface->format->palette->colors,
-             static_cast<size_t>(surface->format->palette->ncolors) * sizeof(SDL_Color));
-    }
-    else
-    {
-      log_error("target palette smaller then source palette: src:{} > tgt:{}",
-                surface->format->palette->ncolors,
-                new_surface->format->palette->ncolors);
-    }
-  }
+  copy_palette(surface, new_surface);
 
   Uint32 colorkey;
-  int ret = SDL_GetColorKey(surface, &colorkey);
-  if (ret == -1)
+  if (SDL_GetSurfaceColorKey(surface, &colorkey))
   {
-    // no colorkey
-  }
-  else if (ret < 0)
-  {
-    log_error("SDL_GetColorKey failed: {}", SDL_GetError());
-  }
-  else
-  {
-    SDL_SetColorKey(new_surface, SDL_TRUE, colorkey);
+    SDL_SetSurfaceColorKey(new_surface, true, colorkey);
   }
 
   return new_surface;

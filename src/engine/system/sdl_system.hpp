@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_ENGINE_SYSTEM_SDL_HPP
 #define HEADER_PINGUS_ENGINE_SYSTEM_SDL_HPP
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
 #include <geom/fwd.hpp>
 
 #include "pingus/options.hpp"

@@ -5,7 +5,7 @@ Introduction
 ------------
 
 Pingus is a free Lemmings™ clone for GNU/Linux, Win32 and other
-operating systems supported by SDL2. It is licensed under the GPLv3+.
+operating systems supported by SDL3. It is licensed under the GPLv3+.
 
 Information about the game, new versions and additional documentation
 can be found at the Pingus webpage:
@@ -31,6 +31,16 @@ Zipped redistributables:
 
     nix build github:Pingus/pingus#pingus-win32-x64-zip
     nix build github:Pingus/pingus#pingus-win32-x86-zip
+
+Without Nix, configure with CMake (3.15 or newer) and a C++23 compiler.
+Required libraries: SDL3 and SDL3_image (3.2 or newer, found through
+their CMake package configs), OpenGL, glm, jsoncpp, libsigc++ 2.0, and
+for sound OpenAL Soft, libvorbis, opusfile, mpg123 and libmodplug. The
+small helper libraries under `external/` are built in-tree unless
+installed copies are found:
+
+    cmake -S . -B build -G Ninja
+    cmake --build build
 
 
 Mailing Lists
@@ -69,7 +79,7 @@ Scaffolding adapted from SuperTux Milestone 1. These packages live under the
     nix build .#pingus-android           # APK (SDL layer + NDK)
     nix build .#pingus-wasm              # emscripten + preloaded data/
 
-**Status:** Nix packaging plus CMake hooks for Emscripten (`SDL2_ROOT`,
+**Status:** Nix packaging plus CMake hooks for Emscripten (`SDL3_DIR`,
 `PINGUS_USE_GLES`, `PINGUS_ENABLE_SOUND`, html suffix / link flags) and R36S
 sysroot builds. WASM defaults to dummy audio (no wstsound). Full GLES2 /
 WebGL rendering and NDK builds of `external/` are still incomplete — expect

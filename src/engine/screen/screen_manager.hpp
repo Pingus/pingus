@@ -55,7 +55,7 @@ private:
   bool playback_input;
 
   /** SDL ticks at the start of the previous frame (used for delta timing). */
-  unsigned int last_ticks;
+  Uint64 last_ticks;
 
 public:
   ScreenManager(pingus::input::Manager& input_manager,

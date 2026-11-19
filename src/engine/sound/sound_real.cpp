@@ -16,7 +16,7 @@
 
 #include "engine/sound/sound_real.hpp"
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
 #include <stdexcept>
 
 #include <logmich/log.hpp>

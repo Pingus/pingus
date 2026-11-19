@@ -26,8 +26,8 @@
 #include <sstream>
 #include <vector>
 
-#include <SDL.h>
-#include <SDL_image.h>
+#include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
 
 #include <argpp/argpp.hpp>
 #include <logmich/log.hpp>
@@ -142,7 +142,7 @@ void save_screenshot(Server& server, Pathname const& path, RunOptions const& opt
     (std::filesystem::path(path.get_raw_path()).stem().string() + "-" +
      std::to_string(server.get_time()) + ".png");
   Surface const screen = fb.make_screenshot().subsection(rect);
-  if (IMG_SavePNG(screen.get_surface(), filename.string().c_str()) != 0) {
+  if (!IMG_SavePNG(screen.get_surface(), filename.string().c_str())) {
     throw std::runtime_error("failed to write " + filename.string() + ": " + SDL_GetError());
   }
 }
@@ -340,8 +340,10 @@ int main(int argc, char** argv)
     std::filesystem::create_directories(opts.screenshot_dir);
     // Render without a visible window and with the software renderer for
     // reproducible output, unless the caller picked something else
-    SDL_setenv("SDL_VIDEODRIVER", "offscreen", 0);
-    SDL_setenv("SDL_RENDER_DRIVER", "software", 0);
+    // Normal-priority hints: SDL_VIDEO_DRIVER / SDL_RENDER_DRIVER in the
+    // environment still win.
+    SDL_SetHint(SDL_HINT_VIDEO_DRIVER, "offscreen");
+    SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
     sdl_system = std::make_unique<SDLSystem>();
     Display::create_window(FramebufferType::SDL, geom::isize(4096, 2048), false, false);
   }

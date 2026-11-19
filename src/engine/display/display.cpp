@@ -166,18 +166,13 @@ Display::get_framebuffer()
 geom::isize
 Display::find_closest_fullscreen_video_mode(geom::isize const& size)
 {
-  SDL_DisplayMode target;
   SDL_DisplayMode closest;
-
-  target.w = size.width();
-  target.h = size.height();
-  target.format = 0;  // don't care
-  target.refresh_rate = 0; // don't care
-  target.driverdata   = nullptr;
-
-  if (!SDL_GetClosestDisplayMode(0, &target, &closest))
+  if (!SDL_GetClosestFullscreenDisplayMode(SDL_GetPrimaryDisplay(),
+                                           size.width(), size.height(),
+                                           0.0f, false, &closest))
   {
-    log_error("couldn't find video mode matching {}x{}", size.width(), size.height());
+    log_error("couldn't find video mode matching {}x{}: {}",
+              size.width(), size.height(), SDL_GetError());
     return size;
   }
   else
@@ -191,27 +186,29 @@ Display::get_fullscreen_video_modes()
 {
   std::vector<SDL_DisplayMode> video_modes;
 
-  int num_displays = SDL_GetNumVideoDisplays();
+  int num_displays = 0;
+  SDL_DisplayID* displays = SDL_GetDisplays(&num_displays);
   log_info("number of displays: {}", num_displays);
 
   for(int display = 0; display < num_displays; ++display)
   {
-    int num_modes = SDL_GetNumDisplayModes(display);
+    int num_modes = 0;
+    SDL_DisplayMode** modes = SDL_GetFullscreenDisplayModes(displays[display], &num_modes);
+    if (!modes)
+    {
+      log_error("failed to get display modes: {}", SDL_GetError());
+      continue;
+    }
 
     for (int i = 0; i < num_modes; ++i)
     {
-      SDL_DisplayMode mode;
-      if (SDL_GetDisplayMode(display, i, &mode) != 0)
-      {
-        log_error("failed to get display mode: {}", SDL_GetError());
-      }
-      else
-      {
-        log_debug("{}x{}@{} {}", mode.w, mode.h, mode.refresh_rate, SDL_GetPixelFormatName(mode.format));
-        video_modes.push_back(mode);
-      }
+      SDL_DisplayMode const& mode = *modes[i];
+      log_debug("{}x{}@{} {}", mode.w, mode.h, mode.refresh_rate, SDL_GetPixelFormatName(mode.format));
+      video_modes.push_back(mode);
     }
+    SDL_free(modes);
   }
+  SDL_free(displays);
 
   return video_modes;
 }

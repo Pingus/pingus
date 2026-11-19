@@ -3,8 +3,8 @@
 , lib
 , tinycmmc_lib
 
-, SDL2
-, SDL2_image
+, sdl3
+, sdl3-image
 , cmake
 
 , gtest
@@ -13,10 +13,6 @@
 , makeWrapper
 , libGL
 , libGLU
-  # SDL2_image.pc Requires.private — needed on PKG_CONFIG_PATH so
-  # pkg_search_module(SDL2_image) does not warn about missing modules.
-, libtiff
-, libwebp
 , pkg-config
 , mcfgthreads
 
@@ -80,8 +76,8 @@ stdenv.mkDerivation rec {
      mkdir -p $out/bin/
      find ${mcfgthreads} -iname "*.dll" -exec ln -sfv {} $out/bin/ \;
      find ${stdenv.cc.cc} -iname "*.dll" -exec ln -sfv {} $out/bin/ \;
-     ln -sfv ${SDL2}/bin/*.dll $out/bin/
-     ln -sfv ${SDL2_image}/bin/*.dll $out/bin/
+     ln -sfv ${sdl3}/bin/*.dll $out/bin/
+     ln -sfv ${sdl3-image}/bin/*.dll $out/bin/
      ln -sfv ${libsigcxx_2_0}/bin/*.dll $out/bin/ || true
      ln -sfv ${wstsound}/bin/*.dll $out/bin/ || true
      ln -sfv ${tinygettext}/bin/*.dll $out/bin/ || true
@@ -89,8 +85,8 @@ stdenv.mkDerivation rec {
    '');
 
   buildInputs = [
-    SDL2
-    SDL2_image
+    sdl3
+    sdl3-image
     libsigcxx_2_0
 
     argpp
@@ -107,11 +103,6 @@ stdenv.mkDerivation rec {
     libGLU
     gtest
     xdgcpp
-    # Satisfy SDL2_image's Requires.private (libtiff-4, libwebp*) for pkg-config.
-    # Not linked into pingus directly; silences configure-time "Package not found"
-    # warnings when cmake resolves PkgConfig::SDL2IMAGE.
-    libtiff
-    libwebp
   ]
   ++ lib.optional (useGLES2 && libglvnd != null) libglvnd;
 }

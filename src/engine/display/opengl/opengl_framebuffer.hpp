@@ -12,7 +12,7 @@
 #include <memory>
 #include <vector>
 
-#include <SDL.h>
+#include <SDL3/SDL.h>
 
 #include "engine/display/framebuffer.hpp"
 #include "engine/display/opengl/opengl_program.hpp"

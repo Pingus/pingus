@@ -205,12 +205,12 @@ void
 GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
                              int x_pos, int y_pos, int real_x_arg, int real_y_arg)
 {
-  if (sprovider.get_surface()->format->BitsPerPixel != 8  &&
-      sprovider.get_surface()->format->BitsPerPixel != 24 &&
-      sprovider.get_surface()->format->BitsPerPixel != 32)
+  int const sbpp = SDL_BITSPERPIXEL(sprovider.get_surface()->format);
+  if (sbpp != 8  &&
+      sbpp != 24 &&
+      sbpp != 32)
   {
-    log_error("Image has wrong color depth: {}",
-              static_cast<int>(sprovider.get_surface()->format->BitsPerPixel));
+    log_error("Image has wrong color depth: {}", sbpp);
     return;
   }
 
@@ -235,7 +235,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
   Uint8* target_buf = provider.get_data();
   Uint8* source_buf = sprovider.get_data();
   Uint32 colorkey;
-  if (sprovider.get_surface()->format->BitsPerPixel == 32)
+  if (sbpp == 32)
   {
     for (int y = start_y; y < end_y; ++y)
     {
@@ -255,7 +255,7 @@ GroundMap::put_alpha_surface(Surface provider, Surface sprovider,
       }
     }
   }
-  else if (SDL_GetColorKey(sprovider.get_surface(), &colorkey) == 0)
+  else if (SDL_GetSurfaceColorKey(sprovider.get_surface(), &colorkey))
   {
     for (int y = start_y; y < end_y; ++y)
     {

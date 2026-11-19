@@ -16,7 +16,7 @@
 
 #include "engine/display/sdl_framebuffer.hpp"
 
-#include <SDL_image.h>
+#include <SDL3_image/SDL_image.h>
 #include <sstream>
 #include <iostream>
 #include <string>
@@ -37,9 +37,9 @@ SDL_Rect Intersection(SDL_Rect* r1, SDL_Rect* r2)
   rect.x = std::max(r1->x, r2->x);
   rect.y = std::max(r1->y, r2->y);
   int endx = std::min(r1->x + r1->w, r2->x + r2->w);
-  rect.w = static_cast<Uint16>(std::max(endx - rect.x, 0));
+  rect.w = std::max(endx - rect.x, 0);
   int endy = std::min(r1->y + r1->h, r2->y + r2->h);
-  rect.h = static_cast<Uint16>(std::max(endy - rect.y, 0));
+  rect.h = std::max(endy - rect.y, 0);
   return rect;
 }
 
@@ -69,25 +69,29 @@ SDLFramebuffer::make_screenshot() const
 {
   int w;
   int h;
-  if (SDL_GetRendererOutputSize(m_renderer, &w, &h) != 0)
+  if (!SDL_GetCurrentRenderOutputSize(m_renderer, &w, &h))
   {
-    log_error("SDL_GetRenderOutputgeom::isize failed: {}", SDL_GetError());
+    log_error("SDL_GetCurrentRenderOutputSize failed: {}", SDL_GetError());
     return Surface();
   }
-  else
-  {
-    Surface screenshot(w, h);
-    int ret = SDL_RenderReadPixels(m_renderer, nullptr,
-                                   SDL_PIXELFORMAT_ABGR8888,
-                                   screenshot.get_data(),
-                                   screenshot.get_pitch());
-    if (ret != 0)
-    {
-      log_error("{}", SDL_GetError());
-    }
 
-    return screenshot;
+  SDL_Surface* pixels = SDL_RenderReadPixels(m_renderer, nullptr);
+  if (!pixels)
+  {
+    log_error("SDL_RenderReadPixels failed: {}", SDL_GetError());
+    return Surface();
   }
+
+  Surface screenshot(w, h);
+  if (!SDL_ConvertPixels(pixels->w, pixels->h,
+                         pixels->format, pixels->pixels, pixels->pitch,
+                         SDL_PIXELFORMAT_ABGR8888,
+                         screenshot.get_data(), screenshot.get_pitch()))
+  {
+    log_error("SDL_ConvertPixels failed: {}", SDL_GetError());
+  }
+  SDL_DestroySurface(pixels);
+  return screenshot;
 }
 
 void
@@ -96,15 +100,15 @@ SDLFramebuffer::draw_surface(FramebufferSurface const& surface, geom::ipoint con
   SDLFramebufferSurfaceImpl* impl = dynamic_cast<SDLFramebufferSurfaceImpl*>(surface.get_impl());
   SDL_Texture* texture = impl->get_texture();
 
-  SDL_Rect dstrect;
-  dstrect.x = static_cast<Sint16>(pos.x());
-  dstrect.y = static_cast<Sint16>(pos.y());
-  dstrect.w = surface.get_width();
-  dstrect.h = surface.get_height();
+  SDL_FRect dstrect;
+  dstrect.x = static_cast<float>(pos.x());
+  dstrect.y = static_cast<float>(pos.y());
+  dstrect.w = static_cast<float>(surface.get_width());
+  dstrect.h = static_cast<float>(surface.get_height());
 
   // FIXME: push render state
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
-  SDL_RenderCopy(m_renderer, texture, nullptr, &dstrect);
+  SDL_RenderTexture(m_renderer, texture, nullptr, &dstrect);
   // FIXME: pop render state
 }
 
@@ -114,21 +118,21 @@ SDLFramebuffer::draw_surface(FramebufferSurface const& surface, geom::irect cons
   SDLFramebufferSurfaceImpl* impl = dynamic_cast<SDLFramebufferSurfaceImpl*>(surface.get_impl());
   SDL_Texture* texture = impl->get_texture();
 
-  SDL_Rect dstrect;
-  dstrect.x = static_cast<Sint16>(pos.x());
-  dstrect.y = static_cast<Sint16>(pos.y());
-  dstrect.w = srcrect.width();
-  dstrect.h = srcrect.height();
+  SDL_FRect dstrect;
+  dstrect.x = static_cast<float>(pos.x());
+  dstrect.y = static_cast<float>(pos.y());
+  dstrect.w = static_cast<float>(srcrect.width());
+  dstrect.h = static_cast<float>(srcrect.height());
 
-  SDL_Rect sdlsrcrect;
-  sdlsrcrect.x = static_cast<Sint16>(srcrect.left());
-  sdlsrcrect.y = static_cast<Sint16>(srcrect.top());
-  sdlsrcrect.w = static_cast<Uint16>(srcrect.width());
-  sdlsrcrect.h = static_cast<Uint16>(srcrect.height());
+  SDL_FRect sdlsrcrect;
+  sdlsrcrect.x = static_cast<float>(srcrect.left());
+  sdlsrcrect.y = static_cast<float>(srcrect.top());
+  sdlsrcrect.w = static_cast<float>(srcrect.width());
+  sdlsrcrect.h = static_cast<float>(srcrect.height());
 
   // FIXME: push render state
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
-  SDL_RenderCopy(m_renderer, texture, &sdlsrcrect, &dstrect);
+  SDL_RenderTexture(m_renderer, texture, &sdlsrcrect, &dstrect);
   // FIXME: pop render state
 }
 
@@ -138,7 +142,9 @@ SDLFramebuffer::draw_line(geom::ipoint const& pos1, geom::ipoint const& pos2, Co
   // FIXME: push render state
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
   SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
-  SDL_RenderDrawLine(m_renderer, pos1.x(), pos1.y(), pos2.x(), pos2.y());
+  SDL_RenderLine(m_renderer,
+                 static_cast<float>(pos1.x()), static_cast<float>(pos1.y()),
+                 static_cast<float>(pos2.x()), static_cast<float>(pos2.y()));
   // FIXME: pop render state
 }
 
@@ -147,16 +153,16 @@ SDLFramebuffer::draw_rect(geom::irect const& rect_, Color const& color)
 {
   geom::irect rect = geom::normalize(rect_);
 
-  SDL_Rect sdl_rect;
-  sdl_rect.x = rect.left();
-  sdl_rect.y = rect.top();
-  sdl_rect.w = rect.width();
-  sdl_rect.h = rect.height();
+  SDL_FRect sdl_rect;
+  sdl_rect.x = static_cast<float>(rect.left());
+  sdl_rect.y = static_cast<float>(rect.top());
+  sdl_rect.w = static_cast<float>(rect.width());
+  sdl_rect.h = static_cast<float>(rect.height());
 
   // FIXME: push render state
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
   SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
-  SDL_RenderDrawRect(m_renderer, &sdl_rect);
+  SDL_RenderRect(m_renderer, &sdl_rect);
   // FIXME: pop render state
 }
 
@@ -165,11 +171,11 @@ SDLFramebuffer::fill_rect(geom::irect const& rect_, Color const& color)
 {
   geom::irect rect = geom::normalize(rect_);
 
-  SDL_Rect sdl_rect;
-  sdl_rect.x = rect.left();
-  sdl_rect.y = rect.top();
-  sdl_rect.w = rect.width();
-  sdl_rect.h = rect.height();
+  SDL_FRect sdl_rect;
+  sdl_rect.x = static_cast<float>(rect.left());
+  sdl_rect.y = static_cast<float>(rect.top());
+  sdl_rect.w = static_cast<float>(rect.width());
+  sdl_rect.h = static_cast<float>(rect.height());
 
   SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
   SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
@@ -205,21 +211,26 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
     if (!fullscreen)
     {
       SDL_SetWindowSize(m_window, size.width(), size.height());
-      SDL_SetWindowFullscreen(m_window, 0);
+      SDL_SetWindowFullscreen(m_window, false);
     }
     else
     {
       SDL_DisplayMode mode;
-      mode.w = size.width();
-      mode.h = size.height();
-      mode.refresh_rate = 0;
-      mode.driverdata = nullptr;
-
-      if (SDL_SetWindowDisplayMode(m_window, &mode) != 0)
+      if (SDL_GetClosestFullscreenDisplayMode(SDL_GetDisplayForWindow(m_window),
+                                              size.width(), size.height(),
+                                              0.0f, false, &mode))
       {
-        log_error("failed to set display mode: {}", SDL_GetError());
+        if (!SDL_SetWindowFullscreenMode(m_window, &mode))
+        {
+          log_error("failed to set display mode: {}", SDL_GetError());
+        }
       }
-      SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
+      else
+      {
+        log_error("no fullscreen mode close to {}x{}: {}",
+                  size.width(), size.height(), SDL_GetError());
+      }
+      SDL_SetWindowFullscreen(m_window, true);
     }
     return true;
   }
@@ -231,14 +242,17 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
 
   {
     char const* driver = SDL_GetCurrentVideoDriver();
+    int num_displays = 0;
+    SDL_free(SDL_GetDisplays(&num_displays));
     print_err("SDLFramebuffer: driver={} displays={} size={}x{} fullscreen={}",
-              driver ? driver : "(none)", SDL_GetNumVideoDisplays(),
+              driver ? driver : "(none)", num_displays,
               size.width(), size.height(), fullscreen ? "yes" : "no");
-    SDL_DisplayMode desk;
-    if (SDL_GetDesktopDisplayMode(0, &desk) == 0)
+    SDL_DisplayMode const* desk = SDL_GetDesktopDisplayMode(SDL_GetPrimaryDisplay());
+    if (desk)
     {
       print_err("SDLFramebuffer: desktop {}x{} @{}Hz format={}",
-                desk.w, desk.h, desk.refresh_rate, desk.format);
+                desk->w, desk->h, desk->refresh_rate,
+                SDL_GetPixelFormatName(desk->format));
     }
   }
 
@@ -246,24 +260,25 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
   int req_h = size.height();
   if (fullscreen)
   {
-    SDL_DisplayMode mode;
-    if (SDL_GetDesktopDisplayMode(0, &mode) == 0 && mode.w > 0 && mode.h > 0)
+    SDL_DisplayMode const* mode = SDL_GetDesktopDisplayMode(SDL_GetPrimaryDisplay());
+    if (mode && mode->w > 0 && mode->h > 0)
     {
-      req_w = mode.w;
-      req_h = mode.h;
+      req_w = mode->w;
+      req_h = mode->h;
     }
   }
 
-  struct Attempt { char const* name; Uint32 flags; };
-  Attempt attempts[4];
+  // SDL3 creates SDL_WINDOW_FULLSCREEN windows as borderless desktop-size
+  // fullscreen (what SDL2 called FULLSCREEN_DESKTOP).
+  struct Attempt { char const* name; SDL_WindowFlags flags; };
+  Attempt attempts[3];
   int n = 0;
   if (fullscreen)
   {
-    attempts[n++] = Attempt{"fullscreen-desktop", SDL_WINDOW_FULLSCREEN_DESKTOP};
-    attempts[n++] = Attempt{"fullscreen-exclusive", SDL_WINDOW_FULLSCREEN};
+    attempts[n++] = Attempt{"fullscreen", SDL_WINDOW_FULLSCREEN};
   }
   attempts[n++] = Attempt{"windowed",
-                          static_cast<Uint32>(resizable && !fullscreen ? SDL_WINDOW_RESIZABLE : 0)};
+                          resizable && !fullscreen ? SDL_WINDOW_RESIZABLE : 0};
   // Last resort: zero flags
   attempts[n++] = Attempt{"minimal", 0};
 
@@ -273,9 +288,8 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
     SDL_ClearError();
     print_err("SDLFramebuffer: SDL_CreateWindow try[{}] {}x{} flags=0x{:x}",
               attempts[i].name, req_w, req_h,
-              static_cast<unsigned>(attempts[i].flags));
+              static_cast<unsigned long long>(attempts[i].flags));
     m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
-                                SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                 req_w, req_h,
                                 attempts[i].flags);
     if (m_window)
@@ -318,9 +332,17 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
     if (icon)
     {
       SDL_SetWindowIcon(m_window, icon);
-      SDL_FreeSurface(icon);
+      SDL_DestroySurface(icon);
     }
   }
+
+#ifndef __ANDROID__
+  // SDL2 delivered text input events by default on desktop, SDL3 needs it
+  // switched on per window. The editor's input boxes rely on them. Android
+  // is left out, as this would pop up the on-screen keyboard.
+  if (!SDL_StartTextInput(m_window))
+    log_warn("SDL_StartTextInput failed: {}", SDL_GetError());
+#endif
 
   // Prefer software on KMSDRM handhelds — ACCELERATED often goes through EGL/GLES
   // and can fail with the same "EGL window surface" error as the GL path.
@@ -329,21 +351,21 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
   bool prefer_sw = (drv && (std::string(drv) == "KMSDRM" || std::string(drv) == "kmsdrm"));
   if (prefer_sw)
   {
-    m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_SOFTWARE);
+    m_renderer = SDL_CreateRenderer(m_window, SDL_SOFTWARE_RENDERER);
     if (!m_renderer)
     {
-      print_err("SDLFramebuffer: SOFTWARE renderer failed ({}), trying ACCELERATED",
+      print_err("SDLFramebuffer: software renderer failed ({}), trying the default",
                 SDL_GetError());
-      m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+      m_renderer = SDL_CreateRenderer(m_window, nullptr);
     }
   }
   else
   {
-    m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+    m_renderer = SDL_CreateRenderer(m_window, nullptr);
     if (!m_renderer)
     {
-      log_warn("SDL_RENDERER_ACCELERATED failed ({}), trying software", SDL_GetError());
-      m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_SOFTWARE);
+      log_warn("default renderer failed ({}), trying software", SDL_GetError());
+      m_renderer = SDL_CreateRenderer(m_window, SDL_SOFTWARE_RENDERER);
     }
   }
   if (!m_renderer)
@@ -355,9 +377,8 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
   }
 
   {
-    SDL_RendererInfo info;
-    if (SDL_GetRendererInfo(m_renderer, &info) == 0)
-      print_err("SDLFramebuffer: renderer='{}'", info.name);
+    char const* name = SDL_GetRendererName(m_renderer);
+    print_err("SDLFramebuffer: renderer='{}'", name ? name : "(unknown)");
   }
   return true;
 }
@@ -365,29 +386,29 @@ SDLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool re
 bool
 SDLFramebuffer::is_fullscreen() const
 {
-  return SDL_GetWindowFlags(m_window) & SDL_WINDOW_FULLSCREEN;
+  return (SDL_GetWindowFlags(m_window) & SDL_WINDOW_FULLSCREEN) != 0;
 }
 
 bool
 SDLFramebuffer::is_resizable() const
 {
-  return SDL_GetWindowFlags(m_window) & SDL_WINDOW_RESIZABLE;
+  return (SDL_GetWindowFlags(m_window) & SDL_WINDOW_RESIZABLE) != 0;
 }
 
 bool
 SDLFramebuffer::has_grab() const
 {
-  return SDL_GetWindowGrab(m_window);
+  return SDL_GetWindowMouseGrab(m_window);
 }
 
 void
 SDLFramebuffer::push_cliprect(geom::irect const& rect)
 {
   SDL_Rect sdl_rect;
-  sdl_rect.x = static_cast<Sint16>(rect.left());
-  sdl_rect.y = static_cast<Sint16>(rect.top());
-  sdl_rect.w = static_cast<Uint16>(rect.width());
-  sdl_rect.h = static_cast<Uint16>(rect.height());
+  sdl_rect.x = rect.left();
+  sdl_rect.y = rect.top();
+  sdl_rect.w = rect.width();
+  sdl_rect.h = rect.height();
 
   if (!cliprect_stack.empty())
   {
@@ -395,7 +416,7 @@ SDLFramebuffer::push_cliprect(geom::irect const& rect)
   }
 
   cliprect_stack.push_back(sdl_rect);
-  SDL_RenderSetClipRect(m_renderer, &cliprect_stack.back());
+  SDL_SetRenderClipRect(m_renderer, &cliprect_stack.back());
 }
 
 void
@@ -403,9 +424,9 @@ SDLFramebuffer::pop_cliprect()
 {
   cliprect_stack.pop_back();
   if (cliprect_stack.empty())
-    SDL_RenderSetClipRect(m_renderer, nullptr);
+    SDL_SetRenderClipRect(m_renderer, nullptr);
   else
-    SDL_RenderSetClipRect(m_renderer, &cliprect_stack.back());
+    SDL_SetRenderClipRect(m_renderer, &cliprect_stack.back());
 }
 
 } // namespace pingus

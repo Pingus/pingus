@@ -5,8 +5,8 @@
 
 #include "engine/display/opengl/opengl_framebuffer.hpp"
 
-#include <SDL.h>
-#include <SDL_image.h>
+#include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
 #include <algorithm>
 #include <cstring>
 #include <cstdlib>
@@ -66,7 +66,7 @@ OpenGLFramebuffer::~OpenGLFramebuffer()
     glDeleteVertexArrays(1, &m_vao);
 #endif
   if (m_glcontext)
-    SDL_GL_DeleteContext(m_glcontext);
+    SDL_GL_DestroyContext(m_glcontext);
   if (m_window)
     SDL_DestroyWindow(m_window);
 }
@@ -178,7 +178,7 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     SDL_SetWindowSize(m_window, size.width(), size.height());
     int dw = size.width();
     int dh = size.height();
-    SDL_GL_GetDrawableSize(m_window, &dw, &dh);
+    SDL_GetWindowSizeInPixels(m_window, &dw, &dh);
     if (dw <= 0 || dh <= 0)
       SDL_GetWindowSize(m_window, &dw, &dh);
     set_ortho(dw, dh);
@@ -205,7 +205,7 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   // Probe libEGL: KMSDRM GLES needs it at runtime (SDL dlopens it). Not showing
   // up in ldd is normal if the game only links GLESv2; missing on disk is not.
   {
-    void* egl = nullptr;
+    SDL_SharedObject* egl = nullptr;
     egl = SDL_LoadObject("libEGL.so.1");
     if (!egl)
       egl = SDL_LoadObject("libEGL.so");
@@ -297,17 +297,17 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   int req_h = size.height();
   if (fullscreen)
   {
-    SDL_DisplayMode mode;
-    if (SDL_GetDesktopDisplayMode(0, &mode) == 0 && mode.w > 0 && mode.h > 0)
+    SDL_DisplayMode const* mode = SDL_GetDesktopDisplayMode(SDL_GetPrimaryDisplay());
+    if (mode && mode->w > 0 && mode->h > 0)
     {
       print_err("OpenGLFramebuffer: desktop mode {}x{} @{}Hz",
-                mode.w, mode.h, mode.refresh_rate);
-      if (req_w != mode.w || req_h != mode.h)
+                mode->w, mode->h, mode->refresh_rate);
+      if (req_w != mode->w || req_h != mode->h)
       {
         print_err("OpenGLFramebuffer: adjusting {}x{} -> desktop {}x{}",
-                  req_w, req_h, mode.w, mode.h);
-        req_w = mode.w;
-        req_h = mode.h;
+                  req_w, req_h, mode->w, mode->h);
+        req_w = mode->w;
+        req_h = mode->h;
       }
     }
     else
@@ -318,10 +318,12 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   }
 
   // Attempt order matters on embedded GLES (ArkOS/R36S, mali, KMSDRM):
-  // 1) FULLSCREEN_DESKTOP  2) exclusive FULLSCREEN  3) windowed
+  // 1) fullscreen  2) windowed. SDL3 creates SDL_WINDOW_FULLSCREEN windows
+  // as borderless desktop-size fullscreen; an exclusive mode would have to
+  // be set afterwards with SDL_SetWindowFullscreenMode().
   struct Attempt {
     char const* name;
-    Uint32 flags;
+    SDL_WindowFlags flags;
   };
   Attempt attempts[3];
   int n_attempts = 0;
@@ -334,29 +336,23 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
 #  if PINGUS_GL_ES
   if (fullscreen)
   {
-    attempts[n_attempts++] = Attempt{"fullscreen-desktop",
-                                     SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP};
-    attempts[n_attempts++] = Attempt{"fullscreen-exclusive",
+    attempts[n_attempts++] = Attempt{"fullscreen",
                                      SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN};
   }
   attempts[n_attempts++] = Attempt{"windowed",
-                                   static_cast<Uint32>(
-                                     SDL_WINDOW_OPENGL |
-                                     (resizable && !fullscreen ? SDL_WINDOW_RESIZABLE : 0))};
+                                   SDL_WINDOW_OPENGL |
+                                   (resizable && !fullscreen ? SDL_WINDOW_RESIZABLE : 0)};
 #  else
   if (fullscreen)
   {
-    attempts[n_attempts++] = Attempt{"fullscreen-exclusive",
+    attempts[n_attempts++] = Attempt{"fullscreen",
                                      SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN};
-    attempts[n_attempts++] = Attempt{"fullscreen-desktop",
-                                     SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP};
   }
   else
   {
     attempts[n_attempts++] = Attempt{"windowed",
-                                     static_cast<Uint32>(
-                                       SDL_WINDOW_OPENGL |
-                                       (resizable ? SDL_WINDOW_RESIZABLE : 0))};
+                                     SDL_WINDOW_OPENGL |
+                                     (resizable ? SDL_WINDOW_RESIZABLE : 0)};
   }
 #  endif
 #endif
@@ -374,9 +370,8 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
       SDL_ClearError();
       print_err("OpenGLFramebuffer: SDL_CreateWindow try[{}+{}] {}x{} flags=0x{:x}",
                 attr_sets[a].name, attempts[i].name, req_w, req_h,
-                static_cast<unsigned>(attempts[i].flags));
+                static_cast<unsigned long long>(attempts[i].flags));
       m_window = SDL_CreateWindow("Pingus " PROJECT_VERSION,
-                                  SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                   req_w, req_h,
                                   attempts[i].flags);
       if (m_window)
@@ -425,9 +420,17 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
     if (icon)
     {
       SDL_SetWindowIcon(m_window, icon);
-      SDL_FreeSurface(icon);
+      SDL_DestroySurface(icon);
     }
   }
+
+#ifndef __ANDROID__
+  // SDL2 delivered text input events by default on desktop, SDL3 needs it
+  // switched on per window. The editor's input boxes rely on them. Android
+  // is left out, as this would pop up the on-screen keyboard.
+  if (!SDL_StartTextInput(m_window))
+    log_warn("SDL_StartTextInput failed: {}", SDL_GetError());
+#endif
 
   print_err("OpenGLFramebuffer: SDL_GL_CreateContext...");
   m_glcontext = SDL_GL_CreateContext(m_window);
@@ -464,7 +467,7 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   // UI is vertically shifted/clipped (e.g. 1024x768 request vs 1024x528 surface).
   int dw = req_w;
   int dh = req_h;
-  SDL_GL_GetDrawableSize(m_window, &dw, &dh);
+  SDL_GetWindowSizeInPixels(m_window, &dw, &dh);
   if (dw <= 0 || dh <= 0)
     SDL_GetWindowSize(m_window, &dw, &dh);
   set_ortho(dw, dh);
@@ -492,13 +495,13 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
 bool
 OpenGLFramebuffer::is_fullscreen() const
 {
-  return SDL_GetWindowFlags(m_window) & SDL_WINDOW_FULLSCREEN;
+  return (SDL_GetWindowFlags(m_window) & SDL_WINDOW_FULLSCREEN) != 0;
 }
 
 bool
 OpenGLFramebuffer::is_resizable() const
 {
-  return SDL_GetWindowFlags(m_window) & SDL_WINDOW_RESIZABLE;
+  return (SDL_GetWindowFlags(m_window) & SDL_WINDOW_RESIZABLE) != 0;
 }
 
 void
@@ -707,7 +710,7 @@ OpenGLFramebuffer::get_size() const
   int w = 0;
   int h = 0;
   // Prefer drawable size so layout matches the GL viewport/ortho.
-  SDL_GL_GetDrawableSize(m_window, &w, &h);
+  SDL_GetWindowSizeInPixels(m_window, &w, &h);
   if (w <= 0 || h <= 0)
     SDL_GetWindowSize(m_window, &w, &h);
   return geom::isize(w, h);
