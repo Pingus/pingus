@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_CHECKBOX_HPP
 #define HEADER_PINGUS_EDITOR_CHECKBOX_HPP
 
-#include <sigc++/signal.h>
+#include "util/signal.hpp"
 
 #include "engine/gui/rect_component.hpp"
 
@@ -40,7 +40,7 @@ public:
   bool is_checked() const { return checked; }
   void on_primary_button_press(int x, int y) override;
 
-  sigc::signal<void (bool)> on_change;
+  Signal<void (bool)> on_change;
 
 private:
   Checkbox (Checkbox const&);

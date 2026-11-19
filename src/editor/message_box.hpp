@@ -19,6 +19,7 @@
 
 #include "engine/gui/group_component.hpp"
 #include "editor/button.hpp"
+#include "util/signal.hpp"
 
 namespace pingus::editor {
 
@@ -45,7 +46,7 @@ public:
   void on_cancel_button();
 
 public:
-  sigc::signal<void()> on_ok;
+  Signal<void()> on_ok;
 
 private:
   MessageBox(MessageBox const&);

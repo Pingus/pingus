@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_COMPONENTS_SLIDER_BOX_HPP
 #define HEADER_PINGUS_PINGUS_COMPONENTS_SLIDER_BOX_HPP
 
-#include <sigc++/signal.h>
+#include "util/signal.hpp"
 
 #include "engine/gui/rect_component.hpp"
 
@@ -41,7 +41,7 @@ public:
 
   void set_value(int v);
 
-  sigc::signal<void (int)> on_change;
+  Signal<void (int)> on_change;
 
 private:
   SliderBox (SliderBox const&);

@@ -18,7 +18,7 @@
 
 #include <functional>
 
-#include <sigc++/signal.h>
+#include "util/signal.hpp"
 
 #include "editor/generic_level_obj.hpp"
 #include "editor/gui_style.hpp"
@@ -47,7 +47,7 @@ private:
   std::string tooltip;
 
 public:
-  sigc::signal<void()> on_click;
+  Signal<void()> on_click;
 
 public:
   ObjectSelectorButton(ObjectSelectorList* object_list_,

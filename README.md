@@ -34,7 +34,7 @@ Zipped redistributables:
 
 Without Nix, configure with CMake (3.15 or newer) and a C++23 compiler.
 Required libraries: SDL3 and SDL3_image (3.2 or newer, found through
-their CMake package configs), OpenGL, glm, jsoncpp, libsigc++ 2.0, and
+their CMake package configs), OpenGL, glm, jsoncpp, and
 for sound OpenAL Soft, libvorbis, opusfile, mpg123 and libmodplug. The
 small helper libraries under `external/` are built in-tree unless
 installed copies are found:

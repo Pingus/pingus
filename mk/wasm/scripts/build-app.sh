@@ -107,7 +107,7 @@ cmake_args=(
   -DSDL2_ROOT="$SDL_WASM_LIBS"
   -DEMSCRIPTEN_LINK_FLAGS="${LINK_FLAGS[*]} ${PRELOAD[*]}"
 )
-# Prebuilt glm / libsigc++ (and friends) live outside the emscripten sysroot.
+# Prebuilt glm (and friends) live outside the emscripten sysroot.
 if [ -n "${EXTRA_PREFIX_PATH:-}" ]; then
   cmake_args+=(
     -DCMAKE_PREFIX_PATH="${EXTRA_PREFIX_PATH}"

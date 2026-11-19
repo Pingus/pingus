@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_COMPONENTS_CHOICE_BOX_HPP
 #define HEADER_PINGUS_PINGUS_COMPONENTS_CHOICE_BOX_HPP
 
-#include <sigc++/signal.h>
+#include "util/signal.hpp"
 
 #include "engine/gui/rect_component.hpp"
 
@@ -38,7 +38,7 @@ public:
   void add_choice(std::string const& str);
   void set_current_choice(int choice);
 
-  sigc::signal<void (std::string)> on_change;
+  Signal<void (std::string)> on_change;
 
 private:
   ChoiceBox (ChoiceBox const&);

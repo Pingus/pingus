@@ -67,7 +67,8 @@ land or scope changes.
 
 - [x] Replace `{fmt}` with `std::format` / `std::vformat` (C++20) in Pingus,
       logmich, and priocpp
-- [ ] Provide **glm** + **libsigc++-2** for Emscripten (`EXTRA_PREFIX_PATH`)
+- [x] Replace libsigc++ with the small `pingus::Signal` (`src/util/signal.hpp`)
+- [ ] Provide **glm** for Emscripten (`EXTRA_PREFIX_PATH`)
       and confirm `find_package` / pkg-config under FIND_ROOT BOTH
 
 
@@ -180,7 +181,7 @@ OpenAL EFX on mobile.
 ### R36S / ArkOS (`.#pingus-r36s`)
 
 - [ ] Successful CMake configure against `arkos-sysroot` (SDL2, GL/GLES,
-      fmt, glm, sigc++, libpng, …)
+      fmt, glm, libpng, …)
 - [ ] Build `external/` for aarch64-sysroot or rely on sysroot packages
 - [ ] Binary runs under PortMaster with `SDL_GAMECONTROLLERCONFIG`
 - [ ] Real screenshot/cover assets for PortMaster metadata

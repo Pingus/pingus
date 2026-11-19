@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_INPUTBOX_HPP
 #define HEADER_PINGUS_EDITOR_INPUTBOX_HPP
 
-#include <sigc++/signal.h>
+#include "util/signal.hpp"
 
 #include "engine/gui/rect_component.hpp"
 
@@ -42,8 +42,8 @@ public:
 
   void update_layout() override {}
 
-  sigc::signal<void (std::string const&)> on_change;
-  sigc::signal<void (std::string const&)> on_enter;
+  Signal<void (std::string const&)> on_change;
+  Signal<void (std::string const&)> on_enter;
 
 private:
   Inputbox (Inputbox const&);

@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_EDITOR_BUTTON_HPP
 #define HEADER_PINGUS_EDITOR_BUTTON_HPP
 
-#include <sigc++/signal.h>
+#include "util/signal.hpp"
 
 #include "engine/gui/rect_component.hpp"
 
@@ -48,7 +48,7 @@ public:
   void enable()  { enabled = true; }
   void disable() { enabled = false; }
 
-  sigc::signal<void()> on_click;
+  Signal<void()> on_click;
 
 private:
   Button (Button const&);

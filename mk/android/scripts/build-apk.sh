@@ -212,11 +212,6 @@ else
 fi
 export ENABLE_ANDROID_SOUND
 
-# Minimal sigc++ headers (Pingus Android polyfill — full libsigc++ not required).
-mkdir -p src/jni/external_includes/sigc++
-cp -a "$APP_DIR/jni/sigc++/." src/jni/external_includes/sigc++/
-chmod -R u+rwX src/jni/external_includes/sigc++
-echo "==> staged Android sigc++ polyfill"
 
 # IMG_* shim + headers.
 cp "$APP_DIR/jni/img_stb_min.c" src/jni/src/img_stb_min.c

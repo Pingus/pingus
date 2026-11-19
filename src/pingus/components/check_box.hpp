@@ -17,7 +17,7 @@
 #ifndef HEADER_PINGUS_PINGUS_COMPONENTS_CHECK_BOX_HPP
 #define HEADER_PINGUS_PINGUS_COMPONENTS_CHECK_BOX_HPP
 
-#include <sigc++/signal.h>
+#include "util/signal.hpp"
 
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
@@ -41,7 +41,7 @@ public:
 
   void set_state(bool v, bool send_signal);
 
-  sigc::signal<void (bool)> on_change;
+  Signal<void (bool)> on_change;
 
 private:
   CheckBox (CheckBox const&);

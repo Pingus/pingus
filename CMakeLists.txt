@@ -123,22 +123,6 @@ set(PINGUS_SDL_LIBS SDL3_image::SDL3_image SDL3::SDL3)
 
 # Optional / platform-variable deps
 set(PINGUS_OPTIONAL_LIBS "")
-# Header-only sigc++ subset (Android / R36S) when full libsigc++ is unavailable.
-if(PINGUS_SIGC_POLYFILL_DIR)
-  message(STATUS "Using sigc++ polyfill headers: ${PINGUS_SIGC_POLYFILL_DIR}")
-  include_directories("${PINGUS_SIGC_POLYFILL_DIR}")
-elseif(NOT EMSCRIPTEN)
-  pkg_search_module(SIGCXX REQUIRED sigc++-2.0 IMPORTED_TARGET)
-  list(APPEND PINGUS_OPTIONAL_LIBS PkgConfig::SIGCXX)
-else()
-  message(STATUS "Emscripten: sigc++ lookup optional")
-  pkg_search_module(SIGCXX QUIET sigc++-2.0 IMPORTED_TARGET)
-  if(SIGCXX_FOUND)
-    list(APPEND PINGUS_OPTIONAL_LIBS PkgConfig::SIGCXX)
-  else()
-    message(WARNING "sigc++-2.0 not found — Emscripten build needs it in the sysroot/ports")
-  endif()
-endif()
 
 # glm is header-only; allow explicit include dir for cross builds without
 # a cmake package config in the target sysroot (R36S / Android-style).

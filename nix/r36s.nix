@@ -366,8 +366,7 @@ let
         "-DWERROR=OFF"
         # R36S is GLES2-only (Mali/Panfrost); desktop OpenGL is not in the sysroot.
         "-DPINGUS_USE_GLES=ON"
-        # ArkOS sysroot has neither libsigc++ nor glm cmake config.
-        "-DPINGUS_SIGC_POLYFILL_DIR=${../mk/android/app/jni}"
+        # ArkOS sysroot has no glm cmake config.
         "-DPINGUS_GLM_INCLUDE_DIR=${glm}/include"
         # Forced cross-compiler cannot try_compile pthread; ArkOS glibc has it.
         "-DCMAKE_HAVE_LIBC_PTHREAD=1"

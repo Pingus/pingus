@@ -19,7 +19,7 @@
 
 #include <map>
 #include <vector>
-#include <sigc++/connection.h>
+#include "util/signal.hpp"
 
 #include "engine/display/sprite.hpp"
 #include "engine/gui/rect_component.hpp"
@@ -68,7 +68,7 @@ private:
   //Label* defaults_label;
   //CheckBox* defaults_box;
 
-  typedef std::vector<sigc::connection> Connections;
+  typedef std::vector<Connection> Connections;
   Connections connections;
 
   tinygettext::Language m_language;

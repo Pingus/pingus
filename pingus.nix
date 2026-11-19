@@ -9,7 +9,6 @@
 
 , gtest
 
-, libsigcxx_2_0
 , makeWrapper
 , libGL
 , libGLU
@@ -78,7 +77,6 @@ stdenv.mkDerivation rec {
      find ${stdenv.cc.cc} -iname "*.dll" -exec ln -sfv {} $out/bin/ \;
      ln -sfv ${sdl3}/bin/*.dll $out/bin/
      ln -sfv ${sdl3-image}/bin/*.dll $out/bin/
-     ln -sfv ${libsigcxx_2_0}/bin/*.dll $out/bin/ || true
      ln -sfv ${wstsound}/bin/*.dll $out/bin/ || true
      ln -sfv ${tinygettext}/bin/*.dll $out/bin/ || true
      ln -sfv ${priocpp}/bin/*.dll $out/bin/ || true
@@ -87,7 +85,6 @@ stdenv.mkDerivation rec {
   buildInputs = [
     sdl3
     sdl3-image
-    libsigcxx_2_0
 
     argpp
     geomcpp

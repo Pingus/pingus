@@ -18,7 +18,7 @@
 #ifndef HEADER_PINGUS_EDITOR_VIEWPORT_HPP
 #define HEADER_PINGUS_EDITOR_VIEWPORT_HPP
 
-#include <sigc++/signal.h>
+#include "util/signal.hpp"
 #include <set>
 
 #include "editor/selection.hpp"
@@ -148,7 +148,7 @@ public:
 
   void clear_selection();
 
-  sigc::signal<void (Selection const&)> selection_changed;
+  Signal<void (Selection const&)> selection_changed;
 private:
   Viewport();
   Viewport (Viewport const&);

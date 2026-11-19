@@ -23,52 +23,6 @@ set(glm_FOUND TRUE)
 EOF
   '';
 
-  # libsigc++ 2.x static for wasm (sigc++-2.0.pc).
-  # Meson refuses emcc as a "native" compiler — use an explicit cross file.
-  emscriptenCrossFile = pkgs.writeText "emscripten-cross.ini" ''
-    [binaries]
-    c = 'emcc'
-    cpp = 'em++'
-    ar = 'emar'
-    strip = 'emstrip'
-    pkg-config = 'pkg-config'
-
-    [host_machine]
-    system = 'emscripten'
-    cpu_family = 'wasm32'
-    cpu = 'wasm32'
-    endian = 'little'
-
-    [built-in options]
-    default_library = 'static'
-  '';
-
-  sigcWasm = pkgs.stdenv.mkDerivation rec {
-    pname = "libsigc++-wasm";
-    version = "2.12.1";
-    src = pkgs.fetchurl {
-      url = "mirror://gnome/sources/libsigc++/2.12/libsigc++-${version}.tar.xz";
-      hash = "sha256-qdvuMjNR0Qm3ruB0qcuJyj57z4rY7e8YUfTPNZvVCEM=";
-    };
-    nativeBuildInputs = [ pkgs.emscripten pkgs.meson pkgs.ninja pkgs.pkg-config pkgs.python3 ];
-    dontConfigure = true;
-    dontUseMesonConfigure = true;
-    buildPhase = ''
-      runHook preBuild
-      export EM_CACHE="''${TMPDIR:-/tmp}/emcache"
-      mkdir -p "$EM_CACHE"
-      meson setup build         --prefix=$out         --cross-file=${emscriptenCrossFile}         --default-library=static         -Dbuild-examples=false         -Dbuild-tests=false         -Dmaintainer-mode=false
-      meson compile -C build
-      runHook postBuild
-    '';
-    installPhase = ''
-      runHook preInstall
-      meson install -C build
-      runHook postInstall
-    '';
-  };
-
-
   # Shared install helper bits for a single-component prefix under $PWD/prefix.
   installPrefixPhase = ''
     runHook preInstall
@@ -439,13 +393,13 @@ EOF
   }:
     let
       shell = mkWasmShell { inherit versionFull gitRev sourceUrl; };
-      # glm + sigc always; when sound is on, also expose static libmodplug so
+      # glm always; when sound is on, also expose static libmodplug so
       # in-tree external/wstsound (via tinycmmc_find_dependency) can find it.
       # wstsound itself is built from external/ as a subdirectory — not the
       # isolated wstsound-wasm package — so OpenAL comes from the emscripten
       # sysroot (-lopenal) and codec flags follow EMSCRIPTEN defaults in
       # external/wstsound/CMakeLists.txt (modplug + wav only, EFX off).
-      prefixPath = "${glmPrefix}:${sigcWasm}"
+      prefixPath = "${glmPrefix}"
         + (if enableSound then ":${modplugWasm}" else "");
       pkgConfigPath = "${sdlWasmLibs}/lib/pkgconfig"
         + (if enableSound then ":${modplugWasm}/lib/pkgconfig" else "");
@@ -527,5 +481,5 @@ EOF
 in {
   inherit sdl2WasmLibs sdlWasmLibs zlibWasmLibs mkApp mkOpenBrowserApp;
   inherit sdl2Image sdl2Mixer;
-  inherit modplugWasm wstsoundWasm glmPrefix sigcWasm;
+  inherit modplugWasm wstsoundWasm glmPrefix;
 }
