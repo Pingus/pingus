@@ -1,10 +1,22 @@
 // SPDX-FileCopyrightText: 2026 Ingo Ruhnke <grumbel@gmail.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 //
-// GCC 15 headers emit references to libstdc++ / libgcc symbols that are
+// GCC 15+ headers emit references to libstdc++ / libgcc symbols that are
 // absent from the ArkOS sysroot (glibc ~2.30, libstdc++ from GCC ~9).
 // Minimal shims so the R36S binary links and runs without shipping a modern
 // libstdc++ (which would also demand a newer glibc).
+
+// GCC 16's <format> declares basic_format_arg::_M_handle_unrecognized()
+// as an extern template, defined only in a modern libstdc++.so
+// (format-inst.cc). Turn the extern template declarations off for this
+// file, as libstdc++'s own *-inst.cc files do, so the explicit
+// instantiation below emits the definition from the header.
+#include <bits/c++config.h>
+#if defined(_GLIBCXX_RELEASE) && _GLIBCXX_RELEASE >= 16
+#  undef _GLIBCXX_EXTERN_TEMPLATE
+#  define _GLIBCXX_EXTERN_TEMPLATE 0
+#  define PINGUS_SHIM_FORMAT_ARG 1
+#endif
 
 #include <link.h>
 
@@ -16,6 +28,15 @@
 #include <system_error>
 
 #include <SDL.h>
+
+#ifdef PINGUS_SHIM_FORMAT_ARG
+#  include <format>
+
+namespace std {
+template basic_format_arg<format_context>::handle
+basic_format_arg<format_context>::_M_handle_unrecognized() const;
+} // namespace std
+#endif
 
 // ---------------------------------------------------------------------------
 // libgcc_eh (static, from the modern GCC) looks up unwind info only through
