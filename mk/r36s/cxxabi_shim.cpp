@@ -6,6 +6,9 @@
 // Minimal shims so the R36S binary links and runs without shipping a modern
 // libstdc++ (which would also demand a newer glibc).
 
+#include <link.h>
+
+#include <algorithm>
 #include <charconv>
 #include <cstdio>
 #include <exception>
@@ -15,24 +18,80 @@
 #include <SDL.h>
 
 // ---------------------------------------------------------------------------
-// libgcc_eh (static) from GCC 15 references glibc 2.35's _dl_find_object.
-// Returning failure is enough for FDE lookup to fall back to other methods.
+// libgcc_eh (static, from the modern GCC) looks up unwind info only through
+// glibc 2.35's _dl_find_object(); when that fails it has no fallback, and
+// _Unwind_Resume aborts. A stub returning -1 therefore killed every
+// exception that passed through a cleanup (destructor) frame. Implement it
+// on top of dl_iterate_phdr(), which glibc 2.30 has: find the object whose
+// PT_LOAD segments contain the address and return its PT_GNU_EH_FRAME.
+// Layout as in modern glibc's <dlfcn.h> for aarch64 (no eh_dbase/eh_count).
 // ---------------------------------------------------------------------------
 struct dl_find_object
 {
   unsigned long long dlfo_flags;
   void* dlfo_map_start;
   void* dlfo_map_end;
-  void* dlfo_link_map;
+  struct link_map* dlfo_link_map;
   void* dlfo_eh_frame;
-  void* dlfo_eh_dbase;
-  void* dlfo_eh_count;
-  void* dlfo_reserved[7];
+  void* dlfo_sframe;
+  unsigned long long dlfo_reserved[6];
 };
 
-extern "C" int _dl_find_object(void* /*address*/, struct dl_find_object* /*result*/)
+namespace {
+
+struct FindObjectQuery
 {
-  return -1;
+  ElfW(Addr) address;
+  dl_find_object* result;
+  bool found;
+};
+
+int find_object_callback(dl_phdr_info* info, size_t /*size*/, void* data)
+{
+  auto* const query = static_cast<FindObjectQuery*>(data);
+
+  bool contains = false;
+  ElfW(Addr) map_start = ~ElfW(Addr){0};
+  ElfW(Addr) map_end = 0;
+  ElfW(Addr) eh_frame = 0;
+  for (ElfW(Half) i = 0; i < info->dlpi_phnum; ++i)
+  {
+    ElfW(Phdr) const& phdr = info->dlpi_phdr[i];
+    if (phdr.p_type == PT_LOAD)
+    {
+      ElfW(Addr) const start = info->dlpi_addr + phdr.p_vaddr;
+      ElfW(Addr) const end = start + phdr.p_memsz;
+      map_start = std::min(map_start, start);
+      map_end = std::max(map_end, end);
+      if (start <= query->address && query->address < end) {
+        contains = true;
+      }
+    }
+    else if (phdr.p_type == PT_GNU_EH_FRAME)
+    {
+      eh_frame = info->dlpi_addr + phdr.p_vaddr;
+    }
+  }
+
+  if (!contains) {
+    return 0;
+  }
+
+  *query->result = dl_find_object{};
+  query->result->dlfo_map_start = reinterpret_cast<void*>(map_start);
+  query->result->dlfo_map_end = reinterpret_cast<void*>(map_end);
+  query->result->dlfo_eh_frame = reinterpret_cast<void*>(eh_frame);
+  query->found = true;
+  return 1;
+}
+
+} // namespace
+
+extern "C" int _dl_find_object(void* address, struct dl_find_object* result)
+{
+  FindObjectQuery query{reinterpret_cast<ElfW(Addr)>(address), result, false};
+  dl_iterate_phdr(find_object_callback, &query);
+  return query.found ? 0 : -1;
 }
 
 extern "C" void __cxa_call_terminate(void*) noexcept
