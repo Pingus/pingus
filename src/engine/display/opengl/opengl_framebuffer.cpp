@@ -190,8 +190,9 @@ OpenGLFramebuffer::set_video_mode(geom::isize const& size, bool fullscreen, bool
   // Log current SDL video backend (KMSDRM vs x11 vs wayland matters for EGL).
   {
     char const* driver = SDL_GetCurrentVideoDriver();
-    print_err("OpenGLFramebuffer: SDL_VIDEODRIVER env={} current_driver={}",
-              std::getenv("SDL_VIDEODRIVER") ? std::getenv("SDL_VIDEODRIVER") : "(unset)",
+    char const* hint = SDL_GetHint(SDL_HINT_VIDEO_DRIVER);
+    print_err("OpenGLFramebuffer: SDL_VIDEO_DRIVER={} current_driver={}",
+              hint ? hint : "(unset)",
               driver ? driver : "(none)");
     int n = SDL_GetNumVideoDrivers();
     std::string drivers;
