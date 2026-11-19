@@ -64,7 +64,7 @@ land or scope changes.
 - [x] R36S: build SDL3 (KMSDRM + GLES) + SDL3_image against `arkos-sysroot`
       and ship `libSDL3.so.0` / `libSDL3_image.so.0` in the port
 - [ ] R36S: test the SDL3 build on the device (KMSDRM + GLES, joystick)
-- [ ] Drop the now unused `sdl2-*-src` and `SDL2*-win32` flake inputs
+- [x] Drop the now unused `sdl2-*-src`, `libxmp-src` and `SDL2*-win32` flake inputs
 
 ### Dependencies
 

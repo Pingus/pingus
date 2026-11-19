@@ -5,37 +5,12 @@
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    # Windows MinGW SDL ports (still external flakes; not under external/)
-    SDL2-win32.url = "git+https://github.com/grumnix/SDL2-win32.git";
-    SDL2-win32.inputs.nixpkgs.follows = "nixpkgs";
-
-    SDL2_image-win32.url = "git+https://github.com/grumnix/SDL2_image-win32.git";
-    SDL2_image-win32.inputs.nixpkgs.follows = "nixpkgs";
-
     # Prebuilt MinGW OpenAL Soft + libmodplug (avoids nixpkgs openal → ffmpeg-headless).
     openal-soft-win32.url = "git+https://github.com/grumnix/openal-soft-win32.git";
     openal-soft-win32.inputs.nixpkgs.follows = "nixpkgs";
 
     libmodplug-win32.url = "git+https://github.com/grumnix/libmodplug-win32.git";
     libmodplug-win32.inputs.nixpkgs.follows = "nixpkgs";
-
-    # Source tarballs for Android / wasm SDL stacks (prebuilt port deps).
-    sdl2-src = {
-      url = "https://github.com/libsdl-org/SDL/releases/download/release-2.30.3/SDL2-2.30.3.tar.gz";
-      flake = false;
-    };
-    sdl2-image-src = {
-      url = "https://github.com/libsdl-org/SDL_image/releases/download/release-2.8.2/SDL2_image-2.8.2.tar.gz";
-      flake = false;
-    };
-    sdl2-mixer-src = {
-      url = "https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.0/SDL2_mixer-2.8.0.tar.gz";
-      flake = false;
-    };
-    libxmp-src = {
-      url = "https://github.com/libxmp/libxmp/releases/download/libxmp-4.6.0/libxmp-4.6.0.tar.gz";
-      flake = false;
-    };
 
     # ArkOS (R36S) aarch64 sysroot: headers + libs the handheld port links against.
     arkos-sysroot = {
@@ -44,9 +19,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, SDL2-win32, SDL2_image-win32
+  outputs = { self, nixpkgs, flake-utils
             , openal-soft-win32, libmodplug-win32
-            , sdl2-src, sdl2-image-src, sdl2-mixer-src, libxmp-src
             , arkos-sysroot }:
     # Host systems only. Windows is a *target* via pkgsCross.
     # x86_64-darwin is omitted: nixpkgs unstable (26.11+) dropped support.
