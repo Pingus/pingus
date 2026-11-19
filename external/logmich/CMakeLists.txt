@@ -123,7 +123,9 @@ set_target_properties(logmich PROPERTIES
   CXX_STANDARD_REQUIRED ON
   CXX_EXTENSIONS OFF
   EXPORT_NAME logmich)
-target_compile_options(logmich PUBLIC ${WARNINGS_CXX_FLAGS})
+# PRIVATE: the warning set (and -Werror) is logmich's own build policy and
+# must not be exported to every consumer of logmich::logmich.
+target_compile_options(logmich PRIVATE ${WARNINGS_CXX_FLAGS})
 target_include_directories(logmich PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
@@ -136,6 +138,7 @@ if(BUILD_TESTS)
     CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
     CXX_EXTENSIONS OFF)
+  target_compile_options(test_logmich PRIVATE ${WARNINGS_CXX_FLAGS})
   target_link_libraries(test_logmich logmich)
 
   enable_testing()
