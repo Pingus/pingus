@@ -19,6 +19,7 @@
 #include "stream_sound_source.hpp"
 
 #include <array>
+#include <vector>
 #include <iostream>
 #include <stdexcept>
 
@@ -197,7 +198,9 @@ StreamSoundSource::sec_to_sample(float sec) const
 void
 StreamSoundSource::fill_buffer_and_queue(ALuint buffer)
 {
-  std::array<char, STREAMFRAGMENTSIZE> bufferdata;
+  // Heap, not stack: STREAMFRAGMENTSIZE is 64KiB and Emscripten's default
+  // STACK_SIZE is often 64KiB — a stack array here OOBs at first music fill.
+  std::vector<char> bufferdata(STREAMFRAGMENTSIZE);
   size_t total_bytesread = 0;
 
   // fill buffer with data from m_sound_file
@@ -205,26 +208,44 @@ StreamSoundSource::fill_buffer_and_queue(ALuint buffer)
     size_t bytesrequested = STREAMFRAGMENTSIZE - total_bytesread;
 
     if (m_loop) {
-      bytesrequested = std::min(m_sound_file->get_format().sample2bytes(m_loop->sample_end) - m_sound_file->tell(),
-                                bytesrequested);
+      // Cap at loop end, but never underflow: ModPlug_GetLength is msec and
+      // can disagree with the actual PCM bytes ModPlug_Read produces. Treating
+      // that mismatch as "keep reading until loop end" used to busy-wait when
+      // read() already returned 0 (EOF) while tell() was still < sample_end.
+      size_t const loop_end_bytes =
+        m_sound_file->get_format().sample2bytes(m_loop->sample_end);
+      size_t const pos = m_sound_file->tell();
+      if (pos < loop_end_bytes) {
+        bytesrequested = std::min(loop_end_bytes - pos, bytesrequested);
+      }
+    }
+
+    if (bytesrequested == 0) {
+      if (m_loop) {
+        m_sound_file->seek_to_sample(m_loop->sample_beg);
+        continue;
+      }
+      break;
     }
 
     size_t const bytesread = m_sound_file->read(bufferdata.data() + total_bytesread,
                                                 bytesrequested);
     total_bytesread += bytesread;
 
-    if (m_loop) {
-      if (m_sound_file->tell() >= m_sound_file->get_format().sample2bytes(m_loop->sample_end)) {
-        std::cout << "loop\n";
+    if (bytesread == 0) {
+      // Decoder hit real EOF (ModPlug often runs out before sample_end).
+      if (m_loop) {
+        size_t const before = m_sound_file->tell();
         m_sound_file->seek_to_sample(m_loop->sample_beg);
+        // Seek must move the cursor; otherwise we would spin forever.
+        if (m_sound_file->tell() == before) {
+          break;
+        }
+        continue;
       }
-    } else {
-      if (bytesread == 0) {
-        /* EOF reached */
-        break;
-      }
+      break;
     }
-  } while(total_bytesread < STREAMFRAGMENTSIZE);
+  } while (total_bytesread < STREAMFRAGMENTSIZE);
 
   if (total_bytesread > 0)
   {

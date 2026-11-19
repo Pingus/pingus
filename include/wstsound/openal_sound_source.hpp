@@ -19,7 +19,7 @@
 #ifndef HEADER_WINDSTILLE_SOUND_OPENAL_SOUND_SOURCE_HPP
 #define HEADER_WINDSTILLE_SOUND_OPENAL_SOUND_SOURCE_HPP
 
-#include <al.h>
+#include <AL/al.h>
 
 #include "sound_source.hpp"
 

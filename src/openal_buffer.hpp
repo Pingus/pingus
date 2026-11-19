@@ -19,7 +19,7 @@
 
 #include <memory>
 
-#include <al.h>
+#include <AL/al.h>
 
 #include <wstsound/openal_system.hpp>
 

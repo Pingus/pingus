@@ -22,12 +22,11 @@
 #include <sstream>
 #include <iostream>
 
-#define AL_ALEXT_PROTOTYPES
-#include <alext.h>
-
 #include "openal_buffer.hpp"
 #include "openal_device.hpp"
-#include "openal_loopback_device.hpp"
+#if defined(WSTSOUND_WITH_LOOPBACK)
+#  include "openal_loopback_device.hpp"
+#endif
 #include "openal_real_device.hpp"
 #include "sound_error.hpp"
 #include "sound_file.hpp"
@@ -97,10 +96,14 @@ OpenALSystem::open_real_device()
 OpenALLoopbackDevice&
 OpenALSystem::open_loopback_device(int frequency, int channels)
 {
+#if defined(WSTSOUND_WITH_LOOPBACK)
   std::unique_ptr<OpenALLoopbackDevice> loopback_device = std::make_unique<OpenALLoopbackDevice>(*this, frequency, channels);
   OpenALLoopbackDevice& loopback_device_ref = *loopback_device;
   m_device = std::move(loopback_device);
   return loopback_device_ref;
+#else
+  throw SoundError("OpenAL loopback device not available in this build");
+#endif
 }
 
 OpenALBufferPtr

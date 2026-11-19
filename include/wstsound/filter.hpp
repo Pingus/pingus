@@ -19,9 +19,9 @@
 #ifndef HEADER_WSTSOUND_FILTER_HPP
 #define HEADER_WSTSOUND_FILTER_HPP
 
-#include <al.h>
+#include <AL/al.h>
 #define AL_ALEXT_PROTOTYPES
-#include <efx.h>
+#include <AL/efx.h>
 
 namespace wstsound {
 

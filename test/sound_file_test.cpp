@@ -20,9 +20,15 @@
 
 #include <fstream>
 
+#if defined(WSTSOUND_WITH_MPG123)
 #include "mp3_sound_file.hpp"
+#endif
+#if defined(WSTSOUND_WITH_VORBIS)
 #include "ogg_sound_file.hpp"
+#endif
+#if defined(WSTSOUND_WITH_OPUS)
 #include "opus_sound_file.hpp"
+#endif
 #include "wav_sound_file.hpp"
 
 using namespace wstsound;
@@ -65,6 +71,7 @@ TEST(SoundFileTest, wav)
   EXPECT_EQ(sound_file.get_sample_duration(), real_sample_duration);
 }
 
+#if defined(WSTSOUND_WITH_VORBIS)
 TEST(SoundFileTest, ogg)
 {
   auto fin = std::make_unique<std::ifstream>("data/sound.ogg", std::ios::binary);
@@ -81,7 +88,9 @@ TEST(SoundFileTest, ogg)
   EXPECT_EQ(sound_file.tell(), real_byte_size);
   EXPECT_EQ(sound_file.get_sample_duration(), real_sample_duration);
 }
+#endif
 
+#if defined(WSTSOUND_WITH_OPUS)
 TEST(SoundFileTest, opus)
 {
   auto fin = std::make_unique<std::ifstream>("data/sound.opus", std::ios::binary);
@@ -98,7 +107,9 @@ TEST(SoundFileTest, opus)
   EXPECT_EQ(sound_file.tell(), real_byte_size);
   EXPECT_EQ(sound_file.get_sample_duration(), real_sample_duration);
 }
+#endif
 
+#if defined(WSTSOUND_WITH_MPG123)
 TEST(SoundFileTest, mp3)
 {
   auto fin = std::make_unique<std::ifstream>("data/sound.mp3", std::ios::binary);
@@ -115,5 +126,6 @@ TEST(SoundFileTest, mp3)
   EXPECT_EQ(sound_file.tell(), real_byte_size);
   EXPECT_EQ(sound_file.get_sample_duration(), real_sample_duration);
 }
+#endif
 
 /* EOF */

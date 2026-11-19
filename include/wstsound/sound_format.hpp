@@ -21,7 +21,7 @@
 
 #include <stddef.h>
 
-#include <al.h>
+#include <AL/al.h>
 
 namespace wstsound {
 

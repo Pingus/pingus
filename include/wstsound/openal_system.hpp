@@ -25,8 +25,8 @@
 #include <memory>
 #include <vector>
 
-#include <alc.h>
-#include <al.h>
+#include <AL/alc.h>
+#include <AL/al.h>
 
 #include "fwd.hpp"
 

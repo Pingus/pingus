@@ -21,7 +21,7 @@
 
 #include "fwd.hpp"
 
-#include <al.h>
+#include <AL/al.h>
 
 namespace wstsound {
 

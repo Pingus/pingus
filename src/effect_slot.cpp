@@ -19,7 +19,7 @@
 #include "effect_slot.hpp"
 
 #define AL_ALEXT_PROTOTYPES
-#include <efx.h>
+#include <AL/efx.h>
 
 #include "effect.hpp"
 #include "openal_system.hpp"
